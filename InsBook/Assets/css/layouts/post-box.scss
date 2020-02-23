@@ -1,0 +1,94 @@
+#newsfeed {
+    .post-box {
+    margin-bottom: 60px;
+    border-radius: 4px;
+    border: 1px solid rgb(200, 200, 200);
+    background-color: white;
+    }
+
+    .modal {
+        .modal-dialog {
+            max-width: 1000px !important;
+            .modal-content {
+                padding: 20px 0px;
+                display: flex !important;
+                flex-direction: row !important;
+                .post-title {
+                    border-bottom: 1px solid rgb(200, 200, 200);
+                }
+                .post-socialfunction {
+                    .post-caption,
+                    .like-comment,
+                    .post-comment,
+                    .like-number {
+                        margin-bottom: 10px;
+                    }
+                    .post-comment {
+                        height: 200px;
+                        overflow-y: scroll;
+                    }
+                }
+            }
+        }
+    }
+
+    .post-title,
+    .post-content,
+    .post-usercomment,
+    .post-socialfunction {
+        padding: 10px 15px;
+    }
+
+    .post-title {
+        display: flex;
+        align-items: center;
+        img {
+            margin-right: 10px;
+        }
+        p {
+            margin: 0px 0px;
+        }
+    }
+
+    .post-content {
+        display: flex;
+        justify-content: center;
+        height: 500px;
+        img {
+            height: 100%;
+        }
+    }
+
+    .post-socialfunction {
+        .like-comment {
+            i {
+                color: black;
+                font-size: 20px;
+                margin-right: 15px;
+            }
+        }
+        .like-number {
+            font-weight: 600;
+        }
+        .post-comment {
+            display: flex;
+            p {
+                margin: 0px 0px;
+            }
+            .comment-name {
+                margin-right: 10px;
+                font-weight: 600;
+            }
+        }
+    }
+
+    .post-usercomment {
+        display: flex;
+        padding: 10px 15px;
+        border-top: 1px solid rgb(200, 200, 200);
+        button {
+            background-color: white;
+            border: none;
+        }
+    }
+}

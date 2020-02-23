@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Assets/css/layouts/footer.css" rel="stylesheet" />
+    @RenderSection("css", required: false)
+    <script src="~/Scripts/modernizr-2.8.3.js"></script>
+</head>
+<body>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <div class="container">
+                <ul class="nav justify-content-center">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Giới thiệu về chúng tôi</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Trợ giúp</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">API</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Quyền riêng tư</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Điều khoản</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Hashtag</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Ngôn ngữ</a>
+                    </li>
+                </ul>
+                <h3>© 2020 FAKEBOOK FROM MTA</h3>
+            </div>
+        </footer>
+    </div>
+    <script src="~/Assets/media/js/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="https://kit.fontawesome.com/5d3f9f4ac6.js" crossorigin="anonymous"></script>
+    @RenderSection("js", required: false)
+</body>
+</html>
