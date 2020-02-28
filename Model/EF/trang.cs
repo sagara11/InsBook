@@ -27,11 +27,9 @@ namespace Model.EF
 
         public int? nguoitao_id { get; set; }
 
-        [Required]
         [StringLength(255)]
         public string ten { get; set; }
 
-        [Required]
         [StringLength(255)]
         public string tennguoidung { get; set; }
 

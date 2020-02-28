@@ -65,11 +65,9 @@ namespace Model.EF
 
         public int id { get; set; }
 
-        [Required]
         [StringLength(255)]
         public string ho { get; set; }
 
-        [Required]
         [StringLength(255)]
         public string ten { get; set; }
 
@@ -80,7 +78,7 @@ namespace Model.EF
         public string matkhau { get; set; }
 
         [Column(TypeName = "date")]
-        public DateTime ngaysinh { get; set; }
+        public DateTime? ngaysinh { get; set; }
 
         [StringLength(255)]
         public string sdt { get; set; }
@@ -104,11 +102,10 @@ namespace Model.EF
         [StringLength(255)]
         public string loitrichdan { get; set; }
 
-        [Required]
         [StringLength(100)]
         public string gioitinh { get; set; }
 
-        public int vaitro { get; set; }
+        public int? vaitro { get; set; }
 
         public int? soluongbanbe { get; set; }
 
