@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InsBook", "InsBook\InsBook.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model", "Model\Model.csproj", "{D4BCF9C8-1AA4-42A3-A0DC-2284935587CA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MailHelper", "MailHelper\MailHelper.csproj", "{B51F6142-1810-41ED-9F8A-4ACCB7FA2D98}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{D4BCF9C8-1AA4-42A3-A0DC-2284935587CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D4BCF9C8-1AA4-42A3-A0DC-2284935587CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D4BCF9C8-1AA4-42A3-A0DC-2284935587CA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B51F6142-1810-41ED-9F8A-4ACCB7FA2D98}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B51F6142-1810-41ED-9F8A-4ACCB7FA2D98}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B51F6142-1810-41ED-9F8A-4ACCB7FA2D98}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B51F6142-1810-41ED-9F8A-4ACCB7FA2D98}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

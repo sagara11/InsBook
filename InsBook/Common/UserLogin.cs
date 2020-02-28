@@ -11,4 +11,8 @@ namespace InsBook
         public long UserID { get; set; }
         public string Email { get; set; }
     }
+    public class ForgetPass
+    {
+        public string Email { get; set; }
+    }
 }
