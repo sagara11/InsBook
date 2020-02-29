@@ -14,5 +14,6 @@ namespace InsBook
     public class ForgetPass
     {
         public string Email { get; set; }
+        public string PrivateKey { get; set; }
     }
 }

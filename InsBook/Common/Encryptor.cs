@@ -67,14 +67,14 @@ namespace InsBook.Common
             segments.Add(Base64UrlEncode(headerBytes));
             segments.Add(Base64UrlEncode(payloadBytes));
 
-            var stringToSign = string.Join(".", segments.ToArray());
+            var stringToSign = string.Join("~", segments.ToArray());
 
             var bytesToSign = Encoding.UTF8.GetBytes(stringToSign);
 
             byte[] signature = HashAlgorithms[algorithm](keyBytes, bytesToSign);
             segments.Add(Base64UrlEncode(signature));
 
-            return string.Join(".", segments.ToArray());
+            return string.Join("~", segments.ToArray());
         }
 
         public static string Decode(string token, string key)
@@ -84,7 +84,7 @@ namespace InsBook.Common
 
         public static string Decode(string token, string key, bool verify)
         {
-            var parts = token.Split('.');
+            var parts = token.Split('~');
             var header = parts[0];
             var payload = parts[1];
             byte[] crypto = Base64UrlDecode(parts[2]);
@@ -96,7 +96,7 @@ namespace InsBook.Common
 
             if (verify)
             {
-                var bytesToSign = Encoding.UTF8.GetBytes(string.Concat(header, ".", payload));
+                var bytesToSign = Encoding.UTF8.GetBytes(string.Concat(header, "~", payload));
                 var keyBytes = Encoding.UTF8.GetBytes(key);
                 var algorithm = (string)headerData["alg"];
 
