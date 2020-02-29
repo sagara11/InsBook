@@ -1,6 +1,276 @@
 ﻿
 @{
     ViewBag.Title = "Index";
+    Layout = "~/Areas/Client/Views/Shared/Newsfeed.cshtml";
 }
+@section css {
+    <link href="~/Assets/css/pages/newsfeed.css" rel="stylesheet" />
+}
+@{
+    Html.RenderPartial("~/Areas/Client/Views/Layout/header.cshtml");
+}
+<main>
+    <div class="container">
+        <div class="row">
+            <div class="col-25">
+                <!-- Group - Page -->
+                @{
+                    Html.RenderPartial("~/Areas/Client/Views/Layout/group/group_page.cshtml");
+                }
+            </div>
+            <div class="col-50">
+                <!-- New post -->
+                <section id="newpost">
+                    <div class="newpost-header">
+                        <h6>Tạo bài viết</h6>
+                        <h6 id="newpost-close">&times;</h6>
+                    </div>
+                    <div class="newpost-input">
+                        <div class="user-avatar">
+                            <img class="rounded rounded-circle" height="50px" width="50px" src="~/Assets/media/78834391_459110258126325_6149001856166133760_n.jpg" alt="">
+                        </div>
+                        <div class="textarea">
+                            <textarea class="form-control" placeholder="Bạn đang nghĩ gì?" name="" id="main-input"></textarea>
+                        </div>
+                        <div class="post-image">
+                            <img height="100px" width="100px" id="img" src="#" alt="" />
+                        </div>
+                        <div class="new-media-content">
+                            <input onchange="readURL(this);" type="file" class="custom-control-input" id="customCheck" name="example1">
+                            <label class="custom-control-file" for="customCheck">Ảnh/Video</label>
+                            <label>
+                                Gắn thẻ bạn bè
+                            </label>
+                            <label>
+                                ...
+                            </label>
+                            <div class="submit-btn-contain">
+                                <button>Đăng</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- Newsfeed -->
+                <section id="newsfeed">
+                    <div class="post-box">
+                        <div class="post-title">
+                            <div class="post-info">
+                                <img height="50px" width="50px" class="rounded rounded-circle" src="~/Assets/media/78834391_459110258126325_6149001856166133760_n.jpg" alt="">
+                                <p>name</p>
+                            </div>
+                            <div class="post-option" data-target="#post-option-modal1" data-toggle="modal">
+                                &#8230;
+                            </div>
+                            <div class="modal post-option-modal fade" id="post-option-modal1">
+                                <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content">
+                                        <div class="modal-body">
+                                            <ul>
+                                                <li>
+                                                    <a class="report" href="">Báo cáo</a>
+                                                </li>
+                                                <li>
+                                                    <a href="">Bỏ theo dõi</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="post-content" data-toggle="modal" data-target="#modal1">
+                            <img class="img-fluid" src="~/Assets/media/78834391_459110258126325_6149001856166133760_n.jpg" alt="">
+                        </div>
+                        <div class="post-socialfunction">
+                            <div class="like-comment">
+                                <div id="heart-1" onclick="heart('heart-1')" class="like-comment-heart">
+                                    <i class="fa fa-heart-o heart" aria-hidden="true"></i>
+                                </div>
+                                <i class="fa fa-comment-o" aria-hidden="true"></i>
+                                <i class="fa fa-paper-plane-o" aria-hidden="true"></i>
+                            </div>
+                            <div class="like-number">
+                                200 likes
+                            </div>
+                            <div class="post-caption">
+                                Caption
+                            </div>
+                            <div class="post-comment">
+                                <p class="comment-name">Name</p>
+                                <p>comment....</p>
+                            </div>
+                        </div>
+                        <div class="post-usercomment">
+                            <input class="form-control" type="text" placeholder="Thêm bình luận...">
+                            <button>Đăng</button>
+                        </div>
+                        <!-- Modal -->
+                        <div class="post-box-modal modal fade" id="modal1">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="col-7">
+                                        <div class="post-content">
+                                            <img class="img-fluid" src="~/Assets/media/78834391_459110258126325_6149001856166133760_n.jpg" alt="">
+                                        </div>
+                                    </div>
+                                    <div class="col-5">
+                                        <div class="post-title">
+                                            <img height="50px" width="50px" class="rounded rounded-circle" src="~/Assets/media/78834391_459110258126325_6149001856166133760_n.jpg" alt="">
+                                            <p>name</p>
+                                        </div>
+                                        <div class="post-socialfunction">
+                                            <div class="post-caption">
+                                                Caption
+                                            </div>
+                                            <div class="like-comment">
+                                                <i class="fa fa-heart-o" aria-hidden="true"></i>
+                                                <i class="fa fa-comment-o" aria-hidden="true"></i>
+                                                <i class="fa fa-paper-plane-o" aria-hidden="true"></i>
+                                            </div>
+                                            <div class="like-number">
+                                                200 likes
+                                            </div>
+                                            <div class="post-comment">
+                                                <p class="comment-name">Name</p>
+                                                <p>comment....</p>
+                                            </div>
+                                        </div>
+                                        <div class="post-usercomment">
+                                            <input class="form-control" type="text" placeholder="Thêm bình luận...">
+                                            <button>Đăng</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="post-box">
+                        <div class="post-title">
+                            <div class="post-info">
+                                <img height="50px" width="50px" class="rounded rounded-circle" src="~/Assets/media/78834391_459110258126325_6149001856166133760_n.jpg" alt="">
+                                <p>name</p>
+                            </div>
+                            <div class="post-option" data-target="#post-option-modal2" data-toggle="modal">
+                                &#8230;
+                            </div>
+                            <div class="modal post-option-modal fade" id="post-option-modal2">
+                                <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content">
+                                        <div class="modal-body">
+                                            <ul>
+                                                <li>
+                                                    <a class="report" href="">Báo cáo</a>
+                                                </li>
+                                                <li>
+                                                    <a href="">Bỏ theo dõi</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="post-content" data-toggle="modal" data-target="#modal2">
+                            <img class="img-fluid" src="~/Assets/media/78834391_459110258126325_6149001856166133760_n.jpg" alt="">
+                        </div>
+                        <div class="post-socialfunction">
+                            <div class="like-comment">
+                                <div id="heart-2" onclick="heart('heart-2')" class="like-comment-heart">
+                                    <i class="fa fa-heart-o heart" aria-hidden="true"></i>
+                                </div>
+                                <i class="fa fa-comment-o" aria-hidden="true"></i>
+                                <i class="fa fa-paper-plane-o" aria-hidden="true"></i>
+                            </div>
+                            <div class="like-number">
+                                200 likes
+                            </div>
+                            <div class="post-caption">
+                                Caption
+                            </div>
+                            <div class="post-comment">
+                                <p class="comment-name">Name</p>
+                                <p>comment....</p>
+                            </div>
+                        </div>
+                        <div class="post-usercomment">
+                            <input class="form-control" type="text" placeholder="Thêm bình luận...">
+                            <button>Đăng</button>
+                        </div>
+                        <!-- Modal -->
+                        <div class="post-box-modal modal fade" id="modal2">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="col-7">
+                                        <div class="post-content">
+                                            <img class="img-fluid" src="~/Assets/media/78834391_459110258126325_6149001856166133760_n.jpg" alt="">
+                                        </div>
+                                    </div>
+                                    <div class="col-5">
+                                        <div class="post-title">
+                                            <img height="50px" width="50px" class="rounded rounded-circle" src="~/Assets/media/78834391_459110258126325_6149001856166133760_n.jpg" alt="">
+                                            <p>name</p>
+                                        </div>
+                                        <div class="post-socialfunction">
+                                            <div class="post-caption">
+                                                Caption
+                                            </div>
+                                            <div class="like-comment">
+                                                <i class="fa fa-heart-o" aria-hidden="true"></i>
+                                                <i class="fa fa-comment-o" aria-hidden="true"></i>
+                                                <i class="fa fa-paper-plane-o" aria-hidden="true"></i>
+                                            </div>
+                                            <div class="like-number">
+                                                200 likes
+                                            </div>
+                                            <div class="post-comment">
+                                                <p class="comment-name">Name</p>
+                                                <p>comment....</p>
+                                            </div>
+                                        </div>
+                                        <div class="post-usercomment">
+                                            <input class="form-control" type="text" placeholder="Thêm bình luận...">
+                                            <button>Đăng</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <div class="col-25">
+                <div class="fixed-side">
+                    <!-- Thông tin tài khoản -->
+                    <section id="user-info">
+                        <div class="user-avatar">
+                            <img class="rounded rounded-circle" height="70px" width="70px" src="~/Assets/media/78834391_459110258126325_6149001856166133760_n.jpg" alt="">
+                        </div>
+                        <div>
+                            <p>
+                                user-name
+                            </p>
+                            <p>
+                                <small>
+                                    user-name-2
+                                </small>
+                            </p>
+                        </div>
+                    </section>
+                    <!-- Messenger-section -->
+                    @{
+                        Html.RenderPartial("~/Areas/Client/Views/Layout/messenger/messenger_section.cshtml");
+                    }
+                </div>
 
-<h2>Indexdấdsad</h2>
+            </div>
+        </div>
+    </div>
+</main>
+@{
+    Html.RenderPartial("~/Areas/Client/Views/Layout/messenger/messenger.cshtml");
+}
+@section js{
+    <script src="~/Assets/js/messenger.js"></script>
+    <script src="~/Assets/js/newsfeed.js"></script>
+    <script src="~/Assets/js/love_button.js"></script>
+}
