@@ -33,7 +33,7 @@ namespace Model.Dao
         //    }
         //    return model.OrderByDescending(x => x.CreatedBy).ToPagedList(page, pageSize);
         //}
-        public nguoidung GetbyID(string email)
+        public nguoidung GetbyEmail(string email)
         {
             return db.nguoidungs.SingleOrDefault(x => x.email == email);
         }

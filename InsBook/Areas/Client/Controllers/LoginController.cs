@@ -35,11 +35,16 @@ namespace InsBook.Areas.Client.Controllers
                 var result = dao.Login(model.Email, Encryptor.MD5Hash(model.Password));
                 if (result == 1)
                 {
-                    var user = dao.GetbyID(model.Email);
+                    //Tìm email trong db
+                    var user = dao.GetbyEmail(model.Email);
+                    //Tạo session
                     var userSession = new UserLogin();
                     userSession.Email = user.email;
                     userSession.UserID = user.id;
+                    //thêm session
                     Session.Add(CommonConstants.USER_SESSION, userSession);
+                    
+
                     return RedirectToAction("Index", "Home");
                 }
                 else if (result == 0)

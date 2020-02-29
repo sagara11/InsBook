@@ -305,6 +305,7 @@
     <Compile Include="Areas\Client\Controllers\RegisterController.cs" />
     <Compile Include="Areas\Client\Models\ForgetPassModel.cs" />
     <Compile Include="Areas\Client\Models\LoginModel.cs" />
+    <Compile Include="Common\Accessories.cs" />
     <Compile Include="Common\CommonConstants.cs" />
     <Compile Include="Common\Encryptor.cs" />
     <Compile Include="Common\UserLogin.cs" />

@@ -1,7 +1,18 @@
-﻿
+﻿@model Model.EF.nguoidung
 @{
     ViewBag.Title = "Index";
     Layout = "~/Areas/Client/Views/Shared/_Layout.cshtml";
+    List<SelectListItem> listItems= new List<SelectListItem>();
+       listItems.Add(new SelectListItem
+            {
+              Text = "Nam",
+              Value = "1"
+            });
+       listItems.Add(new SelectListItem
+            {
+                Text = "Nữ",
+                Value = "0"
+            });
 }
 @section css {
     <link href="~/Assets/css/pages/register.css" rel="stylesheet" />
@@ -26,39 +37,68 @@
                         <h1>InsBook</h1>
                         <p>We love it cuz it's fake !</p>
                         <div class="register-form">
-                            <form action="#" method="post" accept-charset="utf-8">
-                                <div class="input-group">
-                                    <div class="input-group-prepend">
-                                        <div class="input-group-text">
-                                            <i class="fas fa-user-tie"></i>
-                                        </div>
+                            @using (Html.BeginForm("Login", "Login", FormMethod.Post))
+                            {
+                                @Html.AntiForgeryToken()
+                                @Html.ValidationSummary(true, null, new { @class = "alert alert-danger" })
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">
+                                        <i class="fas fa-user-tie"></i>
                                     </div>
-                                    <input type="text" class="form-control" id="" placeholder="Số điện thoại, tên người dùng hoặc email">
                                 </div>
-                                <div class="input-group">
-                                    <div class="input-group-prepend">
-                                        <div class="input-group-text">
-                                            <i class="fas fa-key"></i>
-                                        </div>
+                                @Html.TextBoxFor(model => model.ho, new { @class = "form-control", @placeholder = "Họ", @autofocus = "autofocus" })
+                                @Html.TextBoxFor(model => model.ten, new { @class = "form-control", @placeholder = "Tên", @autofocus = "autofocus" })
+                            </div>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">
+                                        <i class="fas fa-at"></i>
                                     </div>
-                                    <input type="text" class="form-control" id="" placeholder="Mật khẩu">
                                 </div>
-                                <div class="input-group">
-                                    <div class="input-group-prepend">
-                                        <div class="input-group-text">
-                                            <i class="fas fa-key"></i>
-                                        </div>
+                                @Html.TextBoxFor(model => model.email, new { @class = "form-control", @placeholder = "Email", @autofocus = "autofocus" })
+                            </div>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">
+                                        <i class="fas fa-key"></i>
                                     </div>
-                                    <input type="text" class="form-control" id="" placeholder="Nhập lại mật khẩu">
+                                </div>
+                                @Html.PasswordFor(model => model.matkhau, new { @class = "form-control", @placeholder = "Mật khẩu", @autofocus = "autofocus" })
+                            </div>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">
+                                        <i class="fas fa-key"></i>
+                                    </div>
+                                </div>
+                                @Html.PasswordFor(model => model.mota, new { @class = "form-control", @placeholder = "Xác nhận mật khẩu", @autofocus = "autofocus" })
+                            </div>
+                                <div class="form-row">
+                                    <div class="input-group col-md-7">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text">
+                                                <i class="fas fa-birthday-cake"></i>
+                                            </div>
+                                        </div>
+                                        @Html.TextBoxFor(model => model.ngaysinh, new { @class = "form-control", @placeholder = "Xác nhận mật khẩu", @autofocus = "autofocus", @type="date" })
+                                    </div>
+                                    <div class="input-group col-md-5">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text">
+                                                <i class="fas fa-venus-mars"></i>
+                                            </div>
+                                        </div>
+                                        @Html.DropDownListFor(model => model.gioitinh, @listItems, new { @class = "form-control", @autofocus = "autofocus"})
+                                    </div>
                                 </div>
                                 <div class="form-check">
-                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                    <input type="checkbox" class="form-check-input" id="">
                                     <label class="form-check-label" for="exampleCheck1">Đồng ý tuân theo 5 điều Bác Hồ dạy</label>
                                 </div>
                                 <button type="button" class="btn btn-block btn-primary">Đăng ký</button>
-                                <hr>
-                                <p>HOẶC</p>
-                                <button type="button" class="btn btn-block btn-light"><i class="fab fa-facebook-square"></i>Đăng nhập bằng Facebook</button>
+                            }
+                            <form action="#" method="post" accept-charset="utf-8">
                             </form>
                         </div>
                     </div>
