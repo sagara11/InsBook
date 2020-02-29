@@ -100,21 +100,14 @@ main #login-page .modal-content {
     main #login-page .modal-content .modal-body .input-group {
       padding: 16px 0;
       position: relative; }
-    main #login-page .modal-content .modal-body hr {
-      margin-top: 32px; }
-    main #login-page .modal-content .modal-body p {
-      margin-bottom: 0;
-      padding: 0 16px;
-      width: 14%;
-      position: absolute;
-      top: 127px;
-      left: 215px;
-      background-color: #fff;
-      font-size: 14px;
-      color: #999;
-      font-size: 600; }
+      main #login-page .modal-content .modal-body .input-group input {
+        max-width: unset;
+        width: 89%;
+        border: 1px solid #ced4da; }
+        main #login-page .modal-content .modal-body .input-group input:focus {
+          border: 1px solid #ced4da; }
     main #login-page .modal-content .modal-body a {
-      margin-top: 12px;
+      margin-top: 32px;
       text-decoration: none;
       font-size: 14px;
       font-weight: 600;

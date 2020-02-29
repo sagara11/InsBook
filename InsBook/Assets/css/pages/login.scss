@@ -3,25 +3,29 @@ main {
 		.images-sidebar {
 			height: 618px;
 			width: 100%;
+
 			img {
 				width: 100%;
 				height: 100%;
 				object-fit: cover;
 			}
 		}
+
 		.form-login {
 			background-color: #fff;
 			border: 1px solid #dbdbdb;
 			margin-bottom: 10px;
+
 			h1 {
 				text-align: center;
 				font-size: 36px;
 				padding-top: 22px;
 				background: -webkit-linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
-			  	-webkit-background-clip: text;
-			  	-webkit-text-fill-color: transparent;
-			  	margin-bottom: 0;
+				-webkit-background-clip: text;
+				-webkit-text-fill-color: transparent;
+				margin-bottom: 0;
 			}
+
 			p {
 				margin-bottom: 42px;
 				text-align: center;
@@ -29,22 +33,28 @@ main {
 				font-weight: 500;
 				color: rgb(129, 129, 129);
 			}
+
 			.login-form {
 				padding: 0 40px;
+
 				form {
 					position: relative;
+
 					.input-group {
 						margin-bottom: 16px;
 						position: relative;
+
 						input {
 							max-width: unset;
 						}
 					}
+
 					button.btn-primary {
 						margin-top: 20px;
 						position: relative;
 						font-size: 18px;
 					}
+
 					a {
 						margin-top: 30px;
 						text-align: center;
@@ -57,30 +67,37 @@ main {
 				}
 			}
 		}
+
 		.form-login-register {
 			background-color: #fff;
 			border: 1px solid #dbdbdb;
 			padding: 20px 20px;
+
 			p {
 				margin-bottom: 0;
 				text-align: center;
+
 				a {
-					color : #3897f0;
+					color: #3897f0;
 					font-weight: 600;
 					text-decoration: none;
 				}
 			}
 		}
+
 		.web-apps {
 			padding-top: 20px;
+
 			h3 {
 				font-size: 16px;
 				text-align: center;
 			}
+
 			.web-apps-thumbnai {
 				display: flex;
 				align-items: center;
 				justify-content: center;
+
 				img {
 					height: 40px;
 					width: auto;
@@ -88,31 +105,39 @@ main {
 				}
 			}
 		}
+
 		.modal-content {
 			border-color: rgb(247, 247, 247);
+
 			.modal-header {
 				.modal-title {
 					margin-left: auto;
+
 					i {
 						border: 1px solid #999;
-						color : #999;
+						color: #999;
 						border-radius: 50%;
 						padding: 16px;
 					}
 				}
+
 				border-bottom: none;
 			}
+
 			.modal-sub-header {
 				border-bottom: 1px solid #dee2e6;
+
 				p {
 					margin-bottom: 0;
 					text-align: center;
 				}
+
 				.modal-sub-header-title {
 					font-weight: 600;
 					font-size: 16px;
 					margin-bottom: 8px;
 				}
+
 				.modal-sub-header-content {
 					color: #999;
 					font-weight: 400;
@@ -121,30 +146,27 @@ main {
 					padding: 0 48px;
 				}
 			}
+
 			.modal-body {
 				padding: 0 48px;
 				position: relative;
+
 				.input-group {
 					padding: 16px 0;
 					position: relative;
+
+					input {
+						max-width: unset;
+						width: 89%;
+						border: 1px solid #ced4da;
+						&:focus {
+							border: 1px solid #ced4da;
+						}
+					}
 				}
-				hr {
-					margin-top: 32px;
-				}
-				p {
-					margin-bottom: 0;
-					padding: 0 16px;
-					width: 14%;
-					position: absolute;
-					top: 127px;
-					left: 215px;
-					background-color: #fff;
-					font-size: 14px;
-					color: #999;
-					font-size: 600;
-				}
+
 				a {
-					margin-top: 12px;
+					margin-top: 32px;
 					text-decoration: none;
 					font-size: 14px;
 					font-weight: 600;
@@ -154,9 +176,11 @@ main {
 					margin-bottom: 20px;
 				}
 			}
+
 			.modal-footer {
 				padding: 0;
 				margin: 0;
+
 				button {
 					margin: 0;
 					border-top-left-radius: 0;
