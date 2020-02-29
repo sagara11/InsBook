@@ -63,7 +63,7 @@ namespace InsBook.Areas.Client.Controllers
             // chưa xử lý decode link
             // chưa có view cơ bản
             // chưa có view 404
-            // Form thay đổi pass trong email chưa hoạt đôngj
+            // Form thay đổi pass trong email chưa hoạt đông
             return View();
         }
     }
