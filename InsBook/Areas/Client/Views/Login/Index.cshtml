@@ -1,6 +1,8 @@
 ﻿
+@model InsBook.Areas.Client.Models.LoginModel
 @{
     ViewBag.Title = "Index";
+    Layout = "~/Areas/Client/Views/Shared/_Layout.cshtml";
 }
 @section css{
     <link href="~/Assets/css/pages/login.css" rel="stylesheet" />
@@ -8,14 +10,12 @@
 @section js{
 
 }
-@model InsBook.Areas.Client.Models.LoginModel
-    <h1>Nếu anh em thấy được dòng chữ này thì hãy ghi tên mình vào đây rồi commit lên server</h1>dung
 <main>
     <section id="login-page">
         <div class="container">
             <div class="row">
                 <div class="col-md-1">
-                    Thong
+
                 </div>
                 <div class="col-md-5">
                     <div class="images-sidebar">
@@ -48,9 +48,6 @@
                                     @Html.TextBoxFor(model => model.Password, new { @class = "form-control", @type = "password", @placeholder = "Mật khẩu", @autoforcus = "autoforcus" })
                                 </div>
                                 <button type="submit" class="btn btn-block btn-primary">Đăng nhập</button>
-                                <hr>
-                                <p>HOẶC</p>
-                                <button type="button" class="btn btn-block btn-light"><i class="fab fa-facebook-square"></i>Đăng nhập bằng Facebook</button>
                                 <a href="#exampleModalCenter" title="Mày quên mật khẩu à ?" data-toggle="modal">Quên mật khẩu ?</a>
                             }
                         </div>

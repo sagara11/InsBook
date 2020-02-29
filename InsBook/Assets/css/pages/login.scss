@@ -36,44 +36,17 @@ main {
 					.input-group {
 						margin-bottom: 16px;
 						position: relative;
+						input {
+							max-width: unset;
+						}
 					}
 					button.btn-primary {
 						margin-top: 20px;
 						position: relative;
 						font-size: 18px;
 					}
-					hr {
-						margin-top: 40px;
-						position: relative;
-						margin-bottom: 30px;
-					}
-					p {
-						font-style: normal;
-						margin-bottom: 0;
-						width: 30%;
-						position: absolute;
-						background-color: #fff;
-						top: 178px;
-						left: 128px;
-					}
-					button.btn-light {
-						background-color: #fff;
-						border: none;
-						display: flex;
-						align-items: center;
-						justify-content: center;
-						&:focus {
-							box-shadow: none;
-						}
-						color: #385185;
-						font-size: 16px;
-						font-weight: 600;
-						i {
-							margin-right: 8px;
-							font-size: 20px;
-						}
-					}
 					a {
+						margin-top: 30px;
 						text-align: center;
 						width: 100%;
 						display: block;

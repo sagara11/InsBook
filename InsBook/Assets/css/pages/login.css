@@ -30,37 +30,14 @@ main #login-page .form-login {
       main #login-page .form-login .login-form form .input-group {
         margin-bottom: 16px;
         position: relative; }
+        main #login-page .form-login .login-form form .input-group input {
+          max-width: unset; }
       main #login-page .form-login .login-form form button.btn-primary {
         margin-top: 20px;
         position: relative;
         font-size: 18px; }
-      main #login-page .form-login .login-form form hr {
-        margin-top: 40px;
-        position: relative;
-        margin-bottom: 30px; }
-      main #login-page .form-login .login-form form p {
-        font-style: normal;
-        margin-bottom: 0;
-        width: 30%;
-        position: absolute;
-        background-color: #fff;
-        top: 178px;
-        left: 128px; }
-      main #login-page .form-login .login-form form button.btn-light {
-        background-color: #fff;
-        border: none;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: #385185;
-        font-size: 16px;
-        font-weight: 600; }
-        main #login-page .form-login .login-form form button.btn-light:focus {
-          box-shadow: none; }
-        main #login-page .form-login .login-form form button.btn-light i {
-          margin-right: 8px;
-          font-size: 20px; }
       main #login-page .form-login .login-form form a {
+        margin-top: 30px;
         text-align: center;
         width: 100%;
         display: block;
