@@ -152,6 +152,15 @@
     <Content Include="Areas\Client\Views\Register\Index.cshtml" />
     <Content Include="Areas\Client\Views\ForgetPass\SendEmail.cshtml" />
     <Content Include="Areas\Client\Views\ForgetPass\ChangePass.cshtml" />
+    <Content Include="Areas\Client\Views\Shared\Newsfeed.cshtml" />
+    <Content Include="Areas\Client\Views\Layout\header.cshtml" />
+    <Content Include="Areas\Client\Views\Layout\edit_sidebar.cshtml" />
+    <Content Include="Areas\Client\Views\Layout\group\group_header.cshtml" />
+    <Content Include="Areas\Client\Views\Layout\group\group_page.cshtml" />
+    <Content Include="Areas\Client\Views\Layout\group\group_sidebar.cshtml" />
+    <Content Include="Areas\Client\Views\Layout\messenger\messenger.cshtml" />
+    <Content Include="Areas\Client\Views\Layout\messenger\messenger_section.cshtml" />
+    <Content Include="Areas\Client\Views\Group\Index.cshtml" />
     <None Include="Assets\views\layouts\footer.cshtml" />
     <None Include="Assets\views\layouts\header.cshtml" />
     <None Include="Assets\views\layouts\user-info.cshtml" />
@@ -290,6 +299,7 @@
     <Compile Include="Areas\Client\code\UserSession.cs" />
     <Compile Include="Areas\Client\Controllers\BaseController.cs" />
     <Compile Include="Areas\Client\Controllers\ForgetPassController.cs" />
+    <Compile Include="Areas\Client\Controllers\GroupController.cs" />
     <Compile Include="Areas\Client\Controllers\HomeController.cs" />
     <Compile Include="Areas\Client\Controllers\LoginController.cs" />
     <Compile Include="Areas\Client\Controllers\RegisterController.cs" />
