@@ -32,6 +32,26 @@ main #login-page .form-login {
         position: relative; }
         main #login-page .form-login .login-form form .input-group input {
           max-width: unset; }
+      main #login-page .form-login .login-form form span.errors {
+        display: flex;
+        align-items: center;
+        margin-left: 8px;
+        /*visibility: hidden;
+        opacity: 0;*/ }
+        main #login-page .form-login .login-form form span.errors i {
+          background-color: red;
+          color: #fff;
+          border-radius: 50%;
+          padding: 2px 4px; }
+      main #login-page .form-login .login-form form span.success {
+        display: flex;
+        align-items: center;
+        margin-left: 8px;
+        /*visibility: hidden;
+        opacity: 0;*/ }
+        main #login-page .form-login .login-form form span.success i:before {
+          font-size: 20px;
+          color: #28a745; }
       main #login-page .form-login .login-form form button.btn-primary {
         margin-top: 20px;
         position: relative;
@@ -102,10 +122,30 @@ main #login-page .modal-content {
       position: relative; }
       main #login-page .modal-content .modal-body .input-group input {
         max-width: unset;
-        width: 89%;
+        width: 83%;
         border: 1px solid #ced4da; }
         main #login-page .modal-content .modal-body .input-group input:focus {
           border: 1px solid #ced4da; }
+      main #login-page .modal-content .modal-body .input-group span.errors {
+        display: flex;
+        align-items: center;
+        margin-left: 8px;
+        /*visibility: hidden;
+            opacity: 0;*/ }
+        main #login-page .modal-content .modal-body .input-group span.errors i {
+          background-color: red;
+          color: #fff;
+          border-radius: 50%;
+          padding: 2px 4px; }
+      main #login-page .modal-content .modal-body .input-group span.success {
+        display: flex;
+        align-items: center;
+        margin-left: 8px;
+        /*visibility: hidden;
+            opacity: 0;*/ }
+        main #login-page .modal-content .modal-body .input-group span.success i:before {
+          font-size: 20px;
+          color: #28a745; }
     main #login-page .modal-content .modal-body a {
       margin-top: 32px;
       text-decoration: none;

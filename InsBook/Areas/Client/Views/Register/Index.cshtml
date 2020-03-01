@@ -40,7 +40,7 @@
                             @using (Html.BeginForm("Index", "Register", FormMethod.Post))
                             {
                                 @Html.AntiForgeryToken()
-                                @Html.ValidationSummary(true, null, new { @class = "alert alert-danger" })
+                                @*@Html.ValidationSummary(true, null, new { @class = "alert alert-danger" })*@
                             <div class="input-group">
                                 <div class="input-group-prepend">
                                     <div class="input-group-text">
@@ -49,6 +49,7 @@
                                 </div>
                                 @Html.TextBoxFor(model => model.ho, new { @class = "form-control", @placeholder = "Họ", @autofocus = "autofocus" })
                                 @Html.TextBoxFor(model => model.ten, new { @class = "form-control", @placeholder = "Tên", @autofocus = "autofocus" })
+                                <span class="errors"><i class="fas fa-times"></i></span>
                             </div>
                             <div class="input-group">
                                 <div class="input-group-prepend">
@@ -57,6 +58,7 @@
                                     </div>
                                 </div>
                                 @Html.TextBoxFor(model => model.email, new { @class = "form-control", @placeholder = "Email", @autofocus = "autofocus" })
+                                <span class="errors"><i class="fas fa-times"></i></span>
                             </div>
                             <div class="input-group">
                                 <div class="input-group-prepend">
@@ -65,6 +67,7 @@
                                     </div>
                                 </div>
                                 @Html.PasswordFor(model => model.matkhau, new { @class = "form-control", @placeholder = "Mật khẩu", @autofocus = "autofocus" })
+                                <span class="errors"><i class="fas fa-times"></i></span>
                             </div>
                             <div class="input-group">
                                 <div class="input-group-prepend">
@@ -73,6 +76,7 @@
                                     </div>
                                 </div>
                                 @Html.PasswordFor(model => model.mota, new { @class = "form-control", @placeholder = "Xác nhận mật khẩu", @autofocus = "autofocus" })
+                                <span class="errors"><i class="fas fa-times"></i></span>
                             </div>
                                 <div class="form-row">
                                     <div class="input-group col-md-7">
@@ -81,7 +85,8 @@
                                                 <i class="fas fa-birthday-cake"></i>
                                             </div>
                                         </div>
-                                        @Html.TextBoxFor(model => model.ngaysinh, new { @class = "form-control", @placeholder = "Xác nhận mật khẩu", @autofocus = "autofocus", @type="date" })
+                                        @Html.TextBoxFor(model => model.ngaysinh, new { @class = "form-control", @autofocus = "autofocus", @type="date" })
+                                    <span class="errors"><i class="fas fa-times"></i></span>
                                     </div>
                                     <div class="input-group col-md-5">
                                         <div class="input-group-prepend">
@@ -90,11 +95,12 @@
                                             </div>
                                         </div>
                                         @Html.DropDownListFor(model => model.gioitinh, @listItems, new { @class = "form-control", @autofocus = "autofocus"})
+                                    <span class="errors"><i class="fas fa-times"></i></span>
                                     </div>
                                 </div>
                                 <div class="form-check">
                                     <input type="checkbox" class="form-check-input" id="">
-                                    <label class="form-check-label" for="exampleCheck1">Đồng ý tuân theo 5 điều Bác Hồ dạy</label>
+                                    <label class="form-check-label" for="exampleCheck1">Đồng ý những điều khoản của chúng tôi</label>
                                 </div>
                                 <button type="submit" class="btn btn-block btn-primary" id="submit">Đăng ký</button>
                             }
