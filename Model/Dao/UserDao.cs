@@ -17,12 +17,12 @@ namespace Model.Dao
         {
             db = new InsBookDbContext();
         }
-        //public long Insert(User entity)
-        //{
-        //    db.Users.Add(entity);
-        //    db.SaveChanges();
-        //    return entity.ID;
-        //}
+        public long Insert(nguoidung entity)
+        {
+            db.nguoidungs.Add(entity);
+            db.SaveChanges();
+            return entity.id;
+        }
         //public IEnumerable<User> ListAllPaging(string searchString, int page, int pageSize)
         //{
         //    //var pageSize = int.Parse(ConfigurationManager.AppSettings["PageSize"].ToString);

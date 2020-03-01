@@ -6,19 +6,19 @@
        listItems.Add(new SelectListItem
             {
               Text = "Nam",
-              Value = "1"
+              Value = "Nam"
             });
        listItems.Add(new SelectListItem
             {
                 Text = "Nữ",
-                Value = "0"
+                Value = "Nữ"
             });
 }
 @section css {
     <link href="~/Assets/css/pages/register.css" rel="stylesheet" />
 }
 @section js {
-
+    <script src="~/Assets/javascript/Register.js"></script>
 }
 <main>
     <section id="register-page">
@@ -37,7 +37,7 @@
                         <h1>InsBook</h1>
                         <p>We love it cuz it's fake !</p>
                         <div class="register-form">
-                            @using (Html.BeginForm("Login", "Login", FormMethod.Post))
+                            @using (Html.BeginForm("Index", "Register", FormMethod.Post))
                             {
                                 @Html.AntiForgeryToken()
                                 @Html.ValidationSummary(true, null, new { @class = "alert alert-danger" })
@@ -96,10 +96,8 @@
                                     <input type="checkbox" class="form-check-input" id="">
                                     <label class="form-check-label" for="exampleCheck1">Đồng ý tuân theo 5 điều Bác Hồ dạy</label>
                                 </div>
-                                <button type="button" class="btn btn-block btn-primary">Đăng ký</button>
+                                <button type="submit" class="btn btn-block btn-primary" id="submit">Đăng ký</button>
                             }
-                            <form action="#" method="post" accept-charset="utf-8">
-                            </form>
                         </div>
                     </div>
                     <div class="form-register-register">

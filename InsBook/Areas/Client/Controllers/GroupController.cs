@@ -13,5 +13,6 @@ namespace InsBook.Areas.Client.Controllers
         {
             return View();
         }
+
     }
 }

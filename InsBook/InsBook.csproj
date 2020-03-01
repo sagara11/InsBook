@@ -122,6 +122,7 @@
     <Content Include="Assets\css\pages\register.min.css" />
     <Content Include="Assets\css\pages\user-info.css" />
     <Content Include="Assets\css\pages\user-info.min.css" />
+    <Content Include="Assets\javascript\Register.js" />
     <Content Include="Assets\js\header.js" />
     <Content Include="Assets\js\jquery-3.4.1.min.js" />
     <Content Include="Assets\js\love_button.js" />
