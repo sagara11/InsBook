@@ -36,13 +36,5 @@ namespace InsBook.Areas.Client.Controllers
                 return RedirectToAction("Index", "Register");
             }
         }
-        public bool CheckPass(string pass, string confirm)
-        {
-            if(pass == confirm)
-            {
-                return true;
-            }
-            return false;
-        }
     }
 }

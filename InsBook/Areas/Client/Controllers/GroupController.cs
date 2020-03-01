@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace InsBook.Areas.Client.Controllers
 {
-    public class GroupController : Controller
+    public class GroupController : Controller // !!! mai sau sửa lại thành Base !!!
     {
         // GET: Client/Group
         public ActionResult Index()
