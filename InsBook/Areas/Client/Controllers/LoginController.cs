@@ -37,13 +37,22 @@ namespace InsBook.Areas.Client.Controllers
                 {
                     //Tìm email trong db
                     var user = dao.GetbyEmail(model.Email);
-                    //Tạo session
-                    var userSession = new UserLogin();
-                    userSession.Email = user.email;
-                    userSession.UserID = user.id;
+
+                    //Tạo các thông tin để lưu session, cokie
+                    var userSC = new UserLogin();
+                    userSC.Email = user.email;
+                    userSC.UserID = user.id;
+
                     //thêm session
-                    Session.Add(CommonConstants.USER_SESSION, userSession);
-                    
+                    Session.Add(CommonConstants.USER_SESSION, userSC);
+                    Session.Timeout = 300;
+
+                    //thêm cookie khi bấm nút ghi nhớ đăng nhập
+                    //if (model.check....)
+                    //{
+                    //    Response.Cookies[CommonConstants.USER_COOKIE]["1"] = user.id.ToString();
+                    //    Response.Cookies[CommonConstants.USER_COOKIE]["2"] = user.email;
+                    //}
 
                     return RedirectToAction("Index", "Home");
                 }
@@ -61,6 +70,16 @@ namespace InsBook.Areas.Client.Controllers
                 }
             }
             return View("Index");
+        }
+        public ActionResult Logout()
+        {
+            if (Session[CommonConstants.USER_SESSION] != null || Request.Cookies[CommonConstants.USER_COOKIE] != null)
+            {
+                Session.Remove(CommonConstants.USER_SESSION);
+                Response.Cookies[CommonConstants.USER_COOKIE].Expires = DateTime.Now.AddDays(-1);
+                return View("Index");
+            }
+            return RedirectToAction("Index", "Home");
         }
     }
 }
