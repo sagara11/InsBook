@@ -46,34 +46,51 @@ main {
 
 						input {
 							max-width: unset;
+							border-right: none;
+							padding-right: 0;
+
+							&:focus {
+								box-shadow: none;
+								border: 1px solid #ced4da;
+								border-right: none;
+							}
 						}
 					}
 
 					span.errors {
 						display: flex;
 						align-items: center;
-						margin-left: 8px;
-						/*visibility: hidden;
-						opacity: 0;*/
+						padding-left: 6px;
+						padding-right: 6px;
+						border: 1px solid #ced4da;
+						border-left: none;
+
 						i {
 							background-color: red;
 							color: #fff;
 							border-radius: 50%;
 							padding: 2px 4px;
+							visibility: hidden;
+							opacity: 0;
 						}
 					}
 
 					span.success {
 						display: flex;
 						align-items: center;
-						margin-left: 8px;
-						/*visibility: hidden;
-						opacity: 0;*/
+						padding-left: 6px;
+						padding-right: 6px;
+						border: 1px solid #ced4da;
+						border-left: none;
+
 						i {
 							&:before {
 								font-size: 20px;
 								color: #28a745;
 							}
+
+							visibility: hidden;
+							opacity: 0;
 						}
 					}
 
@@ -186,38 +203,50 @@ main {
 					input {
 						max-width: unset;
 						width: 83%;
-						border: 1px solid #ced4da;
+						border-right: none;
+						padding-right: 0;
 
 						&:focus {
+							box-shadow: none;
 							border: 1px solid #ced4da;
+							border-right: none;
 						}
 					}
 
 					span.errors {
 						display: flex;
 						align-items: center;
-						margin-left: 8px;
-						/*visibility: hidden;
-						    opacity: 0;*/
+						padding-left: 6px;
+						padding-right: 6px;
+						border: 1px solid #ced4da;
+						border-left: none;
+
 						i {
 							background-color: red;
 							color: #fff;
 							border-radius: 50%;
 							padding: 2px 4px;
+							visibility: hidden;
+							opacity: 0;
 						}
 					}
 
 					span.success {
 						display: flex;
 						align-items: center;
-						margin-left: 8px;
-						/*visibility: hidden;
-						    opacity: 0;*/
+						padding-left: 6px;
+						padding-right: 6px;
+						border: 1px solid #ced4da;
+						border-left: none;
+
 						i {
 							&:before {
 								font-size: 20px;
 								color: #28a745;
 							}
+
+							visibility: hidden;
+							opacity: 0;
 						}
 					}
 				}

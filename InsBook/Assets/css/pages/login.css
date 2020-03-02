@@ -31,27 +31,40 @@ main #login-page .form-login {
         margin-bottom: 16px;
         position: relative; }
         main #login-page .form-login .login-form form .input-group input {
-          max-width: unset; }
+          max-width: unset;
+          border-right: none;
+          padding-right: 0; }
+          main #login-page .form-login .login-form form .input-group input:focus {
+            box-shadow: none;
+            border: 1px solid #ced4da;
+            border-right: none; }
       main #login-page .form-login .login-form form span.errors {
         display: flex;
         align-items: center;
-        margin-left: 8px;
-        /*visibility: hidden;
-        opacity: 0;*/ }
+        padding-left: 6px;
+        padding-right: 6px;
+        border: 1px solid #ced4da;
+        border-left: none; }
         main #login-page .form-login .login-form form span.errors i {
           background-color: red;
           color: #fff;
           border-radius: 50%;
-          padding: 2px 4px; }
+          padding: 2px 4px;
+          visibility: hidden;
+          opacity: 0; }
       main #login-page .form-login .login-form form span.success {
         display: flex;
         align-items: center;
-        margin-left: 8px;
-        /*visibility: hidden;
-        opacity: 0;*/ }
-        main #login-page .form-login .login-form form span.success i:before {
-          font-size: 20px;
-          color: #28a745; }
+        padding-left: 6px;
+        padding-right: 6px;
+        border: 1px solid #ced4da;
+        border-left: none; }
+        main #login-page .form-login .login-form form span.success i {
+          visibility: hidden;
+          opacity: 0; }
+          main #login-page .form-login .login-form form span.success i:before {
+            font-size: 20px;
+            color: #28a745; }
       main #login-page .form-login .login-form form button.btn-primary {
         margin-top: 20px;
         position: relative;
@@ -123,29 +136,39 @@ main #login-page .modal-content {
       main #login-page .modal-content .modal-body .input-group input {
         max-width: unset;
         width: 83%;
-        border: 1px solid #ced4da; }
+        border-right: none;
+        padding-right: 0; }
         main #login-page .modal-content .modal-body .input-group input:focus {
-          border: 1px solid #ced4da; }
+          box-shadow: none;
+          border: 1px solid #ced4da;
+          border-right: none; }
       main #login-page .modal-content .modal-body .input-group span.errors {
         display: flex;
         align-items: center;
-        margin-left: 8px;
-        /*visibility: hidden;
-            opacity: 0;*/ }
+        padding-left: 6px;
+        padding-right: 6px;
+        border: 1px solid #ced4da;
+        border-left: none; }
         main #login-page .modal-content .modal-body .input-group span.errors i {
           background-color: red;
           color: #fff;
           border-radius: 50%;
-          padding: 2px 4px; }
+          padding: 2px 4px;
+          visibility: hidden;
+          opacity: 0; }
       main #login-page .modal-content .modal-body .input-group span.success {
         display: flex;
         align-items: center;
-        margin-left: 8px;
-        /*visibility: hidden;
-            opacity: 0;*/ }
-        main #login-page .modal-content .modal-body .input-group span.success i:before {
-          font-size: 20px;
-          color: #28a745; }
+        padding-left: 6px;
+        padding-right: 6px;
+        border: 1px solid #ced4da;
+        border-left: none; }
+        main #login-page .modal-content .modal-body .input-group span.success i {
+          visibility: hidden;
+          opacity: 0; }
+          main #login-page .modal-content .modal-body .input-group span.success i:before {
+            font-size: 20px;
+            color: #28a745; }
     main #login-page .modal-content .modal-body a {
       margin-top: 32px;
       text-decoration: none;
