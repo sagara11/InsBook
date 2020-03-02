@@ -1,1 +1,100 @@
-﻿
+﻿<!-- Group-header  -->
+<section id="group-header">
+    <div id="background-img">
+        <img height="200px" width="100%" src="~/Assets/media/78834391_459110258126325_6149001856166133760_n.jpg" alt="">
+    </div>
+    <div id="header-option">
+        <div class="dropdown">
+            <button class="header-btn dropdown-toggle" data-toggle="dropdown">
+                Đã tham gia
+            </button>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" href="">Bỏ theo dõi nhóm</a>
+                <a class="dropdown-item" href="">Rời khỏi nhóm</a>
+            </div>
+        </div>
+        <button class="header-btn">
+            Thông báo
+        </button>
+        <button class="header-btn">
+            Chia sẻ
+        </button>
+        <div class="dropdown">
+            <button class="header-btn dropdown-toggle" data-toggle="dropdown">
+                Khác
+            </button>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" data-toggle="modal" data-target="#addmember-modal" href="">Mời thành viên</a>
+                <a class="dropdown-item" href="">Quản lý yêu cầu</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="">Ghim vào lối tắt</a>
+                <a class="dropdown-item" data-toggle="modal" data-target="#report-modal" href="">Tìm hỗ trợ hoặc báo cáo nhóm</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" data-toggle="modal" data-target="#addgroup-modal" href="">Tạo nhóm mới </a>
+            </div>
+        </div>
+    </div>
+</section>
+<div id="add-member" class="modal group-header-modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                hey
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Them thanh vien - modal -->
+<div class="modal fade" id="addmember-modal">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Thêm thành viên</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="d-flex modal-body">
+                <input type="text" placeholder="Nhập tên thành viên" class="form-control mr-1">
+                <button class="btn btn-success">
+                    Thêm
+                </button>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Bao cao nhom -->
+<div class="modal fade" id="report-modal">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Hỗ trọ hoặc báo cao nhóm</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="d-flex modal-body">
+                Báo cáo nhóm
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Tao nhom moi -->
+<div class="modal fade" id="addgroup-modal">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Thêm nhóm</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="d-flex modal-body">
+                Tạo nhóm
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

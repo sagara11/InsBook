@@ -1,0 +1,23 @@
+﻿#group-header {
+    margin-bottom: 20px;
+    background-color: white;
+    border: 1px solid #c8c8c8;
+    border-radius: 4px;
+}
+
+    #group-header #header-option {
+        display: flex;
+        padding: 10px 0px;
+    }
+
+        #group-header #header-option button {
+            background-color: transparent;
+            border: none;
+            transition: 0.3s;
+        }
+
+            #group-header #header-option button:hover {
+                color: #3897f0;
+            }
+
+/*# sourceMappingURL=group_header.css.map */
