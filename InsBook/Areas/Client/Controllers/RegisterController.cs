@@ -48,7 +48,7 @@ namespace InsBook.Areas.Client.Controllers
         {
             return View();
         }
-        [HttpPost]
+        [HttpGet]
         public JsonResult CheckEmail(string email)
         {
             // xử lý ngay trong view. nếu email ko có thì bấm submit cx ko chạy (ajax)
@@ -60,14 +60,14 @@ namespace InsBook.Areas.Client.Controllers
                 return Json(new
                 {
                     status = true
-                });
+                },JsonRequestBehavior.AllowGet);
             }
             else
             {
                 return Json(new
                 {
                     status = false
-                });
+                },JsonRequestBehavior.AllowGet);
             }
         }
     }
