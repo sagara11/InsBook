@@ -111,10 +111,13 @@
   <ItemGroup>
     <Content Include="Assets\css\layouts\footer.css" />
     <Content Include="Assets\css\layouts\footer.min.css" />
+    <Content Include="Assets\css\layouts\group_fixedside.css" />
+    <Content Include="Assets\css\layouts\group_header.css" />
     <Content Include="Assets\css\layouts\header.css" />
     <Content Include="Assets\css\layouts\messenger.css" />
     <Content Include="Assets\css\layouts\messenger_section.css" />
     <Content Include="Assets\css\layouts\post_box.css" />
+    <Content Include="Assets\css\pages\group_gioithtieu.css" />
     <Content Include="Assets\css\pages\login.css" />
     <Content Include="Assets\css\pages\login.min.css" />
     <Content Include="Assets\css\pages\newsfeed.css" />
@@ -164,6 +167,7 @@
     <Content Include="Areas\Client\Views\Layout\messenger\messenger_section.cshtml" />
     <Content Include="Areas\Client\Views\Group\Index.cshtml" />
     <Content Include="Areas\Client\Views\Shared\Newsfeed.cshtml" />
+    <Content Include="Areas\Client\Views\Shared\Group.cshtml" />
     <None Include="Assets\views\layouts\footer.cshtml" />
     <None Include="Assets\views\layouts\header.cshtml" />
     <None Include="Assets\views\layouts\user-info.cshtml" />
