@@ -202,14 +202,16 @@ main {
 
 					input {
 						max-width: unset;
-						width: 83%;
-						border-right: none;
 						padding-right: 0;
-
+						width: 81%;
+						border: 1px solid #ced4da;
+						border-right: none;
+						padding-left: 10px;
 						&:focus {
 							box-shadow: none;
 							border: 1px solid #ced4da;
 							border-right: none;
+							outline: none;
 						}
 					}
 
