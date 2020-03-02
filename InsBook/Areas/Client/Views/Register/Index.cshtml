@@ -49,7 +49,7 @@
                                 </div>
                                 @Html.TextBoxFor(model => model.ho, new { @class = "form-control", @placeholder = "Họ", @autofocus = "autofocus" })
                                 @Html.TextBoxFor(model => model.ten, new { @class = "form-control", @placeholder = "Tên", @autofocus = "autofocus" })
-                                <span class="errors"><i class="fas fa-times"></i></span>
+                                <span class="errors" id="check-ho"><i class="fas fa-times"></i></span>
                             </div>
                             <div class="input-group">
                                 <div class="input-group-prepend">
@@ -58,7 +58,7 @@
                                     </div>
                                 </div>
                                 @Html.TextBoxFor(model => model.email, new { @class = "form-control", @placeholder = "Email", @autofocus = "autofocus" })
-                                <span class="errors"><i class="fas fa-times"></i></span>
+                                <span class="errors" id="check-email ><i class="fas fa-times"></i></span>
                             </div>
                             <div class="input-group">
                                 <div class="input-group-prepend">
@@ -67,7 +67,7 @@
                                     </div>
                                 </div>
                                 @Html.PasswordFor(model => model.matkhau, new { @class = "form-control", @placeholder = "Mật khẩu", @autofocus = "autofocus" })
-                                <span class="errors"><i class="fas fa-times"></i></span>
+                                <span class="errors" id="check-matkhau ><i class="fas fa-times"></i></span>
                             </div>
                             <div class="input-group">
                                 <div class="input-group-prepend">
@@ -76,7 +76,7 @@
                                     </div>
                                 </div>
                                 @Html.PasswordFor(model => model.mota, new { @class = "form-control", @placeholder = "Xác nhận mật khẩu", @autofocus = "autofocus" })
-                                <span class="errors"><i class="fas fa-times"></i></span>
+                                <span class="errors" id="check-mota ><i class="fas fa-times"></i></span>
                             </div>
                                 <div class="form-row">
                                     <div class="input-group col-md-7">
@@ -86,7 +86,7 @@
                                             </div>
                                         </div>
                                         @Html.TextBoxFor(model => model.ngaysinh, new { @class = "form-control", @autofocus = "autofocus", @type="date" })
-                                    <span class="errors"><i class="fas fa-times"></i></span>
+                                    <span class="errors" id="check-ngaysinh ><i class="fas fa-times"></i></span>
                                     </div>
                                     <div class="input-group col-md-5">
                                         <div class="input-group-prepend">
@@ -95,7 +95,7 @@
                                             </div>
                                         </div>
                                         @Html.DropDownListFor(model => model.gioitinh, @listItems, new { @class = "form-control", @autofocus = "autofocus"})
-                                    <span class="errors"><i class="fas fa-times"></i></span>
+                                    <span class="errors" id="check-gioitinh ><i class="fas fa-times"></i></span>
                                     </div>
                                 </div>
                                 <div class="form-check">

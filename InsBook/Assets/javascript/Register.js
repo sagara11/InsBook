@@ -1,4 +1,13 @@
 ﻿$(document).ready(function () {
+    var check = ["check-ho", "check-email", "check-matkhau", "check-mota", "check-ngaysinh", "check-gioitinh"];
+    var 
+
+
+
+
+
+
+
     // kiểm tra xác nhận mật khẩu
     $("#mota").blur(function () {
         var pass = $("#matkhau").val();

@@ -48,11 +48,11 @@ namespace InsBook.Areas.Client.Controllers
                     Session.Timeout = 300;
 
                     //thêm cookie khi bấm nút ghi nhớ đăng nhập
-                    //if (model.check....)
-                    //{
-                    //    Response.Cookies[CommonConstants.USER_COOKIE]["1"] = user.id.ToString();
-                    //    Response.Cookies[CommonConstants.USER_COOKIE]["2"] = user.email;
-                    //}
+                    if (model.RememberMe)
+                    {
+                        Response.Cookies[CommonConstants.USER_COOKIE]["1"] = user.id.ToString();
+                        Response.Cookies[CommonConstants.USER_COOKIE]["2"] = user.email;
+                    }
 
                     return RedirectToAction("Index", "Home");
                 }

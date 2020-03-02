@@ -112,7 +112,6 @@ namespace InsBook.Areas.Client.Controllers
             // chưa có view cơ bản
             // chưa có view 404
             // Form thay đổi pass trong email chưa hoạt đông
-            // ghi nhớ đăng nhập chưa có ( để tạo cookie ) 
             // thông báo register thiếu, sai ...
             // đổi mật khẩu 
             // 

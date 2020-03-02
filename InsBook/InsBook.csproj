@@ -168,6 +168,7 @@
     <Content Include="Areas\Client\Views\Group\Index.cshtml" />
     <Content Include="Areas\Client\Views\Shared\Newsfeed.cshtml" />
     <Content Include="Areas\Client\Views\Shared\Group.cshtml" />
+    <Content Include="Areas\Client\Views\Register\PostRegister.cshtml" />
     <None Include="Assets\views\layouts\footer.cshtml" />
     <None Include="Assets\views\layouts\header.cshtml" />
     <None Include="Assets\views\layouts\user-info.cshtml" />

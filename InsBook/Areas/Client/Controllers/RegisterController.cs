@@ -36,5 +36,9 @@ namespace InsBook.Areas.Client.Controllers
                 return RedirectToAction("Index", "Register");
             }
         }
+        public ActionResult PostRegister()
+        {
+            return View();
+        }
     }
 }
