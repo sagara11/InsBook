@@ -40,7 +40,7 @@ namespace InsBook.Areas.Client.Controllers
             var issueTime = DateTime.Now;
 
             var iat = (int)issueTime.Subtract(utc0).TotalSeconds;
-            var exp = (int)issueTime.AddMinutes(1).Subtract(utc0).TotalSeconds; // đoạn mã hóa code chỉ giới hạn trong 3p
+            var exp = (int)issueTime.AddMinutes(3).Subtract(utc0).TotalSeconds; // đoạn mã hóa code chỉ giới hạn trong 3p
 
             var payload = new
             {
@@ -50,14 +50,14 @@ namespace InsBook.Areas.Client.Controllers
             };
             // hàm sinh random để có khóa bí mật
             string privateKey = new Accessories().RandomString();
-            
             // xử lý session sống trong 3p
             var forgetPassSession = new ForgetPass();
             forgetPassSession.Email = email;
             forgetPassSession.PrivateKey = privateKey;
-            Session.Timeout = 1;
+            forgetPassSession.TimeOut = exp;
+
             Session.Add(CommonConstants.FORGETPASS_SESSION, forgetPassSession);
-            
+            Session.Timeout = 3;
 
             return JsonWebToken.Encode(payload, privateKey, JwtHashAlgorithm.RS256);
         }
@@ -67,8 +67,8 @@ namespace InsBook.Areas.Client.Controllers
             // xử lý ngay trong view. nếu email ko có thì bấm submit cx ko chạy (ajax)
             // Tìm email trong db
             var user = new UserDao().GetbyEmail(email);
-            
-            if(user != null)
+
+            if (user != null)
             {
                 return true;
             }
@@ -81,17 +81,22 @@ namespace InsBook.Areas.Client.Controllers
         [HttpGet]
         public ActionResult ChangePass(string id)
         {
-            if(Session[CommonConstants.FORGETPASS_SESSION] != null)
+            // lấy đối tượng session
+            var session = (ForgetPass)Session[CommonConstants.FORGETPASS_SESSION];
+
+            var utc0 = new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);
+            var issueTime = DateTime.Now;
+
+            var exp = (int)issueTime.Subtract(utc0).TotalSeconds;
+
+            if (Session[CommonConstants.FORGETPASS_SESSION] != null && (session.TimeOut - exp) >= 0 )
             {
-                // lấy đối tượng session
-                var session = (ForgetPass)Session[CommonConstants.FORGETPASS_SESSION];
-                var time = Session.Timeout; 
                 // decode
-                var user = JsonWebToken.Decode(id, session.PrivateKey, true);
+                var user = JsonWebToken.Decode(id, session.PrivateKey);
                 // chuyển từ json thành mảng
                 var address = new JavaScriptSerializer().Deserialize<dynamic>(user);
-                
-                if (address["iss"] == session.Email )
+
+                if (address["iss"] == session.Email)
                 {
                     return View();
                 }
@@ -104,13 +109,14 @@ namespace InsBook.Areas.Client.Controllers
             {
                 return RedirectToAction("Index", "Login");
             }
-            // Session timeout ???
-            // chưa xử lý session
             // chưa có view cơ bản
             // chưa có view 404
-            // Form thay đổi pass trong email chưa hoạt đôngj
-            // logout
-            ////////sfgdf
+            // Form thay đổi pass trong email chưa hoạt đông
+            // ghi nhớ đăng nhập chưa có ( để tạo cookie ) 
+            // thông báo register thiếu, sai ...
+            // đổi mật khẩu 
+            // 
+
         }
     }
 }

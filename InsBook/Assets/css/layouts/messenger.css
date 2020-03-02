@@ -1,0 +1,58 @@
+﻿#messenger {
+    transition: 0.5s;
+    border-radius: 7px 7px 0px 0px;
+    border: 1px solid #c8c8c8;
+    height: 400px;
+    width: 300px;
+    position: fixed;
+    bottom: 0px;
+    right: 50px;
+    background-color: white;
+    padding: 0px 0px;
+}
+
+    #messenger .messenger-header {
+        padding: 10px 10px;
+        border-bottom: 1px solid #c8c8c8;
+        display: flex;
+        justify-content: space-between;
+    }
+
+        #messenger .messenger-header p {
+            margin: 0px 0px;
+        }
+
+        #messenger .messenger-header #message-close {
+            cursor: pointer;
+        }
+
+    #messenger .messenger-body {
+        padding: 15px 10px;
+    }
+
+        #messenger .messenger-body .messenger-box {
+            margin: 7px 0px;
+            border: 1px solid #c8c8c8;
+            padding: 5px 5px;
+            border-radius: 15px;
+        }
+
+            #messenger .messenger-body .messenger-box p {
+                padding: 0px 4px;
+                margin: 0px 0px;
+            }
+
+    #messenger .messenger-reply {
+        display: flex;
+        position: absolute;
+        bottom: 0px;
+        padding: 10px 10px;
+    }
+
+        #messenger .messenger-reply button {
+            border: none;
+            background-color: white;
+            color: #3897f0;
+        }
+
+/*# sourceMappingURL=messenger.css.map */

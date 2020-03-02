@@ -49,6 +49,34 @@ main {
 						}
 					}
 
+					span.errors {
+						display: flex;
+						align-items: center;
+						margin-left: 8px;
+						/*visibility: hidden;
+						opacity: 0;*/
+						i {
+							background-color: red;
+							color: #fff;
+							border-radius: 50%;
+							padding: 2px 4px;
+						}
+					}
+
+					span.success {
+						display: flex;
+						align-items: center;
+						margin-left: 8px;
+						/*visibility: hidden;
+						opacity: 0;*/
+						i {
+							&:before {
+								font-size: 20px;
+								color: #28a745;
+							}
+						}
+					}
+
 					button.btn-primary {
 						margin-top: 20px;
 						position: relative;
@@ -157,10 +185,39 @@ main {
 
 					input {
 						max-width: unset;
-						width: 89%;
+						width: 83%;
 						border: 1px solid #ced4da;
+
 						&:focus {
 							border: 1px solid #ced4da;
+						}
+					}
+
+					span.errors {
+						display: flex;
+						align-items: center;
+						margin-left: 8px;
+						/*visibility: hidden;
+						    opacity: 0;*/
+						i {
+							background-color: red;
+							color: #fff;
+							border-radius: 50%;
+							padding: 2px 4px;
+						}
+					}
+
+					span.success {
+						display: flex;
+						align-items: center;
+						margin-left: 8px;
+						/*visibility: hidden;
+						    opacity: 0;*/
+						i {
+							&:before {
+								font-size: 20px;
+								color: #28a745;
+							}
 						}
 					}
 				}

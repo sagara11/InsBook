@@ -41,12 +41,40 @@ main {
 
                 form {
                     position: relative;
+
                     .input-group {
                         margin-bottom: 16px;
                         position: relative;
 
                         input {
                             max-width: unset;
+                        }
+                        span.errors {
+                            display: flex;
+                            align-items: center;
+                            margin-left: 8px;
+                            /*visibility: hidden;
+						    opacity: 0;*/
+                            i {
+                                background-color: red;
+                                color: #fff;
+                                border-radius: 50%;
+                                padding: 2px 4px;
+                            }
+                        }
+
+                        span.success {
+                            display: flex;
+                            align-items: center;
+                            margin-left: 8px;
+                            /*visibility: hidden;
+						    opacity: 0;*/
+                            i {
+                                &:before {
+                                    font-size: 20px;
+                                    color: #28a745;
+                                }
+                            }
                         }
                     }
 

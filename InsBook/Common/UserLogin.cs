@@ -15,5 +15,6 @@ namespace InsBook
     {
         public string Email { get; set; }
         public string PrivateKey { get; set; }
+        public int TimeOut { get; set; }
     }
 }

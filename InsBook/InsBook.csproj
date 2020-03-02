@@ -1,6 +1,6 @@
 ﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="..\packages\EntityFramework.6.4.0\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.0\build\EntityFramework.props')" />
   <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\EntityFramework.6.4.0\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.0\build\EntityFramework.props')" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -112,19 +112,21 @@
     <Content Include="Assets\css\layouts\footer.css" />
     <Content Include="Assets\css\layouts\footer.min.css" />
     <Content Include="Assets\css\layouts\header.css" />
-    <Content Include="Assets\css\layouts\header.min.css" />
-    <Content Include="Assets\css\layouts\post-box.css" />
-    <Content Include="Assets\css\layouts\post-box.min.css" />
+    <Content Include="Assets\css\layouts\messenger.css" />
+    <Content Include="Assets\css\layouts\messenger_section.css" />
+    <Content Include="Assets\css\layouts\post_box.css" />
     <Content Include="Assets\css\pages\login.css" />
     <Content Include="Assets\css\pages\login.min.css" />
     <Content Include="Assets\css\pages\newsfeed.css" />
-    <Content Include="Assets\css\pages\newsfeed.min.css" />
     <Content Include="Assets\css\pages\register.css" />
     <Content Include="Assets\css\pages\register.min.css" />
     <Content Include="Assets\css\pages\user-info.css" />
     <Content Include="Assets\css\pages\user-info.min.css" />
+    <Content Include="Assets\javascript\Register.js" />
     <Content Include="Assets\js\header.js" />
     <Content Include="Assets\js\jquery-3.4.1.min.js" />
+    <Content Include="Assets\js\love_button.js" />
+    <Content Include="Assets\js\newsfeed.js" />
     <Content Include="Assets\js\popper.min.js" />
     <Content Include="Assets\js\user-info.js" />
     <Content Include="Assets\media\78834391_459110258126325_6149001856166133760_n.jpg" />
@@ -145,6 +147,7 @@
     <Content Include="Assets\media\gentle-man.png" />
     <Content Include="Assets\media\js\header.js" />
     <Content Include="Assets\media\js\jquery-3.4.1.min.js" />
+    <Content Include="Assets\js\messenger.js" />
     <Content Include="Assets\media\js\popper.min.js" />
     <Content Include="Assets\media\js\user-info.js" />
     <Content Include="Assets\media\video-1.mp4" />
@@ -152,7 +155,6 @@
     <Content Include="Areas\Client\Views\Register\Index.cshtml" />
     <Content Include="Areas\Client\Views\ForgetPass\SendEmail.cshtml" />
     <Content Include="Areas\Client\Views\ForgetPass\ChangePass.cshtml" />
-    <Content Include="Areas\Client\Views\Shared\Newsfeed.cshtml" />
     <Content Include="Areas\Client\Views\Layout\header.cshtml" />
     <Content Include="Areas\Client\Views\Layout\edit_sidebar.cshtml" />
     <Content Include="Areas\Client\Views\Layout\group\group_header.cshtml" />
@@ -161,6 +163,7 @@
     <Content Include="Areas\Client\Views\Layout\messenger\messenger.cshtml" />
     <Content Include="Areas\Client\Views\Layout\messenger\messenger_section.cshtml" />
     <Content Include="Areas\Client\Views\Group\Index.cshtml" />
+    <Content Include="Areas\Client\Views\Shared\Newsfeed.cshtml" />
     <None Include="Assets\views\layouts\footer.cshtml" />
     <None Include="Assets\views\layouts\header.cshtml" />
     <None Include="Assets\views\layouts\user-info.cshtml" />
@@ -320,14 +323,8 @@
     <Content Include="Areas\Client\Views\web.config" />
     <Content Include="Assets\css\layouts\footer.css.map" />
     <Content Include="Assets\css\layouts\footer.scss" />
-    <Content Include="Assets\css\layouts\header.css.map" />
-    <Content Include="Assets\css\layouts\header.scss" />
-    <Content Include="Assets\css\layouts\post-box.css.map" />
-    <Content Include="Assets\css\layouts\post-box.scss" />
     <Content Include="Assets\css\pages\login.css.map" />
     <Content Include="Assets\css\pages\login.scss" />
-    <Content Include="Assets\css\pages\newsfeed.css.map" />
-    <Content Include="Assets\css\pages\newsfeed.scss" />
     <Content Include="Assets\css\pages\register.css.map" />
     <Content Include="Assets\css\pages\register.scss" />
     <Content Include="Assets\css\pages\user-info.css.map" />
@@ -426,9 +423,9 @@
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
     <Error Condition="!Exists('..\packages\EntityFramework.6.4.0\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.0\build\EntityFramework.props'))" />
     <Error Condition="!Exists('..\packages\EntityFramework.6.4.0\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.0\build\EntityFramework.targets'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
   </Target>
   <Import Project="..\packages\EntityFramework.6.4.0\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.0\build\EntityFramework.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
