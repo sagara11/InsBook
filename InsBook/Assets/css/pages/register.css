@@ -33,27 +33,51 @@ main {
           margin-bottom: 16px;
           position: relative; }
           main #register-page .form-register .register-form form .input-group input {
-            max-width: unset; }
+            max-width: unset;
+            border-right: none;
+            padding-right: 0; }
+            main #register-page .form-register .register-form form .input-group input:focus {
+              box-shadow: none;
+              border: 1px solid #ced4da;
+              border-right: none; }
+          main #register-page .form-register .register-form form .input-group select {
+            -webkit-appearance: none;
+            max-width: unset;
+            border-right: none;
+            padding-right: 0;
+            padding-left: 4px; }
+            main #register-page .form-register .register-form form .input-group select:focus {
+              box-shadow: none;
+              border: 1px solid #ced4da;
+              border-right: none;
+              outline: none; }
           main #register-page .form-register .register-form form .input-group span.errors {
             display: flex;
             align-items: center;
-            margin-left: 8px;
-                            /*visibility: hidden;
-						    opacity: 0;*/ }
+            padding-left: 6px;
+            padding-right: 6px;
+            border: 1px solid #ced4da;
+            border-left: none; }
             main #register-page .form-register .register-form form .input-group span.errors i {
               background-color: red;
               color: #fff;
               border-radius: 50%;
-              padding: 2px 4px; }
+              padding: 2px 4px;
+              visibility: hidden;
+              opacity: 0; }
           main #register-page .form-register .register-form form .input-group span.success {
             display: flex;
             align-items: center;
-            margin-left: 8px;
-                            /*visibility: hidden;
-						    opacity: 0;*/ }
-            main #register-page .form-register .register-form form .input-group span.success i:before {
-              font-size: 20px;
-              color: #28a745; }
+            padding-left: 6px;
+            padding-right: 6px;
+            border: 1px solid #ced4da;
+            border-left: none; }
+            main #register-page .form-register .register-form form .input-group span.success i {
+              visibility: hidden;
+              opacity: 0; }
+              main #register-page .form-register .register-form form .input-group span.success i:before {
+                font-size: 20px;
+                color: #28a745; }
         main #register-page .form-register .register-form form button.btn-primary {
           margin-top: 20px;
           position: relative;
