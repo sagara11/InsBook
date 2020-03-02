@@ -1,7 +1,7 @@
 ﻿$(document).ready(function () {
-    var check = ["check-ho", "check-email", "check-matkhau", "check-mota", "check-ngaysinh", "check-gioitinh"];
-    var 
-
+    var check = ["#check-ho", "#check-email", "#check-matkhau", "#check-mota", "#check-ngaysinh", "#check-gioitinh"];
+    var event = ["#ho", "#ten", "#email", "#matkhau", "#mota", "#ngaysinh", "#gioitinh"];
+    for()
 
 
 
@@ -19,16 +19,23 @@
 
     //kiểm tra sau khi bấm đăng kí
     $("#submit").click(function () {
-        var ho = $("#ho").val();
-        var ten = $("#ten").val();
-        var email = $("#email").val();
-        var matkhau1 = $("#matkhau").val();
-        var matkhau2 = $("#mota").val();
-        var ngaysinh = $("#ngaysinh").val();
-        var gioitinh = $("#gioitinh").val();
-        var xacnhan = $("#xacnhan").val();
+        var count = 0;
+        var value = [];
+        var i = 0;
+        event.forEach(event => event)
+        {
+            var value[i] = $(event).val();
+            if (value[i]) {
+                count += 1;
+                $("#ch").val("<i class='fas fa-checkcircle'></i>");
+            }
+            else {
+                $("#mota").val("<i class='fas fa-times'></i>");
+            }
+            i++;
+        }
 
-        if (ho && ten && email && matkhau1 && matkhau2 && gioitinh && ngaysinh && xacnhan) {
+        if (count == event.length) {
             return true;
         }
         return false;
