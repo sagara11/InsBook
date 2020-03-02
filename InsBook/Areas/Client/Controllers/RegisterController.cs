@@ -40,5 +40,27 @@ namespace InsBook.Areas.Client.Controllers
         {
             return View();
         }
+        [HttpPost]
+        public JsonResult CheckEmail(string email)
+        {
+            // xử lý ngay trong view. nếu email ko có thì bấm submit cx ko chạy (ajax)
+            // Tìm email trong db
+            var user = new UserDao().GetbyEmail(email);
+
+            if (user != null)
+            {
+                return Json(new
+                {
+                    status = true
+                });
+            }
+            else
+            {
+                return Json(new
+                {
+                    status = false
+                });
+            }
+        }
     }
 }

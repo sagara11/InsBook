@@ -62,7 +62,7 @@ namespace InsBook.Areas.Client.Controllers
             return JsonWebToken.Encode(payload, privateKey, JwtHashAlgorithm.RS256);
         }
 
-        public bool checkEmail(string email)
+        public bool CheckEmail(string email)
         {
             // xử lý ngay trong view. nếu email ko có thì bấm submit cx ko chạy (ajax)
             // Tìm email trong db
