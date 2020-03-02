@@ -135,13 +135,16 @@ main #login-page .modal-content {
       position: relative; }
       main #login-page .modal-content .modal-body .input-group input {
         max-width: unset;
-        width: 83%;
+        padding-right: 0;
+        width: 81%;
+        border: 1px solid #ced4da;
         border-right: none;
-        padding-right: 0; }
+        padding-left: 10px; }
         main #login-page .modal-content .modal-body .input-group input:focus {
           box-shadow: none;
           border: 1px solid #ced4da;
-          border-right: none; }
+          border-right: none;
+          outline: none; }
       main #login-page .modal-content .modal-body .input-group span.errors {
         display: flex;
         align-items: center;
