@@ -118,7 +118,10 @@
     <Content Include="Assets\css\layouts\messenger.css" />
     <Content Include="Assets\css\layouts\messenger_section.css" />
     <Content Include="Assets\css\layouts\post_box.css" />
+    <Content Include="Assets\css\pages\group_anh.css" />
     <Content Include="Assets\css\pages\group_gioithtieu.css" />
+    <Content Include="Assets\css\pages\group_thanhvien.css" />
+    <Content Include="Assets\css\pages\group_thaoluan.css" />
     <Content Include="Assets\css\pages\login.css" />
     <Content Include="Assets\css\pages\login.min.css" />
     <Content Include="Assets\css\pages\newsfeed.css" />
@@ -179,6 +182,9 @@
     <Content Include="Areas\Client\Views\Register\RegisterStep2.cshtml" />
     <Content Include="Areas\Client\Views\Register\RegisterStep3.cshtml" />
     <Content Include="Areas\Client\Views\Layout\footer.cshtml" />
+    <Content Include="Areas\Client\Views\Group\group_thaoluan.cshtml" />
+    <Content Include="Areas\Client\Views\Group\group_anh.cshtml" />
+    <Content Include="Areas\Client\Views\Group\group_thanhvien.cshtml" />
     <None Include="Assets\views\layouts\footer.cshtml" />
     <None Include="Assets\views\layouts\header.cshtml" />
     <None Include="Assets\views\layouts\user-info.cshtml" />
