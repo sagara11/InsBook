@@ -170,9 +170,11 @@
     <Content Include="Areas\Client\Views\Group\Index.cshtml" />
     <Content Include="Areas\Client\Views\Shared\Newsfeed.cshtml" />
     <Content Include="Areas\Client\Views\Shared\Group.cshtml" />
-    <Content Include="Areas\Client\Views\Register\PostRegister.cshtml" />
     <Content Include="Assets\css\pages\register-steps.css.map" />
     <Content Include="Assets\css\pages\register-steps.scss" />
+    <Content Include="Areas\Client\Views\Register\RegisterStep1.cshtml" />
+    <Content Include="Areas\Client\Views\Register\RegisterStep2.cshtml" />
+    <Content Include="Areas\Client\Views\Register\RegisterStep3.cshtml" />
     <None Include="Assets\views\layouts\footer.cshtml" />
     <None Include="Assets\views\layouts\header.cshtml" />
     <None Include="Assets\views\layouts\user-info.cshtml" />

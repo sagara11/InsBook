@@ -1,19 +1,19 @@
-﻿@model Model.EF.nguoidung
-@{
+﻿@{
     ViewBag.Title = "Index";
     Layout = "~/Areas/Client/Views/Shared/_Layout.cshtml";
-    List<SelectListItem> listItems= new List<SelectListItem>();
-       listItems.Add(new SelectListItem
-            {
-              Text = "Nam",
-              Value = "Nam"
-            });
-       listItems.Add(new SelectListItem
-            {
-                Text = "Nữ",
-                Value = "Nữ"
-            });
+    List<SelectListItem> listItems = new List<SelectListItem>();
+    listItems.Add(new SelectListItem
+    {
+        Text = "Nam",
+        Value = "Nam"
+    });
+    listItems.Add(new SelectListItem
+    {
+        Text = "Nữ",
+        Value = "Nữ"
+    });
 }
+@model InsBook.Areas.Client.Models.Register
 @section css {
     <link href="~/Assets/css/pages/register.css" rel="stylesheet" />
 }
@@ -41,44 +41,44 @@
                             {
                                 @Html.AntiForgeryToken()
                                 @*@Html.ValidationSummary(true, null, new { @class = "alert alert-danger" })*@
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <div class="input-group-text">
-                                        <i class="fas fa-user-tie"></i>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">
+                                            <i class="fas fa-user-tie"></i>
+                                        </div>
                                     </div>
+                                    @Html.TextBoxFor(model => model.Ho, new { @class = "form-control", @placeholder = "Họ", @autofocus = "autofocus" })
+                                    <span class="errors" id="check-Ho"><i class="fas fa-times"></i></span>
+                                    @Html.TextBoxFor(model => model.Ten, new { @class = "form-control", @placeholder = "Tên", @autofocus = "autofocus" })
+                                    <span class="errors" id="check-Ten"><i class="fas fa-times"></i></span>
                                 </div>
-                                @Html.TextBoxFor(model => model.ho, new { @class = "form-control", @placeholder = "Họ", @autofocus = "autofocus" })
-                                <span class="errors" id="check-Ho"><i class="fas fa-times"></i></span>
-                                @Html.TextBoxFor(model => model.ten, new { @class = "form-control", @placeholder = "Tên", @autofocus = "autofocus" })
-                                <span class="errors" id="check-Ten"><i class="fas fa-times"></i></span>
-                            </div>
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <div class="input-group-text">
-                                        <i class="fas fa-at"></i>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">
+                                            <i class="fas fa-at"></i>
+                                        </div>
                                     </div>
+                                    @Html.TextBoxFor(model => model.Email, new { @class = "form-control", @placeholder = "Email", @autofocus = "autofocus" })
+                                    <span class="errors" id="check-Email"><i class="fas fa-times"></i></span>
                                 </div>
-                                @Html.TextBoxFor(model => model.email, new { @class = "form-control", @placeholder = "Email", @autofocus = "autofocus" })
-                                <span class="errors" id="check-Email" ><i class="fas fa-times"></i></span>
-                            </div>
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <div class="input-group-text">
-                                        <i class="fas fa-key"></i>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">
+                                            <i class="fas fa-key"></i>
+                                        </div>
                                     </div>
+                                    @Html.PasswordFor(model => model.Matkhau, new { @class = "form-control", @placeholder = "Mật khẩu", @autofocus = "autofocus" })
+                                    <span class="errors" id="check-Matkhau"><i class="fas fa-times"></i></span>
                                 </div>
-                                @Html.PasswordFor(model => model.matkhau, new { @class = "form-control", @placeholder = "Mật khẩu", @autofocus = "autofocus" })
-                                <span class="errors" id="check-Matkhau" ><i class="fas fa-times"></i></span>
-                            </div>
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <div class="input-group-text">
-                                        <i class="fas fa-key"></i>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">
+                                            <i class="fas fa-key"></i>
+                                        </div>
                                     </div>
+                                    @Html.PasswordFor(model => model.XacnhanMatkhau, new { @class = "form-control", @placeholder = "Xác nhận mật khẩu", @autofocus = "autofocus" })
+                                    <span class="errors" id="check-XacnhanMatkhau"><i class="fas fa-times"></i></span>
                                 </div>
-                                @Html.PasswordFor(model => model.mota, new { @class = "form-control", @placeholder = "Xác nhận mật khẩu", @autofocus = "autofocus" })
-                                <span class="errors" id="check-Mota" ><i class="fas fa-times"></i></span>
-                            </div>
                                 <div class="form-row">
                                     <div class="input-group col-md-7">
                                         <div class="input-group-prepend">
@@ -86,8 +86,8 @@
                                                 <i class="fas fa-birthday-cake"></i>
                                             </div>
                                         </div>
-                                        @Html.TextBoxFor(model => model.ngaysinh, new { @class = "form-control", @autofocus = "autofocus", @type="date" })
-                                    <span class="errors" id="check-Ngaysinh" ><i class="fas fa-times"></i></span>
+                                        @Html.TextBoxFor(model => model.Ngaysinh, new { @class = "form-control", @autofocus = "autofocus", @type = "date" })
+                                        <span class="errors" id="check-Ngaysinh"><i class="fas fa-times"></i></span>
                                     </div>
                                     <div class="input-group col-md-5">
                                         <div class="input-group-prepend">
@@ -95,8 +95,8 @@
                                                 <i class="fas fa-venus-mars"></i>
                                             </div>
                                         </div>
-                                        @Html.DropDownListFor(model => model.gioitinh, @listItems, new { @class = "form-control", @autofocus = "autofocus"})
-                                    <span class="errors" id="check-Gioitinh" ><i class="fas fa-times"></i></span>
+                                        @Html.DropDownListFor(model => model.Gioitinh, @listItems, new { @class = "form-control", @autofocus = "autofocus" })
+                                        <span class="errors" id="check-Gioitinh"><i class="fas fa-times"></i></span>
                                     </div>
                                 </div>
                                 <div class="form-check">

@@ -36,7 +36,15 @@ namespace InsBook.Areas.Client.Controllers
                 return RedirectToAction("Index", "Register");
             }
         }
-        public ActionResult PostRegister()
+        public ActionResult RegisterStep1()
+        {
+            return View();
+        }
+        public ActionResult RegisterStep2()
+        {
+            return View();
+        }
+        public ActionResult RegisterStep3()
         {
             return View();
         }
