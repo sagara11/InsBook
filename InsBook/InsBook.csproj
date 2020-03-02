@@ -118,6 +118,8 @@
     <Content Include="Assets\css\pages\login.css" />
     <Content Include="Assets\css\pages\login.min.css" />
     <Content Include="Assets\css\pages\newsfeed.css" />
+    <Content Include="Assets\css\pages\register-steps.css" />
+    <Content Include="Assets\css\pages\register-steps.min.css" />
     <Content Include="Assets\css\pages\register.css" />
     <Content Include="Assets\css\pages\register.min.css" />
     <Content Include="Assets\css\pages\user-info.css" />
@@ -164,6 +166,8 @@
     <Content Include="Areas\Client\Views\Layout\messenger\messenger_section.cshtml" />
     <Content Include="Areas\Client\Views\Group\Index.cshtml" />
     <Content Include="Areas\Client\Views\Shared\Newsfeed.cshtml" />
+    <Content Include="Assets\css\pages\register-steps.css.map" />
+    <Content Include="Assets\css\pages\register-steps.scss" />
     <None Include="Assets\views\layouts\footer.cshtml" />
     <None Include="Assets\views\layouts\header.cshtml" />
     <None Include="Assets\views\layouts\user-info.cshtml" />
@@ -176,6 +180,9 @@
     <Content Include="Assets\views\pages\login.php" />
     <Content Include="Assets\views\pages\newsfeed.php" />
     <Content Include="Assets\views\pages\register.php" />
+    <Content Include="Assets\views\pages\step-1.php" />
+    <Content Include="Assets\views\pages\step-2.php" />
+    <Content Include="Assets\views\pages\step-3.php" />
     <Content Include="Assets\views\pages\user-info-1.php" />
     <Content Include="Assets\views\pages\user-info-2.php" />
     <Content Include="Assets\views\pages\user-info-3.php" />
