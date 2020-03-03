@@ -76,12 +76,14 @@ main {
 
             main #newpost .newpost-input .post-image {
                 margin: 10px;
+                width: 100%;
             }
 
             main #newpost .newpost-input .new-media-content {
                 margin-top: 10px;
                 width: 100%;
                 display: flex;
+                flex-wrap: wrap;
             }
 
                 main #newpost .newpost-input .new-media-content label {
@@ -93,7 +95,23 @@ main {
                     padding: 7px 12px;
                 }
 
-                main #newpost .newpost-input .new-media-content .submit-btn-contain button {
+                    main #newpost .newpost-input .new-media-content label:hover {
+                        cursor: pointer;
+                        background-color: #c8c8c8;
+                    }
+
+                main #newpost .newpost-input .new-media-content .newpost-function {
+                    width: 100%;
+                    display: flex;
+                    flex-wrap: wrap;
+                }
+
+            main #newpost .newpost-input .submit-btn-contain {
+                width: 100%;
+            }
+
+                main #newpost .newpost-input .submit-btn-contain button {
+                    width: 100%;
                     font-size: 15px;
                     margin: 0px 0px;
                     border-radius: 5px;
@@ -101,7 +119,6 @@ main {
                     padding: 5px 0px;
                     background-color: royalblue;
                     border: none;
-                    width: 150px;
                 }
 
     main #user-info {
@@ -162,3 +179,5 @@ main {
                                 color: black;
                                 text-decoration: none;
                             }
+
+/*# sourceMappingURL=newsfeed.css.map */
