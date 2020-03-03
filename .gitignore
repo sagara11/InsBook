@@ -338,6 +338,3 @@ ASALocalRun/
 
 # BeatPulse healthcheck temp database
 healthchecksdb
-
-Model/App.config
-Model/EF/InsBookDbContext.cs
