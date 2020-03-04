@@ -21,9 +21,44 @@
                 @{
                     Html.RenderPartial("~/Areas/Client/Views/Layout/group/group_header.cshtml");
                 }
-                <!-- Group-post -->
-                <section id="group-post">
-                    Viết bài (summer note hoặc ckeditor)
+                <!-- New-post -->
+                <section id="newpost">
+                    <div class="newpost-header">
+                        <h6>Tạo bài viết</h6>
+                        <h6 id="newpost-close">&times;</h6>
+                    </div>
+                    <div class="newpost-input">
+                        <div class="user-avatar">
+                            <img class="rounded rounded-circle" height="50px" width="50px" src="http://localhost/socialnetwork_frontend/media/78834391_459110258126325_6149001856166133760_n.jpg" alt="">
+                        </div>
+                        <div class="textarea">
+                            <textarea class="form-control" placeholder="Bạn đang nghĩ gì?" name="" id="main-input"></textarea>
+                        </div>
+                        <div class="post-image">
+                            <img height="100px" width="100px" id="img" src="#" alt="" />
+                        </div>
+                        <div class="new-media-content">
+                            <input onchange="readURL(this);" type="file" class="custom-control-input" id="customCheck" name="example1">
+                            <label class="custom-control-file" for="customCheck">Ảnh/Video</label>
+                            <label>
+                                Gắn thẻ bạn bè
+                            </label>
+                            <label id="newpost-function-btn">
+                                ...
+                            </label>
+                            <div class="newpost-function">
+                                <label>
+                                    Cảm xúc - hoạt động
+                                </label>
+                                <label>
+                                    Check in
+                                </label>
+                            </div>
+                        </div>
+                        <div class="submit-btn-contain">
+                            <button>Đăng</button>
+                        </div>
+                    </div>
                 </section>
                 <section id="group-content">
                     <div class="post-box">
