@@ -8,7 +8,8 @@ namespace InsBook.Areas.Client.Models
 {
     public class LoginModel
     {
-        public string Email { set; get; }
+        public string EmailLogin { set; get; }
+        public string EmailForgetPass { set; get; }
         public string Password { set; get; }
         public bool RememberMe { set; get; }
     }

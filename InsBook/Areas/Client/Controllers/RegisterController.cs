@@ -20,6 +20,8 @@ namespace InsBook.Areas.Client.Controllers
         [HttpPost]
         public ActionResult Index(nguoidung nguoidung)
         {
+            // !!! thiếu kiểm tra trong controller !!!
+
             // mã hóa mật khẩu
             string pass = Encryptor.MD5Hash(nguoidung.matkhau);
             nguoidung.matkhau = pass;
@@ -38,7 +40,28 @@ namespace InsBook.Areas.Client.Controllers
         }
         public ActionResult RegisterStep1()
         {
-            return View();
+            // Kiểm tra xem có cookie hoặc session không
+            if (Session[CommonConstants.USER_SESSION] != null || Request.Cookies[CommonConstants.USER_COOKIE] != null)
+            {
+                // Lấy giá trị của cookie hoặc session
+                if (Session[CommonConstants.USER_SESSION] != null)
+                {
+                    var user = (UserLogin)Session[CommonConstants.USER_SESSION]; // lấy từ session
+                }
+                else
+                {
+                    // lấy từ cookie
+                    var user = new UserLogin();
+                    user.UserID = long.Parse(Request.Cookies[CommonConstants.USER_COOKIE]["1"]); // đang string ép về kiểu long
+                    user.Email = Request.Cookies[CommonConstants.USER_COOKIE]["2"].ToString(); 
+                }
+
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Index", "Home");
+            }
         }
         public ActionResult RegisterStep2()
         {
@@ -51,7 +74,6 @@ namespace InsBook.Areas.Client.Controllers
         [HttpGet]
         public JsonResult CheckEmail(string email)
         {
-            // xử lý ngay trong view. nếu email ko có thì bấm submit cx ko chạy (ajax)
             // Tìm email trong db
             var user = new UserDao().GetbyEmail(email);
 
@@ -60,14 +82,14 @@ namespace InsBook.Areas.Client.Controllers
                 return Json(new
                 {
                     status = true
-                },JsonRequestBehavior.AllowGet);
+                }, JsonRequestBehavior.AllowGet);
             }
             else
             {
                 return Json(new
                 {
                     status = false
-                },JsonRequestBehavior.AllowGet);
+                }, JsonRequestBehavior.AllowGet);
             }
         }
     }
