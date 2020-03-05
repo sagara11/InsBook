@@ -32,11 +32,11 @@ namespace InsBook.Areas.Client.Controllers
             if (ModelState.IsValid)
             {
                 var dao = new UserDao();
-                var result = dao.Login(model.Email, Encryptor.MD5Hash(model.Password));
+                var result = dao.Login(model.EmailLogin, Encryptor.MD5Hash(model.Password));
                 if (result == 1)
                 {
                     //Tìm email trong db
-                    var user = dao.GetbyEmail(model.Email);
+                    var user = dao.GetbyEmail(model.EmailLogin);
 
                     //Tạo các thông tin để lưu session, cokie
                     var userSC = new UserLogin();

@@ -15,15 +15,18 @@ var check = {
             if (checkemail) {
                 if (result.status) {
                     $("#check-Email").attr("class", "errors");
+                    $("#check-Email").attr("key", "0");
                     $("#check-Email").html("<i class='fas fa-times' style='opacity:1;visibility: visible'></i>");
                 }
                 else {
                     $("#check-Email").attr("class", "success");
+                    $("#check-Email").attr("key", "1");
                     $("#check-Email").html("<i class='fas fa-check-circle' style='opacity:1;visibility: visible'></i>");
                 }
             }
             else {
                 $("#check-Email").attr("class", "errors");
+                $("#check-Email").attr("key", "0");
                 $("#check-Email").html("<i class='fas fa-times' style='opacity:1;visibility: visible'></i>");
             }
         });
@@ -56,23 +59,10 @@ $("#submit").on("click", function () {
         console.log(value[i]);
         if (value[i]) {
             if (id === "Email") {
-                var email = $("#" +  id).val();
-                $.ajax({
-                    url: "/Client/Register/CheckEmail",
-                    type: "get",
-                    dataType: "text",
-                    data: {
-                        email: email
-                    }
-                }).done(function (results) {
-                    var result = $.parseJSON(results);
-                    var checkemail = isEmail(email);
-                    if (checkemail) {
-                        if (result.status == false) {
-                            count += 1;
-                        }
-                    }
-                });
+                check.email();
+                if ($("#check-" + id).attr("key") == 1) {
+                    count += 1;
+                }
             }
             else if (id === "XacnhanMatkhau") {
                 if (check.pass()) {

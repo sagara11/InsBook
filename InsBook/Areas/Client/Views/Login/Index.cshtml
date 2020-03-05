@@ -6,7 +6,8 @@
     <link href="~/Assets/css/pages/login.css" rel="stylesheet" />
 }
 @section js{
-
+    <script src="~/Assets/javascript/Login.js"></script>
+    <script src="~/Assets/javascript/ForgetPass.js"></script>
 }
 @model InsBook.Areas.Client.Models.LoginModel
 <main>
@@ -28,32 +29,32 @@
                         <div class="login-form">
                             @using (Html.BeginForm("Login", "Login", FormMethod.Post))
                             {
-                            @Html.AntiForgeryToken()
+                                @Html.AntiForgeryToken()
 
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <div class="input-group-text">
-                                        <i class="fas fa-user-tie"></i>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">
+                                            <i class="fas fa-user-tie"></i>
+                                        </div>
                                     </div>
+                                    @Html.TextBoxFor(model => model.EmailLogin, new { @class = "form-control", @placeholder = "Số điện thoại, tên người dùng hoặc email", @autoforcus = "autoforcus" })
+                                    <span class="errors"><i class="fas fa-times"></i></span>
                                 </div>
-                                @Html.TextBoxFor(model => model.Email, new { @class = "form-control", @placeholder = "Số điện thoại, tên người dùng hoặc email", @autoforcus = "autoforcus" })
-                            <span class="errors"><i class="fas fa-times"></i></span>
-                            </div>
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <div class="input-group-text">
-                                        <i class="fas fa-key"></i>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">
+                                            <i class="fas fa-key"></i>
+                                        </div>
                                     </div>
+                                    @Html.TextBoxFor(model => model.Password, new { @class = "form-control", @type = "password", @placeholder = "Mật khẩu", @autoforcus = "autoforcus" })
+                                    <span class="success"><i class="fas fa-check-circle"></i></span>
                                 </div>
-                                @Html.TextBoxFor(model => model.Password, new { @class = "form-control", @type = "password", @placeholder = "Mật khẩu", @autoforcus = "autoforcus" })
-                            <span class="success"><i class="fas fa-check-circle"></i></span>
-                            </div>
-                            <div class="form-check">
-                                @Html.CheckBoxFor(model => model.RememberMe, new { @class = "form-check-input"})
-                                <label class="form-check-label" for="exampleCheck1">Ghi nhớ đăng nhập</label>
-                            </div>
-                            <button type="submit" class="btn btn-block btn-primary">Đăng nhập</button>
-                            <a href="#exampleModalCenter" title="Mày quên mật khẩu à ?" data-toggle="modal">Quên mật khẩu ?</a>
+                                <div class="form-check">
+                                    @Html.CheckBoxFor(model => model.RememberMe, new { @class = "form-check-input" })
+                                    <label class="form-check-label" for="exampleCheck1">Ghi nhớ đăng nhập</label>
+                                </div>
+                                <button type="submit" class="btn btn-block btn-primary">Đăng nhập</button>
+                                <a href="#exampleModalCenter" title="Mày quên mật khẩu à ?" data-toggle="modal">Quên mật khẩu ?</a>
                             }
                         </div>
                     </div>
@@ -92,17 +93,17 @@
                             {
                                 @Html.AntiForgeryToken()
                                 @*@Html.ValidationSummary(true, "", new { @class = "text-danger" })*@
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="">
-                                        <i class="fas fa-at"></i>
-                                    </span>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="">
+                                            <i class="fas fa-at"></i>
+                                        </span>
+                                    </div>
+                                    @Html.TextBoxFor(model => model.EmailForgetPass, new { htmlAttributes = new { @class = "form-control", @placeholder = "Email, điện thoại hoặc tên người dùng" } })
+                                    @*@Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })*@
+                                    <span class="errors" id="check-forgetPass"><i class="fas fa-times"></i></span>
                                 </div>
-                                @Html.TextBoxFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", @placeholder = "Email, điện thoại hoặc tên người dùng" } })
-                                @*@Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })*@
-                                <span class="errors"><i class="fas fa-times"></i></span>
-                            </div>
-                                <button type="submit" class="btn btn-block btn-primary">Gửi liên kết đăng nhập</button>
+                                <button type="submit" class="btn btn-block btn-primary" id="submit">Gửi liên kết đăng nhập</button>
                             }
                             <a href="http://localhost/messenger-frontend/views/pages/register.php" title="">Tạo tài khoản mới</a>
                         </div>

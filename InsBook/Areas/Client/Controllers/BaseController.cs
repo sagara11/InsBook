@@ -15,6 +15,7 @@ namespace InsBook.Areas.Client.Controllers
         // GET: Admin/Base
         protected override void OnActionExecuting(ActionExecutingContext filterContext)
         {
+            // !!! Chưa xử lý cookie !!!
             var session = (UserLogin)Session[CommonConstants.USER_SESSION]; 
             if (session == null)
             {
