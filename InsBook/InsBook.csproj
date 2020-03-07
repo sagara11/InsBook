@@ -217,6 +217,8 @@
     <Content Include="Areas\Client\Views\Group\group_anh.cshtml" />
     <Content Include="Areas\Client\Views\Group\group_thanhvien.cshtml" />
     <Content Include="Areas\Client\Views\ChatBox\Index.cshtml" />
+    <Content Include="Areas\Client\Views\Error\Index.cshtml" />
+    <Content Include="Areas\Client\Views\Personal\Index.cshtml" />
     <None Include="Assets\views\layouts\footer.cshtml" />
     <None Include="Assets\views\layouts\header.cshtml" />
     <None Include="Assets\views\layouts\user-info.cshtml" />
@@ -360,10 +362,12 @@
     <Compile Include="Areas\Client\code\UserSession.cs" />
     <Compile Include="Areas\Client\Controllers\BaseController.cs" />
     <Compile Include="Areas\Client\Controllers\ChatBoxController.cs" />
+    <Compile Include="Areas\Client\Controllers\ErrorController.cs" />
     <Compile Include="Areas\Client\Controllers\ForgetPassController.cs" />
     <Compile Include="Areas\Client\Controllers\GroupController.cs" />
     <Compile Include="Areas\Client\Controllers\HomeController.cs" />
     <Compile Include="Areas\Client\Controllers\LoginController.cs" />
+    <Compile Include="Areas\Client\Controllers\PersonalController.cs" />
     <Compile Include="Areas\Client\Controllers\RegisterController.cs" />
     <Compile Include="Areas\Client\Models\ForgetPassModel.cs" />
     <Compile Include="Areas\Client\Models\LoginModel.cs" />
@@ -434,6 +438,7 @@
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Areas\Admin\Views\Shared\" />
     <Folder Include="Areas\Client\Views\Base\" />
+    <Folder Include="Areas\Client\Views\Chat\" />
     <Folder Include="Areas\Client\Views\Default\" />
     <Folder Include="Areas\Client\Views\User\" />
     <Folder Include="Controllers\" />

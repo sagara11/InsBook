@@ -13,7 +13,7 @@ namespace InsBook.Areas.Client.Controllers
     {
         // GET: Client/User
         [HttpGet]
-        public ActionResult Index()
+        public ActionResult Index() // làm bai đi thông
         {
             return View();
         }
