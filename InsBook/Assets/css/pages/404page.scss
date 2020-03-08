@@ -1,0 +1,16 @@
+﻿main {
+    .page-404 {
+        height: 659px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .notification {
+            h1,h5 {
+                text-align: center;
+                color:dimgray;
+                margin-bottom: 30px;
+            }
+        }
+    }
+}

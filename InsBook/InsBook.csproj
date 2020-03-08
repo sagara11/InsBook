@@ -147,6 +147,8 @@
     <Content Include="Assets\css\layouts\messenger.css" />
     <Content Include="Assets\css\layouts\messenger_section.css" />
     <Content Include="Assets\css\layouts\post_box.css" />
+    <Content Include="Assets\css\pages\404page.css" />
+    <Content Include="Assets\css\pages\404page.min.css" />
     <Content Include="Assets\css\pages\group_anh.css" />
     <Content Include="Assets\css\pages\group_gioithtieu.css" />
     <Content Include="Assets\css\pages\group_thanhvien.css" />
@@ -194,7 +196,6 @@
     <Content Include="Areas\Client\Views\Home\Index.cshtml" />
     <Content Include="Areas\Client\Views\Register\Index.cshtml" />
     <Content Include="Areas\Client\Views\ForgetPass\SendEmail.cshtml" />
-    <Content Include="Areas\Client\Views\ForgetPass\ChangePass.cshtml" />
     <Content Include="Areas\Client\Views\Layout\header.cshtml" />
     <Content Include="Areas\Client\Views\Layout\edit_sidebar.cshtml" />
     <Content Include="Areas\Client\Views\Layout\group\group_header.cshtml" />
@@ -217,8 +218,13 @@
     <Content Include="Areas\Client\Views\Group\group_anh.cshtml" />
     <Content Include="Areas\Client\Views\Group\group_thanhvien.cshtml" />
     <Content Include="Areas\Client\Views\ChatBox\Index.cshtml" />
-    <Content Include="Areas\Client\Views\Error\Index.cshtml" />
     <Content Include="Areas\Client\Views\Personal\Index.cshtml" />
+    <Content Include="Areas\Client\Views\Shared\_PersonalPage.cshtml" />
+    <Content Include="Areas\Client\Views\ForgetPass\ChangePassWord.cshtml" />
+    <Content Include="Areas\Client\Views\Personal\UserInfo_Header.cshtml" />
+    <Content Include="Areas\Client\Views\Error\Index.cshtml" />
+    <Content Include="Assets\css\pages\404page.scss" />
+    <Content Include="Assets\css\pages\404page.css.map" />
     <None Include="Assets\views\layouts\footer.cshtml" />
     <None Include="Assets\views\layouts\header.cshtml" />
     <None Include="Assets\views\layouts\user-info.cshtml" />

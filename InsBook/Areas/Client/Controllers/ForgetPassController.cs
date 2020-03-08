@@ -124,5 +124,12 @@ namespace InsBook.Areas.Client.Controllers
             // xử lí triggers : số lượng bạn, theo dõi
 
         }
+
+
+        [HttpGet]
+        public ActionResult ChangePassWord()
+        {
+            return View();
+        }
     }
 }
