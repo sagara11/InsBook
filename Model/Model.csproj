@@ -59,6 +59,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dao\AddFriendDao.cs" />
     <Compile Include="Dao\RegisterDao.cs" />
     <Compile Include="Dao\UserDao.cs" />
     <Compile Include="EF\anh.cs" />
@@ -112,6 +113,7 @@
     <Compile Include="EF\video.cs" />
     <Compile Include="EF\video_binhluan.cs" />
     <Compile Include="EF\video_chiase.cs" />
+    <Compile Include="Models\AddFriendModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

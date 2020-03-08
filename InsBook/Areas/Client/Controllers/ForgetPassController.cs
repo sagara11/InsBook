@@ -118,9 +118,11 @@ namespace InsBook.Areas.Client.Controllers
             }
             // chưa có view cơ bản
             // chưa có view 404
-            // Form thay đổi pass trong email chưa hoạt đông
             // đổi mật khẩu 
-            // chưa xử lý session
+            
+            // làm kết bạn
+            // xử lí triggers : số lượng bạn, theo dõi
+
         }
     }
 }

@@ -17,25 +17,20 @@ namespace Model.Dao
         {
             db = new InsBookDbContext();
         }
-        public long Insert(nguoidung entity)
+        public int Insert(nguoidung entity)
         {
             db.nguoidungs.Add(entity);
             db.SaveChanges();
             return entity.id;
         }
-        //public IEnumerable<User> ListAllPaging(string searchString, int page, int pageSize)
-        //{
-        //    //var pageSize = int.Parse(ConfigurationManager.AppSettings["PageSize"].ToString);
-        //    IQueryable<User> model = db.Users;
-        //    if (!string.IsNullOrEmpty(searchString))
-        //    {
-        //        model = model.Where(x => x.UserName.Contains(searchString) || x.Name.Contains(searchString));
-        //    }
-        //    return model.OrderByDescending(x => x.CreatedBy).ToPagedList(page, pageSize);
-        //}
+        
         public nguoidung GetbyEmail(string email)
         {
             return db.nguoidungs.SingleOrDefault(x => x.email == email);
+        }
+        public nguoidung GetbyID(int id)
+        {
+            return db.nguoidungs.Find(id);
         }
         //public User ViewDetail(int id)
         //{

@@ -56,7 +56,6 @@ $("#submit").on("click", function () {
     var i = 0;
     ids.forEach(function (id) {
         value[i] = $("#" + id).val();
-        console.log(value[i]);
         if (value[i]) {
             if (id === "Email") {
                 check.email();
