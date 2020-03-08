@@ -24,12 +24,12 @@ namespace InsBook.Areas.Client.Controllers
         public ActionResult SendEmail(LoginModel model)
         {
             // xử lý phần đuôi link
-            var link = "https://localhost:44307/Client/ForgetPass/ChangePass" + "/" + Link(model.Email);
+            var link = "https://localhost:44307/Client/ForgetPass/ChangePass" + "/" + Link(model.EmailForgetPass);
 
             // Gửi email
             string contents = System.IO.File.ReadAllText(Server.MapPath("~/Assets/template/content.html"));
             contents = contents.Replace("{{Link}}", link);
-            var toEmail = model.Email;
+            var toEmail = model.EmailForgetPass; // !!! thiếu check email !!!
             new MailHelper().SendMail(toEmail, "YÊU CẦU THAY ĐỔI MẬT KHẨU", contents);
 
             return View();
@@ -62,19 +62,25 @@ namespace InsBook.Areas.Client.Controllers
             return JsonWebToken.Encode(payload, privateKey, JwtHashAlgorithm.RS256);
         }
 
-        public bool CheckEmail(string email)
+        [HttpGet]
+        public JsonResult CheckEmail(string email)
         {
-            // xử lý ngay trong view. nếu email ko có thì bấm submit cx ko chạy (ajax)
             // Tìm email trong db
             var user = new UserDao().GetbyEmail(email);
 
             if (user != null)
             {
-                return true;
+                return Json(new
+                {
+                    status = true
+                }, JsonRequestBehavior.AllowGet);
             }
             else
             {
-                return false;
+                return Json(new
+                {
+                    status = false
+                }, JsonRequestBehavior.AllowGet);
             }
         }
 
@@ -83,13 +89,14 @@ namespace InsBook.Areas.Client.Controllers
         {
             // lấy đối tượng session
             var session = (ForgetPass)Session[CommonConstants.FORGETPASS_SESSION];
+            
+            var utc0 = new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc); // chọn gốc thời gian
+            var issueTime = DateTime.Now; // lấy thời gian thực tế
 
-            var utc0 = new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);
-            var issueTime = DateTime.Now;
+            var exp = (int)issueTime.Subtract(utc0).TotalSeconds; // thời gian chạy
 
-            var exp = (int)issueTime.Subtract(utc0).TotalSeconds;
-
-            if (Session[CommonConstants.FORGETPASS_SESSION] != null && (session.TimeOut - exp) >= 0 )
+            
+            if (Session[CommonConstants.FORGETPASS_SESSION] != null && (session.TimeOut - exp) >= 0 ) // kiểm tra xem đã có session quên mật khẩu chưa và nó chỉ sống trong 3p
             {
                 // decode
                 var user = JsonWebToken.Decode(id, session.PrivateKey);
@@ -111,10 +118,10 @@ namespace InsBook.Areas.Client.Controllers
             }
             // chưa có view cơ bản
             // chưa có view 404
-            // Form thay đổi pass trong email chưa hoạt đông
-            // thông báo register thiếu, sai ...
             // đổi mật khẩu 
-            // 
+            
+            // làm kết bạn
+            // xử lí triggers : số lượng bạn, theo dõi
 
         }
     }

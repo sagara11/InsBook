@@ -13,6 +13,17 @@ namespace InsBook.Areas.Client.Controllers
         {
             return View();
         }
-
+        public ActionResult group_thaoluan()
+        {
+            return View();
+        }
+        public ActionResult group_anh()
+        {
+            return View();
+        }
+        public ActionResult group_thanhvien()
+        {
+            return View();
+        }
     }
 }

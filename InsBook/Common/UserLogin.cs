@@ -8,7 +8,7 @@ namespace InsBook
     [Serializable]
     public class UserLogin
     {
-        public long UserID { get; set; }
+        public int UserID { get; set; }
         public string Email { get; set; }
     }
     public class ForgetPass

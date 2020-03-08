@@ -5,7 +5,7 @@ using System.Web;
 
 namespace InsBook.Areas.Client.Models
 {
-    public class Register
+    public class RegisterModel
     {
         public string Ho { set; get; }
         public string Ten { set; get; }

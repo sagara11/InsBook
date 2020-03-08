@@ -102,5 +102,16 @@ header {
             color: #999; }
       header .header-icon #header-notification .daxem {
         background-color: #f0f2f6; }
+    header .header-icon #header-user ul {
+      padding: 0px 0px;
+      list-style-type: none; }
+      header .header-icon #header-user ul li {
+        padding: 7px 15px; }
+        header .header-icon #header-user ul li:hover {
+          background-color: #f0f2f6; }
+        header .header-icon #header-user ul li a {
+          font-size: 14px;
+          text-decoration: none;
+          color: black; }
 
 /*# sourceMappingURL=header.css.map */
