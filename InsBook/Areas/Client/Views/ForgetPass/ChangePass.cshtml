@@ -6,7 +6,7 @@
 @section css {
 
 }
-
+@model InsBook.Areas.Client.Models.ChangePassModel
 <!-- Tab panes -->
 <div class="tab-content">
     <div class="tab-pane container fade" id="menu1">...</div>
@@ -31,15 +31,15 @@
                 <a class="nav-link" href="">Chi tiết về bạn</a>
             </li>
         </ul>
-
         <!-- Tab panes -->
         <div class="tab-content">
             <div class="tab-pane container fade" id="menu2-1">...</div>
             <div class="tab-pane container active" id="menu2-2">
                 <article class="change-password">
-                    @*@using (Html.BeginForm("Login", "Login", FormMethod.Post))
+                    @using (Html.BeginForm("ChangePassWord", "ForgetPass", FormMethod.Post))
                     {
-                        @Html.AntiForgeryToken()*@
+                        @Html.ValidationSummary(true, null, new { @class = "alert alert-danger" })
+                        @Html.AntiForgeryToken()
                         <div class="row">
                             <div class="col-md-3">
                                 <div class="user-img">
@@ -47,14 +47,14 @@
                                 </div>
                             </div>
                             <div class="col-md-9">
-                                <h1 class="user-name">Thắng Bếu</h1>
+                                <h1 class="user-name">@Model.Ho @Model.Ten</h1>
                             </div>
                             <div class="col-md-3">
                                 <label for="matkhaucu">Mật khẩu cũ</label>
                             </div>
                             <div class="col-md-9">
                                 <div class="form-group">
-                                    <input type="password" class="form-control" id="matkhaucu">
+                                    @Html.PasswordFor(model => model.MatKhauHienTai, new { @class = "form-control", @placeholder = "Mật khẩu hiện tại", @autoforcus = "autoforcus" })
                                     <span class="success"><i class="fas fa-check-circle"></i></span>
                                 </div>
                             </div>
@@ -63,7 +63,7 @@
                             </div>
                             <div class="col-md-9">
                                 <div class="form-group">
-                                    <input type="password" class="form-control" id="matkhaumoi">
+                                    @Html.PasswordFor(model => model.MatKhauMoi, new { @class = "form-control", @placeholder = "Mật khẩu mới", @autoforcus = "autoforcus" })
                                     <span class="success"><i class="fas fa-check-circle"></i></span>
                                 </div>
                             </div>
@@ -72,17 +72,17 @@
                             </div>
                             <div class="col-md-9">
                                 <div class="form-group">
-                                    <input type="password" class="form-control" id="nhaplaimatkhau">
+                                    @Html.PasswordFor(model => model.XacNhanMatKhau, new { @class = "form-control", @placeholder = "Xác nhận mật khẩu", @autoforcus = "autoforcus" })
                                     <span class="success"><i class="fas fa-check-circle"></i></span>
                                 </div>
                             </div>
                             <div class="col-md-3">
                             </div>
                             <div class="col-md-9">
-                                <button type="button" class="btn btn-primary">Đổi mật khẩu</button>
+                                <button type="submit" class="btn btn-primary">Đổi mật khẩu</button>
                             </div>
                         </div>
-                    @*}*@
+                    }
                 </article>
             </div>
             <div class="tab-pane container fade" id="menu2-3">...</div>

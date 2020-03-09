@@ -16,7 +16,14 @@ namespace InsBook.Areas.Client.Controllers
         [HttpGet]
         public ActionResult Index()
         {
-            return View();
+            if (Session[CommonConstants.USER_SESSION] == null && Request.Cookies[CommonConstants.USER_COOKIE] == null)
+            {
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Index", "Home");
+            }
         }
         [HttpPost]
         public ActionResult Index(RegisterModel user)
@@ -99,11 +106,6 @@ namespace InsBook.Areas.Client.Controllers
                 return RedirectToAction("Index", "Login");
             }
         }
-        //[HttpPost]
-        //public ActionResult RegisterStep1()
-        //{
-            
-        //}
         public ActionResult RegisterStep2()
         {
             return View();

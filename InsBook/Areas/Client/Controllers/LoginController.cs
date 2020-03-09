@@ -16,8 +16,7 @@ namespace InsBook.Areas.Client.Controllers
         [HttpGet]
         public ActionResult Index()
         {
-            var session = (UserLogin)Session[CommonConstants.USER_SESSION];
-            if (session == null)
+            if (Session[CommonConstants.USER_SESSION] == null && Request.Cookies[CommonConstants.USER_COOKIE] == null)
             {
                 return View();
             }

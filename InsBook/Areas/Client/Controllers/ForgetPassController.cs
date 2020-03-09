@@ -2,6 +2,7 @@
 using InsBook.Areas.Client.Models;
 using InsBook.Common;
 using Model.Dao;
+using Model.EF;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -18,21 +19,43 @@ namespace InsBook.Areas.Client.Controllers
         // GET: Client/ForgetPass
         public ActionResult SendEmail()
         {
-            return View();
+            var session = (ForgetPass)Session[CommonConstants.FORGETPASS_SESSION];
+
+            var utc0 = new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc); // chọn gốc thời gian
+            var issueTime = DateTime.Now; // lấy thời gian thực tế
+
+            var exp = (int)issueTime.Subtract(utc0).TotalSeconds; // thời gian chạy
+            if (Session[CommonConstants.FORGETPASS_SESSION] != null && (session.TimeOut - exp) >= 0) // kiểm tra xem đã có session quên mật khẩu chưa và nó chỉ sống trong 3p
+            {
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Index", "Login");
+            }
         }
         [HttpPost]
         public ActionResult SendEmail(LoginModel model)
         {
-            // xử lý phần đuôi link
-            var link = "https://localhost:44307/Client/ForgetPass/ChangePass" + "/" + Link(model.EmailForgetPass);
+            var user = new UserDao().GetbyEmail(model.EmailForgetPass);
 
-            // Gửi email
-            string contents = System.IO.File.ReadAllText(Server.MapPath("~/Assets/template/content.html"));
-            contents = contents.Replace("{{Link}}", link);
-            var toEmail = model.EmailForgetPass; // !!! thiếu check email !!!
-            new MailHelper().SendMail(toEmail, "YÊU CẦU THAY ĐỔI MẬT KHẨU", contents);
+            if(user != null)
+            {
+                // xử lý phần đuôi link
+                var link = "https://localhost:44307/Client/ForgetPass/ChangePass" + "/" + Link(model.EmailForgetPass);
 
-            return View();
+                // Gửi email
+                string contents = System.IO.File.ReadAllText(Server.MapPath("~/Assets/template/content.html"));
+                contents = contents.Replace("{{Link}}", link);
+                var toEmail = model.EmailForgetPass; // !!! thiếu check email !!!
+                new MailHelper().SendMail(toEmail, "YÊU CẦU THAY ĐỔI MẬT KHẨU", contents);
+
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Index", "Login");
+            }
         }
         private string Link(string email)
         {
@@ -105,7 +128,13 @@ namespace InsBook.Areas.Client.Controllers
 
                 if (address["iss"] == session.Email)
                 {
-                    return View();
+                    var temp_user = new UserDao().GetbyEmail(session.Email);
+                    ChangePassModel model = new ChangePassModel();
+                    model.SoNguoiTheoDoi = temp_user.soluongtheodoi;
+                    model.SoLuongBanBe = temp_user.soluongbanbe;
+                    model.Ho = temp_user.ho;
+                    model.Ten = temp_user.ten;
+                    return View(model);
                 }
                 else
                 {
@@ -117,19 +146,29 @@ namespace InsBook.Areas.Client.Controllers
                 return RedirectToAction("Index", "Login");
             }
             // chưa có view cơ bản
-            // chưa có view 404
             // đổi mật khẩu 
-            
-            // làm kết bạn
-            // xử lí triggers : số lượng bạn, theo dõi
-
+            // gỡ bạn bè thì gọi ý bạn mới
+            // hàm gửi email thiếu check email.
         }
-
-
-        [HttpGet]
-        public ActionResult ChangePassWord()
+        [HttpPost]
+        public ActionResult ChangePassWord(ChangePassModel model)
         {
-            return View();
+            var session = (ForgetPass)Session[CommonConstants.FORGETPASS_SESSION];
+            var user = new UserDao().GetbyEmail(session.Email);
+            if(Encryptor.MD5Hash(model.MatKhauHienTai) == user.matkhau)
+            {
+                string NewPass = Encryptor.MD5Hash(model.MatKhauMoi);
+                user.matkhau = NewPass;
+                bool result = new UserDao().Update(user);
+                if(result)
+                return RedirectToAction("Index", "Home");
+                else
+                return RedirectToAction("ChangePassWord", "ForgetPass");
+            }
+            else
+            {
+                return RedirectToAction("ChangePassWord", "ForgetPass");
+            }
         }
     }
 }

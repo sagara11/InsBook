@@ -18,6 +18,17 @@ namespace Model.Dao
         {
             db = new InsBookDbContext();
         }
+        public bool InsertFriend(banbe friend)
+        {
+            try{
+                db.banbes.Add(friend);
+                db.SaveChanges();
+                return true;
+            }catch(Exception ex)
+            {
+                return false;
+            }
+        }
         public List<AddFriendModel> ListAddFriend(nguoidung user)
         {
             // IdAddress = user.nguoidung_diadiem; chua lam duoc
@@ -40,6 +51,7 @@ namespace Model.Dao
                 users.Add(db.Database.SqlQuery<AddFriendModel>("ListAddFriend @id", sqlParams).Single());
             }
             // Danh sách tìm đc đang có cả chính nó
+            // Danh sách tìm dc phải loại bỏ những thằng đã kb với nhau, chặn, đã gửi lời kb
             // trả lại danh sách nguoidung
             return users;
         }

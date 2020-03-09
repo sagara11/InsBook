@@ -165,6 +165,7 @@
     <Content Include="Assets\javascript\ForgetPass.js" />
     <Content Include="Assets\javascript\Login.js" />
     <Content Include="Assets\javascript\Register.js" />
+    <Content Include="Assets\javascript\RegisterStep1.js" />
     <Content Include="Assets\js\header.js" />
     <Content Include="Assets\js\jquery-3.4.1.min.js" />
     <Content Include="Assets\js\love_button.js" />
@@ -220,11 +221,11 @@
     <Content Include="Areas\Client\Views\ChatBox\Index.cshtml" />
     <Content Include="Areas\Client\Views\Personal\Index.cshtml" />
     <Content Include="Areas\Client\Views\Shared\_PersonalPage.cshtml" />
-    <Content Include="Areas\Client\Views\ForgetPass\ChangePassWord.cshtml" />
     <Content Include="Areas\Client\Views\Personal\UserInfo_Header.cshtml" />
     <Content Include="Areas\Client\Views\Error\Index.cshtml" />
     <Content Include="Assets\css\pages\404page.scss" />
     <Content Include="Assets\css\pages\404page.css.map" />
+    <Content Include="Areas\Client\Views\ForgetPass\ChangePass.cshtml" />
     <None Include="Assets\views\layouts\footer.cshtml" />
     <None Include="Assets\views\layouts\header.cshtml" />
     <None Include="Assets\views\layouts\user-info.cshtml" />
@@ -375,6 +376,7 @@
     <Compile Include="Areas\Client\Controllers\ChatBoxController.cs" />
     <Compile Include="Areas\Client\Controllers\ErrorController.cs" />
     <Compile Include="Areas\Client\Controllers\ForgetPassController.cs" />
+    <Compile Include="Areas\Client\Controllers\FriendController.cs" />
     <Compile Include="Areas\Client\Controllers\GroupController.cs" />
     <Compile Include="Areas\Client\Controllers\HomeController.cs" />
     <Compile Include="Areas\Client\Controllers\LoginController.cs" />
@@ -451,6 +453,7 @@
     <Folder Include="Areas\Client\Views\Base\" />
     <Folder Include="Areas\Client\Views\Chat\" />
     <Folder Include="Areas\Client\Views\Default\" />
+    <Folder Include="Areas\Client\Views\Friend\" />
     <Folder Include="Areas\Client\Views\User\" />
     <Folder Include="Controllers\" />
     <Folder Include="Models\" />

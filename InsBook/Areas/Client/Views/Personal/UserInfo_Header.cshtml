@@ -1,4 +1,6 @@
-﻿<div class="user-info-title">
+﻿@model InsBook.Areas.Client.Models.ChangePassModel
+
+<div class="user-info-title">
     <div class="row">
         <div class="col-md-4">
             <div class="user-ava">
@@ -8,7 +10,7 @@
         <div class="col-md-8">
             <div class="user-description">
                 <div class="user-description-one">
-                    <h1 class="user-name">Thắng Bếu</h1>
+                    <h1 class="user-name">@Model.Ho @Model.Ten</h1>
                     <a href="http://localhost/messenger-frontend/views/pages/user-info-2.php" title="Chỉnh sửa trang cá nhân" class="user-setting"><button type="button" class="btn btn-outline-primary">Chỉnh sửa trang cá nhân</button></a>
                     <div class="account-setting">
                         <button type="button" class="btn btn-outline-primary"><i class="fas fa-cog fa-2x"></i></button></a>
@@ -19,10 +21,10 @@
                         <span><span>123</span> bài viết</span>
                     </li>
                     <li>
-                        <span><span>123</span> người theo dõi</span>
+                        <span><span>@Model.SoNguoiTheoDoi</span> người theo dõi</span>
                     </li>
                     <li>
-                        <span>Đang theo dõi <span>123</span> người dùng</span>
+                        <span>Đang theo dõi <span>@Model.SoLuongBanBe</span> người dùng</span>
                     </li>
                 </ul>
                 <div class="user-description-three">
