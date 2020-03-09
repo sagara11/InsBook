@@ -76,6 +76,7 @@ main {
 
             main #newpost .newpost-input .post-image {
                 margin: 10px;
+                width: 100%;
             }
 
             main #newpost .newpost-input .new-media-content {
@@ -96,11 +97,12 @@ main {
 
                     main #newpost .newpost-input .new-media-content label:hover {
                         cursor: pointer;
-                        background-color: gainsboro;
+                        background-color: #c8c8c8;
                     }
 
                 main #newpost .newpost-input .new-media-content .newpost-function {
                     width: 100%;
+                    display: flex;
                     flex-wrap: wrap;
                 }
 

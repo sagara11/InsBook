@@ -27,7 +27,7 @@
                     </div>
                     <div class="newpost-input">
                         <div class="user-avatar">
-                            <img class="rounded rounded-circle" height="50px" width="50px" src="http://localhost/socialnetwork_frontend/media/78834391_459110258126325_6149001856166133760_n.jpg" alt="">
+                            <img class="rounded rounded-circle" height="50px" width="50px" src="~/Assets/media/78834391_459110258126325_6149001856166133760_n.jpg" alt="">
                         </div>
                         <div class="textarea">
                             <textarea class="form-control" placeholder="Bạn đang nghĩ gì?" name="" id="main-input"></textarea>
@@ -95,7 +95,7 @@
                                     <i class="fa fa-heart-o heart" aria-hidden="true"></i>
                                 </div>
                                 <i class="fa fa-comment-o" aria-hidden="true"></i>
-                                <i class="fa fa-paper-plane-o" aria-hidden="true"></i>
+                                <i data-toggle="modal" data-target="#share1" class="fa fa-paper-plane-o" aria-hidden="true"></i>
                             </div>
                             <div class="like-number">
                                 200 likes
@@ -135,7 +135,7 @@
                                                     <i class="fa fa-heart-o heart" aria-hidden="true"></i>
                                                 </div>
                                                 <i class="fa fa-comment-o" aria-hidden="true"></i>
-                                                <i class="fa fa-paper-plane-o" aria-hidden="true"></i>
+                                                <i data-toggle="modal" data-target="#share1" class="fa fa-paper-plane-o" aria-hidden="true"></i>
                                             </div>
                                             <div class="like-number">
                                                 200 likes
@@ -153,8 +153,41 @@
                                 </div>
                             </div>
                         </div>
+                        <!-- Share modal -->
+                        <div class="share-modal modal fade" id="share1">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="share-header">
+                                        <p>Chia sẻ ngay lên dòng thời gian</p>
+                                        <p data-dismiss="modal">&times;</p>
+                                    </div>
+                                    <div class="share-body">
+                                        <input class="form-control" type="text" placeholder="Nói gì đó về nội dung này...">
+                                        <div class="share-content">
+                                            <img class="img-fluid" src="~/Assets/media/78834391_459110258126325_6149001856166133760_n.jpg" alt="">
+                                        </div>
+                                    </div>
+                                    <div id="post-1-taginput" class="tag-input">
+                                        <input class="form-control" type="text" placeholder="Gắn thẻ bạn bè">
+                                    </div>
+                                    <div id="post-1-locationinput" class="location-input">
+                                        <input class="form-control" type="text" placeholder="Bạn đang ở đâu?">
+                                    </div>
+                                    <div class="share-footer">
+                                        <div class="footer-option">
+                                            <button onclick="tag('post-1')" id="post-1-tag">Gắn thẻ mọi người</button>
+                                            <button onclick="location_open('post-1')" id="post-1-tag">Thêm vị trí</button>
+                                        </div>
+                                        <div class="footer-submit">
+                                            <button data-dismiss="modal">Hủy</button>
+                                            <button class="share-submit">Đăng</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="post-box">
+                    <div class="post-box" id="post-2">
                         <div class="post-title">
                             <div class="post-info">
                                 <img height="50px" width="50px" class="rounded rounded-circle" src="~/Assets/media/78834391_459110258126325_6149001856166133760_n.jpg" alt="">
@@ -180,7 +213,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="post-content" data-toggle="modal" data-target="#modal2">
+                        <div class="post-content" data-toggle="modal" data-target="#post-2-modal">
                             <img class="img-fluid" src="~/Assets/media/78834391_459110258126325_6149001856166133760_n.jpg" alt="">
                         </div>
                         <div class="post-socialfunction">
@@ -189,7 +222,7 @@
                                     <i class="fa fa-heart-o heart" aria-hidden="true"></i>
                                 </div>
                                 <i class="fa fa-comment-o" aria-hidden="true"></i>
-                                <i class="fa fa-paper-plane-o" aria-hidden="true"></i>
+                                <i data-toggle="modal" data-target="#post-2-share" class="fa fa-paper-plane-o" aria-hidden="true"></i>
                             </div>
                             <div class="like-number">
                                 200 likes
@@ -207,7 +240,7 @@
                             <button>Đăng</button>
                         </div>
                         <!-- Modal -->
-                        <div class="post-box-modal modal fade" id="modal2">
+                        <div class="post-box-modal modal fade" id="post-2-modal">
                             <div class="modal-dialog modal-dialog-centered">
                                 <div class="modal-content">
                                     <div class="col-7">
@@ -225,11 +258,11 @@
                                                 Caption
                                             </div>
                                             <div class="like-comment">
-                                                <div id="heart-2-modal" onclick="heart('heart-2')" class="like-comment-heart">
+                                                <div onclick="heart('heart-2')" class="like-comment-heart">
                                                     <i class="fa fa-heart-o heart" aria-hidden="true"></i>
                                                 </div>
                                                 <i class="fa fa-comment-o" aria-hidden="true"></i>
-                                                <i class="fa fa-paper-plane-o" aria-hidden="true"></i>
+                                                <i data-toggle="modal" data-target="#post-2-share" class="fa fa-paper-plane-o" aria-hidden="true"></i>
                                             </div>
                                             <div class="like-number">
                                                 200 likes
@@ -242,6 +275,39 @@
                                         <div class="post-usercomment">
                                             <input class="form-control" type="text" placeholder="Thêm bình luận...">
                                             <button>Đăng</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Share modal -->
+                        <div class="share-modal modal fade" id="post-2-share">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="share-header">
+                                        <p>Chia sẻ ngay lên dòng thời gian</p>
+                                        <p data-dismiss="modal">&times;</p>
+                                    </div>
+                                    <div class="share-body">
+                                        <input class="form-control" type="text" placeholder="Nói gì đó về nội dung này...">
+                                        <div class="share-content">
+                                            <img class="img-fluid" src="~/Assets/media/78834391_459110258126325_6149001856166133760_n.jpg" alt="">
+                                        </div>
+                                    </div>
+                                    <div id="post-2-taginput" class="tag-input">
+                                        <input class="form-control" type="text" placeholder="Gắn thẻ bạn bè">
+                                    </div>
+                                    <div id="post-2-locationinput" class="location-input">
+                                        <input class="form-control" type="text" placeholder="Bạn đang ở đâu?">
+                                    </div>
+                                    <div class="share-footer">
+                                        <div class="footer-option">
+                                            <button onclick="tag('post-2')" id="post-2-tag">Gắn thẻ mọi người</button>
+                                            <button onclick="location_open('post-2')" id="post-2-location">Thêm vị trí</button>
+                                        </div>
+                                        <div class="footer-submit">
+                                            <button data-dismiss="modal">Hủy</button>
+                                            <button class="share-submit">Đăng</button>
                                         </div>
                                     </div>
                                 </div>

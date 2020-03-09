@@ -11,6 +11,10 @@
             $(".newpost-function").css("display", "block");
         }
     });
+
+    // share modal
+    $(".tag-input").css("display", "none");
+    $(".location-input").css("display", "none");
 });
 
 function readURL(input) {
@@ -27,4 +31,24 @@ function readURL(input) {
         reader.readAsDataURL(input.files[0]);
     }
     $(".post-image").css("display", "block");
+}
+
+function tag(id) {
+    if ($("#" + id + "-taginput").hasClass('show')) {
+        $("#" + id + "-taginput").removeClass('show');
+        $("#" + id + "-taginput").css('display', 'none');
+    } else {
+        $("#" + id + "-taginput").addClass('show');
+        $("#" + id + "-taginput").css('display', 'block');
+    }
+}
+
+function location_open(id) {
+    if ($("#" + id + "-locationinput").hasClass("show")) {
+        $("#" + id + "-locationinput").css('display', 'none');
+        $("#" + id + "-locationinput").removeClass('show');
+    } else {
+        $("#" + id + "-locationinput").addClass('show');
+        $("#" + id + "-locationinput").css('display', 'block');
+    }
 }
