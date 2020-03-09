@@ -147,6 +147,8 @@
     <Content Include="Assets\css\layouts\messenger.css" />
     <Content Include="Assets\css\layouts\messenger_section.css" />
     <Content Include="Assets\css\layouts\post_box.css" />
+    <Content Include="Assets\css\pages\404page.css" />
+    <Content Include="Assets\css\pages\404page.min.css" />
     <Content Include="Assets\css\pages\group_anh.css" />
     <Content Include="Assets\css\pages\group_gioithtieu.css" />
     <Content Include="Assets\css\pages\group_thanhvien.css" />
@@ -163,6 +165,7 @@
     <Content Include="Assets\javascript\ForgetPass.js" />
     <Content Include="Assets\javascript\Login.js" />
     <Content Include="Assets\javascript\Register.js" />
+    <Content Include="Assets\javascript\RegisterStep1.js" />
     <Content Include="Assets\js\header.js" />
     <Content Include="Assets\js\jquery-3.4.1.min.js" />
     <Content Include="Assets\js\love_button.js" />
@@ -194,7 +197,6 @@
     <Content Include="Areas\Client\Views\Home\Index.cshtml" />
     <Content Include="Areas\Client\Views\Register\Index.cshtml" />
     <Content Include="Areas\Client\Views\ForgetPass\SendEmail.cshtml" />
-    <Content Include="Areas\Client\Views\ForgetPass\ChangePass.cshtml" />
     <Content Include="Areas\Client\Views\Layout\header.cshtml" />
     <Content Include="Areas\Client\Views\Layout\edit_sidebar.cshtml" />
     <Content Include="Areas\Client\Views\Layout\group\group_header.cshtml" />
@@ -217,6 +219,13 @@
     <Content Include="Areas\Client\Views\Group\group_anh.cshtml" />
     <Content Include="Areas\Client\Views\Group\group_thanhvien.cshtml" />
     <Content Include="Areas\Client\Views\ChatBox\Index.cshtml" />
+    <Content Include="Areas\Client\Views\Personal\Index.cshtml" />
+    <Content Include="Areas\Client\Views\Shared\_PersonalPage.cshtml" />
+    <Content Include="Areas\Client\Views\Personal\UserInfo_Header.cshtml" />
+    <Content Include="Areas\Client\Views\Error\Index.cshtml" />
+    <Content Include="Assets\css\pages\404page.scss" />
+    <Content Include="Assets\css\pages\404page.css.map" />
+    <Content Include="Areas\Client\Views\ForgetPass\ChangePass.cshtml" />
     <None Include="Assets\views\layouts\footer.cshtml" />
     <None Include="Assets\views\layouts\header.cshtml" />
     <None Include="Assets\views\layouts\user-info.cshtml" />
@@ -248,6 +257,11 @@
     <Content Include="Content\PagedList.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Global.asax" />
+    <Content Include="Images\22904751_688560231353134_2748711313877205190_o.jpg" />
+    <Content Include="Images\46511147_548625832231886_7575327484049096704_n.jpg" />
+    <Content Include="Images\60331415_453474005405695_5368361850419281920_o.jpg" />
+    <Content Include="Images\84571659_2767643856796452_612394656314949632_n.jpg" />
+    <Content Include="Images\86698400_1992654244211645_6346707511562731520_o.jpg" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -360,14 +374,17 @@
     <Compile Include="Areas\Client\code\UserSession.cs" />
     <Compile Include="Areas\Client\Controllers\BaseController.cs" />
     <Compile Include="Areas\Client\Controllers\ChatBoxController.cs" />
+    <Compile Include="Areas\Client\Controllers\ErrorController.cs" />
     <Compile Include="Areas\Client\Controllers\ForgetPassController.cs" />
+    <Compile Include="Areas\Client\Controllers\FriendController.cs" />
     <Compile Include="Areas\Client\Controllers\GroupController.cs" />
     <Compile Include="Areas\Client\Controllers\HomeController.cs" />
     <Compile Include="Areas\Client\Controllers\LoginController.cs" />
+    <Compile Include="Areas\Client\Controllers\PersonalController.cs" />
     <Compile Include="Areas\Client\Controllers\RegisterController.cs" />
     <Compile Include="Areas\Client\Models\ForgetPassModel.cs" />
     <Compile Include="Areas\Client\Models\LoginModel.cs" />
-    <Compile Include="Areas\Client\Models\Register.cs" />
+    <Compile Include="Areas\Client\Models\RegisterModel.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="Common\Accessories.cs" />
     <Compile Include="Common\CommonConstants.cs" />
@@ -434,10 +451,13 @@
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Areas\Admin\Views\Shared\" />
     <Folder Include="Areas\Client\Views\Base\" />
+    <Folder Include="Areas\Client\Views\Chat\" />
     <Folder Include="Areas\Client\Views\Default\" />
+    <Folder Include="Areas\Client\Views\Friend\" />
     <Folder Include="Areas\Client\Views\User\" />
     <Folder Include="Controllers\" />
     <Folder Include="Models\" />
+    <Folder Include="Videos\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />

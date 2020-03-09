@@ -11,5 +11,8 @@ namespace InsBook.Areas.Client.Models
         [Key]
         [Required(ErrorMessage = "Mời nhập email")]
         public string Email { set; get; }
+        public string Pass { set; get; }
+        public string CheckPass { set; get; }
+
     }
 }

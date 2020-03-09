@@ -17,52 +17,53 @@ namespace Model.Dao
         {
             db = new InsBookDbContext();
         }
-        public long Insert(nguoidung entity)
+        public int Insert(nguoidung entity)
         {
             db.nguoidungs.Add(entity);
             db.SaveChanges();
             return entity.id;
         }
-        //public IEnumerable<User> ListAllPaging(string searchString, int page, int pageSize)
-        //{
-        //    //var pageSize = int.Parse(ConfigurationManager.AppSettings["PageSize"].ToString);
-        //    IQueryable<User> model = db.Users;
-        //    if (!string.IsNullOrEmpty(searchString))
-        //    {
-        //        model = model.Where(x => x.UserName.Contains(searchString) || x.Name.Contains(searchString));
-        //    }
-        //    return model.OrderByDescending(x => x.CreatedBy).ToPagedList(page, pageSize);
-        //}
+        
         public nguoidung GetbyEmail(string email)
         {
             return db.nguoidungs.SingleOrDefault(x => x.email == email);
+        }
+        public nguoidung GetbyID(int id)
+        {
+            return db.nguoidungs.Find(id);
         }
         //public User ViewDetail(int id)
         //{
         //    return db.Users.Find(id);
         //}
-        //public bool Update(User entity)
-        //{
-        //    try
-        //    {
-        //        var user = db.Users.Find(entity.ID);
-        //        user.Name = entity.Name;
-        //        if (!string.IsNullOrEmpty(entity.Password))
-        //        {
-        //            user.Password = entity.Password;
-        //        }
-        //        user.Address = entity.Address;
-        //        user.Email = entity.Email;
-        //        user.ModifiedBy = entity.ModifiedBy;
-        //        user.ModifiedDate = DateTime.Now;
-        //        db.SaveChanges();
-        //        return true;
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        return false;
-        //    }
-        //}
+        public bool Update(nguoidung entity)
+        {
+            try
+            {
+                var user = db.nguoidungs.Find(entity.id);
+                user.ho = entity.ho;
+                user.ten = entity.ten;
+                if (!string.IsNullOrEmpty(entity.matkhau))
+                {
+                    user.matkhau = entity.matkhau;
+                }
+                user.ngaysinh = entity.ngaysinh;
+                user.email = entity.email;
+                user.matkhau = entity.matkhau;
+                user.gioitinh = entity.gioitinh;
+                user.ngaytao = DateTime.Now;
+                user.ngaycapnhat = DateTime.Now;
+                user.soluongbanbe = 0;
+                user.soluongtheodoi = 0;
+                user.vaitro = 1;
+                db.SaveChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
         //public bool Delete(int id)
         //{
         //    try

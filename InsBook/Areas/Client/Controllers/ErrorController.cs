@@ -6,9 +6,9 @@ using System.Web.Mvc;
 
 namespace InsBook.Areas.Client.Controllers
 {
-    public class ChatBoxController : Controller // !!! mai sau sửa lại thành Base !!!
+    public class ErrorController : Controller
     {
-        // GET: Client/ChatBox
+        // GET: Client/Error
         public ActionResult Index()
         {
             return View();

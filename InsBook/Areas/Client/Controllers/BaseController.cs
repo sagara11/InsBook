@@ -15,9 +15,7 @@ namespace InsBook.Areas.Client.Controllers
         // GET: Admin/Base
         protected override void OnActionExecuting(ActionExecutingContext filterContext)
         {
-            // !!! Chưa xử lý cookie !!!
-            var session = (UserLogin)Session[CommonConstants.USER_SESSION]; 
-            if (session == null)
+            if (Session[CommonConstants.USER_SESSION] == null && Request.Cookies[CommonConstants.USER_COOKIE] == null)
             {
                 filterContext.Result = new RedirectToRouteResult(new
                     RouteValueDictionary(new { controller = "Login", action = "Index", area = "Client"}));
