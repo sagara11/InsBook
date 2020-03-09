@@ -225,6 +225,7 @@
     <Content Include="Areas\Client\Views\Error\Index.cshtml" />
     <Content Include="Assets\css\pages\404page.scss" />
     <Content Include="Assets\css\pages\404page.css.map" />
+    <Content Include="Areas\Client\Views\ForgetPass\ChangePass.cshtml" />
     <None Include="Assets\views\layouts\footer.cshtml" />
     <None Include="Assets\views\layouts\header.cshtml" />
     <None Include="Assets\views\layouts\user-info.cshtml" />
