@@ -79,6 +79,12 @@ main {
                 width: 100%;
             }
 
+            main #newpost .newpost-input .tag-input,
+            main #newpost .newpost-input .location-input {
+                margin: 10px 0px;
+                width: 100%;
+            }
+
             main #newpost .newpost-input .new-media-content {
                 margin-top: 10px;
                 width: 100%;

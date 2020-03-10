@@ -35,10 +35,16 @@
                         <div class="post-image">
                             <img height="100px" width="100px" id="img" src="#" alt="" />
                         </div>
+                        <div id="newpost-taginput" class="tag-input">
+                            <input class="form-control" type="text" placeholder="Gắn thẻ bạn bè">
+                        </div>
+                        <div id="newpost-locationinput" class="location-input">
+                            <input class="form-control" type="text" placeholder="Bạn đang ở đâu?">
+                        </div>
                         <div class="new-media-content">
                             <input onchange="readURL(this);" type="file" class="custom-control-input" id="customCheck" name="example1">
                             <label class="custom-control-file" for="customCheck">Ảnh/Video</label>
-                            <label>
+                            <label onclick="tag('newpost')" id="newpost-tag">
                                 Gắn thẻ bạn bè
                             </label>
                             <label id="newpost-function-btn">
@@ -48,7 +54,7 @@
                                 <label>
                                     Cảm xúc - hoạt động
                                 </label>
-                                <label>
+                                <label onclick="location_open('newpost')" id="newpost-location">
                                     Check in
                                 </label>
                             </div>
@@ -176,7 +182,7 @@
                                     <div class="share-footer">
                                         <div class="footer-option">
                                             <button onclick="tag('post-1')" id="post-1-tag">Gắn thẻ mọi người</button>
-                                            <button onclick="location_open('post-1')" id="post-1-tag">Thêm vị trí</button>
+                                            <button onclick="location_open('post-1')" id="post-1-location">Thêm vị trí</button>
                                         </div>
                                         <div class="footer-submit">
                                             <button data-dismiss="modal">Hủy</button>
