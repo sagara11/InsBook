@@ -39,7 +39,7 @@ namespace InsBook.Areas.Client.Controllers
         {
             var user = new UserDao().GetbyEmail(model.EmailForgetPass);
 
-            if(user != null)
+            if (user != null)
             {
                 // xử lý phần đuôi link
                 var link = "https://localhost:44307/Client/ForgetPass/ChangePass" + "/" + Link(model.EmailForgetPass);
@@ -63,7 +63,7 @@ namespace InsBook.Areas.Client.Controllers
             var issueTime = DateTime.Now;
 
             var iat = (int)issueTime.Subtract(utc0).TotalSeconds;
-            var exp = (int)issueTime.AddMinutes(3).Subtract(utc0).TotalSeconds; // đoạn mã hóa code chỉ giới hạn trong 3p
+            var exp = (int)issueTime.AddMinutes(10).Subtract(utc0).TotalSeconds; // đoạn mã hóa code chỉ giới hạn trong 3p
 
             var payload = new
             {
@@ -110,65 +110,60 @@ namespace InsBook.Areas.Client.Controllers
         [HttpGet]
         public ActionResult ChangePass(string id)
         {
-            // lấy đối tượng session
-            var session = (ForgetPass)Session[CommonConstants.FORGETPASS_SESSION];
-            
-            var utc0 = new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc); // chọn gốc thời gian
-            var issueTime = DateTime.Now; // lấy thời gian thực tế
-
-            var exp = (int)issueTime.Subtract(utc0).TotalSeconds; // thời gian chạy
-
-            
-            if (Session[CommonConstants.FORGETPASS_SESSION] != null && (session.TimeOut - exp) >= 0 ) // kiểm tra xem đã có session quên mật khẩu chưa và nó chỉ sống trong 3p
+            try
             {
-                // decode
-                var user = JsonWebToken.Decode(id, session.PrivateKey);
-                // chuyển từ json thành mảng
-                var address = new JavaScriptSerializer().Deserialize<dynamic>(user);
+                // lấy đối tượng session
+                var session = (ForgetPass)Session[CommonConstants.FORGETPASS_SESSION];
 
-                if (address["iss"] == session.Email)
+                var utc0 = new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc); // chọn gốc thời gian
+                var issueTime = DateTime.Now; // lấy thời gian thực tế
+
+                var exp = (int)issueTime.Subtract(utc0).TotalSeconds; // thời gian chạy
+
+
+                if (Session[CommonConstants.FORGETPASS_SESSION] != null && (session.TimeOut - exp) >= 0) // kiểm tra xem đã có session quên mật khẩu chưa và nó chỉ sống trong 3p
                 {
-                    var temp_user = new UserDao().GetbyEmail(session.Email);
-                    ChangePassModel model = new ChangePassModel();
-                    model.SoNguoiTheoDoi = temp_user.soluongtheodoi;
-                    model.SoLuongBanBe = temp_user.soluongbanbe;
-                    model.Ho = temp_user.ho;
-                    model.Ten = temp_user.ten;
-                    return View(model);
+                    // decode
+                    var user = JsonWebToken.Decode(id, session.PrivateKey);
+                    // chuyển từ json thành mảng
+                    var address = new JavaScriptSerializer().Deserialize<dynamic>(user);
+
+                    if (address["iss"] == session.Email)
+                    {
+                        return View();
+                    }
+                    else
+                    {
+                        return RedirectToAction("Index", "Login");
+                    }
                 }
                 else
                 {
                     return RedirectToAction("Index", "Login");
                 }
             }
-            else
+            catch(Exception e)
             {
                 return RedirectToAction("Index", "Login");
             }
-            // chưa có view cơ bản
-            // đổi mật khẩu 
             // gỡ bạn bè thì gọi ý bạn mới
-            // hàm gửi email thiếu check email.
         }
         [HttpPost]
-        public ActionResult ChangePassWord(ChangePassModel model)
+        public ActionResult ChangePass(ForgetPassModel model)
         {
-            var session = (ForgetPass)Session[CommonConstants.FORGETPASS_SESSION];
-            var user = new UserDao().GetbyEmail(session.Email);
-            if(Encryptor.MD5Hash(model.MatKhauHienTai) == user.matkhau)
+            if(model.Pass == model.CheckPass)
             {
-                string NewPass = Encryptor.MD5Hash(model.MatKhauMoi);
+                var session = (ForgetPass)Session[CommonConstants.FORGETPASS_SESSION];
+                var user = new UserDao().GetbyEmail(session.Email);
+                string NewPass = Encryptor.MD5Hash(model.Pass);
                 user.matkhau = NewPass;
                 bool result = new UserDao().Update(user);
-                if(result)
-                return RedirectToAction("Index", "Home");
+                if (result)
+                    return RedirectToAction("Index", "Login");
                 else
-                return RedirectToAction("ChangePassWord", "ForgetPass");
+                    return RedirectToAction("ChangePassWord", "ForgetPass");
             }
-            else
-            {
-                return RedirectToAction("ChangePassWord", "ForgetPass");
-            }
+            return RedirectToAction("ChangePassWord", "ForgetPass");
         }
     }
 }

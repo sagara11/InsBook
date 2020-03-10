@@ -162,6 +162,7 @@
     <Content Include="Assets\css\pages\register.min.css" />
     <Content Include="Assets\css\pages\user-info.css" />
     <Content Include="Assets\css\pages\user-info.min.css" />
+    <Content Include="Assets\javascript\ChangePass.js" />
     <Content Include="Assets\javascript\ForgetPass.js" />
     <Content Include="Assets\javascript\Login.js" />
     <Content Include="Assets\javascript\Register.js" />
