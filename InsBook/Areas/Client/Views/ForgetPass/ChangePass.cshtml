@@ -44,6 +44,7 @@
                                     @Html.PasswordFor(model => model.CheckPass, new { @class = "form-control", @placeholder = "Mật khẩu", @autoforcus = "autoforcus" })
                                     <span class="success" id="check-CheckPass"><i class="fas fa-check-circle"></i></span>
                                 </div>
+                                @Html.HiddenFor(model => model.Token, new { @class = "form-control" })
                                 <button type="submit" class="btn btn-block btn-primary" id="submit">Xác Nhận</button>
                             }
                         </div>

@@ -108,7 +108,7 @@ namespace InsBook.Areas.Client.Controllers
         }
 
         [HttpGet]
-        public ActionResult ChangePass(string id)
+        public ActionResult ChangePass(string token)
         {
             try
             {
@@ -124,12 +124,13 @@ namespace InsBook.Areas.Client.Controllers
                 if (Session[CommonConstants.FORGETPASS_SESSION] != null && (session.TimeOut - exp) >= 0) // kiểm tra xem đã có session quên mật khẩu chưa và nó chỉ sống trong 3p
                 {
                     // decode
-                    var user = JsonWebToken.Decode(id, session.PrivateKey);
+                    var user = JsonWebToken.Decode(token, session.PrivateKey);
                     // chuyển từ json thành mảng
                     var address = new JavaScriptSerializer().Deserialize<dynamic>(user);
 
                     if (address["iss"] == session.Email)
                     {
+                        ViewBag.token = token;
                         return View();
                     }
                     else
@@ -142,28 +143,64 @@ namespace InsBook.Areas.Client.Controllers
                     return RedirectToAction("Index", "Login");
                 }
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 return RedirectToAction("Index", "Login");
             }
-            // gỡ bạn bè thì gọi ý bạn mới
         }
+
         [HttpPost]
         public ActionResult ChangePass(ForgetPassModel model)
         {
-            if(model.Pass == model.CheckPass)
+            try
             {
                 var session = (ForgetPass)Session[CommonConstants.FORGETPASS_SESSION];
-                var user = new UserDao().GetbyEmail(session.Email);
-                string NewPass = Encryptor.MD5Hash(model.Pass);
-                user.matkhau = NewPass;
-                bool result = new UserDao().Update(user);
-                if (result)
-                    return RedirectToAction("Index", "Login");
+
+                var utc0 = new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc); // chọn gốc thời gian
+                var issueTime = DateTime.Now; // lấy thời gian thực tế
+
+                var exp = (int)issueTime.Subtract(utc0).TotalSeconds; // thời gian chạy
+
+
+                if (Session[CommonConstants.FORGETPASS_SESSION] != null && (session.TimeOut - exp) >= 0) // kiểm tra xem đã có session quên mật khẩu chưa và nó chỉ sống trong 3p
+                {
+                    // decode
+                    var user = JsonWebToken.Decode(model.Token, session.PrivateKey);
+                    // chuyển từ json thành mảng
+                    var address = new JavaScriptSerializer().Deserialize<dynamic>(user);
+
+                    if (address["iss"] == session.Email)
+                    {
+                        if (model.Pass == model.CheckPass)
+                        {
+                            var users = new UserDao().GetbyEmail(session.Email);
+                            string NewPass = Encryptor.MD5Hash(model.Pass);
+                            users.matkhau = NewPass;
+                            bool result = new UserDao().Update(users);
+                            if (result)
+                                return RedirectToAction("Index", "Login");
+                            else
+                                return RedirectToAction("ChangePassWord", "ForgetPass");
+                        }
+                        return RedirectToAction("ChangePassWord", "ForgetPass");
+
+                    }
+                    else
+                    {
+                        return RedirectToAction("Index", "Login");
+                    }
+                }
                 else
-                    return RedirectToAction("ChangePassWord", "ForgetPass");
+                {
+                    return RedirectToAction("Index", "Login");
+                }
             }
-            return RedirectToAction("ChangePassWord", "ForgetPass");
+            catch (Exception e)
+            {
+                return RedirectToAction("Index", "Login");
+            }
         }
     }
 }
+
+// chưa làm được bấm kết bạn thì nút bi đổi >>>

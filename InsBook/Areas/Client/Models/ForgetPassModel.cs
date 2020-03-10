@@ -13,6 +13,6 @@ namespace InsBook.Areas.Client.Models
         public string Email { set; get; }
         public string Pass { set; get; }
         public string CheckPass { set; get; }
-
+        public string Token { set; get; }
     }
 }

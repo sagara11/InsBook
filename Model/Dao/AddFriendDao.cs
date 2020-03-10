@@ -35,23 +35,28 @@ namespace Model.Dao
             // IdBuddy = user... chua lam duoc
             // IdSchoolmate = ... chua lam duoc
             // IdComrade = ... chua lam duoc
-            List<int> IdGender = Gender(user.gioitinh);
-            List<int> IdBirthDay = Birthday(user.ngaysinh);
-
-            // Chưa xử lý trùng
+            List<int> IdGender = Gender(user.gioitinh, user.id);
+            List<int> IdBirthDay = Birthday(user.ngaysinh, user.id);
             
-            // Các câu truy vấn chỉ theo id
+            object[] sqlParam1 =
+                {
+                    new SqlParameter("@idGender", String.Join("),(", IdGender.ToArray())),
+                    new SqlParameter("@idBirthDay", String.Join("),(", IdBirthDay.ToArray()))
+                };
+
+            List<int> ID = db.Database.SqlQuery<int>("MergeID @idGender, @idBirthDay", sqlParam1).ToList();
+
             List<AddFriendModel> users = new List<AddFriendModel>();
-            foreach (int Id in IdGender)
+            foreach (int Id in ID)
             {
-                object[] sqlParams =
+                object[] sqlParam2 =
                 {
                     new SqlParameter("@id", Id)
                 };
-                users.Add(db.Database.SqlQuery<AddFriendModel>("ListAddFriend @id", sqlParams).Single());
+                users.Add(db.Database.SqlQuery<AddFriendModel>("ListAddFriend @id", sqlParam2).Single());
             }
-            // Danh sách tìm đc đang có cả chính nó
-            // Danh sách tìm dc phải loại bỏ những thằng đã kb với nhau, chặn, đã gửi lời kb
+            //mới làm ưu tiên theo độ trùng. về sau làm ưu tiên độ trùng + THỨ TỰ ƯU TIÊN
+
             // trả lại danh sách nguoidung
             return users;
         }
@@ -83,28 +88,28 @@ namespace Model.Dao
         //}
 
         // -- phụ thuoc vao gioi tinh (Nam thì ưu tiên nữ, Nữ thì ưu tiên nam)
-        public List<int> Gender(string searchString)
+        public List<int> Gender(string search, int id)
         {
-            string temp = (searchString == "Nam" ? "Nữ" : "Nam");
-            
-            // sử dụng LinQ (câu lệnh SQL server)
-            var model = from a in db.nguoidungs
-                        where a.gioitinh == temp
-                        select a.id;
-            
-            // trả danh sách id
-            return model.ToList();
+            string temp = (search == "Nam" ? "Nữ" : "Nam");
+
+            object[] sqlParams =
+            {
+                new SqlParameter("@id", id),
+                new SqlParameter("@gioitinh", temp)
+            };
+            return db.Database.SqlQuery<int>("Gender @id, @gioitinh", sqlParams).ToList();
         }
 
         // -- phụ thuộc ngày tháng năm
-        public List<int> Birthday(DateTime? search)
+        public List<int> Birthday(DateTime? search, int id)
         {
             // trả danh sách id
             object[] sqlParams =
             {
+                new SqlParameter("@id", id),
                 new SqlParameter("@ngaysinh", search)
             };
-            return db.Database.SqlQuery<int>("Birthday @ngaysinh", sqlParams).ToList();
+            return db.Database.SqlQuery<int>("Birthday @id, @ngaysinh", sqlParams).ToList();
         }
     }
 }
