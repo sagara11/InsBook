@@ -1,0 +1,251 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Client/Views/Shared/Group.cshtml";
+}
+@section css {
+    <link href="~/Assets/css/pages/group_thaoluan.css" rel="stylesheet" />
+}
+@{
+    Html.RenderPartial("~/Areas/Client/Views/Layout/header.cshtml");
+}
+<main>
+    <div class="container">
+        <div class="row">
+            <div class="col-25">
+                @{
+                    Html.RenderPartial("~/Areas/Client/Views/Layout/group/group_sidebar.cshtml");
+                }
+            </div>
+            <div class="col-50">
+                @{
+                    Html.RenderPartial("~/Areas/Client/Views/Layout/group/group_header.cshtml");
+                }
+                <!-- New-post -->
+                <section id="newpost">
+                    <div class="newpost-header">
+                        <h6>Tạo bài viết</h6>
+                        <h6 id="newpost-close">&times;</h6>
+                    </div>
+                    <div class="newpost-input">
+                        <div class="user-avatar">
+                            <img class="rounded rounded-circle" height="50px" width="50px" src="http://localhost/socialnetwork_frontend/media/78834391_459110258126325_6149001856166133760_n.jpg" alt="">
+                        </div>
+                        <div class="textarea">
+                            <textarea class="form-control" placeholder="Bạn đang nghĩ gì?" name="" id="main-input"></textarea>
+                        </div>
+                        <div class="post-image">
+                            <img height="100px" width="100px" id="img" src="#" alt="" />
+                        </div>
+                        <div class="new-media-content">
+                            <input onchange="readURL(this);" type="file" class="custom-control-input" id="customCheck" name="example1">
+                            <label class="custom-control-file" for="customCheck">Ảnh/Video</label>
+                            <label>
+                                Gắn thẻ bạn bè
+                            </label>
+                            <label id="newpost-function-btn">
+                                ...
+                            </label>
+                            <div class="newpost-function">
+                                <label>
+                                    Cảm xúc - hoạt động
+                                </label>
+                                <label>
+                                    Check in
+                                </label>
+                            </div>
+                        </div>
+                        <div class="submit-btn-contain">
+                            <button>Đăng</button>
+                        </div>
+                    </div>
+                </section>
+                <section id="group-content">
+                    <div class="post-box">
+                        <div class="post-title">
+                            <img height="50px" width="50px" class="rounded rounded-circle" src="~/Assets/media/78834391_459110258126325_6149001856166133760_n.jpg" alt="">
+                            <p>name</p>
+                        </div>
+                        <div class="post-content" data-toggle="modal" data-target="#modal1">
+                            <img class="img-fluid" src="~/Assets/media/78834391_459110258126325_6149001856166133760_n.jpg" alt="">
+                        </div>
+                        <div class="post-socialfunction">
+                            <div class="like-comment">
+                                <i class="fa fa-heart-o" aria-hidden="true"></i>
+                                <i class="fa fa-comment-o" aria-hidden="true"></i>
+                                <i class="fa fa-paper-plane-o" aria-hidden="true"></i>
+                            </div>
+                            <div class="like-number">
+                                200 likes
+                            </div>
+                            <div class="post-caption">
+                                Caption
+                            </div>
+                            <div class="post-comment">
+                                <p class="comment-name">Name</p>
+                                <p>comment....</p>
+                            </div>
+                        </div>
+                        <div class="post-usercomment">
+                            <input class="form-control" type="text" placeholder="Thêm bình luận...">
+                            <button>Đăng</button>
+                        </div>
+                        <!-- Modal -->
+                        <div class="post-box-modal modal fade" id="modal1">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="col-7">
+                                        <div class="post-content">
+                                            <img class="img-fluid" src="~/Assets/media/78834391_459110258126325_6149001856166133760_n.jpg" alt="">
+                                        </div>
+                                    </div>
+                                    <div class="col-5">
+                                        <div class="post-title">
+                                            <img height="50px" width="50px" class="rounded rounded-circle" src="~/Assets/media/78834391_459110258126325_6149001856166133760_n.jpg" alt="">
+                                            <p>name</p>
+                                        </div>
+                                        <div class="post-socialfunction">
+                                            <div class="post-caption">
+                                                Caption
+                                            </div>
+                                            <div class="like-comment">
+                                                <i class="fa fa-heart-o" aria-hidden="true"></i>
+                                                <i class="fa fa-comment-o" aria-hidden="true"></i>
+                                                <i class="fa fa-paper-plane-o" aria-hidden="true"></i>
+                                            </div>
+                                            <div class="like-number">
+                                                200 likes
+                                            </div>
+                                            <div class="post-comment">
+                                                <p class="comment-name">Name</p>
+                                                <p>comment....</p>
+                                            </div>
+                                        </div>
+                                        <div class="post-usercomment">
+                                            <input class="form-control" type="text" placeholder="Thêm bình luận...">
+                                            <button>Đăng</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="post-box">
+                        <div class="post-title">
+                            <img height="50px" width="50px" class="rounded rounded-circle" src="~/Assets/media/78834391_459110258126325_6149001856166133760_n.jpg" alt="">
+                            <p>name</p>
+                        </div>
+                        <div class="post-content" data-toggle="modal" data-target="#modal1">
+                            <img class="img-fluid" src="~/Assets/media/78834391_459110258126325_6149001856166133760_n.jpg" alt="">
+                        </div>
+                        <div class="post-socialfunction">
+                            <div class="like-comment">
+                                <i class="fa fa-heart-o" aria-hidden="true"></i>
+                                <i class="fa fa-comment-o" aria-hidden="true"></i>
+                                <i class="fa fa-paper-plane-o" aria-hidden="true"></i>
+                            </div>
+                            <div class="like-number">
+                                200 likes
+                            </div>
+                            <div class="post-caption">
+                                Caption
+                            </div>
+                            <div class="post-comment">
+                                <p class="comment-name">Name</p>
+                                <p>comment....</p>
+                            </div>
+                        </div>
+                        <div class="post-usercomment">
+                            <input class="form-control" type="text" placeholder="Thêm bình luận...">
+                            <button>Đăng</button>
+                        </div>
+                        <!-- Modal -->
+                        <div class="post-box-modal modal fade" id="modal1">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="col-7">
+                                        <div class="post-content">
+                                            <img class="img-fluid" src="~/Assets/media/78834391_459110258126325_6149001856166133760_n.jpg" alt="">
+                                        </div>
+                                    </div>
+                                    <div class="col-5">
+                                        <div class="post-title">
+                                            <img height="50px" width="50px" class="rounded rounded-circle" src="~/Assets/media/78834391_459110258126325_6149001856166133760_n.jpg" alt="">
+                                            <p>name</p>
+                                        </div>
+                                        <div class="post-socialfunction">
+                                            <div class="post-caption">
+                                                Caption
+                                            </div>
+                                            <div class="like-comment">
+                                                <i class="fa fa-heart-o" aria-hidden="true"></i>
+                                                <i class="fa fa-comment-o" aria-hidden="true"></i>
+                                                <i class="fa fa-paper-plane-o" aria-hidden="true"></i>
+                                            </div>
+                                            <div class="like-number">
+                                                200 likes
+                                            </div>
+                                            <div class="post-comment">
+                                                <p class="comment-name">Name</p>
+                                                <p>comment....</p>
+                                            </div>
+                                        </div>
+                                        <div class="post-usercomment">
+                                            <input class="form-control" type="text" placeholder="Thêm bình luận...">
+                                            <button>Đăng</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <div class="col-25">
+                <div class="fixed-side">
+                    <!-- Messenger-section -->
+                    @{
+                        Html.RenderPartial("~/Areas/Client/Views/Layout/messenger/messenger_section.cshtml");
+                    }
+                    <!-- Them thanh vien -->
+                    <section id="add-member">
+                        <p class="add-header">
+                            mời thành viên
+                        </p>
+                        <input class="form-control" type="text" placeholder="Nhập tên thành viên">
+                        <p class="add-header">
+                            thành viên
+                        </p>
+                        <div class="member-avatar d-flex">
+                            <img class="rounded rounded-circle" width="35px" height="35px" src="~/Assets/media/78834391_459110258126325_6149001856166133760_n.jpg" alt="">
+                            <img class="rounded rounded-circle" width="35px" height="35px" src="~/Assets/media/78834391_459110258126325_6149001856166133760_n.jpg" alt="">
+                            <img class="rounded rounded-circle" width="35px" height="35px" src="~/Assets/media/78834391_459110258126325_6149001856166133760_n.jpg" alt="">
+                            <img class="rounded rounded-circle" width="35px" height="35px" src="~/Assets/media/78834391_459110258126325_6149001856166133760_n.jpg" alt="">
+                        </div>
+                        <p class="add-header">
+                            mô tả
+                        </p>
+                        <div class="group-description">
+                            Mô tả của nhóm
+                        </div>
+                        <p class="add-header">
+                            loại nhóm
+                        </p>
+                        <div class="group-type">
+                            Tổng quát
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+@{
+    Html.RenderPartial("~/Areas/Client/Views/Layout/messenger/messenger.cshtml");
+}
+@section js{
+    <script src="~/Assets/js/messenger.js"></script>
+    <script src="~/Assets/js/newsfeed.js"></script>
+    <script src="~/Assets/js/love_button.js"></script>
+}
+

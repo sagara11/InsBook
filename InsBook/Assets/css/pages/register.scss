@@ -1,19 +1,23 @@
 main {
     background-color: rgb(247, 247, 247);
+
     #register-page {
         .images-sidebar {
             height: 618px;
             width: 100%;
+
             img {
                 width: 100%;
                 height: 100%;
                 object-fit: cover;
             }
         }
+
         .form-register {
             background-color: #fff;
             border: 1px solid #dbdbdb;
             margin-bottom: 10px;
+
             h1 {
                 text-align: center;
                 font-size: 36px;
@@ -23,6 +27,7 @@ main {
                 -webkit-text-fill-color: transparent;
                 margin-bottom: 0;
             }
+
             p {
                 margin-bottom: 42px;
                 text-align: center;
@@ -30,78 +35,121 @@ main {
                 font-weight: 500;
                 color: rgb(129, 129, 129);
             }
+
             .register-form {
                 padding: 0 40px;
+
                 form {
                     position: relative;
+
                     .input-group {
                         margin-bottom: 16px;
                         position: relative;
+
+                        input {
+                            max-width: unset;
+                            border-right: none;
+                            padding-right: 0;
+
+                            &:focus {
+                                box-shadow: none;
+                                border: 1px solid #ced4da;
+                                border-right: none;
+                            }
+                        }
+
+                        select {
+                            -webkit-appearance: none;
+                            max-width: unset;
+                            border-right: none;
+                            padding-right: 0;
+                            padding-left: 4px;
+                            &:focus {
+                                box-shadow: none;
+                                border: 1px solid #ced4da;
+                                border-right: none;
+                                outline: none;
+                            }
+                        }
+
+                        span.errors {
+                            display: flex;
+                            align-items: center;
+                            padding-left: 6px;
+                            padding-right: 6px;
+                            border: 1px solid #ced4da;
+                            border-left: none;
+
+                            i {
+                                background-color: red;
+                                color: #fff;
+                                border-radius: 50%;
+                                padding: 2px 4px;
+                                visibility: hidden;
+                                opacity: 0;
+                            }
+                        }
+
+                        span.success {
+                            display: flex;
+                            align-items: center;
+                            padding-left: 6px;
+                            padding-right: 6px;
+                            border: 1px solid #ced4da;
+                            border-left: none;
+
+                            i {
+                                &:before {
+                                    font-size: 20px;
+                                    color: #28a745;
+                                }
+
+                                visibility: hidden;
+                                opacity: 0;
+                            }
+                        }
                     }
+
                     button.btn-primary {
                         margin-top: 20px;
                         position: relative;
                         font-size: 18px;
-                    }
-                    hr {
-                        margin-top: 40px;
-                        position: relative;
-                        margin-bottom: 30px;
-                    }
-                    p {
-                        font-style: normal;
-                        margin-bottom: 0;
-                        width: 30%;
-                        position: absolute;
-                        background-color: #fff;
-                        top: 273px;
-                        left: 128px;
-                    }
-                    button.btn-light {
-                        background-color: #fff;
-                        border: none;
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
                         margin-bottom: 16px;
-                        &:focus {
-                            box-shadow: none;
-                        }
-                        color: #385185;
-                        font-size: 16px;
-                        font-weight: 600;
-                        i {
-                            margin-right: 8px;
-                            font-size: 20px;
-                        }
                     }
                 }
             }
         }
+
         .form-register-register {
             background-color: #fff;
             border: 1px solid #dbdbdb;
             padding: 20px 20px;
+
             p {
                 margin-bottom: 0;
                 text-align: center;
+
                 a {
-                    color : #3897f0;
+                    color: #3897f0;
                     font-weight: 600;
                     text-decoration: none;
                 }
             }
         }
+
         .web-apps {
             padding-top: 20px;
+
             h3 {
                 font-size: 16px;
                 text-align: center;
             }
+
             .web-apps-thumbnai {
                 display: flex;
                 align-items: center;
                 justify-content: center;
+
                 img {
                     height: 40px;
                     width: auto;

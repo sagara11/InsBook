@@ -1,0 +1,54 @@
+﻿
+@{
+    ViewBag.Title = "RegisterStep1";
+    Layout = "~/Areas/Client/Views/Shared/Newsfeed.cshtml";
+}
+@section css {
+    <link href="~/Assets/css/layouts/header.css" rel="stylesheet" />
+    <link href="~/Assets/css/layouts/footer.css" rel="stylesheet" />
+}
+@{
+    Html.RenderPartial("~/Areas/Client/Views/Layout/header.cshtml");
+}
+<main>
+    <div id="step-3">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-2">
+                </div>
+                <div class="col-md-8">
+                    <div id="check-progress-div">
+                        <ul id="check-progress-bar">
+                            <li class="check-progress-item visited"><a href="/Client/Register/RegisterStep1">Thêm bạn bè</a></li>
+                            <li class="check-progress-item visited"><a href="/Client/Register/RegisterStep2">Sửa ảnh đại diện</a></li>
+                            <li class="check-progress-item active"><a href="/Client/Register/RegisterStep3">Hoàn thành</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                </div>
+                <div class="col-md-2">
+
+                </div>
+                <div class="col-md-8">
+                    <div id="register-final-step">
+                        <h3>Chúc mừng bạn !</h3>
+                        <h4>Bạn đã đăng ký tài khoản InsBook thành công</h4>
+                        <p id="register-final-step-title">Bạn có thể sử dụng tài khoản này để đăng nhập tại tất cả các sản phẩm của WibuCorp</p>
+                        <p id="register-final-step-warning"><b>Lưu ý: </b>Nhấn "Cập nhật để bổ sung thêm thông tin nhằm bảo vệ tài khoản của bạn"</p>
+                        <div class="register-final-step-tools">
+                            <button type="button" class="btn btn-primary">Cập nhật</button>
+                            <button type="button" class="btn btn-secondary">Đóng</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+@{
+    Html.RenderPartial("~/Areas/Client/Views/Layout/footer.cshtml");
+}

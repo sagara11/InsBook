@@ -1,0 +1,70 @@
+﻿
+@{
+    ViewBag.Title = "RegisterStep1";
+    Layout = "~/Areas/Client/Views/Shared/Newsfeed.cshtml";
+    var listAddFriend = (List<Model.Models.AddFriendModel>)ViewBag.ListAddFriend;
+}
+@section css {
+    <link href="~/Assets/css/layouts/header.css" rel="stylesheet" />
+    <link href="~/Assets/css/layouts/footer.css" rel="stylesheet" />
+}
+@{
+    Html.RenderPartial("~/Areas/Client/Views/Layout/header.cshtml");
+}
+<main>
+    <div id="step-1">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-2">
+                </div>
+                <div class="col-md-8">
+                    <div id="check-progress-div">
+                        <ul id="check-progress-bar">
+                            <li class="check-progress-item active"><a href="/Client/Register/RegisterStep1">Thêm bạn bè</a></li>
+                            <li class="check-progress-item next"><a href="/Client/Register/RegisterStep2">Sửa ảnh đại diện</a></li>
+                            <li class="check-progress-item"><a href="/Client/Register/RegisterStep3">Hoàn thành</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                </div>
+                <div class="col-md-2">
+
+                </div>
+                <div class="col-md-8">
+                    <div class="add-new-friend">
+                        <a href="/Client/Register/RegisterStep2" title="" class="btn btn-light button-tiep">Tiếp</a>
+                        <h3>Thêm bạn bè</h3>
+                        <p>Chọn bạn bè từ danh sách bên dưới</p>
+                        <p class="list-title">Những người bạn có thể biết</p>
+                        <div class="list-new-friends">
+                            @Html.AntiForgeryToken()
+                            @foreach (var user in listAddFriend)
+                            {
+                                <div class="list-friends-item" id="list-friends-@user.Id">
+                                    <div class="friends-item-avatar">
+                                        <img src="~/Images/22904751_688560231353134_2748711313877205190_o.jpg" />
+                                    </div>
+                                    <p class="friends-item-name"><b>@user.Ho @user.Ten</b> là người bạn có thể biết</p>
+                                    <div class="friends-item-tools">
+                                        <button type="button" class="btn btn-primary" id-add="@user.Id">Thêm bạn bè</button>
+                                        <button type="button" class="btn btn-light" id-disappear="@user.Id">Xóa, gỡ bỏ</button>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+@section js{
+    <script src="~/Assets/javascript/RegisterStep1.js"></script>
+    }
+@{
+    Html.RenderPartial("~/Areas/Client/Views/Layout/footer.cshtml");
+}

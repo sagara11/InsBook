@@ -1,0 +1,185 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Client/Views/Shared/Group.cshtml";
+}
+@section css {
+    <link href="~/Assets/css/pages/group_thanhvien.css" rel="stylesheet" />
+}
+@{
+    Html.RenderPartial("~/Areas/Client/Views/Layout/header.cshtml");
+}
+<main>
+    <div class="container">
+        <div class="row">
+            <div class="col-25">
+                @{
+                    Html.RenderPartial("~/Areas/Client/Views/Layout/group/group_sidebar.cshtml");
+                }
+            </div>
+            <div class="col-50">
+                @{
+                    Html.RenderPartial("~/Areas/Client/Views/Layout/group/group_header.cshtml");
+                }
+                <!-- Thanh vien -->
+                <section id="memberlist">
+                    <div class="list-header">
+                        <div>
+                            <span id="title">Thành viên</span>
+                            <span id="number">3000</span>
+                        </div>
+                        <div>
+                            <input type="text" placeholder="Tìm thành viên" class="form-control">
+                        </div>
+                    </div>
+                    <div class="member-box">
+                        <div class="member-info">
+                            <img src="~/Assets/media/78834391_459110258126325_6149001856166133760_n.jpg" class="rounded roundec-circle" height="50px" width="50px" alt="">
+                            <div class="member-name">
+                                <p>Hùng Phong</p>
+                                <small>Info</small>
+                            </div>
+                        </div>
+                        <div class="member-setting">
+                            <button>...</button>
+                        </div>
+                    </div>
+                    <!-- Quản trị viên -->
+                    <div class="member-type">
+                        <h5 class="d-inline">Quản trị viên và người kiểm duyệt</h5>
+                        <span>5</span>
+                    </div>
+                    <div class="member-box">
+                        <div class="member-info">
+                            <img src="~/Assets/media/78834391_459110258126325_6149001856166133760_n.jpg" class="rounded roundec-circle" height="50px" width="50px" alt="">
+                            <div class="member-name">
+                                <p>Hùng Phong</p>
+                                <small>Info</small>
+                            </div>
+                        </div>
+                        <div class="member-setting">
+                            <button>Thêm bạn bè</button>
+                        </div>
+                    </div>
+                    <div class="member-box">
+                        <div class="member-info">
+                            <img src="~/Assets/media/78834391_459110258126325_6149001856166133760_n.jpg" class="rounded roundec-circle" height="50px" width="50px" alt="">
+                            <div class="member-name">
+                                <p>Hùng Phong</p>
+                                <small>Info</small>
+                            </div>
+                        </div>
+                        <div class="member-setting">
+                            <button>Thêm bạn bè</button>
+                        </div>
+                    </div>
+                    <div class="member-box">
+                        <div class="member-info">
+                            <img src="~/Assets/media/78834391_459110258126325_6149001856166133760_n.jpg" class="rounded roundec-circle" height="50px" width="50px" alt="">
+                            <div class="member-name">
+                                <p>Hùng Phong</p>
+                                <small>Info</small>
+                            </div>
+                        </div>
+                        <div class="member-setting">
+                            <button>Thêm bạn bè</button>
+                        </div>
+                    </div>
+                    <div class="more">
+                        <a href="">Xem thêm</a>
+                    </div>
+                    <!-- Thành viên -->
+                    <div class="member-type">
+                        <h5 class="d-inline">Thành viên</h5>
+                        <span>5</span>
+                    </div>
+                    <div class="member-box">
+                        <div class="member-info">
+                            <img src="~/Assets/media/78834391_459110258126325_6149001856166133760_n.jpg" class="rounded roundec-circle" height="50px" width="50px" alt="">
+                            <div class="member-name">
+                                <p>Hùng Phong</p>
+                                <small>Info</small>
+                            </div>
+                        </div>
+                        <div class="member-setting">
+                            <button>Thêm bạn bè</button>
+                        </div>
+                    </div>
+                    <div class="member-box">
+                        <div class="member-info">
+                            <img src="~/Assets/media/78834391_459110258126325_6149001856166133760_n.jpg" class="rounded roundec-circle" height="50px" width="50px" alt="">
+                            <div class="member-name">
+                                <p>Hùng Phong</p>
+                                <small>Info</small>
+                            </div>
+                        </div>
+                        <div class="member-setting">
+                            <button>Thêm bạn bè</button>
+                        </div>
+                    </div>
+                    <div class="member-box">
+                        <div class="member-info">
+                            <img src="~/Assets/media/78834391_459110258126325_6149001856166133760_n.jpg" class="rounded roundec-circle" height="50px" width="50px" alt="">
+                            <div class="member-name">
+                                <p>Hùng Phong</p>
+                                <small>Info</small>
+                            </div>
+                        </div>
+                        <div class="member-setting">
+                            <button>Thêm bạn bè</button>
+                        </div>
+                    </div>
+                    <div class="more">
+                        <a href="">Xem thêm</a>
+                    </div>
+                </section>
+            </div>
+            <div class="col-25">
+                <div class="fixed-side">
+                    <!-- Messenger-section -->
+                    @{
+                        Html.RenderPartial("~/Areas/Client/Views/Layout/messenger/messenger_section.cshtml");
+                    }
+                    <!-- Them thanh vien -->
+                    <section id="add-member">
+                        <p class="add-header">
+                            mời thành viên
+                        </p>
+                        <input class="form-control" type="text" placeholder="Nhập tên thành viên">
+                        <p class="add-header">
+                            thành viên
+                        </p>
+                        <div class="member-avatar d-flex">
+                            <img class="rounded rounded-circle" width="35px" height="35px" src="~/Assets/media/78834391_459110258126325_6149001856166133760_n.jpg" alt="">
+                            <img class="rounded rounded-circle" width="35px" height="35px" src="~/Assets/media/78834391_459110258126325_6149001856166133760_n.jpg" alt="">
+                            <img class="rounded rounded-circle" width="35px" height="35px" src="~/Assets/media/78834391_459110258126325_6149001856166133760_n.jpg" alt="">
+                            <img class="rounded rounded-circle" width="35px" height="35px" src="~/Assets/media/78834391_459110258126325_6149001856166133760_n.jpg" alt="">
+                        </div>
+                        <p class="add-header">
+                            mô tả
+                        </p>
+                        <div class="group-description">
+                            Mô tả của nhóm
+                        </div>
+                        <p class="add-header">
+                            loại nhóm
+                        </p>
+                        <div class="group-type">
+                            Tổng quát
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+@{
+    Html.RenderPartial("~/Areas/Client/Views/Layout/messenger/messenger.cshtml");
+}
+@section js{
+    <script src="~/Assets/js/messenger.js"></script>
+    <script src="~/Assets/js/newsfeed.js"></script>
+    <script src="~/Assets/js/love_button.js"></script>
+}
+
+

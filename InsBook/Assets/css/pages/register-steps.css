@@ -1,0 +1,281 @@
+main #check-progress-div {
+  margin: 0 auto;
+  position: relative;
+  height: 80px; }
+  main #check-progress-div #check-progress-bar {
+    border-radius: 15px;
+    height: 15px;
+    margin: 0 auto;
+    padding: 0;
+    position: absolute;
+    width: 100%;
+    background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+    background-size: 1rem 1rem;
+    background-color: #ddd; }
+    main #check-progress-div #check-progress-bar:before {
+      background-color: blue;
+      border-radius: 15px;
+      content: " ";
+      height: 15px;
+      left: 0;
+      position: absolute;
+      width: 14%;
+      background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+      background-size: 1rem 1rem;
+      background-color: #57aed1; }
+    main #check-progress-div #check-progress-bar li {
+      display: inline-block;
+      margin: 40px 0 0;
+      padding: 0;
+      text-align: center;
+      width: 32%;
+      color: #ccc;
+      font-size: 16px;
+      font-weight: 600;
+      position: relative; }
+      main #check-progress-div #check-progress-bar li:before {
+        height: 45px;
+        left: 40%;
+        line-height: 45px;
+        position: absolute;
+        top: -58px;
+        width: 45px;
+        z-index: 99;
+        background-color: #ddd;
+        border: 2px solid #fff;
+        border-radius: 50%;
+        color: #fff;
+        font-size: 16px;
+        font-weight: 700;
+        text-align: center;
+        text-shadow: 1px 1px rgba(0, 0, 0, 0.2); }
+      main #check-progress-div #check-progress-bar li a {
+        color: #6c757d;
+        font-size: 18px;
+        font-weight: 600;
+        text-decoration: none; }
+      main #check-progress-div #check-progress-bar li:nth-child(1):before {
+        content: "1"; }
+      main #check-progress-div #check-progress-bar li:nth-child(2):before {
+        content: "2"; }
+      main #check-progress-div #check-progress-bar li:nth-child(3):before {
+        content: "3"; }
+      main #check-progress-div #check-progress-bar li.active {
+        font-weight: bold; }
+        main #check-progress-div #check-progress-bar li.active:before {
+          background: #8bc53f;
+          z-index: 99999; }
+        main #check-progress-div #check-progress-bar li.active:after {
+          background-color: red;
+          content: "";
+          height: 15px;
+          width: 100%;
+          left: 50%;
+          position: absolute;
+          top: -40px;
+          z-index: 999;
+          background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+          background-size: 1rem 1rem;
+          background-color: #8bc53f; }
+        main #check-progress-div #check-progress-bar li.active a {
+          color: #8bc53f; }
+      main #check-progress-div #check-progress-bar li.next:before {
+        z-index: 99999; }
+      main #check-progress-div #check-progress-bar li.next:after {
+        z-index: 999; }
+      main #check-progress-div #check-progress-bar li.visited:before {
+        background: #57aed1;
+        z-index: 99999; }
+      main #check-progress-div #check-progress-bar li.visited a {
+        color: #57aed1; }
+      main #check-progress-div #check-progress-bar li.visited:after {
+        background-color: red;
+        content: "";
+        height: 15px;
+        width: 100%;
+        left: 50%;
+        position: absolute;
+        top: -40px;
+        z-index: 999;
+        background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+        background-size: 1rem 1rem;
+        background-color: #57aed1; }
+main #step-3 {
+  margin-bottom: 166px;
+  padding: 40px 0; }
+  main #step-3 #check-progress-bar {
+    background-color: #8bc53f; }
+    main #step-3 #check-progress-bar li.active:after {
+      display: none; }
+  main #step-3 #register-final-step {
+    background-color: #fff;
+    border-radius: 24px;
+    box-shadow: 0 0 40px 3px rgba(0, 0, 0, 0.05);
+    padding: 20px 20px 20px 40px;
+    position: relative; }
+    main #step-3 #register-final-step h3, main #step-3 #register-final-step h4, main #step-3 #register-final-step p, main #step-3 #register-final-step .register-final-step-tools {
+      text-align: center; }
+    main #step-3 #register-final-step h3 {
+      font-size: 26px;
+      text-align: center;
+      margin-bottom: 40px; }
+    main #step-3 #register-final-step h4 {
+      color: #999;
+      border-bottom: 1px solid #dbdbdb;
+      padding-bottom: 20px; }
+    main #step-3 #register-final-step #register-final-step-title {
+      font-size: 18px; }
+    main #step-3 #register-final-step #register-final-step-warning {
+      font-style: italic;
+      margin-bottom: 20px; }
+      main #step-3 #register-final-step #register-final-step-warning b {
+        font-style: normal; }
+    main #step-3 #register-final-step .register-final-step-tools button {
+      margin-right: 20px;
+      padding: 12px 30px;
+      border-radius: 60px 45px 30px 15px/15px 30px 45px 60px; }
+main #step-1 {
+  padding: 40px 0; }
+  main #step-1 .add-new-friend {
+    background-color: #fff;
+    border-radius: 24px;
+    box-shadow: 0 0 40px 3px rgba(0, 0, 0, 0.05);
+    padding: 20px 20px 20px 40px;
+    position: relative; }
+    main #step-1 .add-new-friend .button-tiep {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-weight: 600;
+      background-color: #e2e6ea;
+      padding: 6px 30px; }
+    main #step-1 .add-new-friend h3 {
+      font-size: 23px;
+      text-align: center; }
+    main #step-1 .add-new-friend p {
+      font-size: 16px;
+      text-align: center; }
+    main #step-1 .add-new-friend .list-title {
+      font-weight: 600;
+      font-size: 18px;
+      text-align: left; }
+    main #step-1 .add-new-friend .list-new-friends {
+      overflow: auto;
+      max-height: 340px;
+      padding-right: 20px;
+      /* width */
+      /* Track */
+      /* Handle */
+      /* Handle on hover */ }
+      main #step-1 .add-new-friend .list-new-friends::-webkit-scrollbar {
+        width: 10px; }
+      main #step-1 .add-new-friend .list-new-friends::-webkit-scrollbar-track {
+        background: #f1f1f1; }
+      main #step-1 .add-new-friend .list-new-friends::-webkit-scrollbar-thumb {
+        background: #888; }
+      main #step-1 .add-new-friend .list-new-friends::-webkit-scrollbar-thumb:hover {
+        background: #555; }
+      main #step-1 .add-new-friend .list-new-friends p {
+        text-align: left; }
+      main #step-1 .add-new-friend .list-new-friends .list-friends-item {
+        display: flex;
+        align-items: center;
+        border-bottom: 1px solid #dbdbdb;
+        padding: 10px 0; }
+        main #step-1 .add-new-friend .list-new-friends .list-friends-item:last-child {
+          border-bottom: none; }
+        main #step-1 .add-new-friend .list-new-friends .list-friends-item .friends-item-avatar {
+          width: 60px;
+          height: 60px; }
+          main #step-1 .add-new-friend .list-new-friends .list-friends-item .friends-item-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%; }
+        main #step-1 .add-new-friend .list-new-friends .list-friends-item p {
+          margin-bottom: 0;
+          padding-left: 8px;
+          font-size: 16px; }
+        main #step-1 .add-new-friend .list-new-friends .list-friends-item .friends-item-tools {
+          margin-left: auto; }
+          main #step-1 .add-new-friend .list-new-friends .list-friends-item .friends-item-tools button {
+            margin-left: 8px;
+            font-weight: 350; }
+          main #step-1 .add-new-friend .list-new-friends .list-friends-item .friends-item-tools .btn-light {
+            border: 1px solid #dbdbdb; }
+            main #step-1 .add-new-friend .list-new-friends .list-friends-item .friends-item-tools .btn-light:focus {
+              border: 1px solid #dbdbdb; }
+main #step-2 {
+  margin-bottom: 70px;
+  padding: 40px 0; }
+  main #step-2 .add-new-avatar {
+    background-color: #fff;
+    border-radius: 24px;
+    box-shadow: 0 0 40px 3px rgba(0, 0, 0, 0.05);
+    padding: 20px 20px 20px 40px;
+    position: relative; }
+    main #step-2 .add-new-avatar .button-tiep {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-weight: 600;
+      background-color: #e2e6ea;
+      padding: 6px 30px; }
+    main #step-2 .add-new-avatar h3 {
+      font-size: 23px;
+      text-align: center;
+      margin-bottom: 40px; }
+    main #step-2 .add-new-avatar .avatar-frame {
+      width: 100%;
+      height: 320px;
+      background-color: #fff;
+      padding: 5px;
+      border: 1px solid #000;
+      box-shadow: 0 0 40px 3px rgba(0, 0, 0, 0.05);
+      border-radius: 8px; }
+      main #step-2 .add-new-avatar .avatar-frame img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 5px; }
+    main #step-2 .add-new-avatar .avatar-frame-tools {
+      text-align: center;
+      position: relative;
+      width: 100%; }
+      main #step-2 .add-new-avatar .avatar-frame-tools .btn-success {
+        position: relative;
+        padding: 12px 24px; }
+        main #step-2 .add-new-avatar .avatar-frame-tools .btn-success i {
+          margin-right: 8px; }
+      main #step-2 .add-new-avatar .avatar-frame-tools .btn-light {
+        position: relative;
+        background-color: #fff;
+        border: none; }
+        main #step-2 .add-new-avatar .avatar-frame-tools .btn-light:focus {
+          box-shadow: none;
+          border: none; }
+        main #step-2 .add-new-avatar .avatar-frame-tools .btn-light span {
+          display: block;
+          font-size: 20px;
+          font-weight: 600;
+          color: #003569; }
+        main #step-2 .add-new-avatar .avatar-frame-tools .btn-light small {
+          font-size: 90%; }
+      main #step-2 .add-new-avatar .avatar-frame-tools hr {
+        border: 1px solid #ced4da;
+        background: #ced4da;
+        position: relative;
+        margin: 40px 0; }
+      main #step-2 .add-new-avatar .avatar-frame-tools .hoac {
+        text-transform: uppercase;
+        position: absolute;
+        top: 80px;
+        left: 130px;
+        width: 60px;
+        font-size: 14px;
+        font-weight: 600;
+        margin-bottom: 0;
+        color: #ced4da;
+        background-color: #fff; }
+
+/*# sourceMappingURL=register-steps.css.map */

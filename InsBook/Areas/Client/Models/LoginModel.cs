@@ -8,9 +8,8 @@ namespace InsBook.Areas.Client.Models
 {
     public class LoginModel
     {
-        [Required(ErrorMessage = "Mời nhập email")]
-        public string Email { set; get; }
-        [Required(ErrorMessage = "Mời nhập password")]
+        public string EmailLogin { set; get; }
+        public string EmailForgetPass { set; get; }
         public string Password { set; get; }
         public bool RememberMe { set; get; }
     }
