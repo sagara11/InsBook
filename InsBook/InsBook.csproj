@@ -165,6 +165,7 @@
     <Content Include="Assets\javascript\ChangePass.js" />
     <Content Include="Assets\javascript\ForgetPass.js" />
     <Content Include="Assets\javascript\Login.js" />
+    <Content Include="Assets\javascript\Newsfeed.js" />
     <Content Include="Assets\javascript\Register.js" />
     <Content Include="Assets\javascript\RegisterStep1.js" />
     <Content Include="Assets\js\header.js" />
@@ -261,6 +262,7 @@
     <Content Include="Images\22904751_688560231353134_2748711313877205190_o.jpg" />
     <Content Include="Images\46511147_548625832231886_7575327484049096704_n.jpg" />
     <Content Include="Images\60331415_453474005405695_5368361850419281920_o.jpg" />
+    <Content Include="Images\base-background.jpg" />
     <Content Include="Images\84571659_2767643856796452_612394656314949632_n.jpg" />
     <Content Include="Images\86698400_1992654244211645_6346707511562731520_o.jpg" />
     <Content Include="Scripts\bootstrap.bundle.js" />
