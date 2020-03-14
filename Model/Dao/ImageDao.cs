@@ -29,12 +29,12 @@ namespace Model.Dao
                     };
                 BigInteger ID = db.Database.SqlQuery<BigInteger>("SetIdImage @time, @shardId", sqlParam).Single();
 
-                var img = new anh();
-                img.id = ID;
-                img.ngaycapnhat = DateTime.Now;
+                //var img = new anh();
+                //img.id = ID;
+                //img.ngaycapnhat = DateTime.Now;
 
-                db.anhs.Add(img);
-                db.SaveChanges();
+                //db.anhs.Add(img);
+                //db.SaveChanges();
                 return true;
             }
             catch (Exception ex)

@@ -5,7 +5,6 @@ namespace Model.EF
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
-    using System.Numerics;
 
     [Table("nguoidung")]
     public partial class nguoidung
@@ -106,11 +105,11 @@ namespace Model.EF
         [StringLength(100)]
         public string gioitinh { get; set; }
 
-        public int vaitro { get; set; }
+        public int? vaitro { get; set; }
 
-        public BigInteger soluongbanbe { get; set; }
+        public int? soluongbanbe { get; set; }
 
-        public BigInteger soluongtheodoi { get; set; }
+        public long? soluongtheodoi { get; set; }
 
         [StringLength(255)]
         public string duong_dan { get; set; }
