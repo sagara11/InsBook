@@ -41,9 +41,11 @@
                                 </div>
                             </div>
                             <div class=" col-md-6">
+                                @Html.AntiForgeryToken()
                                 <div class="d-flex align-items-center justify-content-center w-100 h-100">
                                     <div class="avatar-frame-tools">
-                                        <button type="button" class="btn btn-success"><i class="far fa-images"></i>Thêm ảnh</button>
+                                        <button type="button" class="btn btn-success" id="add-image" for="update-image"><i class="far fa-images"></i>Thêm ảnh</button>
+                                        <input type="file" name="update-image" id="update-image">
                                         <hr>
                                         <p class="hoac">Hoặc</p>
                                         <button type="button" class="btn btn-light"><span>Chụp ảnh</span><small>Bằng webcam của bạn</small></button>
@@ -62,4 +64,7 @@
 </main>
 @{
     Html.RenderPartial("~/Areas/Client/Views/Layout/footer.cshtml");
+}
+@section js{ 
+    <script src="~/Assets/javascript/RegisterStep2.js"></script>
 }

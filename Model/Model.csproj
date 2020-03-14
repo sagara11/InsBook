@@ -60,6 +60,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Dao\AddFriendDao.cs" />
+    <Compile Include="Dao\ImageDao.cs" />
     <Compile Include="Dao\RegisterDao.cs" />
     <Compile Include="Dao\UserDao.cs" />
     <Compile Include="EF\anh.cs" />

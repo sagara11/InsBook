@@ -165,9 +165,10 @@
     <Content Include="Assets\javascript\ChangePass.js" />
     <Content Include="Assets\javascript\ForgetPass.js" />
     <Content Include="Assets\javascript\Login.js" />
-    <Content Include="Assets\javascript\Newsfeed.js" />
+    <Content Include="Assets\javascript\NewsFeed.js" />
     <Content Include="Assets\javascript\Register.js" />
     <Content Include="Assets\javascript\RegisterStep1.js" />
+    <Content Include="Assets\javascript\RegisterStep2.js" />
     <Content Include="Assets\js\header.js" />
     <Content Include="Assets\js\jquery-3.4.1.min.js" />
     <Content Include="Assets\js\love_button.js" />
@@ -382,6 +383,7 @@
     <Compile Include="Areas\Client\Controllers\FriendController.cs" />
     <Compile Include="Areas\Client\Controllers\GroupController.cs" />
     <Compile Include="Areas\Client\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Client\Controllers\ImageController.cs" />
     <Compile Include="Areas\Client\Controllers\LoginController.cs" />
     <Compile Include="Areas\Client\Controllers\PersonalController.cs" />
     <Compile Include="Areas\Client\Controllers\RegisterController.cs" />
@@ -457,6 +459,7 @@
     <Folder Include="Areas\Client\Views\Chat\" />
     <Folder Include="Areas\Client\Views\Default\" />
     <Folder Include="Areas\Client\Views\Friend\" />
+    <Folder Include="Areas\Client\Views\Image\" />
     <Folder Include="Areas\Client\Views\User\" />
     <Folder Include="Controllers\" />
     <Folder Include="Models\" />
