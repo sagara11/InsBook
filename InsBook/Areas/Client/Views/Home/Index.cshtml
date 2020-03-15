@@ -10,13 +10,31 @@
     Html.RenderPartial("~/Areas/Client/Views/Layout/header.cshtml");
 }
 <main>
-    <div class="container">
+    <div class="container_new">
         <div class="row">
             <div class="col-25">
-                <!-- Group - Page -->
-                @{
-                    Html.RenderPartial("~/Areas/Client/Views/Layout/group/group_page.cshtml");
-                }
+                <div class="fixed-side">
+                    <!-- Thông tin tài khoản -->
+                    <section id="user-info">
+                        <div class="user-avatar">
+                            <img class="rounded rounded-circle" height="70px" width="70px" src="~/Assets/media/78834391_459110258126325_6149001856166133760_n.jpg" alt="">
+                        </div>
+                        <div>
+                            <p>
+                                user-name
+                            </p>
+                            <p>
+                                <small>
+                                    user-name-2
+                                </small>
+                            </p>
+                        </div>
+                    </section>
+                    <!-- Group - Page -->
+                    @{
+                        Html.RenderPartial("~/Areas/Client/Views/Layout/group/group_page.cshtml");
+                    }
+                </div>
             </div>
             <div class="col-50">
                 <!-- New post -->
@@ -324,22 +342,6 @@
             </div>
             <div class="col-25">
                 <div class="fixed-side">
-                    <!-- Thông tin tài khoản -->
-                    <section id="user-info">
-                        <div class="user-avatar">
-                            <img class="rounded rounded-circle" height="70px" width="70px" src="~/Assets/media/78834391_459110258126325_6149001856166133760_n.jpg" alt="">
-                        </div>
-                        <div>
-                            <p>
-                                user-name
-                            </p>
-                            <p>
-                                <small>
-                                    user-name-2
-                                </small>
-                            </p>
-                        </div>
-                    </section>
                     <!-- Messenger-section -->
                     @{
                         Html.RenderPartial("~/Areas/Client/Views/Layout/messenger/messenger_section.cshtml");
