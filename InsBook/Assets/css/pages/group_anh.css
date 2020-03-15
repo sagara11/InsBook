@@ -12,18 +12,20 @@ main {
     padding: 50px 0px;
 }
 
-    main .container .fixed-side {
+    main .container_new .fixed-side {
         position: fixed;
     }
 
-    main .container .col-25 {
+    main .container_new .col-25 {
         padding: 0px 10px;
-        width: 25%;
+        width: 32.5%;
+        display: flex;
+        justify-content: flex-end;
     }
 
-    main .container .col-50 {
+    main .container_new .col-50 {
         padding: 0px 10px;
-        width: 50%;
+        width: 35%;
     }
 
     main #image-album .image-album-header {
@@ -58,5 +60,26 @@ main {
                 height: 205px;
                 width: 205px;
             }
+
+    main main #add-member {
+        padding: 10px 10px;
+        margin-bottom: 20px;
+        background-color: white;
+        border: 1px solid #c8c8c8;
+        border-radius: 4px;
+    }
+
+        main main #add-member .add-header {
+            margin: 10px 0px 5px 0px;
+            text-transform: uppercase;
+            color: gray;
+            font-weight: 600;
+        }
+
+        main main #add-member .member-avatar img {
+            margin: 0px 5px;
+        }
+
+/*# sourceMappingURL=group_anh.css.map */
 
 /*# sourceMappingURL=group_anh.css.map */
