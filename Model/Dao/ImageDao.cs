@@ -7,7 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Model.Models;
-using System.Numerics;
 
 namespace Model.Dao
 {
@@ -18,7 +17,7 @@ namespace Model.Dao
         {
             db = new InsBookDbContext();
         }
-        public bool InsertImage(string url, BigInteger time, BigInteger shardId)
+        public bool InsertImage(string url, UInt64 time, UInt64 shardId)
         {
             try
             {
@@ -27,7 +26,8 @@ namespace Model.Dao
                         new SqlParameter("@time", time),
                         new SqlParameter("@shardId", shardId)
                     };
-                BigInteger ID = db.Database.SqlQuery<BigInteger>("SetIdImage @time, @shardId", sqlParam).Single();
+
+                UInt64 ID = db.Database.SqlQuery<UInt64>("SetIdImage @time, @shardId", sqlParam).Single();
 
                 //var img = new anh();
                 //img.id = ID;

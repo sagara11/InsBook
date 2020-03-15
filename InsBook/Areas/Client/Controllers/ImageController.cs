@@ -5,7 +5,6 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Numerics;
 using System.Web;
 using System.Web.Mvc;
 
@@ -70,11 +69,11 @@ namespace InsBook.Areas.Client.Controllers
                         // bước 2: tạo ra các Id tương ứng( xử lý bên sql) -- caption đăng xong mới cập nhật
                         // bước 3: try catch id lỗi
                         // Đang up 10 mà lỗi 1 cái ở giữa ??? tải lại bằng đc nó
+                        // xoa number ric
 
 
-
-                        BigInteger time = (new Accessories().GetTime()) << 23;
-                        BigInteger shardId = (user.UserID % 2000) << 10;
+                        UInt64 time = (new Accessories().GetTime()) << 23;
+                        UInt64 shardId = Convert.ToUInt64(user.UserID % 2000) << 10;
 
                         new ImageDao().InsertImage(urls[i], time, shardId);
 
