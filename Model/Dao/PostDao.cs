@@ -11,14 +11,14 @@ using Model.Common;
 
 namespace Model.Dao
 {
-    public class ImageDao
+    public class PostDao
     {
         InsBookDbContext db = null;
-        public ImageDao()
+        public PostDao()
         {
             db = new InsBookDbContext();
         }
-        public Int64 InsertImage(string url, String shardId)
+        public Int64 InsertPost(baiviet post, String shardId)
         {
             try
             {
@@ -30,23 +30,20 @@ namespace Model.Dao
                         new SqlParameter("@shardId", shardId)
                     };
 
-                Int64 ID = db.Database.SqlQuery<Int64>("SetIdImage @time, @shardId", sqlParam).Single();
+                Int64 ID = db.Database.SqlQuery<Int64>("SetIdPost @time, @shardId", sqlParam).Single();
 
-                var img = new anh();
-                img.id = ID;
-                img.ngaycapnhat = DateTime.Now;
-                img.anh_url = url;
+                post.id = ID;
+                post.capnhat = DateTime.Now;
 
-                db.anhs.Add(img);
+                db.baiviets.Add(post);
                 db.SaveChanges();
 
                 return ID;
             }
             catch (Exception ex)
             {
-                return InsertImage(url, shardId);
+                return InsertPost(post, shardId);
             }
         }
-
     }
 }

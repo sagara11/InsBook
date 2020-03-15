@@ -10,7 +10,7 @@
 
     $.ajax({
         type: 'post',
-        url: '/Client/Image/AddImage',
+        url: '/Client/Post/PostUserAvatar',
         dataType: 'json',
         cache: false,
         contentType: false,
