@@ -64,6 +64,21 @@ namespace Model.Dao
                 return false;
             }
         }
+        public bool Avatar(int userId, Int64 imgId)
+        {
+            try
+            {
+                var user = db.nguoidungs.Find(userId);
+                
+                user.anhdd = imgId;
+                db.SaveChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return Avatar(userId, imgId);
+            }
+        }
         //public bool Delete(int id)
         //{
         //    try
