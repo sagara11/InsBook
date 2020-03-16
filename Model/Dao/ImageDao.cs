@@ -47,6 +47,10 @@ namespace Model.Dao
                 return InsertImage(url, shardId);
             }
         }
-
+        public string GetUrlImage(Int64 imgId)
+        {
+            anh img =  db.anhs.SingleOrDefault(x => x.id == imgId);
+            return img.anh_url;
+        }
     }
 }

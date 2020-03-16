@@ -57,7 +57,7 @@ namespace InsBook.Areas.Client.Controllers
 
                         return Json(new
                         {
-                            status = true
+                            status = new ImageDao().GetUrlImage(imgIds[0])
                         }, JsonRequestBehavior.AllowGet);
                     }
                     else

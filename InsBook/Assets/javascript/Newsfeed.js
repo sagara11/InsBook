@@ -1,7 +1,6 @@
 ﻿$(document).ready(function () {
     var url = window.location.href.split('/');
     var baseUrl = url[0] + '//' + url[2];
-    console.log(baseUrl);
     //Load data when scrolling
     $(window).scroll(function () {
         //console.log(($(window).scrollTop() + "_____" + $(document).height() + "_____" + $(window).height()));
