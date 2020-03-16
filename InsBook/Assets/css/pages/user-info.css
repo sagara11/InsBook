@@ -1,5 +1,6 @@
 main {
-  padding: 20px; }
+  margin-top: 68px;
+  margin-bottom: 68px; }
   main button:focus {
     box-shadow: none !important; }
   main #user-infomation .user-info-title {
@@ -91,37 +92,6 @@ main {
       main #user-infomation ul.nav .nav-item .active {
         border-top: 1px solid #000;
         color: #000; }
-  main #user-infomation .tab-content span.errors {
-    display: flex;
-    align-items: center;
-    border: 1px solid #ced4da;
-    border-left: none;
-    padding: 8px;
-    border-radius: .25rem;
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0; }
-    main #user-infomation .tab-content span.errors i {
-      background-color: red;
-      color: #fff;
-      border-radius: 50%;
-      padding: 2px 4px;
-      /*visibility: hidden;
-      opacity: 0;*/ }
-  main #user-infomation .tab-content span.success {
-    display: flex;
-    align-items: center;
-    padding: 8px;
-    border: 1px solid #ced4da;
-    border-left: none;
-    border-radius: .25rem;
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0; }
-    main #user-infomation .tab-content span.success i {
-      /*visibility: hidden;
-      opacity: 0;*/ }
-      main #user-infomation .tab-content span.success i:before {
-        font-size: 20px;
-        color: #28a745; }
   main #user-infomation .tab-content #menu1 {
     font-size: 14px; }
     main #user-infomation .tab-content #menu1 .user-description {
@@ -1476,16 +1446,10 @@ main {
       main #user-infomation .tab-content #menu2 .tab-content #menu2-2 .change-password .form-group {
         margin: 0;
         margin-right: 48px;
-        margin-top: 20px;
-        display: flex;
-        align-items: center; }
-        main #user-infomation .tab-content #menu2 .tab-content #menu2-2 .change-password .form-group .form-control {
-          border-right: none;
-          border-top-right-radius: 0;
-          border-bottom-right-radius: 0; }
-          main #user-infomation .tab-content #menu2 .tab-content #menu2-2 .change-password .form-group .form-control:focus {
-            border-color: #ced4da;
-            box-shadow: none; }
+        margin-top: 20px; }
+        main #user-infomation .tab-content #menu2 .tab-content #menu2-2 .change-password .form-group .form-control:focus {
+          border-color: #ced4da;
+          box-shadow: none; }
       main #user-infomation .tab-content #menu2 .tab-content #menu2-2 .change-password button {
         margin-top: 30px; }
       main #user-infomation .tab-content #menu2 .tab-content #menu2-2 .change-password button.btn-light {
@@ -1574,6 +1538,18 @@ main {
       main #user-infomation .tab-content #menu4 .images-list .images-item:hover .images-item-info {
         visibility: visible;
         opacity: 1; }
+  main #user-infomation .tab-content #menu4 .videos-list .videos-item {
+    margin-bottom: 20px;
+    height: 250px;
+    width: auto; }
+    main #user-infomation .tab-content #menu4 .videos-list .videos-item video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover; }
+    main #user-infomation .tab-content #menu4 .videos-list .videos-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover; }
   main #user-infomation .tab-content #menu7 .videos-list .videos-item {
     margin-bottom: 20px;
     height: 250px;

@@ -1,0 +1,173 @@
+﻿
+@{
+    ViewBag.Title = "LivingPlace";
+    Layout = "~/Areas/Client/Views/Shared/_PersonalPage.cshtml";
+}
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+            <a class="nav-link" href="/Client/Personal/Index"><i class="fas fa-rss-square"></i><span>Dòng thời gian</span></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link active" href="/Client/Personal/ChangeGeneralInfor"><i class="far fa-user-circle"></i><span>Giới thiệu</span></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/Client/Personal/FriendsInfo"><i class="fas fa-users"></i><span>Bạn bè</span></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/Client/Personal/ImagesInfo"><i class="far fa-images"></i></i><span>Ảnh</span></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span>Xem thêm</span>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" href="/Client/Personal/SavedInfo">Lưu trữ</a>
+                <a class="dropdown-item" href="/Client/Personal/AlbumInfo">Bộ sưu tập</a>
+                <a class="dropdown-item" href="/Client/Personal/VideoInfo">Video</a>
+            </div>
+        </li>
+    </ul>
+
+<!-- Tab panes -->
+<div class="tab-content">
+    <div class="tab-pane container fade" id="menu1">...</div>
+    <div class="tab-pane container active" id="menu2">
+        <ul class="nav nav-tabs flex-column">
+            <li class="nav-item">
+                <a class="nav-link active" href="/Client/Personal/ChangeGeneralInfor">Cài đặt chung</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/Client/Personal/ChangePassInfo">Đổi mật khẩu</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/Client/Personal/Job_Edu">Công việc và học vấn</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" href="/Client/Personal/LivingPlace">Những nơi bạn đã sống</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/Client/Personal/Rela_Fami">Gia đình và các mối quan hệ</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/Client/Personal/DetailInfo">Chi tiết về bạn</a>
+            </li>
+        </ul>
+
+        <!-- Tab panes -->
+        <div class="tab-content">
+            <div class="tab-pane container fade" id="menu2-1">...</div>
+            <div class="tab-pane container fade" id="menu2-2">...</div>
+            <div class="tab-pane container fade" id="menu2-3">...</div>
+            <div class="tab-pane container active" id="menu2-4">
+                <div class="country">
+                    <h3>Tỉnh/Thành phố hiện tại và Quê quán</h3>
+                    <ul class="list-country">
+                        <li class="list-country-item">
+                            <div class="country-item-thumbnail">
+                                <img src="~/Images/22904751_688560231353134_2748711313877205190_o.jpg" alt="">
+                            </div>
+                            <div class="country-item-name">
+                                <p>Tay Ho, Ha Noi, Vietnam</p>
+                                <p>Tỉnh/Thành phô hiện tại</p>
+                            </div>
+                            <div class="country-item-tools">
+                                <i class="far fa-edit"></i>
+                                <i class="far fa-trash-alt"></i>
+                            </div>
+                        </li>
+                        <li class="list-country-item">
+                            <div class="country-item-thumbnail">
+                                <img src="~/Images/22904751_688560231353134_2748711313877205190_o.jpg" alt="">
+                            </div>
+                            <div class="country-item-name">
+                                <p>Viet Nam</p>
+                                <p>Quê quán</p>
+                            </div>
+                            <div class="country-item-tools">
+                                <i class="far fa-edit"></i>
+                                <i class="far fa-trash-alt"></i>
+                            </div>
+                        </li>
+                    </ul>
+                    <!-- <div class="country-adding">
+                        <button type="button" class="btn btn-light"><i class="far fa-plus-square"></i><span>Thêm một địa điểm</span></button>
+                    </div> -->
+                </div>
+                <div class="country-lived">
+                    <h3>Địa điểm khác đã sống</h3>
+                    <ul class="list-country-lived">
+                        <li class="list-country-lived-item">
+                            <div class="country-lived-item-thumbnail">
+                                <img src="~/Images/22904751_688560231353134_2748711313877205190_o.jpg" alt="">
+                            </div>
+                            <div class="country-lived-item-name">
+                                <p>Tay Ho, Ha Noi, Vietnam</p>
+                            </div>
+                            <div class="country-lived-item-tools">
+                                <i class="far fa-edit"></i>
+                                <i class="far fa-trash-alt"></i>
+                            </div>
+                        </li>
+                        <li class="list-country-lived-item">
+                            <div class="country-lived-item-thumbnail">
+                                <img src="~/Images/22904751_688560231353134_2748711313877205190_o.jpg" alt="">
+                            </div>
+                            <div class="country-lived-item-name">
+                                <p>Viet Nam</p>
+                            </div>
+                            <div class="country-lived-item-tools">
+                                <i class="far fa-edit"></i>
+                                <i class="far fa-trash-alt"></i>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="country-lived-adding">
+                        <button type="button" class="btn btn-light" id="show-country-lived-adding-box"><i class="far fa-plus-square"></i><span>Thêm một địa điểm</span></button>
+                    </div>
+                    <div class="country-lived-adding-box">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label for="noidasong">Tỉnh/Thành phố hiện tại</label>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" id="noidasong">
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+
+                            </div>
+
+                            <hr>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <select id="noidasong-baomat" class="form-control">
+                                        <option selected>Công khai</option>
+                                        <option>Bạn bè</option>
+                                        <option>Chỉ mình tôi</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <button type="button" class="btn btn-primary">Lưu thay đổi</button>
+                                <button type="button" class="btn btn-light" id="close-country-lived-adding-box">Hủy</button>
+                            </div>
+                            <div class="col-md-2">
+
+                            </div>
+                        </div>
+                        <button class="btn btn-light country-lived-closse" type="button" id=""><i class="fas fa-times"></i> Hủy</button>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane container fade" id="menu2-5">...</div>
+            <div class="tab-pane container fade" id="menu2-6">...</div>
+        </div>
+    </div>
+    <div class="tab-pane container fade" id="menu3">...</div>
+    <div class="tab-pane container fade" id="menu4">...</div>
+    <div class="tab-pane container fade" id="menu5">...</div>
+    <div class="tab-pane container fade" id="menu6">...</div>
+    <div class="tab-pane container fade" id="menu7">...</div>
+</div>
+

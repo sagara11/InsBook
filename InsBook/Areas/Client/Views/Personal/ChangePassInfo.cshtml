@@ -1,0 +1,118 @@
+﻿
+@{
+    ViewBag.Title = "ChangePassInfo";
+    Layout = "~/Areas/Client/Views/Shared/_PersonalPage.cshtml";
+}
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+            <a class="nav-link" href="/Client/Personal/Index"><i class="fas fa-rss-square"></i><span>Dòng thời gian</span></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link active" href="/Client/Personal/ChangeGeneralInfor"><i class="far fa-user-circle"></i><span>Giới thiệu</span></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/Client/Personal/FriendsInfo"><i class="fas fa-users"></i><span>Bạn bè</span></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/Client/Personal/ImagesInfo"><i class="far fa-images"></i></i><span>Ảnh</span></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span>Xem thêm</span>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" href="/Client/Personal/SavedInfo">Lưu trữ</a>
+                <a class="dropdown-item" href="/Client/Personal/AlbumInfo">Bộ sưu tập</a>
+                <a class="dropdown-item" href="/Client/Personal/VideoInfo">Video</a>
+            </div>
+        </li>
+    </ul>
+
+<!-- Tab panes -->
+<div class="tab-content">
+    <div class="tab-pane container fade" id="menu1">...</div>
+    <div class="tab-pane container active" id="menu2">
+        <ul class="nav nav-tabs flex-column">
+            <li class="nav-item">
+                <a class="nav-link" href="/Client/Personal/ChangeGeneralInfor">Cài đặt chung</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" href="/Client/Personal/ChangePassInfo">Đổi mật khẩu</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/Client/Personal/Job_Edu">Công việc và học vấn</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/Client/Personal/LivingPlace">Những nơi bạn đã sống</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/Client/Personal/Rela_Fami">Gia đình và các mối quan hệ</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/Client/Personal/DetailInfo">Chi tiết về bạn</a>
+            </li>
+        </ul>
+
+        <!-- Tab panes -->
+        <div class="tab-content">
+            <div class="tab-pane container fade" id="menu2-1">...</div>
+            <div class="tab-pane container active" id="menu2-2">
+                <article class="change-password">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="user-img">
+                                <img src="~/Images/22904751_688560231353134_2748711313877205190_o.jpg" alt="">
+                            </div>
+                        </div>
+                        <div class="col-md-9">
+                            <h1 class="user-name">Thắng Bếu</h1>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="matkhaucu">Mật khẩu cũ</label>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="form-group">
+                                <input type="password" class="form-control" id="matkhaucu">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="matkhaumoi">Mật khẩu mới</label>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="form-group">
+                                <input type="password" class="form-control" id="matkhaumoi">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="nhaplaimatkhau">Nhập lại mật khẩu</label>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="form-group">
+                                <input type="password" class="form-control" id="nhaplaimatkhau">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                        </div>
+                        <div class="col-md-9">
+                            <button type="button" class="btn btn-primary">Đổi mật khẩu</button>
+                        </div>
+                        <div class="col-md-3">
+                        </div>
+                        <div class="col-md-9">
+                            <button type="button" class="btn btn-light">Quên mật khẩu ?</button>
+                        </div>
+                    </div>
+                </article>
+            </div>
+            <div class="tab-pane container fade" id="menu2-3">...</div>
+            <div class="tab-pane container fade" id="menu2-4">...</div>
+            <div class="tab-pane container fade" id="menu2-5">...</div>
+            <div class="tab-pane container fade" id="menu2-6">...</div>
+        </div>
+    </div>
+    <div class="tab-pane container fade" id="menu3">...</div>
+    <div class="tab-pane container fade" id="menu4">...</div>
+    <div class="tab-pane container fade" id="menu5">...</div>
+    <div class="tab-pane container fade" id="menu6">...</div>
+    <div class="tab-pane container fade" id="menu7">...</div>
+</div>

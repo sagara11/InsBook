@@ -1,0 +1,272 @@
+﻿
+@{
+    ViewBag.Title = "DetailInfo";
+    Layout = "~/Areas/Client/Views/Shared/_PersonalPage.cshtml";
+}
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+            <a class="nav-link" href="/Client/Personal/Index"><i class="fas fa-rss-square"></i><span>Dòng thời gian</span></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link active" href="/Client/Personal/ChangeGeneralInfor"><i class="far fa-user-circle"></i><span>Giới thiệu</span></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/Client/Personal/FriendsInfo"><i class="fas fa-users"></i><span>Bạn bè</span></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/Client/Personal/ImagesInfo"><i class="far fa-images"></i></i><span>Ảnh</span></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span>Xem thêm</span>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" href="/Client/Personal/SavedInfo">Lưu trữ</a>
+                <a class="dropdown-item" href="/Client/Personal/AlbumInfo">Bộ sưu tập</a>
+                <a class="dropdown-item" href="/Client/Personal/VideoInfo">Video</a>
+            </div>
+        </li>
+    </ul>
+
+<!-- Tab panes -->
+<div class="tab-content">
+    <div class="tab-pane container fade" id="menu1">...</div>
+    <div class="tab-pane container active" id="menu2">
+        <ul class="nav nav-tabs flex-column">
+            <li class="nav-item">
+                <a class="nav-link" href="/Client/Personal/ChangeGeneralInfor">Cài đặt chung</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/Client/Personal/ChangePassInfo">Đổi mật khẩu</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/Client/Personal/Job_Edu">Công việc và học vấn</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/Client/Personal/LivingPlace">Những nơi bạn đã sống</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/Client/Personal/Rela_Fami">Gia đình và các mối quan hệ</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" href="/Client/Personal/DetailInfo">Chi tiết về bạn</a>
+            </li>
+        </ul>
+
+        <!-- Tab panes -->
+        <div class="tab-content">
+            <div class="tab-pane container fade" id="menu2-1">...</div>
+            <div class="tab-pane container fade" id="menu2-2">...</div>
+            <div class="tab-pane container fade" id="menu2-3">...</div>
+            <div class="tab-pane container fade" id="menu2-4">...</div>
+            <div class="tab-pane container fade" id="menu2-5">...</div>
+            <div class="tab-pane container active" id="menu2-6">
+                <div class="description">
+                    <h3>Giới thiệu về Vua</h3>
+                    <ul class="list-description">
+                        <li class="list-description-item">
+                            <div class="description-item-name">
+                                <p>Không thích mọi thứ về mọi mặt</p>
+                            </div>
+                            <div class="description-item-tools">
+                                <i class="far fa-edit"></i>
+                                <i class="far fa-trash-alt"></i>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="description-adding">
+                        <button type="button" class="btn btn-light" id="show-description-adding-box"><i class="far fa-plus-square"></i><span>Viết một số điều về chính bạn</span></button>
+                    </div>
+                    <div class="description-adding-box">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label for="noidasong">Giới thiệu về bản thân</label>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <textarea class="form-control" id="mota"></textarea>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+
+                            </div>
+
+                            <hr>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <select id="noidasong-baomat" class="form-control">
+                                        <option selected>Công khai</option>
+                                        <option>Bạn bè</option>
+                                        <option>Chỉ mình tôi</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <button type="button" class="btn btn-primary">Lưu thay đổi</button>
+                                <button type="button" class="btn btn-light" id="close-description-adding-box">Hủy</button>
+                            </div>
+                            <div class="col-md-2">
+
+                            </div>
+                        </div>
+                        <button class="btn btn-light description-closse" type="button" id=""><i class="fas fa-times"></i> Hủy</button>
+                    </div>
+                </div>
+                <div class="nickname">
+                    <h3>Các tên khác</h3>
+                    <ul class="list-nickname">
+                        <li class="list-nickname-item">
+                            <div class="nickname-item-name">
+                                <p>Thắng Bếu</p>
+                                <p>Biệt danh</p>
+                            </div>
+                            <div class="nickname-item-tools">
+                                <i class="far fa-edit"></i>
+                                <i class="far fa-trash-alt"></i>
+                            </div>
+                        </li>
+                        <li class="list-nickname-item">
+                            <div class="nickname-item-name">
+                                <p>Hồ Thắng</p>
+                                <p>Tên giả</p>
+                            </div>
+                            <div class="nickname-item-tools">
+                                <i class="far fa-edit"></i>
+                                <i class="far fa-trash-alt"></i>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="nickname-adding">
+                        <button type="button" class="btn btn-light" id="show-nickname-adding-box"><i class="far fa-plus-square"></i><span>Thêm biệt danh, tên khai sinh,...</span></button>
+                    </div>
+                    <div class="nickname-adding-box">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label for="noidasong">Loại tên</label>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <select id="moiquanhe-loaithanhvien" class="form-control">
+                                        <option selected disabled class="d-none">Chọn mối quan hệ</option>
+                                        <option>Biệt danh</option>
+                                        <option>Tên thời con gái</option>
+                                        <option>Cách viết tên khác</option>
+                                        <option>Tên sau kết hôn</option>
+                                        <option>Họ và tên bố</option>
+                                        <option>Tên khai sinh</option>
+                                        <option>Tên cũ</option>
+                                        <option>Tên có chức danh</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+
+                            </div>
+                            <div class="col-md-2">
+
+                            </div>
+                            <div class="col-md-4">
+                                <label for="noidasong">Tên</label>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" id="noidasong">
+                                </div>
+                            </div>
+
+                            <div class="col-md-2">
+
+                            </div>
+                            <hr>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <select id="noidasong-baomat" class="form-control">
+                                        <option selected>Công khai</option>
+                                        <option>Bạn bè</option>
+                                        <option>Chỉ mình tôi</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <button type="button" class="btn btn-primary">Lưu thay đổi</button>
+                                <button type="button" class="btn btn-light" id="close-nickname-adding-box">Hủy</button>
+                            </div>
+                            <div class="col-md-2">
+
+                            </div>
+                        </div>
+                        <button class="btn btn-light nickname-closse" type="button" id=""><i class="fas fa-times"></i> Hủy</button>
+                    </div>
+                </div>
+                <div class="quote">
+                    <h3>Trích dẫn yêu thích</h3>
+                    <ul class="list-quote">
+                        <li class="list-quote-item">
+                            <div class="quote-item-name">
+                                <p>Never interrupt your enemy when he is making a mistake.</p>
+                                <p>Napoleon Bonaparte</p>
+                            </div>
+                            <div class="quote-item-tools">
+                                <i class="far fa-edit"></i>
+                                <i class="far fa-trash-alt"></i>
+                            </div>
+                        </li>
+                        <li class="list-quote-item">
+                            <div class="quote-item-name">
+                                <p>Vạn sự cụ bị, chích khiếm đông phong</p>
+                                <p>Gia Cát Lượng</p>
+                            </div>
+                            <div class="quote-item-tools">
+                                <i class="far fa-edit"></i>
+                                <i class="far fa-trash-alt"></i>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="quote-adding">
+                        <button type="button" class="btn btn-light" id="show-quote-adding-box"><i class="far fa-plus-square"></i><span>Thêm câu trích dẫn yêu thích của bạn</span></button>
+                    </div>
+                    <div class="quote-adding-box">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label for="noidasong">Trích dẫn yêu thích</label>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <textarea class="form-control" id="mota"></textarea>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+
+                            </div>
+
+                            <hr>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <select id="noidasong-baomat" class="form-control">
+                                        <option selected>Công khai</option>
+                                        <option>Bạn bè</option>
+                                        <option>Chỉ mình tôi</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <button type="button" class="btn btn-primary">Lưu thay đổi</button>
+                                <button type="button" class="btn btn-light" id="close-quote-adding-box">Hủy</button>
+                            </div>
+                            <div class="col-md-2">
+
+                            </div>
+                        </div>
+                        <button class="btn btn-light quote-closse" type="button" id=""><i class="fas fa-times"></i> Hủy</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="tab-pane container fade" id="menu3">...</div>
+    <div class="tab-pane container fade" id="menu4">...</div>
+    <div class="tab-pane container fade" id="menu5">...</div>
+    <div class="tab-pane container fade" id="menu6">...</div>
+    <div class="tab-pane container fade" id="menu7">...</div>
+</div>
+

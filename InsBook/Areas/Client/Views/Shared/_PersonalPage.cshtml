@@ -1,89 +1,70 @@
-﻿<!DOCTYPE html>
+﻿
+<!DOCTYPE html>
+
 <html>
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
-    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <meta name="viewport" content="width=device-width" />
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <link href="~/Assets/css/layouts/footer.css" rel="stylesheet" />
-    <link href="~/Assets/css/layouts/header.css" rel="stylesheet" />
     <link href="~/Assets/css/pages/user-info.css" rel="stylesheet" />
+    <link href="~/Assets/css/layouts/header.css" rel="stylesheet" />
+    <link href="~/Assets/css/layouts/footer.css" rel="stylesheet" />
     @RenderSection("css", required: false)
-    <script src="~/Scripts/modernizr-2.8.3.js"></script>
+    <title>Personal Page</title>
 </head>
-<body style="padding: 0">
+<body>
     @{
         Html.RenderPartial("~/Areas/Client/Views/Layout/header.cshtml");
     }
     <main>
         <div id="user-infomation">
             <div class="container">
-                @{
-                    Html.RenderPartial("~/Areas/Client/Views/Personal/UserInfo_Header.cshtml");
-                }
-                <!-- Nav tabs -->
-                <ul class="nav nav-tabs">
-                    <li class="nav-item">
-                        <a class="nav-link" href=""><i class="fas fa-rss-square"></i><span>Dòng thời gian</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href=""><i class="far fa-user-circle"></i><span>Giới thiệu</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href=""><i class="fas fa-users"></i><span>Bạn bè</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href=""><i class="far fa-images"></i></i><span>Ảnh</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span>Xem thêm</span>
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="">Lưu trữ</a>
-                            <a class="dropdown-item" href="">Bộ sưu tập</a>
-                            <a class="dropdown-item" href="">Video</a>
+                <div class="user-info-title">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="user-ava">
+                                <img src="~/Images/22904751_688560231353134_2748711313877205190_o.jpg" alt="">
+                            </div>
                         </div>
-                    </li>
-                </ul>
+                        <div class="col-md-8">
+                            <div class="user-description">
+                                <div class="user-description-one">
+                                    <h1 class="user-name">Thắng Bếu</h1>
+                                    <a href="/Client/Personal/ChangeGeneralInfo" title="Chỉnh sửa trang cá nhân" class="user-setting"><button type="button" class="btn btn-outline-primary">Chỉnh sửa trang cá nhân</button></a>
+                                    <div class="account-setting">
+                                        <button type="button" class="btn btn-outline-primary"><i class="fas fa-cog fa-2x"></i></button></a>
+                                    </div>
+                                </div>
+                                <ul class="user-description-two">
+                                    <li>
+                                        <span><span>123</span> bài viết</span>
+                                    </li>
+                                    <li>
+                                        <span><span>123</span> người theo dõi</span>
+                                    </li>
+                                    <li>
+                                        <span>Đang theo dõi <span>123</span> người dùng</span>
+                                    </li>
+                                </ul>
+                                <div class="user-description-three">
+                                    <h1>Vị Vua không ngai</h1>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 @RenderBody()
             </div>
         </div>
     </main>
-    <hr />
-    <footer>
-        <div class="container">
-            <ul class="nav justify-content-center">
-                <li class="nav-item">
-                    <a class="nav-link active" href="#">Giới thiệu về chúng tôi</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Trợ giúp</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">API</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Quyền riêng tư</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Điều khoản</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Hashtag</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Ngôn ngữ</a>
-                </li>
-            </ul>
-            <h3>© 2020 FAKEBOOK FROM MTA</h3>
-        </div>
-    </footer>
-    <script src="~/Assets/media/js/jquery-3.4.1.min.js"></script>
-    <script src="~/Assets/media/js/popper.min.js"></script>
-    <script src="~/Scripts/bootstrap.min.js"></script>
-    <script src="https://kit.fontawesome.com/5d3f9f4ac6.js" crossorigin="anonymous"></script>
-    @RenderSection("js", required: false)
+
+    @{
+        Html.RenderPartial("~/Areas/Client/Views/Layout/footer.cshtml");
+    }
 </body>
 </html>
+<script src="~/Assets/media/js/jquery-3.4.1.min.js"></script>
+<script src="~/Assets/media/js/popper.min.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+<script src="https://kit.fontawesome.com/5d3f9f4ac6.js" crossorigin="anonymous"></script>
+<script src="~/Assets/js/user-info.js"></script>
+@RenderSection("js", required: false)

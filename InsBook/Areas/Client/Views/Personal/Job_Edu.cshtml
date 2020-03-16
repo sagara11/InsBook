@@ -1,0 +1,471 @@
+﻿
+@{
+    ViewBag.Title = "Job_Edu";
+    Layout = "~/Areas/Client/Views/Shared/_PersonalPage.cshtml";
+}
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+            <a class="nav-link" href="/Client/Personal/Index"><i class="fas fa-rss-square"></i><span>Dòng thời gian</span></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link active" href="/Client/Personal/ChangeGeneralInfor"><i class="far fa-user-circle"></i><span>Giới thiệu</span></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/Client/Personal/FriendsInfo"><i class="fas fa-users"></i><span>Bạn bè</span></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/Client/Personal/ImagesInfo"><i class="far fa-images"></i></i><span>Ảnh</span></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span>Xem thêm</span>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" href="/Client/Personal/SavedInfo">Lưu trữ</a>
+                <a class="dropdown-item" href="/Client/Personal/AlbumInfo">Bộ sưu tập</a>
+                <a class="dropdown-item" href="/Client/Personal/VideoInfo">Video</a>
+            </div>
+        </li>
+    </ul>
+
+<!-- Tab panes -->
+<div class="tab-content">
+    <div class="tab-pane container fade" id="menu1">...</div>
+    <div class="tab-pane container active" id="menu2">
+        <ul class="nav nav-tabs flex-column">
+            <li class="nav-item">
+                <a class="nav-link" href="/Client/Personal/ChangeGeneralInfor">Cài đặt chung</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/Client/Personal/ChangePassInfo">Đổi mật khẩu</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" href="/Client/Personal/Job_Edu">Công việc và học vấn</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/Client/Personal/LivingPlace">Những nơi bạn đã sống</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/Client/Personal/Rela_Fami">Gia đình và các mối quan hệ</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/Client/Personal/DetailInfo">Chi tiết về bạn</a>
+            </li>
+        </ul>
+
+        <!-- Tab panes -->
+        <div class="tab-content">
+            <div class="tab-pane container fade" id="menu2-1">...</div>
+            <div class="tab-pane container fade" id="menu2-2">...</div>
+            <div class="tab-pane container active" id="menu2-3">
+                <div class="jobs-and-educations">
+                    <div class="job">
+                        <h3>Công việc</h3>
+                        <ul class="list-job">
+                            <li class="list-job-item">
+                                <div class="job-item-thumbnail">
+                                    <img src="~/Images/22904751_688560231353134_2748711313877205190_o.jpg" alt="">
+                                </div>
+                                <div class="job-item-name">
+                                    <p>Công ty cổ phần truyền thông BTS</p>
+                                </div>
+                                <div class="job-item-tools">
+                                    <i class="far fa-edit"></i>
+                                    <i class="far fa-trash-alt"></i>
+                                </div>
+                            </li>
+                            <li class="list-job-item">
+                                <div class="job-item-thumbnail">
+                                    <img src="~/Images/22904751_688560231353134_2748711313877205190_o.jpg" alt="">
+                                </div>
+                                <div class="job-item-name">
+                                    <p>Công ty cổ phần truyền thông BTS</p>
+                                </div>
+                                <div class="job-item-tools">
+                                    <i class="far fa-edit"></i>
+                                    <i class="far fa-trash-alt"></i>
+                                </div>
+                            </li>
+                        </ul>
+                        <div class="job-adding">
+                            <button type="button" class="btn btn-light" id="show-job-adding-box"><i class="far fa-plus-square"></i><span>Thêm một nơi làm việc</span></button>
+                        </div>
+                        <div class="job-adding-box">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label for="congty">Công ty</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" id="congty" placeholder="Bạn đã làm việc ở đâu ?">
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="congty-chucvu">Chức vụ</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" id="congty-chucvu" placeholder="Chức danh của bạn là gì ?">
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="congty-thixa">Thành phố/Thị xã</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" id="congty-thixa">
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="congty-mota">Mô tả</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <textarea class="form-control" id="congty-mota"></textarea>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="">Khoảng thời gian</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="congty-danglamviec">
+                                        <label class="form-check-label" for="congty-danglamviec">
+                                            Tôi hiện đang làm việc ở đây
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+
+                                </div>
+                                <div class="col-md-4">
+                                    <label for=""></label>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input type="date" class="form-control" id="">
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+
+                                </div>
+                                <div class="col-md-4">
+                                    <label for=""></label>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input type="date" class="form-control" id="">
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+
+                                </div>
+                                <hr>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <select id="congty-baomat" class="form-control">
+                                            <option selected>Công khai</option>
+                                            <option>Bạn bè</option>
+                                            <option>Chỉ mình tôi</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <button type="button" class="btn btn-primary">Lưu thay đổi</button>
+                                    <button type="button" class="btn btn-light" id="close-job-adding-box">Hủy</button>
+                                </div>
+                                <div class="col-md-2">
+
+                                </div>
+                            </div>
+                            <button class="btn btn-light job-closse" type="button" id=""><i class="fas fa-times"></i> Hủy</button>
+                        </div>
+                    </div>
+                    <div class="university">
+                        <h3>Đại học</h3>
+                        <ul class="list-university">
+                            <li class="list-university-item">
+                                <div class="university-item-thumbnail">
+                                    <img src="~/Images/22904751_688560231353134_2748711313877205190_o.jpg" alt="">
+                                </div>
+                                <div class="university-item-name">
+                                    <p>Học viện kỹ thuạt quân sự MTA</p>
+                                </div>
+                                <div class="university-item-tools">
+                                    <i class="far fa-edit"></i>
+                                    <i class="far fa-trash-alt"></i>
+                                </div>
+                            </li>
+                            <li class="list-university-item">
+                                <div class="university-item-thumbnail">
+                                    <img src="~/Images/22904751_688560231353134_2748711313877205190_o.jpg" alt="">
+                                </div>
+                                <div class="university-item-name">
+                                    <p>Học viện kỹ thuạt quân sự MTA</p>
+                                </div>
+                                <div class="university-item-tools">
+                                    <i class="far fa-edit"></i>
+                                    <i class="far fa-trash-alt"></i>
+                                </div>
+                            </li>
+                        </ul>
+                        <div class="university-adding">
+                            <button type="button" class="btn btn-light" id="show-university-adding-box"><i class="far fa-plus-square"></i><span>Thêm một trường đại học</span></button>
+
+                        </div>
+                        <div class="university-adding-box">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label for="daihoc">Trường học</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" id="daihoc" placeholder="Bạn đã làm việc ở đâu ?">
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="">Khoảng thời gian</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="daihoc-datotnghiep">
+                                        <label class="form-check-label" for="daihoc-datotnghiep">
+                                            Đã tốt nghiệp
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+
+                                </div>
+                                <div class="col-md-4">
+                                    <label for=""></label>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input type="date" class="form-control" id="">
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+
+                                </div>
+                                <div class="col-md-4">
+                                    <label for=""></label>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input type="date" class="form-control" id="">
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="">Chuyên ngành</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" id="daihoc-chuyennganh-1">
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+
+                                </div>
+                                <div class="col-md-4">
+                                    <label for=""></label>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" id="daihoc-chuyennganh-2">
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+
+                                </div>
+                                <div class="col-md-4">
+                                    <label for=""></label>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" id="daihoc-chuyennganh-3">
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="mota">Mô tả</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <textarea class="form-control" id="mota"></textarea>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+
+                                </div>
+
+                                <hr>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <select id="daihoc-baomat" class="form-control">
+                                            <option selected>Công khai</option>
+                                            <option>Bạn bè</option>
+                                            <option>Chỉ mình tôi</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <button type="button" class="btn btn-primary">Lưu thay đổi</button>
+                                    <button type="button" class="btn btn-light" id="close-university-adding-box">Hủy</button>
+                                </div>
+                                <div class="col-md-2">
+
+                                </div>
+                            </div>
+                            <button class="btn btn-light university-closse" type="button" id=""><i class="fas fa-times"></i> Hủy</button>
+                        </div>
+                    </div>
+                    <div class="highschool">
+                        <h3>Trường trung học</h3>
+                        <ul class="list-highschool">
+                            <li class="list-highschool-item">
+                                <div class="highschool-item-thumbnail">
+                                    <img src="~/Images/22904751_688560231353134_2748711313877205190_o.jpg" alt="">
+                                </div>
+                                <div class="highschool-item-name">
+                                    <p>Trường THPT Xuân Đỉnh</p>
+                                </div>
+                                <div class="highschool-item-tools">
+                                    <i class="far fa-edit"></i>
+                                    <i class="far fa-trash-alt"></i>
+                                </div>
+                            </li>
+                            <li class="list-highschool-item">
+                                <div class="highschool-item-thumbnail">
+                                    <img src="~/Images/22904751_688560231353134_2748711313877205190_o.jpg" alt="">
+                                </div>
+                                <div class="highschool-item-name">
+                                    <p>Trường THPT Trần Phú</p>
+                                </div>
+                                <div class="highschool-item-tools">
+                                    <i class="far fa-edit"></i>
+                                    <i class="far fa-trash-alt"></i>
+                                </div>
+                            </li>
+                        </ul>
+                        <div class="highschool-adding">
+                            <button type="button" class="btn btn-light" id="show-highschool-adding-box"><i class="far fa-plus-square"></i><span>Thêm một trường trung học</span></button>
+
+                        </div>
+
+                        <div class="highschool-adding-box">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label for="truongtrunghoc">Trường học</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" id="truongtrunghoc" placeholder="Bạn đã làm việc ở đâu ?">
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="">Khoảng thời gian</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="truongtrunghoc-datotnghiep">
+                                        <label class="form-check-label" for="truongtrunghoc-datotnghiep">
+                                            Đã tốt nghiệp
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+
+                                </div>
+                                <div class="col-md-4">
+                                    <label for=""></label>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input type="date" class="form-control" id="">
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+
+                                </div>
+                                <div class="col-md-4">
+                                    <label for=""></label>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input type="date" class="form-control" id="">
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="truongtrunghoc-mota">Mô tả</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <textarea class="form-control" id="truongtrunghoc-mota"></textarea>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+
+                                </div>
+
+                                <hr>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <select id="truongtrunghoc-baomat" class="form-control">
+                                            <option selected>Công khai</option>
+                                            <option>Bạn bè</option>
+                                            <option>Chỉ mình tôi</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <button type="button" class="btn btn-primary">Lưu thay đổi</button>
+                                    <button type="button" class="btn btn-light" id="close-highschool-adding-box">Hủy</button>
+                                </div>
+                                <div class="col-md-2">
+
+                                </div>
+                            </div>
+                            <button class="btn btn-light highschool-closse" type="button" id=""><i class="fas fa-times"></i> Hủy</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane container fade" id="menu2-4">...</div>
+            <div class="tab-pane container fade" id="menu2-5">...</div>
+            <div class="tab-pane container fade" id="menu2-6">...</div>
+        </div>
+    </div>
+    <div class="tab-pane container fade" id="menu3">...</div>
+    <div class="tab-pane container fade" id="menu4">...</div>
+    <div class="tab-pane container fade" id="menu5">...</div>
+    <div class="tab-pane container fade" id="menu6">...</div>
+    <div class="tab-pane container fade" id="menu7">...</div>
+</div>
+
