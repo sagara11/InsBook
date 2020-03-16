@@ -63,16 +63,16 @@
                     '                                </div>' +
                     '                            </div>' +
                     '                        </div>' +
-                    '                        <div class="post-content" data-toggle="modal" data-target="#post-2-modal">' +
+                    '                        <div class="post-content" data-toggle="modal" data-target="#post-'+ item["post-id"] + '-modal">' +
                     '                            <img class="img-fluid lazy" src="' + baseUrl + '/Images/base-background.jpg' + '" data-src="' + baseUrl + item["post-thumb"] + '" alt="">' +
                     '                        </div>' +
                     '                        <div class="post-socialfunction">' +
                     '                            <div class="like-comment">' +
-                    '                                <div id="heart-2" onclick="heart(\'heart-2\')" class="like-comment-heart">' +
+                    '                                <div id="heart-' + item["post-id"] + '" onclick="heart(\'heart-' + item["post-id"] + '\')" class="like-comment-heart">' +
                     '                                    <i class="fa fa-heart-o heart" aria-hidden="true"></i>' +
                     '                                </div>' +
                     '                                <i class="fa fa-comment-o" aria-hidden="true"></i>' +
-                    '                                <i data-toggle="modal" data-target="#post-2-share" class="fa fa-paper-plane-o" aria-hidden="true"></i>' +
+                    '                                <i data-toggle="modal" data-target="#post-' + item["post-id"] + '-share" class="fa fa-paper-plane-o" aria-hidden="true"></i>' +
                     '                            </div>' +
                     '                            <div class="like-number">' +
                     '                                ' + item["post-likes"] + ' likes' +
@@ -89,7 +89,7 @@
                     '                            <button>Đăng</button>' +
                     '                        </div>' +
                     '                        <!-- Modal -->' +
-                    '                        <div class="post-box-modal modal fade" id="post-2-modal">' +
+                    '                        <div class="post-box-modal modal fade" id="post-' + item["post-id"] + '-modal">' +
                     '                            <div class="modal-dialog modal-dialog-centered">' +
                     '                                <div class="modal-content">' +
                     '                                    <div class="col-7">' +
@@ -107,11 +107,11 @@
                     '                                                Caption' +
                     '                                            </div>' +
                     '                                            <div class="like-comment">' +
-                    '                                                <div onclick="heart(\'heart-2\')" class="like-comment-heart">' +
+                    '                                                <div onclick="heart(\'heart-' + item["post-id"] + '\')" class="like-comment-heart">' +
                     '                                                    <i class="fa fa-heart-o heart" aria-hidden="true"></i>' +
                     '                                                </div>' +
                     '                                                <i class="fa fa-comment-o" aria-hidden="true"></i>' +
-                    '                                                <i data-toggle="modal" data-target="#post-2-share" class="fa fa-paper-plane-o" aria-hidden="true"></i>' +
+                    '                                                <i data-toggle="modal" data-target="#post-' + item["post-id"] + '-share" class="fa fa-paper-plane-o" aria-hidden="true"></i>' +
                     '                                            </div>' +
                     '                                            <div class="like-number">' +
                     '                                                200 likes' +
@@ -130,7 +130,7 @@
                     '                            </div>' +
                     '                        </div>' +
                     '                        <!-- Share modal -->' +
-                    '                        <div class="share-modal modal fade" id="post-2-share">' +
+                    '                        <div class="share-modal modal fade" id="post-' + item["post-id"] + '-share">' +
                     '                            <div class="modal-dialog modal-dialog-centered">' +
                     '                                <div class="modal-content">' +
                     '                                    <div class="share-header">' +
@@ -143,16 +143,16 @@
                     '                                            <img class="img-fluid" src="' + baseUrl + item["post-thumb"] + '" alt="">' +
                     '                                        </div>' +
                     '                                    </div>' +
-                    '                                    <div id="post-2-taginput" class="tag-input">' +
+                    '                                    <div id="post-' + item["post-id"] + '-taginput" class="tag-input">' +
                     '                                        <input class="form-control" type="text" placeholder="Gắn thẻ bạn bè">' +
                     '                                    </div>' +
-                    '                                    <div id="post-2-locationinput" class="location-input">' +
+                    '                                    <div id="post-' + item["post-id"] + '-locationinput" class="location-input">' +
                     '                                        <input class="form-control" type="text" placeholder="Bạn đang ở đâu?">' +
                     '                                    </div>' +
                     '                                    <div class="share-footer">' +
                     '                                        <div class="footer-option">' +
-                    '                                            <button onclick="tag(\'post-2\')" id="post-2-tag">Gắn thẻ mọi người</button>' +
-                    '                                            <button onclick="location_open(\'post-2\')" id="post-2-location">Thêm vị trí</button>' +
+                    '                                            <button onclick="tag(\'post-' + item["post-id"] + '\')" id="post-' + item["post-id"] + '-tag">Gắn thẻ mọi người</button>' +
+                    '                                            <button onclick="location_open(\'post-' + item["post-id"] + '\')" id="post-' + item["post-id"] + '-location">Thêm vị trí</button>' +
                     '                                        </div>' +
                     '                                        <div class="footer-submit">' +
                     '                                            <button data-dismiss="modal">Hủy</button>' +
