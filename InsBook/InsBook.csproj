@@ -220,6 +220,7 @@
     <Content Include="Assets\js\love_button.js" />
     <Content Include="Assets\js\newsfeed.js" />
     <Content Include="Assets\js\popper.min.js" />
+    <Content Include="Assets\js\postbox.js" />
     <Content Include="Assets\js\user-info.js" />
     <Content Include="Assets\media\78834391_459110258126325_6149001856166133760_n.jpg" />
     <Content Include="Assets\media\css\layouts\footer.css" />

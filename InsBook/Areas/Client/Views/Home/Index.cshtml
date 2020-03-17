@@ -84,10 +84,10 @@
                 </section>
                 <!-- Newsfeed -->
                 <section id="newsfeed">
-                    <div class="post-box">
+                    <div class="post-box" id="post-1">
                         <div class="post-title">
                             <div class="post-info">
-                                <img height="50px" width="50px" class="rounded rounded-circle lazy" src="~/Images/base-background.jpg" data-src="https://localhost:44307/Assets/media/78834391_459110258126325_6149001856166133760_n.jpg" alt="">
+                                <img height="50px" width="50px" class="rounded rounded-circle lazy" src="~/Assets/media/78834391_459110258126325_6149001856166133760_n.jpg" alt="">
                                 <p>name</p>
                             </div>
                             <div class="post-option" data-target="#post-option-modal1" data-toggle="modal">
@@ -111,7 +111,7 @@
                             </div>
                         </div>
                         <div class="post-content" data-toggle="modal" data-target="#modal1">
-                            <img class="img-fluid lazy" src="~/Images/base-background.jpg" data-src="https://localhost:44307/Assets/media/78834391_459110258126325_6149001856166133760_n.jpg" alt="">
+                            <img class="img-fluid lazy" src="~/Images/base-background.jpg" data-src="~/Assets/media/78834391_459110258126325_6149001856166133760_n.jpg" alt="">
                         </div>
                         <div class="post-socialfunction">
                             <div class="like-comment">
@@ -128,8 +128,68 @@
                                 Caption
                             </div>
                             <div class="post-comment">
-                                <p class="comment-name">Name</p>
-                                <p>comment....</p>
+                                <div class="comment-avatar">
+                                    <img class="rounded rounded-circle" height="35px" width="35px" src="~/Assets/media/78834391_459110258126325_6149001856166133760_n.jpg" alt="">
+                                </div>
+                                <div class="comment-content">
+                                    <div>
+                                        <span class="comment-name">
+                                            Name
+                                        </span>
+                                        <span class="comment-content">
+                                            content
+                                        </span>
+                                    </div>
+                                    <div class="comment-detail">
+                                        <span>2 giờ</span>
+                                        <span>200 lượt thích</span>
+                                        <span id="reply-btn-1" onclick="comment_reply('1')">Trả lời</span>
+                                    </div>
+                                    <div class="comment-collapse" data-toggle="collapse" data-target="#comment-1-children">
+                                        Xem câu trả lời
+                                    </div>
+                                    <div class="collapse children-comment" id="comment-1-children">
+                                        <div class="comment-avatar">
+                                            <img class="rounded rounded-circle" height="25px" width="25px" src="~/Assets/media/78834391_459110258126325_6149001856166133760_n.jpg" alt="">
+                                        </div>
+                                        <div class="comment-content">
+                                            <div>
+                                                <span class="comment-name">
+                                                    Name
+                                                </span>
+                                                <span class="comment-content">
+                                                    content
+                                                </span>
+                                            </div>
+                                            <div class="comment-detail">
+                                                <span>2 giờ</span>
+                                                <span>200 lượt thích</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="collapse children-comment" id="comment-1-children">
+                                        <div class="comment-avatar">
+                                            <img class="rounded rounded-circle" height="25px" width="25px" src="~/Assets/media/78834391_459110258126325_6149001856166133760_n.jpg" alt="">
+                                        </div>
+                                        <div class="comment-content">
+                                            <div>
+                                                <span class="comment-name">
+                                                    Name
+                                                </span>
+                                                <span class="comment-content">
+                                                    content
+                                                </span>
+                                            </div>
+                                            <div class="comment-detail">
+                                                <span>2 giờ</span>
+                                                <span>200 lượt thích</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="children-reply" id="children-reply-1">
+                                        <input type="text" placeholder="Viết phản hồi" class="form-control">
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div class="post-usercomment">
@@ -217,133 +277,6 @@
                                 <img height="50px" width="50px" class="rounded rounded-circle lazy" src="~/Images/base-background.jpg" data-src="https://localhost:44307/Assets/media/78834391_459110258126325_6149001856166133760_n.jpg" alt="">
                                 <p>name</p>
                             </div>
-                            <div class="post-option" data-target="#post-option-modal2" data-toggle="modal">
-                                &#8230;
-                            </div>
-                            <div class="modal post-option-modal fade" id="post-option-modal2">
-                                <div class="modal-dialog modal-dialog-centered">
-                                    <div class="modal-content">
-                                        <div class="modal-body">
-                                            <ul>
-                                                <li>
-                                                    <a class="report" href="">Báo cáo</a>
-                                                </li>
-                                                <li>
-                                                    <a href="">Bỏ theo dõi</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="post-content" data-toggle="modal" data-target="#post-2-modal">
-                            <img class="img-fluid lazy" src="~/Images/base-background.jpg" data-src="https://localhost:44307/Assets/media/78834391_459110258126325_6149001856166133760_n.jpg" alt="">
-                        </div>
-                        <div class="post-socialfunction">
-                            <div class="like-comment">
-                                <div id="heart-2" onclick="heart('heart-2')" class="like-comment-heart">
-                                    <i class="fa fa-heart-o heart" aria-hidden="true"></i>
-                                </div>
-                                <i class="fa fa-comment-o" aria-hidden="true"></i>
-                                <i data-toggle="modal" data-target="#post-2-share" class="fa fa-paper-plane-o" aria-hidden="true"></i>
-                            </div>
-                            <div class="like-number">
-                                200 likes
-                            </div>
-                            <div class="post-caption">
-                                Caption
-                            </div>
-                            <div class="post-comment">
-                                <p class="comment-name">Name</p>
-                                <p>comment....</p>
-                            </div>
-                        </div>
-                        <div class="post-usercomment">
-                            <input class="form-control" type="text" placeholder="Thêm bình luận...">
-                            <button>Đăng</button>
-                        </div>
-                        <!-- Modal -->
-                        <div class="post-box-modal modal fade" id="post-2-modal">
-                            <div class="modal-dialog modal-dialog-centered">
-                                <div class="modal-content">
-                                    <div class="col-7">
-                                        <div class="post-content">
-                                            <img class="img-fluid" src="~/Assets/media/78834391_459110258126325_6149001856166133760_n.jpg" alt="">
-                                        </div>
-                                    </div>
-                                    <div class="col-5">
-                                        <div class="post-title">
-                                            <img height="50px" width="50px" class="rounded rounded-circle" src="~/Assets/media/78834391_459110258126325_6149001856166133760_n.jpg" alt="">
-                                            <p>name</p>
-                                        </div>
-                                        <div class="post-socialfunction">
-                                            <div class="post-caption">
-                                                Caption
-                                            </div>
-                                            <div class="like-comment">
-                                                <div onclick="heart('heart-2')" class="like-comment-heart">
-                                                    <i class="fa fa-heart-o heart" aria-hidden="true"></i>
-                                                </div>
-                                                <i class="fa fa-comment-o" aria-hidden="true"></i>
-                                                <i data-toggle="modal" data-target="#post-2-share" class="fa fa-paper-plane-o" aria-hidden="true"></i>
-                                            </div>
-                                            <div class="like-number">
-                                                200 likes
-                                            </div>
-                                            <div class="post-comment">
-                                                <p class="comment-name">Name</p>
-                                                <p>comment....</p>
-                                            </div>
-                                        </div>
-                                        <div class="post-usercomment">
-                                            <input class="form-control" type="text" placeholder="Thêm bình luận...">
-                                            <button>Đăng</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Share modal -->
-                        <div class="share-modal modal fade" id="post-2-share">
-                            <div class="modal-dialog modal-dialog-centered">
-                                <div class="modal-content">
-                                    <div class="share-header">
-                                        <p>Chia sẻ ngay lên dòng thời gian</p>
-                                        <p data-dismiss="modal">&times;</p>
-                                    </div>
-                                    <div class="share-body">
-                                        <input class="form-control" type="text" placeholder="Nói gì đó về nội dung này...">
-                                        <div class="share-content">
-                                            <img class="img-fluid" src="~/Assets/media/78834391_459110258126325_6149001856166133760_n.jpg" alt="">
-                                        </div>
-                                    </div>
-                                    <div id="post-2-taginput" class="tag-input">
-                                        <input class="form-control" type="text" placeholder="Gắn thẻ bạn bè">
-                                    </div>
-                                    <div id="post-2-locationinput" class="location-input">
-                                        <input class="form-control" type="text" placeholder="Bạn đang ở đâu?">
-                                    </div>
-                                    <div class="share-footer">
-                                        <div class="footer-option">
-                                            <button onclick="tag('post-2')" id="post-2-tag">Gắn thẻ mọi người</button>
-                                            <button onclick="location_open('post-2')" id="post-2-location">Thêm vị trí</button>
-                                        </div>
-                                        <div class="footer-submit">
-                                            <button data-dismiss="modal">Hủy</button>
-                                            <button class="share-submit">Đăng</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="post-box" id="post-2">
-                        <div class="post-title">
-                            <div class="post-info">
-                                <img height="50px" width="50px" class="rounded rounded-circle lazy" src="~/Images/base-background.jpg" data-src="https://localhost:44307/Assets/media/78834391_459110258126325_6149001856166133760_n.jpg" alt="">
-                                <p>name</p>
-                            </div>
                             <div class="post-option lazy" data-target="#post-option-modal2" data-toggle="modal">
                                 &#8230;
                             </div>
@@ -382,8 +315,68 @@
                                 Caption
                             </div>
                             <div class="post-comment">
-                                <p class="comment-name">Name</p>
-                                <p>comment....</p>
+                                <div class="comment-avatar">
+                                    <img class="rounded rounded-circle" height="35px" width="35px" src="~/Assets/media/78834391_459110258126325_6149001856166133760_n.jpg" alt="">
+                                </div>
+                                <div class="comment-content">
+                                    <div>
+                                        <span class="comment-name">
+                                            Name
+                                        </span>
+                                        <span class="comment-content">
+                                            content
+                                        </span>
+                                    </div>
+                                    <div class="comment-detail">
+                                        <span>2 giờ</span>
+                                        <span>200 lượt thích</span>
+                                        <span id="reply-btn-2" onclick="comment_reply('2')">Trả lời</span>
+                                    </div>
+                                    <div class="comment-collapse" data-toggle="collapse" data-target="#comment-2-children">
+                                        Xem câu trả lời
+                                    </div>
+                                    <div class="collapse children-comment" id="comment-2-children">
+                                        <div class="comment-avatar">
+                                            <img class="rounded rounded-circle" height="25px" width="25px" src="~/Assets/media/78834391_459110258126325_6149001856166133760_n.jpg" alt="">
+                                        </div>
+                                        <div class="comment-content">
+                                            <div>
+                                                <span class="comment-name">
+                                                    Name
+                                                </span>
+                                                <span class="comment-content">
+                                                    content
+                                                </span>
+                                            </div>
+                                            <div class="comment-detail">
+                                                <span>2 giờ</span>
+                                                <span>200 lượt thích</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="collapse children-comment" id="comment-2-children">
+                                        <div class="comment-avatar">
+                                            <img class="rounded rounded-circle" height="25px" width="25px" src="~/Assets/media/78834391_459110258126325_6149001856166133760_n.jpg" alt="">
+                                        </div>
+                                        <div class="comment-content">
+                                            <div>
+                                                <span class="comment-name">
+                                                    Name
+                                                </span>
+                                                <span class="comment-content">
+                                                    content
+                                                </span>
+                                            </div>
+                                            <div class="comment-detail">
+                                                <span>2 giờ</span>
+                                                <span>200 lượt thích</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="children-reply" id="children-reply-2">
+                                        <input type="text" placeholder="Viết phản hồi" class="form-control">
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div class="post-usercomment">

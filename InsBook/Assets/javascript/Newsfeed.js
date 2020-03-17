@@ -79,14 +79,74 @@
                     '                            <div class="post-caption">' + item["post-title"] +
                     '                            </div>' +
                     '                            <div class="post-comment">' +
-                    '                                <p class="comment-name">Name</p>' +
-                    '                                <p>comment....</p>' +
-                    '                            </div>' +
-                    '                        </div>' +
-                    '                        <div class="post-usercomment">' +
-                    '                            <input class="form-control" type="text" placeholder="Thêm bình luận...">' +
-                    '                            <button>Đăng</button>' +
-                    '                        </div>' +
+                    '                                <div class="comment-avatar">' +
+                    '                                   <img class="rounded rounded-circle" height = "35px" width = "35px" src="' + baseUrl + '/Images/base-background.jpg' + '" data-src="' + baseUrl + item["user-ava"] + '" alt="" >' +
+                    '                                </div>' +
+                    '                               <div class="comment-content">' +
+                    '                                   <div>' +
+                    '                                       <span class="comment-name">' +
+                    '                                           Name' +
+                    '                                       </span>' +
+                    '                                       <span class="comment-content">' +
+                    '                                           content' +
+                    '                                       </span>'+
+                    '                                   </div>'+
+                    '                                   <div class="comment-detail">'+
+                    '                                       <span>2 giờ</span>'+
+                    '                                       <span>200 lượt thích</span>'+
+                    '                                       <span id="reply-btn-' + item["post-id"] + '" onclick="comment_reply(\''+ item["post-id"] + '\')">Trả lời</span>'+
+                    '                                   </div>'+
+                    '                                   <div class="comment-collapse" data-toggle="collapse" data-target="#comment-' + item["post-id"] + '-children">'+
+                    '                                       Xem câu trả lời'+
+                    '                                   </div>'+
+                    '                                   <div class="collapse children-comment" id="comment-' + item["post-id"] + '-children">'+
+                    '                                       <div class="comment-avatar">'+
+                    '                                           <img class="rounded rounded-circle" height="25px" width="25px" src="' + baseUrl + '/Images/base-background.jpg' + '" data-src="' + baseUrl + item["user-ava"] + '" alt="">'+
+                    '                                       </div>'+
+                    '                                       <div class="comment-content">'+
+                    '                                           <div>'+
+                    '                                               <span class="comment-name">'+
+                    '                                                   Name'+
+                    '                                               </span>'+
+                    '                                               <span class="comment-content">'+
+                    '                                                   content'+
+                    '                                               </span>'+
+                    '                                           </div>'+
+                    '                                           <div class="comment-detail">'+
+                    '                                               <span>2 giờ</span>'+
+                    '                                               <span>200 lượt thích</span>'+
+                    '                                           </div>'+
+                    '                                       </div>'+
+                    '                                   </div>'+
+                    '                                   <div class="collapse children-comment" id="comment-' + item["post-id"] + '-children">'+
+                    '                                       <div class="comment-avatar">'+
+                    '                                           <img class="rounded rounded-circle" height="25px" width="25px" src="' + baseUrl + '/Images/base-background.jpg' + '" data-src="' + baseUrl + item["user-ava"] + '" alt="">'+
+                    '                                       </div>'+
+                    '                                       <div class="comment-content">'+
+                    '                                           <div>'+
+                    '                                               <span class="comment-name">'+
+                    '                                                   Name'+
+                    '                                               </span>'+
+                    '                                               <span class="comment-content">'+
+                    '                                                   content'+
+                    '                                               </span>'+
+                    '                                           </div>'+
+                    '                                           <div class="comment-detail">'+
+                    '                                               <span>2 giờ</span>'+
+                    '                                               <span>200 lượt thích</span>'+
+                    '                                           </div>'+
+                    '                                       </div>'+
+                    '                                   </div>'+
+                    '                                   <div class="children-reply" id="children-reply-' + item["post-id"] + '">'+
+                    '                                       <input type="text" placeholder="Viết phản hồi" class="form-control">'+
+                    '                                   </div>'+
+                    '                               </div>'+
+                    '                               </div>' +
+                    '                           </div>' +
+                    '                           <div class="post-usercomment">' +
+                    '                               <input class="form-control" type="text" placeholder="Thêm bình luận...">' +
+                    '                               <button>Đăng</button>' +
+                    '                           </div>' +
                     '                        <!-- Modal -->' +
                     '                        <div class="post-box-modal modal fade" id="post-' + item["post-id"] + '-modal">' +
                     '                            <div class="modal-dialog modal-dialog-centered">' +

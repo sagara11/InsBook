@@ -56,6 +56,7 @@ main {
             padding: 10px 10px;
             display: flex;
             flex-wrap: wrap;
+            justify-content: space-between;
         }
 
             main #newpost .newpost-input .user-avatar {
@@ -63,7 +64,7 @@ main {
             }
 
             main #newpost .newpost-input .textarea {
-                width: 90%;
+                width: 87%;
             }
 
                 main #newpost .newpost-input .textarea textarea {
@@ -185,3 +186,4 @@ main {
                         }
 
 /*# sourceMappingURL=newsfeed.css.map */
+
