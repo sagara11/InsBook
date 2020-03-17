@@ -1,4 +1,6 @@
-﻿using System;
+﻿using InsBook.Common;
+using Model.EF;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,6 +13,25 @@ namespace InsBook.Areas.Client.Controllers
         // GET: Client/Personal
         public ActionResult Index()
         {
+            var user = new UserLogin();
+            if (Request.Cookies[CommonConstants.USER_COOKIE] != null)
+            {
+                // lấy từ cookie
+                user.UserID = int.Parse(Request.Cookies[CommonConstants.USER_COOKIE]["1"]); // đang string ép về kiểu long
+                user.Email = Request.Cookies[CommonConstants.USER_COOKIE]["2"].ToString();
+            }
+            else
+            {
+                user = (UserLogin)Session[CommonConstants.USER_SESSION]; // lấy từ session
+            }
+
+            nguoidung profile = new nguoidung();
+            banbe friends = new banbe(); // lấy 6 bạn bè
+            baiviet posts = new baiviet(); // 3 bài viết
+            anh imgs = new anh(); // lấy 9 ảnh nội bật 
+
+            //ViewBag.ListAddFriend = new AddFriendDao().ListAddFriend(users);
+            //
             return View();
         }
         public ActionResult ChangeGeneralInfor()

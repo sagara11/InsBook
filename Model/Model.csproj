@@ -117,7 +117,10 @@
     <Compile Include="EF\video.cs" />
     <Compile Include="EF\video_binhluan.cs" />
     <Compile Include="EF\video_chiase.cs" />
-    <Compile Include="Models\AddFriendModel.cs" />
+    <Compile Include="Models\GetFriendsModel.cs" />
+    <Compile Include="Models\GetImagesModel.cs" />
+    <Compile Include="Models\GetPostModel.cs" />
+    <Compile Include="Models\GetProfileModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
