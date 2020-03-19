@@ -117,10 +117,14 @@
     <Compile Include="EF\video.cs" />
     <Compile Include="EF\video_binhluan.cs" />
     <Compile Include="EF\video_chiase.cs" />
+    <Compile Include="Models\GetAlbumModel.cs" />
     <Compile Include="Models\GetFriendsModel.cs" />
     <Compile Include="Models\GetImagesModel.cs" />
     <Compile Include="Models\GetPostModel.cs" />
     <Compile Include="Models\GetProfileModel.cs" />
+    <Compile Include="Models\GetSavedItemModel.cs" />
+    <Compile Include="Models\GetVideoModel.cs" />
+    <Compile Include="Models\TestModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

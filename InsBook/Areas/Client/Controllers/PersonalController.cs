@@ -1,4 +1,5 @@
 ﻿using InsBook.Common;
+using Model.Dao;
 using Model.EF;
 using System;
 using System.Collections.Generic;
@@ -25,37 +26,111 @@ namespace InsBook.Areas.Client.Controllers
                 user = (UserLogin)Session[CommonConstants.USER_SESSION]; // lấy từ session
             }
 
-            nguoidung profile = new nguoidung();
-            banbe friends = new banbe(); // lấy 6 bạn bè
-            baiviet posts = new baiviet(); // 3 bài viết
-            anh imgs = new anh(); // lấy 9 ảnh nội bật 
+            ViewBag.Profile = new UserDao().Profile(user.UserID);
 
-            //ViewBag.ListAddFriend = new AddFriendDao().ListAddFriend(users);
-            //
             return View();
         }
         public ActionResult ChangeGeneralInfor()
         {
+            var user = new UserLogin();
+            if (Request.Cookies[CommonConstants.USER_COOKIE] != null)
+            {
+                // lấy từ cookie
+                user.UserID = int.Parse(Request.Cookies[CommonConstants.USER_COOKIE]["1"]); // đang string ép về kiểu long
+                user.Email = Request.Cookies[CommonConstants.USER_COOKIE]["2"].ToString();
+            }
+            else
+            {
+                user = (UserLogin)Session[CommonConstants.USER_SESSION]; // lấy từ session
+            }
+
+            ViewBag.Profile = new UserDao().Profile(user.UserID);
+            ViewBag.Ten = new UserDao().GetbyName(user.UserID);
             return View();
         }
         public ActionResult ChangePassInfo()
         {
+            var user = new UserLogin();
+            if (Request.Cookies[CommonConstants.USER_COOKIE] != null)
+            {
+                // lấy từ cookie
+                user.UserID = int.Parse(Request.Cookies[CommonConstants.USER_COOKIE]["1"]); // đang string ép về kiểu long
+                user.Email = Request.Cookies[CommonConstants.USER_COOKIE]["2"].ToString();
+            }
+            else
+            {
+                user = (UserLogin)Session[CommonConstants.USER_SESSION]; // lấy từ session
+            }
+
+            ViewBag.Profile = new UserDao().Profile(user.UserID);
             return View();
         }
         public ActionResult Job_Edu()
         {
+            var user = new UserLogin();
+            if (Request.Cookies[CommonConstants.USER_COOKIE] != null)
+            {
+                // lấy từ cookie
+                user.UserID = int.Parse(Request.Cookies[CommonConstants.USER_COOKIE]["1"]); // đang string ép về kiểu long
+                user.Email = Request.Cookies[CommonConstants.USER_COOKIE]["2"].ToString();
+            }
+            else
+            {
+                user = (UserLogin)Session[CommonConstants.USER_SESSION]; // lấy từ session
+            }
+
+            ViewBag.Profile = new UserDao().Profile(user.UserID);
             return View();
         }
         public ActionResult LivingPlace()
         {
+            var user = new UserLogin();
+            if (Request.Cookies[CommonConstants.USER_COOKIE] != null)
+            {
+                // lấy từ cookie
+                user.UserID = int.Parse(Request.Cookies[CommonConstants.USER_COOKIE]["1"]); // đang string ép về kiểu long
+                user.Email = Request.Cookies[CommonConstants.USER_COOKIE]["2"].ToString();
+            }
+            else
+            {
+                user = (UserLogin)Session[CommonConstants.USER_SESSION]; // lấy từ session
+            }
+
+            ViewBag.Profile = new UserDao().Profile(user.UserID);
             return View();
         }
         public ActionResult Rela_Fami()
         {
+            var user = new UserLogin();
+            if (Request.Cookies[CommonConstants.USER_COOKIE] != null)
+            {
+                // lấy từ cookie
+                user.UserID = int.Parse(Request.Cookies[CommonConstants.USER_COOKIE]["1"]); // đang string ép về kiểu long
+                user.Email = Request.Cookies[CommonConstants.USER_COOKIE]["2"].ToString();
+            }
+            else
+            {
+                user = (UserLogin)Session[CommonConstants.USER_SESSION]; // lấy từ session
+            }
+
+            ViewBag.Profile = new UserDao().Profile(user.UserID);
             return View();
         }
         public ActionResult DetailInfo()
         {
+            var user = new UserLogin();
+            if (Request.Cookies[CommonConstants.USER_COOKIE] != null)
+            {
+                // lấy từ cookie
+                user.UserID = int.Parse(Request.Cookies[CommonConstants.USER_COOKIE]["1"]); // đang string ép về kiểu long
+                user.Email = Request.Cookies[CommonConstants.USER_COOKIE]["2"].ToString();
+            }
+            else
+            {
+                user = (UserLogin)Session[CommonConstants.USER_SESSION]; // lấy từ session
+            }
+
+            ViewBag.Profile = new UserDao().Profile(user.UserID);
             return View();
         }
         public ActionResult FriendsInfo()

@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Model.EF;
+using Model.Models;
 using PagedList;
 using PagedList.Mvc;
 namespace Model.Dao
@@ -23,7 +25,7 @@ namespace Model.Dao
             db.SaveChanges();
             return entity.id;
         }
-        
+
         public nguoidung GetbyEmail(string email)
         {
             return db.nguoidungs.SingleOrDefault(x => x.email == email);
@@ -31,6 +33,10 @@ namespace Model.Dao
         public nguoidung GetbyID(int id)
         {
             return db.nguoidungs.Find(id);
+        }
+        public string GetbyName(int id)
+        {
+            return db.Database.SqlQuery<string>("select nguoidung.ten from nguoidung where nguoidung.id="+id).Single();
         }
         //public User ViewDetail(int id)
         //{
@@ -69,7 +75,7 @@ namespace Model.Dao
             try
             {
                 var user = db.nguoidungs.Find(userId);
-                
+
                 user.anhdd = imgId;
                 db.SaveChanges();
                 return true;
@@ -102,24 +108,45 @@ namespace Model.Dao
         //}
         public int Login(string email, string passWord)
         {
-            var result = db.nguoidungs.SingleOrDefault(x => x.email == email);
-            if (result == null)
+            try
             {
-                return 0;
-            }
-            else
-            {
-                if (result.matkhau == passWord)
+                var result = db.nguoidungs.SingleOrDefault(x => x.email == email);
+                if (result == null)
                 {
-                    return 1;
+                    return 0;
                 }
                 else
                 {
-                    return 2;
+                    if (result.matkhau == passWord)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+
                 }
-
             }
+            catch (Exception ex)
+            {
+                return 0;
+            }
+        }
+        public GetProfileModel Profile(int userId)
+        {
+            GetProfileModel profile = new GetProfileModel();
+            profile = db.Database.SqlQuery<GetProfileModel>("Profile @id", new SqlParameter("@id", userId)).Single();
 
+            profile.moiquanhe = new profile_moiquanhe(profile.moiquanheString);
+
+            profile.diadiem = db.Database.SqlQuery<profile_diadiem>("Profile_diadiem @id", new SqlParameter("@id", userId)).ToList();
+
+            profile.congty = db.Database.SqlQuery<profile_congty>("Profile_congty @id", new SqlParameter("@id", userId)).ToList();
+
+            profile.truonghoc = db.Database.SqlQuery<profile_truonghoc>("Profile_truonghoc @id", new SqlParameter("@id", userId)).ToList();
+
+            return profile;
         }
     }
 }

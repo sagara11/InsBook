@@ -6,11 +6,10 @@ using System.Threading.Tasks;
 
 namespace Model.Models
 {
-    public class GetFriendsModel
+    public class TestModel
     {
         public int id { set; get; }
-        public string ho { set; get; }
         public string ten { set; get; }
-        public string anh_url { set; get; }
+        public List<profile_congty> congty { set; get; }
     }
 }

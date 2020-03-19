@@ -2,6 +2,9 @@
 @{
     ViewBag.Title = "ChangeGeneralInfor";
     Layout = "~/Areas/Client/Views/Shared/_PersonalPage.cshtml";
+    var Profile = (Model.Models.GetProfileModel)ViewBag.Profile;
+    string ten = ViewBag.Ten;
+    string ho = Profile.tennguoidung.Replace(ten, "");
 }
 <ul class="nav nav-tabs">
     <li class="nav-item">
@@ -60,11 +63,11 @@
                     <div class="row">
                         <div class="col-md-3">
                             <div class="user-img">
-                                <img src="~/Images/22904751_688560231353134_2748711313877205190_o.jpg" alt="">
+                                <img src="~/Images/@Profile.anhdd" alt="">
                             </div>
                         </div>
                         <div class="col-md-9">
-                            <h1 class="user-name">Thắng Bếu</h1>
+                            <h1 class="user-name">@Profile.tennguoidung</h1>
                             <button type="button" class="btn btn-primary">Thay đổi ảnh đại diện</button>
                         </div>
                         <div class="col-md-3">
@@ -72,7 +75,7 @@
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
-                                <input type="text" class="form-control" id="suaten">
+                                <input type="text" class="form-control" id="suaten" value="@ten">
                             </div>
                         </div>
                         <div class="col-md-1">
@@ -80,15 +83,7 @@
                         </div>
                         <div class="col-md-5">
                             <div class="form-group">
-                                <input type="text" class="form-control" id="suaho">
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <label for="suaweb">Trang Web</label>
-                        </div>
-                        <div class="col-md-9">
-                            <div class="form-group">
-                                <input type="text" class="form-control" id="suaweb">
+                                <input type="text" class="form-control" id="suaho" value="@ho">
                             </div>
                         </div>
                         <div class="col-md-3">
@@ -96,7 +91,7 @@
                         </div>
                         <div class="col-md-9">
                             <div class="form-group">
-                                <input type="email" class="form-control" id="suaemail">
+                                <input type="email" class="form-control" id="suaemail" value="@Profile.email">
                             </div>
                         </div>
                         <div class="col-md-3">
@@ -104,7 +99,7 @@
                         </div>
                         <div class="col-md-9">
                             <div class="form-group">
-                                <input type="text" class="form-control" id="suasdt">
+                                <input type="text" class="form-control" id="suasdt" value="@Profile.sdt">
                             </div>
                         </div>
                         <div class="col-md-3">
@@ -112,7 +107,7 @@
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <input type="date" class="form-control" id="suangaysinh">
+                                <input type="date" class="form-control" id="suangaysinh" value="@Profile.ngaysinh">
                             </div>
                         </div>
                         <div class="col-md-2">
@@ -121,8 +116,16 @@
                         <div class="col-md-3 sua-gioitinh">
                             <div class="form-group">
                                 <select class="form-control" id="suagioitinh">
-                                    <option>Nam</option>
-                                    <option>Nữ</option>
+                                    @if (@Profile.gioitinh == "Nam")
+                                    {
+                                        <option value="Nam" selected>Nam</option>
+                                        <option value="Nữ">Nữ</option>
+                                    }
+                                    else
+                                    {
+                                        <option value="Nam">Nam</option>
+                                        <option value="Nữ" selected>Nữ</option>
+                                    }
                                 </select>
                             </div>
                         </div>

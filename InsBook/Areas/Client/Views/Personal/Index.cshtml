@@ -2,6 +2,7 @@
 @{
     ViewBag.Title = "Index";
     Layout = "~/Areas/Client/Views/Shared/_PersonalPage.cshtml";
+    var Profile = (Model.Models.GetProfileModel)ViewBag.Profile;
 }
 
     <ul class="nav nav-tabs">
@@ -42,15 +43,51 @@
                         </a>
                     </div>
                     <div class="user-description-content">
-                        <p class="user-quote">Trẻ không chơi già đổ đốn</p>
+                        <p class="user-quote">@Profile.loitrichdan</p>
                         <div class="user-description-detail">
                             <ul>
-                                <li><i class="fas fa-briefcase"></i><span>Đang làm vua tại đất <b>Thái Bình</b></span></li>
-                                <li><i class="fas fa-graduation-cap"></i><span>Học Công Nghệ Thông Tin tại <b>Học viện Hoàng gia Cali</b></span></li>
-                                <li><i class="fas fa-home"></i><span>Sống tại <b>Hà Nội</b></span></li>
-                                <li><i class="fas fa-map-marker-alt"></i><span>Đến từ <b>Thái Bình</b></span></li>
-                                <li><i class="far fa-clock"></i><span>Tham gia ngày xx tháng xx năm xxxx</span></li>
-                                <li><i class="far fa-heart"></i><span>Tìm hiểu</span></li>
+                                @foreach (var congty in Profile.congty)
+                                {
+                                    if (congty.ketthuc < DateTime.Now)
+                                    {
+                                        <li><i class="fas fa-briefcase"></i><span>Đã làm @congty.chucvu tại <b>@congty.tencongty</b></span></li>
+                                    }
+                                    else
+                                    {
+                                        <li><i class="fas fa-briefcase"></i><span>Đang làm @congty.chucvu tại <b>@congty.tencongty</b></span></li>
+                                    }
+                                }
+                                @foreach (var truonghoc in Profile.truonghoc)
+                                {
+                                    if (truonghoc.totnghiep)
+                                    {
+                                        <li><i class="fas fa-graduation-cap"></i><span>Đã học @truonghoc.chuyennganh tại <b>@truonghoc.tentruonghoc</b></span></li>
+                                    }
+                                    else
+                                    {
+                                        <li><i class="fas fa-graduation-cap"></i><span>Đang học @truonghoc.chuyennganh tại <b>@truonghoc.tentruonghoc</b></span></li>
+                                    }
+                                }
+                                @foreach (var diadiem in Profile.diadiem)
+                                {
+                                    if (diadiem.loaidd == 0)
+                                    {
+                                        <li><i class="fas fa-home"></i><span>Đang sống tại <b>@diadiem.tendd</b></span></li>
+                                    }
+                                    else if (diadiem.loaidd == 1)
+                                    {
+                                        <li><i class="fas fa-map-marker-alt"></i><span>Đến từ <b>@diadiem.tendd</b></span></li>
+                                    }
+                                }
+                                <li><i class="far fa-clock"></i><span>Tham gia ngày @Profile.ngaybatdau.Day tháng @Profile.ngaybatdau.Month năm @Profile.ngaybatdau.Year</span></li>
+                                @if (Profile.moiquanhe != null)
+                                {
+                                    <li><i class="far fa-heart"></i><span>@Profile.moiquanhe.moiquanhe với <b>@Profile.moiquanhe.ten</b></span></li>
+                                }
+                                else
+                                {
+                                    <li><i class="far fa-heart"></i><span>Độc thân</span></li>
+                                }
                             </ul>
                         </div>
                     </div>

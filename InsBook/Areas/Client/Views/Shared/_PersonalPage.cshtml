@@ -1,4 +1,7 @@
-﻿
+﻿@{
+
+    var Profile = (Model.Models.GetProfileModel)ViewBag.Profile;
+ }
 <!DOCTYPE html>
 
 <html>
@@ -22,31 +25,31 @@
                     <div class="row">
                         <div class="col-md-4">
                             <div class="user-ava">
-                                <img src="~/Images/22904751_688560231353134_2748711313877205190_o.jpg" alt="">
+                                <img src="~/Images/@Profile.anhdd" alt="">
                             </div>
                         </div>
                         <div class="col-md-8">
                             <div class="user-description">
                                 <div class="user-description-one">
-                                    <h1 class="user-name">Thắng Bếu</h1>
-                                    <a href="/Client/Personal/ChangeGeneralInfo" title="Chỉnh sửa trang cá nhân" class="user-setting"><button type="button" class="btn btn-outline-primary">Chỉnh sửa trang cá nhân</button></a>
+                                    <h1 class="user-name">@Profile.tennguoidung</h1>
+                                    <a href="/Client/Personal/ChangeGeneralInfor" title="Chỉnh sửa trang cá nhân" class="user-setting"><button type="button" class="btn btn-outline-primary">Chỉnh sửa trang cá nhân</button></a>
                                     <div class="account-setting">
                                         <button type="button" class="btn btn-outline-primary"><i class="fas fa-cog fa-2x"></i></button></a>
                                     </div>
                                 </div>
                                 <ul class="user-description-two">
                                     <li>
-                                        <span><span>123</span> bài viết</span>
+                                        <span><span>@Profile.soluongbaiviet</span> bài viết</span>
                                     </li>
                                     <li>
-                                        <span><span>123</span> người theo dõi</span>
+                                        <span><span>@Profile.soluongbanbe</span> bạn bè</span>
                                     </li>
                                     <li>
-                                        <span>Đang theo dõi <span>123</span> người dùng</span>
+                                        <span>Đang theo dõi <span>@Profile.soluongtheodoi</span> người dùng</span>
                                     </li>
                                 </ul>
                                 <div class="user-description-three">
-                                    <h1>Vị Vua không ngai</h1>
+                                    <h1>@Profile.gioithieu</h1>
                                 </div>
                             </div>
                         </div>

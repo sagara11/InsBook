@@ -31,7 +31,7 @@ namespace Model.Dao
                     };
 
                 Int64 ID = db.Database.SqlQuery<Int64>("SetIdImage @time, @shardId", sqlParam).Single();
-
+               
                 var img = new anh();
                 img.id = ID;
                 img.ngaycapnhat = DateTime.Now;

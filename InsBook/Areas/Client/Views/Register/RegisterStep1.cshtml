@@ -2,7 +2,7 @@
 @{
     ViewBag.Title = "RegisterStep1";
     Layout = "~/Areas/Client/Views/Shared/Newsfeed.cshtml";
-    var listAddFriend = (List<Model.Models.AddFriendModel>)ViewBag.ListAddFriend;
+    var listAddFriend = (List<Model.Models.GetFriendsModel>)ViewBag.ListAddFriend;
 }
 @section css {
     <link href="~/Assets/css/layouts/header.css" rel="stylesheet" />
@@ -41,14 +41,14 @@
                             @Html.AntiForgeryToken()
                             @foreach (var user in listAddFriend)
                             {
-                                <div class="list-friends-item" id="list-friends-@user.Id">
+                                <div class="list-friends-item" id="list-friends-@user.id">
                                     <div class="friends-item-avatar">
                                         <img src="~/Images/22904751_688560231353134_2748711313877205190_o.jpg" />
                                     </div>
-                                    <p class="friends-item-name"><b>@user.Ho @user.Ten</b> là người bạn có thể biết</p>
+                                    <p class="friends-item-name"><b>@user.ho @user.ten</b> là người bạn có thể biết</p>
                                     <div class="friends-item-tools">
-                                        <button type="button" class="btn btn-primary" id-add="@user.Id">Thêm bạn bè</button>
-                                        <button type="button" class="btn btn-light" id-disappear="@user.Id">Xóa, gỡ bỏ</button>
+                                        <button type="button" class="btn btn-primary" id-add="@user.id">Thêm bạn bè</button>
+                                        <button type="button" class="btn btn-light" id-disappear="@user.id">Xóa, gỡ bỏ</button>
                                     </div>
                                 </div>
                             }
