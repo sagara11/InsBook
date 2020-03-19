@@ -3,6 +3,10 @@
     ViewBag.Title = "DetailInfo";
     Layout = "~/Areas/Client/Views/Shared/_PersonalPage.cshtml";
     var Profile = (Model.Models.GetProfileModel)ViewBag.Profile;
+
+    string[] loitrichdan = Profile.loitrichdan.Split('@');
+    string trichdan = loitrichdan[0];
+    string tacgia = loitrichdan[1];
 }
     <ul class="nav nav-tabs">
         <li class="nav-item">
@@ -63,11 +67,11 @@
             <div class="tab-pane container fade" id="menu2-5">...</div>
             <div class="tab-pane container active" id="menu2-6">
                 <div class="description">
-                    <h3>Giới thiệu về Vua</h3>
+                    <h3>Giới thiệu</h3>
                     <ul class="list-description">
                         <li class="list-description-item">
                             <div class="description-item-name">
-                                <p>Không thích mọi thứ về mọi mặt</p>
+                                <p>@Profile.gioithieu</p>
                             </div>
                             <div class="description-item-tools">
                                 <i class="far fa-edit"></i>
@@ -75,7 +79,7 @@
                             </div>
                         </li>
                     </ul>
-                    <div class="description-adding">
+                    @*<div class="description-adding">
                         <button type="button" class="btn btn-light" id="show-description-adding-box"><i class="far fa-plus-square"></i><span>Viết một số điều về chính bạn</span></button>
                     </div>
                     <div class="description-adding-box">
@@ -111,14 +115,14 @@
                             </div>
                         </div>
                         <button class="btn btn-light description-closse" type="button" id=""><i class="fas fa-times"></i> Hủy</button>
-                    </div>
+                    </div>*@
                 </div>
                 <div class="nickname">
-                    <h3>Các tên khác</h3>
+                    <h3>Tên khác</h3>
                     <ul class="list-nickname">
                         <li class="list-nickname-item">
                             <div class="nickname-item-name">
-                                <p>Thắng Bếu</p>
+                                <p>@Profile.bietdanh</p>
                                 <p>Biệt danh</p>
                             </div>
                             <div class="nickname-item-tools">
@@ -126,18 +130,8 @@
                                 <i class="far fa-trash-alt"></i>
                             </div>
                         </li>
-                        <li class="list-nickname-item">
-                            <div class="nickname-item-name">
-                                <p>Hồ Thắng</p>
-                                <p>Tên giả</p>
-                            </div>
-                            <div class="nickname-item-tools">
-                                <i class="far fa-edit"></i>
-                                <i class="far fa-trash-alt"></i>
-                            </div>
-                        </li>
                     </ul>
-                    <div class="nickname-adding">
+                    @*<div class="nickname-adding">
                         <button type="button" class="btn btn-light" id="show-nickname-adding-box"><i class="far fa-plus-square"></i><span>Thêm biệt danh, tên khai sinh,...</span></button>
                     </div>
                     <div class="nickname-adding-box">
@@ -197,25 +191,15 @@
                             </div>
                         </div>
                         <button class="btn btn-light nickname-closse" type="button" id=""><i class="fas fa-times"></i> Hủy</button>
-                    </div>
+                    </div>*@
                 </div>
                 <div class="quote">
                     <h3>Trích dẫn yêu thích</h3>
                     <ul class="list-quote">
                         <li class="list-quote-item">
                             <div class="quote-item-name">
-                                <p>Never interrupt your enemy when he is making a mistake.</p>
-                                <p>Napoleon Bonaparte</p>
-                            </div>
-                            <div class="quote-item-tools">
-                                <i class="far fa-edit"></i>
-                                <i class="far fa-trash-alt"></i>
-                            </div>
-                        </li>
-                        <li class="list-quote-item">
-                            <div class="quote-item-name">
-                                <p>Vạn sự cụ bị, chích khiếm đông phong</p>
-                                <p>Gia Cát Lượng</p>
+                                <p>@trichdan</p>
+                                <p>@tacgia</p>
                             </div>
                             <div class="quote-item-tools">
                                 <i class="far fa-edit"></i>
@@ -223,7 +207,7 @@
                             </div>
                         </li>
                     </ul>
-                    <div class="quote-adding">
+                    @*<div class="quote-adding">
                         <button type="button" class="btn btn-light" id="show-quote-adding-box"><i class="far fa-plus-square"></i><span>Thêm câu trích dẫn yêu thích của bạn</span></button>
                     </div>
                     <div class="quote-adding-box">
@@ -259,7 +243,7 @@
                             </div>
                         </div>
                         <button class="btn btn-light quote-closse" type="button" id=""><i class="fas fa-times"></i> Hủy</button>
-                    </div>
+                    </div>*@
                 </div>
             </div>
         </div>

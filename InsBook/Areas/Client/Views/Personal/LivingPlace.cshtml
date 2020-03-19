@@ -63,32 +63,42 @@
                 <div class="country">
                     <h3>Tỉnh/Thành phố hiện tại và Quê quán</h3>
                     <ul class="list-country">
-                        <li class="list-country-item">
-                            <div class="country-item-thumbnail">
-                                <img src="~/Images/22904751_688560231353134_2748711313877205190_o.jpg" alt="">
-                            </div>
-                            <div class="country-item-name">
-                                <p>Tay Ho, Ha Noi, Vietnam</p>
-                                <p>Tỉnh/Thành phô hiện tại</p>
-                            </div>
-                            <div class="country-item-tools">
-                                <i class="far fa-edit"></i>
-                                <i class="far fa-trash-alt"></i>
-                            </div>
-                        </li>
-                        <li class="list-country-item">
-                            <div class="country-item-thumbnail">
-                                <img src="~/Images/22904751_688560231353134_2748711313877205190_o.jpg" alt="">
-                            </div>
-                            <div class="country-item-name">
-                                <p>Viet Nam</p>
-                                <p>Quê quán</p>
-                            </div>
-                            <div class="country-item-tools">
-                                <i class="far fa-edit"></i>
-                                <i class="far fa-trash-alt"></i>
-                            </div>
-                        </li>
+                        @foreach (var city in Profile.diadiem)
+                        {
+                            if (city.loaidd == 0)
+                            {
+                                <li class="list-country-item">
+                                    <div class="country-item-thumbnail">
+                                        <img src="~/Images/22904751_688560231353134_2748711313877205190_o.jpg" alt="">
+                                    </div>
+                                    <div class="country-item-name">
+                                        <p>@city.tendd</p>
+                                        <p>Tỉnh/Thành phố hiện tại</p>
+                                    </div>
+                                    <div class="country-item-tools">
+                                        <i class="far fa-edit"></i>
+                                        <i class="far fa-trash-alt"></i>
+                                    </div>
+                                </li>
+                            }
+                            if (city.loaidd == 1)
+                            {
+                                <li class="list-country-item">
+                                    <div class="country-item-thumbnail">
+                                        <img src="~/Images/22904751_688560231353134_2748711313877205190_o.jpg" alt="">
+                                    </div>
+                                    <div class="country-item-name">
+                                        <p>@city.tendd</p>
+                                        <p>Quê quán</p>
+                                    </div>
+                                    <div class="country-item-tools">
+                                        <i class="far fa-edit"></i>
+                                        <i class="far fa-trash-alt"></i>
+                                    </div>
+                                </li>
+
+                            }
+                        }
                     </ul>
                     <!-- <div class="country-adding">
                         <button type="button" class="btn btn-light"><i class="far fa-plus-square"></i><span>Thêm một địa điểm</span></button>
@@ -97,30 +107,25 @@
                 <div class="country-lived">
                     <h3>Địa điểm khác đã sống</h3>
                     <ul class="list-country-lived">
-                        <li class="list-country-lived-item">
-                            <div class="country-lived-item-thumbnail">
-                                <img src="~/Images/22904751_688560231353134_2748711313877205190_o.jpg" alt="">
-                            </div>
-                            <div class="country-lived-item-name">
-                                <p>Tay Ho, Ha Noi, Vietnam</p>
-                            </div>
-                            <div class="country-lived-item-tools">
-                                <i class="far fa-edit"></i>
-                                <i class="far fa-trash-alt"></i>
-                            </div>
-                        </li>
-                        <li class="list-country-lived-item">
-                            <div class="country-lived-item-thumbnail">
-                                <img src="~/Images/22904751_688560231353134_2748711313877205190_o.jpg" alt="">
-                            </div>
-                            <div class="country-lived-item-name">
-                                <p>Viet Nam</p>
-                            </div>
-                            <div class="country-lived-item-tools">
-                                <i class="far fa-edit"></i>
-                                <i class="far fa-trash-alt"></i>
-                            </div>
-                        </li>
+                        @foreach (var livedCity in Profile.diadiem)
+                        {
+                            if (livedCity.loaidd == 3)
+                            {
+
+                                <li class="list-country-lived-item">
+                                    <div class="country-lived-item-thumbnail">
+                                        <img src="~/Images/22904751_688560231353134_2748711313877205190_o.jpg" alt="">
+                                    </div>
+                                    <div class="country-lived-item-name">
+                                        <p>@livedCity.tendd</p>
+                                    </div>
+                                    <div class="country-lived-item-tools">
+                                        <i class="far fa-edit"></i>
+                                        <i class="far fa-trash-alt"></i>
+                                    </div>
+                                </li>
+                            }
+                        }
                     </ul>
                     <div class="country-lived-adding">
                         <button type="button" class="btn btn-light" id="show-country-lived-adding-box"><i class="far fa-plus-square"></i><span>Thêm một địa điểm</span></button>

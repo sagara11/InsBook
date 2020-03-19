@@ -4,30 +4,30 @@
     Layout = "~/Areas/Client/Views/Shared/_PersonalPage.cshtml";
     var Profile = (Model.Models.GetProfileModel)ViewBag.Profile;
 }
-    <ul class="nav nav-tabs">
-        <li class="nav-item">
-            <a class="nav-link" href="/Client/Personal/Index"><i class="fas fa-rss-square"></i><span>Dòng thời gian</span></a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link active" href="/Client/Personal/ChangeGeneralInfor"><i class="far fa-user-circle"></i><span>Giới thiệu</span></a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="/Client/Personal/FriendsInfo"><i class="fas fa-users"></i><span>Bạn bè</span></a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="/Client/Personal/ImagesInfo"><i class="far fa-images"></i></i><span>Ảnh</span></a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span>Xem thêm</span>
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <a class="dropdown-item" href="/Client/Personal/SavedInfo">Lưu trữ</a>
-                <a class="dropdown-item" href="/Client/Personal/AlbumInfo">Bộ sưu tập</a>
-                <a class="dropdown-item" href="/Client/Personal/VideoInfo">Video</a>
-            </div>
-        </li>
-    </ul>
+<ul class="nav nav-tabs">
+    <li class="nav-item">
+        <a class="nav-link" href="/Client/Personal/Index"><i class="fas fa-rss-square"></i><span>Dòng thời gian</span></a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link active" href="/Client/Personal/ChangeGeneralInfor"><i class="far fa-user-circle"></i><span>Giới thiệu</span></a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/Client/Personal/FriendsInfo"><i class="fas fa-users"></i><span>Bạn bè</span></a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/Client/Personal/ImagesInfo"><i class="far fa-images"></i></i><span>Ảnh</span></a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span>Xem thêm</span>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item" href="/Client/Personal/SavedInfo">Lưu trữ</a>
+            <a class="dropdown-item" href="/Client/Personal/AlbumInfo">Bộ sưu tập</a>
+            <a class="dropdown-item" href="/Client/Personal/VideoInfo">Video</a>
+        </div>
+    </li>
+</ul>
 
 <!-- Tab panes -->
 <div class="tab-content">
@@ -63,30 +63,23 @@
                     <div class="job">
                         <h3>Công việc</h3>
                         <ul class="list-job">
-                            <li class="list-job-item">
-                                <div class="job-item-thumbnail">
-                                    <img src="~/Images/22904751_688560231353134_2748711313877205190_o.jpg" alt="">
-                                </div>
-                                <div class="job-item-name">
-                                    <p>Công ty cổ phần truyền thông BTS</p>
-                                </div>
-                                <div class="job-item-tools">
-                                    <i class="far fa-edit"></i>
-                                    <i class="far fa-trash-alt"></i>
-                                </div>
-                            </li>
-                            <li class="list-job-item">
-                                <div class="job-item-thumbnail">
-                                    <img src="~/Images/22904751_688560231353134_2748711313877205190_o.jpg" alt="">
-                                </div>
-                                <div class="job-item-name">
-                                    <p>Công ty cổ phần truyền thông BTS</p>
-                                </div>
-                                <div class="job-item-tools">
-                                    <i class="far fa-edit"></i>
-                                    <i class="far fa-trash-alt"></i>
-                                </div>
-                            </li>
+                            @foreach (var congviec in Profile.congty)
+                            {
+                                <li class="list-job-item">
+                                    <div class="job-item-thumbnail">
+                                        <img src="~/Images/22904751_688560231353134_2748711313877205190_o.jpg" alt="">
+                                    </div>
+                                    <div class="job-item-name">
+                                        <p>@congviec.tencongty</p>
+                                        <span>@congviec.chucvu @congviec.batdau.Day tháng @congviec.batdau.Month,@congviec.batdau.Year đến @congviec.ketthuc.Day tháng @congviec.ketthuc.Month,@congviec.ketthuc.Year @congviec.tendiadiem</span>
+                                    </div>
+                                    <div class="job-item-tools">
+                                        <i class="far fa-edit"></i>
+                                        <i class="far fa-trash-alt"></i>
+                                    </div>
+                                </li>
+
+                            }
                         </ul>
                         <div class="job-adding">
                             <button type="button" class="btn btn-light" id="show-job-adding-box"><i class="far fa-plus-square"></i><span>Thêm một nơi làm việc</span></button>
@@ -197,30 +190,46 @@
                     <div class="university">
                         <h3>Đại học</h3>
                         <ul class="list-university">
-                            <li class="list-university-item">
-                                <div class="university-item-thumbnail">
-                                    <img src="~/Images/22904751_688560231353134_2748711313877205190_o.jpg" alt="">
-                                </div>
-                                <div class="university-item-name">
-                                    <p>Học viện kỹ thuạt quân sự MTA</p>
-                                </div>
-                                <div class="university-item-tools">
-                                    <i class="far fa-edit"></i>
-                                    <i class="far fa-trash-alt"></i>
-                                </div>
-                            </li>
-                            <li class="list-university-item">
-                                <div class="university-item-thumbnail">
-                                    <img src="~/Images/22904751_688560231353134_2748711313877205190_o.jpg" alt="">
-                                </div>
-                                <div class="university-item-name">
-                                    <p>Học viện kỹ thuạt quân sự MTA</p>
-                                </div>
-                                <div class="university-item-tools">
-                                    <i class="far fa-edit"></i>
-                                    <i class="far fa-trash-alt"></i>
-                                </div>
-                            </li>
+                            @foreach (var daihoc in Profile.truonghoc)
+                            {
+                                if (daihoc.loaitruong == 3)
+                                {
+                                    if (daihoc.totnghiep)
+                                    {
+
+                                        <li class="list-university-item">
+                                            <div class="university-item-thumbnail">
+                                                <img src="~/Images/22904751_688560231353134_2748711313877205190_o.jpg" alt="">
+                                            </div>
+                                            <div class="university-item-name">
+                                                <p>@daihoc.tentruonghoc</p>
+                                                <span>Tốt nghiệp @daihoc.ketthuc.Year @daihoc.chuyennganh @daihoc.tendiadiem</span>
+                                            </div>
+                                            <div class="university-item-tools">
+                                                <i class="far fa-edit"></i>
+                                                <i class="far fa-trash-alt"></i>
+                                            </div>
+                                        </li>
+                                    }
+                                    else
+                                    {
+
+                                        <li class="list-university-item">
+                                            <div class="university-item-thumbnail">
+                                                <img src="~/Images/22904751_688560231353134_2748711313877205190_o.jpg" alt="">
+                                            </div>
+                                            <div class="university-item-name">
+                                                <p>@daihoc.tentruonghoc</p>
+                                                <span>Bắt đầu từ @daihoc.batdau.Day tháng @daihoc.batdau.Month,@daihoc.batdau.Year @daihoc.chuyennganh @daihoc.tendiadiem </span>
+                                            </div>
+                                            <div class="university-item-tools">
+                                                <i class="far fa-edit"></i>
+                                                <i class="far fa-trash-alt"></i>
+                                            </div>
+                                        </li>
+                                    }
+                                }
+                            }
                         </ul>
                         <div class="university-adding">
                             <button type="button" class="btn btn-light" id="show-university-adding-box"><i class="far fa-plus-square"></i><span>Thêm một trường đại học</span></button>
@@ -280,29 +289,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <input type="text" class="form-control" id="daihoc-chuyennganh-1">
-                                    </div>
-                                </div>
-                                <div class="col-md-2">
-
-                                </div>
-                                <div class="col-md-4">
-                                    <label for=""></label>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" id="daihoc-chuyennganh-2">
-                                    </div>
-                                </div>
-                                <div class="col-md-2">
-
-                                </div>
-                                <div class="col-md-4">
-                                    <label for=""></label>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" id="daihoc-chuyennganh-3">
+                                        <input type="text" class="form-control" id="daihoc-chuyennganh">
                                     </div>
                                 </div>
                                 <div class="col-md-2">
@@ -344,30 +331,44 @@
                     <div class="highschool">
                         <h3>Trường trung học</h3>
                         <ul class="list-highschool">
-                            <li class="list-highschool-item">
-                                <div class="highschool-item-thumbnail">
-                                    <img src="~/Images/22904751_688560231353134_2748711313877205190_o.jpg" alt="">
-                                </div>
-                                <div class="highschool-item-name">
-                                    <p>Trường THPT Xuân Đỉnh</p>
-                                </div>
-                                <div class="highschool-item-tools">
-                                    <i class="far fa-edit"></i>
-                                    <i class="far fa-trash-alt"></i>
-                                </div>
-                            </li>
-                            <li class="list-highschool-item">
-                                <div class="highschool-item-thumbnail">
-                                    <img src="~/Images/22904751_688560231353134_2748711313877205190_o.jpg" alt="">
-                                </div>
-                                <div class="highschool-item-name">
-                                    <p>Trường THPT Trần Phú</p>
-                                </div>
-                                <div class="highschool-item-tools">
-                                    <i class="far fa-edit"></i>
-                                    <i class="far fa-trash-alt"></i>
-                                </div>
-                            </li>
+                            @foreach (var trunghoc in Profile.truonghoc)
+                            {
+                                if (trunghoc.loaitruong == 2)
+                                {
+                                    if (trunghoc.totnghiep)
+                                    {
+                                        <li class="list-highschool-item">
+                                            <div class="highschool-item-thumbnail">
+                                                <img src="~/Images/22904751_688560231353134_2748711313877205190_o.jpg" alt="">
+                                            </div>
+                                            <div class="highschool-item-name">
+                                                <p>@trunghoc.tentruonghoc</p>
+                                                <span>Khóa @trunghoc.ketthuc.Year @trunghoc.tendiadiem</span>
+                                            </div>
+                                            <div class="highschool-item-tools">
+                                                <i class="far fa-edit"></i>
+                                                <i class="far fa-trash-alt"></i>
+                                            </div>
+                                        </li>
+                                    }
+                                    else
+                                    {
+                                        <li class="list-highschool-item">
+                                            <div class="highschool-item-thumbnail">
+                                                <img src="~/Images/22904751_688560231353134_2748711313877205190_o.jpg" alt="">
+                                            </div>
+                                            <div class="highschool-item-name">
+                                                <p>@trunghoc.tentruonghoc</p>
+                                                <span>Bắt đầu từ @trunghoc.batdau.Day tháng @trunghoc.batdau.Month, @trunghoc.batdau.Year @trunghoc.tendiadiem</span>
+                                            </div>
+                                            <div class="highschool-item-tools">
+                                                <i class="far fa-edit"></i>
+                                                <i class="far fa-trash-alt"></i>
+                                            </div>
+                                        </li>
+                                    }
+                                }
+                            }
                         </ul>
                         <div class="highschool-adding">
                             <button type="button" class="btn btn-light" id="show-highschool-adding-box"><i class="far fa-plus-square"></i><span>Thêm một trường trung học</span></button>

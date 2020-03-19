@@ -42,7 +42,7 @@ namespace Model.Models
     {
         public profile_moiquanhe(string moiquanheString)
         {
-            string[] arr = moiquanheString.Split(' ');
+            string[] arr = moiquanheString.Split(',');
             this.anh_url = arr[0];
             this.ten = arr[1];
             this.moiquanhe = arr[2];
