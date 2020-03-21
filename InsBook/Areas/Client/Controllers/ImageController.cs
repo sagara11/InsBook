@@ -3,6 +3,7 @@ using Model.Dao;
 using Model.EF;
 using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.IO;
 using System.Linq;
 using System.Web;
@@ -17,7 +18,7 @@ namespace InsBook.Areas.Client.Controllers
         // bỏ ngày đăng vì trong id đã có giá trị time
         // tách kiểm tra session, cookie thành 1 hàm riêng, trả vè giá trị user
         // user trả về giá trị đang bị thừa: cần loại bỏ 
-        protected List<Int64> Image(HttpFileCollectionBase files, int userId)
+        protected List<Int64> Images(HttpFileCollectionBase files, int userId) //Hàm này để upload nhiều ảnh lên cùng 1 lúc từ file
         {
             List<string> urls = new List<string>();
             ImageDao imageDao = new ImageDao();
@@ -52,6 +53,39 @@ namespace InsBook.Areas.Client.Controllers
                 imageIds.Add(imageDao.InsertImage(urls[i], Convert.ToString(shardId)));
                 files[i].SaveAs(Path.Combine(Server.MapPath("~/Images"), urls[i]));
             }
+            return imageIds;
+        }
+        protected List<Int64> Image(HttpFileCollectionBase files, int userId, NameValueCollection imgName) //Hàm này để upload 1 ảnh duy nhất sau khi cắt chuyển sang dạng blob
+        {
+            ImageDao imageDao = new ImageDao();
+
+            var allowedExtensions = new[] { ".Jpg", ".png", ".jpg", "jpeg" };
+
+            string filename = Path.GetFileNameWithoutExtension(imgName[1]);
+            string ext = Path.GetExtension(imgName[1]);
+
+            string url = "";
+            List<Int64> imageIds = new List<Int64>();
+
+            if (allowedExtensions.Contains(ext))
+            {
+                string number = new Accessories().RandomNumber();
+                string GUID = Path.Combine(Guid.NewGuid().ToString().Replace("-", "_") + "_" + number);
+
+                filename = imgName[1].Replace(filename, GUID);
+
+                url = filename;
+            }
+            else
+            {
+                return imageIds;
+            }
+
+            UInt64 shardId = Convert.ToUInt64(userId % 2000) << 10;
+
+            imageIds.Add(imageDao.InsertImage(url, Convert.ToString(shardId)));
+
+            files[0].SaveAs(Path.Combine(Server.MapPath("~/Images"), url));
             return imageIds;
         }
     }

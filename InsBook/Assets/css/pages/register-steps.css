@@ -206,8 +206,7 @@ main #step-1 {
             main #step-1 .add-new-friend .list-new-friends .list-friends-item .friends-item-tools .btn-light:focus {
               border: 1px solid #dbdbdb; }
 main #step-2 {
-  margin-bottom: 70px;
-  padding: 40px 0; }
+  margin-bottom: 70px; }
   main #step-2 .add-new-avatar {
     background-color: #fff;
     border-radius: 24px;
@@ -238,22 +237,59 @@ main #step-2 {
         height: 100%;
         object-fit: cover;
         border-radius: 5px; }
+    main #step-2 .add-new-avatar #inputImg {
+      margin-bottom: 20px; }
+      main #step-2 .add-new-avatar #inputImg .imgPreview {
+        border-radius: 50%;
+        margin-left: 20px; }
+      main #step-2 .add-new-avatar #inputImg .cropper-view-box {
+        border-radius: 50%;
+        outline: none; }
+      main #step-2 .add-new-avatar #inputImg .cropper-face.cropper-move {
+        opacity: 0; }
+      main #step-2 .add-new-avatar #inputImg .cropper-bg {
+        background: none; }
+      main #step-2 .add-new-avatar #inputImg .cropper-modal {
+        background-color: #fff; }
+    main #step-2 .add-new-avatar .ep-slider-bar {
+      margin-bottom: 20px;
+      height: 1px;
+      width: 50%;
+      margin-left: 25%; }
+      main #step-2 .add-new-avatar .ep-slider-bar .ui-state-default {
+        background: white;
+        border: 1px solid #3578e5;
+        border-radius: 50%;
+        top: -10px; }
+        main #step-2 .add-new-avatar .ep-slider-bar .ui-state-default:focus {
+          outline: none; }
+    main #step-2 .add-new-avatar #avatar-saved, main #step-2 .add-new-avatar #avatar-cancel {
+      padding: 6px 33px;
+      font-weight: 600;
+      display: none; }
+    main #step-2 .add-new-avatar #avatar-saved {
+      margin-right: 48px; }
     main #step-2 .add-new-avatar .avatar-frame-tools {
       text-align: center;
       position: relative;
       width: 100%; }
       main #step-2 .add-new-avatar .avatar-frame-tools .btn-success {
         position: relative;
-        padding: 12px 24px; }
+        padding: 12px 24px;
+        margin-bottom: 0; }
         main #step-2 .add-new-avatar .avatar-frame-tools .btn-success i {
           margin-right: 8px; }
+      main #step-2 .add-new-avatar .avatar-frame-tools #step-2-file {
+        width: 0.1px;
+        height: 0.1px;
+        opacity: 0;
+        overflow: hidden;
+        position: absolute;
+        z-index: -1; }
       main #step-2 .add-new-avatar .avatar-frame-tools .btn-light {
         position: relative;
         background-color: #fff;
         border: none; }
-        main #step-2 .add-new-avatar .avatar-frame-tools .btn-light:focus {
-          box-shadow: none;
-          border: none; }
         main #step-2 .add-new-avatar .avatar-frame-tools .btn-light span {
           display: block;
           font-size: 20px;

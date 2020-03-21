@@ -3,6 +3,7 @@ using Model.Dao;
 using Model.EF;
 using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -42,8 +43,8 @@ namespace InsBook.Areas.Client.Controllers
 
                 try
                 {
-                    List<Int64> imgIds = Image(Request.Files, user.UserID);
-                    if(imgIds.Count != 0)
+                    List<Int64> imgIds = Image(Request.Files, user.UserID, Request.Form);
+                    if (imgIds.Count != 0)
                     {
                         baiviet post = new baiviet();
 
@@ -57,7 +58,7 @@ namespace InsBook.Areas.Client.Controllers
 
                         return Json(new
                         {
-                            status = new ImageDao().GetUrlImage(imgIds[0])
+                            status = true
                         }, JsonRequestBehavior.AllowGet);
                     }
                     else
@@ -91,8 +92,8 @@ namespace InsBook.Areas.Client.Controllers
                 status = false
             }, JsonRequestBehavior.AllowGet);
         }
-        
-        
+
+
         //public JsonResult PostGroupBanner()
         //{
 
