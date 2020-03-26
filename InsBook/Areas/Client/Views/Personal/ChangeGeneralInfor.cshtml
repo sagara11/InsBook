@@ -72,15 +72,23 @@
         <div class="tab-content">
             <div class="tab-pane container active" id="menu2-1">
                 <article class="change-profile">
-                    <div class="row">
+                    <div class="row change-profile-content">
                         <div class="col-md-3">
                             <div class="user-img">
-                                <img src="~/Images/@Profile.anhdd" alt="">
+                                @if (Profile.anhdd == "")
+                                {
+                                    <img src="https://bdh131.files.wordpress.com/2012/10/freeman_defaultblue_bdh.gif" alt="">
+                                }
+                                else
+                                {
+                                    <img src="~/Images/@Profile.anhdd" alt="">
+                                }
                             </div>
                         </div>
                         <div class="col-md-9">
                             <h1 class="user-name">@Profile.tennguoidung</h1>
-                            <button type="button" class="btn btn-primary">Thay đổi ảnh đại diện</button>
+                            <!-- Button trigger modal -->
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#change-profile-modal-1">Thay đổi ảnh đại diện</button>
                         </div>
                         <div class="col-md-3">
                             <label for="suaten">Tên</label>
@@ -149,6 +157,93 @@
                         </div>
                         <div class="col-md-6 button-submit">
                             <button type="button" class="btn btn-primary">Tạm thời vô hiệu hóa tài khoản</button>
+                        </div>
+                    </div>
+
+                    <!-- Modal 1 -->
+                    <div class="modal fade" id="change-profile-modal-1" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="">Cập nhật ảnh đại diện</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    @Html.AntiForgeryToken()
+                                    @*<button type="button" class="btn btn-outline-dark btn-block show-modal-avatar" data-toggle="modal" data-target="#change-profile-modal-2"><i class="fas fa-cross"></i>Tải ảnh lên</button>*@
+                                    <input type="file" name="avatar" id="change-profile-file" accept="image/*" onchange="cropAvaFunc(event)" />
+                                    <label for="change-profile-file" class="btn btn-outline-dark btn-block"><i class="fas fa-cross"></i>Tải ảnh lên</label>
+                                    <h6>Ảnh được đề xuất</h6>
+                                    <div class="offered-images-list">
+                                        <div class="row">
+                                            <div class="col-md-2">
+                                                <div class="offered-images-item">
+                                                    <img src="https://instagram.fhan2-4.fna.fbcdn.net/v/t51.2885-15/e35/s1080x1080/90342935_524370701788100_770503410475007716_n.jpg?_nc_ht=instagram.fhan2-4.fna.fbcdn.net&_nc_cat=1&_nc_ohc=SjDjD6cBONoAX-O3nt6&oh=526ec442c408837a110727d7d06bc60a&oe=5EA5CEC3" alt="" />
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="offered-images-item">
+                                                    <img src="https://instagram.fhan2-4.fna.fbcdn.net/v/t51.2885-15/e35/s1080x1080/90342935_524370701788100_770503410475007716_n.jpg?_nc_ht=instagram.fhan2-4.fna.fbcdn.net&_nc_cat=1&_nc_ohc=SjDjD6cBONoAX-O3nt6&oh=526ec442c408837a110727d7d06bc60a&oe=5EA5CEC3" alt="" />
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="offered-images-item">
+                                                    <img src="https://instagram.fhan2-4.fna.fbcdn.net/v/t51.2885-15/e35/s1080x1080/90342935_524370701788100_770503410475007716_n.jpg?_nc_ht=instagram.fhan2-4.fna.fbcdn.net&_nc_cat=1&_nc_ohc=SjDjD6cBONoAX-O3nt6&oh=526ec442c408837a110727d7d06bc60a&oe=5EA5CEC3" alt="" />
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="offered-images-item">
+                                                    <img src="https://instagram.fhan2-4.fna.fbcdn.net/v/t51.2885-15/e35/s1080x1080/90342935_524370701788100_770503410475007716_n.jpg?_nc_ht=instagram.fhan2-4.fna.fbcdn.net&_nc_cat=1&_nc_ohc=SjDjD6cBONoAX-O3nt6&oh=526ec442c408837a110727d7d06bc60a&oe=5EA5CEC3" alt="" />
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="offered-images-item">
+                                                    <img src="https://instagram.fhan2-4.fna.fbcdn.net/v/t51.2885-15/e35/s1080x1080/90342935_524370701788100_770503410475007716_n.jpg?_nc_ht=instagram.fhan2-4.fna.fbcdn.net&_nc_cat=1&_nc_ohc=SjDjD6cBONoAX-O3nt6&oh=526ec442c408837a110727d7d06bc60a&oe=5EA5CEC3" alt="" />
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="offered-images-item">
+                                                    <img src="https://instagram.fhan2-4.fna.fbcdn.net/v/t51.2885-15/e35/s1080x1080/90342935_524370701788100_770503410475007716_n.jpg?_nc_ht=instagram.fhan2-4.fna.fbcdn.net&_nc_cat=1&_nc_ohc=SjDjD6cBONoAX-O3nt6&oh=526ec442c408837a110727d7d06bc60a&oe=5EA5CEC3" alt="" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <p>Xem thêm</p>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Modal 2 -->
+                    <div class="modal fade" id="change-profile-modal-2" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="">Tạo ảnh đại diện</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="form-group">
+                                        <textarea class="form-control" id="textarea-mota" placeholder="Thêm mô tả..."></textarea>
+
+                                        <div class="result" id="inputImg">
+                                        </div>
+
+                                        <div id="slider" class="ep-slider-bar"></div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <div class="d-flex justify-content-center w-100">
+                                        <button type="submit" class="btn btn-info" id="avatar-saved">Lưu</button>
+                                        <button type="button" class="btn btn-danger" id="avatar-cancel">Hủy</button>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </article>

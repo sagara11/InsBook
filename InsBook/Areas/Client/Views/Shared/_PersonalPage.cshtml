@@ -1,13 +1,15 @@
 ﻿@{
 
     var Profile = (Model.Models.GetProfileModel)ViewBag.Profile;
- }
+}
 <!DOCTYPE html>
 
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/cropper/2.3.4/cropper.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css">
     <link href="~/Assets/css/pages/user-info.css" rel="stylesheet" />
     <link href="~/Assets/css/layouts/header.css" rel="stylesheet" />
     <link href="~/Assets/css/layouts/footer.css" rel="stylesheet" />
@@ -25,7 +27,14 @@
                     <div class="row">
                         <div class="col-md-4">
                             <div class="user-ava">
-                                <img src="~/Images/@Profile.anhdd" alt="">
+                                @if (Profile.anhdd == "")
+                                {
+                                    <img src="https://bdh131.files.wordpress.com/2012/10/freeman_defaultblue_bdh.gif" alt="">
+                                }
+                                else
+                                {
+                                    <img src="~/Images/@Profile.anhdd" alt="">
+                                }
                             </div>
                         </div>
                         <div class="col-md-8">
@@ -49,6 +58,7 @@
                                     </li>
                                 </ul>
                                 <div class="user-description-three">
+                                    <h1>@Profile.bietdanh</h1>
                                     <h1>@Profile.gioithieu</h1>
                                 </div>
                             </div>
@@ -68,6 +78,8 @@
 <script src="~/Assets/media/js/jquery-3.4.1.min.js"></script>
 <script src="~/Assets/media/js/popper.min.js"></script>
 <script src="~/Scripts/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.1/cropper.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 <script src="https://kit.fontawesome.com/5d3f9f4ac6.js" crossorigin="anonymous"></script>
 <script src="~/Assets/js/user-info.js"></script>
 @RenderSection("js", required: false)

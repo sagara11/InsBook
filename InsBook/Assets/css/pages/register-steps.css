@@ -101,7 +101,7 @@ main #check-progress-div {
         background-size: 1rem 1rem;
         background-color: #57aed1; }
 main #step-3 {
-  margin-bottom: 166px;
+  margin-bottom: 116.5px;
   padding: 40px 0; }
   main #step-3 #check-progress-bar {
     background-color: #8bc53f; }
@@ -135,7 +135,8 @@ main #step-3 {
       padding: 12px 30px;
       border-radius: 60px 45px 30px 15px/15px 30px 45px 60px; }
 main #step-1 {
-  padding: 40px 0; }
+  padding: 40px 0;
+  margin-bottom: 130px; }
   main #step-1 .add-new-friend {
     background-color: #fff;
     border-radius: 24px;
@@ -206,7 +207,8 @@ main #step-1 {
             main #step-1 .add-new-friend .list-new-friends .list-friends-item .friends-item-tools .btn-light:focus {
               border: 1px solid #dbdbdb; }
 main #step-2 {
-  margin-bottom: 70px; }
+  padding: 40px 0 0 0;
+  margin-bottom: 20px; }
   main #step-2 .add-new-avatar {
     background-color: #fff;
     border-radius: 24px;
@@ -225,7 +227,7 @@ main #step-2 {
       text-align: center;
       margin-bottom: 40px; }
     main #step-2 .add-new-avatar .avatar-frame {
-      width: 100%;
+      width: 320px;
       height: 320px;
       background-color: #fff;
       padding: 5px;

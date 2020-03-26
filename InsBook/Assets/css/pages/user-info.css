@@ -66,6 +66,8 @@ main {
         font-size: 16px;
         line-height: 24px;
         word-wrap: break-word; }
+        main #user-infomation .user-info-title .user-description .user-description-three h1:last-child {
+          font-weight: 400; }
   main #user-infomation ul.nav {
     border: none;
     border-top: 1px solid #dee2e6;
@@ -1351,26 +1353,26 @@ main {
               margin-left: auto; }
               main #user-infomation .tab-content #menu2 .tab-content #menu2-3 .jobs-and-educations .highschool ul.list-highschool li.list-highschool-item .highschool-item-tools i {
                 margin-left: 10px; }
-      main #user-infomation .tab-content #menu2 .tab-content #menu2-1 .change-profile .col-md-3, main #user-infomation .tab-content #menu2 .tab-content #menu2-1 .change-profile .col-md-1, main #user-infomation .tab-content #menu2 .tab-content #menu2-1 .change-profile .col-md-2 {
+      main #user-infomation .tab-content #menu2 .tab-content #menu2-1 .change-profile .change-profile-content .col-md-3, main #user-infomation .tab-content #menu2 .tab-content #menu2-1 .change-profile .change-profile-content .col-md-1, main #user-infomation .tab-content #menu2 .tab-content #menu2-1 .change-profile .change-profile-content .col-md-2 {
         display: flex;
         align-items: center;
         justify-content: flex-end; }
-      main #user-infomation .tab-content #menu2 .tab-content #menu2-1 .change-profile .user-img {
+      main #user-infomation .tab-content #menu2 .tab-content #menu2-1 .change-profile .change-profile-content .user-img {
         width: 48px;
         height: 48px;
         margin-bottom: 16px; }
-        main #user-infomation .tab-content #menu2 .tab-content #menu2-1 .change-profile .user-img img {
+        main #user-infomation .tab-content #menu2 .tab-content #menu2-1 .change-profile .change-profile-content .user-img img {
           width: 100%;
           height: 100%;
           border-radius: 50%;
           object-fit: cover; }
-      main #user-infomation .tab-content #menu2 .tab-content #menu2-1 .change-profile h1.user-name {
+      main #user-infomation .tab-content #menu2 .tab-content #menu2-1 .change-profile .change-profile-content h1.user-name {
         font-size: 20px;
         font-weight: 500;
         margin: 0;
         margin-top: 6px;
         line-height: 26px; }
-      main #user-infomation .tab-content #menu2 .tab-content #menu2-1 .change-profile button.btn-primary {
+      main #user-infomation .tab-content #menu2 .tab-content #menu2-1 .change-profile .change-profile-content button.btn-primary {
         border: none;
         margin: 0;
         padding: 0;
@@ -1379,47 +1381,146 @@ main {
         color: #3897f0;
         font-weight: 400;
         margin-bottom: 8px; }
-        main #user-infomation .tab-content #menu2 .tab-content #menu2-1 .change-profile button.btn-primary:focus {
+        main #user-infomation .tab-content #menu2 .tab-content #menu2-1 .change-profile .change-profile-content button.btn-primary:focus {
           box-shadow: none; }
-      main #user-infomation .tab-content #menu2 .tab-content #menu2-1 .change-profile button.btn-light {
+      main #user-infomation .tab-content #menu2 .tab-content #menu2-1 .change-profile .change-profile-content button.btn-light {
         border: none;
         background-color: #fff;
         font-weight: 400;
         background-color: #3897f0;
         color: #fff; }
-        main #user-infomation .tab-content #menu2 .tab-content #menu2-1 .change-profile button.btn-light:focus {
+        main #user-infomation .tab-content #menu2 .tab-content #menu2-1 .change-profile .change-profile-content button.btn-light:focus {
           box-shadow: none; }
-      main #user-infomation .tab-content #menu2 .tab-content #menu2-1 .change-profile .col-md-1 {
+      main #user-infomation .tab-content #menu2 .tab-content #menu2-1 .change-profile .change-profile-content .col-md-1 {
         padding: 0;
         flex: 0 0 3.333333%;
         max-width: 3.333333%; }
-        main #user-infomation .tab-content #menu2 .tab-content #menu2-1 .change-profile .col-md-1 label {
+        main #user-infomation .tab-content #menu2 .tab-content #menu2-1 .change-profile .change-profile-content .col-md-1 label {
           margin-bottom: 16px; }
-      main #user-infomation .tab-content #menu2 .tab-content #menu2-1 .change-profile .col-md-2 {
+      main #user-infomation .tab-content #menu2 .tab-content #menu2-1 .change-profile .change-profile-content .col-md-2 {
         padding: 0;
         flex: 0 0 9.333333%;
         max-width: 9.333333%; }
-        main #user-infomation .tab-content #menu2 .tab-content #menu2-1 .change-profile .col-md-2 label {
+        main #user-infomation .tab-content #menu2 .tab-content #menu2-1 .change-profile .change-profile-content .col-md-2 label {
           margin-bottom: 16px; }
-      main #user-infomation .tab-content #menu2 .tab-content #menu2-1 .change-profile #suaho {
+      main #user-infomation .tab-content #menu2 .tab-content #menu2-1 .change-profile .change-profile-content #suaho {
         width: 208px; }
-      main #user-infomation .tab-content #menu2 .tab-content #menu2-1 .change-profile #suagioitinh {
+      main #user-infomation .tab-content #menu2 .tab-content #menu2-1 .change-profile .change-profile-content #suagioitinh {
         width: 86px; }
-      main #user-infomation .tab-content #menu2 .tab-content #menu2-1 .change-profile .sua-gioitinh {
+      main #user-infomation .tab-content #menu2 .tab-content #menu2-1 .change-profile .change-profile-content .sua-gioitinh {
         justify-content: flex-start; }
-      main #user-infomation .tab-content #menu2 .tab-content #menu2-1 .change-profile #suaemail, main #user-infomation .tab-content #menu2 .tab-content #menu2-1 .change-profile #suasdt, main #user-infomation .tab-content #menu2 .tab-content #menu2-1 .change-profile #suaweb {
+      main #user-infomation .tab-content #menu2 .tab-content #menu2-1 .change-profile .change-profile-content #suaemail, main #user-infomation .tab-content #menu2 .tab-content #menu2-1 .change-profile .change-profile-content #suasdt, main #user-infomation .tab-content #menu2 .tab-content #menu2-1 .change-profile .change-profile-content #suaweb {
         width: 450px; }
-      main #user-infomation .tab-content #menu2 .tab-content #menu2-1 .change-profile label {
+      main #user-infomation .tab-content #menu2 .tab-content #menu2-1 .change-profile .change-profile-content label {
         font-size: 16px;
         font-weight: 600;
         margin: 0;
         margin-bottom: 12px; }
-      main #user-infomation .tab-content #menu2 .tab-content #menu2-1 .change-profile .button-submit {
+      main #user-infomation .tab-content #menu2 .tab-content #menu2-1 .change-profile .change-profile-content .button-submit {
         margin-top: 48px;
         justify-content: flex-start; }
-      main #user-infomation .tab-content #menu2 .tab-content #menu2-1 .change-profile .form-group .form-control:focus {
+      main #user-infomation .tab-content #menu2 .tab-content #menu2-1 .change-profile .change-profile-content .form-group .form-control:focus {
         border-color: #ced4da;
         box-shadow: none; }
+      main #user-infomation .tab-content #menu2 .tab-content #menu2-1 .change-profile #change-profile-modal-1 {
+        padding-right: 0 !important; }
+        main #user-infomation .tab-content #menu2 .tab-content #menu2-1 .change-profile #change-profile-modal-1 .modal-dialog {
+          max-width: 769px; }
+          main #user-infomation .tab-content #menu2 .tab-content #menu2-1 .change-profile #change-profile-modal-1 .modal-dialog .modal-header {
+            background-color: #f5f6f7; }
+          main #user-infomation .tab-content #menu2 .tab-content #menu2-1 .change-profile #change-profile-modal-1 .modal-dialog .modal-body {
+            position: relative; }
+            main #user-infomation .tab-content #menu2 .tab-content #menu2-1 .change-profile #change-profile-modal-1 .modal-dialog .modal-body #change-profile-file {
+              width: 0.1px;
+              height: 0.1px;
+              opacity: 0;
+              overflow: hidden;
+              position: absolute;
+              z-index: -1; }
+            main #user-infomation .tab-content #menu2 .tab-content #menu2-1 .change-profile #change-profile-modal-1 .modal-dialog .modal-body .btn-block {
+              position: relative;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              height: 106px;
+              border: 1px solid #ebedf0;
+              font-size: 24px;
+              font-weight: 600; }
+              main #user-infomation .tab-content #menu2 .tab-content #menu2-1 .change-profile #change-profile-modal-1 .modal-dialog .modal-body .btn-block i {
+                margin-right: 11px; }
+              main #user-infomation .tab-content #menu2 .tab-content #menu2-1 .change-profile #change-profile-modal-1 .modal-dialog .modal-body .btn-block:hover {
+                background-color: #fff;
+                border: 1px solid #ebedf0;
+                color: black; }
+            main #user-infomation .tab-content #menu2 .tab-content #menu2-1 .change-profile #change-profile-modal-1 .modal-dialog .modal-body h6 {
+              margin: 12px 0;
+              color: #8d949e;
+              font-weight: 400; }
+            main #user-infomation .tab-content #menu2 .tab-content #menu2-1 .change-profile #change-profile-modal-1 .modal-dialog .modal-body .offered-images-list {
+              padding-left: 15px; }
+              main #user-infomation .tab-content #menu2 .tab-content #menu2-1 .change-profile #change-profile-modal-1 .modal-dialog .modal-body .offered-images-list .offered-images-item {
+                width: 112px;
+                height: 112px; }
+                main #user-infomation .tab-content #menu2 .tab-content #menu2-1 .change-profile #change-profile-modal-1 .modal-dialog .modal-body .offered-images-list .offered-images-item img {
+                  width: 100%;
+                  height: 100%; }
+              main #user-infomation .tab-content #menu2 .tab-content #menu2-1 .change-profile #change-profile-modal-1 .modal-dialog .modal-body .offered-images-list p {
+                text-align: right;
+                color: #3b5998;
+                font-size: 14px;
+                cursor: pointer;
+                margin-bottom: 0; }
+            main #user-infomation .tab-content #menu2 .tab-content #menu2-1 .change-profile #change-profile-modal-1 .modal-dialog .modal-body .row .col-md-2 {
+              padding: 0;
+              padding: 0px 12px 0px 0px;
+              margin-bottom: 12px; }
+      main #user-infomation .tab-content #menu2 .tab-content #menu2-1 .change-profile #change-profile-modal-2 .modal-dialog {
+        max-width: 830px; }
+        main #user-infomation .tab-content #menu2 .tab-content #menu2-1 .change-profile #change-profile-modal-2 .modal-dialog .modal-header {
+          background-color: #f5f6f7; }
+        main #user-infomation .tab-content #menu2 .tab-content #menu2-1 .change-profile #change-profile-modal-2 .modal-dialog .modal-body {
+          padding: 0; }
+          main #user-infomation .tab-content #menu2 .tab-content #menu2-1 .change-profile #change-profile-modal-2 .modal-dialog .modal-body #textarea-mota {
+            border-top: none;
+            padding: 12px; }
+            main #user-infomation .tab-content #menu2 .tab-content #menu2-1 .change-profile #change-profile-modal-2 .modal-dialog .modal-body #textarea-mota:hover {
+              box-shadow: none;
+              outline: none; }
+          main #user-infomation .tab-content #menu2 .tab-content #menu2-1 .change-profile #change-profile-modal-2 .modal-dialog .modal-body #inputImg {
+            padding: 30px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px; }
+            main #user-infomation .tab-content #menu2 .tab-content #menu2-1 .change-profile #change-profile-modal-2 .modal-dialog .modal-body #inputImg .imgPreview {
+              border-radius: 50%;
+              margin-left: 20px; }
+            main #user-infomation .tab-content #menu2 .tab-content #menu2-1 .change-profile #change-profile-modal-2 .modal-dialog .modal-body #inputImg .cropper-view-box {
+              border-radius: 50%;
+              outline: none; }
+            main #user-infomation .tab-content #menu2 .tab-content #menu2-1 .change-profile #change-profile-modal-2 .modal-dialog .modal-body #inputImg .cropper-face.cropper-move {
+              opacity: 0; }
+            main #user-infomation .tab-content #menu2 .tab-content #menu2-1 .change-profile #change-profile-modal-2 .modal-dialog .modal-body #inputImg .cropper-bg {
+              background: none; }
+            main #user-infomation .tab-content #menu2 .tab-content #menu2-1 .change-profile #change-profile-modal-2 .modal-dialog .modal-body #inputImg .cropper-modal {
+              background-color: #fff; }
+          main #user-infomation .tab-content #menu2 .tab-content #menu2-1 .change-profile #change-profile-modal-2 .modal-dialog .modal-body .ep-slider-bar {
+            margin-bottom: 20px;
+            height: 1px;
+            width: 50%;
+            margin-left: 25%; }
+            main #user-infomation .tab-content #menu2 .tab-content #menu2-1 .change-profile #change-profile-modal-2 .modal-dialog .modal-body .ep-slider-bar .ui-state-default {
+              background: white;
+              border: 1px solid #3578e5;
+              border-radius: 50%;
+              top: -10px; }
+              main #user-infomation .tab-content #menu2 .tab-content #menu2-1 .change-profile #change-profile-modal-2 .modal-dialog .modal-body .ep-slider-bar .ui-state-default:focus {
+                outline: none; }
+        main #user-infomation .tab-content #menu2 .tab-content #menu2-1 .change-profile #change-profile-modal-2 .modal-dialog .modal-footer #avatar-saved, main #user-infomation .tab-content #menu2 .tab-content #menu2-1 .change-profile #change-profile-modal-2 .modal-dialog .modal-footer #avatar-cancel {
+          padding: 6px 33px;
+          font-weight: 600; }
+        main #user-infomation .tab-content #menu2 .tab-content #menu2-1 .change-profile #change-profile-modal-2 .modal-dialog .modal-footer #avatar-saved {
+          margin-right: 48px; }
       main #user-infomation .tab-content #menu2 .tab-content #menu2-2 .change-password .col-md-3 {
         display: flex;
         align-items: center;

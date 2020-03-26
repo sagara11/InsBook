@@ -56,9 +56,13 @@ namespace InsBook.Areas.Client.Controllers
 
                         new UserDao().Avatar(user.UserID, imgIds[0]);
 
+                        ImageDao imageDao = new ImageDao();
+                        string imgData = imageDao.GetUrlImage(imgIds[0]); //Lay url
+
                         return Json(new
                         {
-                            status = true
+                            status = true,
+                            data = imgData
                         }, JsonRequestBehavior.AllowGet);
                     }
                     else

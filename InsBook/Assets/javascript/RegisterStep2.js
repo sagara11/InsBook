@@ -99,7 +99,7 @@ function cropImgFunc(event) {
                                 data: formData,
                                 success: function (response) {
                                     if (response.status == true) {
-                                        alert("You will now be redirected.");
+                                        //alert("You will now be redirected.");
                                         window.location = "/Client/Register/RegisterStep3";
                                     }
                                 }
@@ -126,6 +126,7 @@ function avatar_cancel() {
     $(".avatar-frame-tools").css("display", "block");
     $("#avatar-saved").css("display", "none");
     $("#avatar-cancel").css("display", "none");
+    $("#step-2-file").val('');
 }
 function resetSlideBar() {
     slideValGlobal = 0;

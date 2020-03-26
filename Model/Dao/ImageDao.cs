@@ -18,7 +18,7 @@ namespace Model.Dao
         {
             db = new InsBookDbContext();
         }
-        public Int64 InsertImage(string url, String shardId)
+        public Int64 InsertImage(string url, String shardId, string imgTitle)
         {
             try
             {
@@ -36,7 +36,7 @@ namespace Model.Dao
                 img.id = ID;
                 img.ngaycapnhat = DateTime.Now;
                 img.anh_url = url;
-
+                img.tieude = imgTitle;
                 db.anhs.Add(img);
                 db.SaveChanges();
 
@@ -44,7 +44,7 @@ namespace Model.Dao
             }
             catch (Exception ex)
             {
-                return InsertImage(url, shardId);
+                return InsertImage(url, shardId, imgTitle);
             }
         }
         public string GetUrlImage(Int64 imgId)
