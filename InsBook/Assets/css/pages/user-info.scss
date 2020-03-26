@@ -2193,6 +2193,34 @@ main {
                     #menu2-1 {
                         .change-profile {
                             .change-profile-content {
+
+                                .form-group {
+                                    display: flex;
+
+                                    input, select {
+                                        border-right: none;
+                                        padding-right: 0;
+                                    }
+
+                                    span.errors {
+                                        display: flex;
+                                        align-items: center;
+                                        padding-left: 6px;
+                                        padding-right: 6px;
+                                        border: 1px solid #ced4da;
+                                        border-left: none;
+
+                                        i {
+                                            background-color: red;
+                                            color: #fff;
+                                            border-radius: 50%;
+                                            padding: 2px 4px;
+                                            visibility: hidden;
+                                            opacity: 0;
+                                        }
+                                    }
+                                }
+
                                 .col-md-3, .col-md-1, .col-md-2 {
                                     display: flex;
                                     align-items: center;
@@ -2273,15 +2301,25 @@ main {
                                 }
 
                                 #suagioitinh {
-                                    width: 86px;
+                                    width: 118px;
+                                    border-right: 1px solid #ced4da;
                                 }
 
                                 .sua-gioitinh {
                                     justify-content: flex-start;
                                 }
 
-                                #suaemail, #suasdt, #suaweb {
+                                #suasdt {
                                     width: 450px;
+                                }
+
+                                #suangaysinh {
+                                    border-right: 1px solid #ced4da;
+                                }
+
+                                #suaemail {
+                                    width: 483px;
+                                    border-right: 1px solid #ced4da;
                                 }
 
                                 label {
@@ -2403,6 +2441,7 @@ main {
                                         #textarea-mota {
                                             border-top: none;
                                             padding: 12px;
+
                                             &:hover {
                                                 box-shadow: none;
                                                 outline: none;

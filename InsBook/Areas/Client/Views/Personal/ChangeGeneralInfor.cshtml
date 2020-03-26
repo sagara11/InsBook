@@ -4,8 +4,7 @@
     Layout = "~/Areas/Client/Views/Shared/_PersonalPage.cshtml";
     var Profile = (Model.Models.GetProfileModel)ViewBag.Profile;
     string ten = ViewBag.Ten;
-    string ho = Profile.tennguoidung.Replace(ten, "");
-
+    string ho = Profile.tennguoidung.Replace(" " + ten, "");
     string thang = Profile.ngaysinh.Month.ToString();
     string ngay = Profile.ngaysinh.Day.ToString();
     if (Profile.ngaysinh.Month < 10)
@@ -18,6 +17,7 @@
     }
     string birth = Profile.ngaysinh.Year + "-" + thang + "-" + ngay;
 }
+
 <ul class="nav nav-tabs">
     <li class="nav-item">
         <a class="nav-link" href="/Client/Personal/Index"><i class="fas fa-rss-square"></i><span>Dòng thời gian</span></a>
@@ -72,6 +72,7 @@
         <div class="tab-content">
             <div class="tab-pane container active" id="menu2-1">
                 <article class="change-profile">
+                    @Html.AntiForgeryToken()
                     <div class="row change-profile-content">
                         <div class="col-md-3">
                             <div class="user-img">
@@ -96,6 +97,7 @@
                         <div class="col-md-3">
                             <div class="form-group">
                                 <input type="text" class="form-control" id="suaten" value="@ten">
+                                <span class="errors" id="check-ten"><i class="fas fa-times"></i></span>
                             </div>
                         </div>
                         <div class="col-md-1">
@@ -104,6 +106,7 @@
                         <div class="col-md-5">
                             <div class="form-group">
                                 <input type="text" class="form-control" id="suaho" value="@ho">
+                                <span class="errors" id="check-ho"><i class="fas fa-times"></i></span>
                             </div>
                         </div>
                         <div class="col-md-3">
@@ -111,7 +114,7 @@
                         </div>
                         <div class="col-md-9">
                             <div class="form-group">
-                                <input type="email" class="form-control" id="suaemail" value="@Profile.email">
+                                <input type="email" class="form-control" id="suaemail" value="@Profile.email" readonly>
                             </div>
                         </div>
                         <div class="col-md-3">
@@ -119,7 +122,15 @@
                         </div>
                         <div class="col-md-9">
                             <div class="form-group">
-                                <input type="text" class="form-control" id="suasdt" value="@Profile.sdt">
+                                @if (@Profile.sdt == "")
+                                {
+                                    <input type="text" class="form-control" id="suasdt" value="">
+                                    <span class="errors" id="check-sdt"><i class="fas fa-times"></i></span>
+                                }
+                                else
+                                {
+                                    <input type="text" class="form-control" id="suasdt" value="@Profile.sdt" readonly style="width: 483px; border-right: 1px solid #ced4da;">
+                                }
                             </div>
                         </div>
                         <div class="col-md-3">
@@ -153,13 +164,12 @@
 
                         </div>
                         <div class="col-md-3 button-submit">
-                            <button type="button" class="btn btn-light">Cập nhật</button>
+                            <button type="button" class="btn btn-light" id="capnhat">Cập nhật</button>
                         </div>
                         <div class="col-md-6 button-submit">
                             <button type="button" class="btn btn-primary">Tạm thời vô hiệu hóa tài khoản</button>
                         </div>
                     </div>
-
                     <!-- Modal 1 -->
                     <div class="modal fade" id="change-profile-modal-1" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered" role="document">
@@ -171,8 +181,6 @@
                                     </button>
                                 </div>
                                 <div class="modal-body">
-                                    @Html.AntiForgeryToken()
-                                    @*<button type="button" class="btn btn-outline-dark btn-block show-modal-avatar" data-toggle="modal" data-target="#change-profile-modal-2"><i class="fas fa-cross"></i>Tải ảnh lên</button>*@
                                     <input type="file" name="avatar" id="change-profile-file" accept="image/*" onchange="cropAvaFunc(event)" />
                                     <label for="change-profile-file" class="btn btn-outline-dark btn-block"><i class="fas fa-cross"></i>Tải ảnh lên</label>
                                     <h6>Ảnh được đề xuất</h6>

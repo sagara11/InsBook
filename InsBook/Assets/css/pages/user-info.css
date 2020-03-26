@@ -1353,6 +1353,25 @@ main {
               margin-left: auto; }
               main #user-infomation .tab-content #menu2 .tab-content #menu2-3 .jobs-and-educations .highschool ul.list-highschool li.list-highschool-item .highschool-item-tools i {
                 margin-left: 10px; }
+      main #user-infomation .tab-content #menu2 .tab-content #menu2-1 .change-profile .change-profile-content .form-group {
+        display: flex; }
+        main #user-infomation .tab-content #menu2 .tab-content #menu2-1 .change-profile .change-profile-content .form-group input, main #user-infomation .tab-content #menu2 .tab-content #menu2-1 .change-profile .change-profile-content .form-group select {
+          border-right: none;
+          padding-right: 0; }
+        main #user-infomation .tab-content #menu2 .tab-content #menu2-1 .change-profile .change-profile-content .form-group span.errors {
+          display: flex;
+          align-items: center;
+          padding-left: 6px;
+          padding-right: 6px;
+          border: 1px solid #ced4da;
+          border-left: none; }
+          main #user-infomation .tab-content #menu2 .tab-content #menu2-1 .change-profile .change-profile-content .form-group span.errors i {
+            background-color: red;
+            color: #fff;
+            border-radius: 50%;
+            padding: 2px 4px;
+            visibility: hidden;
+            opacity: 0; }
       main #user-infomation .tab-content #menu2 .tab-content #menu2-1 .change-profile .change-profile-content .col-md-3, main #user-infomation .tab-content #menu2 .tab-content #menu2-1 .change-profile .change-profile-content .col-md-1, main #user-infomation .tab-content #menu2 .tab-content #menu2-1 .change-profile .change-profile-content .col-md-2 {
         display: flex;
         align-items: center;
@@ -1406,11 +1425,17 @@ main {
       main #user-infomation .tab-content #menu2 .tab-content #menu2-1 .change-profile .change-profile-content #suaho {
         width: 208px; }
       main #user-infomation .tab-content #menu2 .tab-content #menu2-1 .change-profile .change-profile-content #suagioitinh {
-        width: 86px; }
+        width: 118px;
+        border-right: 1px solid #ced4da; }
       main #user-infomation .tab-content #menu2 .tab-content #menu2-1 .change-profile .change-profile-content .sua-gioitinh {
         justify-content: flex-start; }
-      main #user-infomation .tab-content #menu2 .tab-content #menu2-1 .change-profile .change-profile-content #suaemail, main #user-infomation .tab-content #menu2 .tab-content #menu2-1 .change-profile .change-profile-content #suasdt, main #user-infomation .tab-content #menu2 .tab-content #menu2-1 .change-profile .change-profile-content #suaweb {
+      main #user-infomation .tab-content #menu2 .tab-content #menu2-1 .change-profile .change-profile-content #suasdt {
         width: 450px; }
+      main #user-infomation .tab-content #menu2 .tab-content #menu2-1 .change-profile .change-profile-content #suangaysinh {
+        border-right: 1px solid #ced4da; }
+      main #user-infomation .tab-content #menu2 .tab-content #menu2-1 .change-profile .change-profile-content #suaemail {
+        width: 483px;
+        border-right: 1px solid #ced4da; }
       main #user-infomation .tab-content #menu2 .tab-content #menu2-1 .change-profile .change-profile-content label {
         font-size: 16px;
         font-weight: 600;

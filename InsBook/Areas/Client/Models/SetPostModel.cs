@@ -6,8 +6,7 @@ using System.Web;
 
 namespace InsBook.Areas.Client.Models
 {
-    public class ImageModel
+    public class SetPostModel
     {
-        public string tieude { set; get; }
     }
 }

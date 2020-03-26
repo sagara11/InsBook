@@ -182,7 +182,7 @@ function cropAvaFunc(event) {
 
                             formData.append('__RequestVerificationToken', token); //form[0]
                             formData.append('nameImg', imgLoading.files[0].name); //fomr[1]
-                            formData.append('imgTitle', imgTitle);
+                            formData.append('imgTitle', imgTitle); //fomr[2]
 
                             formData.append('croppedImg', blob); //file[0]
 
@@ -196,7 +196,7 @@ function cropAvaFunc(event) {
                                 data: formData,
                                 success: function (response) {
                                     if (response.status == true) {
-                                        $(".user-img img").attr("src", baseUrl+ "/Images/" + response.data);
+                                        $(".user-img img").attr("src", baseUrl + "/Images/" + response.data);
                                         $(".user-ava img").attr("src", baseUrl + "/Images/" + response.data);
 
                                         $("#change-profile-modal-2").modal("hide");
@@ -238,3 +238,113 @@ function initSlideBar() {
         }
     });
 };
+//---------------------------CHINH SUA CAI DAT CHUNG---------------
+$("#capnhat").click(function () {
+    changPhone();
+});
+
+function changPhone() {
+    var phone = $("#suasdt").val();
+    var checkPhone = /^[(]{0,1}[0-9]{3}[)]{0,1}[-\s\.]{0,1}[0-9]{3}[-\s\.]{0,1}[0-9]{4}$/;
+
+    if (phone == '' || $('#suasdt').is('[readonly]')) {
+        ChangeProfile(phone);
+    }
+    else if (checkPhone.test(phone)) {
+        $.ajax({
+            url: "/Client/Personal/CheckPhone",
+            type: "get",
+            dataType: "json",
+            data: {
+                phone: phone
+            },
+            success: function (response) {
+                if (response.status == true) {
+                    $("#check-sdt").attr("key", "1");
+                    $("#check-sdt").html("<i class='fas fa-times' style='opacity:0;visibility: hidden'></i>");
+                    ChangeProfile(phone);
+                }
+                else {
+                    $("#check-sdt").attr("key", "0");
+                    $("#check-sdt").html("<i class='fas fa-times' style='opacity:1;visibility: visible'></i>");
+                    ChangeProfile(phone);
+                }
+
+            }
+        });
+    }
+    else {
+        $("#check-sdt").html("<i class='fas fa-times' style='opacity:1;visibility: visible'></i>");
+    }
+}
+
+function ChangeProfile(phone) {
+    var checkUnicode = /[^\u0000-\u007F]/;
+    var checkNonUnicode = /^([a-zA-Z]+\s)*[a-zA-Z]+$/;
+    //var checkEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    var ids = ["ten", "ho", "ngaysinh", "gioitinh"];
+    var count = 0;
+    var value = [];
+    var i = 0;
+    ids.forEach(function (id) {
+        value[i] = $("#sua" + id).val();
+        if (id === "ten") {
+            if (checkUnicode.test(value[i]) || checkNonUnicode.test(value[i])) {
+                $("#check-" + id).html("<i class='fas fa-times' style='opacity:0;visibility: hidden'></i>");
+                count += 1;
+            }
+            else {
+                $("#check-" + id).html("<i class='fas fa-times' style='opacity:1;visibility: visible'></i>");
+            }
+        }
+        else if (id === "ho") {
+            if (checkUnicode.test(value[i]) || checkNonUnicode.test(value[i])) {
+                $("#check-" + id).html("<i class='fas fa-times' style='opacity:0;visibility: hidden'></i>");
+                count += 1;
+            }
+            else {
+                $("#check-" + id).html("<i class='fas fa-times' style='opacity:1;visibility: visible'></i>");
+            }
+        }
+        else {
+            count += 1;
+        }
+        i++;
+    });
+    if (count == ids.length && $("#check-sdt").attr("key") != 0) {
+        var formData = new FormData();
+        var token = $('input[name="__RequestVerificationToken"]').val();
+
+        formData.append('__RequestVerificationToken', token); //form[0]
+        var i = 0;
+        value.forEach(function (item) {
+            formData.append(ids[i], item);
+            i++;
+        })
+        formData.append('sdt', phone);
+
+        $.ajax({
+            type: 'post',
+            url: '/Client/Personal/ChangeGeneralInforJson',
+            dataType: 'json',
+            cache: false,
+            contentType: false,
+            processData: false,
+            data: formData,
+            success: function (response) {
+                if (response.status == true) {
+                    $(".user-name").text(response.data);
+                    if ($("#suasdt").val() != "") {
+                        $("#suasdt").attr('readonly', true);
+                        $("#suasdt").css('border-right', '1px solid #ced4da');
+                        $("#suasdt").css('width', '483px');
+                        $("#check-sdt").css("display", "none");
+                    }
+                }
+            }
+        });
+    } else {
+        
+    }
+}

@@ -30,13 +30,17 @@ namespace Model.Dao
         {
             return db.nguoidungs.SingleOrDefault(x => x.email == email);
         }
+        public nguoidung GetbyPhone(string phone)
+        {
+            return db.nguoidungs.SingleOrDefault(x => x.sdt == phone);
+        }
         public nguoidung GetbyID(int id)
         {
             return db.nguoidungs.Find(id);
         }
         public string GetbyName(int id)
         {
-            return db.Database.SqlQuery<string>("select nguoidung.ten from nguoidung where nguoidung.id="+id).Single();
+            return db.Database.SqlQuery<string>("select nguoidung.ten from nguoidung where nguoidung.id=" + id).Single();
         }
         //public User ViewDetail(int id)
         //{
@@ -83,6 +87,25 @@ namespace Model.Dao
             catch (Exception ex)
             {
                 return Avatar(userId, imgId);
+            }
+        }
+
+        public bool ChangeGeneralInforDao(nguoidung entity)
+        {
+            try
+            {
+                var user = db.nguoidungs.Find(entity.id);
+                user.ten = entity.ten;
+                user.ho = entity.ho;
+                user.sdt = entity.sdt;
+                user.ngaysinh = entity.ngaysinh;
+                user.gioitinh = entity.gioitinh;
+                db.SaveChanges();
+                return true;
+            }
+            catch(Exception ex)
+            {
+                return false;
             }
         }
         //public bool Delete(int id)

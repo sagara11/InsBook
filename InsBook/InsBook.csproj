@@ -445,10 +445,11 @@
     <Compile Include="Areas\Client\Controllers\PostController.cs" />
     <Compile Include="Areas\Client\Controllers\RegisterController.cs" />
     <Compile Include="Areas\Client\Models\ForgetPassModel.cs" />
-    <Compile Include="Areas\Client\Models\ImageModel.cs" />
+    <Compile Include="Areas\Client\Models\SetImageModel.cs" />
     <Compile Include="Areas\Client\Models\LoginModel.cs" />
-    <Compile Include="Areas\Client\Models\PostModel.cs" />
+    <Compile Include="Areas\Client\Models\SetPostModel.cs" />
     <Compile Include="Areas\Client\Models\RegisterModel.cs" />
+    <Compile Include="Areas\Client\Models\SetProfileModel.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="Common\Accessories.cs" />
     <Compile Include="Common\CommonConstants.cs" />

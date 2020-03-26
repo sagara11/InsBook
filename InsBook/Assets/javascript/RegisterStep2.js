@@ -86,6 +86,7 @@ function cropImgFunc(event) {
 
                             formData.append('__RequestVerificationToken', token); //form[0]
                             formData.append('nameImg', imgLoading.files[0].name); //fomr[1]
+                            formData.append('imgTitle', ""); //fomr[2]
 
                             formData.append('croppedImg', blob); //file[0]
 
