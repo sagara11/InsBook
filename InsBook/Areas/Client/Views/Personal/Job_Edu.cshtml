@@ -60,24 +60,36 @@
             <div class="tab-pane container fade" id="menu2-2">...</div>
             <div class="tab-pane container active" id="menu2-3">
                 <div class="jobs-and-educations">
+                    @Html.AntiForgeryToken()
                     <div class="job">
                         <h3>Công việc</h3>
                         <ul class="list-job">
-                            @foreach (var congviec in Profile.congty)
+                            @if (Profile.congty.Count != 0)
                             {
-                                <li class="list-job-item">
-                                    <div class="job-item-thumbnail">
-                                        <img src="~/Images/22904751_688560231353134_2748711313877205190_o.jpg" alt="">
-                                    </div>
-                                    <div class="job-item-name">
-                                        <p>@congviec.tencongty</p>
-                                        <span>@congviec.chucvu @congviec.batdau.Day tháng @congviec.batdau.Month,@congviec.batdau.Year đến @congviec.ketthuc.Day tháng @congviec.ketthuc.Month,@congviec.ketthuc.Year @congviec.tendiadiem</span>
-                                    </div>
-                                    <div class="job-item-tools">
-                                        <i class="far fa-edit"></i>
-                                        <i class="far fa-trash-alt"></i>
-                                    </div>
-                                </li>
+                                foreach (var congviec in Profile.congty)
+                                {
+                                    <li class="list-job-item">
+                                        <div class="job-item-thumbnail">
+                                            <img src="~/Images/22904751_688560231353134_2748711313877205190_o.jpg" alt="">
+                                        </div>
+                                        <div class="job-item-name">
+                                            <p>@congviec.tencongty</p>
+                                            @if (congviec.ketthuc == null)
+                                            {
+                                                <span>@congviec.chucvu @congviec.batdau.Day tháng @congviec.batdau.Month,@congviec.batdau.Year @congviec.tendiadiem</span>
+                                            }
+                                            else
+                                            {
+                                                <span>@congviec.chucvu @congviec.batdau.Day tháng @congviec.batdau.Month,@congviec.batdau.Year đến @congviec.ketthuc.Value.Day tháng @congviec.ketthuc.Value.Month,@congviec.ketthuc.Value.Year @congviec.tendiadiem</span>
+                                            }
+                                        </div>
+                                        <div class="job-item-tools">
+                                            <i class="far fa-edit"></i>
+                                            <i class="far fa-trash-alt"></i>
+                                        </div>
+                                    </li>
+
+                                }
 
                             }
                         </ul>
@@ -91,7 +103,8 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <input type="text" class="form-control" id="congty" placeholder="Bạn đã làm việc ở đâu ?">
+                                        <input type="text" class="form-control" id="congty-ten" placeholder="Bạn đã làm việc ở đâu ?">
+                                        <span class="errors" id="check-congty-ten"><i class="fas fa-times"></i></span>
                                     </div>
                                 </div>
                                 <div class="col-md-2">
@@ -103,6 +116,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <input type="text" class="form-control" id="congty-chucvu" placeholder="Chức danh của bạn là gì ?">
+                                        <span class="errors" id="check-congty-chucvu"><i class="fas fa-times"></i></span>
                                     </div>
                                 </div>
                                 <div class="col-md-2">
@@ -114,6 +128,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <input type="text" class="form-control" id="congty-thixa">
+                                        <span class="errors" id="check-congty-thixa"><i class="fas fa-times"></i></span>
                                     </div>
                                 </div>
                                 <div class="col-md-2">
@@ -149,7 +164,8 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <input type="date" class="form-control" id="">
+                                        <input type="date" class="form-control" id="congty-batdau">
+                                        <span class="errors" id="check-congty-batdau"><i class="fas fa-times"></i></span>
                                     </div>
                                 </div>
                                 <div class="col-md-2">
@@ -159,8 +175,9 @@
                                     <label for=""></label>
                                 </div>
                                 <div class="col-md-6">
-                                    <div class="form-group">
-                                        <input type="date" class="form-control" id="">
+                                    <div class="form-group" id="form-congty-ketthuc">
+                                        <input type="date" class="form-control" id="congty-ketthuc">
+                                        <span class="errors" id="check-congty-ketthuc"><i class="fas fa-times"></i></span>
                                     </div>
                                 </div>
                                 <div class="col-md-2">
@@ -170,14 +187,14 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <select id="congty-baomat" class="form-control">
-                                            <option selected>Công khai</option>
-                                            <option>Bạn bè</option>
-                                            <option>Chỉ mình tôi</option>
+                                            <option selected value="0">Công khai</option>
+                                            <option value="2">Bạn bè</option>
+                                            <option value="3">Chỉ mình tôi</option>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
-                                    <button type="button" class="btn btn-primary">Lưu thay đổi</button>
+                                    <button type="button" class="btn btn-primary" id="save-job-adding-box" onclick="JobAdding()">Lưu thay đổi</button>
                                     <button type="button" class="btn btn-light" id="close-job-adding-box">Hủy</button>
                                 </div>
                                 <div class="col-md-2">
@@ -203,7 +220,7 @@
                                             </div>
                                             <div class="university-item-name">
                                                 <p>@daihoc.tentruonghoc</p>
-                                                <span>Tốt nghiệp @daihoc.ketthuc.Year @daihoc.chuyennganh @daihoc.tendiadiem</span>
+                                                <span>Tốt nghiệp @daihoc.ketthuc.Value.Year @daihoc.chuyennganh @daihoc.tendiadiem</span>
                                             </div>
                                             <div class="university-item-tools">
                                                 <i class="far fa-edit"></i>
@@ -343,7 +360,7 @@
                                             </div>
                                             <div class="highschool-item-name">
                                                 <p>@trunghoc.tentruonghoc</p>
-                                                <span>Khóa @trunghoc.ketthuc.Year @trunghoc.tendiadiem</span>
+                                                <span>Khóa @trunghoc.ketthuc.Value.Year @trunghoc.tendiadiem</span>
                                             </div>
                                             <div class="highschool-item-tools">
                                                 <i class="far fa-edit"></i>
@@ -470,4 +487,3 @@
     <div class="tab-pane container fade" id="menu6">...</div>
     <div class="tab-pane container fade" id="menu7">...</div>
 </div>
-

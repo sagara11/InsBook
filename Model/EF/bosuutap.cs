@@ -38,7 +38,7 @@ namespace Model.EF
 
         public int? diadiem_id { get; set; }
 
-        public int baomat { get; set; }
+        public int? baomat { get; set; }
 
         public int? baomat_chophep { get; set; }
 

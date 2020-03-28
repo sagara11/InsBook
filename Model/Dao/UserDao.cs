@@ -103,7 +103,7 @@ namespace Model.Dao
                 db.SaveChanges();
                 return true;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return false;
             }
@@ -159,9 +159,15 @@ namespace Model.Dao
         public GetProfileModel Profile(int userId)
         {
             GetProfileModel profile = new GetProfileModel();
-            profile = db.Database.SqlQuery<GetProfileModel>("Profile @id", new SqlParameter("@id", userId)).Single();
-
-            profile.moiquanhe = new profile_moiquanhe(profile.moiquanheString);
+            profile = db.Database.SqlQuery<GetProfileModel>("Profile @id", new SqlParameter("@id", userId)).SingleOrDefault();
+            if (profile == null)
+            {
+                profile = db.Database.SqlQuery<GetProfileModel>("BaseProfile @id", new SqlParameter("@id", userId)).SingleOrDefault();
+            }
+            else
+            {
+                profile.moiquanhe = new profile_moiquanhe(profile.moiquanheString);
+            }
 
             profile.diadiem = db.Database.SqlQuery<profile_diadiem>("Profile_diadiem @id", new SqlParameter("@id", userId)).ToList();
 

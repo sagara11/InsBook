@@ -63,7 +63,7 @@ namespace Model.Models
         public string anh_url { set; get; }
         public string chucvu { set; get; }
         public DateTime batdau { set; get; }
-        public DateTime ketthuc { set; get; }
+        public Nullable<DateTime> ketthuc { set; get; }
         public string tendiadiem { set; get; }
     }
     public class profile_truonghoc
@@ -72,7 +72,7 @@ namespace Model.Models
         public string anh_url { set; get; }
         public int loaitruong { set; get; }
         public DateTime batdau { set; get; }
-        public DateTime ketthuc { set; get; }
+        public Nullable<DateTime> ketthuc { set; get; }
         public string tendiadiem { set; get; }
         public string chuyennganh { set; get; }
         public bool totnghiep { set; get; }

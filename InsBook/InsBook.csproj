@@ -440,16 +440,15 @@
     <Compile Include="Areas\Client\Controllers\GroupController.cs" />
     <Compile Include="Areas\Client\Controllers\HomeController.cs" />
     <Compile Include="Areas\Client\Controllers\ImageController.cs" />
+    <Compile Include="Areas\Client\Controllers\LocationsController.cs" />
     <Compile Include="Areas\Client\Controllers\LoginController.cs" />
     <Compile Include="Areas\Client\Controllers\PersonalController.cs" />
     <Compile Include="Areas\Client\Controllers\PostController.cs" />
     <Compile Include="Areas\Client\Controllers\RegisterController.cs" />
     <Compile Include="Areas\Client\Models\ForgetPassModel.cs" />
-    <Compile Include="Areas\Client\Models\SetImageModel.cs" />
     <Compile Include="Areas\Client\Models\LoginModel.cs" />
-    <Compile Include="Areas\Client\Models\SetPostModel.cs" />
+    <Compile Include="Areas\Client\Models\SetLocationModal.cs" />
     <Compile Include="Areas\Client\Models\RegisterModel.cs" />
-    <Compile Include="Areas\Client\Models\SetProfileModel.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="Common\Accessories.cs" />
     <Compile Include="Common\CommonConstants.cs" />
@@ -518,6 +517,7 @@
     <Folder Include="Areas\Client\Views\Base\" />
     <Folder Include="Areas\Client\Views\Default\" />
     <Folder Include="Areas\Client\Views\ImageModel\" />
+    <Folder Include="Areas\Client\Views\Locations\" />
     <Folder Include="Areas\Client\Views\Post\" />
     <Folder Include="Areas\Client\Views\User\" />
     <Folder Include="Controllers\" />

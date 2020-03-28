@@ -1,3 +1,20 @@
+ul.ui-menu {
+    li.ui-menu-item {
+        font-size: 16px;
+        font-weight: 400;
+        padding: 0 10px;
+    }
+
+    .ui-state-hover,
+    .ui-state-active,
+    .ui-state-focus {
+        text-decoration: none;
+        color: #262626;
+        background-color: #d4cecd;
+        cursor: pointer;
+        border: none;
+    }
+}
 main {
     margin-top: 68px;
     margin-bottom: 68px;
@@ -212,6 +229,12 @@ main {
 
                                     span {
                                         margin-left: 25px;
+                                    }
+
+                                    a {
+                                        margin-left: 25px;
+                                        color: #90949c;
+                                        text-decoration: none;
                                     }
                                 }
                             }
@@ -1741,6 +1764,33 @@ main {
                                     padding: 12px 24px;
                                     position: relative;
                                     display: none;
+
+                                    .form-group {
+                                        display: flex;
+
+                                        input, select {
+                                            border-right: none;
+                                            padding-right: 0;
+                                        }
+
+                                        span.errors {
+                                            display: flex;
+                                            align-items: center;
+                                            padding-left: 6px;
+                                            padding-right: 6px;
+                                            border: 1px solid #ced4da;
+                                            border-left: none;
+                                            background: #fff;
+                                            i {
+                                                background-color: red;
+                                                color: #fff;
+                                                border-radius: 50%;
+                                                padding: 2px 4px;
+                                                visibility: hidden;
+                                                opacity: 0;
+                                            }
+                                        }
+                                    }
 
                                     .col-md-4 {
                                         display: flex;

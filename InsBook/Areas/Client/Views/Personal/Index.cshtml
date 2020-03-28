@@ -5,30 +5,30 @@
     var Profile = (Model.Models.GetProfileModel)ViewBag.Profile;
 }
 
-    <ul class="nav nav-tabs">
-        <li class="nav-item">
-            <a class="nav-link active" href="/Client/Personal/Index"><i class="fas fa-rss-square"></i><span>Dòng thời gian</span></a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="/Client/Personal/ChangeGeneralInfor"><i class="far fa-user-circle"></i><span>Giới thiệu</span></a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="/Client/Personal/FriendsInfo"><i class="fas fa-users"></i><span>Bạn bè</span></a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="/Client/Personal/ImagesInfo"><i class="far fa-images"></i></i><span>Ảnh</span></a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span>Xem thêm</span>
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <a class="dropdown-item" href="/Client/Personal/SavedInfo">Lưu trữ</a>
-                <a class="dropdown-item" href="/Client/Personal/AlbumInfo">Bộ sưu tập</a>
-                <a class="dropdown-item" href="/Client/Personal/VideoInfo">Video</a>
-            </div>
-        </li>
-    </ul>
+<ul class="nav nav-tabs">
+    <li class="nav-item">
+        <a class="nav-link active" href="/Client/Personal/Index"><i class="fas fa-rss-square"></i><span>Dòng thời gian</span></a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/Client/Personal/ChangeGeneralInfor"><i class="far fa-user-circle"></i><span>Giới thiệu</span></a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/Client/Personal/FriendsInfo"><i class="fas fa-users"></i><span>Bạn bè</span></a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/Client/Personal/ImagesInfo"><i class="far fa-images"></i></i><span>Ảnh</span></a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span>Xem thêm</span>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item" href="/Client/Personal/SavedInfo">Lưu trữ</a>
+            <a class="dropdown-item" href="/Client/Personal/AlbumInfo">Bộ sưu tập</a>
+            <a class="dropdown-item" href="/Client/Personal/VideoInfo">Video</a>
+        </div>
+    </li>
+</ul>
 
 <!-- Tab panes -->
 <div class="tab-content">
@@ -43,41 +43,68 @@
                         </a>
                     </div>
                     <div class="user-description-content">
-                        <p class="user-quote">@Profile.loitrichdan.Split('@')[0]</p>
+                        @if (Profile.loitrichdan != null)
+                        {
+                            <p class="user-quote">@Profile.loitrichdan.Split('@')[0]</p>
+                        }
                         <div class="user-description-detail">
                             <ul>
-                                @foreach (var congty in Profile.congty)
+                                @if (Profile.congty.Count != 0)
                                 {
-                                    if (congty.ketthuc < DateTime.Now)
+
+                                    foreach (var congty in Profile.congty)
                                     {
-                                        <li><i class="fas fa-briefcase"></i><span>Đã làm @congty.chucvu tại <b>@congty.tencongty</b></span></li>
-                                    }
-                                    else
-                                    {
-                                        <li><i class="fas fa-briefcase"></i><span>Đang làm @congty.chucvu tại <b>@congty.tencongty</b></span></li>
+                                        if (congty.ketthuc < DateTime.Now)
+                                        {
+                                            <li><i class="fas fa-briefcase"></i><span>Đã làm @congty.chucvu tại <b>@congty.tencongty</b></span></li>
+                                        }
+                                        else
+                                        {
+                                            <li><i class="fas fa-briefcase"></i><span>Đang làm @congty.chucvu tại <b>@congty.tencongty</b></span></li>
+                                        }
                                     }
                                 }
-                                @foreach (var truonghoc in Profile.truonghoc)
+                                else
                                 {
-                                    if (truonghoc.totnghiep)
+                                    <li><i class="fas fa-briefcase"></i><a href="/Client/Personal/Job_Edu">Nơi làm việc</a></li>
+                                }
+                                @if (Profile.truonghoc.Count != 0)
+                                {
+                                    foreach (var truonghoc in Profile.truonghoc)
                                     {
-                                        <li><i class="fas fa-graduation-cap"></i><span>Đã học @truonghoc.chuyennganh tại <b>@truonghoc.tentruonghoc</b></span></li>
-                                    }
-                                    else
-                                    {
-                                        <li><i class="fas fa-graduation-cap"></i><span>Đang học @truonghoc.chuyennganh tại <b>@truonghoc.tentruonghoc</b></span></li>
+                                        if (truonghoc.totnghiep)
+                                        {
+                                            <li><i class="fas fa-graduation-cap"></i><span>Đã học @truonghoc.chuyennganh tại <b>@truonghoc.tentruonghoc</b></span></li>
+                                        }
+                                        else
+                                        {
+                                            <li><i class="fas fa-graduation-cap"></i><span>Đang học @truonghoc.chuyennganh tại <b>@truonghoc.tentruonghoc</b></span></li>
+                                        }
                                     }
                                 }
-                                @foreach (var diadiem in Profile.diadiem)
+                                else
                                 {
-                                    if (diadiem.loaidd == 0)
+                                    <li><i class="fas fa-graduation-cap"></i><a href="/Client/Personal/Job_Edu">Trường học</a></li>
+                                }
+                                
+                                @if (Profile.diadiem.Count != 0)
+                                {
+
+                                    foreach (var diadiem in Profile.diadiem)
                                     {
-                                        <li><i class="fas fa-home"></i><span>Đang sống tại <b>@diadiem.tendd</b></span></li>
+                                        if (diadiem.loaidd == 0)
+                                        {
+                                            <li><i class="fas fa-home"></i><span>Đang sống tại <b>@diadiem.tendd</b></span></li>
+                                        }
+                                        else if (diadiem.loaidd == 1)
+                                        {
+                                            <li><i class="fas fa-map-marker-alt"></i><span>Đến từ <b>@diadiem.tendd</b></span></li>
+                                        }
                                     }
-                                    else if (diadiem.loaidd == 1)
-                                    {
-                                        <li><i class="fas fa-map-marker-alt"></i><span>Đến từ <b>@diadiem.tendd</b></span></li>
-                                    }
+                                }
+                                else
+                                {
+                                    <li><i class="fas fa-map-marker-alt"></i><a href="/Client/Personal/LivingPlace">Quê quán</a></li>
                                 }
                                 <li><i class="far fa-clock"></i><span>Tham gia ngày @Profile.ngaybatdau.Day tháng @Profile.ngaybatdau.Month năm @Profile.ngaybatdau.Year</span></li>
                                 @if (Profile.moiquanhe != null)

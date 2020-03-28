@@ -30,7 +30,7 @@ namespace Model.EF
         [StringLength(255)]
         public string mota { get; set; }
 
-        public int baomat { get; set; }
+        public int? baomat { get; set; }
 
         public int? baomat_chophep { get; set; }
 

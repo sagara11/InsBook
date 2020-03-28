@@ -1,4 +1,4 @@
-function auto_grow(element) {
+﻿function auto_grow(element) {
     element.style.height = "5px";
     element.style.height = (element.scrollHeight) + "px";
 }
@@ -281,7 +281,6 @@ function changPhone() {
 function ChangeProfile(phone) {
     var checkUnicode = /[^\u0000-\u007F]/;
     var checkNonUnicode = /^([a-zA-Z]+\s)*[a-zA-Z]+$/;
-    //var checkEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     var ids = ["ten", "ho", "ngaysinh", "gioitinh"];
     var count = 0;
@@ -341,10 +340,114 @@ function ChangeProfile(phone) {
                         $("#suasdt").css('width', '483px');
                         $("#check-sdt").css("display", "none");
                     }
+                    alert("Cập nhật thành công !");
                 }
             }
         });
+    }
+}
+//------------------------CONG VIEC VA HOC VAN-------------------
+$('#congty-danglamviec').change(function () {
+    if (this.checked) {
+        $("#form-congty-ketthuc").empty();
+        $("#form-congty-ketthuc").append("<p style='margin-bottom:0; height: 35px;'> đến nay</p>");
     } else {
-        
+        $("#form-congty-ketthuc").empty();
+        $("#form-congty-ketthuc").append("<input type='date' class='form-control' id='congty-ketthuc'><span class='errors' id='check-congty-ketthuc'><i class='fas fa-times'></i></span>");
+    }
+});
+
+function JobAdding() {
+    var ids = ["ten", "chucvu", "thixa", "batdau"];
+    var count = 0;
+    var value = new Array();
+    var i = 0;
+    ids.forEach(function (id) {
+        value[i] = $("#congty-" + id).val();
+        if (value[i] != "") {
+            $("#check-congty-" + id).html("<i class='fas fa-times' style='opacity:0;visibility: hidden'></i>");
+            count += 1;
+        }
+        else {
+            $("#check-congty-" + id).html("<i class='fas fa-times' style='opacity:1;visibility: visible'></i>");
+        }
+        i++;
+    });
+    if (!$("#congty-danglamviec").is(':checked')) {
+        count += 1;
+        if ($("#congty-ketthuc").val() == "" || $("#congty-ketthuc").val() == undefined) {
+            $("#check-congty-ketthuc").html("<i class='fas fa-times' style='opacity:1;visibility: visible'></i>");
+        }
+        else {
+            $("#check-congty-ketthuc").html("<i class='fas fa-times' style='opacity:0;visibility: hidden'></i>");
+            value[i] = $("#congty-ketthuc").val()
+        }
+    }
+    if (count == value.length) {
+        var formData = new FormData();
+        var token = $('input[name="__RequestVerificationToken"]').val();
+
+        formData.append('__RequestVerificationToken', token); //form[0]
+        var i = 0;
+        ids.forEach(function (item) {
+            formData.append(item, value[i]);
+            i++;
+        })
+        if (!$("#congty-danglamviec").is(':checked')) {
+            formData.append('ketthuc', value[i]);
+        }
+        formData.append('baomat', $('#congty-baomat').val());
+        formData.append('mota', $('#congty-mota').val())
+
+        $.ajax({
+            type: 'post',
+            url: '/Client/Personal/AddJob_Edu',
+            dataType: 'json',
+            cache: false,
+            contentType: false,
+            processData: false,
+            data: formData,
+            success: function (response) {
+                if (response.status == true) {
+                    var batdau = new Date(value[3]);
+                    var url = window.location.href.split('/');
+                    var baseUrl = url[0] + '//' + url[2];
+                    var html = '<li class="list-job-item">' +
+                        '                                        <div class="job-item-thumbnail">' +
+                        '                                            <img src="' + baseUrl+'/Images/22904751_688560231353134_2748711313877205190_o.jpg" alt="">' +
+                        '                                        </div>' +
+                        '                                        <div class="job-item-name">' +
+                        '                                            <p>' + value[0] + '</p>';
+                    if (!$("#congty-danglamviec").is(':checked')) {
+                        var ketthuc = new Date(value[4])
+                        html = html + '<span>' + value[1] + ' ' + batdau.getDay() + ' tháng ' + batdau.getMonth() + ',' + batdau.getFullYear() + ' đến ' + ketthuc.getDay() + ' tháng ' + ketthuc.getMonth() + ',' + ketthuc.getFullYear() + ' ' + value[2] + '</span>';
+                    }
+                    else {
+                        html = html + '<span>' + value[1] + ' ' + batdau.getDay() + ' tháng ' + batdau.getMonth() + ',' + batdau.getFullYear() + ' ' + value[2] + '</span>';
+                    }
+                    html = html + '</div>' +
+                        '                                        <div class="job-item-tools">' +
+                        '                                            <i class="far fa-edit"></i>' +
+                        '                                            <i class="far fa-trash-alt"></i>' +
+                        '                                        </div>' +
+                        '                                    </li>';
+
+                    $(".list-job").append(html);
+                    $(".job-adding-box").css("display", "none");
+                    $(".job-adding").css("display", "block");
+                    ids.forEach(function (i) {
+                        $("#congty-" + i).val("");
+                    })
+
+                    $('#congty-danglamviec').prop('checked', false);
+                    $("#form-congty-ketthuc").empty();
+                    $("#form-congty-ketthuc").append("<input type='date' class='form-control' id='congty-ketthuc'><span class='errors' id='check-congty-ketthuc'><i class='fas fa-times'></i></span>");
+
+                    $("#congty-ketthuc").val("");
+                    $("#congty-mota").val("");
+                    $("#congty-baomat").val("0");
+                }
+            }
+        });
     }
 }

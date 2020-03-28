@@ -1,3 +1,16 @@
+ul.ui-menu li.ui-menu-item {
+  font-size: 16px;
+  font-weight: 400;
+  padding: 0 10px; }
+ul.ui-menu .ui-state-hover,
+ul.ui-menu .ui-state-active,
+ul.ui-menu .ui-state-focus {
+  text-decoration: none;
+  color: #262626;
+  background-color: #d4cecd;
+  cursor: pointer;
+  border: none; }
+
 main {
   margin-top: 68px;
   margin-bottom: 68px; }
@@ -136,6 +149,10 @@ main {
               top: 9px; }
             main #user-infomation .tab-content #menu1 .user-description .user-description-content .user-description-detail ul li span {
               margin-left: 25px; }
+            main #user-infomation .tab-content #menu1 .user-description .user-description-content .user-description-detail ul li a {
+              margin-left: 25px;
+              color: #90949c;
+              text-decoration: none; }
     main #user-infomation .tab-content #menu1 .user-images {
       background-color: #fff;
       margin-bottom: 10px;
@@ -1083,6 +1100,26 @@ main {
             padding: 12px 24px;
             position: relative;
             display: none; }
+            main #user-infomation .tab-content #menu2 .tab-content #menu2-3 .jobs-and-educations .job .job-adding-box .form-group {
+              display: flex; }
+              main #user-infomation .tab-content #menu2 .tab-content #menu2-3 .jobs-and-educations .job .job-adding-box .form-group input, main #user-infomation .tab-content #menu2 .tab-content #menu2-3 .jobs-and-educations .job .job-adding-box .form-group select {
+                border-right: none;
+                padding-right: 0; }
+              main #user-infomation .tab-content #menu2 .tab-content #menu2-3 .jobs-and-educations .job .job-adding-box .form-group span.errors {
+                display: flex;
+                align-items: center;
+                padding-left: 6px;
+                padding-right: 6px;
+                border: 1px solid #ced4da;
+                border-left: none;
+                background: #fff; }
+                main #user-infomation .tab-content #menu2 .tab-content #menu2-3 .jobs-and-educations .job .job-adding-box .form-group span.errors i {
+                  background-color: red;
+                  color: #fff;
+                  border-radius: 50%;
+                  padding: 2px 4px;
+                  visibility: hidden;
+                  opacity: 0; }
             main #user-infomation .tab-content #menu2 .tab-content #menu2-3 .jobs-and-educations .job .job-adding-box .col-md-4 {
               display: flex;
               align-items: center;

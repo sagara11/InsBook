@@ -46,13 +46,13 @@ namespace Model.EF
 
         public int? baiviet_hinhnen_id { get; set; }
 
-        public int baomat { get; set; }
+        public int? baomat { get; set; }
 
         public int? baomat_chophep { get; set; }
 
         public int? baomat_chan { get; set; }
 
-        public int loaibaiviet { get; set; }
+        public int? loaibaiviet { get; set; }
 
         [StringLength(255)]
         public string duong_dan { get; set; }
