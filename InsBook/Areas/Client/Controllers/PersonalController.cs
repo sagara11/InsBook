@@ -176,7 +176,7 @@ namespace InsBook.Areas.Client.Controllers
             ViewBag.TenDD = tendd;
             return View();
         }
-        public JsonResult AddJob_Edu()
+        public JsonResult AddJob()
         {
             if (Session[CommonConstants.USER_SESSION] != null || Request.Cookies[CommonConstants.USER_COOKIE] != null)
             {
@@ -210,7 +210,181 @@ namespace InsBook.Areas.Client.Controllers
                     }
                     congty.baomat = Convert.ToInt16(data["baomat"]);
 
-                    if (new CompanyDao().AddCompany(congty))
+                    var congty_id = new CompanyDao().AddCompany(congty);
+                    if (congty_id != -1)
+                    {
+                        return Json(new
+                        {
+                            status = true,
+                            data = congty_id
+                        }, JsonRequestBehavior.AllowGet);
+                    }
+                    else
+                    {
+                        return Json(new
+                        {
+                            status = false
+                        }, JsonRequestBehavior.AllowGet);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    return Json(new
+                    {
+                        status = false
+                    }, JsonRequestBehavior.AllowGet);
+                }
+            }
+            else
+            {
+                return Json(new
+                {
+                    status = false
+                }, JsonRequestBehavior.AllowGet);
+            }
+        }
+        public JsonResult EditJob()
+        {
+            if (Session[CommonConstants.USER_SESSION] != null || Request.Cookies[CommonConstants.USER_COOKIE] != null)
+            {
+                var user = new UserLogin();
+                // Lấy giá trị của cookie hoặc session
+                if (Request.Cookies[CommonConstants.USER_COOKIE] != null)
+                {
+                    // lấy từ cookie
+                    user.UserID = int.Parse(Request.Cookies[CommonConstants.USER_COOKIE]["1"]); // đang string ép về kiểu int
+                    user.Email = Request.Cookies[CommonConstants.USER_COOKIE]["2"].ToString();
+                }
+                else
+                {
+                    user = (UserLogin)Session[CommonConstants.USER_SESSION]; // lấy từ session
+                }
+
+                try
+                {
+                    var data = Request.Form;
+                    var result = new CompanyDao().GetById(Convert.ToInt32(data["congty_id"]), user.UserID);
+                    if (result != null)
+                    {
+                        return Json(new
+                        {
+                            status = true,
+                            data = result
+                        }, JsonRequestBehavior.AllowGet);
+                    }
+                    else
+                    {
+                        return Json(new
+                        {
+                            status = false
+                        }, JsonRequestBehavior.AllowGet);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    return Json(new
+                    {
+                        status = false
+                    }, JsonRequestBehavior.AllowGet);
+                }
+            }
+            else
+            {
+                return Json(new
+                {
+                    status = false
+                }, JsonRequestBehavior.AllowGet);
+            }
+        }
+
+        public JsonResult ActionEditJob()
+        {
+            if (Session[CommonConstants.USER_SESSION] != null || Request.Cookies[CommonConstants.USER_COOKIE] != null)
+            {
+                var user = new UserLogin();
+                // Lấy giá trị của cookie hoặc session
+                if (Request.Cookies[CommonConstants.USER_COOKIE] != null)
+                {
+                    // lấy từ cookie
+                    user.UserID = int.Parse(Request.Cookies[CommonConstants.USER_COOKIE]["1"]); // đang string ép về kiểu int
+                    user.Email = Request.Cookies[CommonConstants.USER_COOKIE]["2"].ToString();
+                }
+                else
+                {
+                    user = (UserLogin)Session[CommonConstants.USER_SESSION]; // lấy từ session
+                }
+
+                try
+                {
+                    var data = Request.Form;
+                    SetCompany congty = new SetCompany();
+                    congty.userID = user.UserID;
+                    congty.ten = data["ten"];
+                    congty.chucvu = data["chucvu"];
+                    congty.diadiem = data["thixa"];
+                    congty.batdau = Convert.ToDateTime(data["batdau"]);
+                    congty.ketthuc = Convert.ToDateTime(data["ketthuc"]);
+                    congty.mota = data["mota"];
+                    if (congty.ketthuc == DateTime.MinValue)
+                    {
+                        congty.ketthuc = null;
+                    }
+                    congty.baomat = Convert.ToInt16(data["baomat"]);
+                    var congty_id = new CompanyDao().EditCompany(congty,Convert.ToInt32(data["congty_id"]));
+                    if (congty_id != -1)
+                    {
+                        return Json(new
+                        {
+                            status = true,
+                            data = congty_id
+                        }, JsonRequestBehavior.AllowGet);
+                    }
+                    else
+                    {
+                        return Json(new
+                        {
+                            status = false
+                        }, JsonRequestBehavior.AllowGet);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    return Json(new
+                    {
+                        status = false
+                    }, JsonRequestBehavior.AllowGet);
+                }
+            }
+            else
+            {
+                return Json(new
+                {
+                    status = false
+                }, JsonRequestBehavior.AllowGet);
+            }
+        }
+        public JsonResult ActionDeleteJob()
+        {
+            if (Session[CommonConstants.USER_SESSION] != null || Request.Cookies[CommonConstants.USER_COOKIE] != null)
+            {
+                var user = new UserLogin();
+                // Lấy giá trị của cookie hoặc session
+                if (Request.Cookies[CommonConstants.USER_COOKIE] != null)
+                {
+                    // lấy từ cookie
+                    user.UserID = int.Parse(Request.Cookies[CommonConstants.USER_COOKIE]["1"]); // đang string ép về kiểu int
+                    user.Email = Request.Cookies[CommonConstants.USER_COOKIE]["2"].ToString();
+                }
+                else
+                {
+                    user = (UserLogin)Session[CommonConstants.USER_SESSION]; // lấy từ session
+                }
+
+                try
+                {
+                    var data = Request.Form;
+                    var congty_id = new CompanyDao().DeleteCompany(Convert.ToInt32(data["congty_id"]));
+                    if (congty_id == true)
                     {
                         return Json(new
                         {

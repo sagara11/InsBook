@@ -1164,6 +1164,75 @@ main {
                 background-color: transparent; }
               main #user-infomation .tab-content #menu2 .tab-content #menu2-3 .jobs-and-educations .job .job-adding-box .job-closse:hover {
                 background-color: transparent; }
+          main #user-infomation .tab-content #menu2 .tab-content #menu2-3 .jobs-and-educations .job .job-editing-box {
+            background-color: #f7f7f7;
+            padding: 12px 24px;
+            position: relative;
+            display: none; }
+            main #user-infomation .tab-content #menu2 .tab-content #menu2-3 .jobs-and-educations .job .job-editing-box .form-group {
+              display: flex; }
+              main #user-infomation .tab-content #menu2 .tab-content #menu2-3 .jobs-and-educations .job .job-editing-box .form-group input, main #user-infomation .tab-content #menu2 .tab-content #menu2-3 .jobs-and-educations .job .job-editing-box .form-group select {
+                border-right: none;
+                padding-right: 0; }
+              main #user-infomation .tab-content #menu2 .tab-content #menu2-3 .jobs-and-educations .job .job-editing-box .form-group span.errors {
+                display: flex;
+                align-items: center;
+                padding-left: 6px;
+                padding-right: 6px;
+                border: 1px solid #ced4da;
+                border-left: none;
+                background: #fff; }
+                main #user-infomation .tab-content #menu2 .tab-content #menu2-3 .jobs-and-educations .job .job-editing-box .form-group span.errors i {
+                  background-color: red;
+                  color: #fff;
+                  border-radius: 50%;
+                  padding: 2px 4px;
+                  visibility: hidden;
+                  opacity: 0; }
+            main #user-infomation .tab-content #menu2 .tab-content #menu2-3 .jobs-and-educations .job .job-editing-box .col-md-4 {
+              display: flex;
+              align-items: center;
+              justify-content: flex-end; }
+              main #user-infomation .tab-content #menu2 .tab-content #menu2-3 .jobs-and-educations .job .job-editing-box .col-md-4 label {
+                margin-bottom: 0; }
+            main #user-infomation .tab-content #menu2 .tab-content #menu2-3 .jobs-and-educations .job .job-editing-box .col-md-4, main #user-infomation .tab-content #menu2 .tab-content #menu2-3 .jobs-and-educations .job .job-editing-box .col-md-6, main #user-infomation .tab-content #menu2 .tab-content #menu2-3 .jobs-and-educations .job .job-editing-box .col-md-2 {
+              margin-top: 10px; }
+            main #user-infomation .tab-content #menu2 .tab-content #menu2-3 .jobs-and-educations .job .job-editing-box .form-group {
+              margin-bottom: 0; }
+              main #user-infomation .tab-content #menu2 .tab-content #menu2-3 .jobs-and-educations .job .job-editing-box .form-group input[type=date] {
+                font-size: 14px; }
+              main #user-infomation .tab-content #menu2 .tab-content #menu2-3 .jobs-and-educations .job .job-editing-box .form-group select {
+                font-weight: 700;
+                padding-right: 0;
+                background-color: #f7f7f7;
+                border: none; }
+            main #user-infomation .tab-content #menu2 .tab-content #menu2-3 .jobs-and-educations .job .job-editing-box .form-check label {
+              font-size: 14px; }
+            main #user-infomation .tab-content #menu2 .tab-content #menu2-3 .jobs-and-educations .job .job-editing-box .form-check input {
+              margin-top: 7px; }
+            main #user-infomation .tab-content #menu2 .tab-content #menu2-3 .jobs-and-educations .job .job-editing-box hr {
+              width: 100%;
+              border-top: 1px solid #dddfe2;
+              margin: 0;
+              margin-top: 10px; }
+            main #user-infomation .tab-content #menu2 .tab-content #menu2-3 .jobs-and-educations .job .job-editing-box .btn {
+              font-size: 14px;
+              font-weight: 600; }
+            main #user-infomation .tab-content #menu2 .tab-content #menu2-3 .jobs-and-educations .job .job-editing-box .btn-light {
+              border: 1px solid #dddfe2; }
+            main #user-infomation .tab-content #menu2 .tab-content #menu2-3 .jobs-and-educations .job .job-editing-box .job-editing-closse {
+              position: absolute;
+              top: 10px;
+              right: 10px;
+              color: #90949c;
+              border: none; }
+              main #user-infomation .tab-content #menu2 .tab-content #menu2-3 .jobs-and-educations .job .job-editing-box .job-editing-closse:focus {
+                box-shadow: none;
+                border: none;
+                outline: none;
+                background-color: transparent; }
+              main #user-infomation .tab-content #menu2 .tab-content #menu2-3 .jobs-and-educations .job .job-editing-box .job-editing-closse:hover {
+                background-color: transparent; }
           main #user-infomation .tab-content #menu2 .tab-content #menu2-3 .jobs-and-educations .job ul.list-job {
             padding: 0;
             margin: 0;
@@ -1190,6 +1259,8 @@ main {
                 margin-left: auto; }
                 main #user-infomation .tab-content #menu2 .tab-content #menu2-3 .jobs-and-educations .job ul.list-job li.list-job-item .job-item-tools i {
                   margin-left: 10px; }
+                  main #user-infomation .tab-content #menu2 .tab-content #menu2-3 .jobs-and-educations .job ul.list-job li.list-job-item .job-item-tools i:hover {
+                    cursor: pointer; }
         main #user-infomation .tab-content #menu2 .tab-content #menu2-3 .jobs-and-educations .university {
           margin-bottom: 48px; }
           main #user-infomation .tab-content #menu2 .tab-content #menu2-3 .jobs-and-educations .university h3 {

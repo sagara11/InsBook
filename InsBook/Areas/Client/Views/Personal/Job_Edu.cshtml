@@ -68,7 +68,7 @@
                             {
                                 foreach (var congviec in Profile.congty)
                                 {
-                                    <li class="list-job-item">
+                                    <li class="list-job-item congty-@congviec.congty_id">
                                         <div class="job-item-thumbnail">
                                             <img src="~/Images/22904751_688560231353134_2748711313877205190_o.jpg" alt="">
                                         </div>
@@ -84,11 +84,117 @@
                                             }
                                         </div>
                                         <div class="job-item-tools">
-                                            <i class="far fa-edit"></i>
-                                            <i class="far fa-trash-alt"></i>
+                                            <i class="far fa-edit" onclick="JobEditing(@congviec.congty_id)" id="show-job-editing-box"></i>
+                                            <i class="far fa-trash-alt" onclick="JobRemoving(@congviec.congty_id)" id="remove-job"></i>
                                         </div>
                                     </li>
+                                    <div class="job-editing-box congty-@congviec.congty_id-box">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <label for="edit-congty-ten-@congviec.congty_id">Công ty</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control" id="edit-congty-ten-@congviec.congty_id" placeholder="Bạn đã làm việc ở đâu ?">
+                                                    <span class="errors" id="check-congty-ten-@congviec.congty_id"><i class="fas fa-times"></i></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
 
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label for="edit-congty-chucvu-@congviec.congty_id">Chức vụ</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control" id="edit-congty-chucvu-@congviec.congty_id" placeholder="Chức danh của bạn là gì ?">
+                                                    <span class="errors" id="check-congty-chucvu-@congviec.congty_id"><i class="fas fa-times"></i></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label for="edit-congty-thixa-@congviec.congty_id">Thành phố/Thị xã</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control edit-congty-thixa" id="edit-congty-thixa-@congviec.congty_id">
+                                                    <span class="errors" id="check-congty-thixa-@congviec.congty_id"><i class="fas fa-times"></i></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label for="edit-congty-mota-@congviec.congty_id">Mô tả</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <textarea class="form-control" id="edit-congty-mota-@congviec.congty_id"></textarea>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label for="">Khoảng thời gian</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" value="" id="edit-congty-danglamviec-@congviec.congty_id" onchange="Jobketthuc(@congviec.congty_id)">
+                                                    <label class="form-check-label" for="edit-congty-danglamviec-@congviec.congty_id">
+                                                        Tôi hiện đang làm việc ở đây
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label for=""></label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <input type="date" class="form-control" id="edit-congty-batdau-@congviec.congty_id">
+                                                    <span class="errors" id="check-congty-batdau-@congviec.congty_id"><i class="fas fa-times"></i></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label for=""></label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group" id="form-edit-congty-ketthuc-@congviec.congty_id">
+                                                    <input type="date" class="form-control" id="edit-congty-ketthuc-@congviec.congty_id">
+                                                    <span class="errors" id="check-congty-ketthuc-@congviec.congty_id"><i class="fas fa-times"></i></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+
+                                            </div>
+                                            <hr>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <select id="edit-congty-baomat-@congviec.congty_id" class="form-control">
+                                                        <option selected value="0">Công khai</option>
+                                                        <option value="2">Bạn bè</option>
+                                                        <option value="3">Chỉ mình tôi</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <button type="button" class="btn btn-primary" id="save-job-editing-box-@congviec.congty_id" onclick="SubmitEditJobBox(@congviec.congty_id)">Lưu thay đổi</button>
+                                                <button type="button" class="btn btn-light" id="close-job-editing-box-@congviec.congty_id" onclick="CloseEditJobBox(@congviec.congty_id)">Hủy</button>
+                                            </div>
+                                            <div class="col-md-2">
+
+                                            </div>
+                                        </div>
+                                        <button class="btn btn-light job-editing-closse congty-@congviec.congty_id-closse" type="button" onclick="CloseEditJobBox(@congviec.congty_id)"><i class="fas fa-times"></i> Hủy</button>
+                                    </div>
                                 }
 
                             }
@@ -99,7 +205,7 @@
                         <div class="job-adding-box">
                             <div class="row">
                                 <div class="col-md-4">
-                                    <label for="congty">Công ty</label>
+                                    <label for="congty-ten">Công ty</label>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">

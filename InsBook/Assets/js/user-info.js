@@ -401,7 +401,7 @@ function JobAdding() {
 
         $.ajax({
             type: 'post',
-            url: '/Client/Personal/AddJob_Edu',
+            url: '/Client/Personal/AddJob',
             dataType: 'json',
             cache: false,
             contentType: false,
@@ -412,26 +412,132 @@ function JobAdding() {
                     var batdau = new Date(value[3]);
                     var url = window.location.href.split('/');
                     var baseUrl = url[0] + '//' + url[2];
-                    var html = '<li class="list-job-item">' +
+                    var html = '<li class="list-job-item congty-' + response.data + '">' +
                         '                                        <div class="job-item-thumbnail">' +
-                        '                                            <img src="' + baseUrl+'/Images/22904751_688560231353134_2748711313877205190_o.jpg" alt="">' +
+                        '                                            <img src="' + baseUrl + '/Images/22904751_688560231353134_2748711313877205190_o.jpg" alt="">' +
                         '                                        </div>' +
                         '                                        <div class="job-item-name">' +
                         '                                            <p>' + value[0] + '</p>';
                     if (!$("#congty-danglamviec").is(':checked')) {
                         var ketthuc = new Date(value[4])
-                        html = html + '<span>' + value[1] + ' ' + batdau.getDay() + ' tháng ' + batdau.getMonth() + ',' + batdau.getFullYear() + ' đến ' + ketthuc.getDay() + ' tháng ' + ketthuc.getMonth() + ',' + ketthuc.getFullYear() + ' ' + value[2] + '</span>';
+                        html = html + '<span>' + value[1] + ' ' + batdau.getDate() + ' tháng ' + (batdau.getMonth() + 1) + ',' + batdau.getFullYear() + ' đến ' + ketthuc.getDate() + ' tháng ' + (ketthuc.getMonth() + 1) + ',' + ketthuc.getFullYear() + ' ' + value[2] + '</span>';
                     }
                     else {
-                        html = html + '<span>' + value[1] + ' ' + batdau.getDay() + ' tháng ' + batdau.getMonth() + ',' + batdau.getFullYear() + ' ' + value[2] + '</span>';
+                        html = html + '<span>' + value[1] + ' ' + batdau.getDate() + ' tháng ' + (batdau.getMonth() + 1) + ',' + batdau.getFullYear() + ' ' + value[2] + '</span>';
                     }
                     html = html + '</div>' +
                         '                                        <div class="job-item-tools">' +
-                        '                                            <i class="far fa-edit"></i>' +
-                        '                                            <i class="far fa-trash-alt"></i>' +
+                        '                                            <i class="far fa-edit" onclick="JobEditing(' + response.data + ')" id="show-job-editing-box"></i>' +
+                        '                                            <i class="far fa-trash-alt" onclick="JobRemoving(' + response.data + ')" id="remove-job"></i>' +
                         '                                        </div>' +
-                        '                                    </li>';
-
+                        '                                    </li>' +
+                        '                                    <div class="job-editing-box congty-' + response.data + '-box">' +
+                        '                                        <div class="row">' +
+                        '                                           <div class="col-md-4">' +
+                        '                                                <label for="edit-congty-ten-' + response.data + '">Công ty</label>' +
+                        '                                            </div>' +
+                        '                                            <div class="col-md-6">' +
+                        '                                                <div class="form-group">' +
+                        '                                                    <input type="text" class="form-control" id="edit-congty-ten-' + response.data + '" placeholder="Bạn đã làm việc ở đâu ?">' +
+                        '                                                    <span class="errors" id="check-congty-ten-' + response.data + '"><i class="fas fa-times"></i></span>' +
+                        '                                                </div>' +
+                        '                                            </div>' +
+                        '                                            <div class="col-md-2">' +
+                        '' +
+                        '                                            </div>' +
+                        '                                            <div class="col-md-4">' +
+                        '                                                <label for="edit-congty-chucvu-' + response.data + '">Chức vụ</label>' +
+                        '                                            </div>' +
+                        '                                            <div class="col-md-6">' +
+                        '                                                <div class="form-group">' +
+                        '                                                    <input type="text" class="form-control" id="edit-congty-chucvu-' + response.data + '" placeholder="Chức danh của bạn là gì ?">' +
+                        '                                                    <span class="errors" id="check-congty-chucvu-' + response.data + '"><i class="fas fa-times"></i></span>' +
+                        '                                                </div>' +
+                        '                                            </div>' +
+                        '                                            <div class="col-md-2">' +
+                        '' +
+                        '                                            </div>' +
+                        '                                            <div class="col-md-4">' +
+                        '                                                <label for="edit-congty-thixa-' + response.data + '">Thành phố/Thị xã</label>' +
+                        '                                            </div>' +
+                        '                                            <div class="col-md-6">' +
+                        '                                                <div class="form-group">' +
+                        '                                                    <input type="text" class="form-control edit-congty-thixa" id="edit-congty-thixa-' + response.data + '">' +
+                        '                                                    <span class="errors" id="check-congty-thixa-' + response.data + '"><i class="fas fa-times"></i></span>' +
+                        '                                                </div>' +
+                        '                                            </div>' +
+                        '                                            <div class="col-md-2">' +
+                        '' +
+                        '                                            </div>' +
+                        '                                            <div class="col-md-4">' +
+                        '                                                <label for="edit-congty-mota-' + response.data + '">Mô tả</label>' +
+                        '                                            </div>' +
+                        '                                            <div class="col-md-6">' +
+                        '                                                <div class="form-group">' +
+                        '                                                    <textarea class="form-control" id="edit-congty-mota-' + response.data + '"></textarea>' +
+                        '                                                </div>' +
+                        '                                            </div>' +
+                        '                                            <div class="col-md-2">' +
+                        '' +
+                        '                                            </div>' +
+                        '                                            <div class="col-md-4">' +
+                        '                                                <label for="">Khoảng thời gian</label>' +
+                        '                                            </div>' +
+                        '                                            <div class="col-md-6">' +
+                        '                                                <div class="form-check">' +
+                        '                                                    <input class="form-check-input" type="checkbox" value="" id="edit-congty-danglamviec-' + response.data + '" onchange="Jobketthuc(' + response.data + ')">' +
+                        '                                                    <label class="form-check-label" for="edit-congty-danglamviec-' + response.data + '">' +
+                        '                                                        Tôi hiện đang làm việc ở đây' +
+                        '                                                    </label>' +
+                        '                                                </div>' +
+                        '                                            </div>' +
+                        '                                            <div class="col-md-2">' +
+                        '' +
+                        '                                            </div>' +
+                        '                                            <div class="col-md-4">' +
+                        '                                                <label for=""></label>' +
+                        '                                            </div>' +
+                        '                                            <div class="col-md-6">' +
+                        '                                                <div class="form-group">' +
+                        '                                                    <input type="date" class="form-control" id="edit-congty-batdau-' + response.data + '">' +
+                        '                                                    <span class="errors" id="check-congty-batdau-' + response.data + '"><i class="fas fa-times"></i></span>' +
+                        '                                                </div>' +
+                        '                                            </div>' +
+                        '                                            <div class="col-md-2">' +
+                        '' +
+                        '                                            </div>' +
+                        '                                            <div class="col-md-4">' +
+                        '                                                <label for=""></label>' +
+                        '                                            </div>' +
+                        '                                            <div class="col-md-6">' +
+                        '                                                <div class="form-group" id="form-edit-congty-ketthuc-' + response.data + '">' +
+                        '                                                    <input type="date" class="form-control" id="edit-congty-ketthuc-' + response.data + '">' +
+                        '                                                    <span class="errors" id="check-congty-ketthuc-' + response.data + '"><i class="fas fa-times"></i></span>' +
+                        '                                                </div>' +
+                        '                                            </div>' +
+                        '                                            <div class="col-md-2">' +
+                        '' +
+                        '                                            </div>' +
+                        '                                            <hr>' +
+                        '                                            <div class="col-md-4">' +
+                        '                                                <div class="form-group">' +
+                        '                                                    <select id="edit-congty-baomat-' + response.data + '" class="form-control">' +
+                        '                                                        <option selected value="0">Công khai</option>' +
+                        '                                                        <option value="2">Bạn bè</option>' +
+                        '                                                        <option value="3">Chỉ mình tôi</option>' +
+                        '                                                    </select>' +
+                        '                                                </div>' +
+                        '                                            </div>' +
+                        '                                            <div class="col-md-6">' +
+                        '                                                <button type="button" class="btn btn-primary" id="save-job-editing-box-' + response.data + '" onclick="SubmitEditJobBox(' + response.data + ')">Lưu thay đổi</button>' +
+                        '                                                <button type="button" class="btn btn-light" id="close-job-editing-box-' + response.data + '" onclick="CloseEditJobBox(' + response.data + ')">Hủy</button>' +
+                        '                                            </div>' +
+                        '                                            <div class="col-md-2">' +
+                        '' +
+                        '                                            </div>' +
+                        '                                        </div>' +
+                        '                                        <button class="btn btn-light job-editing-closse congty-' + response.data + '-closse" type="button" onclick="CloseEditJobBox(' + response.data + ')"><i class="fas fa-times"></i> Hủy</button>' +
+                        '                                    </div>';
                     $(".list-job").append(html);
                     $(".job-adding-box").css("display", "none");
                     $(".job-adding").css("display", "block");
@@ -451,3 +557,191 @@ function JobAdding() {
         });
     }
 }
+
+function parseJsonDate(jsonDate) {
+
+    var fullDate = new Date(parseInt(jsonDate.substr(6)));
+    var twoDigitMonth = (fullDate.getMonth() + 1) + ""; if (twoDigitMonth.length == 1) twoDigitMonth = "0" + twoDigitMonth;
+
+    var twoDigitDate = fullDate.getDate() + ""; if (twoDigitDate.length == 1) twoDigitDate = "0" + twoDigitDate;
+    var currentDate = fullDate.getFullYear() + "-" + twoDigitMonth + "-" + twoDigitDate;
+
+    return currentDate;
+};
+
+function JobEditing(congty_id) {
+    $(".congty-" + congty_id + "-box").css("display", "inline-block");
+
+    var formData = new FormData();
+    var token = $('input[name="__RequestVerificationToken"]').val();
+
+    formData.append('__RequestVerificationToken', token); //form[0]
+    formData.append('congty_id', congty_id);
+
+    $.ajax({
+        type: 'post',
+        url: '/Client/Personal/EditJob',
+        dataType: 'json',
+        cache: false,
+        contentType: false,
+        processData: false,
+        data: formData,
+        success: function (response) {
+            if (response.status == true) {
+                $("#edit-congty-ten-" + congty_id).val(response.data.tencongty);
+                $("#edit-congty-chucvu-" + congty_id).val(response.data.chucvu);
+                $("#edit-congty-thixa-" + congty_id).val(response.data.tendiadiem);
+                $("#edit-congty-mota-" + congty_id).val(response.data.mota);
+                if (response.data.ketthuc == null) {
+                    $('#edit-congty-danglamviec-' + congty_id).prop('checked', true);
+                    $("#form-edit-congty-ketthuc-" + congty_id).empty();
+                    $("#form-edit-congty-ketthuc-" + congty_id).append("<p style='margin-bottom:0; height: 35px;'> đến nay</p>");
+                } else {
+                    $('#edit-congty-danglamviec-' + congty_id).prop('checked', false);
+                    $("#edit-congty-ketthuc-" + congty_id).val(parseJsonDate(response.data.ketthuc));
+
+                }
+                $("#edit-congty-batdau-" + congty_id).val(parseJsonDate(response.data.batdau));
+                $("#edit-congty-baomat-" + congty_id).val(response.data.baomat);
+            }
+        }
+    });
+}
+
+function CloseEditJobBox(congty_id) {
+    $(".congty-" + congty_id + "-box").css("display", "none");
+}
+
+function Jobketthuc(congty_id) {
+    if ($("#edit-congty-danglamviec-" + congty_id).is(':checked')) {
+        $("#form-edit-congty-ketthuc-" + congty_id).empty();
+        $("#form-edit-congty-ketthuc-" + congty_id).append("<p style='margin-bottom:0; height: 35px;'> đến nay</p>");
+    } else {
+        $("#form-edit-congty-ketthuc-" + congty_id).empty();
+        $("#form-edit-congty-ketthuc-" + congty_id).append("<input type='date' class='form-control' id='edit-congty-ketthuc-" + congty_id + "'><span class='errors' id='check-congty-ketthuc-" + congty_id + "'><i class='fas fa-times'></i></span>");
+    }
+}
+
+function SubmitEditJobBox(congty_id) {
+    var ids = ["ten", "chucvu", "thixa", "batdau"];
+    var count = 0;
+    var value = new Array();
+    var i = 0;
+    ids.forEach(function (id) {
+        value[i] = $("#edit-congty-" + id + "-" + congty_id).val();
+        if (value[i] != "") {
+            $("#check-congty-" + id + "-" + congty_id).html("<i class='fas fa-times' style='opacity:0;visibility: hidden'></i>");
+            count += 1;
+        }
+        else {
+            $("#check-congty-" + id + "-" + congty_id).html("<i class='fas fa-times' style='opacity:1;visibility: visible'></i>");
+        }
+        i++;
+    });
+    if (!$("#edit-congty-danglamviec-" + congty_id).is(':checked')) {
+        count += 1;
+        if ($("#edit-congty-ketthuc-" + congty_id).val() == "" || $("#edit-congty-ketthuc-" + congty_id).val() == undefined) {
+            $("#check-congty-ketthuc-" + congty_id).html("<i class='fas fa-times' style='opacity:1;visibility: visible'></i>");
+        }
+        else {
+            $("#check-congty-ketthuc-" + congty_id).html("<i class='fas fa-times' style='opacity:0;visibility: hidden'></i>");
+            value[i] = $("#edit-congty-ketthuc-" + congty_id).val()
+        }
+    }
+    if (count == value.length) {
+        var formData = new FormData();
+        var token = $('input[name="__RequestVerificationToken"]').val();
+
+        formData.append('__RequestVerificationToken', token); //form[0]
+        var i = 0;
+        ids.forEach(function (item) {
+            formData.append(item, value[i]);
+            i++;
+        })
+        if (!$("#edit-congty-danglamviec-" + congty_id).is(':checked')) {
+            formData.append('ketthuc', value[i]);
+        }
+        formData.append('baomat', $('#edit-congty-baomat-' + congty_id).val());
+        formData.append('mota', $('#edit-congty-mota-' + congty_id).val());
+
+        formData.append('congty_id', congty_id);
+
+        $.ajax({
+            type: 'post',
+            url: '/Client/Personal/ActionEditJob',
+            dataType: 'json',
+            cache: false,
+            contentType: false,
+            processData: false,
+            data: formData,
+            success: function (response) {
+                if (response.status == true) {
+                    alert("Cập nhật thành công");
+
+                    var url = window.location.href.split('/');
+                    var baseUrl = url[0] + '//' + url[2];
+                    var batdau = new Date(value[3]);
+                    var html = '<li class="list-job-item congty-' + response.data + '">' +
+                        '                                        <div class="job-item-thumbnail">' +
+                        '                                            <img src="' + baseUrl + '/Images/22904751_688560231353134_2748711313877205190_o.jpg" alt="">' +
+                        '                                        </div>' +
+                        '                                        <div class="job-item-name">' +
+                        '                                            <p>' + value[0] + '</p>';
+                    if (!$("#edit-congty-danglamviec-" + congty_id).is(':checked')) {
+                        var ketthuc = new Date(value[4]);
+                        html = html + '<span>' + value[1] + ' ' + batdau.getDate() + ' tháng ' + (batdau.getMonth() + 1) + ',' + batdau.getFullYear() + ' đến ' + ketthuc.getDate() + ' tháng ' + (ketthuc.getMonth() + 1) + ',' + ketthuc.getFullYear() + ' ' + value[2] + '</span>';
+                    }
+                    else {
+                        html = html + '<span>' + value[1] + ' ' + batdau.getDate() + ' tháng ' + (batdau.getMonth() + 1) + ',' + batdau.getFullYear() + ' ' + value[2] + '</span>';
+                    }
+                    html = html + '                              </div>' +
+                        '                                        <div class="job-item-tools">' +
+                        '                                            <i class="far fa-edit" onclick="JobEditing(' + response.data + ')" id="show-job-editing-box"></i>' +
+                        '                                            <i class="far fa-trash-alt" onclick="JobRemoving(' + response.data + ')" id="remove-job"></i>' +
+                        '                                        </div>' +
+                        '                                  </li>';
+
+                    $(".congty-" + congty_id).replaceWith(html);
+                }
+            }
+        });
+    }
+}
+
+function JobRemoving(congty_id) {
+    var result = confirm("Bạn chắc chắc muốn xóa!");
+    if (result == true) {
+        var formData = new FormData();
+        var token = $('input[name="__RequestVerificationToken"]').val();
+
+        formData.append('__RequestVerificationToken', token); //form[0]
+        formData.append('congty_id', congty_id);
+
+        $.ajax({
+            type: 'post',
+            url: '/Client/Personal/ActionDeleteJob',
+            dataType: 'json',
+            cache: false,
+            contentType: false,
+            processData: false,
+            data: formData,
+            success: function (response) {
+                if (response.status == true) {
+                    $(".congty-" + congty_id).remove();
+                    $(".congty-" + congty_id + "-box").remove();
+                }
+            }
+        });
+    } else {
+        alert("Bạn đã ấn hủy!");
+    }
+
+}
+
+
+
+
+
+
+
+

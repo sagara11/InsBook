@@ -86,5 +86,8 @@
     $("#congty-thixa").autocomplete({
       source: @Html.Raw(Json.Encode(ViewBag.TenDD))
     });
+    $(".edit-congty-thixa").autocomplete({
+      source: @Html.Raw(Json.Encode(ViewBag.TenDD))
+    });
 </script>
 @RenderSection("js", required: false)
