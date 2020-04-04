@@ -67,6 +67,7 @@
     <Compile Include="Dao\LocationDao.cs" />
     <Compile Include="Dao\PostDao.cs" />
     <Compile Include="Dao\RegisterDao.cs" />
+    <Compile Include="Dao\SchoolDao.cs" />
     <Compile Include="Dao\UserDao.cs" />
     <Compile Include="EF\anh.cs" />
     <Compile Include="EF\anh_binhluan.cs" />
@@ -127,6 +128,7 @@
     <Compile Include="Models\GetSavedItemModel.cs" />
     <Compile Include="Models\GetVideoModel.cs" />
     <Compile Include="Models\SetCompany.cs" />
+    <Compile Include="Models\SetSchool.cs" />
     <Compile Include="Models\TestModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

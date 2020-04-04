@@ -95,7 +95,7 @@
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <input type="text" class="form-control" id="edit-congty-ten-@congviec.congty_id" placeholder="Bạn đã làm việc ở đâu ?">
+                                                    <input type="text" class="form-control edit-congty-ten" id="edit-congty-ten-@congviec.congty_id" placeholder="Bạn đã làm việc ở đâu ?">
                                                     <span class="errors" id="check-congty-ten-@congviec.congty_id"><i class="fas fa-times"></i></span>
                                                 </div>
                                             </div>
@@ -317,55 +317,138 @@
                             {
                                 if (daihoc.loaitruong == 3)
                                 {
-                                    if (daihoc.totnghiep)
-                                    {
+                                    <li class="list-university-item truonghoc-@daihoc.truonghoc_id">
+                                        <div class="university-item-thumbnail">
+                                            <img src="~/Images/22904751_688560231353134_2748711313877205190_o.jpg" alt="">
+                                        </div>
+                                        <div class="university-item-name">
+                                            <p>@daihoc.tentruonghoc</p>
+                                            @if (daihoc.ketthuc != null)
+                                            {
+                                                <span>Tốt nghiệp khóa @daihoc.ketthuc.Value.Year @daihoc.chuyennganh</span>
+                                            }
+                                            else
+                                            {
+                                                <span>Bắt đầu học từ ngày @daihoc.batdau.Day tháng @daihoc.batdau.Month, @daihoc.batdau.Year  @daihoc.chuyennganh</span>
+                                            }
+                                        </div>
+                                        <div class="university-item-tools">
+                                            <i class="far fa-edit" onclick="SchoolEditting(@daihoc.truonghoc_id, 3)" id="show-school-editing-box"></i>
+                                            <i class="far fa-trash-alt" onclick="SchoolRemoving(@daihoc.truonghoc_id, 3)" id="remove-school"></i>
+                                        </div>
+                                    </li>
+                                    <div class="school-editing-box truonghoc-@daihoc.truonghoc_id-box">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <label for="edit-truonghoc-ten-@daihoc.truonghoc_id">Trường học</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control edit-truonghoc-ten" id="edit-truonghoc-ten-@daihoc.truonghoc_id" placeholder="Bạn đã học tập ở đâu ?">
+                                                    <span class="errors" id="check-truonghoc-ten-@daihoc.truonghoc_id"><i class="fas fa-times"></i></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
 
-                                        <li class="list-university-item">
-                                            <div class="university-item-thumbnail">
-                                                <img src="~/Images/22904751_688560231353134_2748711313877205190_o.jpg" alt="">
                                             </div>
-                                            <div class="university-item-name">
-                                                <p>@daihoc.tentruonghoc</p>
-                                                <span>Tốt nghiệp @daihoc.ketthuc.Value.Year @daihoc.chuyennganh @daihoc.tendiadiem</span>
+                                            <div class="col-md-4">
+                                                <label for="">Khoảng thời gian</label>
                                             </div>
-                                            <div class="university-item-tools">
-                                                <i class="far fa-edit"></i>
-                                                <i class="far fa-trash-alt"></i>
+                                            <div class="col-md-6">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" value="" id="edit-truonghoc-datotnghiep-@daihoc.truonghoc_id" onclick="Schoolketthuc(@daihoc.truonghoc_id)">
+                                                    <label class="form-check-label" for="edit-truonghoc-datotnghiep-@daihoc.truonghoc_id">
+                                                        Tôi đang học tập ở đây
+                                                    </label>
+                                                </div>
                                             </div>
-                                        </li>
-                                    }
-                                    else
-                                    {
+                                            <div class="col-md-2">
 
-                                        <li class="list-university-item">
-                                            <div class="university-item-thumbnail">
-                                                <img src="~/Images/22904751_688560231353134_2748711313877205190_o.jpg" alt="">
                                             </div>
-                                            <div class="university-item-name">
-                                                <p>@daihoc.tentruonghoc</p>
-                                                <span>Bắt đầu từ @daihoc.batdau.Day tháng @daihoc.batdau.Month,@daihoc.batdau.Year @daihoc.chuyennganh @daihoc.tendiadiem </span>
+                                            <div class="col-md-4">
+                                                <label for=""></label>
                                             </div>
-                                            <div class="university-item-tools">
-                                                <i class="far fa-edit"></i>
-                                                <i class="far fa-trash-alt"></i>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <input type="date" class="form-control" id="edit-truonghoc-batdau-@daihoc.truonghoc_id">
+                                                    <span class="errors" id="check-truonghoc-batdau-@daihoc.truonghoc_id"><i class="fas fa-times"></i></span>
+                                                </div>
                                             </div>
-                                        </li>
-                                    }
+                                            <div class="col-md-2">
+
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label for=""></label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group" id="form-edit-truonghoc-ketthuc-@daihoc.truonghoc_id">
+                                                    <input type="date" class="form-control" id="edit-truonghoc-ketthuc-@daihoc.truonghoc_id">
+                                                    <span class="errors" id="check-truonghoc-ketthuc-@daihoc.truonghoc_id"><i class="fas fa-times"></i></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label for="edit-truonghoc-chuyennganh-@daihoc.truonghoc_id">Chuyên ngành</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control edit-truonghoc-chuyennganh" id="edit-truonghoc-chuyennganh-@daihoc.truonghoc_id" onclick="GetEditCNName()">
+                                                    <span class="errors" id="check-truonghoc-chuyennganh-@daihoc.truonghoc_id"><i class="fas fa-times"></i></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label for="edit-truonghoc-mota-@daihoc.truonghoc_id">Mô tả</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <textarea class="form-control" id="edit-truonghoc-mota-@daihoc.truonghoc_id"></textarea>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+
+                                            </div>
+
+                                            <hr>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <select id="edit-truonghoc-baomat-@daihoc.truonghoc_id" class="form-control">
+                                                        <option selected value="0">Công khai</option>
+                                                        <option value="1">Bạn bè</option>
+                                                        <option value="2">Chỉ mình tôi</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <button type="button" class="btn btn-primary" id="save-school-editing-box-@daihoc.truonghoc_id" onclick="SubmitEditSchoolBox(@daihoc.truonghoc_id, 3)">Lưu thay đổi</button>
+                                                <button type="button" class="btn btn-light" id="close-school-editing-box-@daihoc.truonghoc_id" onclick="CloseEditSchoolBox(@daihoc.truonghoc_id)">Hủy</button>
+                                            </div>
+                                            <div class="col-md-2">
+
+                                            </div>
+                                        </div>
+                                        <button class="btn btn-light school-editing-closse truonghoc-@daihoc.truonghoc_id-closse" type="button" onclick="CloseEditSchoolBox(@daihoc.truonghoc_id)"><i class="fas fa-times"></i> Hủy</button>
+                                    </div>
                                 }
                             }
                         </ul>
-                        <div class="university-adding">
-                            <button type="button" class="btn btn-light" id="show-university-adding-box"><i class="far fa-plus-square"></i><span>Thêm một trường đại học</span></button>
+                        <div class="truonghoc-loai-3-adding university-adding">
+                            <button type="button" class="btn btn-light" id="show-truonghoc-loai-3-adding-box" onclick="ShowSchoolAddingBox(3)" ><i class="far fa-plus-square"></i><span>Thêm một trường đại học</span></button>
 
                         </div>
-                        <div class="university-adding-box">
+                        <div class="truonghoc-loai-3-adding-box university-adding-box">
                             <div class="row">
                                 <div class="col-md-4">
-                                    <label for="daihoc">Trường học</label>
+                                    <label for="truonghoc-loai-3-ten">Trường học</label>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <input type="text" class="form-control" id="daihoc" placeholder="Bạn đã làm việc ở đâu ?">
+                                        <input type="text" class="form-control truonghoc-ten" id="truonghoc-loai-3-ten" placeholder="Bạn đã làm việc ở đâu ?">
+                                        <span class="errors" id="check-truonghoc-loai-3-ten"><i class="fas fa-times"></i></span>
                                     </div>
                                 </div>
                                 <div class="col-md-2">
@@ -376,9 +459,9 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="daihoc-datotnghiep">
-                                        <label class="form-check-label" for="daihoc-datotnghiep">
-                                            Đã tốt nghiệp
+                                        <input class="form-check-input" type="checkbox" value="" id="truonghoc-loai-3-danghoc" onclick="SchoolAddingketthuc(3)">
+                                        <label class="form-check-label" for="truonghoc-loai-3-danghoc">
+                                            Tôi đang học tập ở đây
                                         </label>
                                     </div>
                                 </div>
@@ -390,7 +473,8 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <input type="date" class="form-control" id="">
+                                        <input type="date" class="form-control" id="truonghoc-loai-3-batdau">
+                                        <span class="errors" id="check-truonghoc-loai-3-batdau"><i class="fas fa-times"></i></span>
                                     </div>
                                 </div>
                                 <div class="col-md-2">
@@ -400,30 +484,32 @@
                                     <label for=""></label>
                                 </div>
                                 <div class="col-md-6">
-                                    <div class="form-group">
-                                        <input type="date" class="form-control" id="">
+                                    <div class="form-group" id="form-truonghoc-loai-3-ketthuc">
+                                        <input type="date" class="form-control" id="truonghoc-loai-3-ketthuc">
+                                        <span class="errors" id="check-truonghoc-loai-3-ketthuc"><i class="fas fa-times"></i></span>
                                     </div>
                                 </div>
                                 <div class="col-md-2">
 
                                 </div>
                                 <div class="col-md-4">
-                                    <label for="">Chuyên ngành</label>
+                                    <label for="truonghoc-loai-3-chuyennganh">Chuyên ngành</label>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <input type="text" class="form-control" id="daihoc-chuyennganh">
+                                        <input type="text" class="form-control truonghoc-chuyennganh" id="truonghoc-loai-3-chuyennganh" onclick="GetCNName()">
+                                        <span class="errors" id="check-truonghoc-loai-3-chuyennganh"><i class="fas fa-times"></i></span>
                                     </div>
                                 </div>
                                 <div class="col-md-2">
 
                                 </div>
                                 <div class="col-md-4">
-                                    <label for="mota">Mô tả</label>
+                                    <label for="truonghoc-loai-3-mota">Mô tả</label>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <textarea class="form-control" id="mota"></textarea>
+                                        <textarea class="form-control" id="truonghoc-loai-3-mota"></textarea>
                                     </div>
                                 </div>
                                 <div class="col-md-2">
@@ -433,22 +519,22 @@
                                 <hr>
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <select id="daihoc-baomat" class="form-control">
-                                            <option selected>Công khai</option>
-                                            <option>Bạn bè</option>
-                                            <option>Chỉ mình tôi</option>
+                                        <select id="truonghoc-loai-3-baomat" class="form-control">
+                                            <option selected value="0">Công khai</option>
+                                            <option value="1">Bạn bè</option>
+                                            <option value="2">Chỉ mình tôi</option>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
-                                    <button type="button" class="btn btn-primary">Lưu thay đổi</button>
-                                    <button type="button" class="btn btn-light" id="close-university-adding-box">Hủy</button>
+                                    <button type="button" class="btn btn-primary" onclick="SchoolAdding(3)">Lưu thay đổi</button>
+                                    <button type="button" class="btn btn-light" id="close-truonghoc-loai-3-adding-box" onclick="CloseSchoolAddingBox(3)">Hủy</button>
                                 </div>
                                 <div class="col-md-2">
 
                                 </div>
                             </div>
-                            <button class="btn btn-light university-closse" type="button" id=""><i class="fas fa-times"></i> Hủy</button>
+                            <button class="btn btn-light university-closse truonghoc-loai-3-closse" type="button" onclick="CloseSchoolAddingBox(3)"><i class="fas fa-times"></i> Hủy</button>
                         </div>
                     </div>
                     <div class="highschool">
@@ -458,54 +544,128 @@
                             {
                                 if (trunghoc.loaitruong == 2)
                                 {
-                                    if (trunghoc.totnghiep)
-                                    {
-                                        <li class="list-highschool-item">
-                                            <div class="highschool-item-thumbnail">
-                                                <img src="~/Images/22904751_688560231353134_2748711313877205190_o.jpg" alt="">
+                                    <li class="list-highschool-item truonghoc-@trunghoc.truonghoc_id">
+                                        <div class="highschool-item-thumbnail">
+                                            <img src="~/Images/22904751_688560231353134_2748711313877205190_o.jpg" alt="">
+                                        </div>
+                                        <div class="highschool-item-name">
+                                            <p>@trunghoc.tentruonghoc</p>
+                                            @if (trunghoc.ketthuc != null)
+                                            {
+                                                <span>Tốt nghiệp @trunghoc.ketthuc.Value.Year</span>
+                                            }
+                                            else
+                                            {
+                                                <span>Bắt đầu học từ @trunghoc.batdau.Day tháng @trunghoc.batdau.Month, @trunghoc.batdau.Year</span>
+                                            }
+
+                                        </div>
+                                        <div class="highschool-item-tools">
+                                            <i class="far fa-edit" onclick="SchoolEditting(@trunghoc.truonghoc_id, 2)" id="show-school-editing-box"></i>
+                                            <i class="far fa-trash-alt" onclick="SchoolRemoving(@trunghoc.truonghoc_id, 2)" id="remove-school"></i>
+                                        </div>
+                                    </li>
+                                    <div class="school-editing-box truonghoc-@trunghoc.truonghoc_id-box">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <label for="edit-truonghoc-ten-@trunghoc.truonghoc_id">Trường học</label>
                                             </div>
-                                            <div class="highschool-item-name">
-                                                <p>@trunghoc.tentruonghoc</p>
-                                                <span>Khóa @trunghoc.ketthuc.Value.Year @trunghoc.tendiadiem</span>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control edit-truonghoc-tena" id="edit-truonghoc-ten-@trunghoc.truonghoc_id" placeholder="Bạn đã học tập ở đâu ?">
+                                                    <span class="errors" id="check-truonghoc-ten-@trunghoc.truonghoc_id"><i class="fas fa-times"></i></span>
+                                                </div>
                                             </div>
-                                            <div class="highschool-item-tools">
-                                                <i class="far fa-edit"></i>
-                                                <i class="far fa-trash-alt"></i>
+                                            <div class="col-md-2">
+
                                             </div>
-                                        </li>
-                                    }
-                                    else
-                                    {
-                                        <li class="list-highschool-item">
-                                            <div class="highschool-item-thumbnail">
-                                                <img src="~/Images/22904751_688560231353134_2748711313877205190_o.jpg" alt="">
+                                            <div class="col-md-4">
+                                                <label for="">Khoảng thời gian</label>
                                             </div>
-                                            <div class="highschool-item-name">
-                                                <p>@trunghoc.tentruonghoc</p>
-                                                <span>Bắt đầu từ @trunghoc.batdau.Day tháng @trunghoc.batdau.Month, @trunghoc.batdau.Year @trunghoc.tendiadiem</span>
+                                            <div class="col-md-6">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" value="" id="edit-truonghoc-datotnghiep-@trunghoc.truonghoc_id" onclick="Schoolketthuc(@trunghoc.truonghoc_id)">
+                                                    <label class="form-check-label" for="edit-truonghoc-datotnghiep-@trunghoc.truonghoc_id">
+                                                        Tôi đang học tập ở đây
+                                                    </label>
+                                                </div>
                                             </div>
-                                            <div class="highschool-item-tools">
-                                                <i class="far fa-edit"></i>
-                                                <i class="far fa-trash-alt"></i>
+                                            <div class="col-md-2">
+
                                             </div>
-                                        </li>
-                                    }
+                                            <div class="col-md-4">
+                                                <label for=""></label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <input type="date" class="form-control" id="edit-truonghoc-batdau-@trunghoc.truonghoc_id">
+                                                    <span class="errors" id="check-truonghoc-batdau-@trunghoc.truonghoc_id"><i class="fas fa-times"></i></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label for=""></label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group" id="form-edit-truonghoc-ketthuc-@trunghoc.truonghoc_id">
+                                                    <input type="date" class="form-control" id="edit-truonghoc-ketthuc-@trunghoc.truonghoc_id">
+                                                    <span class="errors" id="check-truonghoc-ketthuc-@trunghoc.truonghoc_id"><i class="fas fa-times"></i></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label for="edit-truonghoc-mota-@trunghoc.truonghoc_id">Mô tả</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <textarea class="form-control" id="edit-truonghoc-mota-@trunghoc.truonghoc_id"></textarea>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+
+                                            </div>
+
+                                            <hr>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <select id="edit-truonghoc-baomat-@trunghoc.truonghoc_id" class="form-control">
+                                                        <option selected value="0">Công khai</option>
+                                                        <option value="1">Bạn bè</option>
+                                                        <option value="2">Chỉ mình tôi</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <button type="button" class="btn btn-primary" id="save-school-editing-box-@trunghoc.truonghoc_id" onclick="SubmitEditSchoolBox(@trunghoc.truonghoc_id, 2)">Lưu thay đổi</button>
+                                                <button type="button" class="btn btn-light" id="close-school-editing-box-@trunghoc.truonghoc_id" onclick="CloseEditSchoolBox(@trunghoc.truonghoc_id)">Hủy</button>
+                                            </div>
+                                            <div class="col-md-2">
+
+                                            </div>
+                                        </div>
+                                        <button class="btn btn-light school-editing-closse truonghoc-@trunghoc.truonghoc_id-closse" type="button" onclick="CloseEditSchoolBox(@trunghoc.truonghoc_id)"><i class="fas fa-times"></i> Hủy</button>
+                                    </div>
                                 }
                             }
                         </ul>
-                        <div class="highschool-adding">
-                            <button type="button" class="btn btn-light" id="show-highschool-adding-box"><i class="far fa-plus-square"></i><span>Thêm một trường trung học</span></button>
+                        <div class="highschool-adding truonghoc-loai-2-adding">
+                            <button type="button" class="btn btn-light" id="show-truonghoc-loai-2-adding-box" onclick="ShowSchoolAddingBox(2)"><i class="far fa-plus-square"></i><span>Thêm một trường trung học</span></button>
 
                         </div>
 
-                        <div class="highschool-adding-box">
+                        <div class="highschool-adding-box truonghoc-loai-2-adding-box">
                             <div class="row">
                                 <div class="col-md-4">
-                                    <label for="truongtrunghoc">Trường học</label>
+                                    <label for="truonghoc-loai-2-ten">Trường học</label>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <input type="text" class="form-control" id="truongtrunghoc" placeholder="Bạn đã làm việc ở đâu ?">
+                                        <input type="text" class="form-control truonghoc-ten" id="truonghoc-loai-2-ten" placeholder="Bạn đã làm việc ở đâu ?">
+                                        <span class="errors" id="check-truonghoc-loai-2-ten"><i class="fas fa-times"></i></span>
                                     </div>
                                 </div>
                                 <div class="col-md-2">
@@ -516,9 +676,9 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="truongtrunghoc-datotnghiep">
-                                        <label class="form-check-label" for="truongtrunghoc-datotnghiep">
-                                            Đã tốt nghiệp
+                                        <input class="form-check-input" type="checkbox" value="" id="truonghoc-loai-2-danghoc" onclick="SchoolAddingketthuc(2)">
+                                        <label class="form-check-label" for="truonghoc-loai-2-danghoc">
+                                            Tôi đang học tập ở đây
                                         </label>
                                     </div>
                                 </div>
@@ -530,7 +690,8 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <input type="date" class="form-control" id="">
+                                        <input type="date" class="form-control" id="truonghoc-loai-2-batdau">
+                                        <span class="errors" id="check-truonghoc-loai-2-batdau"><i class="fas fa-times"></i></span>
                                     </div>
                                 </div>
                                 <div class="col-md-2">
@@ -540,19 +701,20 @@
                                     <label for=""></label>
                                 </div>
                                 <div class="col-md-6">
-                                    <div class="form-group">
-                                        <input type="date" class="form-control" id="">
+                                    <div class="form-group" id="form-truonghoc-loai-2-ketthuc">
+                                        <input type="date" class="form-control" id="truonghoc-loai-2-ketthuc">
+                                        <span class="errors" id="check-truonghoc-loai-2-ketthuc"><i class="fas fa-times"></i></span>
                                     </div>
                                 </div>
                                 <div class="col-md-2">
 
                                 </div>
                                 <div class="col-md-4">
-                                    <label for="truongtrunghoc-mota">Mô tả</label>
+                                    <label for="truonghoc-loai-2-mota">Mô tả</label>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <textarea class="form-control" id="truongtrunghoc-mota"></textarea>
+                                        <textarea class="form-control" id="truonghoc-loai-2-mota"></textarea>
                                     </div>
                                 </div>
                                 <div class="col-md-2">
@@ -562,22 +724,22 @@
                                 <hr>
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <select id="truongtrunghoc-baomat" class="form-control">
-                                            <option selected>Công khai</option>
-                                            <option>Bạn bè</option>
-                                            <option>Chỉ mình tôi</option>
+                                        <select id="truonghoc-loai-2-baomat" class="form-control">
+                                            <option selected value="0">Công khai</option>
+                                            <option value="1">Bạn bè</option>
+                                            <option value="2">Chỉ mình tôi</option>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
-                                    <button type="button" class="btn btn-primary">Lưu thay đổi</button>
-                                    <button type="button" class="btn btn-light" id="close-highschool-adding-box">Hủy</button>
+                                    <button type="button" class="btn btn-primary" onclick="SchoolAdding(2)">Lưu thay đổi</button>
+                                    <button type="button" class="btn btn-light" id="close-truonghoc-loai-2-adding-box" onclick="CloseSchoolAddingBox(2)">Hủy</button>
                                 </div>
                                 <div class="col-md-2">
 
                                 </div>
                             </div>
-                            <button class="btn btn-light highschool-closse" type="button" id=""><i class="fas fa-times"></i> Hủy</button>
+                            <button class="btn btn-light highschool-closse truonghoc-loai-2-closse" type="button" onclick="CloseSchoolAddingBox(2)"><i class="fas fa-times"></i> Hủy</button>
                         </div>
                     </div>
                 </div>

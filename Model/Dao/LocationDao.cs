@@ -20,9 +20,9 @@ namespace Model.Dao
             db.SaveChanges();
             return true;
         }
-        public List<diadiem> GetAll()
+        public List<string> GetAllName()
         {
-            return db.diadiems.ToList();
+            return db.Database.SqlQuery<string>("select diadiem.ten from diadiem").ToList();
         }
         public int GetByName(string name)
         {

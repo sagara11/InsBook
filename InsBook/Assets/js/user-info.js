@@ -14,30 +14,39 @@ $(".job-closse").click(function () {
     $(".job-adding-box").css("display", "none");
     $(".job-adding").css("display", "block");
 });
-$("#show-university-adding-box").click(function () {
-    $(".university-adding-box").css("display", "block");
-    $(".university-adding").css("display", "none");
-});
-$("#close-university-adding-box").click(function () {
-    $(".university-adding-box").css("display", "none");
-    $(".university-adding").css("display", "block");
-});
-$(".university-closse").click(function () {
-    $(".university-adding-box").css("display", "none");
-    $(".university-adding").css("display", "block");
-});
-$("#show-highschool-adding-box").click(function () {
-    $(".highschool-adding-box").css("display", "block");
-    $(".highschool-adding").css("display", "none");
-});
-$("#close-highschool-adding-box").click(function () {
-    $(".highschool-adding-box").css("display", "none");
-    $(".highschool-adding").css("display", "block");
-});
-$(".highschool-closse").click(function () {
-    $(".highschool-adding-box").css("display", "none");
-    $(".highschool-adding").css("display", "block");
-});
+//$("#show-university-adding-box").click(function () {
+//    $(".university-adding-box").css("display", "block");
+//    $(".university-adding").css("display", "none");
+//});
+//$("#close-university-adding-box").click(function () {
+//    $(".university-adding-box").css("display", "none");
+//    $(".university-adding").css("display", "block");
+//});
+//$(".university-closse").click(function () {
+//    $(".university-adding-box").css("display", "none");
+//    $(".university-adding").css("display", "block");
+//});
+//$("#show-highschool-adding-box").click(function () {
+//    $(".highschool-adding-box").css("display", "block");
+//    $(".highschool-adding").css("display", "none");
+//});
+//$("#close-highschool-adding-box").click(function () {
+//    $(".highschool-adding-box").css("display", "none");
+//    $(".highschool-adding").css("display", "block");
+//});
+//$(".highschool-closse").click(function () {
+//    $(".highschool-adding-box").css("display", "none");
+//    $(".highschool-adding").css("display", "block");
+//});
+
+function CloseSchoolAddingBox(loaitruong) {
+    $(".truonghoc-loai-" + loaitruong + "-adding").css("display", "block");
+    $(".truonghoc-loai-" + loaitruong + "-adding-box").css("display", "none");
+}
+function ShowSchoolAddingBox(loaitruong) {
+    $(".truonghoc-loai-" + loaitruong + "-adding").css("display", "none");
+    $(".truonghoc-loai-" + loaitruong + "-adding-box").css("display", "block");
+}
 $("#show-country-lived-adding-box").click(function () {
     $(".country-lived-adding-box").css("display", "block");
     $(".country-lived-adding").css("display", "none");
@@ -738,10 +747,597 @@ function JobRemoving(congty_id) {
 
 }
 
+//------------------------TRUONG DAI HOC-------------------
+function SchoolAddingketthuc(loaitruong) {
+    if ($("#truonghoc-loai-" + loaitruong + "-danghoc").is(':checked')) {
+        $("#form-truonghoc-loai-" + loaitruong + "-ketthuc").empty();
+        $("#form-truonghoc-loai-" + loaitruong + "-ketthuc").append("<p style='margin-bottom:0; height: 35px;'> đến nay</p>");
+    } else {
+        $("#form-truonghoc-loai-" + loaitruong + "-ketthuc").empty();
+        $("#form-truonghoc-loai-" + loaitruong + "-ketthuc").append("<input type='date' class='form-control' id='truonghoc-loai-" + loaitruong + "-ketthuc'><span class='errors' id='check-truonghoc-loai-" + loaitruong + "-ketthuc'><i class='fas fa-times'></i></span>");
+    }
+}
 
+function SchoolAdding(loaitruong) {
+    if (loaitruong == 3) {
+        var ids = ["ten", "batdau", "chuyennganh"];
+    }
+    else if (loaitruong == 2) {
+        var ids = ["ten", "batdau"];
+    }
+    var count = 0;
+    var value = new Array();
+    var i = 0;
+    ids.forEach(function (id) {
+        value[i] = $("#truonghoc-loai-" + loaitruong + "-" + id).val();
+        if (value[i] != "") {
+            $("#check-truonghoc-loai-" + loaitruong + "-" + id).html("<i class='fas fa-times' style='opacity:0;visibility: hidden'></i>");
+            count += 1;
+        }
+        else {
+            $("#check-truonghoc-loai-" + loaitruong + "-" + id).html("<i class='fas fa-times' style='opacity:1;visibility: visible'></i>");
+        }
+        i++;
+    });
+    if (!$("#truonghoc-loai-" + loaitruong + "-danghoc").is(':checked')) {
+        count += 1;
+        if ($("#truonghoc-loai-" + loaitruong + "-ketthuc").val() == "" || $("#truonghoc-loai-" + loaitruong + "-ketthuc").val() == undefined) {
+            $("#check-truonghoc-loai-" + loaitruong + "-ketthuc").html("<i class='fas fa-times' style='opacity:1;visibility: visible'></i>");
+        }
+        else {
+            $("#check-truonghoc-loai-" + loaitruong + "-ketthuc").html("<i class='fas fa-times' style='opacity:0;visibility: hidden'></i>");
+            value[i] = $("#truonghoc-loai-" + loaitruong + "-ketthuc").val()
+        }
+    }
+    if (count == value.length) {
+        var formData = new FormData();
+        var token = $('input[name="__RequestVerificationToken"]').val();
 
+        formData.append('__RequestVerificationToken', token); //form[0]
+        var i = 0;
+        ids.forEach(function (item) {
+            formData.append(item, value[i]);
+            i++;
+        })
+        if (!$("#truonghoc-loai-" + loaitruong + "-danghoc").is(':checked')) {
+            formData.append('ketthuc', value[i]);
+        }
+        formData.append('baomat', $("#truonghoc-loai-" + loaitruong + "-baomat").val());
+        formData.append('mota', $("#truonghoc-loai-" + loaitruong + "-mota").val());
+        formData.append('loaitruong', loaitruong);
 
+        var haha = formData;
+        $.ajax({
+            type: 'post',
+            url: '/Client/Personal/AddSchool',
+            dataType: 'json',
+            cache: false,
+            contentType: false,
+            processData: false,
+            data: formData,
+            success: function (response) {
+                if (response.status == true) {
+                    alert("Thêm thành công");
+                    var batdau = new Date(value[1]);
+                    var url = window.location.href.split('/');
+                    var baseUrl = url[0] + '//' + url[2];
+                    if (loaitruong == 3) {
+                        var html = '<li class="list-university-item truonghoc-' + response.data + '">' +
+                            '                                        <div class="university-item-thumbnail">' +
+                            '                                            <img src="' + baseUrl + '/Images/22904751_688560231353134_2748711313877205190_o.jpg" alt="">' +
+                            '                                        </div>' +
+                            '                                        <div class="university-item-name">' +
+                            '                                            <p>' + value[0] + '</p>';
+                        if (!$("#truonghoc-loai-" + loaitruong + "-danghoc").is(':checked')) {
+                            var ketthuc = new Date(value[3])
+                            html = html + '<span>Tốt nghiệp khóa ' + ketthuc.getFullYear() + ' ' + value[2] + '</span>';
+                        }
+                        else {
+                            html = html + '<span>Bắt đầu học từ ngày ' + batdau.getDate() + ' tháng ' + (batdau.getMonth() + 1) + ', ' + batdau.getFullYear() + '  ' + value[2] + '</span>';
+                        }
+                        html = html + '                              </div>' +
+                            '                                        <div class="university-item-tools">' +
+                            '                                            <i class="far fa-edit" onclick="SchoolEditting(' + response.data + ', 3)" id="show-school-editing-box"></i>' +
+                            '                                            <i class="far fa-trash-alt" onclick="SchoolRemoving(' + response.data + ', 3)" id="remove-school"></i>' +
+                            '                                        </div>' +
+                            '                                    </li>' +
+                            '                                    <div class="school-editing-box truonghoc-' + response.data + '-box">' +
+                            '                                        <div class="row">' +
+                            '                                            <div class="col-md-4">' +
+                            '                                                <label for="edit-truonghoc-ten-' + response.data + '">Trường học</label>' +
+                            '                                            </div>' +
+                            '                                            <div class="col-md-6">' +
+                            '                                                <div class="form-group">' +
+                            '                                                    <input type="text" class="form-control" id="edit-truonghoc-ten-' + response.data + '" placeholder="Bạn đã học tập ở đâu ?">' +
+                            '                                                    <span class="errors" id="check-truonghoc-ten-' + response.data + '"><i class="fas fa-times"></i></span>' +
+                            '                                                </div>' +
+                            '                                            </div>' +
+                            '                                            <div class="col-md-2">' +
+                            '' +
+                            '                                            </div>' +
+                            '                                            <div class="col-md-4">' +
+                            '                                                <label for="">Khoảng thời gian</label>' +
+                            '                                            </div>' +
+                            '                                            <div class="col-md-6">' +
+                            '                                                <div class="form-check">' +
+                            '                                                    <input class="form-check-input" type="checkbox" value="" id="edit-truonghoc-datotnghiep-' + response.data + '" onclick="Schoolketthuc(' + response.data + ')">' +
+                            '                                                    <label class="form-check-label" for="edit-truonghoc-datotnghiep-' + response.data + '">' +
+                            '                                                        Tôi đang học tập ở đây' +
+                            '                                                    </label>' +
+                            '                                                </div>' +
+                            '                                            </div>' +
+                            '                                            <div class="col-md-2">' +
+                            '' +
+                            '                                            </div>' +
+                            '                                            <div class="col-md-4">' +
+                            '                                                <label for=""></label>' +
+                            '                                            </div>' +
+                            '                                            <div class="col-md-6">' +
+                            '                                                <div class="form-group">' +
+                            '                                                    <input type="date" class="form-control" id="edit-truonghoc-batdau-' + response.data + '">' +
+                            '                                                    <span class="errors" id="check-truonghoc-batdau-' + response.data + '"><i class="fas fa-times"></i></span>' +
+                            '                                                </div>' +
+                            '                                            </div>' +
+                            '                                            <div class="col-md-2">' +
+                            '' +
+                            '                                            </div>' +
+                            '                                            <div class="col-md-4">' +
+                            '                                                <label for=""></label>' +
+                            '                                            </div>' +
+                            '                                            <div class="col-md-6">' +
+                            '                                                <div class="form-group" id="form-edit-truonghoc-ketthuc-' + response.data + '">' +
+                            '                                                    <input type="date" class="form-control" id="edit-truonghoc-ketthuc-' + response.data + '">' +
+                            '                                                    <span class="errors" id="check-truonghoc-ketthuc-' + response.data + '"><i class="fas fa-times"></i></span>' +
+                            '                                                </div>' +
+                            '                                            </div>' +
+                            '                                            <div class="col-md-2">' +
+                            '' +
+                            '                                            </div>' +
+                            '                                            <div class="col-md-4">' +
+                            '                                                <label for="edit-truonghoc-chuyennganh-' + response.data + '">Chuyên ngành</label>' +
+                            '                                            </div>' +
+                            '                                            <div class="col-md-6">' +
+                            '                                                <div class="form-group">' +
+                            '                                                    <input type="text" class="form-control" id="edit-truonghoc-chuyennganh-' + response.data + '" onclick="GetCNName()">' +
+                            '                                                    <span class="errors" id="check-truonghoc-chuyennganh-' + response.data + '"><i class="fas fa-times"></i></span>' +
+                            '                                                </div>' +
+                            '                                            </div>' +
+                            '                                            <div class="col-md-2">' +
+                            '' +
+                            '                                            </div>' +
+                            '                                            <div class="col-md-4">' +
+                            '                                                <label for="edit-truonghoc-mota-' + response.data + '">Mô tả</label>' +
+                            '                                            </div>' +
+                            '                                            <div class="col-md-6">' +
+                            '                                                <div class="form-group">' +
+                            '                                                    <textarea class="form-control" id="edit-truonghoc-mota-' + response.data + '"></textarea>' +
+                            '                                                </div>' +
+                            '                                            </div>' +
+                            '                                            <div class="col-md-2">' +
+                            '' +
+                            '                                            </div>' +
+                            '' +
+                            '                                            <hr>' +
+                            '                                            <div class="col-md-4">' +
+                            '                                                <div class="form-group">' +
+                            '                                                    <select id="edit-truonghoc-baomat-' + response.data + '" class="form-control">' +
+                            '                                                        <option selected value="0">Công khai</option>' +
+                            '                                                        <option value="1">Bạn bè</option>' +
+                            '                                                        <option value="2">Chỉ mình tôi</option>' +
+                            '                                                    </select>' +
+                            '                                                </div>' +
+                            '                                            </div>' +
+                            '                                            <div class="col-md-6">' +
+                            '                                                <button type="button" class="btn btn-primary" id="save-school-editing-box-' + response.data + '" onclick="SubmitEditSchoolBox(' + response.data + ', 3)">Lưu thay đổi</button>' +
+                            '                                                <button type="button" class="btn btn-light" id="close-school-editing-box-' + response.data + '" onclick="CloseEditSchoolBox(' + response.data + ')">Hủy</button>' +
+                            '                                            </div>' +
+                            '                                            <div class="col-md-2">' +
+                            '' +
+                            '                                            </div>' +
+                            '                                        </div>' +
+                            '                                        <button class="btn btn-light school-editing-closse truonghoc-' + response.data + '-closse" type="button" onclick="CloseEditSchoolBox(' + response.data + ')"><i class="fas fa-times"></i> Hủy</button>' +
+                            '                                    </div>';
+                        $(".list-university").append(html);
+                    }
+                    else if (loaitruong == 2) {
+                        alert("haha");
+                    }
 
+                    $(".truonghoc-loai-" + loaitruong + "-adding").css("display", "block");
+                    $(".truonghoc-loai-" + loaitruong + "-adding-box").css("display", "none");
+                    ids.forEach(function (i) {
+                        $("#truonghoc-loai-" + loaitruong + "-" + i).val("");
+                    })
 
+                    $('#truonghoc-loai-' + loaitruong + '-danghoc').prop('checked', false);
+                    $("#form-truonghoc-loai-" + loaitruong + "-ketthuc").empty();
+                    $("#form-truonghoc-loai-" + loaitruong + "-ketthuc").append("<input type='date' class='form-control' id='truonghoc-loai-" + loaitruong + "-ketthuc'><span class='errors' id='check-truonghoc-loai-" + loaitruong + "-ketthuc'><i class='fas fa-times'></i></span>");
 
+                    $('#truonghoc-loai-' + loaitruong + '-ketthuc').val("");
+                    $('#truonghoc-loai-' + loaitruong + '-mota').val("");
+                    $('#truonghoc-loai-' + loaitruong + '-baomat').val("0");
+                }
+            }
+        });
+    }
+}
 
+function SchoolEditting(truonghoc_id, loaitruong) {
+    $(".truonghoc-" + truonghoc_id + "-box").css("display", "inline-block");
+
+    var formData = new FormData();
+    var token = $('input[name="__RequestVerificationToken"]').val();
+
+    formData.append('__RequestVerificationToken', token); //form[0]
+    formData.append('truonghoc_id', truonghoc_id);
+
+    $.ajax({
+        type: 'post',
+        url: '/Client/Personal/EditSchool',
+        dataType: 'json',
+        cache: false,
+        contentType: false,
+        processData: false,
+        data: formData,
+        success: function (response) {
+            if (response.status == true) {
+                $("#edit-truonghoc-ten-" + truonghoc_id).val(response.data.tentruonghoc);
+                $("#edit-truonghoc-batdau-" + truonghoc_id).val(parseJsonDate(response.data.batdau));
+                $("#edit-truonghoc-mota-" + truonghoc_id).val(response.data.mota);
+                if (response.data.ketthuc == null) {
+                    $('#edit-truonghoc-datotnghiep-' + truonghoc_id).prop('checked', true);
+                    $("#form-edit-truonghoc-ketthuc-" + truonghoc_id).empty();
+                    $("#form-edit-truonghoc-ketthuc-" + truonghoc_id).append("<p style='margin-bottom:0; height: 35px;'> đến nay</p>");
+                } else {
+                    $('#edit-truonghoc-datotnghiep-' + truonghoc_id).prop('checked', false);
+                    $("#edit-truonghoc-ketthuc-" + truonghoc_id).val(parseJsonDate(response.data.ketthuc));
+
+                }
+                if (loaitruong == 3) {
+                    $("#edit-truonghoc-chuyennganh-" + truonghoc_id).val(response.data.chuyennganh);
+                }
+                $("#edit-truonghoc-baomat-" + truonghoc_id).val(response.data.baomat);
+            }
+        }
+    });
+}
+
+function CloseEditSchoolBox(truonghoc_id) {
+    $(".truonghoc-" + truonghoc_id + "-box").css("display", "none");
+}
+
+function Schoolketthuc(truonghoc_id) {
+    if ($("#edit-truonghoc-datotnghiep-" + truonghoc_id).is(':checked')) {
+        $("#form-edit-truonghoc-ketthuc-" + truonghoc_id).empty();
+        $("#form-edit-truonghoc-ketthuc-" + truonghoc_id).append("<p style='margin-bottom:0; height: 35px;'> đến nay</p>");
+    } else {
+        $("#form-edit-truonghoc-ketthuc-" + truonghoc_id).empty();
+        $("#form-edit-truonghoc-ketthuc-" + truonghoc_id).append("<input type='date' class='form-control' id='edit-truonghoc-ketthuc-" + truonghoc_id + "'><span class='errors' id='check-truonghoc-ketthuc-" + truonghoc_id + "'><i class='fas fa-times'></i></span>");
+    }
+}
+
+function SubmitEditSchoolBox(truonghoc_id, loaitruong) {
+    if (loaitruong == 3) {
+        var ids = ["ten", "batdau", "chuyennganh"];
+    }
+    else if (loaitruong == 2) {
+        var ids = ["ten", "batdau"];
+    }
+    var count = 0;
+    var value = new Array();
+    var i = 0;
+    ids.forEach(function (id) {
+        value[i] = $("#edit-truonghoc-" + id + "-" + truonghoc_id).val();
+        if (value[i] != "") {
+            $("#check-truonghoc-" + id + "-" + truonghoc_id).html("<i class='fas fa-times' style='opacity:0;visibility: hidden'></i>");
+            count += 1;
+        }
+        else {
+            $("#check-truonghoc-" + id + "-" + truonghoc_id).html("<i class='fas fa-times' style='opacity:1;visibility: visible'></i>");
+        }
+        i++;
+    });
+    if (!$("#edit-truonghoc-datotnghiep-" + truonghoc_id).is(':checked')) {
+        count += 1;
+        if ($("#edit-truonghoc-ketthuc-" + truonghoc_id).val() == "" || $("#edit-truonghoc-ketthuc-" + truonghoc_id).val() == undefined) {
+            $("#check-truonghoc-ketthuc-" + truonghoc_id).html("<i class='fas fa-times' style='opacity:1;visibility: visible'></i>");
+        }
+        else {
+            $("#check-truonghoc-ketthuc-" + truonghoc_id).html("<i class='fas fa-times' style='opacity:0;visibility: hidden'></i>");
+            value[i] = $("#edit-truonghoc-ketthuc-" + truonghoc_id).val()
+        }
+    }
+    if (count == value.length) {
+        var formData = new FormData();
+        var token = $('input[name="__RequestVerificationToken"]').val();
+
+        formData.append('__RequestVerificationToken', token); //form[0]
+        var i = 0;
+        ids.forEach(function (item) {
+            formData.append(item, value[i]);
+            i++;
+        })
+        if (!$("#edit-truonghoc-datotnghiep-" + truonghoc_id).is(':checked')) {
+            formData.append('ketthuc', value[i]);
+        }
+        formData.append('baomat', $('#edit-truonghoc-baomat-' + truonghoc_id).val());
+        formData.append('mota', $('#edit-truonghoc-mota-' + truonghoc_id).val());
+
+        formData.append('truonghoc_id', truonghoc_id);
+        formData.append('loaitruong', loaitruong);
+
+        $.ajax({
+            type: 'post',
+            url: '/Client/Personal/ActionEditSchool',
+            dataType: 'json',
+            cache: false,
+            contentType: false,
+            processData: false,
+            data: formData,
+            success: function (response) {
+                if (response.status == true) {
+                    alert("Cập nhật thành công");
+
+                    var url = window.location.href.split('/');
+                    var baseUrl = url[0] + '//' + url[2];
+                    var batdau = new Date(value[1]);
+                    if (loaitruong == 3) {
+                        var html = '<li class="list-university-item truonghoc-' + response.data + '">' +
+                            '                                        <div class="university-item-thumbnail">' +
+                            '                                            <img src="' + baseUrl + '/Images/22904751_688560231353134_2748711313877205190_o.jpg" alt="">' +
+                            '                                        </div>' +
+                            '                                        <div class="university-item-name">' +
+                            '                                            <p>' + value[0] + '</p>';
+                        if (!$("#edit-truonghoc-datotnghiep-" + truonghoc_id).is(':checked')) {
+                            var ketthuc = new Date(value[3])
+                            html = html + '<span>Tốt nghiệp khóa ' + ketthuc.getFullYear() + ' ' + value[2] + '</span>';
+                        }
+                        else {
+                            html = html + '<span>Bắt đầu học từ ngày ' + batdau.getDate() + ' tháng ' + (batdau.getMonth() + 1) + ', ' + batdau.getFullYear() + '  ' + value[2] + '</span>';
+                        }
+                        html = html + '                              </div>' +
+                            '                                        <div class="university-item-tools">' +
+                            '                                            <i class="far fa-edit" onclick="SchoolEditting(' + response.data + ', 3)" id="show-school-editing-box"></i>' +
+                            '                                            <i class="far fa-trash-alt" onclick="SchoolRemoving(' + response.data + ', 3)" id="remove-school"></i>' +
+                            '                                        </div>' +
+                            '                                    </li>';
+                        htmlEdit = '                                    <div class="school-editing-box truonghoc-' + response.data + '-box">' +
+                            '                                        <div class="row">' +
+                            '                                            <div class="col-md-4">' +
+                            '                                                <label for="edit-truonghoc-ten-' + response.data + '">Trường học</label>' +
+                            '                                            </div>' +
+                            '                                            <div class="col-md-6">' +
+                            '                                                <div class="form-group">' +
+                            '                                                    <input type="text" class="form-control edit-truonghoc-ten" id="edit-truonghoc-ten-' + response.data + '" placeholder="Bạn đã học tập ở đâu ?">' +
+                            '                                                    <span class="errors" id="check-truonghoc-ten-' + response.data + '"><i class="fas fa-times"></i></span>' +
+                            '                                                </div>' +
+                            '                                            </div>' +
+                            '                                            <div class="col-md-2">' +
+                            '' +
+                            '                                            </div>' +
+                            '                                            <div class="col-md-4">' +
+                            '                                                <label for="">Khoảng thời gian</label>' +
+                            '                                            </div>' +
+                            '                                            <div class="col-md-6">' +
+                            '                                                <div class="form-check">' +
+                            '                                                    <input class="form-check-input" type="checkbox" value="" id="edit-truonghoc-datotnghiep-' + response.data + '" onclick="Schoolketthuc(' + response.data + ')">' +
+                            '                                                    <label class="form-check-label" for="edit-truonghoc-datotnghiep-' + response.data + '">' +
+                            '                                                        Tôi đang học tập ở đây' +
+                            '                                                    </label>' +
+                            '                                                </div>' +
+                            '                                            </div>' +
+                            '                                            <div class="col-md-2">' +
+                            '' +
+                            '                                            </div>' +
+                            '                                            <div class="col-md-4">' +
+                            '                                                <label for=""></label>' +
+                            '                                            </div>' +
+                            '                                            <div class="col-md-6">' +
+                            '                                                <div class="form-group">' +
+                            '                                                    <input type="date" class="form-control" id="edit-truonghoc-batdau-' + response.data + '">' +
+                            '                                                    <span class="errors" id="check-truonghoc-batdau-' + response.data + '"><i class="fas fa-times"></i></span>' +
+                            '                                                </div>' +
+                            '                                            </div>' +
+                            '                                            <div class="col-md-2">' +
+                            '' +
+                            '                                            </div>' +
+                            '                                            <div class="col-md-4">' +
+                            '                                                <label for=""></label>' +
+                            '                                            </div>' +
+                            '                                            <div class="col-md-6">' +
+                            '                                                <div class="form-group" id="form-edit-truonghoc-ketthuc-' + response.data + '">' +
+                            '                                                    <input type="date" class="form-control" id="edit-truonghoc-ketthuc-' + response.data + '">' +
+                            '                                                    <span class="errors" id="check-truonghoc-ketthuc-' + response.data + '"><i class="fas fa-times"></i></span>' +
+                            '                                                </div>' +
+                            '                                            </div>' +
+                            '                                            <div class="col-md-2">' +
+                            '' +
+                            '                                            </div>' +
+                            '                                            <div class="col-md-4">' +
+                            '                                                <label for="edit-truonghoc-chuyennganh-' + response.data + '">Chuyên ngành</label>' +
+                            '                                            </div>' +
+                            '                                            <div class="col-md-6">' +
+                            '                                                <div class="form-group">' +
+                            '                                                    <input type="text" class="form-control edit-truonghoc-chuyennganh" id="edit-truonghoc-chuyennganh-' + response.data + '" onclick="GetEditCNName()">' +
+                            '                                                    <span class="errors" id="check-truonghoc-chuyennganh-' + response.data + '"><i class="fas fa-times"></i></span>' +
+                            '                                                </div>' +
+                            '                                            </div>' +
+                            '                                            <div class="col-md-2">' +
+                            '' +
+                            '                                            </div>' +
+                            '                                            <div class="col-md-4">' +
+                            '                                                <label for="edit-truonghoc-mota-' + response.data + '">Mô tả</label>' +
+                            '                                            </div>' +
+                            '                                            <div class="col-md-6">' +
+                            '                                                <div class="form-group">' +
+                            '                                                    <textarea class="form-control" id="edit-truonghoc-mota-' + response.data + '"></textarea>' +
+                            '                                                </div>' +
+                            '                                            </div>' +
+                            '                                            <div class="col-md-2">' +
+                            '' +
+                            '                                            </div>' +
+                            '' +
+                            '                                            <hr>' +
+                            '                                            <div class="col-md-4">' +
+                            '                                                <div class="form-group">' +
+                            '                                                    <select id="edit-truonghoc-baomat-' + response.data + '" class="form-control">' +
+                            '                                                        <option selected value="0">Công khai</option>' +
+                            '                                                        <option value="1">Bạn bè</option>' +
+                            '                                                        <option value="2">Chỉ mình tôi</option>' +
+                            '                                                    </select>' +
+                            '                                                </div>' +
+                            '                                            </div>' +
+                            '                                            <div class="col-md-6">' +
+                            '                                                <button type="button" class="btn btn-primary" id="save-school-editing-box-' + response.data + '" onclick="SubmitEditSchoolBox(' + response.data + ', 3)">Lưu thay đổi</button>' +
+                            '                                                <button type="button" class="btn btn-light" id="close-school-editing-box-' + response.data + '" onclick="CloseEditSchoolBox(' + response.data + ')">Hủy</button>' +
+                            '                                            </div>' +
+                            '                                            <div class="col-md-2">' +
+                            '' +
+                            '                                            </div>' +
+                            '                                        </div>' +
+                            '                                        <button class="btn btn-light school-editing-closse truonghoc-' + response.data + '-closse" type="button" onclick="CloseEditSchoolBox(' + response.data + ')"><i class="fas fa-times"></i> Hủy</button>' +
+                            '                                    </div>';
+                    }
+                    else {
+                        var html = '<li class="list-highschool-item truonghoc-' + response.data + '">' +
+                            '                                        <div class="highschool-item-thumbnail">' +
+                            '                                            <img src="' + baseUrl + '/Images/22904751_688560231353134_2748711313877205190_o.jpg" alt="">' +
+                            '                                        </div>' +
+                            '                                        <div class="highschool-item-name">' +
+                            '                                            <p>' + value[0] + '</p>';
+                        if (!$("#edit-truonghoc-datotnghiep-" + truonghoc_id).is(':checked')) {
+                            var ketthuc = new Date(value[2])
+                            html = html + '<span>Tốt nghiệp khóa ' + ketthuc.getFullYear() + ' </span>';
+                        }
+                        else {
+                            html = html + '<span>Bắt đầu học từ ngày ' + batdau.getDate() + ' tháng ' + (batdau.getMonth() + 1) + ', ' + batdau.getFullYear() + ' </span>';
+                        }
+                        html = html + '                              </div>' +
+                            '                                        <div class="highschool-item-tools">' +
+                            '                                            <i class="far fa-edit" onclick="SchoolEditting(' + response.data + ', 2)" id="show-school-editing-box"></i>' +
+                            '                                            <i class="far fa-trash-alt" onclick="SchoolRemoving(' + response.data + ', 2)" id="remove-school"></i>' +
+                            '                                        </div>' +
+                            '                                    </li>';
+                        htmlEdit = ' <div class="school-editing-box truonghoc-' + response.data + '-box">' +
+                            '                                        <div class="row">' +
+                            '                                            <div class="col-md-4">' +
+                            '                                                <label for="edit-truonghoc-ten-' + response.data + '">Trường học</label>' +
+                            '                                            </div>' +
+                            '                                            <div class="col-md-6">' +
+                            '                                                <div class="form-group">' +
+                            '                                                    <input type="text" class="form-control edit-truonghoc-ten" id="edit-truonghoc-ten-' + response.data + '" placeholder="Bạn đã học tập ở đâu ?">' +
+                            '                                                    <span class="errors" id="check-truonghoc-ten-' + response.data + '"><i class="fas fa-times"></i></span>' +
+                            '                                                </div>' +
+                            '                                            </div>' +
+                            '                                            <div class="col-md-2">' +
+                            '' +
+                            '                                            </div>' +
+                            '                                            <div class="col-md-4">' +
+                            '                                                <label for="">Khoảng thời gian</label>' +
+                            '                                            </div>' +
+                            '                                            <div class="col-md-6">' +
+                            '                                                <div class="form-check">' +
+                            '                                                    <input class="form-check-input" type="checkbox" value="" id="edit-truonghoc-datotnghiep-' + response.data + '" onclick="Schoolketthuc(' + response.data + ')">' +
+                            '                                                    <label class="form-check-label" for="edit-truonghoc-datotnghiep-' + response.data + '">' +
+                            '                                                        Tôi đang học tập ở đây' +
+                            '                                                    </label>' +
+                            '                                                </div>' +
+                            '                                            </div>' +
+                            '                                            <div class="col-md-2">' +
+                            '' +
+                            '                                            </div>' +
+                            '                                            <div class="col-md-4">' +
+                            '                                                <label for=""></label>' +
+                            '                                            </div>' +
+                            '                                            <div class="col-md-6">' +
+                            '                                                <div class="form-group">' +
+                            '                                                    <input type="date" class="form-control" id="edit-truonghoc-batdau-' + response.data + '">' +
+                            '                                                    <span class="errors" id="check-truonghoc-batdau-' + response.data + '"><i class="fas fa-times"></i></span>' +
+                            '                                                </div>' +
+                            '                                            </div>' +
+                            '                                            <div class="col-md-2">' +
+                            '' +
+                            '                                            </div>' +
+                            '                                            <div class="col-md-4">' +
+                            '                                                <label for=""></label>' +
+                            '                                            </div>' +
+                            '                                            <div class="col-md-6">' +
+                            '                                                <div class="form-group" id="form-edit-truonghoc-ketthuc-' + response.data + '">' +
+                            '                                                    <input type="date" class="form-control" id="edit-truonghoc-ketthuc-' + response.data + '">' +
+                            '                                                    <span class="errors" id="check-truonghoc-ketthuc-' + response.data + '"><i class="fas fa-times"></i></span>' +
+                            '                                                </div>' +
+                            '                                            </div>' +
+                            '                                            <div class="col-md-2">' +
+                            '' +
+                            '                                            </div>' +
+                            '                                            <div class="col-md-4">' +
+                            '                                                <label for="edit-truonghoc-mota-' + response.data + '">Mô tả</label>' +
+                            '                                            </div>' +
+                            '                                            <div class="col-md-6">' +
+                            '                                                <div class="form-group">' +
+                            '                                                    <textarea class="form-control" id="edit-truonghoc-mota-' + response.data + '"></textarea>' +
+                            '                                                </div>' +
+                            '                                            </div>' +
+                            '                                            <div class="col-md-2">' +
+                            '' +
+                            '                                            </div>' +
+                            '' +
+                            '                                            <hr>' +
+                            '                                            <div class="col-md-4">' +
+                            '                                                <div class="form-group">' +
+                            '                                                    <select id="edit-truonghoc-baomat-' + response.data + '" class="form-control">' +
+                            '                                                        <option selected value="0">Công khai</option>' +
+                            '                                                        <option value="1">Bạn bè</option>' +
+                            '                                                        <option value="2">Chỉ mình tôi</option>' +
+                            '                                                    </select>' +
+                            '                                                </div>' +
+                            '                                            </div>' +
+                            '                                            <div class="col-md-6">' +
+                            '                                                <button type="button" class="btn btn-primary" id="save-school-editing-box-' + response.data + '" onclick="SubmitEditSchoolBox(' + response.data + ', 2)">Lưu thay đổi</button>' +
+                            '                                                <button type="button" class="btn btn-light" id="close-school-editing-box-' + response.data + '" onclick="CloseEditSchoolBox(' + response.data + ')">Hủy</button>' +
+                            '                                            </div>' +
+                            '                                            <div class="col-md-2">' +
+                            '' +
+                            '                                            </div>' +
+                            '                                        </div>' +
+                            '                                        <button class="btn btn-light school-editing-closse truonghoc-' + response.data + '-closse" type="button" onclick="CloseEditSchoolBox(' + response.data + ')"><i class="fas fa-times"></i> Hủy</button>' +
+                            '                                    </div>';
+                    }
+                    $(".truonghoc-" + truonghoc_id).replaceWith(html);
+                    $(".truonghoc-" + truonghoc_id + "-box").replaceWith(htmlEdit);
+                }
+            }
+        });
+    }
+}
+
+function SchoolRemoving(school_id, loaitruong) {
+    var result = confirm("Bạn chắc chắc muốn xóa!");
+    if (result == true) {
+        var formData = new FormData();
+        var token = $('input[name="__RequestVerificationToken"]').val();
+
+        formData.append('__RequestVerificationToken', token); //form[0]
+        formData.append('school_id', school_id);
+        formData.append('loaitruong', loaitruong);
+
+        $.ajax({
+            type: 'post',
+            url: '/Client/Personal/ActionDeleteSchool',
+            dataType: 'json',
+            cache: false,
+            contentType: false,
+            processData: false,
+            data: formData,
+            success: function (response) {
+                if (response.status == true) {
+                    $(".truonghoc-" + school_id).remove();
+                    $(".truonghoc-" + school_id + "-box").remove();
+                }
+            }
+        });
+    } else {
+        alert("Bạn đã ấn hủy!");
+    }
+
+}

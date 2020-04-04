@@ -167,13 +167,13 @@ namespace InsBook.Areas.Client.Controllers
             }
 
             ViewBag.Profile = new UserDao().Profile(user.UserID);
-            var listdd = new LocationDao().GetAll();
-            List<string> tendd = new List<string>();
-            foreach (diadiem item in listdd)
-            {
-                tendd.Add(item.ten);
-            }
+            var tendd = new LocationDao().GetAllName();
             ViewBag.TenDD = tendd;
+            var tenct = new CompanyDao().GetAllName();
+            ViewBag.TenCT = tenct;
+            var tenth = new SchoolDao().GetAllName();
+            ViewBag.TenTH = tenth;
+
             return View();
         }
         public JsonResult AddJob()
@@ -204,7 +204,7 @@ namespace InsBook.Areas.Client.Controllers
                     congty.batdau = Convert.ToDateTime(data["batdau"]);
                     congty.ketthuc = Convert.ToDateTime(data["ketthuc"]);
                     congty.mota = data["mota"];
-                    if(congty.ketthuc == DateTime.MinValue)
+                    if (congty.ketthuc == DateTime.MinValue)
                     {
                         congty.ketthuc = null;
                     }
@@ -330,7 +330,7 @@ namespace InsBook.Areas.Client.Controllers
                         congty.ketthuc = null;
                     }
                     congty.baomat = Convert.ToInt16(data["baomat"]);
-                    var congty_id = new CompanyDao().EditCompany(congty,Convert.ToInt32(data["congty_id"]));
+                    var congty_id = new CompanyDao().EditCompany(congty, Convert.ToInt32(data["congty_id"]));
                     if (congty_id != -1)
                     {
                         return Json(new
@@ -383,8 +383,312 @@ namespace InsBook.Areas.Client.Controllers
                 try
                 {
                     var data = Request.Form;
-                    var congty_id = new CompanyDao().DeleteCompany(Convert.ToInt32(data["congty_id"]));
+                    var congty_id = new CompanyDao().DeleteCompany(Convert.ToInt32(data["congty_id"]), user.UserID);
                     if (congty_id == true)
+                    {
+                        return Json(new
+                        {
+                            status = true
+                        }, JsonRequestBehavior.AllowGet);
+                    }
+                    else
+                    {
+                        return Json(new
+                        {
+                            status = false
+                        }, JsonRequestBehavior.AllowGet);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    return Json(new
+                    {
+                        status = false
+                    }, JsonRequestBehavior.AllowGet);
+                }
+            }
+            else
+            {
+                return Json(new
+                {
+                    status = false
+                }, JsonRequestBehavior.AllowGet);
+            }
+        }
+
+        public JsonResult AddSchool()
+        {
+            if (Session[CommonConstants.USER_SESSION] != null || Request.Cookies[CommonConstants.USER_COOKIE] != null)
+            {
+                var user = new UserLogin();
+                // Lấy giá trị của cookie hoặc session
+                if (Request.Cookies[CommonConstants.USER_COOKIE] != null)
+                {
+                    // lấy từ cookie
+                    user.UserID = int.Parse(Request.Cookies[CommonConstants.USER_COOKIE]["1"]); // đang string ép về kiểu int
+                    user.Email = Request.Cookies[CommonConstants.USER_COOKIE]["2"].ToString();
+                }
+                else
+                {
+                    user = (UserLogin)Session[CommonConstants.USER_SESSION]; // lấy từ session
+                }
+
+                try
+                {
+                    var data = Request.Form;
+                    SetSchool school = new SetSchool();
+                    school.userID = user.UserID;
+                    school.ten = data["ten"];
+                    school.chuyennganh = data["chuyennganh"];
+                    school.batdau = Convert.ToDateTime(data["batdau"]);
+                    school.ketthuc = Convert.ToDateTime(data["ketthuc"]);
+                    school.mota = data["mota"];
+                    school.loaitruong = Convert.ToInt32(data["loaitruong"]);
+
+                    if (school.ketthuc == DateTime.MinValue)
+                    {
+                        school.ketthuc = null;
+                    }
+                    school.baomat = Convert.ToInt32(data["baomat"]);
+
+                    var school_id = new SchoolDao().AddSchool(school);
+                    if (school_id != -1)
+                    {
+                        return Json(new
+                        {
+                            status = true,
+                            data = school_id
+                        }, JsonRequestBehavior.AllowGet);
+                    }
+                    else
+                    {
+                        return Json(new
+                        {
+                            status = false
+                        }, JsonRequestBehavior.AllowGet);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    return Json(new
+                    {
+                        status = false
+                    }, JsonRequestBehavior.AllowGet);
+                }
+            }
+            else
+            {
+                return Json(new
+                {
+                    status = false
+                }, JsonRequestBehavior.AllowGet);
+            }
+        }
+        public JsonResult GetCNName()
+        {
+            if (Session[CommonConstants.USER_SESSION] != null || Request.Cookies[CommonConstants.USER_COOKIE] != null)
+            {
+                var user = new UserLogin();
+                // Lấy giá trị của cookie hoặc session
+                if (Request.Cookies[CommonConstants.USER_COOKIE] != null)
+                {
+                    // lấy từ cookie
+                    user.UserID = int.Parse(Request.Cookies[CommonConstants.USER_COOKIE]["1"]); // đang string ép về kiểu int
+                    user.Email = Request.Cookies[CommonConstants.USER_COOKIE]["2"].ToString();
+                }
+                else
+                {
+                    user = (UserLogin)Session[CommonConstants.USER_SESSION]; // lấy từ session
+                }
+
+                try
+                {
+                    var data = Request.Form;
+                    string temp = data["school_name"];
+                    var tenCN = new SchoolDao().GetAllNameCN(temp);
+
+                    if (tenCN != null)
+                    {
+                        return Json(new
+                        {
+                            status = true,
+                            data = tenCN
+                        }, JsonRequestBehavior.AllowGet);
+                    }
+                    else
+                    {
+                        return Json(new
+                        {
+                            status = false
+                        }, JsonRequestBehavior.AllowGet);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    return Json(new
+                    {
+                        status = false
+                    }, JsonRequestBehavior.AllowGet);
+                }
+            }
+            else
+            {
+                return Json(new
+                {
+                    status = false
+                }, JsonRequestBehavior.AllowGet);
+            }
+        }
+        public JsonResult EditSchool()
+        {
+            if (Session[CommonConstants.USER_SESSION] != null || Request.Cookies[CommonConstants.USER_COOKIE] != null)
+            {
+                var user = new UserLogin();
+                // Lấy giá trị của cookie hoặc session
+                if (Request.Cookies[CommonConstants.USER_COOKIE] != null)
+                {
+                    // lấy từ cookie
+                    user.UserID = int.Parse(Request.Cookies[CommonConstants.USER_COOKIE]["1"]); // đang string ép về kiểu int
+                    user.Email = Request.Cookies[CommonConstants.USER_COOKIE]["2"].ToString();
+                }
+                else
+                {
+                    user = (UserLogin)Session[CommonConstants.USER_SESSION]; // lấy từ session
+                }
+
+                try
+                {
+                    var data = Request.Form;
+                    var result = new SchoolDao().GetById(Convert.ToInt32(data["truonghoc_id"]), user.UserID);
+                    if (result != null)
+                    {
+                        return Json(new
+                        {
+                            status = true,
+                            data = result
+                        }, JsonRequestBehavior.AllowGet);
+                    }
+                    else
+                    {
+                        return Json(new
+                        {
+                            status = false
+                        }, JsonRequestBehavior.AllowGet);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    return Json(new
+                    {
+                        status = false
+                    }, JsonRequestBehavior.AllowGet);
+                }
+            }
+            else
+            {
+                return Json(new
+                {
+                    status = false
+                }, JsonRequestBehavior.AllowGet);
+            }
+        }
+        public JsonResult ActionEditSchool()
+        {
+            if (Session[CommonConstants.USER_SESSION] != null || Request.Cookies[CommonConstants.USER_COOKIE] != null)
+            {
+                var user = new UserLogin();
+                // Lấy giá trị của cookie hoặc session
+                if (Request.Cookies[CommonConstants.USER_COOKIE] != null)
+                {
+                    // lấy từ cookie
+                    user.UserID = int.Parse(Request.Cookies[CommonConstants.USER_COOKIE]["1"]); // đang string ép về kiểu int
+                    user.Email = Request.Cookies[CommonConstants.USER_COOKIE]["2"].ToString();
+                }
+                else
+                {
+                    user = (UserLogin)Session[CommonConstants.USER_SESSION]; // lấy từ session
+                }
+
+                try
+                {
+                    var data = Request.Form;
+                    SetSchool truonghoc = new SetSchool();
+                    truonghoc.userID = user.UserID;
+                    truonghoc.ten = data["ten"];
+                    truonghoc.batdau = Convert.ToDateTime(data["batdau"]);
+                    truonghoc.ketthuc = Convert.ToDateTime(data["ketthuc"]);
+                    truonghoc.mota = data["mota"];
+                    if (truonghoc.ketthuc == DateTime.MinValue)
+                    {
+                        truonghoc.ketthuc = null;
+                    }
+                    truonghoc.baomat = Convert.ToInt16(data["baomat"]);
+                    if (Convert.ToInt32(data["loaitruong"]) == 3)
+                    {
+                        truonghoc.loaitruong = 3;
+                        truonghoc.chuyennganh = data["chuyennganh"];
+                    }
+                    else if (Convert.ToInt32(data["loaitruong"]) == 2)
+                    {
+                        truonghoc.loaitruong = 2;
+                    }
+
+                    var truonghoc_id = new SchoolDao().EditSchool(truonghoc, Convert.ToInt32(data["truonghoc_id"]));
+                    if (truonghoc_id != -1)
+                    {
+                        return Json(new
+                        {
+                            status = true,
+                            data = truonghoc_id
+                        }, JsonRequestBehavior.AllowGet);
+                    }
+                    else
+                    {
+                        return Json(new
+                        {
+                            status = false
+                        }, JsonRequestBehavior.AllowGet);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    return Json(new
+                    {
+                        status = false
+                    }, JsonRequestBehavior.AllowGet);
+                }
+            }
+            else
+            {
+                return Json(new
+                {
+                    status = false
+                }, JsonRequestBehavior.AllowGet);
+            }
+        }
+        public JsonResult ActionDeleteSchool()
+        {
+            if (Session[CommonConstants.USER_SESSION] != null || Request.Cookies[CommonConstants.USER_COOKIE] != null)
+            {
+                var user = new UserLogin();
+                // Lấy giá trị của cookie hoặc session
+                if (Request.Cookies[CommonConstants.USER_COOKIE] != null)
+                {
+                    // lấy từ cookie
+                    user.UserID = int.Parse(Request.Cookies[CommonConstants.USER_COOKIE]["1"]); // đang string ép về kiểu int
+                    user.Email = Request.Cookies[CommonConstants.USER_COOKIE]["2"].ToString();
+                }
+                else
+                {
+                    user = (UserLogin)Session[CommonConstants.USER_SESSION]; // lấy từ session
+                }
+
+                try
+                {
+                    var data = Request.Form;
+                    var school_id = new SchoolDao().DeleteSchool(Convert.ToInt32(data["school_id"]), user.UserID, Convert.ToInt32(data["loaitruong"]));
+
+                    if (school_id)
                     {
                         return Json(new
                         {

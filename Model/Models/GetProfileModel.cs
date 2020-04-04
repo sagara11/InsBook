@@ -83,5 +83,7 @@ namespace Model.Models
         public string tendiadiem { set; get; }
         public string chuyennganh { set; get; }
         public bool totnghiep { set; get; }
+        public int baomat { set; get; }
+        public string mota { set; get; }
     }
 }

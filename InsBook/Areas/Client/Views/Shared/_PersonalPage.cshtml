@@ -89,5 +89,77 @@
     $(".edit-congty-thixa").autocomplete({
       source: @Html.Raw(Json.Encode(ViewBag.TenDD))
     });
+    $("#congty-ten").autocomplete({
+      source: @Html.Raw(Json.Encode(ViewBag.TenCT))
+    });
+    $(".edit-congty-ten").autocomplete({
+      source: @Html.Raw(Json.Encode(ViewBag.TenCT))
+    });
+
+    $(".truonghoc-ten").autocomplete({
+      source: @Html.Raw(Json.Encode(ViewBag.TenTH))
+    });
+
+    function GetCNName() {
+        var daihoc = $(".truonghoc-ten").val();
+        if (daihoc != "") {
+            var formData = new FormData();
+            var token = $('input[name="__RequestVerificationToken"]').val();
+
+            formData.append('__RequestVerificationToken', token); //form[0]
+        
+            formData.append('school_name', daihoc);
+
+            $.ajax({
+                type: 'post',
+                url: '/Client/Personal/GetCNName',
+                dataType: 'json',
+                cache: false,
+                contentType: false,
+                processData: false,
+                data: formData,
+                success: function (response) {
+                    if (response.status == true) {
+                        $(".truonghoc-chuyennganh").autocomplete({
+                            source: response.data
+                        });
+                    }
+                }
+            });
+        }
+    }
+    
+    $(".edit-truonghoc-ten").autocomplete({
+      source: @Html.Raw(Json.Encode(ViewBag.TenTH))
+    });
+
+    //function GetEditCNName() {
+    //    var truonghoc = $(".edit-truonghoc-ten").val();
+    //    if (truonghoc != "") {
+    //        var formData = new FormData();
+    //        var token = $('input[name="__RequestVerificationToken"]').val();
+
+    //        formData.append('__RequestVerificationToken', token); //form[0]
+        
+    //        formData.append('school_name', truonghoc);
+
+    //        $.ajax({
+    //            type: 'post',
+    //            url: '/Client/Personal/GetCNName',
+    //            dataType: 'json',
+    //            cache: false,
+    //            contentType: false,
+    //            processData: false,
+    //            data: formData,
+    //            success: function (response) {
+    //                if (response.status == true) {
+    //                    $(".edit-truonghoc-chuyennganh").autocomplete({
+    //                        source: response.data
+    //                    });
+    //                }
+    //            }
+    //        });
+    //    }
+    //}
 </script>
 @RenderSection("js", required: false)

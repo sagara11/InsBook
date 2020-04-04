@@ -91,7 +91,7 @@ namespace Model.Dao
                     nd_ct.baomat = company.baomat;
                     db.nguoidung_congty.Add(nd_ct);
 
-                    var ndct = db.nguoidung_congty.SingleOrDefault(x => x.congty_id == congty_id);
+                    var ndct = db.nguoidung_congty.SingleOrDefault(x => x.congty_id == congty_id && x.nguoidung_id==company.userID);
                     db.nguoidung_congty.Remove(ndct);
 
                     db.SaveChanges();
@@ -114,7 +114,7 @@ namespace Model.Dao
                     nd_ct.baomat = company.baomat;
                     db.nguoidung_congty.Add(nd_ct);
 
-                    var ndct = db.nguoidung_congty.SingleOrDefault(x => x.congty_id == congty_id);
+                    var ndct = db.nguoidung_congty.SingleOrDefault(x => x.congty_id == congty_id && x.nguoidung_id == company.userID);
                     db.nguoidung_congty.Remove(ndct);
 
                     db.SaveChanges();
@@ -127,11 +127,11 @@ namespace Model.Dao
                 return -1;
             }
         }
-        public bool DeleteCompany(int congty_id)
+        public bool DeleteCompany(int congty_id, int nguoidung_id)
         {
             try
             {
-                var nd_ct = db.nguoidung_congty.SingleOrDefault(x => x.congty_id == congty_id);
+                var nd_ct = db.nguoidung_congty.SingleOrDefault(x => x.congty_id == congty_id && x.nguoidung_id == nguoidung_id);
                 db.nguoidung_congty.Remove(nd_ct);
                 db.SaveChanges();
                 return true;
@@ -158,6 +158,11 @@ namespace Model.Dao
         {
             var companies = db.Database.SqlQuery<profile_congty>("Profile_congty @id", new SqlParameter("@id", userId)).ToList();
             return companies.Find(x => x.congty_id == congty_id);
+        }
+
+        public List<string> GetAllName()
+        {
+            return db.Database.SqlQuery<string>("select congty.ten from congty").ToList();
         }
     }
 }
