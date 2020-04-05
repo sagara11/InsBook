@@ -3,10 +3,14 @@
     ViewBag.Title = "DetailInfo";
     Layout = "~/Areas/Client/Views/Shared/_PersonalPage.cshtml";
     var Profile = (Model.Models.GetProfileModel)ViewBag.Profile;
-
-    string[] loitrichdan = Profile.loitrichdan.Split('@');
-    string trichdan = loitrichdan[0];
-    string tacgia = loitrichdan[1];
+    string trichdan = "";
+    string tacgia = "";
+    if(Profile.loitrichdan != null)
+    {
+        string[] loitrichdan = Profile.loitrichdan.Split('@');
+        trichdan = loitrichdan[0];
+        tacgia = loitrichdan[1];
+    }
 }
     <ul class="nav nav-tabs">
         <li class="nav-item">

@@ -47,18 +47,17 @@ function ShowSchoolAddingBox(loaitruong) {
     $(".truonghoc-loai-" + loaitruong + "-adding").css("display", "none");
     $(".truonghoc-loai-" + loaitruong + "-adding-box").css("display", "block");
 }
-$("#show-country-lived-adding-box").click(function () {
-    $(".country-lived-adding-box").css("display", "block");
-    $(".country-lived-adding").css("display", "none");
-});
-$("#close-country-lived-adding-box").click(function () {
-    $(".country-lived-adding-box").css("display", "none");
-    $(".country-lived-adding").css("display", "block");
-});
-$(".country-lived-closse").click(function () {
-    $(".country-lived-adding-box").css("display", "none");
-    $(".country-lived-adding").css("display", "block");
-});
+
+function CloseCountryAddingBox(loaidiadiem) {
+    $(".diadiem-loai-" + loaidiadiem + "-adding").css("display", "block");
+    $(".diadiem-loai-" + loaidiadiem + "-adding-box").css("display", "none");
+}
+
+function ShowCountryAddingBox(loaidiadiem) {
+    $(".diadiem-loai-" + loaidiadiem + "-adding").css("display", "none");
+    $(".diadiem-loai-" + loaidiadiem + "-adding-box").css("display", "block");
+}
+
 $("#show-relationship-adding-box").click(function () {
     $(".relationship-adding-box").css("display", "block");
     $(".relationship-adding").css("display", "none");
@@ -1339,5 +1338,309 @@ function SchoolRemoving(school_id, loaitruong) {
     } else {
         alert("Bạn đã ấn hủy!");
     }
+}
 
+//-------------------------NHUNG NOI DA SONG-------------------
+function CountryAdding(loaidiadiem) {
+    if ($("#diadiem-loai-" + loaidiadiem + "-ten").val() == "") {
+        $("#check-diadiem-loai-" + loaidiadiem + "-ten").html("<i class='fas fa-times' style='opacity:1;visibility: visible'></i>");
+    }
+    else {
+        $("#check-diadiem-loai-" + loaidiadiem + "-ten").html("<i class='fas fa-times' style='opacity:0;visibility: hidden'></i>");
+        var formData = new FormData();
+        var token = $('input[name="__RequestVerificationToken"]').val();
+
+        formData.append('__RequestVerificationToken', token); //form[0]
+        formData.append("ten", $("#diadiem-loai-" + loaidiadiem + "-ten").val());
+        formData.append("baomat", $("#diadiem-loai-" + loaidiadiem + "-baomat").val());
+        formData.append("loaidiadiem", loaidiadiem);
+
+        $.ajax({
+            type: 'post',
+            url: '/Client/Personal/AddLocation',
+            dataType: 'json',
+            cache: false,
+            contentType: false,
+            processData: false,
+            data: formData,
+            success: function (response) {
+                if (response.status == true) {
+                    alert("Thêm thành công");
+                    var url = window.location.href.split('/');
+                    var baseUrl = url[0] + '//' + url[2];
+
+                    var html = '<li class="list-country-item diadiem-' + response.data + '">' +
+                        '                                <div class="country-item-thumbnail">' +
+                        '                                    <img src="' + baseUrl + '/Images/22904751_688560231353134_2748711313877205190_o.jpg" alt="">' +
+                        '                                </div>' +
+                        '                                <div class="country-item-name">' +
+                        '                                    <p>' + $("#diadiem-loai-" + loaidiadiem + "-ten").val() + '</p>';
+                    if (loaidiadiem == 0) {
+                        html = html + '<p>Tỉnh/Thành phố hiện tại</p>';
+                    }
+                    else if (loaidiadiem == 1) {
+                        html = html + '<p>Quê quán</p>';
+                    }
+                    else if (loaidiadiem == 2) {
+                        html = html + '<p></p>';
+                    }
+                    html = html + '                      </div>' +
+                        '                                <div class="country-item-tools">' +
+                        '                                    <i class="far fa-edit" onclick="CountryEditting(' + response.data + ', ' + loaidiadiem + ')"></i>' +
+                        '                                    <i class="far fa-trash-alt" onclick="CountryRemoving(' + response.data + ', ' + loaidiadiem + ')"></i>' +
+                        '                                </div>' +
+                        '                            </li>';
+                    var editHtml = '                <div class="country-editing-box diadiem-' + response.data + '-box">' +
+                        '                                <div class="row">' +
+                        '                                    <div class="col-md-4">' +
+                        '                                        <label for="edit-diadiem-' + response.data + '-ten">Tỉnh/Thành phố hiện tại</label>' +
+                        '                                    </div>' +
+                        '                                    <div class="col-md-6">' +
+                        '                                        <div class="form-group">' +
+                        '                                            <input type="text" class="form-control diadiem-ten" id="edit-diadiem-' + response.data + '-ten" placeholder="Nhập địa điểm bạn đang sống">' +
+                        '                                            <span class="errors" id="check-diadiem-' + response.data + '-ten"><i class="fas fa-times"></i></span>' +
+                        '                                        </div>' +
+                        '                                    </div>' +
+                        '                                    <div class="col-md-2">' +
+                        '' +
+                        '                                    </div>' +
+                        '' +
+                        '                                    <hr>' +
+                        '                                    <div class="col-md-4">' +
+                        '                                        <div class="form-group">' +
+                        '                                            <select id="edit-diadiem-' + response.data + '-baomat" class="form-control">' +
+                        '                                                <option value="0" selected>Công khai</option>' +
+                        '                                                <option value="1">Bạn bè</option>' +
+                        '                                                <option value="2">Chỉ mình tôi</option>' +
+                        '                                            </select>' +
+                        '                                        </div>' +
+                        '                                    </div>' +
+                        '                                    <div class="col-md-6">' +
+                        '                                        <button type="button" class="btn btn-primary" onclick="SubmitEditCountryBox(' + response.data + ', ' + loaidiadiem + ')">Lưu thay đổi</button>' +
+                        '                                        <button type="button" class="btn btn-light" id="close-country-editing-box" onclick="CloseCountryEditBox(' + response.data + ', ' + loaidiadiem + ')">Hủy</button>' +
+                        '                                    </div>' +
+                        '                                    <div class="col-md-2">' +
+                        '' +
+                        '                                    </div>' +
+                        '                                </div>' +
+                        '                                <button class="btn btn-light country-closse" type="button" onclick="CloseCountryEditBox(' + response.data + ')"><i class="fas fa-times"></i> Hủy</button>' +
+                        '                            </div>';
+                    if (loaidiadiem == 2) {
+                        html = html + editHtml;
+                        $(".list-country-" + loaidiadiem).append(html);
+                        $(".diadiem-loai-" + loaidiadiem + "-adding-box").css("display", "none");
+                        $(".diadiem-loai-" + loaidiadiem + "-adding").css("display", "block");
+
+                        $("#diadiem-loai-" + loaidiadiem + "-ten").val("");
+                        $("#diadiem-loai-" + loaidiadiem + "-baomat").val("0");
+                    }
+                    else {
+                        $("#diadiem-loai-" + loaidiadiem + "-ten").val("");
+                        $("#diadiem-loai-" + loaidiadiem + "-baomat").val("0");
+
+                        $(".diadiem-loai-" + loaidiadiem + "-adding-box").replaceWith(editHtml);
+                        $(".diadiem-loai-" + loaidiadiem + "-adding").replaceWith(html);
+                    }
+                }
+            }
+        });
+    }
+}
+function CountryEditting(diadiem_id, loaidiadiem) {
+    $(".diadiem-" + diadiem_id + "-box").css("display", "inline-block");
+
+    var formData = new FormData();
+    var token = $('input[name="__RequestVerificationToken"]').val();
+
+    formData.append('__RequestVerificationToken', token); //form[0]
+    formData.append('diadiem_id', diadiem_id);
+
+    $.ajax({
+        type: 'post',
+        url: '/Client/Personal/EditLocation',
+        dataType: 'json',
+        cache: false,
+        contentType: false,
+        processData: false,
+        data: formData,
+        success: function (response) {
+            if (response.status == true) {
+                $("#edit-diadiem-" + diadiem_id + "-ten").val(response.data.tendd);
+                $("#edit-diadiem-" + diadiem_id + "-baomat").val(response.data.baomat);
+            }
+        }
+    });
+}
+
+function CloseCountryEditBox(diadiem_id) {
+    $(".diadiem-" + diadiem_id + "-box").css("display", "none");
+}
+
+function SubmitEditCountryBox(diadiem_id, loaidiadiem) {
+    if ($("#edit-diadiem-" + diadiem_id + "-ten").val() == "") {
+        $("#check-diadiem-" + diadiem_id + "-ten").html("<i class='fas fa-times' style='opacity:1;visibility: visible'></i>");
+    }
+    else {
+        $("#check-diadiem-" + diadiem_id + "-ten").html("<i class='fas fa-times' style='opacity:0;visibility: hidden'></i>");
+        var formData = new FormData();
+        var token = $('input[name="__RequestVerificationToken"]').val();
+
+        formData.append('__RequestVerificationToken', token); //form[0]
+        formData.append("ten", $("#edit-diadiem-" + diadiem_id + "-ten").val());
+        formData.append("baomat", $("#edit-diadiem-" + diadiem_id + "-baomat").val());
+        formData.append("loaidiadiem", loaidiadiem);
+        formData.append("diadiem_id", diadiem_id);
+
+        $.ajax({
+            type: 'post',
+            url: '/Client/Personal/ActionEditLocation',
+            dataType: 'json',
+            cache: false,
+            contentType: false,
+            processData: false,
+            data: formData,
+            success: function (response) {
+                if (response.status == true) {
+                    alert("Cập nhật thành công");
+                    var url = window.location.href.split('/');
+                    var baseUrl = url[0] + '//' + url[2];
+
+                    var html = '<li class="list-country-item diadiem-' + response.data + '">' +
+                        '                                <div class="country-item-thumbnail">' +
+                        '                                    <img src="' + baseUrl + '/Images/22904751_688560231353134_2748711313877205190_o.jpg" alt="">' +
+                        '                                </div>' +
+                        '                                <div class="country-item-name">' +
+                        '                                    <p>' + $("#edit-diadiem-" + diadiem_id + "-ten").val() + '</p>';
+                    if (loaidiadiem == 0) {
+                        html = html + '<p>Tỉnh/Thành phố hiện tại</p>';
+                    }
+                    else if (loaidiadiem == 1) {
+                        html = html + '<p>Quê quán</p>';
+                    }
+                    else if (loaidiadiem == 2) {
+                        html = html + '<p></p>';
+                    }
+                    html = html + '                      </div>' +
+                        '                                <div class="country-item-tools">' +
+                        '                                    <i class="far fa-edit" onclick="CountryEditting(' + response.data + ', ' + loaidiadiem + ')"></i>' +
+                        '                                    <i class="far fa-trash-alt" onclick="CountryRemoving(' + response.data + ', ' + loaidiadiem + ')"></i>' +
+                        '                                </div>' +
+                        '                            </li>';
+                    var editHtml = '                <div class="country-editing-box diadiem-' + response.data + '-box">' +
+                        '                                <div class="row">' +
+                        '                                    <div class="col-md-4">' +
+                        '                                        <label for="edit-diadiem-' + response.data + '-ten">Tỉnh/Thành phố hiện tại</label>' +
+                        '                                    </div>' +
+                        '                                    <div class="col-md-6">' +
+                        '                                        <div class="form-group">' +
+                        '                                            <input type="text" class="form-control diadiem-ten" id="edit-diadiem-' + response.data + '-ten" placeholder="Nhập địa điểm bạn đang sống">' +
+                        '                                            <span class="errors" id="check-diadiem-' + response.data + '-ten"><i class="fas fa-times"></i></span>' +
+                        '                                        </div>' +
+                        '                                    </div>' +
+                        '                                    <div class="col-md-2">' +
+                        '' +
+                        '                                    </div>' +
+                        '' +
+                        '                                    <hr>' +
+                        '                                    <div class="col-md-4">' +
+                        '                                        <div class="form-group">' +
+                        '                                            <select id="edit-diadiem-' + response.data + '-baomat" class="form-control">' +
+                        '                                                <option value="0" selected>Công khai</option>' +
+                        '                                                <option value="1">Bạn bè</option>' +
+                        '                                                <option value="2">Chỉ mình tôi</option>' +
+                        '                                            </select>' +
+                        '                                        </div>' +
+                        '                                    </div>' +
+                        '                                    <div class="col-md-6">' +
+                        '                                        <button type="button" class="btn btn-primary" onclick="SubmitEditCountryBox(' + response.data + ', ' + loaidiadiem + ')">Lưu thay đổi</button>' +
+                        '                                        <button type="button" class="btn btn-light" id="close-country-editing-box" onclick="CloseCountryEditBox(' + response.data + ', ' + loaidiadiem + ')">Hủy</button>' +
+                        '                                    </div>' +
+                        '                                    <div class="col-md-2">' +
+                        '' +
+                        '                                    </div>' +
+                        '                                </div>' +
+                        '                                <button class="btn btn-light country-closse" type="button" onclick="CloseCountryEditBox(' + response.data + ')"><i class="fas fa-times"></i> Hủy</button>' +
+                        '                            </div>';
+
+                    $(".diadiem-" + diadiem_id).replaceWith(html);
+                    $(".diadiem-" + diadiem_id + "-box").replaceWith(editHtml);
+                }
+            }
+        });
+    }
+}
+
+function CountryRemoving(diadiem_id, loaidiadidem) {
+    var result = confirm("Bạn chắc chắc muốn xóa!");
+    if (result == true) {
+        var formData = new FormData();
+        var token = $('input[name="__RequestVerificationToken"]').val();
+
+        formData.append('__RequestVerificationToken', token); //form[0]
+        formData.append('diadiem_id', diadiem_id);
+        formData.append('loaidiadidem', loaidiadidem);
+
+        $.ajax({
+            type: 'post',
+            url: '/Client/Personal/ActionDeleteLocation',
+            dataType: 'json',
+            cache: false,
+            contentType: false,
+            processData: false,
+            data: formData,
+            success: function (response) {
+                if (response.status == true) {
+                    if (loaidiadidem == 2) {
+                        $(".diadiem-" + diadiem_id).remove();
+                        $(".diadiem-" + diadiem_id + "-box").remove();
+                    } else {
+
+                        var add = '<div class="country-adding diadiem-loai-' + loaidiadidem + '-adding">' +
+                            '                                <button type="button" class="btn btn-light" id="show-country-adding-box" onclick="ShowCountryAddingBox(' + loaidiadidem + ')"><i class="far fa-plus-square"></i><span>Thêm tỉnh/thành phố hiện tại</span></button>' +
+                            '                            </div>';
+                        var add_box = '                  <div class="country-adding-box diadiem-loai-' + loaidiadidem + '-adding-box">' +
+                            '                                <div class="row">' +
+                            '                                    <div class="col-md-4">' +
+                            '                                        <label for="diadiem-loai-' + loaidiadidem + '-ten">Tỉnh/Thành phố hiện tại</label>' +
+                            '                                    </div>' +
+                            '                                    <div class="col-md-6">' +
+                            '                                        <div class="form-group">' +
+                            '                                            <input type="text" class="form-control diadiem-ten" id="diadiem-loai-' + loaidiadidem + '-ten" placeholder="Nhập địa điểm bạn đang sống">' +
+                            '                                            <span class="errors" id="check-diadiem-loai-' + loaidiadidem + '-ten"><i class="fas fa-times"></i></span>' +
+                            '                                        </div>' +
+                            '                                    </div>' +
+                            '                                    <div class="col-md-2">' +
+                            '' +
+                            '                                    </div>' +
+                            '' +
+                            '                                    <hr>' +
+                            '                                    <div class="col-md-4">' +
+                            '                                        <div class="form-group">' +
+                            '                                            <select id="diadiem-loai-' + loaidiadidem + '-baomat" class="form-control">' +
+                            '                                                <option value="0" selected>Công khai</option>' +
+                            '                                                <option value="1">Bạn bè</option>' +
+                            '                                                <option value="2">Chỉ mình tôi</option>' +
+                            '                                            </select>' +
+                            '                                        </div>' +
+                            '                                    </div>' +
+                            '                                    <div class="col-md-6">' +
+                            '                                        <button type="button" class="btn btn-primary" onclick="CountryAdding(' + loaidiadidem + ')">Lưu thay đổi</button>' +
+                            '                                        <button type="button" class="btn btn-light" id="close-country-adding-box" onclick="CloseCountryAddingBox(' + loaidiadidem + ')">Hủy</button>' +
+                            '                                    </div>' +
+                            '                                    <div class="col-md-2">' +
+                            '' +
+                            '                                    </div>' +
+                            '                                </div>' +
+                            '                                <button class="btn btn-light country-closse" type="button" onclick="CloseCountryAddingBox(' + loaidiadidem + ')"><i class="fas fa-times"></i> Hủy</button>' +
+                            '                            </div>';
+
+                        $(".diadiem-" + diadiem_id).replaceWith(add);
+                        $(".diadiem-" + diadiem_id + "-box").replaceWith(add_box)
+                    }
+                }
+            }
+        });
+    } else {
+        alert("Bạn đã ấn hủy!");
+    }
 }

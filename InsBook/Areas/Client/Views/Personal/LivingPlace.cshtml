@@ -3,31 +3,51 @@
     ViewBag.Title = "LivingPlace";
     Layout = "~/Areas/Client/Views/Shared/_PersonalPage.cshtml";
     var Profile = (Model.Models.GetProfileModel)ViewBag.Profile;
+
+    dynamic tp_hientai = null;
+    dynamic qq_hientai = null;
+    List<dynamic> dd_dasong = new List<dynamic>();
+
+    foreach (var city in Profile.diadiem)
+    {
+        if (city.loaidiadiem == 0)
+        {
+            tp_hientai = city;
+        }
+        else if (city.loaidiadiem == 1)
+        {
+            qq_hientai = city;
+        }
+        else if (city.loaidiadiem == 2)
+        {
+            dd_dasong.Add(city);
+        }
+    }
 }
-    <ul class="nav nav-tabs">
-        <li class="nav-item">
-            <a class="nav-link" href="/Client/Personal/Index"><i class="fas fa-rss-square"></i><span>Dòng thời gian</span></a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link active" href="/Client/Personal/ChangeGeneralInfor"><i class="far fa-user-circle"></i><span>Giới thiệu</span></a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="/Client/Personal/FriendsInfo"><i class="fas fa-users"></i><span>Bạn bè</span></a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="/Client/Personal/ImagesInfo"><i class="far fa-images"></i></i><span>Ảnh</span></a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span>Xem thêm</span>
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <a class="dropdown-item" href="/Client/Personal/SavedInfo">Lưu trữ</a>
-                <a class="dropdown-item" href="/Client/Personal/AlbumInfo">Bộ sưu tập</a>
-                <a class="dropdown-item" href="/Client/Personal/VideoInfo">Video</a>
-            </div>
-        </li>
-    </ul>
+<ul class="nav nav-tabs">
+    <li class="nav-item">
+        <a class="nav-link" href="/Client/Personal/Index"><i class="fas fa-rss-square"></i><span>Dòng thời gian</span></a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link active" href="/Client/Personal/ChangeGeneralInfor"><i class="far fa-user-circle"></i><span>Giới thiệu</span></a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/Client/Personal/FriendsInfo"><i class="fas fa-users"></i><span>Bạn bè</span></a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/Client/Personal/ImagesInfo"><i class="far fa-images"></i></i><span>Ảnh</span></a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span>Xem thêm</span>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item" href="/Client/Personal/SavedInfo">Lưu trữ</a>
+            <a class="dropdown-item" href="/Client/Personal/AlbumInfo">Bộ sưu tập</a>
+            <a class="dropdown-item" href="/Client/Personal/VideoInfo">Video</a>
+        </div>
+    </li>
+</ul>
 
 <!-- Tab panes -->
 <div class="tab-content">
@@ -63,81 +83,259 @@
                 <div class="country">
                     <h3>Tỉnh/Thành phố hiện tại và Quê quán</h3>
                     <ul class="list-country">
-                        @foreach (var city in Profile.diadiem)
+                        @if (tp_hientai == null)
                         {
-                            if (city.loaidd == 0)
-                            {
-                                <li class="list-country-item">
-                                    <div class="country-item-thumbnail">
-                                        <img src="~/Images/22904751_688560231353134_2748711313877205190_o.jpg" alt="">
+                            <div class="country-adding diadiem-loai-0-adding">
+                                <button type="button" class="btn btn-light" id="show-country-adding-box" onclick="ShowCountryAddingBox(0)"><i class="far fa-plus-square"></i><span>Thêm tỉnh/thành phố hiện tại</span></button>
+                            </div>
+                            <div class="country-adding-box diadiem-loai-0-adding-box">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <label for="diadiem-loai-0-ten">Tỉnh/Thành phố hiện tại</label>
                                     </div>
-                                    <div class="country-item-name">
-                                        <p>@city.tendd</p>
-                                        <p>Tỉnh/Thành phố hiện tại</p>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control diadiem-ten" id="diadiem-loai-0-ten" placeholder="Nhập địa điểm bạn đang sống">
+                                            <span class="errors" id="check-diadiem-loai-0-ten"><i class="fas fa-times"></i></span>
+                                        </div>
                                     </div>
-                                    <div class="country-item-tools">
-                                        <i class="far fa-edit"></i>
-                                        <i class="far fa-trash-alt"></i>
-                                    </div>
-                                </li>
-                            }
-                            if (city.loaidd == 1)
-                            {
-                                <li class="list-country-item">
-                                    <div class="country-item-thumbnail">
-                                        <img src="~/Images/22904751_688560231353134_2748711313877205190_o.jpg" alt="">
-                                    </div>
-                                    <div class="country-item-name">
-                                        <p>@city.tendd</p>
-                                        <p>Quê quán</p>
-                                    </div>
-                                    <div class="country-item-tools">
-                                        <i class="far fa-edit"></i>
-                                        <i class="far fa-trash-alt"></i>
-                                    </div>
-                                </li>
+                                    <div class="col-md-2">
 
-                            }
+                                    </div>
+
+                                    <hr>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <select id="diadiem-loai-0-baomat" class="form-control">
+                                                <option value="0" selected>Công khai</option>
+                                                <option value="1">Bạn bè</option>
+                                                <option value="2">Chỉ mình tôi</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <button type="button" class="btn btn-primary" onclick="CountryAdding(0)">Lưu thay đổi</button>
+                                        <button type="button" class="btn btn-light" id="close-country-adding-box" onclick="CloseCountryAddingBox(0)">Hủy</button>
+                                    </div>
+                                    <div class="col-md-2">
+
+                                    </div>
+                                </div>
+                                <button class="btn btn-light country-closse" type="button" onclick="CloseCountryAddingBox(0)"><i class="fas fa-times"></i> Hủy</button>
+                            </div>
+                        }
+                        else
+                        {
+                            <li class="list-country-item diadiem-@tp_hientai.diadiem_id">
+                                <div class="country-item-thumbnail">
+                                    <img src="~/Images/22904751_688560231353134_2748711313877205190_o.jpg" alt="">
+                                </div>
+                                <div class="country-item-name">
+                                    <p>@tp_hientai.tendd</p>
+                                    <p>Tỉnh/Thành phố hiện tại</p>
+                                </div>
+                                <div class="country-item-tools">
+                                    <i class="far fa-edit" onclick="CountryEditting(@tp_hientai.diadiem_id, 0)"></i>
+                                    <i class="far fa-trash-alt" onclick="CountryRemoving(@tp_hientai.diadiem_id, 0)"></i>
+                                </div>
+                            </li>
+                            <div class="country-editing-box diadiem-@tp_hientai.diadiem_id-box">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <label for="edit-diadiem-@tp_hientai.diadiem_id-ten">Tỉnh/Thành phố hiện tại</label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control diadiem-ten" id="edit-diadiem-@tp_hientai.diadiem_id-ten" placeholder="Nhập địa điểm bạn đang sống">
+                                            <span class="errors" id="check-diadiem-@tp_hientai.diadiem_id-ten"><i class="fas fa-times"></i></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+
+                                    </div>
+
+                                    <hr>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <select id="edit-diadiem-@tp_hientai.diadiem_id-baomat" class="form-control">
+                                                <option value="0" selected>Công khai</option>
+                                                <option value="1">Bạn bè</option>
+                                                <option value="2">Chỉ mình tôi</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <button type="button" class="btn btn-primary" onclick="SubmitEditCountryBox(@tp_hientai.diadiem_id, 0)">Lưu thay đổi</button>
+                                        <button type="button" class="btn btn-light" id="close-country-editing-box" onclick="CloseCountryEditBox(@tp_hientai.diadiem_id)">Hủy</button>
+                                    </div>
+                                    <div class="col-md-2">
+
+                                    </div>
+                                </div>
+                                <button class="btn btn-light country-closse" type="button" onclick="CloseCountryEditBox(@tp_hientai.diadiem_id)"><i class="fas fa-times"></i> Hủy</button>
+                            </div>
+                        }
+                        @if (qq_hientai == null)
+                        {
+                            <div class="country-adding diadiem-loai-1-adding">
+                                <button type="button" class="btn btn-light" id="show-country-adding-box" onclick="ShowCountryAddingBox(1)"><i class="far fa-plus-square"></i><span>Thêm quê quán</span></button>
+                            </div>
+                            <div class="country-adding-box diadiem-loai-1-adding-box">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <label for="diadiem-loai-1-ten">Quê quán</label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control diadiem-ten" id="diadiem-loai-1-ten" placeholder="Nhập địa điểm bạn đang sống">
+                                            <span class="errors" id="check-diadiem-loai-1-ten"><i class="fas fa-times"></i></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+
+                                    </div>
+
+                                    <hr>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <select id="diadiem-loai-1-baomat" class="form-control">
+                                                <option value="0" selected>Công khai</option>
+                                                <option value="1">Bạn bè</option>
+                                                <option value="2">Chỉ mình tôi</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <button type="button" class="btn btn-primary" onclick="CountryAdding(1)">Lưu thay đổi</button>
+                                        <button type="button" class="btn btn-light" id="close-country-adding-box" onclick="CloseCountryAddingBox(1)">Hủy</button>
+                                    </div>
+                                    <div class="col-md-2">
+
+                                    </div>
+                                </div>
+                                <button class="btn btn-light country-closse" type="button" onclick="CloseCountryAddingBox(1)"><i class="fas fa-times"></i> Hủy</button>
+                            </div>
+                        }
+                        else
+                        {
+                            <li class="list-country-item diadiem-@qq_hientai.diadiem_id">
+                                <div class="country-item-thumbnail">
+                                    <img src="~/Images/22904751_688560231353134_2748711313877205190_o.jpg" alt="">
+                                </div>
+                                <div class="country-item-name">
+                                    <p>@qq_hientai.tendd</p>
+                                    <p>Quê quán</p>
+                                </div>
+                                <div class="country-item-tools">
+                                    <i class="far fa-edit" onclick="CountryEditting(@qq_hientai.diadiem_id, 1)"></i>
+                                    <i class="far fa-trash-alt" onclick="CountryRemoving(@qq_hientai.diadiem_id, 1)"></i>
+                                </div>
+                            </li>
+                            <div class="country-editing-box diadiem-@qq_hientai.diadiem_id-box">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <label for="edit-diadiem-@qq_hientai.diadiem_id-ten">Tỉnh/Thành phố hiện tại</label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control diadiem-ten" id="edit-diadiem-@qq_hientai.diadiem_id-ten" placeholder="Nhập địa điểm bạn đang sống">
+                                            <span class="errors" id="check-diadiem-@qq_hientai.diadiem_id-ten"><i class="fas fa-times"></i></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+
+                                    </div>
+
+                                    <hr>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <select id="edit-diadiem-@qq_hientai.diadiem_id-baomat" class="form-control">
+                                                <option value="0" selected>Công khai</option>
+                                                <option value="1">Bạn bè</option>
+                                                <option value="2">Chỉ mình tôi</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <button type="button" class="btn btn-primary" onclick="SubmitEditCountryBox(@qq_hientai.diadiem_id, 1)">Lưu thay đổi</button>
+                                        <button type="button" class="btn btn-light" id="close-country-editing-box" onclick="CloseCountryEditBox(@qq_hientai.diadiem_id)">Hủy</button>
+                                    </div>
+                                    <div class="col-md-2">
+
+                                    </div>
+                                </div>
+                                <button class="btn btn-light country-closse" type="button" onclick="CloseCountryEditBox(@qq_hientai.diadiem_id)"><i class="fas fa-times"></i> Hủy</button>
+                            </div>
                         }
                     </ul>
-                    <!-- <div class="country-adding">
-                        <button type="button" class="btn btn-light"><i class="far fa-plus-square"></i><span>Thêm một địa điểm</span></button>
-                    </div> -->
                 </div>
-                <div class="country-lived">
+                <div class="country">
                     <h3>Địa điểm khác đã sống</h3>
-                    <ul class="list-country-lived">
-                        @foreach (var livedCity in Profile.diadiem)
+                    <ul class="list-country list-country-2">
+                        @foreach (var livedCity in dd_dasong)
                         {
-                            if (livedCity.loaidd == 3)
-                            {
+                            <li class="list-country-item diadiem-@livedCity.diadiem_id">
+                                <div class="country-item-thumbnail">
+                                    <img src="~/Images/22904751_688560231353134_2748711313877205190_o.jpg" alt="">
+                                </div>
+                                <div class="country-item-name">
+                                    <p>@livedCity.tendd</p>
+                                    <p></p>
+                                </div>
+                                <div class="country-item-tools">
+                                    <i class="far fa-edit" onclick="CountryEditting(@livedCity.diadiem_id, 2)"></i>
+                                    <i class="far fa-trash-alt" onclick="CountryRemoving(@livedCity.diadiem_id, 2)"></i>
+                                </div>
+                            </li>
+                            <div class="country-editing-box diadiem-@livedCity.diadiem_id-box">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <label for="edit-diadiem-@livedCity.diadiem_id-ten">Tỉnh/Thành phố hiện tại</label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control diadiem-ten" id="edit-diadiem-@livedCity.diadiem_id-ten" placeholder="Nhập địa điểm bạn đang sống">
+                                            <span class="errors" id="check-diadiem-@livedCity.diadiem_id-ten"><i class="fas fa-times"></i></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
 
-                                <li class="list-country-lived-item">
-                                    <div class="country-lived-item-thumbnail">
-                                        <img src="~/Images/22904751_688560231353134_2748711313877205190_o.jpg" alt="">
                                     </div>
-                                    <div class="country-lived-item-name">
-                                        <p>@livedCity.tendd</p>
+
+                                    <hr>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <select id="edit-diadiem-@livedCity.diadiem_id-baomat" class="form-control">
+                                                <option value="0" selected>Công khai</option>
+                                                <option value="1">Bạn bè</option>
+                                                <option value="2">Chỉ mình tôi</option>
+                                            </select>
+                                        </div>
                                     </div>
-                                    <div class="country-lived-item-tools">
-                                        <i class="far fa-edit"></i>
-                                        <i class="far fa-trash-alt"></i>
+                                    <div class="col-md-6">
+                                        <button type="button" class="btn btn-primary" onclick="SubmitEditCountryBox(@livedCity.diadiem_id, 2)">Lưu thay đổi</button>
+                                        <button type="button" class="btn btn-light" id="close-country-editing-box" onclick="CloseCountryEditBox(@livedCity.diadiem_id)">Hủy</button>
                                     </div>
-                                </li>
-                            }
+                                    <div class="col-md-2">
+
+                                    </div>
+                                </div>
+                                <button class="btn btn-light country-closse" type="button" onclick="CloseCountryEditBox(@livedCity.diadiem_id)"><i class="fas fa-times"></i> Hủy</button>
+                            </div>
                         }
                     </ul>
-                    <div class="country-lived-adding">
-                        <button type="button" class="btn btn-light" id="show-country-lived-adding-box"><i class="far fa-plus-square"></i><span>Thêm một địa điểm</span></button>
+                    <div class="country-adding diadiem-loai-2-adding">
+                        <button type="button" class="btn btn-light" id="show-country-adding-box" onclick="ShowCountryAddingBox(2)"><i class="far fa-plus-square"></i><span>Thêm địa điểm đã sống</span></button>
                     </div>
-                    <div class="country-lived-adding-box">
+                    <div class="country-adding-box diadiem-loai-2-adding-box">
                         <div class="row">
                             <div class="col-md-4">
-                                <label for="noidasong">Tỉnh/Thành phố hiện tại</label>
+                                <label for="diadiem-loai-2-ten">Địa điểm đã sống</label>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <input type="text" class="form-control" id="noidasong">
+                                    <input type="text" class="form-control diadiem-ten" id="diadiem-loai-2-ten" placeholder="Nhập địa điểm bạn đã sống">
+                                    <span class="errors" id="check-diadiem-loai-2-ten"><i class="fas fa-times"></i></span>
                                 </div>
                             </div>
                             <div class="col-md-2">
@@ -147,22 +345,22 @@
                             <hr>
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <select id="noidasong-baomat" class="form-control">
-                                        <option selected>Công khai</option>
-                                        <option>Bạn bè</option>
-                                        <option>Chỉ mình tôi</option>
+                                    <select id="diadiem-loai-2-baomat" class="form-control">
+                                        <option value="0" selected>Công khai</option>
+                                        <option value="1">Bạn bè</option>
+                                        <option value="2">Chỉ mình tôi</option>
                                     </select>
                                 </div>
                             </div>
                             <div class="col-md-6">
-                                <button type="button" class="btn btn-primary">Lưu thay đổi</button>
-                                <button type="button" class="btn btn-light" id="close-country-lived-adding-box">Hủy</button>
+                                <button type="button" class="btn btn-primary" onclick="CountryAdding(2)">Lưu thay đổi</button>
+                                <button type="button" class="btn btn-light" id="close-country-adding-box" onclick="CloseCountryAddingBox(2)">Hủy</button>
                             </div>
                             <div class="col-md-2">
 
                             </div>
                         </div>
-                        <button class="btn btn-light country-lived-closse" type="button" id=""><i class="fas fa-times"></i> Hủy</button>
+                        <button class="btn btn-light country-closse" type="button" onclick="CloseCountryAddingBox(2)"><i class="fas fa-times"></i> Hủy</button>
                     </div>
                 </div>
             </div>

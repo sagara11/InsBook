@@ -421,8 +421,7 @@ main {
       flex: 0 0 77%;
       max-width: 77%; }
       main #user-infomation .tab-content #menu2 .tab-content #menu2-4 .country {
-        padding: 0 15px;
-        margin-bottom: 28px; }
+        padding: 0 15px; }
         main #user-infomation .tab-content #menu2 .tab-content #menu2-4 .country h3 {
           font-weight: 400;
           font-size: 16px;
@@ -433,43 +432,103 @@ main {
           margin: 0;
           list-style: none;
           padding: 20px 0; }
-          main #user-infomation .tab-content #menu2 .tab-content #menu2-4 .country ul.list-country li.list-country-item {
+          main #user-infomation .tab-content #menu2 .tab-content #menu2-4 .country ul.list-country .list-country-item {
             display: flex;
             align-items: center;
             margin-bottom: 12px; }
-            main #user-infomation .tab-content #menu2 .tab-content #menu2-4 .country ul.list-country li.list-country-item .country-item-thumbnail {
+            main #user-infomation .tab-content #menu2 .tab-content #menu2-4 .country ul.list-country .list-country-item .country-item-thumbnail {
               width: 38px;
               height: 38px;
               margin-right: 12px; }
-              main #user-infomation .tab-content #menu2 .tab-content #menu2-4 .country ul.list-country li.list-country-item .country-item-thumbnail img {
+              main #user-infomation .tab-content #menu2 .tab-content #menu2-4 .country ul.list-country .list-country-item .country-item-thumbnail img {
                 width: 100%;
                 height: 100%;
                 object-fit: cover;
                 border-radius: 50%; }
-            main #user-infomation .tab-content #menu2 .tab-content #menu2-4 .country ul.list-country li.list-country-item .country-item-name p {
+            main #user-infomation .tab-content #menu2 .tab-content #menu2-4 .country ul.list-country .list-country-item .country-item-name p {
               margin-bottom: 0;
               font-size: 16px;
               font-weight: 600; }
-              main #user-infomation .tab-content #menu2 .tab-content #menu2-4 .country ul.list-country li.list-country-item .country-item-name p:last-child {
+              main #user-infomation .tab-content #menu2 .tab-content #menu2-4 .country ul.list-country .list-country-item .country-item-name p:last-child {
                 font-size: 14px;
                 font-weight: 400;
                 color: #999; }
-            main #user-infomation .tab-content #menu2 .tab-content #menu2-4 .country ul.list-country li.list-country-item .country-item-tools {
+            main #user-infomation .tab-content #menu2 .tab-content #menu2-4 .country ul.list-country .list-country-item .country-item-tools {
               margin-left: auto; }
-              main #user-infomation .tab-content #menu2 .tab-content #menu2-4 .country ul.list-country li.list-country-item .country-item-tools i {
+              main #user-infomation .tab-content #menu2 .tab-content #menu2-4 .country ul.list-country .list-country-item .country-item-tools i {
                 margin-left: 10px; }
-      main #user-infomation .tab-content #menu2 .tab-content #menu2-4 .country-lived {
-        padding: 0 15px; }
-        main #user-infomation .tab-content #menu2 .tab-content #menu2-4 .country-lived h3 {
-          font-weight: 400;
-          font-size: 16px;
-          text-transform: uppercase;
-          margin-bottom: 0; }
-        main #user-infomation .tab-content #menu2 .tab-content #menu2-4 .country-lived .country-lived-adding {
+                main #user-infomation .tab-content #menu2 .tab-content #menu2-4 .country ul.list-country .list-country-item .country-item-tools i:hover {
+                  cursor: pointer; }
+          main #user-infomation .tab-content #menu2 .tab-content #menu2-4 .country ul.list-country .country-editing-box {
+            background-color: #f7f7f7;
+            padding: 12px 24px;
+            position: relative;
+            display: none;
+            margin-bottom: 24px; }
+            main #user-infomation .tab-content #menu2 .tab-content #menu2-4 .country ul.list-country .country-editing-box .form-group {
+              display: flex; }
+              main #user-infomation .tab-content #menu2 .tab-content #menu2-4 .country ul.list-country .country-editing-box .form-group input, main #user-infomation .tab-content #menu2 .tab-content #menu2-4 .country ul.list-country .country-editing-box .form-group select {
+                border-right: none;
+                padding-right: 0; }
+              main #user-infomation .tab-content #menu2 .tab-content #menu2-4 .country ul.list-country .country-editing-box .form-group span.errors {
+                display: flex;
+                align-items: center;
+                padding-left: 6px;
+                padding-right: 6px;
+                border: 1px solid #ced4da;
+                border-left: none;
+                background: #fff; }
+                main #user-infomation .tab-content #menu2 .tab-content #menu2-4 .country ul.list-country .country-editing-box .form-group span.errors i {
+                  background-color: red;
+                  color: #fff;
+                  border-radius: 50%;
+                  padding: 2px 4px;
+                  visibility: hidden;
+                  opacity: 0; }
+            main #user-infomation .tab-content #menu2 .tab-content #menu2-4 .country ul.list-country .country-editing-box .col-md-4 {
+              display: flex;
+              align-items: center;
+              justify-content: flex-end; }
+              main #user-infomation .tab-content #menu2 .tab-content #menu2-4 .country ul.list-country .country-editing-box .col-md-4 label {
+                margin-bottom: 0; }
+            main #user-infomation .tab-content #menu2 .tab-content #menu2-4 .country ul.list-country .country-editing-box .col-md-4, main #user-infomation .tab-content #menu2 .tab-content #menu2-4 .country ul.list-country .country-editing-box .col-md-6, main #user-infomation .tab-content #menu2 .tab-content #menu2-4 .country ul.list-country .country-editing-box .col-md-2 {
+              margin-top: 10px; }
+            main #user-infomation .tab-content #menu2 .tab-content #menu2-4 .country ul.list-country .country-editing-box .form-group {
+              margin-bottom: 0; }
+              main #user-infomation .tab-content #menu2 .tab-content #menu2-4 .country ul.list-country .country-editing-box .form-group select {
+                font-weight: 700;
+                padding-right: 0;
+                background-color: #f7f7f7;
+                border: none; }
+            main #user-infomation .tab-content #menu2 .tab-content #menu2-4 .country ul.list-country .country-editing-box hr {
+              width: 100%;
+              border-top: 1px solid #dddfe2;
+              margin: 0;
+              margin-top: 10px; }
+            main #user-infomation .tab-content #menu2 .tab-content #menu2-4 .country ul.list-country .country-editing-box .btn {
+              font-size: 14px;
+              font-weight: 600; }
+            main #user-infomation .tab-content #menu2 .tab-content #menu2-4 .country ul.list-country .country-editing-box .btn-light {
+              border: 1px solid #dddfe2; }
+            main #user-infomation .tab-content #menu2 .tab-content #menu2-4 .country ul.list-country .country-editing-box .country-closse {
+              position: absolute;
+              top: 10px;
+              right: 10px;
+              color: #90949c;
+              border: none; }
+              main #user-infomation .tab-content #menu2 .tab-content #menu2-4 .country ul.list-country .country-editing-box .country-closse:focus {
+                box-shadow: none;
+                border: none;
+                outline: none;
+                background-color: transparent; }
+              main #user-infomation .tab-content #menu2 .tab-content #menu2-4 .country ul.list-country .country-editing-box .country-closse:hover {
+                background-color: transparent; }
+        main #user-infomation .tab-content #menu2 .tab-content #menu2-4 .country .country-adding {
           padding: 6px 0;
           border: 1px solid #dbdbdb;
-          text-align: center; }
-          main #user-infomation .tab-content #menu2 .tab-content #menu2-4 .country-lived .country-lived-adding button {
+          text-align: center;
+          margin-bottom: 24px; }
+          main #user-infomation .tab-content #menu2 .tab-content #menu2-4 .country .country-adding button {
             background-color: #fff;
             border-color: #fff;
             padding: 0;
@@ -477,82 +536,77 @@ main {
             align-items: center;
             width: 100%;
             justify-content: center; }
-            main #user-infomation .tab-content #menu2 .tab-content #menu2-4 .country-lived .country-lived-adding button:focus {
+            main #user-infomation .tab-content #menu2 .tab-content #menu2-4 .country .country-adding button:focus {
               box-shadow: none; }
-            main #user-infomation .tab-content #menu2 .tab-content #menu2-4 .country-lived .country-lived-adding button i:before {
+            main #user-infomation .tab-content #menu2 .tab-content #menu2-4 .country .country-adding button i:before {
               font-size: 24px; }
-            main #user-infomation .tab-content #menu2 .tab-content #menu2-4 .country-lived .country-lived-adding button span {
+            main #user-infomation .tab-content #menu2 .tab-content #menu2-4 .country .country-adding button span {
               margin-left: 20px;
               font-size: 16px; }
-        main #user-infomation .tab-content #menu2 .tab-content #menu2-4 .country-lived .country-lived-adding-box {
+        main #user-infomation .tab-content #menu2 .tab-content #menu2-4 .country .country-adding-box {
           background-color: #f7f7f7;
           padding: 12px 24px;
           position: relative;
-          display: none; }
-          main #user-infomation .tab-content #menu2 .tab-content #menu2-4 .country-lived .country-lived-adding-box .col-md-4 {
+          display: none;
+          margin-bottom: 24px; }
+          main #user-infomation .tab-content #menu2 .tab-content #menu2-4 .country .country-adding-box .form-group {
+            display: flex; }
+            main #user-infomation .tab-content #menu2 .tab-content #menu2-4 .country .country-adding-box .form-group input, main #user-infomation .tab-content #menu2 .tab-content #menu2-4 .country .country-adding-box .form-group select {
+              border-right: none;
+              padding-right: 0; }
+            main #user-infomation .tab-content #menu2 .tab-content #menu2-4 .country .country-adding-box .form-group span.errors {
+              display: flex;
+              align-items: center;
+              padding-left: 6px;
+              padding-right: 6px;
+              border: 1px solid #ced4da;
+              border-left: none;
+              background: #fff; }
+              main #user-infomation .tab-content #menu2 .tab-content #menu2-4 .country .country-adding-box .form-group span.errors i {
+                background-color: red;
+                color: #fff;
+                border-radius: 50%;
+                padding: 2px 4px;
+                visibility: hidden;
+                opacity: 0; }
+          main #user-infomation .tab-content #menu2 .tab-content #menu2-4 .country .country-adding-box .col-md-4 {
             display: flex;
             align-items: center;
             justify-content: flex-end; }
-            main #user-infomation .tab-content #menu2 .tab-content #menu2-4 .country-lived .country-lived-adding-box .col-md-4 label {
+            main #user-infomation .tab-content #menu2 .tab-content #menu2-4 .country .country-adding-box .col-md-4 label {
               margin-bottom: 0; }
-          main #user-infomation .tab-content #menu2 .tab-content #menu2-4 .country-lived .country-lived-adding-box .col-md-4, main #user-infomation .tab-content #menu2 .tab-content #menu2-4 .country-lived .country-lived-adding-box .col-md-6, main #user-infomation .tab-content #menu2 .tab-content #menu2-4 .country-lived .country-lived-adding-box .col-md-2 {
+          main #user-infomation .tab-content #menu2 .tab-content #menu2-4 .country .country-adding-box .col-md-4, main #user-infomation .tab-content #menu2 .tab-content #menu2-4 .country .country-adding-box .col-md-6, main #user-infomation .tab-content #menu2 .tab-content #menu2-4 .country .country-adding-box .col-md-2 {
             margin-top: 10px; }
-          main #user-infomation .tab-content #menu2 .tab-content #menu2-4 .country-lived .country-lived-adding-box .form-group {
+          main #user-infomation .tab-content #menu2 .tab-content #menu2-4 .country .country-adding-box .form-group {
             margin-bottom: 0; }
-            main #user-infomation .tab-content #menu2 .tab-content #menu2-4 .country-lived .country-lived-adding-box .form-group select {
+            main #user-infomation .tab-content #menu2 .tab-content #menu2-4 .country .country-adding-box .form-group select {
               font-weight: 700;
               padding-right: 0;
               background-color: #f7f7f7;
               border: none; }
-          main #user-infomation .tab-content #menu2 .tab-content #menu2-4 .country-lived .country-lived-adding-box hr {
+          main #user-infomation .tab-content #menu2 .tab-content #menu2-4 .country .country-adding-box hr {
             width: 100%;
             border-top: 1px solid #dddfe2;
             margin: 0;
             margin-top: 10px; }
-          main #user-infomation .tab-content #menu2 .tab-content #menu2-4 .country-lived .country-lived-adding-box .btn {
+          main #user-infomation .tab-content #menu2 .tab-content #menu2-4 .country .country-adding-box .btn {
             font-size: 14px;
             font-weight: 600; }
-          main #user-infomation .tab-content #menu2 .tab-content #menu2-4 .country-lived .country-lived-adding-box .btn-light {
+          main #user-infomation .tab-content #menu2 .tab-content #menu2-4 .country .country-adding-box .btn-light {
             border: 1px solid #dddfe2; }
-          main #user-infomation .tab-content #menu2 .tab-content #menu2-4 .country-lived .country-lived-adding-box .country-lived-closse {
+          main #user-infomation .tab-content #menu2 .tab-content #menu2-4 .country .country-adding-box .country-closse {
             position: absolute;
             top: 10px;
             right: 10px;
             color: #90949c;
             border: none; }
-            main #user-infomation .tab-content #menu2 .tab-content #menu2-4 .country-lived .country-lived-adding-box .country-lived-closse:focus {
+            main #user-infomation .tab-content #menu2 .tab-content #menu2-4 .country .country-adding-box .country-closse:focus {
               box-shadow: none;
               border: none;
               outline: none;
               background-color: transparent; }
-            main #user-infomation .tab-content #menu2 .tab-content #menu2-4 .country-lived .country-lived-adding-box .country-lived-closse:hover {
+            main #user-infomation .tab-content #menu2 .tab-content #menu2-4 .country .country-adding-box .country-closse:hover {
               background-color: transparent; }
-        main #user-infomation .tab-content #menu2 .tab-content #menu2-4 .country-lived ul.list-country-lived {
-          padding: 0;
-          margin: 0;
-          list-style: none;
-          padding: 20px 0; }
-          main #user-infomation .tab-content #menu2 .tab-content #menu2-4 .country-lived ul.list-country-lived li.list-country-lived-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 12px; }
-            main #user-infomation .tab-content #menu2 .tab-content #menu2-4 .country-lived ul.list-country-lived li.list-country-lived-item .country-lived-item-thumbnail {
-              width: 38px;
-              height: 38px;
-              margin-right: 12px; }
-              main #user-infomation .tab-content #menu2 .tab-content #menu2-4 .country-lived ul.list-country-lived li.list-country-lived-item .country-lived-item-thumbnail img {
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-                border-radius: 50%; }
-            main #user-infomation .tab-content #menu2 .tab-content #menu2-4 .country-lived ul.list-country-lived li.list-country-lived-item .country-lived-item-name p {
-              margin-bottom: 0;
-              font-size: 16px;
-              font-weight: 600; }
-            main #user-infomation .tab-content #menu2 .tab-content #menu2-4 .country-lived ul.list-country-lived li.list-country-lived-item .country-lived-item-tools {
-              margin-left: auto; }
-              main #user-infomation .tab-content #menu2 .tab-content #menu2-4 .country-lived ul.list-country-lived li.list-country-lived-item .country-lived-item-tools i {
-                margin-left: 10px; }
       main #user-infomation .tab-content #menu2 .tab-content #menu2-6 {
         padding: 0 15px; }
         main #user-infomation .tab-content #menu2 .tab-content #menu2-6 .description {

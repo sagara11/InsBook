@@ -58,7 +58,8 @@ namespace Model.Models
         public int diadiem_id { set; get; }
         public string tendd { set; get; }
         public string anh_url { set; get; }
-        public int loaidd { set; get; }
+        public int loaidiadiem { set; get; }
+        public int baomat { set; get; }
     }
     public class profile_congty
     {
