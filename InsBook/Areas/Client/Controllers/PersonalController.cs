@@ -973,6 +973,7 @@ namespace InsBook.Areas.Client.Controllers
             ViewBag.Profile = new UserDao().Profile(user.UserID);
             return View();
         }
+        //-------------------------------THONG TIN CA NHAN---------------------------------
         public ActionResult DetailInfo()
         {
             var user = new UserLogin();
@@ -989,6 +990,247 @@ namespace InsBook.Areas.Client.Controllers
 
             ViewBag.Profile = new UserDao().Profile(user.UserID);
             return View();
+        }
+        public JsonResult AddDetailInfo()
+        {
+            if (Session[CommonConstants.USER_SESSION] != null || Request.Cookies[CommonConstants.USER_COOKIE] != null)
+            {
+                var user = new UserLogin();
+                // Lấy giá trị của cookie hoặc session
+                if (Request.Cookies[CommonConstants.USER_COOKIE] != null)
+                {
+                    // lấy từ cookie
+                    user.UserID = int.Parse(Request.Cookies[CommonConstants.USER_COOKIE]["1"]); // đang string ép về kiểu int
+                    user.Email = Request.Cookies[CommonConstants.USER_COOKIE]["2"].ToString();
+                }
+                else
+                {
+                    user = (UserLogin)Session[CommonConstants.USER_SESSION]; // lấy từ session
+                }
+
+                try
+                {
+                    var data = Request.Form;
+                    var loaithongtin = Convert.ToInt32(data["loaithongtin"]);
+                    var stringg = "";
+                    if (loaithongtin == 0)
+                    {
+                        stringg = data["gioithieu"];
+                    }
+                    else if (loaithongtin == 1)
+                    {
+                        stringg = data["loaibietdanh"] + "@" + data["ten"];
+                    }
+                    else if (loaithongtin == 2)
+                    {
+                        stringg = data["trichdan"] + "@" + data["tacgia"];
+                    }
+
+                    var check = new UserDao().AddDetailInfo(stringg, Convert.ToInt32(data["loaithongtin"]), user.UserID);
+                    if (check)
+                    {
+                        return Json(new
+                        {
+                            status = true
+                        }, JsonRequestBehavior.AllowGet);
+                    }
+                    else
+                    {
+                        return Json(new
+                        {
+                            status = false
+                        }, JsonRequestBehavior.AllowGet);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    return Json(new
+                    {
+                        status = false
+                    }, JsonRequestBehavior.AllowGet);
+                }
+            }
+            else
+            {
+                return Json(new
+                {
+                    status = false
+                }, JsonRequestBehavior.AllowGet);
+            }
+        }
+        public JsonResult EditDetailInfo()
+        {
+            if (Session[CommonConstants.USER_SESSION] != null || Request.Cookies[CommonConstants.USER_COOKIE] != null)
+            {
+                var user = new UserLogin();
+                // Lấy giá trị của cookie hoặc session
+                if (Request.Cookies[CommonConstants.USER_COOKIE] != null)
+                {
+                    // lấy từ cookie
+                    user.UserID = int.Parse(Request.Cookies[CommonConstants.USER_COOKIE]["1"]); // đang string ép về kiểu int
+                    user.Email = Request.Cookies[CommonConstants.USER_COOKIE]["2"].ToString();
+                }
+                else
+                {
+                    user = (UserLogin)Session[CommonConstants.USER_SESSION]; // lấy từ session
+                }
+
+                try
+                {
+                    var data = Request.Form;
+
+                    var check = new UserDao().GetbyDetailInfo(Convert.ToInt32(data["loaithongtin"]), user.UserID);
+                    if (check != null)
+                    {
+                        return Json(new
+                        {
+                            status = true,
+                            data = check
+                        }, JsonRequestBehavior.AllowGet);
+                    }
+                    else
+                    {
+                        return Json(new
+                        {
+                            status = false
+                        }, JsonRequestBehavior.AllowGet);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    return Json(new
+                    {
+                        status = false
+                    }, JsonRequestBehavior.AllowGet);
+                }
+            }
+            else
+            {
+                return Json(new
+                {
+                    status = false
+                }, JsonRequestBehavior.AllowGet);
+            }
+        }
+        public JsonResult ActionEditDetailInfo()
+        {
+            if (Session[CommonConstants.USER_SESSION] != null || Request.Cookies[CommonConstants.USER_COOKIE] != null)
+            {
+                var user = new UserLogin();
+                // Lấy giá trị của cookie hoặc session
+                if (Request.Cookies[CommonConstants.USER_COOKIE] != null)
+                {
+                    // lấy từ cookie
+                    user.UserID = int.Parse(Request.Cookies[CommonConstants.USER_COOKIE]["1"]); // đang string ép về kiểu int
+                    user.Email = Request.Cookies[CommonConstants.USER_COOKIE]["2"].ToString();
+                }
+                else
+                {
+                    user = (UserLogin)Session[CommonConstants.USER_SESSION]; // lấy từ session
+                }
+
+                try
+                {
+                    var data = Request.Form;
+                    var loaithongtin = Convert.ToInt32(data["loaithongtin"]);
+                    var stringg = "";
+                    if (loaithongtin == 0)
+                    {
+                        stringg = data["gioithieu"];
+                    }
+                    else if (loaithongtin == 1)
+                    {
+                        stringg = data["loaibietdanh"] + "@" + data["ten"];
+                    }
+                    else if (loaithongtin == 2)
+                    {
+                        stringg = data["trichdan"] + "@" + data["tacgia"];
+                    }
+
+                    var check = new UserDao().EditDetailInfo(stringg, Convert.ToInt32(data["loaithongtin"]), user.UserID);
+                    if (check)
+                    {
+                        return Json(new
+                        {
+                            status = true
+                        }, JsonRequestBehavior.AllowGet);
+                    }
+                    else
+                    {
+                        return Json(new
+                        {
+                            status = false
+                        }, JsonRequestBehavior.AllowGet);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    return Json(new
+                    {
+                        status = false
+                    }, JsonRequestBehavior.AllowGet);
+                }
+            }
+            else
+            {
+                return Json(new
+                {
+                    status = false
+                }, JsonRequestBehavior.AllowGet);
+            }
+        }
+        public JsonResult ActionDeleteDetailInfo()
+        {
+            if (Session[CommonConstants.USER_SESSION] != null || Request.Cookies[CommonConstants.USER_COOKIE] != null)
+            {
+                var user = new UserLogin();
+                // Lấy giá trị của cookie hoặc session
+                if (Request.Cookies[CommonConstants.USER_COOKIE] != null)
+                {
+                    // lấy từ cookie
+                    user.UserID = int.Parse(Request.Cookies[CommonConstants.USER_COOKIE]["1"]); // đang string ép về kiểu int
+                    user.Email = Request.Cookies[CommonConstants.USER_COOKIE]["2"].ToString();
+                }
+                else
+                {
+                    user = (UserLogin)Session[CommonConstants.USER_SESSION]; // lấy từ session
+                }
+
+                try
+                {
+                    var data = Request.Form;
+
+                    var check = new UserDao().DeleteDetailInfo(Convert.ToInt32(data["loaithongtin"]), user.UserID);
+                    if (check)
+                    {
+                        return Json(new
+                        {
+                            status = true
+                        }, JsonRequestBehavior.AllowGet);
+                    }
+                    else
+                    {
+                        return Json(new
+                        {
+                            status = false
+                        }, JsonRequestBehavior.AllowGet);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    return Json(new
+                    {
+                        status = false
+                    }, JsonRequestBehavior.AllowGet);
+                }
+            }
+            else
+            {
+                return Json(new
+                {
+                    status = false
+                }, JsonRequestBehavior.AllowGet);
+            }
         }
         public ActionResult FriendsInfo()
         {

@@ -609,18 +609,19 @@ main {
               background-color: transparent; }
       main #user-infomation .tab-content #menu2 .tab-content #menu2-6 {
         padding: 0 15px; }
-        main #user-infomation .tab-content #menu2 .tab-content #menu2-6 .description {
+        main #user-infomation .tab-content #menu2 .tab-content #menu2-6 .detail-info {
           margin-bottom: 48px; }
-          main #user-infomation .tab-content #menu2 .tab-content #menu2-6 .description h3 {
+          main #user-infomation .tab-content #menu2 .tab-content #menu2-6 .detail-info h3 {
             font-weight: 400;
             font-size: 16px;
             text-transform: uppercase;
             margin-bottom: 0; }
-          main #user-infomation .tab-content #menu2 .tab-content #menu2-6 .description .description-adding {
+          main #user-infomation .tab-content #menu2 .tab-content #menu2-6 .detail-info .detail-info-adding {
             padding: 6px 0;
             border: 1px solid #dbdbdb;
-            text-align: center; }
-            main #user-infomation .tab-content #menu2 .tab-content #menu2-6 .description .description-adding button {
+            text-align: center;
+            margin-top: 20px; }
+            main #user-infomation .tab-content #menu2 .tab-content #menu2-6 .detail-info .detail-info-adding button {
               background-color: #fff;
               border-color: #fff;
               padding: 0;
@@ -628,257 +629,187 @@ main {
               align-items: center;
               width: 100%;
               justify-content: center; }
-              main #user-infomation .tab-content #menu2 .tab-content #menu2-6 .description .description-adding button:focus {
+              main #user-infomation .tab-content #menu2 .tab-content #menu2-6 .detail-info .detail-info-adding button:focus {
                 box-shadow: none; }
-              main #user-infomation .tab-content #menu2 .tab-content #menu2-6 .description .description-adding button i:before {
+              main #user-infomation .tab-content #menu2 .tab-content #menu2-6 .detail-info .detail-info-adding button i:before {
                 font-size: 24px; }
-              main #user-infomation .tab-content #menu2 .tab-content #menu2-6 .description .description-adding button span {
+              main #user-infomation .tab-content #menu2 .tab-content #menu2-6 .detail-info .detail-info-adding button span {
                 margin-left: 20px;
                 font-size: 16px; }
-          main #user-infomation .tab-content #menu2 .tab-content #menu2-6 .description .description-adding-box {
-            background-color: #f7f7f7;
-            padding: 12px 24px;
-            position: relative;
-            display: none; }
-            main #user-infomation .tab-content #menu2 .tab-content #menu2-6 .description .description-adding-box .col-md-4 {
-              display: flex;
-              align-items: center;
-              justify-content: flex-end; }
-              main #user-infomation .tab-content #menu2 .tab-content #menu2-6 .description .description-adding-box .col-md-4 label {
-                margin-bottom: 0; }
-            main #user-infomation .tab-content #menu2 .tab-content #menu2-6 .description .description-adding-box .col-md-4, main #user-infomation .tab-content #menu2 .tab-content #menu2-6 .description .description-adding-box .col-md-6, main #user-infomation .tab-content #menu2 .tab-content #menu2-6 .description .description-adding-box .col-md-2, main #user-infomation .tab-content #menu2 .tab-content #menu2-6 .description .description-adding-box .col-md-3 {
-              margin-top: 10px; }
-            main #user-infomation .tab-content #menu2 .tab-content #menu2-6 .description .description-adding-box .form-group {
-              margin-bottom: 0; }
-              main #user-infomation .tab-content #menu2 .tab-content #menu2-6 .description .description-adding-box .form-group select {
-                font-weight: 700;
-                padding-right: 0;
-                background-color: #f7f7f7;
-                border: none; }
-            main #user-infomation .tab-content #menu2 .tab-content #menu2-6 .description .description-adding-box hr {
-              width: 100%;
-              border-top: 1px solid #dddfe2;
-              margin: 0;
-              margin-top: 10px; }
-            main #user-infomation .tab-content #menu2 .tab-content #menu2-6 .description .description-adding-box .btn {
-              font-size: 14px;
-              font-weight: 600; }
-            main #user-infomation .tab-content #menu2 .tab-content #menu2-6 .description .description-adding-box .btn-light {
-              border: 1px solid #dddfe2; }
-            main #user-infomation .tab-content #menu2 .tab-content #menu2-6 .description .description-adding-box .description-closse {
-              position: absolute;
-              top: 10px;
-              right: 10px;
-              color: #90949c;
-              border: none; }
-              main #user-infomation .tab-content #menu2 .tab-content #menu2-6 .description .description-adding-box .description-closse:focus {
-                box-shadow: none;
-                border: none;
-                outline: none;
-                background-color: transparent; }
-              main #user-infomation .tab-content #menu2 .tab-content #menu2-6 .description .description-adding-box .description-closse:hover {
-                background-color: transparent; }
-          main #user-infomation .tab-content #menu2 .tab-content #menu2-6 .description ul.list-description {
+          main #user-infomation .tab-content #menu2 .tab-content #menu2-6 .detail-info ul.list-detail-info {
             padding: 0;
             margin: 0;
             list-style: none;
             padding: 12px 0; }
-            main #user-infomation .tab-content #menu2 .tab-content #menu2-6 .description ul.list-description li.list-description-item {
+            main #user-infomation .tab-content #menu2 .tab-content #menu2-6 .detail-info ul.list-detail-info li.list-detail-info-item {
               display: flex;
               align-items: center;
               margin-bottom: 12px; }
-              main #user-infomation .tab-content #menu2 .tab-content #menu2-6 .description ul.list-description li.list-description-item .description-item-name p {
+              main #user-infomation .tab-content #menu2 .tab-content #menu2-6 .detail-info ul.list-detail-info li.list-detail-info-item .detail-info-item-name p {
                 margin-bottom: 0;
                 font-size: 16px;
                 font-weight: 600; }
-              main #user-infomation .tab-content #menu2 .tab-content #menu2-6 .description ul.list-description li.list-description-item .description-item-tools {
+                main #user-infomation .tab-content #menu2 .tab-content #menu2-6 .detail-info ul.list-detail-info li.list-detail-info-item .detail-info-item-name p:last-child {
+                  font-size: 14px;
+                  font-weight: 400;
+                  color: #999; }
+              main #user-infomation .tab-content #menu2 .tab-content #menu2-6 .detail-info ul.list-detail-info li.list-detail-info-item .detail-info-item-tools {
                 margin-left: auto; }
-                main #user-infomation .tab-content #menu2 .tab-content #menu2-6 .description ul.list-description li.list-description-item .description-item-tools i {
+                main #user-infomation .tab-content #menu2 .tab-content #menu2-6 .detail-info ul.list-detail-info li.list-detail-info-item .detail-info-item-tools i {
                   margin-left: 10px; }
-        main #user-infomation .tab-content #menu2 .tab-content #menu2-6 .nickname {
-          margin-bottom: 48px; }
-          main #user-infomation .tab-content #menu2 .tab-content #menu2-6 .nickname h3 {
-            font-weight: 400;
-            font-size: 16px;
-            text-transform: uppercase;
-            margin-bottom: 0; }
-          main #user-infomation .tab-content #menu2 .tab-content #menu2-6 .nickname .nickname-adding {
-            padding: 6px 0;
-            border: 1px solid #dbdbdb;
-            text-align: center; }
-            main #user-infomation .tab-content #menu2 .tab-content #menu2-6 .nickname .nickname-adding button {
-              background-color: #fff;
-              border-color: #fff;
-              padding: 0;
-              display: flex;
-              align-items: center;
-              width: 100%;
-              justify-content: center; }
-              main #user-infomation .tab-content #menu2 .tab-content #menu2-6 .nickname .nickname-adding button:focus {
-                box-shadow: none; }
-              main #user-infomation .tab-content #menu2 .tab-content #menu2-6 .nickname .nickname-adding button i:before {
-                font-size: 24px; }
-              main #user-infomation .tab-content #menu2 .tab-content #menu2-6 .nickname .nickname-adding button span {
-                margin-left: 20px;
-                font-size: 16px; }
-          main #user-infomation .tab-content #menu2 .tab-content #menu2-6 .nickname .nickname-adding-box {
+                  main #user-infomation .tab-content #menu2 .tab-content #menu2-6 .detail-info ul.list-detail-info li.list-detail-info-item .detail-info-item-tools i:hover {
+                    cursor: pointer; }
+          main #user-infomation .tab-content #menu2 .tab-content #menu2-6 .detail-info .detail-info-adding-box {
             background-color: #f7f7f7;
             padding: 12px 24px;
             position: relative;
-            display: none; }
-            main #user-infomation .tab-content #menu2 .tab-content #menu2-6 .nickname .nickname-adding-box .col-md-4 {
+            display: none;
+            margin-top: 20px; }
+            main #user-infomation .tab-content #menu2 .tab-content #menu2-6 .detail-info .detail-info-adding-box .form-group {
+              display: flex; }
+              main #user-infomation .tab-content #menu2 .tab-content #menu2-6 .detail-info .detail-info-adding-box .form-group input {
+                border-right: none;
+                padding-right: 0; }
+              main #user-infomation .tab-content #menu2 .tab-content #menu2-6 .detail-info .detail-info-adding-box .form-group textarea {
+                border-right: none;
+                padding-right: 0;
+                outline: none;
+                resize: none; }
+              main #user-infomation .tab-content #menu2 .tab-content #menu2-6 .detail-info .detail-info-adding-box .form-group span.errors {
+                display: flex;
+                align-items: center;
+                padding-left: 6px;
+                padding-right: 6px;
+                border: 1px solid #ced4da;
+                border-left: none;
+                background: #fff; }
+                main #user-infomation .tab-content #menu2 .tab-content #menu2-6 .detail-info .detail-info-adding-box .form-group span.errors i {
+                  background-color: red;
+                  color: #fff;
+                  border-radius: 50%;
+                  padding: 2px 4px;
+                  visibility: hidden;
+                  opacity: 0; }
+            main #user-infomation .tab-content #menu2 .tab-content #menu2-6 .detail-info .detail-info-adding-box .col-md-4 {
               display: flex;
               align-items: center;
               justify-content: flex-end; }
-              main #user-infomation .tab-content #menu2 .tab-content #menu2-6 .nickname .nickname-adding-box .col-md-4 label {
+              main #user-infomation .tab-content #menu2 .tab-content #menu2-6 .detail-info .detail-info-adding-box .col-md-4 label {
                 margin-bottom: 0; }
-            main #user-infomation .tab-content #menu2 .tab-content #menu2-6 .nickname .nickname-adding-box .col-md-4, main #user-infomation .tab-content #menu2 .tab-content #menu2-6 .nickname .nickname-adding-box .col-md-6, main #user-infomation .tab-content #menu2 .tab-content #menu2-6 .nickname .nickname-adding-box .col-md-2, main #user-infomation .tab-content #menu2 .tab-content #menu2-6 .nickname .nickname-adding-box .col-md-3 {
+            main #user-infomation .tab-content #menu2 .tab-content #menu2-6 .detail-info .detail-info-adding-box .col-md-4, main #user-infomation .tab-content #menu2 .tab-content #menu2-6 .detail-info .detail-info-adding-box .col-md-6, main #user-infomation .tab-content #menu2 .tab-content #menu2-6 .detail-info .detail-info-adding-box .col-md-2, main #user-infomation .tab-content #menu2 .tab-content #menu2-6 .detail-info .detail-info-adding-box .col-md-3 {
               margin-top: 10px; }
-            main #user-infomation .tab-content #menu2 .tab-content #menu2-6 .nickname .nickname-adding-box .form-group {
+            main #user-infomation .tab-content #menu2 .tab-content #menu2-6 .detail-info .detail-info-adding-box .form-group {
               margin-bottom: 0; }
-              main #user-infomation .tab-content #menu2 .tab-content #menu2-6 .nickname .nickname-adding-box .form-group select {
+              main #user-infomation .tab-content #menu2 .tab-content #menu2-6 .detail-info .detail-info-adding-box .form-group select {
                 font-weight: 700;
                 padding-right: 0;
                 background-color: #f7f7f7;
                 border: none; }
-              main #user-infomation .tab-content #menu2 .tab-content #menu2-6 .nickname .nickname-adding-box .form-group #moiquanhe-loaithanhvien {
+              main #user-infomation .tab-content #menu2 .tab-content #menu2-6 .detail-info .detail-info-adding-box .form-group .loaibietdanh {
                 font-weight: normal;
                 background-color: #fff;
                 border: 1px solid #ccd0d5;
                 font-size: 14px;
-                padding: 6px; }
-            main #user-infomation .tab-content #menu2 .tab-content #menu2-6 .nickname .nickname-adding-box hr {
+                padding: 6px;
+                width: 175px; }
+            main #user-infomation .tab-content #menu2 .tab-content #menu2-6 .detail-info .detail-info-adding-box hr {
               width: 100%;
               border-top: 1px solid #dddfe2;
               margin: 0;
               margin-top: 10px; }
-            main #user-infomation .tab-content #menu2 .tab-content #menu2-6 .nickname .nickname-adding-box .btn {
+            main #user-infomation .tab-content #menu2 .tab-content #menu2-6 .detail-info .detail-info-adding-box .btn {
               font-size: 14px;
               font-weight: 600; }
-            main #user-infomation .tab-content #menu2 .tab-content #menu2-6 .nickname .nickname-adding-box .btn-light {
+            main #user-infomation .tab-content #menu2 .tab-content #menu2-6 .detail-info .detail-info-adding-box .btn-light {
               border: 1px solid #dddfe2; }
-            main #user-infomation .tab-content #menu2 .tab-content #menu2-6 .nickname .nickname-adding-box .nickname-closse {
+            main #user-infomation .tab-content #menu2 .tab-content #menu2-6 .detail-info .detail-info-adding-box .detail-info-closse {
               position: absolute;
               top: 10px;
               right: 10px;
               color: #90949c;
               border: none; }
-              main #user-infomation .tab-content #menu2 .tab-content #menu2-6 .nickname .nickname-adding-box .nickname-closse:focus {
+              main #user-infomation .tab-content #menu2 .tab-content #menu2-6 .detail-info .detail-info-adding-box .detail-info-closse:focus {
                 box-shadow: none;
                 border: none;
                 outline: none;
                 background-color: transparent; }
-              main #user-infomation .tab-content #menu2 .tab-content #menu2-6 .nickname .nickname-adding-box .nickname-closse:hover {
+              main #user-infomation .tab-content #menu2 .tab-content #menu2-6 .detail-info .detail-info-adding-box .detail-info-closse:hover {
                 background-color: transparent; }
-          main #user-infomation .tab-content #menu2 .tab-content #menu2-6 .nickname ul.list-nickname {
-            padding: 0;
-            margin: 0;
-            list-style: none;
-            padding: 12px 0; }
-            main #user-infomation .tab-content #menu2 .tab-content #menu2-6 .nickname ul.list-nickname li.list-nickname-item {
+          main #user-infomation .tab-content #menu2 .tab-content #menu2-6 .detail-info .detail-info-editing-box {
+            background-color: #f7f7f7;
+            padding: 12px 24px;
+            position: relative;
+            display: none; }
+            main #user-infomation .tab-content #menu2 .tab-content #menu2-6 .detail-info .detail-info-editing-box .form-group {
+              display: flex; }
+              main #user-infomation .tab-content #menu2 .tab-content #menu2-6 .detail-info .detail-info-editing-box .form-group input {
+                border-right: none;
+                padding-right: 0; }
+              main #user-infomation .tab-content #menu2 .tab-content #menu2-6 .detail-info .detail-info-editing-box .form-group textarea {
+                border-right: none;
+                padding-right: 0;
+                outline: none;
+                resize: none; }
+              main #user-infomation .tab-content #menu2 .tab-content #menu2-6 .detail-info .detail-info-editing-box .form-group span.errors {
+                display: flex;
+                align-items: center;
+                padding-left: 6px;
+                padding-right: 6px;
+                border: 1px solid #ced4da;
+                border-left: none;
+                background: #fff; }
+                main #user-infomation .tab-content #menu2 .tab-content #menu2-6 .detail-info .detail-info-editing-box .form-group span.errors i {
+                  background-color: red;
+                  color: #fff;
+                  border-radius: 50%;
+                  padding: 2px 4px;
+                  visibility: hidden;
+                  opacity: 0; }
+            main #user-infomation .tab-content #menu2 .tab-content #menu2-6 .detail-info .detail-info-editing-box .col-md-4 {
               display: flex;
               align-items: center;
-              margin-bottom: 12px; }
-              main #user-infomation .tab-content #menu2 .tab-content #menu2-6 .nickname ul.list-nickname li.list-nickname-item .nickname-item-name p {
-                margin-bottom: 0;
-                font-size: 16px;
-                font-weight: 600; }
-                main #user-infomation .tab-content #menu2 .tab-content #menu2-6 .nickname ul.list-nickname li.list-nickname-item .nickname-item-name p:last-child {
-                  font-size: 14px;
-                  font-weight: 400;
-                  color: #999; }
-              main #user-infomation .tab-content #menu2 .tab-content #menu2-6 .nickname ul.list-nickname li.list-nickname-item .nickname-item-tools {
-                margin-left: auto; }
-                main #user-infomation .tab-content #menu2 .tab-content #menu2-6 .nickname ul.list-nickname li.list-nickname-item .nickname-item-tools i {
-                  margin-left: 10px; }
-        main #user-infomation .tab-content #menu2 .tab-content #menu2-6 .quote h3 {
-          font-weight: 400;
-          font-size: 16px;
-          text-transform: uppercase;
-          margin-bottom: 0; }
-        main #user-infomation .tab-content #menu2 .tab-content #menu2-6 .quote .quote-adding {
-          padding: 6px 0;
-          border: 1px solid #dbdbdb;
-          text-align: center; }
-          main #user-infomation .tab-content #menu2 .tab-content #menu2-6 .quote .quote-adding button {
-            background-color: #fff;
-            border-color: #fff;
-            padding: 0;
-            display: flex;
-            align-items: center;
-            width: 100%;
-            justify-content: center; }
-            main #user-infomation .tab-content #menu2 .tab-content #menu2-6 .quote .quote-adding button:focus {
-              box-shadow: none; }
-            main #user-infomation .tab-content #menu2 .tab-content #menu2-6 .quote .quote-adding button i:before {
-              font-size: 24px; }
-            main #user-infomation .tab-content #menu2 .tab-content #menu2-6 .quote .quote-adding button span {
-              margin-left: 20px;
-              font-size: 16px; }
-        main #user-infomation .tab-content #menu2 .tab-content #menu2-6 .quote .quote-adding-box {
-          background-color: #f7f7f7;
-          padding: 12px 24px;
-          position: relative;
-          display: none; }
-          main #user-infomation .tab-content #menu2 .tab-content #menu2-6 .quote .quote-adding-box .col-md-4 {
-            display: flex;
-            align-items: center;
-            justify-content: flex-end; }
-            main #user-infomation .tab-content #menu2 .tab-content #menu2-6 .quote .quote-adding-box .col-md-4 label {
+              justify-content: flex-end; }
+              main #user-infomation .tab-content #menu2 .tab-content #menu2-6 .detail-info .detail-info-editing-box .col-md-4 label {
+                margin-bottom: 0; }
+            main #user-infomation .tab-content #menu2 .tab-content #menu2-6 .detail-info .detail-info-editing-box .col-md-4, main #user-infomation .tab-content #menu2 .tab-content #menu2-6 .detail-info .detail-info-editing-box .col-md-6, main #user-infomation .tab-content #menu2 .tab-content #menu2-6 .detail-info .detail-info-editing-box .col-md-2, main #user-infomation .tab-content #menu2 .tab-content #menu2-6 .detail-info .detail-info-editing-box .col-md-3 {
+              margin-top: 10px; }
+            main #user-infomation .tab-content #menu2 .tab-content #menu2-6 .detail-info .detail-info-editing-box .form-group {
               margin-bottom: 0; }
-          main #user-infomation .tab-content #menu2 .tab-content #menu2-6 .quote .quote-adding-box .col-md-4, main #user-infomation .tab-content #menu2 .tab-content #menu2-6 .quote .quote-adding-box .col-md-6, main #user-infomation .tab-content #menu2 .tab-content #menu2-6 .quote .quote-adding-box .col-md-2, main #user-infomation .tab-content #menu2 .tab-content #menu2-6 .quote .quote-adding-box .col-md-3 {
-            margin-top: 10px; }
-          main #user-infomation .tab-content #menu2 .tab-content #menu2-6 .quote .quote-adding-box .form-group {
-            margin-bottom: 0; }
-            main #user-infomation .tab-content #menu2 .tab-content #menu2-6 .quote .quote-adding-box .form-group select {
-              font-weight: 700;
-              padding-right: 0;
-              background-color: #f7f7f7;
-              border: none; }
-          main #user-infomation .tab-content #menu2 .tab-content #menu2-6 .quote .quote-adding-box hr {
-            width: 100%;
-            border-top: 1px solid #dddfe2;
-            margin: 0;
-            margin-top: 10px; }
-          main #user-infomation .tab-content #menu2 .tab-content #menu2-6 .quote .quote-adding-box .btn {
-            font-size: 14px;
-            font-weight: 600; }
-          main #user-infomation .tab-content #menu2 .tab-content #menu2-6 .quote .quote-adding-box .btn-light {
-            border: 1px solid #dddfe2; }
-          main #user-infomation .tab-content #menu2 .tab-content #menu2-6 .quote .quote-adding-box .quote-closse {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            color: #90949c;
-            border: none; }
-            main #user-infomation .tab-content #menu2 .tab-content #menu2-6 .quote .quote-adding-box .quote-closse:focus {
-              box-shadow: none;
-              border: none;
-              outline: none;
-              background-color: transparent; }
-            main #user-infomation .tab-content #menu2 .tab-content #menu2-6 .quote .quote-adding-box .quote-closse:hover {
-              background-color: transparent; }
-        main #user-infomation .tab-content #menu2 .tab-content #menu2-6 .quote ul.list-quote {
-          padding: 0;
-          margin: 0;
-          list-style: none;
-          padding: 12px 0; }
-          main #user-infomation .tab-content #menu2 .tab-content #menu2-6 .quote ul.list-quote li.list-quote-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 12px; }
-            main #user-infomation .tab-content #menu2 .tab-content #menu2-6 .quote ul.list-quote li.list-quote-item .quote-item-name p {
-              margin-bottom: 0;
-              font-size: 16px;
-              font-weight: 600; }
-              main #user-infomation .tab-content #menu2 .tab-content #menu2-6 .quote ul.list-quote li.list-quote-item .quote-item-name p:last-child {
+              main #user-infomation .tab-content #menu2 .tab-content #menu2-6 .detail-info .detail-info-editing-box .form-group select {
+                font-weight: 700;
+                padding-right: 0;
+                background-color: #f7f7f7;
+                border: none; }
+              main #user-infomation .tab-content #menu2 .tab-content #menu2-6 .detail-info .detail-info-editing-box .form-group .loaibietdanh {
+                font-weight: normal;
+                background-color: #fff;
+                border: 1px solid #ccd0d5;
                 font-size: 14px;
-                font-weight: 400;
-                color: #999; }
-            main #user-infomation .tab-content #menu2 .tab-content #menu2-6 .quote ul.list-quote li.list-quote-item .quote-item-tools {
-              margin-left: auto; }
-              main #user-infomation .tab-content #menu2 .tab-content #menu2-6 .quote ul.list-quote li.list-quote-item .quote-item-tools i {
-                margin-left: 10px; }
+                padding: 6px;
+                width: 175px; }
+            main #user-infomation .tab-content #menu2 .tab-content #menu2-6 .detail-info .detail-info-editing-box hr {
+              width: 100%;
+              border-top: 1px solid #dddfe2;
+              margin: 0;
+              margin-top: 10px; }
+            main #user-infomation .tab-content #menu2 .tab-content #menu2-6 .detail-info .detail-info-editing-box .btn {
+              font-size: 14px;
+              font-weight: 600; }
+            main #user-infomation .tab-content #menu2 .tab-content #menu2-6 .detail-info .detail-info-editing-box .btn-light {
+              border: 1px solid #dddfe2; }
+            main #user-infomation .tab-content #menu2 .tab-content #menu2-6 .detail-info .detail-info-editing-box .detail-info-closse {
+              position: absolute;
+              top: 10px;
+              right: 10px;
+              color: #90949c;
+              border: none; }
+              main #user-infomation .tab-content #menu2 .tab-content #menu2-6 .detail-info .detail-info-editing-box .detail-info-closse:focus {
+                box-shadow: none;
+                border: none;
+                outline: none;
+                background-color: transparent; }
+              main #user-infomation .tab-content #menu2 .tab-content #menu2-6 .detail-info .detail-info-editing-box .detail-info-closse:hover {
+                background-color: transparent; }
       main #user-infomation .tab-content #menu2 .tab-content #menu2-5 .family-and-relationship {
         padding: 0 15px; }
         main #user-infomation .tab-content #menu2 .tab-content #menu2-5 .family-and-relationship .family {

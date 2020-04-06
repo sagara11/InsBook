@@ -14,30 +14,6 @@ $(".job-closse").click(function () {
     $(".job-adding-box").css("display", "none");
     $(".job-adding").css("display", "block");
 });
-//$("#show-university-adding-box").click(function () {
-//    $(".university-adding-box").css("display", "block");
-//    $(".university-adding").css("display", "none");
-//});
-//$("#close-university-adding-box").click(function () {
-//    $(".university-adding-box").css("display", "none");
-//    $(".university-adding").css("display", "block");
-//});
-//$(".university-closse").click(function () {
-//    $(".university-adding-box").css("display", "none");
-//    $(".university-adding").css("display", "block");
-//});
-//$("#show-highschool-adding-box").click(function () {
-//    $(".highschool-adding-box").css("display", "block");
-//    $(".highschool-adding").css("display", "none");
-//});
-//$("#close-highschool-adding-box").click(function () {
-//    $(".highschool-adding-box").css("display", "none");
-//    $(".highschool-adding").css("display", "block");
-//});
-//$(".highschool-closse").click(function () {
-//    $(".highschool-adding-box").css("display", "none");
-//    $(".highschool-adding").css("display", "block");
-//});
 
 function CloseSchoolAddingBox(loaitruong) {
     $(".truonghoc-loai-" + loaitruong + "-adding").css("display", "block");
@@ -70,54 +46,17 @@ $(".relationship-closse").click(function () {
     $(".relationship-adding-box").css("display", "none");
     $(".relationship-adding").css("display", "block");
 });
-$("#show-family-adding-box").click(function () {
-    $(".family-adding-box").css("display", "block");
-    $(".family-adding").css("display", "none");
-});
-$("#close-family-adding-box").click(function () {
-    $(".family-adding-box").css("display", "none");
-    $(".family-adding").css("display", "block");
-});
-$(".family-closse").click(function () {
-    $(".family-adding-box").css("display", "none");
-    $(".family-adding").css("display", "block");
-});
-$("#show-description-adding-box").click(function () {
-    $(".description-adding-box").css("display", "block");
-    $(".description-adding").css("display", "none");
-});
-$("#close-description-adding-box").click(function () {
-    $(".description-adding-box").css("display", "none");
-    $(".description-adding").css("display", "block");
-});
-$(".description-closse").click(function () {
-    $(".description-adding-box").css("display", "none");
-    $(".description-adding").css("display", "block");
-});
-$("#show-quote-adding-box").click(function () {
-    $(".quote-adding-box").css("display", "block");
-    $(".quote-adding").css("display", "none");
-});
-$("#close-quote-adding-box").click(function () {
-    $(".quote-adding-box").css("display", "none");
-    $(".quote-adding").css("display", "block");
-});
-$(".quote-closse").click(function () {
-    $(".quote-adding-box").css("display", "none");
-    $(".quote-adding").css("display", "block");
-});
-$("#show-nickname-adding-box").click(function () {
-    $(".nickname-adding-box").css("display", "block");
-    $(".nickname-adding").css("display", "none");
-});
-$("#close-nickname-adding-box").click(function () {
-    $(".nickname-adding-box").css("display", "none");
-    $(".nickname-adding").css("display", "block");
-});
-$(".nickname-closse").click(function () {
-    $(".nickname-adding-box").css("display", "none");
-    $(".nickname-adding").css("display", "block");
-});
+
+
+function CloseDetailInfoAddingBox(loaithongtin) {
+    $(".ttct-loai-" + loaithongtin + "-adding").css("display", "block");
+    $(".ttct-loai-" + loaithongtin + "-adding-box").css("display", "none");
+}
+
+function ShowDetailIndfoAddingBox(loaithongtin) {
+    $(".ttct-loai-" + loaithongtin + "-adding").css("display", "none");
+    $(".ttct-loai-" + loaithongtin + "-adding-box").css("display", "block");
+}
 
 //---------------------------CHINH SUA ANH DAI DIEN---------------
 $("#change-profile-modal-2").on('hidden.bs.modal', function () {
@@ -1636,6 +1575,850 @@ function CountryRemoving(diadiem_id, loaidiadidem) {
 
                         $(".diadiem-" + diadiem_id).replaceWith(add);
                         $(".diadiem-" + diadiem_id + "-box").replaceWith(add_box)
+                    }
+                }
+            }
+        });
+    } else {
+        alert("Bạn đã ấn hủy!");
+    }
+}
+//-------------------------THONG TIN CHI TIET-------------------
+function DetailInfoAdding(loaithongtin) {
+    if (loaithongtin == 0) {
+        if ($("#ttct-loai-" + loaithongtin + "-gioithieu").val() == "") {
+            $("#check-ttct-loai-" + loaithongtin + "-gioithieu").html("<i class='fas fa-times' style='opacity:1;visibility: visible'></i>");
+        }
+        else {
+            $("#check-ttct-loai-" + loaithongtin + "-gioithieu").html("<i class='fas fa-times' style='opacity:0;visibility: hidden'></i>");
+            var formData = new FormData();
+            var token = $('input[name="__RequestVerificationToken"]').val();
+
+            formData.append('__RequestVerificationToken', token); //form[0]
+            formData.append("gioithieu", $("#ttct-loai-" + loaithongtin + "-gioithieu").val());
+            formData.append("baomat", $("#ttct-loai-" + loaithongtin + "-baomat").val());
+            formData.append("loaithongtin", loaithongtin);
+
+            $.ajax({
+                type: 'post',
+                url: '/Client/Personal/AddDetailInfo',
+                dataType: 'json',
+                cache: false,
+                contentType: false,
+                processData: false,
+                data: formData,
+                success: function (response) {
+                    if (response.status == true) {
+                        alert("Thêm thành công");
+
+                        var html = '<ul class="list-detail-info ttct-loai-' + loaithongtin + '">' +
+                            '                            <li class="list-detail-info-item">' +
+                            '                                <div class="detail-info-item-name">' +
+                            '                                    <p>' + $("#ttct-loai-" + loaithongtin + "-gioithieu").val() + '</p>' +
+                            '                                    <p></p>' +
+                            '                                </div>' +
+                            '                                <div class="detail-info-item-tools">' +
+                            '                                    <i class="far fa-edit" onclick="DetailInfoEditting(' + loaithongtin + ')"></i>' +
+                            '                                    <i class="far fa-trash-alt" onclick="DetailInfoRemoving(' + loaithongtin + ')"></i>' +
+                            '                                </div>' +
+                            '                            </li>' +
+                            '                        </ul>';
+                        var editHtml = '             <div class="detail-info-editing-box ttct-loai-' + loaithongtin + '-editing-box">' +
+                            '                            <div class="row">' +
+                            '                                <div class="col-md-4">' +
+                            '                                    <label for="edit-ttct-loai-' + loaithongtin + '-gioithieu">Giới thiệu về bản thân</label>' +
+                            '                                </div>' +
+                            '                                <div class="col-md-6">' +
+                            '                                    <div class="form-group">' +
+                            '                                        <textarea class="form-control" id="edit-ttct-loai-' + loaithongtin + '-gioithieu" placeholder="Nhập lời giới thiệu về bạn"></textarea>' +
+                            '                                        <span class="errors" id="check-edit-ttct-loai-' + loaithongtin + '-gioithieu"><i class="fas fa-times"></i></span>' +
+                            '                                    </div>' +
+                            '                                </div>' +
+                            '                                <div class="col-md-2">' +
+                            '' +
+                            '                                </div>' +
+                            '' +
+                            '                                <hr>' +
+                            '                                <div class="col-md-4">' +
+                            '                                    <div class="form-group">' +
+                            '                                        <select id="edit-ttct-loai-' + loaithongtin + '-baomat" class="form-control">' +
+                            '                                            <option selected value="0">Công khai</option>' +
+                            '                                            <option value="1">Bạn bè</option>' +
+                            '                                            <option value="2">Chỉ mình tôi</option>' +
+                            '                                        </select>' +
+                            '                                    </div>' +
+                            '                                </div>' +
+                            '                                <div class="col-md-6">' +
+                            '                                    <button type="button" class="btn btn-primary" onclick="SubmitEditDetailInfoBox(' + loaithongtin + ')">Lưu thay đổi</button>' +
+                            '                                    <button type="button" class="btn btn-light" id="close-detail-info-editing-box" onclick="CloseDetailInfoEditBox(' + loaithongtin + ')">Hủy</button>' +
+                            '                                </div>' +
+                            '                                <div class="col-md-2">' +
+                            '' +
+                            '                                </div>' +
+                            '                            </div>' +
+                            '                            <button class="btn btn-light detail-info-closse" type="button" onclick="CloseDetailInfoEditBox(' + loaithongtin + ')"><i class="fas fa-times"></i> Hủy</button>' +
+                            '                        </div>';
+                        $(".user-description-three").append('<h1 class="user-description-three-gioithieu">' + $("#ttct-loai-" + loaithongtin + "-gioithieu").val() + '</h1>');
+
+                        $(".ttct-loai-" + loaithongtin + "-adding").replaceWith(html);
+                        $(".ttct-loai-" + loaithongtin + "-adding-box").replaceWith(editHtml);
+
+                    }
+                }
+            });
+        }
+    }
+    else if (loaithongtin == 1) {
+        if ($("#ttct-loai-" + loaithongtin + "-ten").val() == "") {
+            $("#check-ttct-loai-" + loaithongtin + "-ten").html("<i class='fas fa-times' style='opacity:1;visibility: visible'></i>");
+        }
+        else {
+            $("#check-diadiem-loai-" + loaithongtin + "-ten").html("<i class='fas fa-times' style='opacity:0;visibility: hidden'></i>");
+            var formData = new FormData();
+            var token = $('input[name="__RequestVerificationToken"]').val();
+
+            formData.append('__RequestVerificationToken', token); //form[0]
+            formData.append("ten", $("#ttct-loai-" + loaithongtin + "-ten").val());
+            formData.append("baomat", $("#ttct-loai-" + loaithongtin + "-baomat").val());
+            formData.append("loaithongtin", loaithongtin);
+            formData.append("loaibietdanh", $("#ttct-loai-" + loaithongtin + "-loaibietdanh").val())
+
+            $.ajax({
+                type: 'post',
+                url: '/Client/Personal/AddDetailInfo',
+                dataType: 'json',
+                cache: false,
+                contentType: false,
+                processData: false,
+                data: formData,
+                success: function (response) {
+                    if (response.status == true) {
+                        alert("Thêm thành công");
+
+                        var html = '<ul class="list-detail-info ttct-loai-' + loaithongtin + '">' +
+                            '                            <li class="list-detail-info-item">' +
+                            '                                <div class="detail-info-item-name">' +
+                            '                                    <p>' + $("#ttct-loai-" + loaithongtin + "-ten").val() + '</p>' +
+                            '                                    <p>' + $("#ttct-loai-" + loaithongtin + "-loaibietdanh option:selected").text() + '</p>' +
+                            '                                </div>' +
+                            '                                <div class="detail-info-item-tools">' +
+                            '                                    <i class="far fa-edit" onclick="DetailInfoEditting(' + loaithongtin + ')"></i>' +
+                            '                                    <i class="far fa-trash-alt" onclick="DetailInfoRemoving(' + loaithongtin + ')"></i>' +
+                            '                                </div>' +
+                            '                            </li>' +
+                            '                        </ul>';
+                        var editHtml = '             <div class="detail-info-editing-box ttct-loai-' + loaithongtin + '-editing-box">' +
+                            '                            <div class="row">' +
+                            '                                <div class="col-md-4">' +
+                            '                                    <label for="edit-ttct-loai-' + loaithongtin + '-loaibietdanh">Loại tên</label>' +
+                            '                                </div>' +
+                            '                                <div class="col-md-3">' +
+                            '                                    <div class="form-group">' +
+                            '                                        <select id="edit-ttct-loai-' + loaithongtin + '-loaibietdanh" class="form-control loaibietdanh">' +
+                            '                                            <option selected value="0">Biệt danh</option>' +
+                            '                                            <option value="1">Tên thời con gái</option>' +
+                            '                                            <option value="2">Cách viết tên khác</option>' +
+                            '                                            <option value="3">Tên sau kết hôn</option>' +
+                            '                                            <option value="4">Họ và tên bố</option>' +
+                            '                                            <option value="5">Tên khai sinh</option>' +
+                            '                                            <option value="6">Tên cũ</option>' +
+                            '                                            <option value="7">Tên có chức danh</option>' +
+                            '                                        </select>' +
+                            '                                    </div>' +
+                            '                                </div>' +
+                            '                                <div class="col-md-3">' +
+                            '' +
+                            '                                </div>' +
+                            '                                <div class="col-md-2">' +
+                            '' +
+                            '                                </div>' +
+                            '                                <div class="col-md-4">' +
+                            '                                    <label for="edit-ttct-loai-' + loaithongtin + '-ten">Tên</label>' +
+                            '                                </div>' +
+                            '                                <div class="col-md-6">' +
+                            '                                    <div class="form-group">' +
+                            '                                        <input type="text" class="form-control" id="edit-ttct-loai-' + loaithongtin + '-ten">' +
+                            '                                        <span class="errors" id="check-edit-ttct-loai-' + loaithongtin + '-ten"><i class="fas fa-times"></i></span>' +
+                            '                                    </div>' +
+                            '                                </div>' +
+                            '' +
+                            '                                <div class="col-md-2">' +
+                            '' +
+                            '                                </div>' +
+                            '' +
+                            '                                <hr>' +
+                            '                                <div class="col-md-4">' +
+                            '                                    <div class="form-group">' +
+                            '                                        <select id="edit-ttct-loai-' + loaithongtin + '-baomat" class="form-control">' +
+                            '                                            <option selected value="0">Công khai</option>' +
+                            '                                            <option value="1">Bạn bè</option>' +
+                            '                                            <option value="2">Chỉ mình tôi</option>' +
+                            '                                        </select>' +
+                            '                                    </div>' +
+                            '                                </div>' +
+                            '                                <div class="col-md-6">' +
+                            '                                    <button type="button" class="btn btn-primary" onclick="SubmitEditDetailInfoBox(' + loaithongtin + ')">Lưu thay đổi</button>' +
+                            '                                    <button type="button" class="btn btn-light" id="close-detail-info-editing-box" onclick="CloseDetailInfoEditBox(' + loaithongtin + ')">Hủy</button>' +
+                            '                                </div>' +
+                            '                                <div class="col-md-2">' +
+                            '' +
+                            '                                </div>' +
+                            '                            </div>' +
+                            '                            <button class="btn btn-light detail-info-closse" type="button" onclick="CloseDetailInfoEditBox(' + loaithongtin + ')"><i class="fas fa-times"></i> Hủy</button>' +
+                            '                        </div>';
+
+                        $(".user-description-three").append('<h1 class="user-description-three-bietdanh">' + $("#ttct-loai-" + loaithongtin + "-ten").val() + '</h1>');
+
+                        $(".ttct-loai-" + loaithongtin + "-adding").replaceWith(html);
+                        $(".ttct-loai-" + loaithongtin + "-adding-box").replaceWith(editHtml);
+
+                    }
+                }
+            });
+        }
+    }
+    else if (loaithongtin == 2) {
+        count = 0;
+        if ($("#ttct-loai-" + loaithongtin + "-trichdan").val() == "") {
+            $("#check-ttct-loai-" + loaithongtin + "-trichdan").html("<i class='fas fa-times' style='opacity:1;visibility: visible'></i>");
+            count += 1;
+        }
+        else {
+            $("#check-ttct-loai-" + loaithongtin + "-trichdan").html("<i class='fas fa-times' style='opacity:0;visibility: hidden'></i>");
+        }
+        if ($("#ttct-loai-" + loaithongtin + "-tacgia").val() == "") {
+            $("#check-ttct-loai-" + loaithongtin + "-tacgia").html("<i class='fas fa-times' style='opacity:1;visibility: visible'></i>");
+            count += 1;
+        }
+        else {
+            $("#check-ttct-loai-" + loaithongtin + "-tacgia").html("<i class='fas fa-times' style='opacity:0;visibility: hidden'></i>");
+        }
+        if (count == 0) {
+            var formData = new FormData();
+            var token = $('input[name="__RequestVerificationToken"]').val();
+
+            formData.append('__RequestVerificationToken', token); //form[0]
+            formData.append("trichdan", $("#ttct-loai-" + loaithongtin + "-trichdan").val());
+            formData.append("tacgia", $("#ttct-loai-" + loaithongtin + "-tacgia").val());
+            formData.append("baomat", $("#ttct-loai-" + loaithongtin + "-baomat").val());
+            formData.append("loaithongtin", loaithongtin);
+
+            $.ajax({
+                type: 'post',
+                url: '/Client/Personal/AddDetailInfo',
+                dataType: 'json',
+                cache: false,
+                contentType: false,
+                processData: false,
+                data: formData,
+                success: function (response) {
+                    if (response.status == true) {
+                        alert("Thêm thành công");
+
+                        var html = '<ul class="list-detail-info ttct-loai-' + loaithongtin + '">' +
+                            '                            <li class="list-detail-info-item">' +
+                            '                                <div class="detail-info-item-name">' +
+                            '                                    <p>' + $("#ttct-loai-" + loaithongtin + "-trichdan").val() + '</p>' +
+                            '                                    <p>' + $("#ttct-loai-" + loaithongtin + "-tacgia").val() + '</p>' +
+                            '                                </div>' +
+                            '                                <div class="detail-info-item-tools">' +
+                            '                                    <i class="far fa-edit" onclick="DetailInfoEditting(' + loaithongtin + ')"></i>' +
+                            '                                    <i class="far fa-trash-alt" onclick="DetailInfoRemoving(' + loaithongtin + ')"></i>' +
+                            '                                </div>' +
+                            '                            </li>' +
+                            '                        </ul>';
+
+                        var editHtml = '             <div class="detail-info-editing-box ttct-loai-' + loaithongtin + '-editing-box">' +
+                            '                            <div class="row">' +
+                            '                                <div class="col-md-4">' +
+                            '                                    <label for="edit-ttct-loai-' + loaithongtin + '-trichdan">Trích dẫn yêu thích</label>' +
+                            '                                </div>' +
+                            '                                <div class="col-md-6">' +
+                            '                                    <div class="form-group">' +
+                            '                                        <textarea class="form-control" id="edit-ttct-loai-' + loaithongtin + '-trichdan"></textarea>' +
+                            '                                        <span class="errors" id="check-edit-ttct-loai-' + loaithongtin + '-trichdan"><i class="fas fa-times"></i></span>' +
+                            '                                    </div>' +
+                            '                                </div>' +
+                            '                                <div class="col-md-2">' +
+                            '' +
+                            '                                </div>' +
+                            '                                <div class="col-md-4">' +
+                            '                                    <label for="edit-ttct-loai-' + loaithongtin + '-tacgia">Tác giả</label>' +
+                            '                                </div>' +
+                            '                                <div class="col-md-6">' +
+                            '                                    <div class="form-group">' +
+                            '                                        <input class="form-control" id="edit-ttct-loai-' + loaithongtin + '-tacgia">' +
+                            '                                        <span class="errors" id="check-edit-ttct-loai-' + loaithongtin + '-tacgia"><i class="fas fa-times"></i></span>' +
+                            '                                    </div>' +
+                            '                                </div>' +
+                            '                                <div class="col-md-2">' +
+                            '' +
+                            '                                </div>' +
+                            '' +
+                            '                                <hr>' +
+                            '                                <div class="col-md-4">' +
+                            '                                    <div class="form-group">' +
+                            '                                        <select id="edit-ttct-loai-' + loaithongtin + '-baomat" class="form-control">' +
+                            '                                            <option selected value="0">Công khai</option>' +
+                            '                                            <option value="1">Bạn bè</option>' +
+                            '                                            <option value="2">Chỉ mình tôi</option>' +
+                            '                                        </select>' +
+                            '                                    </div>' +
+                            '                                </div>' +
+                            '                                <div class="col-md-6">' +
+                            '                                    <button type="button" class="btn btn-primary" onclick="SubmitEditDetailInfoBox(' + loaithongtin + ')">Lưu thay đổi</button>' +
+                            '                                    <button type="button" class="btn btn-light" id="close-detail-info-editing-box" onclick="CloseDetailInfoEditBox(' + loaithongtin + ')">Hủy</button>' +
+                            '                                </div>' +
+                            '                                <div class="col-md-2">' +
+                            '' +
+                            '                                </div>' +
+                            '                            </div>' +
+                            '                            <button class="btn btn-light detail-info-closse" type="button" onclick="CloseDetailInfoEditBox(' + loaithongtin + ')"><i class="fas fa-times"></i> Hủy</button>' +
+                            '                        </div>';
+
+                        $(".ttct-loai-" + loaithongtin + "-adding").replaceWith(html);
+                        $(".ttct-loai-" + loaithongtin + "-adding-box").replaceWith(editHtml);
+                    }
+                }
+            });
+        }
+    }
+}
+function DetailInfoEditting(loaithongtin) {
+    $(".ttct-loai-" + loaithongtin + "-editing-box").css("display", "inline-block");
+
+    var formData = new FormData();
+    var token = $('input[name="__RequestVerificationToken"]').val();
+
+    formData.append('__RequestVerificationToken', token); //form[0]
+    formData.append("loaithongtin", loaithongtin);
+
+    $.ajax({
+        type: 'post',
+        url: '/Client/Personal/EditDetailInfo',
+        dataType: 'json',
+        cache: false,
+        contentType: false,
+        processData: false,
+        data: formData,
+        success: function (response) {
+            if (response.status == true) {
+                if (loaithongtin == 0) {
+                    $("#edit-ttct-loai-" + loaithongtin + "-gioithieu").val(response.data);
+                }
+                else if (loaithongtin == 1) {
+                    var datas = response.data.split('@');
+                    $("#edit-ttct-loai-" + loaithongtin + "-loaibietdanh").val(datas[0]);
+                    $("#edit-ttct-loai-" + loaithongtin + "-ten").val(datas[1]);
+                }
+                else if (loaithongtin == 2) {
+                    var datas = response.data.split('@');
+                    $("#edit-ttct-loai-" + loaithongtin + "-trichdan").val(datas[0]);
+                    $("#edit-ttct-loai-" + loaithongtin + "-tacgia").val(datas[1]);
+                }
+            }
+        }
+    });
+}
+
+function CloseDetailInfoEditBox(loaithongtin) {
+    $(".ttct-loai-" + loaithongtin + "-editing-box").css("display", "none");
+}
+
+function SubmitEditDetailInfoBox(loaithongtin) {
+    if (loaithongtin == 0) {
+        if ($("#edit-ttct-loai-" + loaithongtin + "-gioithieu").val() == "") {
+            $("#check-edit-ttct-loai-" + loaithongtin + "-gioithieu").html("<i class='fas fa-times' style='opacity:1;visibility: visible'></i>");
+        }
+        else {
+            $("#check-edit-ttct-loai-" + loaithongtin + "-gioithieu").html("<i class='fas fa-times' style='opacity:0;visibility: hidden'></i>");
+            var formData = new FormData();
+            var token = $('input[name="__RequestVerificationToken"]').val();
+
+            formData.append('__RequestVerificationToken', token); //form[0]
+            formData.append("gioithieu", $("#edit-ttct-loai-" + loaithongtin + "-gioithieu").val());
+            formData.append("baomat", $("#edit-ttct-loai-" + loaithongtin + "-baomat").val());
+            formData.append("loaithongtin", loaithongtin);
+
+            $.ajax({
+                type: 'post',
+                url: '/Client/Personal/ActionEditDetailInfo',
+                dataType: 'json',
+                cache: false,
+                contentType: false,
+                processData: false,
+                data: formData,
+                success: function (response) {
+                    if (response.status == true) {
+                        alert("Cập nhật thành công");
+
+                        var html = '<ul class="list-detail-info ttct-loai-' + loaithongtin + '">' +
+                            '                            <li class="list-detail-info-item">' +
+                            '                                <div class="detail-info-item-name">' +
+                            '                                    <p>' + $("#edit-ttct-loai-" + loaithongtin + "-gioithieu").val() + '</p>' +
+                            '                                    <p></p>' +
+                            '                                </div>' +
+                            '                                <div class="detail-info-item-tools">' +
+                            '                                    <i class="far fa-edit" onclick="DetailInfoEditting(' + loaithongtin + ')"></i>' +
+                            '                                    <i class="far fa-trash-alt" onclick="DetailInfoRemoving(' + loaithongtin + ')"></i>' +
+                            '                                </div>' +
+                            '                            </li>' +
+                            '                        </ul>';
+                        var editHtml = '             <div class="detail-info-editing-box ttct-loai-' + loaithongtin + '-editing-box">' +
+                            '                            <div class="row">' +
+                            '                                <div class="col-md-4">' +
+                            '                                    <label for="edit-ttct-loai-' + loaithongtin + '-gioithieu">Giới thiệu về bản thân</label>' +
+                            '                                </div>' +
+                            '                                <div class="col-md-6">' +
+                            '                                    <div class="form-group">' +
+                            '                                        <textarea class="form-control" id="edit-ttct-loai-' + loaithongtin + '-gioithieu" placeholder="Nhập lời giới thiệu về bạn"></textarea>' +
+                            '                                        <span class="errors" id="check-edit-ttct-loai-' + loaithongtin + '-gioithieu"><i class="fas fa-times"></i></span>' +
+                            '                                    </div>' +
+                            '                                </div>' +
+                            '                                <div class="col-md-2">' +
+                            '' +
+                            '                                </div>' +
+                            '' +
+                            '                                <hr>' +
+                            '                                <div class="col-md-4">' +
+                            '                                    <div class="form-group">' +
+                            '                                        <select id="edit-ttct-loai-' + loaithongtin + '-baomat" class="form-control">' +
+                            '                                            <option selected value="0">Công khai</option>' +
+                            '                                            <option value="1">Bạn bè</option>' +
+                            '                                            <option value="2">Chỉ mình tôi</option>' +
+                            '                                        </select>' +
+                            '                                    </div>' +
+                            '                                </div>' +
+                            '                                <div class="col-md-6">' +
+                            '                                    <button type="button" class="btn btn-primary" onclick="SubmitEditDetailInfoBox(' + loaithongtin + ')">Lưu thay đổi</button>' +
+                            '                                    <button type="button" class="btn btn-light" id="close-detail-info-editing-box" onclick="CloseDetailInfoEditBox(' + loaithongtin + ')">Hủy</button>' +
+                            '                                </div>' +
+                            '                                <div class="col-md-2">' +
+                            '' +
+                            '                                </div>' +
+                            '                            </div>' +
+                            '                            <button class="btn btn-light detail-info-closse" type="button" onclick="CloseDetailInfoEditBox(' + loaithongtin + ')"><i class="fas fa-times"></i> Hủy</button>' +
+                            '                        </div>';
+
+                        $(".user-description-three-gioithieu").replaceWith('<h1 class="user-description-three-gioithieu">' + $("#edit-ttct-loai-" + loaithongtin + "-gioithieu").val() + '</h1>');
+
+                        $(".ttct-loai-" + loaithongtin).replaceWith(html);
+                        $(".ttct-loai-" + loaithongtin + "-editing-box").replaceWith(editHtml);
+
+                    }
+                }
+            });
+        }
+    }
+    else if (loaithongtin == 1) {
+        if ($("#edit-ttct-loai-" + loaithongtin + "-ten").val() == "") {
+            $("#check-edit-ttct-loai-" + loaithongtin + "-ten").html("<i class='fas fa-times' style='opacity:1;visibility: visible'></i>");
+        }
+        else {
+            $("#check-edit-diadiem-loai-" + loaithongtin + "-ten").html("<i class='fas fa-times' style='opacity:0;visibility: hidden'></i>");
+            var formData = new FormData();
+            var token = $('input[name="__RequestVerificationToken"]').val();
+
+            formData.append('__RequestVerificationToken', token); //form[0]
+            formData.append("ten", $("#edit-ttct-loai-" + loaithongtin + "-ten").val());
+            formData.append("baomat", $("#edit-ttct-loai-" + loaithongtin + "-baomat").val());
+            formData.append("loaithongtin", loaithongtin);
+            formData.append("loaibietdanh", $("#edit-ttct-loai-" + loaithongtin + "-loaibietdanh").val())
+
+            $.ajax({
+                type: 'post',
+                url: '/Client/Personal/ActionEditDetailInfo',
+                dataType: 'json',
+                cache: false,
+                contentType: false,
+                processData: false,
+                data: formData,
+                success: function (response) {
+                    if (response.status == true) {
+                        alert("Cập nhật thành công");
+
+                        var html = '<ul class="list-detail-info ttct-loai-' + loaithongtin + '">' +
+                            '                            <li class="list-detail-info-item">' +
+                            '                                <div class="detail-info-item-name">' +
+                            '                                    <p>' + $("#edit-ttct-loai-" + loaithongtin + "-ten").val() + '</p>' +
+                            '                                    <p>' + $("#edit-ttct-loai-" + loaithongtin + "-loaibietdanh option:selected").text() + '</p>' +
+                            '                                </div>' +
+                            '                                <div class="detail-info-item-tools">' +
+                            '                                    <i class="far fa-edit" onclick="DetailInfoEditting(' + loaithongtin + ')"></i>' +
+                            '                                    <i class="far fa-trash-alt" onclick="DetailInfoRemoving(' + loaithongtin + ')"></i>' +
+                            '                                </div>' +
+                            '                            </li>' +
+                            '                        </ul>';
+                        var editHtml = '             <div class="detail-info-editing-box ttct-loai-' + loaithongtin + '-editing-box">' +
+                            '                            <div class="row">' +
+                            '                                <div class="col-md-4">' +
+                            '                                    <label for="edit-ttct-loai-' + loaithongtin + '-loaibietdanh">Loại tên</label>' +
+                            '                                </div>' +
+                            '                                <div class="col-md-3">' +
+                            '                                    <div class="form-group">' +
+                            '                                        <select id="edit-ttct-loai-' + loaithongtin + '-loaibietdanh" class="form-control loaibietdanh">' +
+                            '                                            <option selected value="0">Biệt danh</option>' +
+                            '                                            <option value="1">Tên thời con gái</option>' +
+                            '                                            <option value="2">Cách viết tên khác</option>' +
+                            '                                            <option value="3">Tên sau kết hôn</option>' +
+                            '                                            <option value="4">Họ và tên bố</option>' +
+                            '                                            <option value="5">Tên khai sinh</option>' +
+                            '                                            <option value="6">Tên cũ</option>' +
+                            '                                            <option value="7">Tên có chức danh</option>' +
+                            '                                        </select>' +
+                            '                                    </div>' +
+                            '                                </div>' +
+                            '                                <div class="col-md-3">' +
+                            '' +
+                            '                                </div>' +
+                            '                                <div class="col-md-2">' +
+                            '' +
+                            '                                </div>' +
+                            '                                <div class="col-md-4">' +
+                            '                                    <label for="edit-ttct-loai-' + loaithongtin + '-ten">Tên</label>' +
+                            '                                </div>' +
+                            '                                <div class="col-md-6">' +
+                            '                                    <div class="form-group">' +
+                            '                                        <input type="text" class="form-control" id="edit-ttct-loai-' + loaithongtin + '-ten">' +
+                            '                                        <span class="errors" id="check-edit-ttct-loai-' + loaithongtin + '-ten"><i class="fas fa-times"></i></span>' +
+                            '                                    </div>' +
+                            '                                </div>' +
+                            '' +
+                            '                                <div class="col-md-2">' +
+                            '' +
+                            '                                </div>' +
+                            '' +
+                            '                                <hr>' +
+                            '                                <div class="col-md-4">' +
+                            '                                    <div class="form-group">' +
+                            '                                        <select id="edit-ttct-loai-' + loaithongtin + '-baomat" class="form-control">' +
+                            '                                            <option selected value="0">Công khai</option>' +
+                            '                                            <option value="1">Bạn bè</option>' +
+                            '                                            <option value="2">Chỉ mình tôi</option>' +
+                            '                                        </select>' +
+                            '                                    </div>' +
+                            '                                </div>' +
+                            '                                <div class="col-md-6">' +
+                            '                                    <button type="button" class="btn btn-primary" onclick="SubmitEditDetailInfoBox(' + loaithongtin + ')">Lưu thay đổi</button>' +
+                            '                                    <button type="button" class="btn btn-light" id="close-detail-info-editing-box" onclick="CloseDetailInfoEditBox(' + loaithongtin + ')">Hủy</button>' +
+                            '                                </div>' +
+                            '                                <div class="col-md-2">' +
+                            '' +
+                            '                                </div>' +
+                            '                            </div>' +
+                            '                            <button class="btn btn-light detail-info-closse" type="button" onclick="CloseDetailInfoEditBox(' + loaithongtin + ')"><i class="fas fa-times"></i> Hủy</button>' +
+                            '                        </div>';
+
+                        $(".user-description-three-bietdanh").replaceWith('<h1 class="user-description-three-bietdanh">' + $("#edit-ttct-loai-" + loaithongtin + "-ten").val() + '</h1>');
+
+                        $(".ttct-loai-" + loaithongtin).replaceWith(html);
+                        $(".ttct-loai-" + loaithongtin + "-editing-box").replaceWith(editHtml);
+
+                    }
+                }
+            });
+        }
+    }
+    else if (loaithongtin == 2) {
+        count = 0;
+        if ($("#edit-ttct-loai-" + loaithongtin + "-trichdan").val() == "") {
+            $("#check-edit-ttct-loai-" + loaithongtin + "-trichdan").html("<i class='fas fa-times' style='opacity:1;visibility: visible'></i>");
+            count += 1;
+        }
+        else {
+            $("#check-edit-ttct-loai-" + loaithongtin + "-trichdan").html("<i class='fas fa-times' style='opacity:0;visibility: hidden'></i>");
+        }
+        if ($("#edit-ttct-loai-" + loaithongtin + "-tacgia").val() == "") {
+            $("#check-edit-ttct-loai-" + loaithongtin + "-tacgia").html("<i class='fas fa-times' style='opacity:1;visibility: visible'></i>");
+            count += 1;
+        }
+        else {
+            $("#check-edit-ttct-loai-" + loaithongtin + "-tacgia").html("<i class='fas fa-times' style='opacity:0;visibility: hidden'></i>");
+        }
+        if (count == 0) {
+            var formData = new FormData();
+            var token = $('input[name="__RequestVerificationToken"]').val();
+
+            formData.append('__RequestVerificationToken', token); //form[0]
+            formData.append("trichdan", $("#edit-ttct-loai-" + loaithongtin + "-trichdan").val());
+            formData.append("tacgia", $("#edit-ttct-loai-" + loaithongtin + "-tacgia").val());
+            formData.append("baomat", $("#edit-ttct-loai-" + loaithongtin + "-baomat").val());
+            formData.append("loaithongtin", loaithongtin);
+
+            $.ajax({
+                type: 'post',
+                url: '/Client/Personal/ActionEditDetailInfo',
+                dataType: 'json',
+                cache: false,
+                contentType: false,
+                processData: false,
+                data: formData,
+                success: function (response) {
+                    if (response.status == true) {
+                        alert("Cập nhật thành công");
+
+                        var html = '<ul class="list-detail-info ttct-loai-' + loaithongtin + '">' +
+                            '                            <li class="list-detail-info-item">' +
+                            '                                <div class="detail-info-item-name">' +
+                            '                                    <p>' + $("#edit-ttct-loai-" + loaithongtin + "-trichdan").val() + '</p>' +
+                            '                                    <p>' + $("#edit-ttct-loai-" + loaithongtin + "-tacgia").val() + '</p>' +
+                            '                                </div>' +
+                            '                                <div class="detail-info-item-tools">' +
+                            '                                    <i class="far fa-edit" onclick="DetailInfoEditting(' + loaithongtin + ')"></i>' +
+                            '                                    <i class="far fa-trash-alt" onclick="DetailInfoRemoving(' + loaithongtin + ')"></i>' +
+                            '                                </div>' +
+                            '                            </li>' +
+                            '                        </ul>';
+
+                        var editHtml = '             <div class="detail-info-editing-box ttct-loai-' + loaithongtin + '-editing-box">' +
+                            '                            <div class="row">' +
+                            '                                <div class="col-md-4">' +
+                            '                                    <label for="edit-ttct-loai-' + loaithongtin + '-trichdan">Trích dẫn yêu thích</label>' +
+                            '                                </div>' +
+                            '                                <div class="col-md-6">' +
+                            '                                    <div class="form-group">' +
+                            '                                        <textarea class="form-control" id="edit-ttct-loai-' + loaithongtin + '-trichdan"></textarea>' +
+                            '                                        <span class="errors" id="check-edit-ttct-loai-' + loaithongtin + '-trichdan"><i class="fas fa-times"></i></span>' +
+                            '                                    </div>' +
+                            '                                </div>' +
+                            '                                <div class="col-md-2">' +
+                            '' +
+                            '                                </div>' +
+                            '                                <div class="col-md-4">' +
+                            '                                    <label for="edit-ttct-loai-' + loaithongtin + '-tacgia">Tác giả</label>' +
+                            '                                </div>' +
+                            '                                <div class="col-md-6">' +
+                            '                                    <div class="form-group">' +
+                            '                                        <input class="form-control" id="edit-ttct-loai-' + loaithongtin + '-tacgia">' +
+                            '                                        <span class="errors" id="check-edit-ttct-loai-' + loaithongtin + '-tacgia"><i class="fas fa-times"></i></span>' +
+                            '                                    </div>' +
+                            '                                </div>' +
+                            '                                <div class="col-md-2">' +
+                            '' +
+                            '                                </div>' +
+                            '' +
+                            '                                <hr>' +
+                            '                                <div class="col-md-4">' +
+                            '                                    <div class="form-group">' +
+                            '                                        <select id="edit-ttct-loai-' + loaithongtin + '-baomat" class="form-control">' +
+                            '                                            <option selected value="0">Công khai</option>' +
+                            '                                            <option value="1">Bạn bè</option>' +
+                            '                                            <option value="2">Chỉ mình tôi</option>' +
+                            '                                        </select>' +
+                            '                                    </div>' +
+                            '                                </div>' +
+                            '                                <div class="col-md-6">' +
+                            '                                    <button type="button" class="btn btn-primary" onclick="SubmitEditDetailInfoBox(' + loaithongtin + ')">Lưu thay đổi</button>' +
+                            '                                    <button type="button" class="btn btn-light" id="close-detail-info-editing-box" onclick="CloseDetailInfoEditBox(' + loaithongtin + ')">Hủy</button>' +
+                            '                                </div>' +
+                            '                                <div class="col-md-2">' +
+                            '' +
+                            '                                </div>' +
+                            '                            </div>' +
+                            '                            <button class="btn btn-light detail-info-closse" type="button" onclick="CloseDetailInfoEditBox(' + loaithongtin + ')"><i class="fas fa-times"></i> Hủy</button>' +
+                            '                        </div>';
+
+                        $(".ttct-loai-" + loaithongtin).replaceWith(html);
+                        $(".ttct-loai-" + loaithongtin + "-editing-box").replaceWith(editHtml);
+                    }
+                }
+            });
+        }
+    }
+}
+
+function DetailInfoRemoving(loaithongtin) {
+    var result = confirm("Bạn chắc chắc muốn xóa!");
+    if (result == true) {
+        var formData = new FormData();
+        var token = $('input[name="__RequestVerificationToken"]').val();
+
+        formData.append('__RequestVerificationToken', token); //form[0]
+        formData.append('loaithongtin', loaithongtin);
+
+        $.ajax({
+            type: 'post',
+            url: '/Client/Personal/ActionDeleteDetailInfo',
+            dataType: 'json',
+            cache: false,
+            contentType: false,
+            processData: false,
+            data: formData,
+            success: function (response) {
+                if (response.status == true) {
+                    alert("Xóa thành công");
+                    if (loaithongtin == 0) {
+
+                        var html = '<div class="detail-info-adding ttct-loai-' + loaithongtin + '-adding">' +
+                            '                            <button type="button" class="btn btn-light" id="show-detail-info-adding-box" onclick="ShowDetailIndfoAddingBox(' + loaithongtin + ')"><i class="far fa-plus-square"></i><span>Viết một số điều về chính bạn</span></button>' +
+                            '                        </div>';
+                        var editHtml = '<div class="detail-info-adding-box ttct-loai-' + loaithongtin + '-adding-box">' +
+                            '                            <div class="row">' +
+                            '                                <div class="col-md-4">' +
+                            '                                    <label for="ttct-loai-' + loaithongtin + '-gioithieu">Giới thiệu về bản thân</label>' +
+                            '                                </div>' +
+                            '                                <div class="col-md-6">' +
+                            '                                    <div class="form-group">' +
+                            '                                        <textarea class="form-control" id="ttct-loai-' + loaithongtin + '-gioithieu" placeholder="Nhập lời giới thiệu về bạn"></textarea>' +
+                            '                                        <span class="errors" id="check-ttct-loai-' + loaithongtin + '-gioithieu"><i class="fas fa-times"></i></span>' +
+                            '                                    </div>' +
+                            '                                </div>' +
+                            '                                <div class="col-md-2">' +
+                            '' +
+                            '                                </div>' +
+                            '' +
+                            '                                <hr>' +
+                            '                                <div class="col-md-4">' +
+                            '                                    <div class="form-group">' +
+                            '                                        <select id="ttct-loai-' + loaithongtin + '-baomat" class="form-control">' +
+                            '                                            <option selected value="0">Công khai</option>' +
+                            '                                            <option value="1">Bạn bè</option>' +
+                            '                                            <option value="2">Chỉ mình tôi</option>' +
+                            '                                        </select>' +
+                            '                                    </div>' +
+                            '                                </div>' +
+                            '                                <div class="col-md-6">' +
+                            '                                    <button type="button" class="btn btn-primary" onclick="DetailInfoAdding(' + loaithongtin + ')">Lưu thay đổi</button>' +
+                            '                                    <button type="button" class="btn btn-light" id="close-detail-info-adding-box" onclick="CloseDetailInfoAddingBox(' + loaithongtin + ')">Hủy</button>' +
+                            '                                </div>' +
+                            '                                <div class="col-md-2">' +
+                            '' +
+                            '                                </div>' +
+                            '                            </div>' +
+                            '                            <button class="btn btn-light detail-info-closse" type="button" onclick="CloseDetailInfoAddingBox(' + loaithongtin + ')"><i class="fas fa-times"></i> Hủy</button>' +
+                            '                        </div>';
+
+                        $(".ttct-loai-" + loaithongtin).replaceWith(html);
+                        $(".ttct-loai-" + loaithongtin + "-editing-box").replaceWith(editHtml);
+
+                        $(".user-description-three-gioithieu").remove();
+                    }
+                    else if (loaithongtin == 1) {
+
+                        var html = '<div class="detail-info-adding ttct-loai-' + loaithongtin + '-adding">' +
+                            '                            <button type="button" class="btn btn-light" id="show-detail-info-adding-box" onclick="ShowDetailIndfoAddingBox(' + loaithongtin + ')"><i class="far fa-plus-square"></i><span>Thêm biệt danh, tên khai sinh,...</span></button>' +
+                            '                        </div>';
+                        var editHtml = '<div class="detail-info-adding-box ttct-loai-' + loaithongtin + '-adding-box">' +
+                            '                            <div class="row">' +
+                            '                                <div class="col-md-4">' +
+                            '                                    <label for="ttct-loai-' + loaithongtin + '-loaibietdanh">Loại tên</label>' +
+                            '                                </div>' +
+                            '                                <div class="col-md-3">' +
+                            '                                    <div class="form-group">' +
+                            '                                        <select id="ttct-loai-' + loaithongtin + '-loaibietdanh" class="form-control loaibietdanh">' +
+                            '                                            <option selected value="0">Biệt danh</option>' +
+                            '                                            <option value="1">Tên thời con gái</option>' +
+                            '                                            <option value="2">Cách viết tên khác</option>' +
+                            '                                            <option value="3">Tên sau kết hôn</option>' +
+                            '                                            <option value="4">Họ và tên bố</option>' +
+                            '                                            <option value="5">Tên khai sinh</option>' +
+                            '                                            <option value="6">Tên cũ</option>' +
+                            '                                            <option value="7">Tên có chức danh</option>' +
+                            '                                        </select>' +
+                            '                                    </div>' +
+                            '                                </div>' +
+                            '                                <div class="col-md-3">' +
+                            '' +
+                            '                                </div>' +
+                            '                                <div class="col-md-2">' +
+                            '' +
+                            '                                </div>' +
+                            '                                <div class="col-md-4">' +
+                            '                                    <label for="ttct-loai-' + loaithongtin + '-ten">Tên</label>' +
+                            '                                </div>' +
+                            '                                <div class="col-md-6">' +
+                            '                                    <div class="form-group">' +
+                            '                                        <input type="text" class="form-control" id="ttct-loai-' + loaithongtin + '-ten">' +
+                            '                                        <span class="errors" id="check-ttct-loai-' + loaithongtin + '-ten"><i class="fas fa-times"></i></span>' +
+                            '                                    </div>' +
+                            '                                </div>' +
+                            '' +
+                            '                                <div class="col-md-2">' +
+                            '' +
+                            '                                </div>' +
+                            '' +
+                            '                                <hr>' +
+                            '                                <div class="col-md-4">' +
+                            '                                    <div class="form-group">' +
+                            '                                        <select id="ttct-loai-' + loaithongtin + '-baomat" class="form-control">' +
+                            '                                            <option selected value="0">Công khai</option>' +
+                            '                                            <option value="1">Bạn bè</option>' +
+                            '                                            <option value="2">Chỉ mình tôi</option>' +
+                            '                                        </select>' +
+                            '                                    </div>' +
+                            '                                </div>' +
+                            '                                <div class="col-md-6">' +
+                            '                                    <button type="button" class="btn btn-primary" onclick="DetailInfoAdding(' + loaithongtin + ')">Lưu thay đổi</button>' +
+                            '                                    <button type="button" class="btn btn-light" id="close-detail-info-adding-box" onclick="CloseDetailInfoAddingBox(' + loaithongtin + ')">Hủy</button>' +
+                            '                                </div>' +
+                            '                                <div class="col-md-2">' +
+                            '' +
+                            '                                </div>' +
+                            '                            </div>' +
+                            '                            <button class="btn btn-light detail-info-closse" type="button" onclick="CloseDetailInfoAddingBox(' + loaithongtin + ')"><i class="fas fa-times"></i> Hủy</button>' +
+                            '                        </div>';
+
+                        $(".ttct-loai-" + loaithongtin).replaceWith(html);
+                        $(".ttct-loai-" + loaithongtin + "-editing-box").replaceWith(editHtml);
+
+
+                        $(".user-description-three-bietdanh").remove();
+                    }
+                    else if (loaithongtin == 2) {
+                        var html = '<div class="detail-info-adding ttct-loai-' + loaithongtin + '-adding">' +
+                            '                            <button type="button" class="btn btn-light" id="show-detail-info-adding-box" onclick="ShowDetailIndfoAddingBox(' + loaithongtin + ')"><i class="far fa-plus-square"></i><span>Thêm câu trích dẫn yêu thích của bạn</span></button>' +
+                            '                        </div>';
+
+                        var editHtml = '<div class="detail-info-adding-box ttct-loai-' + loaithongtin + '-adding-box">' +
+                            '                            <div class="row">' +
+                            '                                <div class="col-md-4">' +
+                            '                                    <label for="ttct-loai-' + loaithongtin + '-trichdan">Trích dẫn yêu thích</label>' +
+                            '                                </div>' +
+                            '                                <div class="col-md-6">' +
+                            '                                    <div class="form-group">' +
+                            '                                        <textarea class="form-control" id="ttct-loai-' + loaithongtin + '-trichdan"></textarea>' +
+                            '                                        <span class="errors" id="check-ttct-loai-' + loaithongtin + '-trichdan"><i class="fas fa-times"></i></span>' +
+                            '                                    </div>' +
+                            '                                </div>' +
+                            '                                <div class="col-md-2">' +
+                            '' +
+                            '                                </div>' +
+                            '                                <div class="col-md-4">' +
+                            '                                    <label for="ttct-loai-' + loaithongtin + '-tacgia">Tác giả</label>' +
+                            '                                </div>' +
+                            '                                <div class="col-md-6">' +
+                            '                                    <div class="form-group">' +
+                            '                                        <input class="form-control" id="ttct-loai-' + loaithongtin + '-tacgia">' +
+                            '                                        <span class="errors" id="check-ttct-loai-' + loaithongtin + '-tacgia"><i class="fas fa-times"></i></span>' +
+                            '                                    </div>' +
+                            '                                </div>' +
+                            '                                <div class="col-md-2">' +
+                            '' +
+                            '                                </div>' +
+                            '' +
+                            '                                <hr>' +
+                            '                                <div class="col-md-4">' +
+                            '                                    <div class="form-group">' +
+                            '                                        <select id="ttct-loai-' + loaithongtin + '-baomat" class="form-control">' +
+                            '                                            <option selected value="0">Công khai</option>' +
+                            '                                            <option value="1">Bạn bè</option>' +
+                            '                                            <option value="2">Chỉ mình tôi</option>' +
+                            '                                        </select>' +
+                            '                                    </div>' +
+                            '                                </div>' +
+                            '                                <div class="col-md-6">' +
+                            '                                    <button type="button" class="btn btn-primary" onclick="DetailInfoAdding(' + loaithongtin + ')">Lưu thay đổi</button>' +
+                            '                                    <button type="button" class="btn btn-light" id="close-detail-info-adding-box" onclick="CloseDetailInfoAddingBox(' + loaithongtin + ')">Hủy</button>' +
+                            '                                </div>' +
+                            '                                <div class="col-md-2">' +
+                            '' +
+                            '                                </div>' +
+                            '                            </div>' +
+                            '                            <button class="btn btn-light detail-info-closse" type="button" onclick="CloseDetailInfoAddingBox(' + loaithongtin + ')"><i class="fas fa-times"></i> Hủy</button>' +
+                            '                        </div>';
+
+                        $(".ttct-loai-" + loaithongtin).replaceWith(html);
+                        $(".ttct-loai-" + loaithongtin + "-editing-box").replaceWith(editHtml);
                     }
                 }
             }

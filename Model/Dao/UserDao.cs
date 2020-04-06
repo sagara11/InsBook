@@ -177,5 +177,108 @@ namespace Model.Dao
 
             return profile;
         }
+
+        public bool AddDetailInfo(string stringg, int loaithongtin, int userId)
+        {
+            try
+            {
+                var user = db.nguoidungs.SingleOrDefault(x => x.id == userId);
+                if (loaithongtin == 0)
+                {
+                    user.mota = stringg;
+                }
+                else if (loaithongtin == 1)
+                {
+                    user.bietdanh = stringg;
+                }
+                else if (loaithongtin == 2)
+                {
+                    user.loitrichdan = stringg;
+                }
+                db.SaveChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+        public bool DeleteDetailInfo(int loaithongtin, int userId)
+        {
+            try
+            {
+                var user = db.nguoidungs.SingleOrDefault(x => x.id == userId);
+                if (loaithongtin == 0)
+                {
+                    user.mota = null;
+                }
+                else if (loaithongtin == 1)
+                {
+                    user.bietdanh = null;
+                }
+                else if (loaithongtin == 2)
+                {
+                    user.loitrichdan = null;
+                }
+                db.SaveChanges();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+        public bool EditDetailInfo(string stringg, int loaithongtin, int userId)
+        {
+            try
+            {
+                var user = db.nguoidungs.SingleOrDefault(x => x.id == userId);
+                if (loaithongtin == 0)
+                {
+                    user.mota = stringg;
+                }
+                else if (loaithongtin == 1)
+                {
+                    user.bietdanh = stringg;
+                }
+                else if (loaithongtin == 2)
+                {
+                    user.loitrichdan = stringg;
+                }
+                db.SaveChanges();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+        public string GetbyDetailInfo(int loaithongtin, int userId)
+        {
+            try
+            {
+                var user = db.nguoidungs.SingleOrDefault(x => x.id == userId);
+                if (loaithongtin == 0)
+                {
+                    return user.mota;
+                }
+                else if (loaithongtin == 1)
+                {
+                    return user.bietdanh;
+                }
+                else if (loaithongtin == 2)
+                {
+                    return user.loitrichdan;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch
+            {
+                return null;
+            }
+        }
     }
 }

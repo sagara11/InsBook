@@ -53,11 +53,11 @@
                                 <div class="user-description-three">
                                     @if (@Profile.bietdanh != null)
                                     {
-                                        <h1>@Profile.bietdanh</h1>
+                                        <h1 class="user-description-three-bietdanh">@Profile.bietdanh.Split('@')[1]</h1>
                                     }
                                     @if (Profile.gioithieu != null)
                                     {
-                                        <h1>@Profile.gioithieu</h1>
+                                        <h1 class="user-description-three-gioithieu">@Profile.gioithieu</h1>
                                     }
                                 </div>
                             </div>
