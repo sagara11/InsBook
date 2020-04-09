@@ -48,7 +48,9 @@ header {
         font-size: 24px; }
       header .header-icon button.btn-light:after {
         display: none; }
-    header .header-icon #header-notification {
+    header .header-icon #header-notification,
+    header .header-icon #header-friendrequest,
+    header .header-icon #header-user {
       background-color: #fff;
       width: 500px;
       box-shadow: 0 0 5px rgba(0, 0, 0, 0.0975);
@@ -59,59 +61,121 @@ header {
       min-height: 100px;
       overflow: auto;
       padding: 0;
+      overflow-x: hidden;
       /* width */
       /* Track */
       /* Handle */
       /* Handle on hover */ }
-      header .header-icon #header-notification::-webkit-scrollbar {
+      header .header-icon #header-notification::-webkit-scrollbar,
+      header .header-icon #header-friendrequest::-webkit-scrollbar,
+      header .header-icon #header-user::-webkit-scrollbar {
         width: 7px; }
-      header .header-icon #header-notification::-webkit-scrollbar-track {
+      header .header-icon #header-notification::-webkit-scrollbar-track,
+      header .header-icon #header-friendrequest::-webkit-scrollbar-track,
+      header .header-icon #header-user::-webkit-scrollbar-track {
         background: #f1f1f1; }
-      header .header-icon #header-notification::-webkit-scrollbar-thumb {
+      header .header-icon #header-notification::-webkit-scrollbar-thumb,
+      header .header-icon #header-friendrequest::-webkit-scrollbar-thumb,
+      header .header-icon #header-user::-webkit-scrollbar-thumb {
         background: #888; }
-      header .header-icon #header-notification::-webkit-scrollbar-thumb:hover {
+      header .header-icon #header-notification::-webkit-scrollbar-thumb:hover,
+      header .header-icon #header-friendrequest::-webkit-scrollbar-thumb:hover,
+      header .header-icon #header-user::-webkit-scrollbar-thumb:hover {
         background: #555; }
-      header .header-icon #header-notification .dropdown-item {
+      header .header-icon #header-notification .dropdown-item,
+      header .header-icon #header-friendrequest .dropdown-item,
+      header .header-icon #header-user .dropdown-item {
         display: flex;
         align-items: center;
-        min-height: 40px; }
-        header .header-icon #header-notification .dropdown-item .notification-users-avatar {
-          width: 48px;
-          height: 48px; }
-          header .header-icon #header-notification .dropdown-item .notification-users-avatar img {
-            width: 100%;
-            height: 100%;
+        justify-content: space-between;
+        min-height: 40px;
+        padding: 10px 20px; }
+        header .header-icon #header-notification .dropdown-item .notification-users-avatar,
+        header .header-icon #header-friendrequest .dropdown-item .notification-users-avatar,
+        header .header-icon #header-user .dropdown-item .notification-users-avatar {
+          width: 20%; }
+          header .header-icon #header-notification .dropdown-item .notification-users-avatar img,
+          header .header-icon #header-friendrequest .dropdown-item .notification-users-avatar img,
+          header .header-icon #header-user .dropdown-item .notification-users-avatar img {
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
-            object-fit: cover; }
-        header .header-icon #header-notification .dropdown-item .notification-user-content {
-          margin: 0 12px;
-          min-width: 370px;
-          max-width: 370px; }
-          header .header-icon #header-notification .dropdown-item .notification-user-content p {
-            width: 370px;
-            margin: 0;
-            font-size: 16px;
-            -webkit-box-orient: vertical;
-            display: -webkit-box;
-            text-align: justify;
-            overflow: hidden;
-            -webkit-line-clamp: 2;
-            white-space: initial; }
-          header .header-icon #header-notification .dropdown-item .notification-user-content time {
-            font-size: 15px;
-            color: #999; }
-      header .header-icon #header-notification .daxem {
+            object-fit: cover;
+            margin-right: 10px; }
+        header .header-icon #header-notification .dropdown-item .notification-user-content,
+        header .header-icon #header-friendrequest .dropdown-item .notification-user-content,
+        header .header-icon #header-user .dropdown-item .notification-user-content {
+          width: 80%; }
+      header .header-icon #header-notification .daxem,
+      header .header-icon #header-friendrequest .daxem,
+      header .header-icon #header-user .daxem {
         background-color: #f0f2f6; }
-    header .header-icon #header-user ul {
-      padding: 0px 0px;
-      list-style-type: none; }
-      header .header-icon #header-user ul li {
-        padding: 7px 15px; }
-        header .header-icon #header-user ul li:hover {
-          background-color: #f0f2f6; }
-        header .header-icon #header-user ul li a {
-          font-size: 14px;
-          text-decoration: none;
-          color: black; }
+    header .header-icon #header-notification .posted p {
+      margin: 0;
+      font-size: 16px;
+      -webkit-box-orient: vertical;
+      display: -webkit-box;
+      text-align: justify;
+      overflow: hidden;
+      -webkit-line-clamp: 2;
+      white-space: initial; }
+    header .header-icon #header-notification .posted time {
+      font-size: 15px;
+      color: #999; }
+    header .header-icon #header-notification .post-noti {
+      width: 70% !important; }
+      header .header-icon #header-notification .post-noti p {
+        margin: 0;
+        font-size: 16px;
+        -webkit-box-orient: vertical;
+        display: -webkit-box;
+        text-align: justify;
+        overflow: hidden;
+        -webkit-line-clamp: 2;
+        white-space: initial; }
+      header .header-icon #header-notification .post-noti time {
+        font-size: 15px;
+        color: #999; }
+    header .header-icon #header-notification .post-noti-img {
+      width: 10%;
+      padding-left: 0px; }
+      header .header-icon #header-notification .post-noti-img img {
+        height: 35px;
+        width: 35px; }
+    header .header-icon #header-notification .invitation p {
+      margin: 0;
+      font-size: 16px;
+      -webkit-box-orient: vertical;
+      display: -webkit-box;
+      text-align: justify;
+      overflow: hidden;
+      -webkit-line-clamp: 2;
+      white-space: initial; }
+    header .header-icon #header-notification .invitation time {
+      font-size: 15px;
+      color: #999; }
+    header .header-icon #header-notification .invitation a {
+      margin-left: 10px;
+      font-size: 15px;
+      text-decoration: none; }
+    header .header-icon #header-notification .invitation .confirm {
+      color: #003569; }
+    header .header-icon #header-notification .invitation .cancel {
+      color: gray; }
+    header .header-icon #header-friendrequest .notification-user-content {
+      display: flex;
+      justify-content: flex-end; }
+      header .header-icon #header-friendrequest .notification-user-content a {
+        margin: 0px 7px;
+        font-size: 14px;
+        text-decoration: none; }
+      header .header-icon #header-friendrequest .notification-user-content .confirm {
+        padding: 7px 10px;
+        color: white;
+        background-color: #003569; }
+      header .header-icon #header-friendrequest .notification-user-content .cancel {
+        color: gray;
+        padding: 7px 10px;
+        border: 1px solid gray; }
 
 /*# sourceMappingURL=header.css.map */
