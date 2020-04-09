@@ -33,25 +33,34 @@
                     <div class="add-new-avatar">
                         <a href="/Client/Register/RegisterStep3" title="" class="btn btn-light button-tiep">Tiếp</a>
                         <h3>Tải lên một ảnh đại diện</h3>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="avatar-frame">
-                                    <img id="avatar" src="https://bdh131.files.wordpress.com/2012/10/freeman_defaultblue_bdh.gif" alt="">
+                            @Html.AntiForgeryToken()
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="avatar-frame">
+                                        <img src="https://bdh131.files.wordpress.com/2012/10/freeman_defaultblue_bdh.gif" alt="" id="step-2-file-result">
+                                    </div>
                                 </div>
-                            </div>
-                            <div class=" col-md-6">
-                                @Html.AntiForgeryToken()
-                                <div class="d-flex align-items-center justify-content-center w-100 h-100">
-                                    <div class="avatar-frame-tools">
-                                        <button type="button" class="btn btn-success" id="add-image" for="update-image"><i class="far fa-images"></i>Thêm ảnh</button>
-                                        <input type="file" name="update-image" id="update-image">
-                                        <hr>
-                                        <p class="hoac">Hoặc</p>
-                                        <button type="button" class="btn btn-light"><span>Chụp ảnh</span><small>Bằng webcam của bạn</small></button>
+                                <div class=" col-md-6">
+                                    <div class="d-flex align-items-center justify-content-center w-100 h-100">
+                                        <div class="avatar-frame-tools">
+                                            <input type="file" name="images" id="step-2-file" accept="image/*" onchange="cropImgFunc(event)" />
+                                            <label for="step-2-file" class="btn btn-success"><i class="far fa-images"></i>Thêm ảnh</label>
+                                            <hr>
+                                            <p class="hoac">Hoặc</p>
+                                            <button type="button" class="btn btn-light"><span>Chụp ảnh</span><small>Bằng webcam của bạn</small></button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="result" id="inputImg">
+                                    </div>
+                                    <div id="slider" class="ep-slider-bar"></div>
+                                    <div class="d-flex justify-content-center">
+                                        <button type="button" class="btn btn-info" id="avatar-saved">Lưu</button>
+                                        <button type="button" class="btn btn-danger" id="avatar-cancel">Hủy</button>
                                     </div>
                                 </div>
                             </div>
-                        </div>
                     </div>
                 </div>
                 <div class="col-md-2">
@@ -64,6 +73,6 @@
 @{
     Html.RenderPartial("~/Areas/Client/Views/Layout/footer.cshtml");
 }
-@section js{ 
+@section js{
     <script src="~/Assets/javascript/RegisterStep2.js"></script>
 }

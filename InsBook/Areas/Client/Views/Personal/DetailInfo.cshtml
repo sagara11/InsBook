@@ -2,31 +2,51 @@
 @{
     ViewBag.Title = "DetailInfo";
     Layout = "~/Areas/Client/Views/Shared/_PersonalPage.cshtml";
+    var Profile = (Model.Models.GetProfileModel)ViewBag.Profile;
+
+    string trichdan = "";
+    string tacgia = "";
+    if (Profile.loitrichdan != null)
+    {
+        string[] loitrichdan = Profile.loitrichdan.Split('@');
+        trichdan = loitrichdan[0];
+        tacgia = loitrichdan[1];
+    }
+
+    string loaibietdanh = "";
+    string bietdanh = "";
+    if (Profile.bietdanh != null)
+    {
+        string[] nickname = Profile.bietdanh.Split('@');
+        bietdanh = nickname[1];
+        var loaibietdanhs = new string[8] { "Biệt danh", "Tên thời con gái", "Cách viết tên khác", "Tên sau kết hôn", "Họ và tên bố", "Tên khai sinh", "Tên cũ", "Tên có chức danh" };
+        loaibietdanh = loaibietdanhs[Convert.ToInt32(nickname[0])];
+    }
 }
-    <ul class="nav nav-tabs">
-        <li class="nav-item">
-            <a class="nav-link" href="/Client/Personal/Index"><i class="fas fa-rss-square"></i><span>Dòng thời gian</span></a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link active" href="/Client/Personal/ChangeGeneralInfor"><i class="far fa-user-circle"></i><span>Giới thiệu</span></a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="/Client/Personal/FriendsInfo"><i class="fas fa-users"></i><span>Bạn bè</span></a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="/Client/Personal/ImagesInfo"><i class="far fa-images"></i></i><span>Ảnh</span></a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span>Xem thêm</span>
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <a class="dropdown-item" href="/Client/Personal/SavedInfo">Lưu trữ</a>
-                <a class="dropdown-item" href="/Client/Personal/AlbumInfo">Bộ sưu tập</a>
-                <a class="dropdown-item" href="/Client/Personal/VideoInfo">Video</a>
-            </div>
-        </li>
-    </ul>
+<ul class="nav nav-tabs">
+    <li class="nav-item">
+        <a class="nav-link" href="/Client/Personal/Index"><i class="fas fa-rss-square"></i><span>Dòng thời gian</span></a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link active" href="/Client/Personal/ChangeGeneralInfor"><i class="far fa-user-circle"></i><span>Giới thiệu</span></a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/Client/Personal/FriendsInfo"><i class="fas fa-users"></i><span>Bạn bè</span></a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/Client/Personal/ImagesInfo"><i class="far fa-images"></i></i><span>Ảnh</span></a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span>Xem thêm</span>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item" href="/Client/Personal/SavedInfo">Lưu trữ</a>
+            <a class="dropdown-item" href="/Client/Personal/AlbumInfo">Bộ sưu tập</a>
+            <a class="dropdown-item" href="/Client/Personal/VideoInfo">Video</a>
+        </div>
+    </li>
+</ul>
 
 <!-- Tab panes -->
 <div class="tab-content">
@@ -61,204 +81,359 @@
             <div class="tab-pane container fade" id="menu2-4">...</div>
             <div class="tab-pane container fade" id="menu2-5">...</div>
             <div class="tab-pane container active" id="menu2-6">
-                <div class="description">
-                    <h3>Giới thiệu về Vua</h3>
-                    <ul class="list-description">
-                        <li class="list-description-item">
-                            <div class="description-item-name">
-                                <p>Không thích mọi thứ về mọi mặt</p>
-                            </div>
-                            <div class="description-item-tools">
-                                <i class="far fa-edit"></i>
-                                <i class="far fa-trash-alt"></i>
-                            </div>
-                        </li>
-                    </ul>
-                    <div class="description-adding">
-                        <button type="button" class="btn btn-light" id="show-description-adding-box"><i class="far fa-plus-square"></i><span>Viết một số điều về chính bạn</span></button>
-                    </div>
-                    <div class="description-adding-box">
-                        <div class="row">
-                            <div class="col-md-4">
-                                <label for="noidasong">Giới thiệu về bản thân</label>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <textarea class="form-control" id="mota"></textarea>
-                                </div>
-                            </div>
-                            <div class="col-md-2">
-
-                            </div>
-
-                            <hr>
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <select id="noidasong-baomat" class="form-control">
-                                        <option selected>Công khai</option>
-                                        <option>Bạn bè</option>
-                                        <option>Chỉ mình tôi</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <button type="button" class="btn btn-primary">Lưu thay đổi</button>
-                                <button type="button" class="btn btn-light" id="close-description-adding-box">Hủy</button>
-                            </div>
-                            <div class="col-md-2">
-
-                            </div>
+                <div class="detail-info">
+                    <h3>Giới thiệu</h3>
+                    @if (Profile.gioithieu == null)
+                    {
+                        <div class="detail-info-adding ttct-loai-0-adding">
+                            <button type="button" class="btn btn-light" id="show-detail-info-adding-box" onclick="ShowDetailIndfoAddingBox(0)"><i class="far fa-plus-square"></i><span>Viết một số điều về chính bạn</span></button>
                         </div>
-                        <button class="btn btn-light description-closse" type="button" id=""><i class="fas fa-times"></i> Hủy</button>
-                    </div>
+                        <div class="detail-info-adding-box ttct-loai-0-adding-box">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label for="ttct-loai-0-gioithieu">Giới thiệu về bản thân</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <textarea class="form-control" id="ttct-loai-0-gioithieu" placeholder="Nhập lời giới thiệu về bạn"></textarea>
+                                        <span class="errors" id="check-ttct-loai-0-gioithieu"><i class="fas fa-times"></i></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+
+                                </div>
+
+                                <hr>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <select id="ttct-loai-0-baomat" class="form-control">
+                                            <option selected value="0">Công khai</option>
+                                            <option value="1">Bạn bè</option>
+                                            <option value="2">Chỉ mình tôi</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <button type="button" class="btn btn-primary" onclick="DetailInfoAdding(0)">Lưu thay đổi</button>
+                                    <button type="button" class="btn btn-light" id="close-detail-info-adding-box" onclick="CloseDetailInfoAddingBox(0)">Hủy</button>
+                                </div>
+                                <div class="col-md-2">
+
+                                </div>
+                            </div>
+                            <button class="btn btn-light detail-info-closse" type="button" onclick="CloseDetailInfoAddingBox(0)"><i class="fas fa-times"></i> Hủy</button>
+                        </div>
+                    }
+                    else
+                    {
+                        <ul class="list-detail-info ttct-loai-0">
+                            <li class="list-detail-info-item">
+                                <div class="detail-info-item-name">
+                                    <p>@Profile.gioithieu</p>
+                                    <p></p>
+                                </div>
+                                <div class="detail-info-item-tools">
+                                    <i class="far fa-edit" onclick="DetailInfoEditting(0)"></i>
+                                    <i class="far fa-trash-alt" onclick="DetailInfoRemoving(0)"></i>
+                                </div>
+                            </li>
+                        </ul>
+                        <div class="detail-info-editing-box ttct-loai-0-editing-box">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label for="edit-ttct-loai-0-gioithieu">Giới thiệu về bản thân</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <textarea class="form-control" id="edit-ttct-loai-0-gioithieu" placeholder="Nhập lời giới thiệu về bạn"></textarea>
+                                        <span class="errors" id="check-edit-ttct-loai-0-gioithieu"><i class="fas fa-times"></i></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+
+                                </div>
+
+                                <hr>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <select id="edit-ttct-loai-0-baomat" class="form-control">
+                                            <option selected value="0">Công khai</option>
+                                            <option value="1">Bạn bè</option>
+                                            <option value="2">Chỉ mình tôi</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <button type="button" class="btn btn-primary" onclick="SubmitEditDetailInfoBox(0)">Lưu thay đổi</button>
+                                    <button type="button" class="btn btn-light" id="close-detail-info-editing-box" onclick="CloseDetailInfoEditBox(0)">Hủy</button>
+                                </div>
+                                <div class="col-md-2">
+
+                                </div>
+                            </div>
+                            <button class="btn btn-light detail-info-closse" type="button" onclick="CloseDetailInfoEditBox(0)"><i class="fas fa-times"></i> Hủy</button>
+                        </div>
+                    }
                 </div>
-                <div class="nickname">
-                    <h3>Các tên khác</h3>
-                    <ul class="list-nickname">
-                        <li class="list-nickname-item">
-                            <div class="nickname-item-name">
-                                <p>Thắng Bếu</p>
-                                <p>Biệt danh</p>
-                            </div>
-                            <div class="nickname-item-tools">
-                                <i class="far fa-edit"></i>
-                                <i class="far fa-trash-alt"></i>
-                            </div>
-                        </li>
-                        <li class="list-nickname-item">
-                            <div class="nickname-item-name">
-                                <p>Hồ Thắng</p>
-                                <p>Tên giả</p>
-                            </div>
-                            <div class="nickname-item-tools">
-                                <i class="far fa-edit"></i>
-                                <i class="far fa-trash-alt"></i>
-                            </div>
-                        </li>
-                    </ul>
-                    <div class="nickname-adding">
-                        <button type="button" class="btn btn-light" id="show-nickname-adding-box"><i class="far fa-plus-square"></i><span>Thêm biệt danh, tên khai sinh,...</span></button>
-                    </div>
-                    <div class="nickname-adding-box">
-                        <div class="row">
-                            <div class="col-md-4">
-                                <label for="noidasong">Loại tên</label>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="form-group">
-                                    <select id="moiquanhe-loaithanhvien" class="form-control">
-                                        <option selected disabled class="d-none">Chọn mối quan hệ</option>
-                                        <option>Biệt danh</option>
-                                        <option>Tên thời con gái</option>
-                                        <option>Cách viết tên khác</option>
-                                        <option>Tên sau kết hôn</option>
-                                        <option>Họ và tên bố</option>
-                                        <option>Tên khai sinh</option>
-                                        <option>Tên cũ</option>
-                                        <option>Tên có chức danh</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-
-                            </div>
-                            <div class="col-md-2">
-
-                            </div>
-                            <div class="col-md-4">
-                                <label for="noidasong">Tên</label>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <input type="text" class="form-control" id="noidasong">
-                                </div>
-                            </div>
-
-                            <div class="col-md-2">
-
-                            </div>
-                            <hr>
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <select id="noidasong-baomat" class="form-control">
-                                        <option selected>Công khai</option>
-                                        <option>Bạn bè</option>
-                                        <option>Chỉ mình tôi</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <button type="button" class="btn btn-primary">Lưu thay đổi</button>
-                                <button type="button" class="btn btn-light" id="close-nickname-adding-box">Hủy</button>
-                            </div>
-                            <div class="col-md-2">
-
-                            </div>
+                <div class="detail-info">
+                    <h3>TÊN KHÁC</h3>
+                    @if (Profile.bietdanh == null)
+                    {
+                        <div class="detail-info-adding ttct-loai-1-adding">
+                            <button type="button" class="btn btn-light" id="show-detail-info-adding-box" onclick="ShowDetailIndfoAddingBox(1)"><i class="far fa-plus-square"></i><span>Thêm biệt danh, tên khai sinh,...</span></button>
                         </div>
-                        <button class="btn btn-light nickname-closse" type="button" id=""><i class="fas fa-times"></i> Hủy</button>
-                    </div>
+                        <div class="detail-info-adding-box ttct-loai-1-adding-box">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label for="ttct-loai-1-loaibietdanh">Loại tên</label>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <select id="ttct-loai-1-loaibietdanh" class="form-control loaibietdanh">
+                                            <option selected value="0">Biệt danh</option>
+                                            <option value="1">Tên thời con gái</option>
+                                            <option value="2">Cách viết tên khác</option>
+                                            <option value="3">Tên sau kết hôn</option>
+                                            <option value="4">Họ và tên bố</option>
+                                            <option value="5">Tên khai sinh</option>
+                                            <option value="6">Tên cũ</option>
+                                            <option value="7">Tên có chức danh</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+
+                                </div>
+                                <div class="col-md-2">
+
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="ttct-loai-1-ten">Tên</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" id="ttct-loai-1-ten">
+                                        <span class="errors" id="check-ttct-loai-1-ten"><i class="fas fa-times"></i></span>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-2">
+
+                                </div>
+
+                                <hr>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <select id="ttct-loai-1-baomat" class="form-control">
+                                            <option selected value="0">Công khai</option>
+                                            <option value="1">Bạn bè</option>
+                                            <option value="2">Chỉ mình tôi</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <button type="button" class="btn btn-primary" onclick="DetailInfoAdding(1)">Lưu thay đổi</button>
+                                    <button type="button" class="btn btn-light" id="close-detail-info-adding-box" onclick="CloseDetailInfoAddingBox(1)">Hủy</button>
+                                </div>
+                                <div class="col-md-2">
+
+                                </div>
+                            </div>
+                            <button class="btn btn-light detail-info-closse" type="button" onclick="CloseDetailInfoAddingBox(1)"><i class="fas fa-times"></i> Hủy</button>
+                        </div>
+                    }
+                    else
+                    {
+                        <ul class="list-detail-info ttct-loai-1">
+                            <li class="list-detail-info-item">
+                                <div class="detail-info-item-name">
+                                    <p>@bietdanh</p>
+                                    <p>@loaibietdanh</p>
+                                </div>
+                                <div class="detail-info-item-tools">
+                                    <i class="far fa-edit" onclick="DetailInfoEditting(1)"></i>
+                                    <i class="far fa-trash-alt" onclick="DetailInfoRemoving(1)"></i>
+                                </div>
+                            </li>
+                        </ul>
+                        <div class="detail-info-editing-box ttct-loai-1-editing-box">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label for="edit-ttct-loai-1-loaibietdanh">Loại tên</label>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <select id="edit-ttct-loai-1-loaibietdanh" class="form-control loaibietdanh">
+                                            <option selected value="0">Biệt danh</option>
+                                            <option value="1">Tên thời con gái</option>
+                                            <option value="2">Cách viết tên khác</option>
+                                            <option value="3">Tên sau kết hôn</option>
+                                            <option value="4">Họ và tên bố</option>
+                                            <option value="5">Tên khai sinh</option>
+                                            <option value="6">Tên cũ</option>
+                                            <option value="7">Tên có chức danh</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+
+                                </div>
+                                <div class="col-md-2">
+
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="edit-ttct-loai-1-ten">Tên</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" id="edit-ttct-loai-1-ten">
+                                        <span class="errors" id="check-edit-ttct-loai-1-ten"><i class="fas fa-times"></i></span>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-2">
+
+                                </div>
+
+                                <hr>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <select id="edit-ttct-loai-1-baomat" class="form-control">
+                                            <option selected value="0">Công khai</option>
+                                            <option value="1">Bạn bè</option>
+                                            <option value="2">Chỉ mình tôi</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <button type="button" class="btn btn-primary" onclick="SubmitEditDetailInfoBox(1)">Lưu thay đổi</button>
+                                    <button type="button" class="btn btn-light" id="close-detail-info-editing-box" onclick="CloseDetailInfoEditBox(1)">Hủy</button>
+                                </div>
+                                <div class="col-md-2">
+
+                                </div>
+                            </div>
+                            <button class="btn btn-light detail-info-closse" type="button" onclick="CloseDetailInfoEditBox(1)"><i class="fas fa-times"></i> Hủy</button>
+                        </div>
+                    }
                 </div>
-                <div class="quote">
-                    <h3>Trích dẫn yêu thích</h3>
-                    <ul class="list-quote">
-                        <li class="list-quote-item">
-                            <div class="quote-item-name">
-                                <p>Never interrupt your enemy when he is making a mistake.</p>
-                                <p>Napoleon Bonaparte</p>
-                            </div>
-                            <div class="quote-item-tools">
-                                <i class="far fa-edit"></i>
-                                <i class="far fa-trash-alt"></i>
-                            </div>
-                        </li>
-                        <li class="list-quote-item">
-                            <div class="quote-item-name">
-                                <p>Vạn sự cụ bị, chích khiếm đông phong</p>
-                                <p>Gia Cát Lượng</p>
-                            </div>
-                            <div class="quote-item-tools">
-                                <i class="far fa-edit"></i>
-                                <i class="far fa-trash-alt"></i>
-                            </div>
-                        </li>
-                    </ul>
-                    <div class="quote-adding">
-                        <button type="button" class="btn btn-light" id="show-quote-adding-box"><i class="far fa-plus-square"></i><span>Thêm câu trích dẫn yêu thích của bạn</span></button>
-                    </div>
-                    <div class="quote-adding-box">
-                        <div class="row">
-                            <div class="col-md-4">
-                                <label for="noidasong">Trích dẫn yêu thích</label>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <textarea class="form-control" id="mota"></textarea>
-                                </div>
-                            </div>
-                            <div class="col-md-2">
-
-                            </div>
-
-                            <hr>
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <select id="noidasong-baomat" class="form-control">
-                                        <option selected>Công khai</option>
-                                        <option>Bạn bè</option>
-                                        <option>Chỉ mình tôi</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <button type="button" class="btn btn-primary">Lưu thay đổi</button>
-                                <button type="button" class="btn btn-light" id="close-quote-adding-box">Hủy</button>
-                            </div>
-                            <div class="col-md-2">
-
-                            </div>
+                <div class="detail-info">
+                    <h3>TRÍCH DẪN YÊU THÍCH</h3>
+                    @if (Profile.loitrichdan == null)
+                    {
+                        <div class="detail-info-adding ttct-loai-2-adding">
+                            <button type="button" class="btn btn-light" id="show-detail-info-adding-box" onclick="ShowDetailIndfoAddingBox(2)"><i class="far fa-plus-square"></i><span>Thêm câu trích dẫn yêu thích của bạn</span></button>
                         </div>
-                        <button class="btn btn-light quote-closse" type="button" id=""><i class="fas fa-times"></i> Hủy</button>
-                    </div>
+                        <div class="detail-info-adding-box ttct-loai-2-adding-box">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label for="ttct-loai-2-trichdan">Trích dẫn yêu thích</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <textarea class="form-control" id="ttct-loai-2-trichdan"></textarea>
+                                        <span class="errors" id="check-ttct-loai-2-trichdan"><i class="fas fa-times"></i></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="ttct-loai-2-tacgia">Tác giả</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input class="form-control" id="ttct-loai-2-tacgia">
+                                        <span class="errors" id="check-ttct-loai-2-tacgia"><i class="fas fa-times"></i></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+
+                                </div>
+
+                                <hr>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <select id="ttct-loai-2-baomat" class="form-control">
+                                            <option selected value="0">Công khai</option>
+                                            <option value="1">Bạn bè</option>
+                                            <option value="2">Chỉ mình tôi</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <button type="button" class="btn btn-primary" onclick="DetailInfoAdding(2)">Lưu thay đổi</button>
+                                    <button type="button" class="btn btn-light" id="close-detail-info-adding-box" onclick="CloseDetailInfoAddingBox(2)">Hủy</button>
+                                </div>
+                                <div class="col-md-2">
+
+                                </div>
+                            </div>
+                            <button class="btn btn-light detail-info-closse" type="button" onclick="CloseDetailInfoAddingBox(2)"><i class="fas fa-times"></i> Hủy</button>
+                        </div>
+                    }
+                    else
+                    {
+                        <ul class="list-detail-info ttct-loai-2">
+                            <li class="list-detail-info-item">
+                                <div class="detail-info-item-name">
+                                    <p>@trichdan</p>
+                                    <p>@tacgia</p>
+                                </div>
+                                <div class="detail-info-item-tools">
+                                    <i class="far fa-edit" onclick="DetailInfoEditting(2)"></i>
+                                    <i class="far fa-trash-alt" onclick="DetailInfoRemoving(2)"></i>
+                                </div>
+                            </li>
+                        </ul>
+                        <div class="detail-info-editing-box ttct-loai-2-editing-box">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label for="edit-ttct-loai-2-trichdan">Trích dẫn yêu thích</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <textarea class="form-control" id="edit-ttct-loai-2-trichdan"></textarea>
+                                        <span class="errors" id="check-edit-ttct-loai-2-trichdan"><i class="fas fa-times"></i></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="edit-ttct-loai-2-tacgia">Tác giả</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input class="form-control" id="edit-ttct-loai-2-tacgia">
+                                        <span class="errors" id="check-edit-ttct-loai-2-tacgia"><i class="fas fa-times"></i></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+
+                                </div>
+
+                                <hr>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <select id="edit-ttct-loai-2-baomat" class="form-control">
+                                            <option selected value="0">Công khai</option>
+                                            <option value="1">Bạn bè</option>
+                                            <option value="2">Chỉ mình tôi</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <button type="button" class="btn btn-primary" onclick="SubmitEditDetailInfoBox(2)">Lưu thay đổi</button>
+                                    <button type="button" class="btn btn-light" id="close-detail-info-editing-box" onclick="CloseDetailInfoEditBox(2)">Hủy</button>
+                                </div>
+                                <div class="col-md-2">
+
+                                </div>
+                            </div>
+                            <button class="btn btn-light detail-info-closse" type="button" onclick="CloseDetailInfoEditBox(2)"><i class="fas fa-times"></i> Hủy</button>
+                        </div>
+                    }
                 </div>
             </div>
         </div>

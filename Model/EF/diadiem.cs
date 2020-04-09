@@ -23,9 +23,11 @@ namespace Model.EF
 
         public int id { get; set; }
 
-        [Required]
         [StringLength(255)]
         public string ten { get; set; }
+
+        [StringLength(255)]
+        public string anh_url { get; set; }
 
         public int? parent_id { get; set; }
 

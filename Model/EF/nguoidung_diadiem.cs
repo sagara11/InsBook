@@ -18,9 +18,9 @@ namespace Model.EF
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int diadiem_id { get; set; }
 
-        public int loaidiadiem { get; set; }
+        public int? loaidiadiem { get; set; }
 
-        public int baomat { get; set; }
+        public int? baomat { get; set; }
 
         public int? baomat_chophep { get; set; }
 

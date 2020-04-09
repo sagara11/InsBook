@@ -2,31 +2,32 @@
 @{
     ViewBag.Title = "Rela_Fami";
     Layout = "~/Areas/Client/Views/Shared/_PersonalPage.cshtml";
+    var Profile = (Model.Models.GetProfileModel)ViewBag.Profile;
 }
-    <ul class="nav nav-tabs">
-        <li class="nav-item">
-            <a class="nav-link" href="/Client/Personal/Index"><i class="fas fa-rss-square"></i><span>Dòng thời gian</span></a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link active" href="/Client/Personal/ChangeGeneralInfor"><i class="far fa-user-circle"></i><span>Giới thiệu</span></a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="/Client/Personal/FriendsInfo"><i class="fas fa-users"></i><span>Bạn bè</span></a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="/Client/Personal/ImagesInfo"><i class="far fa-images"></i></i><span>Ảnh</span></a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span>Xem thêm</span>
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <a class="dropdown-item" href="/Client/Personal/SavedInfo">Lưu trữ</a>
-                <a class="dropdown-item" href="/Client/Personal/AlbumInfo">Bộ sưu tập</a>
-                <a class="dropdown-item" href="/Client/Personal/VideoInfo">Video</a>
-            </div>
-        </li>
-    </ul>
+<ul class="nav nav-tabs">
+    <li class="nav-item">
+        <a class="nav-link" href="/Client/Personal/Index"><i class="fas fa-rss-square"></i><span>Dòng thời gian</span></a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link active" href="/Client/Personal/ChangeGeneralInfor"><i class="far fa-user-circle"></i><span>Giới thiệu</span></a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/Client/Personal/FriendsInfo"><i class="fas fa-users"></i><span>Bạn bè</span></a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/Client/Personal/ImagesInfo"><i class="far fa-images"></i></i><span>Ảnh</span></a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span>Xem thêm</span>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item" href="/Client/Personal/SavedInfo">Lưu trữ</a>
+            <a class="dropdown-item" href="/Client/Personal/AlbumInfo">Bộ sưu tập</a>
+            <a class="dropdown-item" href="/Client/Personal/VideoInfo">Video</a>
+        </div>
+    </li>
+</ul>
 
 <!-- Tab panes -->
 <div class="tab-content">
@@ -61,213 +62,97 @@
             <div class="tab-pane container fade" id="menu2-4">...</div>
             <div class="tab-pane container active" id="menu2-5">
                 <div class="family-and-relationship">
-                    <div class="family">
-                        <h3>Tình trạng mối quan hệ</h3>
-                        <ul class="list-family">
-                            <li class="list-family-item">
-                                <div class="family-item-thumbnail">
-                                    <img src="~/Images/22904751_688560231353134_2748711313877205190_o.jpg" alt="">
-                                </div>
-                                <div class="family-item-name">
-                                    <p>Tú Linh</p>
-                                    <p>Ly thân</p>
-                                </div>
-                                <div class="family-item-tools">
-                                    <i class="far fa-edit"></i>
-                                    <i class="far fa-trash-alt"></i>
-                                </div>
-                            </li>
-                            <li class="list-family-item">
-                                <div class="family-item-thumbnail">
-                                    <img src="~/Images/22904751_688560231353134_2748711313877205190_o.jpg" alt="">
-                                </div>
-                                <div class="family-item-name">
-                                    <p>Nguyễn Mai Chi</p>
-                                    <p>Đang tìm hiểu</p>
-                                </div>
-                                <div class="family-item-tools">
-                                    <i class="far fa-edit"></i>
-                                    <i class="far fa-trash-alt"></i>
-                                </div>
-                            </li>
-                        </ul>
-                        <div class="family-adding">
-                            <button type="button" class="btn btn-light" id="show-family-adding-box"><i class="far fa-plus-square"></i><span>Thêm tình trạng quan hệ của bạn</span></button>
-                        </div>
-                        <div class="family-adding-box">
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <label for="moiquanhe">Tình trạng mối quan hệ</label>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="form-group">
-                                        <select id="moiquanhe-loaithanhvien" class="form-control">
-                                            <option selected disabled class="d-none">Chọn mối quan hệ</option>
-                                            <option>Độc thân</option>
-                                            <option>Hẹn hò</option>
-                                            <option>Đã đính hôn</option>
-                                            <option>Đã kết hôn</option>
-                                            <option>Kết hôn dồng tính</option>
-                                            <option>Chung sống</option>
-                                            <option>Tìm hiểu</option>
-                                            <option>Có mối quan hệ phức tạp</option>
-                                            <option>Đã ly thân</option>
-                                            <option>Đã ly hôn</option>
-                                            <option>Góa</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-
-                                </div>
-                                <div class="col-md-2">
-
-                                </div>
-                                <div class="col-md-4">
-                                    <label for=""></label>
-                                </div>
-                                <div class="col-md-6 add-user">
-                                    <div class="family-avatar">
-                                        <img src="~/Images/22904751_688560231353134_2748711313877205190_o.jpg" alt="">
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" id="noidasong">
-                                    </div>
-                                </div>
-
-                                <div class="col-md-2">
-
-                                </div>
-                                <hr>
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <select id="noidasong-baomat" class="form-control">
-                                            <option selected>Công khai</option>
-                                            <option>Bạn bè</option>
-                                            <option>Chỉ mình tôi</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <button type="button" class="btn btn-primary">Lưu thay đổi</button>
-                                    <button type="button" class="btn btn-light" id="close-family-adding-box">Hủy</button>
-                                </div>
-                                <div class="col-md-2">
-
-                                </div>
-                            </div>
-                            <button class="btn btn-light family-closse" type="button" id=""><i class="fas fa-times"></i> Hủy</button>
-                        </div>
-                    </div>
                     <div class="relationship">
-                        <h3>Thành viên trong gia đình</h3>
-                        <ul class="list-relationship">
-                            <li class="list-relationship-item">
-                                <div class="relationship-item-thumbnail">
-                                    <img src="~/Images/22904751_688560231353134_2748711313877205190_o.jpg" alt="">
+                        <h3>Tình trạng mối quan hệ</h3>
+                        @*@if (Profile.moiquanhe == null)
+                        {
+                            <div class="relationship-adding">
+                                <button type="button" class="btn btn-light" id="show-relationship-adding-box"><i class="far fa-plus-square"></i><span>Thêm tình trạng quan hệ của bạn</span></button>
+                            </div>
+                            <div class="relationship-adding-box">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <label for="moiquanhe">Tình trạng mối quan hệ</label>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <select id="moiquanhe-loaithanhvien" class="form-control">
+                                                <option selected disabled class="d-none">Chọn mối quan hệ</option>
+                                                <option>Độc thân</option>
+                                                <option>Hẹn hò</option>
+                                                <option>Đã đính hôn</option>
+                                                <option>Đã kết hôn</option>
+                                                <option>Kết hôn dồng tính</option>
+                                                <option>Chung sống</option>
+                                                <option>Tìm hiểu</option>
+                                                <option>Có mối quan hệ phức tạp</option>
+                                                <option>Đã ly thân</option>
+                                                <option>Đã ly hôn</option>
+                                                <option>Góa</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+
+                                    </div>
+                                    <div class="col-md-2">
+
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for=""></label>
+                                    </div>
+                                    <div class="col-md-6 add-user">
+                                        <div class="relationship-avatar">
+                                            <img src="~/Images/22904751_688560231353134_2748711313877205190_o.jpg" alt="">
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" id="noidasong">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-2">
+
+                                    </div>
+                                    <hr>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <select id="noidasong-baomat" class="form-control">
+                                                <option selected>Công khai</option>
+                                                <option>Bạn bè</option>
+                                                <option>Chỉ mình tôi</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <button type="button" class="btn btn-primary">Lưu thay đổi</button>
+                                        <button type="button" class="btn btn-light" id="close-relationship-adding-box">Hủy</button>
+                                    </div>
+                                    <div class="col-md-2">
+
+                                    </div>
                                 </div>
-                                <div class="relationship-item-name">
-                                    <p>Long Uchiha</p>
-                                    <p>Đệ tử</p>
-                                </div>
-                                <div class="relationship-item-tools">
-                                    <i class="far fa-edit"></i>
-                                    <i class="far fa-trash-alt"></i>
-                                </div>
-                            </li>
-                            <li class="list-relationship-item">
-                                <div class="relationship-item-thumbnail">
-                                    <img src="~/Images/22904751_688560231353134_2748711313877205190_o.jpg" alt="">
-                                </div>
-                                <div class="relationship-item-name">
-                                    <p>Phong con</p>
-                                    <p>Con trai</p>
-                                </div>
-                                <div class="relationship-item-tools">
-                                    <i class="far fa-edit"></i>
-                                    <i class="far fa-trash-alt"></i>
-                                </div>
-                            </li>
-                        </ul>
-                        <div class="relationship-adding">
-                            <button type="button" class="btn btn-light" id="show-relationship-adding-box"><i class="far fa-plus-square"></i><span>Thêm một thành viên gia đình</span></button>
-                        </div>
-                        <div class="relationship-adding-box">
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <label for="noidasong">Thành viên gia đình</label>
-                                </div>
-                                <div class="col-md-6 add-user">
-                                    <div class="relationship-avatar">
+                                <button class="btn btn-light relationship-closse" type="button" id=""><i class="fas fa-times"></i> Hủy</button>
+                            </div>
+                        }
+                        else
+                        {
+                            <ul class="list-relationship">
+                                <li class="list-relationship-item">
+                                    <div class="relationship-item-thumbnail">
                                         <img src="~/Images/22904751_688560231353134_2748711313877205190_o.jpg" alt="">
                                     </div>
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" id="noidasong">
+                                    <div class="relationship-item-name">
+                                        <p>@Profile.moiquanhe.ten</p>
+                                        <p>@Profile.moiquanhe.moiquanhe</p>
                                     </div>
-                                </div>
-                                <div class="col-md-2">
-
-                                </div>
-                                <div class="col-md-4">
-                                    <label for=""></label>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="form-group">
-                                        <select id="moiquanhe-loaithanhvien" class="form-control">
-                                            <option selected disabled class="d-none">Chọn mối quan hệ</option>
-                                            <option>Mẹ</option>
-                                            <option>Bố</option>
-                                            <option>Con gái</option>
-                                            <option>Con trai</option>
-                                            <option>Cháu gái</option>
-                                            <option>Cháu trai</option>
-                                            <option>Em gái</option>
-                                            <option>Chị gái</option>
-                                            <option>Em trai</option>
-                                            <option>Anh trai</option>
-                                            <option>Bà Ngoại</option>
-                                            <option>Bà Nội</option>
-                                            <option>Ông ngoại</option>
-                                            <option>Ông nội</option>
-                                            <option>Cháu gái (cháu ngoại)</option>
-                                            <option>Cháu gái (cháu nội)</option>
-                                            <option>Cháu trai (cháu nội)</option>
-                                            <option>Cháu trai (cháu nội)</option>
-                                            <option>Bác (chị của mẹ)</option>
-                                            <option>Bác (chị của bố)</option>
-                                            <option>Dì (em của mẹ)</option>
-                                            <option>Cậu (em của mẹ)</option>
-                                            <option>Cô (em của bố)</option>
-                                            <option>Chú (em của bố)</option>
-                                        </select>
+                                    <div class="relationship-item-tools">
+                                        <i class="far fa-edit"></i>
+                                        <i class="far fa-trash-alt"></i>
                                     </div>
-                                </div>
-                                <div class="col-md-3">
-
-                                </div>
-                                <div class="col-md-2">
-
-                                </div>
-                                <hr>
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <select id="noidasong-baomat" class="form-control">
-                                            <option selected>Công khai</option>
-                                            <option>Bạn bè</option>
-                                            <option>Chỉ mình tôi</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <button type="button" class="btn btn-primary">Lưu thay đổi</button>
-                                    <button type="button" class="btn btn-light" id="close-relationship-adding-box">Hủy</button>
-                                </div>
-                                <div class="col-md-2">
-
-                                </div>
-                            </div>
-                            <button class="btn btn-light relationship-closse" type="button" id=""><i class="fas fa-times"></i> Hủy</button>
-                        </div>
+                                </li>
+                            </ul>
+                        }*@
+                    <h1 style="padding:30px; text-align:center; color:gray">CHỨC NĂNG ĐANG ĐƯỢC CẬP NHẬT</h1>
                     </div>
                 </div>
             </div>

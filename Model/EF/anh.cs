@@ -5,7 +5,6 @@ namespace Model.EF
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
-    using System.Numerics;
 
     [Table("anh")]
     public partial class anh
@@ -29,7 +28,7 @@ namespace Model.EF
         }
 
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public long? id { get; set; }
+        public long id { get; set; }
 
         [StringLength(255)]
         public string tieude { get; set; }

@@ -51,7 +51,9 @@ namespace InsBook.Areas.Client.Controllers
                     userDB.ngaycapnhat = DateTime.Now;
                     userDB.soluongbanbe = 0;
                     userDB.soluongtheodoi = 0;
+                    userDB.soluongbaiviet = 0;
                     userDB.vaitro = 1;
+                    userDB.anhdd = 0;
 
                     // Thêm vào db
                     var id = new UserDao().Insert(userDB); // trả về kết quả là id

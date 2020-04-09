@@ -62,9 +62,12 @@
   <ItemGroup>
     <Compile Include="Common\Accessories.cs" />
     <Compile Include="Dao\AddFriendDao.cs" />
+    <Compile Include="Dao\CompanyDao.cs" />
     <Compile Include="Dao\ImageDao.cs" />
+    <Compile Include="Dao\LocationDao.cs" />
     <Compile Include="Dao\PostDao.cs" />
     <Compile Include="Dao\RegisterDao.cs" />
+    <Compile Include="Dao\SchoolDao.cs" />
     <Compile Include="Dao\UserDao.cs" />
     <Compile Include="EF\anh.cs" />
     <Compile Include="EF\anh_binhluan.cs" />
@@ -117,7 +120,16 @@
     <Compile Include="EF\video.cs" />
     <Compile Include="EF\video_binhluan.cs" />
     <Compile Include="EF\video_chiase.cs" />
-    <Compile Include="Models\AddFriendModel.cs" />
+    <Compile Include="Models\GetAlbumModel.cs" />
+    <Compile Include="Models\GetFriendsModel.cs" />
+    <Compile Include="Models\GetImagesModel.cs" />
+    <Compile Include="Models\GetPostModel.cs" />
+    <Compile Include="Models\GetProfileModel.cs" />
+    <Compile Include="Models\GetSavedItemModel.cs" />
+    <Compile Include="Models\GetVideoModel.cs" />
+    <Compile Include="Models\SetCompany.cs" />
+    <Compile Include="Models\SetSchool.cs" />
+    <Compile Include="Models\TestModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -8,7 +8,7 @@ namespace Model.EF
     public partial class InsBookDbContext : DbContext
     {
         public InsBookDbContext()
-            : base(@"data source=DESKTOP-PRKCNPR\SQLEXPRESS;initial catalog=social_network_ai;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework")
+            : base(@"data source=LAPTOP-Q88KDV0C\SQLEXPRESS;initial catalog=social_network_ai;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework")
         {
         }
 
@@ -324,6 +324,11 @@ namespace Model.EF
                 .HasForeignKey(e => e.baomat_chan);
 
             modelBuilder.Entity<chan_chiase>()
+                .HasMany(e => e.nguoidung_congty)
+                .WithOptional(e => e.chan_chiase)
+                .HasForeignKey(e => e.baomat_chan);
+
+            modelBuilder.Entity<chan_chiase>()
                 .HasMany(e => e.nguoidung_diadiem)
                 .WithOptional(e => e.chan_chiase)
                 .HasForeignKey(e => e.baomat_chan);
@@ -340,11 +345,6 @@ namespace Model.EF
 
             modelBuilder.Entity<chan_chiase>()
                 .HasMany(e => e.nguoidung_truonghoc_chuyennganh)
-                .WithOptional(e => e.chan_chiase)
-                .HasForeignKey(e => e.baomat_chan);
-
-            modelBuilder.Entity<chan_chiase>()
-                .HasMany(e => e.nguoidung_congty)
                 .WithOptional(e => e.chan_chiase)
                 .HasForeignKey(e => e.baomat_chan);
 
@@ -389,6 +389,11 @@ namespace Model.EF
                 .HasForeignKey(e => e.baomat_chophep);
 
             modelBuilder.Entity<chophep_chiase>()
+                .HasMany(e => e.nguoidung_congty)
+                .WithOptional(e => e.chophep_chiase)
+                .HasForeignKey(e => e.baomat_chophep);
+
+            modelBuilder.Entity<chophep_chiase>()
                 .HasMany(e => e.nguoidung_diadiem)
                 .WithOptional(e => e.chophep_chiase)
                 .HasForeignKey(e => e.baomat_chophep);
@@ -405,11 +410,6 @@ namespace Model.EF
 
             modelBuilder.Entity<chophep_chiase>()
                 .HasMany(e => e.nguoidung_truonghoc_chuyennganh)
-                .WithOptional(e => e.chophep_chiase)
-                .HasForeignKey(e => e.baomat_chophep);
-
-            modelBuilder.Entity<chophep_chiase>()
-                .HasMany(e => e.nguoidung_congty)
                 .WithOptional(e => e.chophep_chiase)
                 .HasForeignKey(e => e.baomat_chophep);
 
@@ -454,10 +454,18 @@ namespace Model.EF
                 .Map(m => m.ToTable("truonghoc_chuyennganh"));
 
             modelBuilder.Entity<congty>()
+                .Property(e => e.anh_url)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<congty>()
                 .HasMany(e => e.nguoidung_congty)
                 .WithRequired(e => e.congty)
                 .HasForeignKey(e => e.congty_id)
                 .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<diadiem>()
+                .Property(e => e.anh_url)
+                .IsUnicode(false);
 
             modelBuilder.Entity<diadiem>()
                 .HasMany(e => e.baiviets)
@@ -632,6 +640,12 @@ namespace Model.EF
                 .WithRequired(e => e.nguoidung);
 
             modelBuilder.Entity<nguoidung>()
+                .HasMany(e => e.nguoidung_congty)
+                .WithRequired(e => e.nguoidung)
+                .HasForeignKey(e => e.nguoidung_id)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<nguoidung>()
                 .HasMany(e => e.nguoidung_diadiem)
                 .WithRequired(e => e.nguoidung)
                 .HasForeignKey(e => e.nguoidung_id)
@@ -653,12 +667,6 @@ namespace Model.EF
                 .HasMany(e => e.nguoidung_truonghoc)
                 .WithOptional(e => e.nguoidung)
                 .HasForeignKey(e => e.nguoidung_id);
-
-            modelBuilder.Entity<nguoidung>()
-                .HasMany(e => e.nguoidung_congty)
-                .WithRequired(e => e.nguoidung)
-                .HasForeignKey(e => e.nguoidung_id)
-                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<nguoidung>()
                 .HasMany(e => e.nhoms)
@@ -842,6 +850,10 @@ namespace Model.EF
                 .HasMany(e => e.videos)
                 .WithMany(e => e.trangs)
                 .Map(m => m.ToTable("trang_video"));
+
+            modelBuilder.Entity<truonghoc>()
+                .Property(e => e.anh_url)
+                .IsUnicode(false);
 
             modelBuilder.Entity<truonghoc>()
                 .HasMany(e => e.nguoidung_truonghoc)

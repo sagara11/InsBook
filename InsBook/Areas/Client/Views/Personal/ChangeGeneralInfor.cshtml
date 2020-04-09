@@ -2,7 +2,22 @@
 @{
     ViewBag.Title = "ChangeGeneralInfor";
     Layout = "~/Areas/Client/Views/Shared/_PersonalPage.cshtml";
+    var Profile = (Model.Models.GetProfileModel)ViewBag.Profile;
+    string ten = ViewBag.Ten;
+    string ho = Profile.tennguoidung.Replace(" " + ten, "");
+    string thang = Profile.ngaysinh.Month.ToString();
+    string ngay = Profile.ngaysinh.Day.ToString();
+    if (Profile.ngaysinh.Month < 10)
+    {
+        thang = "0" + Profile.ngaysinh.Month;
+    }
+    if (Profile.ngaysinh.Day < 10)
+    {
+        ngay = "0" + Profile.ngaysinh.Day;
+    }
+    string birth = Profile.ngaysinh.Year + "-" + thang + "-" + ngay;
 }
+
 <ul class="nav nav-tabs">
     <li class="nav-item">
         <a class="nav-link" href="/Client/Personal/Index"><i class="fas fa-rss-square"></i><span>Dòng thời gian</span></a>
@@ -57,22 +72,32 @@
         <div class="tab-content">
             <div class="tab-pane container active" id="menu2-1">
                 <article class="change-profile">
-                    <div class="row">
+                    @Html.AntiForgeryToken()
+                    <div class="row change-profile-content">
                         <div class="col-md-3">
                             <div class="user-img">
-                                <img src="~/Images/22904751_688560231353134_2748711313877205190_o.jpg" alt="">
+                                @if (Profile.anhdd == "")
+                                {
+                                    <img src="https://bdh131.files.wordpress.com/2012/10/freeman_defaultblue_bdh.gif" alt="">
+                                }
+                                else
+                                {
+                                    <img src="~/Images/@Profile.anhdd" alt="">
+                                }
                             </div>
                         </div>
                         <div class="col-md-9">
-                            <h1 class="user-name">Thắng Bếu</h1>
-                            <button type="button" class="btn btn-primary">Thay đổi ảnh đại diện</button>
+                            <h1 class="user-name">@Profile.tennguoidung</h1>
+                            <!-- Button trigger modal -->
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#change-profile-modal-1">Thay đổi ảnh đại diện</button>
                         </div>
                         <div class="col-md-3">
                             <label for="suaten">Tên</label>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
-                                <input type="text" class="form-control" id="suaten">
+                                <input type="text" class="form-control" id="suaten" value="@ten">
+                                <span class="errors" id="check-ten"><i class="fas fa-times"></i></span>
                             </div>
                         </div>
                         <div class="col-md-1">
@@ -80,15 +105,8 @@
                         </div>
                         <div class="col-md-5">
                             <div class="form-group">
-                                <input type="text" class="form-control" id="suaho">
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <label for="suaweb">Trang Web</label>
-                        </div>
-                        <div class="col-md-9">
-                            <div class="form-group">
-                                <input type="text" class="form-control" id="suaweb">
+                                <input type="text" class="form-control" id="suaho" value="@ho">
+                                <span class="errors" id="check-ho"><i class="fas fa-times"></i></span>
                             </div>
                         </div>
                         <div class="col-md-3">
@@ -96,7 +114,7 @@
                         </div>
                         <div class="col-md-9">
                             <div class="form-group">
-                                <input type="email" class="form-control" id="suaemail">
+                                <input type="email" class="form-control" id="suaemail" value="@Profile.email" readonly>
                             </div>
                         </div>
                         <div class="col-md-3">
@@ -104,7 +122,15 @@
                         </div>
                         <div class="col-md-9">
                             <div class="form-group">
-                                <input type="text" class="form-control" id="suasdt">
+                                @if (@Profile.sdt == null)
+                                {
+                                    <input type="text" class="form-control" id="suasdt" value="">
+                                    <span class="errors" id="check-sdt"><i class="fas fa-times"></i></span>
+                                }
+                                else
+                                {
+                                    <input type="text" class="form-control" id="suasdt" value="@Profile.sdt" readonly style="width: 483px; border-right: 1px solid #ced4da;">
+                                }
                             </div>
                         </div>
                         <div class="col-md-3">
@@ -112,7 +138,7 @@
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <input type="date" class="form-control" id="suangaysinh">
+                                <input type="date" class="form-control" id="suangaysinh" value="@birth">
                             </div>
                         </div>
                         <div class="col-md-2">
@@ -121,8 +147,16 @@
                         <div class="col-md-3 sua-gioitinh">
                             <div class="form-group">
                                 <select class="form-control" id="suagioitinh">
-                                    <option>Nam</option>
-                                    <option>Nữ</option>
+                                    @if (@Profile.gioitinh == "Nam")
+                                    {
+                                        <option value="Nam" selected>Nam</option>
+                                        <option value="Nữ">Nữ</option>
+                                    }
+                                    else
+                                    {
+                                        <option value="Nam">Nam</option>
+                                        <option value="Nữ" selected>Nữ</option>
+                                    }
                                 </select>
                             </div>
                         </div>
@@ -130,10 +164,94 @@
 
                         </div>
                         <div class="col-md-3 button-submit">
-                            <button type="button" class="btn btn-light">Cập nhật</button>
+                            <button type="button" class="btn btn-light" id="capnhat">Cập nhật</button>
                         </div>
                         <div class="col-md-6 button-submit">
                             <button type="button" class="btn btn-primary">Tạm thời vô hiệu hóa tài khoản</button>
+                        </div>
+                    </div>
+                    <!-- Modal 1 -->
+                    <div class="modal fade" id="change-profile-modal-1" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="">Cập nhật ảnh đại diện</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <input type="file" name="avatar" id="change-profile-file" accept="image/*" onchange="cropAvaFunc(event)" />
+                                    <label for="change-profile-file" class="btn btn-outline-dark btn-block"><i class="fas fa-cross"></i>Tải ảnh lên</label>
+                                    <h6>Ảnh được đề xuất</h6>
+                                    <div class="offered-images-list">
+                                        <div class="row">
+                                            <div class="col-md-2">
+                                                <div class="offered-images-item">
+                                                    <img src="https://instagram.fhan2-4.fna.fbcdn.net/v/t51.2885-15/e35/s1080x1080/90342935_524370701788100_770503410475007716_n.jpg?_nc_ht=instagram.fhan2-4.fna.fbcdn.net&_nc_cat=1&_nc_ohc=SjDjD6cBONoAX-O3nt6&oh=526ec442c408837a110727d7d06bc60a&oe=5EA5CEC3" alt="" />
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="offered-images-item">
+                                                    <img src="https://instagram.fhan2-4.fna.fbcdn.net/v/t51.2885-15/e35/s1080x1080/90342935_524370701788100_770503410475007716_n.jpg?_nc_ht=instagram.fhan2-4.fna.fbcdn.net&_nc_cat=1&_nc_ohc=SjDjD6cBONoAX-O3nt6&oh=526ec442c408837a110727d7d06bc60a&oe=5EA5CEC3" alt="" />
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="offered-images-item">
+                                                    <img src="https://instagram.fhan2-4.fna.fbcdn.net/v/t51.2885-15/e35/s1080x1080/90342935_524370701788100_770503410475007716_n.jpg?_nc_ht=instagram.fhan2-4.fna.fbcdn.net&_nc_cat=1&_nc_ohc=SjDjD6cBONoAX-O3nt6&oh=526ec442c408837a110727d7d06bc60a&oe=5EA5CEC3" alt="" />
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="offered-images-item">
+                                                    <img src="https://instagram.fhan2-4.fna.fbcdn.net/v/t51.2885-15/e35/s1080x1080/90342935_524370701788100_770503410475007716_n.jpg?_nc_ht=instagram.fhan2-4.fna.fbcdn.net&_nc_cat=1&_nc_ohc=SjDjD6cBONoAX-O3nt6&oh=526ec442c408837a110727d7d06bc60a&oe=5EA5CEC3" alt="" />
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="offered-images-item">
+                                                    <img src="https://instagram.fhan2-4.fna.fbcdn.net/v/t51.2885-15/e35/s1080x1080/90342935_524370701788100_770503410475007716_n.jpg?_nc_ht=instagram.fhan2-4.fna.fbcdn.net&_nc_cat=1&_nc_ohc=SjDjD6cBONoAX-O3nt6&oh=526ec442c408837a110727d7d06bc60a&oe=5EA5CEC3" alt="" />
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="offered-images-item">
+                                                    <img src="https://instagram.fhan2-4.fna.fbcdn.net/v/t51.2885-15/e35/s1080x1080/90342935_524370701788100_770503410475007716_n.jpg?_nc_ht=instagram.fhan2-4.fna.fbcdn.net&_nc_cat=1&_nc_ohc=SjDjD6cBONoAX-O3nt6&oh=526ec442c408837a110727d7d06bc60a&oe=5EA5CEC3" alt="" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <p>Xem thêm</p>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Modal 2 -->
+                    <div class="modal fade" id="change-profile-modal-2" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="">Tạo ảnh đại diện</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="form-group">
+                                        <textarea class="form-control" id="textarea-mota" placeholder="Thêm mô tả..."></textarea>
+
+                                        <div class="result" id="inputImg">
+                                        </div>
+
+                                        <div id="slider" class="ep-slider-bar"></div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <div class="d-flex justify-content-center w-100">
+                                        <button type="submit" class="btn btn-info" id="avatar-saved">Lưu</button>
+                                        <button type="button" class="btn btn-danger" id="avatar-cancel">Hủy</button>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </article>

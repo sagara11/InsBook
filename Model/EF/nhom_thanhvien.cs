@@ -18,7 +18,7 @@ namespace Model.EF
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int nhom_id { get; set; }
 
-        public int loaithanhvien { get; set; }
+        public int? loaithanhvien { get; set; }
 
         public virtual nguoidung nguoidung { get; set; }
 

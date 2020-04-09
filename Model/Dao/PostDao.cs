@@ -45,5 +45,6 @@ namespace Model.Dao
                 return InsertPost(post, shardId);
             }
         }
+        //public 
     }
 }

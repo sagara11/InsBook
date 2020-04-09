@@ -18,13 +18,12 @@ namespace Model.EF
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int nguoidung2 { get; set; }
 
-        [Required]
         [StringLength(100)]
         public string loaitinhtrang { get; set; }
 
         public bool? xacnhan { get; set; }
 
-        public int baomat { get; set; }
+        public int? baomat { get; set; }
 
         public int? baomat_chophep { get; set; }
 

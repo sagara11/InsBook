@@ -29,7 +29,7 @@ namespace Model.Dao
                 return false;
             }
         }
-        public List<AddFriendModel> ListAddFriend(nguoidung user)
+        public List<GetFriendsModel> ListAddFriend(nguoidung user)
         {
             // IdAddress = user.nguoidung_diadiem; chua lam duoc
             // IdBuddy = user... chua lam duoc
@@ -46,14 +46,14 @@ namespace Model.Dao
 
             List<int> ID = db.Database.SqlQuery<int>("MergeID @idGender, @idBirthDay", sqlParam1).ToList();
 
-            List<AddFriendModel> users = new List<AddFriendModel>();
+            List<GetFriendsModel> users = new List<GetFriendsModel>();
             foreach (int Id in ID)
             {
                 object[] sqlParam2 =
                 {
                     new SqlParameter("@id", Id)
                 };
-                users.Add(db.Database.SqlQuery<AddFriendModel>("ListAddFriend @id", sqlParam2).Single());
+                users.Add(db.Database.SqlQuery<GetFriendsModel>("ListAddFriend @id", sqlParam2).Single());
             }
             //mới làm ưu tiên theo độ trùng. về sau làm ưu tiên độ trùng + THỨ TỰ ƯU TIÊN
 

@@ -7,6 +7,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.IO;
+using Newtonsoft.Json;
+using Model.EF;
 
 namespace InsBook.Areas.Client.Controllers
 {
@@ -25,6 +28,7 @@ namespace InsBook.Areas.Client.Controllers
                 return RedirectToAction("Index", "Home");
             }
         }
+
         [HttpPost]
         public ActionResult Login(LoginModel model)
         {
