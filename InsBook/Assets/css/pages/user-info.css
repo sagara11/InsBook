@@ -214,6 +214,107 @@ main {
             color: #000;
             text-decoration: none;
             font-weight: 500; }
+    main #user-infomation .tab-content #menu1 .user-newsfeed .add-post-box {
+      margin-bottom: 30px; }
+      main #user-infomation .tab-content #menu1 .user-newsfeed .add-post-box .card-header h3 {
+        font-size: 16px;
+        margin-bottom: 0; }
+        main #user-infomation .tab-content #menu1 .user-newsfeed .add-post-box .card-header h3 i {
+          margin-right: 5px; }
+      main #user-infomation .tab-content #menu1 .user-newsfeed .add-post-box .card-body {
+        padding: 12px; }
+        main #user-infomation .tab-content #menu1 .user-newsfeed .add-post-box .card-body .card-body-content {
+          display: flex; }
+          main #user-infomation .tab-content #menu1 .user-newsfeed .add-post-box .card-body .card-body-content .user-ava {
+            width: 42px;
+            height: 42px;
+            margin-right: 8px; }
+            main #user-infomation .tab-content #menu1 .user-newsfeed .add-post-box .card-body .card-body-content .user-ava img {
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+              border-radius: 50%;
+              border: 1px solid red;
+              padding: 1px; }
+          main #user-infomation .tab-content #menu1 .user-newsfeed .add-post-box .card-body .card-body-content .form-group {
+            margin: 0;
+            padding: 0 48px 0 12px;
+            width: 92%; }
+            main #user-infomation .tab-content #menu1 .user-newsfeed .add-post-box .card-body .card-body-content .form-group textarea {
+              resize: none;
+              width: 100%;
+              height: 36px;
+              overflow: hidden;
+              border: none; }
+              main #user-infomation .tab-content #menu1 .user-newsfeed .add-post-box .card-body .card-body-content .form-group textarea:focus {
+                border: none;
+                outline: none;
+                box-shadow: none; }
+        main #user-infomation .tab-content #menu1 .user-newsfeed .add-post-box .card-body .card-body-input {
+          margin-top: 8px;
+          /*display: none;*/ }
+          main #user-infomation .tab-content #menu1 .user-newsfeed .add-post-box .card-body .card-body-input .input-group-text {
+            min-width: 40px; }
+          main #user-infomation .tab-content #menu1 .user-newsfeed .add-post-box .card-body .card-body-input input {
+            font-size: 14px; }
+        main #user-infomation .tab-content #menu1 .user-newsfeed .add-post-box .card-body .card-body-result {
+          margin-top: 8px;
+          /*display: none;*/ }
+          main #user-infomation .tab-content #menu1 .user-newsfeed .add-post-box .card-body .card-body-result p {
+            margin: 0; }
+          main #user-infomation .tab-content #menu1 .user-newsfeed .add-post-box .card-body .card-body-result .card-body-result-img {
+            margin: 4px 0;
+            width: 100px;
+            height: 100px;
+            display: flex; }
+            main #user-infomation .tab-content #menu1 .user-newsfeed .add-post-box .card-body .card-body-result .card-body-result-img img {
+              object-fit: cover;
+              width: 100%;
+              height: 100%;
+              margin-right: 5px; }
+            main #user-infomation .tab-content #menu1 .user-newsfeed .add-post-box .card-body .card-body-result .card-body-result-img .tools-item {
+              margin: 0;
+              display: contents; }
+              main #user-infomation .tab-content #menu1 .user-newsfeed .add-post-box .card-body .card-body-result .card-body-result-img .tools-item:hover {
+                cursor: pointer; }
+      main #user-infomation .tab-content #menu1 .user-newsfeed .add-post-box .card-body-tools {
+        border-top: 1px solid #ccc;
+        margin: 0 12px;
+        padding-bottom: 12px;
+        padding-top: 8px;
+        display: flex; }
+        main #user-infomation .tab-content #menu1 .user-newsfeed .add-post-box .card-body-tools #tools-img {
+          width: 0.1px;
+          height: 0.1px;
+          opacity: 0;
+          overflow: hidden;
+          position: absolute;
+          z-index: -1; }
+        main #user-infomation .tab-content #menu1 .user-newsfeed .add-post-box .card-body-tools label {
+          margin: 0; }
+        main #user-infomation .tab-content #menu1 .user-newsfeed .add-post-box .card-body-tools .tools-item {
+          background: #f5f6f7;
+          border-radius: 20px;
+          display: inline-block;
+          font-weight: 600;
+          padding: 7px 24px;
+          margin-right: 12px;
+          font-size: 14px; }
+          main #user-infomation .tab-content #menu1 .user-newsfeed .add-post-box .card-body-tools .tools-item:hover {
+            cursor: pointer; }
+      main #user-infomation .tab-content #menu1 .user-newsfeed .add-post-box .card-footer {
+        display: flex;
+        align-items: center;
+        padding: 12px 12px 12px 12px; }
+        main #user-infomation .tab-content #menu1 .user-newsfeed .add-post-box .card-footer .form-group {
+          margin: 0; }
+          main #user-infomation .tab-content #menu1 .user-newsfeed .add-post-box .card-footer .form-group select {
+            font-size: 14px; }
+        main #user-infomation .tab-content #menu1 .user-newsfeed .add-post-box .card-footer button {
+          font-size: 14px;
+          margin-left: 90px;
+          padding: 6px 212px;
+          font-weight: 600; }
     main #user-infomation .tab-content #menu1 .user-newsfeed .post-box {
       display: block;
       margin-bottom: 30px;

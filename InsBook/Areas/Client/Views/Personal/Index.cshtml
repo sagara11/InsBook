@@ -86,7 +86,7 @@
                                 {
                                     <li><i class="fas fa-graduation-cap"></i><a href="/Client/Personal/Job_Edu">Trường học</a></li>
                                 }
-                                
+
                                 @if (Profile.diadiem.Count != 0)
                                 {
 
@@ -190,10 +190,72 @@
             </div>
             <div class="col-md-8">
                 <div class="user-newsfeed">
+                    <article class="add-post-box card">
+                        <div class="card-header">
+                            <h3><i class="fas fa-pencil-alt"></i>Tạo bài viết</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="card-body-content">
+                                <div class="user-ava">
+                                    <img src="/Images/22904751_688560231353134_2748711313877205190_o.jpg" alt="" />
+                                </div>
+                                <div class="form-group">
+                                    <textarea class="form-control" placeholder="Thêm bình luận..." oninput="auto_grow(this)"></textarea>
+                                </div>
+                            </div>
+                            <div class="card-body-result">
+                                <p>với <b>Thu Trang</b> tại <b>Hồ Tây</b></p>
+                                <div class="card-body-result-img">
+                                    <img src="/Images/22904751_688560231353134_2748711313877205190_o.jpg" alt="" />
+                                    <img src="/Images/22904751_688560231353134_2748711313877205190_o.jpg" alt="" />
+                                    <img src="/Images/22904751_688560231353134_2748711313877205190_o.jpg" alt="" />
+                                    <label for="tools-img" class="tools-item"><img src="/Images/default-adding-post.png" alt="" /></label>
+                                </div>
+                            </div>
+                            <div class="input-group card-body-input">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text"><i class="fas fa-map-marker-alt"></i></div>
+                                </div>
+                                <input type="text" class="form-control" id="" placeholder="Bạn đang ở đâu ?">
+                            </div>
+                            <div class="input-group card-body-input">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text"><i class="fas fa-user"></i></div>
+                                </div>
+                                <input type="text" class="form-control" id="" placeholder="Cùng với ai ?">
+                            </div>
+                            <div class="input-group card-body-input">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text"><i class="fas fa-filter"></i></div>
+                                </div>
+                                <input type="text" class="form-control" id="" placeholder="Chủ đề bài viết ?">
+                            </div>
+
+                        </div>
+                        <div class="card-body-tools">
+                            <input type="file" name="images" id="tools-img" accept="image/*" onchange="cropImgFunc(event)" />
+                            <label for="tools-img" class="tools-item">Ảnh/Video</label>
+                            <span class="tools-item" ">Gắn thẻ bạn bè</span>
+                            <span class="tools-item" ">Check in</span>
+                            <span class="tools-item" ">Chủ đề</span>
+                        </div>
+                        <div class="card-footer">
+                            <div class="form-group">
+                                <select class="form-control">
+                                    <option selected value="0">Công khai</option>
+                                    <option value="2">Bạn bè</option>
+                                    <option value="3">Chỉ mình tôi</option>
+                                </select>
+                            </div>
+                            <button class="btn btn-primary">
+                                Đăng
+                            </button>
+                        </div>
+                    </article>
                     <article class="post-box">
                         <header class="post-title">
                             <div class="user-avatar">
-                                <img src="~/Images/22904751_688560231353134_2748711313877205190_o.jpg" alt="">
+                                <img src="/Images/22904751_688560231353134_2748711313877205190_o.jpg" alt="">
                             </div>
                             <a href="#" title="">Thắng Bếu</a>
                         </header><!-- /header -->

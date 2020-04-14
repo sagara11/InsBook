@@ -2427,3 +2427,4 @@ function DetailInfoRemoving(loaithongtin) {
         alert("Bạn đã ấn hủy!");
     }
 }
+//--------------------------BAI VIET--------------------------------------
