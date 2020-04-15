@@ -12,5 +12,18 @@ namespace Model.Models
         public string ho { set; get; }
         public string ten { set; get; }
         public string anh_url { set; get; }
+        public string value
+        {
+            set
+            {
+                this.value = value;
+            }
+            get
+            {
+                return this.ho + " " + this.ten;
+            }
+
+        }
     }
+
 }

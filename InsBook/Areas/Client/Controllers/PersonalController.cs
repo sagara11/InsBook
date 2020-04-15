@@ -30,6 +30,13 @@ namespace InsBook.Areas.Client.Controllers
 
             ViewBag.Profile = new UserDao().Profile(user.UserID);
 
+            var tendd = new LocationDao().GetAllName();
+            ViewBag.TenDD = tendd;
+            var banbe = new UserDao().GetAllName(user.UserID);
+            ViewBag.BanBe = banbe;
+            //var tenchude = new TopicDao().GetAllName();
+            //ViewBag.TenDD = tendd;
+
             return View();
         }
         //----------------------CAI DAT CHUNG-------------------------------------------
@@ -48,7 +55,7 @@ namespace InsBook.Areas.Client.Controllers
             }
 
             ViewBag.Profile = new UserDao().Profile(user.UserID);
-            ViewBag.Ten = new UserDao().GetbyName(user.UserID);
+            //ViewBag.Ten = new UserDao().GetbyName(user.UserID);
             return View();
         }
 

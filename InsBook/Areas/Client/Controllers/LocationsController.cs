@@ -17,7 +17,7 @@ namespace InsBook.Areas.Client.Controllers
         // GET: Client/Locations
         public void AddLocation()
         {
-            string jsonFilePath = @"C:\Users\kking\OneDrive\Desktop\WB-socialNetwork\tinh_tp.json";
+            string jsonFilePath = @"C:\Users\ACER\Downloads\tinh_tp.json";
 
             using (StreamReader r = new StreamReader(jsonFilePath))
             {
@@ -28,7 +28,7 @@ namespace InsBook.Areas.Client.Controllers
                     diadiem dd = new diadiem();
                     dd.id = int.Parse(item.code);
                     dd.ten = item.name;
-                    dd.parent_id = 0;
+                    dd.parent_id = null;
                     new LocationDao().InsertLocation(dd);
                 }
             }

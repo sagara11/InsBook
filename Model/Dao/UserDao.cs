@@ -40,7 +40,7 @@ namespace Model.Dao
         }
         public string GetbyName(int id)
         {
-            return db.Database.SqlQuery<string>("select nguoidung.ten from nguoidung where nguoidung.id=" + id).Single();
+            return db.Database.SqlQuery<string>("select (nguoidung.ho + ' ' + nguoidung.ten) from nguoidung where nguoidung.id=" + id).SingleOrDefault();
         }
         //public User ViewDetail(int id)
         //{
@@ -278,6 +278,19 @@ namespace Model.Dao
             catch
             {
                 return null;
+            }
+        }
+        public List<GetFriendsModel> GetAllName(int userID)
+        {
+            List<GetFriendsModel> banbe = new List<GetFriendsModel>();
+            try
+            {
+                banbe = db.Database.SqlQuery<GetFriendsModel>("GetFriendInfo @userId", new SqlParameter("@userId", userID)).ToList();
+                return banbe;
+            }
+            catch
+            {
+                return banbe;
             }
         }
     }

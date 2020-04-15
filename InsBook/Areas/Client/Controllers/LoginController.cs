@@ -28,7 +28,6 @@ namespace InsBook.Areas.Client.Controllers
                 return RedirectToAction("Index", "Home");
             }
         }
-
         [HttpPost]
         public ActionResult Login(LoginModel model)
         {

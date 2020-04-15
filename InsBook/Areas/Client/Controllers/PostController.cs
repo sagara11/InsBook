@@ -12,7 +12,7 @@ namespace InsBook.Areas.Client.Controllers
 {
     public class PostController : ImageController
     {
-        // GET: Client/Post
+        // GET: Client/Post 
         protected Int64 Post(baiviet post)
         {
             UInt64 shardId = Convert.ToUInt64(post.nguoitao_id % 2000) << 10;

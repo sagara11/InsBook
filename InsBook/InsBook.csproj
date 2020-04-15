@@ -212,6 +212,7 @@
     <Content Include="Assets\javascript\ForgetPass.js" />
     <Content Include="Assets\javascript\Login.js" />
     <Content Include="Assets\javascript\NewsFeed.js" />
+    <Content Include="Assets\javascript\Post.js" />
     <Content Include="Assets\javascript\Register.js" />
     <Content Include="Assets\javascript\RegisterStep1.js" />
     <Content Include="Assets\javascript\RegisterStep2.js" />
