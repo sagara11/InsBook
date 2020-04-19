@@ -19,21 +19,40 @@
     $(".location-input").css("display", "none");
 });
 
-function readURL(input) {
-    if (input.files && input.files[0]) {
+//------------------------THÊM ẢNH--------------------------------------
+function previewImages() {
+    var preview = document.querySelector(".post-image");
+
+    if (this.files) {
+        [].forEach.call(this.files, readAndPreview);
+    }
+
+    function readAndPreview(file) {
+        if (!/\.(jpe?g|png|gif)$/i.test(file.name)) {
+            return alert(file.name + " không phải ảnh hợp lệ");
+        }
+
         var reader = new FileReader();
 
-        reader.onload = function (e) {
-            $('#img')
-                .attr('src', e.target.result)
-                .width(100)
-                .height(100);
-        };
+        reader.addEventListener("load", function () {
+            var image = new Image();
+            image.height = 100;
+            image.className = "new-image";
+            image.style.marginRight = "10px";
+            image.style.marginBottom = "10px";
+            image.width = 100;
+            image.src = this.result;
+            preview.appendChild(image);
+            $(".post-image").css("display", "block");
+        });
 
-        reader.readAsDataURL(input.files[0]);
+        reader.readAsDataURL(file);
+        $("#image-add").html("Thêm ảnh");
     }
-    $(".post-image").css("display", "block");
 }
+document
+    .querySelector("#img-1-input")
+    .addEventListener("change", previewImages);
 
 function tag(id) {
     if ($("#" + id + "-taginput").hasClass('show')) {
