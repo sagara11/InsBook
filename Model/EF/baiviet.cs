@@ -89,16 +89,16 @@ namespace Model.EF
         public virtual ICollection<anh> anhs { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<nguoidung> nguoidungs { get; set; }
+        public virtual ICollection<nguoidung> nguoidungs { get; set; } //baiviet_banbe
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<chude> chudes { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<nguoidung> nguoidungs1 { get; set; }
+        public virtual ICollection<nguoidung> nguoidungs1 { get; set; } //baiviet_ganthe
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<nguoidung> nguoidungs2 { get; set; }
+        public virtual ICollection<nguoidung> nguoidungs2 { get; set; } //baiviet_thich
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<nhom> nhoms1 { get; set; }

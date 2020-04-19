@@ -282,24 +282,99 @@ main {
             font-size: 14px; }
         main #user-infomation .tab-content #menu1 .user-newsfeed .add-post-box .card-body .post-diadiem, main #user-infomation .tab-content #menu1 .user-newsfeed .add-post-box .card-body .post-ganthe, main #user-infomation .tab-content #menu1 .user-newsfeed .add-post-box .card-body .post-chude {
           display: none; }
+        main #user-infomation .tab-content #menu1 .user-newsfeed .add-post-box .card-body .post-ganthe {
+          border: 1px solid #ced4da; }
+          main #user-infomation .tab-content #menu1 .user-newsfeed .add-post-box .card-body .post-ganthe .input-group-prepend .input-group-text {
+            border: none;
+            /*padding: 0;*/ }
+          main #user-infomation .tab-content #menu1 .user-newsfeed .add-post-box .card-body .post-ganthe #friends-tag {
+            display: flex;
+            align-items: center;
+            margin-left: 12px; }
+            main #user-infomation .tab-content #menu1 .user-newsfeed .add-post-box .card-body .post-ganthe #friends-tag .friends-tag-span {
+              background: #e9ebee;
+              padding: 1px 6px;
+              margin-right: 6px;
+              border: 1px solid #9cb4d8;
+              border-radius: 20px; }
+              main #user-infomation .tab-content #menu1 .user-newsfeed .add-post-box .card-body .post-ganthe #friends-tag .friends-tag-span a {
+                color: gray;
+                text-decoration: none; }
+                main #user-infomation .tab-content #menu1 .user-newsfeed .add-post-box .card-body .post-ganthe #friends-tag .friends-tag-span a i {
+                  padding-left: 3px; }
+          main #user-infomation .tab-content #menu1 .user-newsfeed .add-post-box .card-body .post-ganthe #post-banbe-data {
+            border: none;
+            padding: 6px 12px 6px 0; }
+            main #user-infomation .tab-content #menu1 .user-newsfeed .add-post-box .card-body .post-ganthe #post-banbe-data:focus {
+              outline: none;
+              box-shadow: none;
+              border: none; }
         main #user-infomation .tab-content #menu1 .user-newsfeed .add-post-box .card-body .card-body-result {
           margin-top: 8px;
           /*display: none;*/ }
-          main #user-infomation .tab-content #menu1 .user-newsfeed .add-post-box .card-body .card-body-result p {
+          main #user-infomation .tab-content #menu1 .user-newsfeed .add-post-box .card-body .card-body-result .card-body-result-text {
             margin: 0; }
+            main #user-infomation .tab-content #menu1 .user-newsfeed .add-post-box .card-body .card-body-result .card-body-result-text #result-tenbanbe {
+              margin-right: 5px; }
           main #user-infomation .tab-content #menu1 .user-newsfeed .add-post-box .card-body .card-body-result .card-body-result-img {
             margin: 4px 0;
-            width: 100px;
-            height: 100px;
-            display: flex; }
-            main #user-infomation .tab-content #menu1 .user-newsfeed .add-post-box .card-body .card-body-result .card-body-result-img img {
-              object-fit: cover;
-              width: 100%;
-              height: 100%;
-              margin-right: 5px; }
+            display: none;
+            position: relative;
+            overflow-x: auto;
+            /* width */
+            /* Track */
+            /* Handle */
+            /* Handle on hover */ }
+            main #user-infomation .tab-content #menu1 .user-newsfeed .add-post-box .card-body .card-body-result .card-body-result-img::-webkit-scrollbar {
+              width: 3px !important; }
+            main #user-infomation .tab-content #menu1 .user-newsfeed .add-post-box .card-body .card-body-result .card-body-result-img::-webkit-scrollbar-track {
+              background: #f1f1f1; }
+            main #user-infomation .tab-content #menu1 .user-newsfeed .add-post-box .card-body .card-body-result .card-body-result-img::-webkit-scrollbar-thumb {
+              background: #888; }
+            main #user-infomation .tab-content #menu1 .user-newsfeed .add-post-box .card-body .card-body-result .card-body-result-img::-webkit-scrollbar-thumb:hover {
+              background: #555; }
+            main #user-infomation .tab-content #menu1 .user-newsfeed .add-post-box .card-body .card-body-result .card-body-result-img .selected-post-img {
+              height: 100px;
+              flex: 0 0 100px;
+              margin-right: 5px;
+              position: relative; }
+              main #user-infomation .tab-content #menu1 .user-newsfeed .add-post-box .card-body .card-body-result .card-body-result-img .selected-post-img img {
+                object-fit: cover;
+                width: 100%;
+                height: 100%; }
+              main #user-infomation .tab-content #menu1 .user-newsfeed .add-post-box .card-body .card-body-result .card-body-result-img .selected-post-img .div-close-post-img {
+                position: absolute;
+                top: 0;
+                left: 0;
+                background-color: rgba(0, 0, 0, 0.3);
+                width: 100%;
+                height: 100%;
+                visibility: hidden;
+                opacity: 0; }
+                main #user-infomation .tab-content #menu1 .user-newsfeed .add-post-box .card-body .card-body-result .card-body-result-img .selected-post-img .div-close-post-img .close-post-img {
+                  background-color: transparent;
+                  border: none;
+                  padding: 0;
+                  position: absolute;
+                  top: 0;
+                  right: 5px; }
+                  main #user-infomation .tab-content #menu1 .user-newsfeed .add-post-box .card-body .card-body-result .card-body-result-img .selected-post-img .div-close-post-img .close-post-img i {
+                    color: lightgray; }
+                    main #user-infomation .tab-content #menu1 .user-newsfeed .add-post-box .card-body .card-body-result .card-body-result-img .selected-post-img .div-close-post-img .close-post-img i:hover {
+                      color: #fff; }
+              main #user-infomation .tab-content #menu1 .user-newsfeed .add-post-box .card-body .card-body-result .card-body-result-img .selected-post-img:hover .div-close-post-img {
+                visibility: visible;
+                opacity: 1; }
             main #user-infomation .tab-content #menu1 .user-newsfeed .add-post-box .card-body .card-body-result .card-body-result-img .tools-item {
               margin: 0;
-              display: contents; }
+              display: block;
+              height: 100px;
+              flex: 0 0 100px;
+              position: relative; }
+              main #user-infomation .tab-content #menu1 .user-newsfeed .add-post-box .card-body .card-body-result .card-body-result-img .tools-item img {
+                object-fit: cover;
+                width: 100%;
+                height: 100%; }
               main #user-infomation .tab-content #menu1 .user-newsfeed .add-post-box .card-body .card-body-result .card-body-result-img .tools-item:hover {
                 cursor: pointer; }
       main #user-infomation .tab-content #menu1 .user-newsfeed .add-post-box .card-body-tools {
@@ -364,6 +439,8 @@ main {
           text-decoration: none;
           font-weight: 500;
           font-size: 16px; }
+        main #user-infomation .tab-content #menu1 .user-newsfeed .post-box .post-title span {
+          margin-left: 5px; }
       main #user-infomation .tab-content #menu1 .user-newsfeed .post-box .post-content {
         display: block;
         padding: 0;
@@ -374,11 +451,65 @@ main {
           font-size: 16px; }
         main #user-infomation .tab-content #menu1 .user-newsfeed .post-box .post-content .post-content-image {
           width: inherit;
-          height: 480px; }
+          max-height: 480px; }
           main #user-infomation .tab-content #menu1 .user-newsfeed .post-box .post-content .post-content-image img {
             width: 100%;
-            height: 100%;
+            height: auto;
+            max-height: 480px;
             object-fit: cover; }
+          main #user-infomation .tab-content #menu1 .user-newsfeed .post-box .post-content .post-content-image .soanh-2 {
+            margin: 0 -1px; }
+            main #user-infomation .tab-content #menu1 .user-newsfeed .post-box .post-content .post-content-image .soanh-2 .col-md-6 {
+              padding: 0 1px; }
+              main #user-infomation .tab-content #menu1 .user-newsfeed .post-box .post-content .post-content-image .soanh-2 .col-md-6 img {
+                width: 100%;
+                height: 480px;
+                object-fit: cover; }
+          main #user-infomation .tab-content #menu1 .user-newsfeed .post-box .post-content .post-content-image .soanh-3 {
+            margin: 0 -1px; }
+            main #user-infomation .tab-content #menu1 .user-newsfeed .post-box .post-content .post-content-image .soanh-3 .col-md-12 {
+              padding: 0 1px;
+              margin-bottom: 2px; }
+              main #user-infomation .tab-content #menu1 .user-newsfeed .post-box .post-content .post-content-image .soanh-3 .col-md-12 img {
+                width: 100%;
+                height: 319px;
+                object-fit: cover; }
+            main #user-infomation .tab-content #menu1 .user-newsfeed .post-box .post-content .post-content-image .soanh-3 .col-md-6 {
+              padding: 0 1px; }
+              main #user-infomation .tab-content #menu1 .user-newsfeed .post-box .post-content .post-content-image .soanh-3 .col-md-6 img {
+                width: 100%;
+                height: 159px;
+                object-fit: cover; }
+          main #user-infomation .tab-content #menu1 .user-newsfeed .post-box .post-content .post-content-image .soanh-4 {
+            margin: 0 -1px; }
+            main #user-infomation .tab-content #menu1 .user-newsfeed .post-box .post-content .post-content-image .soanh-4 .col-md-12 {
+              padding: 0 1px;
+              margin-bottom: 2px; }
+              main #user-infomation .tab-content #menu1 .user-newsfeed .post-box .post-content .post-content-image .soanh-4 .col-md-12 img {
+                width: 100%;
+                height: 319px;
+                object-fit: cover; }
+            main #user-infomation .tab-content #menu1 .user-newsfeed .post-box .post-content .post-content-image .soanh-4 .col-md-4 {
+              padding: 0 1px; }
+              main #user-infomation .tab-content #menu1 .user-newsfeed .post-box .post-content .post-content-image .soanh-4 .col-md-4 img {
+                width: 100%;
+                height: 159px;
+                object-fit: cover; }
+          main #user-infomation .tab-content #menu1 .user-newsfeed .post-box .post-content .post-content-image .soanh-5 {
+            margin: 0 -1px; }
+            main #user-infomation .tab-content #menu1 .user-newsfeed .post-box .post-content .post-content-image .soanh-5 .col-md-6 {
+              padding: 0 1px;
+              margin-bottom: 2px; }
+              main #user-infomation .tab-content #menu1 .user-newsfeed .post-box .post-content .post-content-image .soanh-5 .col-md-6 img {
+                width: 100%;
+                height: 319px;
+                object-fit: cover; }
+            main #user-infomation .tab-content #menu1 .user-newsfeed .post-box .post-content .post-content-image .soanh-5 .col-md-4 {
+              padding: 0 1px; }
+              main #user-infomation .tab-content #menu1 .user-newsfeed .post-box .post-content .post-content-image .soanh-5 .col-md-4 img {
+                width: 100%;
+                height: 159px;
+                object-fit: cover; }
       main #user-infomation .tab-content #menu1 .user-newsfeed .post-box .post-info .post-icons {
         padding: 0 16px;
         margin-top: 4px; }

@@ -81,7 +81,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 <script src="https://kit.fontawesome.com/5d3f9f4ac6.js" crossorigin="anonymous"></script>
 <script src="~/Assets/js/user-info.js"></script>
-<script src="~/Assets/javascript/Post.js"></script>
 
 <script>
     $("#congty-thixa").autocomplete({
@@ -168,20 +167,55 @@
     });
 
     $("#post-diadiem-data").autocomplete({
-        source: @Html.Raw(Json.Encode(ViewBag.TenDD))
+        source: @Html.Raw(Json.Encode(ViewBag.TenDD)),
+        select: function (event, ui) {
+            if ($("#result-diadiem-b").length > 0) {
+                $("#result-diadiem-b").empty();
+                $("#result-diadiem-b").append(ui.item.value);
+            } else {
+                $("#result-diadiem").append('tại <b id="result-diadiem-b">' + ui.item.value + '</b>');
+            }
+            $("#post-diadiem-data").val(ui.item.value);
+          return false;
+        }
     });
 
-    function split( val ) {
-      return val.split( /,\s*/ );
-    }
-    function extractLast( term ) {
-      return split( term ).pop();
-    }
+
+
+    //function split( val ) {
+    //  return val.split( /,\s*/ );
+    //}
+    //function extractLast( term ) {
+    //  return split( term ).pop();
+    //}
 
     var url = window.location.href.split('/');
     var baseUrl = url[0] + '//' + url[2];
 
     var friends = @Html.Raw(Json.Encode(ViewBag.BanBe));
+    var selected_friends = [];
+
+    function DeleteFriendTag(friendId, e) {
+        e = e || window.event;
+        e.preventDefault();
+        $("#friend-tag-" + friendId).remove();
+
+        var item = selected_friends.find(x => x.id === friendId);
+
+        $.each(selected_friends, function (i, el) {
+            if (this.id == friendId) {
+                selected_friends.splice(i, 1);
+            }
+        });
+        friends.push(item);
+        if (selected_friends.length === 0) {
+            $("#post-banbe-data").attr('placeholder', 'Cùng với ai ?');
+            $("#result-tenbanbe").empty();
+        } else {
+            $("#result-banbe-" + friendId).remove();
+            //$("#result-tenbanbe").html(text.replace('với ,', 'với'));
+        }
+    }
 
     $( "#post-banbe-data" )
       // don't navigate away from the field on tab when selecting an item
@@ -196,7 +230,7 @@
         source: function( request, response ) {
           // delegate back to autocomplete, but extract the last term
           response( $.ui.autocomplete.filter(
-            friends, extractLast( request.term ) ) );
+            friends, request.term ) );
         },
         focus: function() {
           // prevent value inserted on focus
@@ -208,18 +242,27 @@
                     friends.splice(i, 1);
                   }
               });
-          var terms = split( this.value );
-          // remove the current input
-          terms.pop();
-          // add the selected item
-          terms.push( ui.item.value );
-          // add placeholder to get the comma-and-space at the end
-          terms.push( "" );
-          this.value = terms.join( ", " );
+              selected_friends.push(ui.item);
+              var html = '<div id = "friend-tag-' + ui.item.id + '" class = "friends-tag-span">' +
+                  '<span id = "friend-tag-' + ui.item.id + '-name">' + ui.item.value + '</span>' +
+                  '<a href = "#" onclick="DeleteFriendTag(' + ui.item.id + ', event)">' +
+                  '    <i class="fas fa-times"></i>' +
+                  '</a>' +
+                  '</div>';
+              $("#friends-tag").append(html);
+              $("#post-banbe-data").val("");
+              $("#post-banbe-data").attr('placeholder', '');
+              if ($(".result-banbe-b").length > 0) {
+                  $("#result-tenbanbe").append('<span id="result-banbe-' + ui.item.id + '" class="result-banbe-b">, <b>' + ui.item.value + '</b></span>');
+              } else {
+                  $("#result-tenbanbe").append('với <span id="result-banbe-' + ui.item.id + '" class="result-banbe-b"><b>' + ui.item.value + '</b></span>');
+              }
           return false;
         }
       }).autocomplete( "instance" )._renderItem = function (ul, item) {
         return $('<li><div><img src=' + baseUrl + '/Images/' + item.anh_url + '><span>' + item.value + '</span></div></li>').appendTo(ul);
         };
 </script>
+
+<script src="~/Assets/javascript/Post.js"></script>
 @RenderSection("js", required: false)
