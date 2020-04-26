@@ -99,7 +99,7 @@ function AddPost() {
                     alert("Thêm bài viết thành công");
                     var url = window.location.href.split('/');
                     var baseUrl = url[0] + '//' + url[2];
-                    var html = '<article class="post-box">' +
+                    var html = '<article class="post-box post-' + response.data.id + '">' +
                         '                        <header class="post-title">' +
                         '                            <div class="user-avatar">' +
                         '                                <img src="' + baseUrl + '/Images/' + response.data.avatarnguoidang + '" alt="">' +
@@ -198,22 +198,22 @@ function AddPost() {
                     html = html + ' </div>' +
                         '                       <div class="post-info">' +
                         '                            <section class="post-icons">' +
-                        '                                <button type="button" class="btn btn-light"><i class="far fa-heart"></i></button>' +
+                        '                                <button type="button" class="btn btn-light post-like-icon" id="post-like-icon-' + response.data.id + '"><i class="far fa-heart"></i></button>' +
                         '                                <button type="button" class="btn btn-light"><i class="far fa-comment"></i></button>' +
                         '                                <button type="button" class="btn btn-light"><i class="far fa-paper-plane"></i></button>' +
                         '                                <button type="button" class="btn btn-light"><i class="far fa-bookmark"></i></button>' +
                         '                            </section>' +
                         '                            <section class="list-like">' +
-                        '                                <button type="button" class="btn btn-light">123 lượt thích</button>' +
+                        '                                <button type="button" class="btn btn-light">0 lượt thích</button>' +
                         '                            </section>' +
                         '                            <section class="post-time">' +
                         '                                <p>2 giờ trước</p>' +
                         '                            </section>' +
-                        '                            <section class="comment-bar">' +
+                        '                            <section class="comment-bar" id="comment-bar-' + response.data.id + '">' +
                         '                                <div class="form-group">' +
-                        '                                    <textarea class="form-control" placeholder="Thêm bình luận..." oninput="auto_grow(this)"></textarea>' +
+                        '                                    <textarea class="form-control" placeholder="Thêm bình luận..." oninput="auto_grow(this)" id="post-comment-content-' + response.data.id + '"></textarea>' +
                         '                                </div>' +
-                        '                                <button type="button" class="btn btn-light">Đăng</button>' +
+                        '                                <button type="button" class="btn btn-light post-comment-button" id="post-comment-button-' + response.data.id + '">Đăng</button>' +
                         '                            </section>' +
                         '                        </div>';
                     '              </article>'
@@ -308,12 +308,15 @@ $(function () {
     var post = $.connection.postHub;
     // Create a function that the hub can call back to display messages.
     post.client.LikePost = function (postId, status) {
+        var like_count = $(".like-count-" + postId).text().split(' ');
         if (status) {
             $("#post-like-icon-" + postId).addClass("liked");
-            $(".like-count-" + postId).text("Xin chào con vợ");
+            $(".like-count-" + postId).text("");
+            $(".like-count-" + postId).text((parseInt(like_count[0]) + 1) + " lượt thích");
         } else {
             $("#post-like-icon-" + postId).removeClass("liked");
-            $(".like-count-" + postId).text("Xin chào địt cụ m");
+            $(".like-count-" + postId).text("");
+            $(".like-count-" + postId).text((parseInt(like_count[0]) - 1) + " lượt thích");
         }
     };
     post.client.CommentPost = function (comment) {
@@ -372,7 +375,7 @@ $(function () {
                 '                                                        <div class="comment-item-info">' +
                 '                                                            <time datetime="2011-01-12" title="12 tháng 9 1945">Chưa làm</time>' +
                 '                                                            <button type="button" class="btn btn-light">0 lượt thích</button>' +
-                '                                                            <button type="button" class="btn btn-light">Trả lời</button>' +
+                '                                                            <button type="button" class="btn btn-light" onclick="ShowCommentBarChild(' + comment.parent_id + ')">Trả lời</button>' +
                 '                                                        </div>' +
                 '                                                    </div>' +
                 '                                                    <div class="comment-item-tool">' +
@@ -382,6 +385,8 @@ $(function () {
             if ($("#comment-item-childs-" + comment.parent_id).length > 0) {
                 $("#comment-childs-" + comment.parent_id).append(html);
                 $("#post-comment-child-content-" + comment.parent_id).val("");
+
+                $("#comment-item-childs-" + comment.parent_id + " > button").text("Xem câu trả lời (" + $("#comment-childs-" + comment.parent_id + " > .comment-item-child").length + ")");
             } else {
                 var temp = '<div class="comment-item-childs" id="comment-item-childs-' + comment.parent_id + '">' +
                     '   <button data-toggle="collapse" data-target="#comment-childs-' + comment.parent_id + '" class="btn btn-light">Xem câu trả lời (1)</button>' +
@@ -396,7 +401,8 @@ $(function () {
     };
     // Start the connection.
     $.connection.hub.start().done(function () {
-        $('.post-like-icon').click(function () {
+
+        $('.user-newsfeed').on('click', '.post-like-icon', function () {
             var post_id = this.id.split("-");
             post_id = post_id[post_id.length - 1]; // Lấy post_id
 
@@ -407,7 +413,7 @@ $(function () {
                 post.server.likePost(post_id, true);
             }
         });
-        $('.post-comment-button').click(function () {
+        $('.user-newsfeed').on('click', '.post-comment-button', function () {
             var post_id = this.id.split("-");
             post_id = post_id[post_id.length - 1]; // Lấy post_id
             var content = $('#post-comment-content-' + post_id).val();
@@ -457,7 +463,8 @@ function ShowCommentBarChild(commentID) {
                 }
             }
         });
-    } else {
-        $("#comment-bar-child-" + commentID).css("display", "none");
     }
+    //else {
+    //    $("#comment-bar-child-" + commentID).css("display", "none");
+    //}
 }

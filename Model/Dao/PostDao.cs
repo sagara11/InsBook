@@ -142,7 +142,22 @@ namespace Model.Dao
 
                 post.ganthe = db.Database.SqlQuery<post_ganthe>("GetPostTags @postID", new SqlParameter("@postID", post.id)).ToList();
                 post.anh = db.Database.SqlQuery<post_anh>("GetPostImages @postID", new SqlParameter("@postID", post.id)).ToList();
+                post.luotthich = db.Database.SqlQuery<int>("CountPostLike @postID", new SqlParameter("@postID", post.id)).SingleOrDefault();
 
+                post.comment = db.Database.SqlQuery<post_comment>("GetPostComment @postID, @parent_id", new SqlParameter("@postID", post.id), new SqlParameter("@parent_id", -1)).ToList();
+                
+                if (post.comment.Count > 0)
+                {
+                    post.luotbinhluan = post.comment.Count;
+                    foreach ( post_comment item in post.comment)
+                    {
+                        item.comment_child = db.Database.SqlQuery<post_comment_child>("GetPostComment @postID, @parent_id", new SqlParameter("@postID", post.id), new SqlParameter("@parent_id", item.comment_id)).ToList();
+                        if(item.comment_child.Count > 0)
+                        {
+                            item.luotbinhluan = item.comment_child.Count;
+                        }
+                    }
+                }
                 post.thoigiandang = DateTime.Now; // Chưa nghĩ ra hàm giải mà ID
             }
 

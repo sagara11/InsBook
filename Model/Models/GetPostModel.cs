@@ -15,8 +15,8 @@ namespace Model.Models
         public string hinhnen_url { set; get; } //
         public int baomat { set; get; }
         public List<post_ganthe> ganthe { set; get; } //--
-        public int luotthich { set; get; } //
-        public int luotbinhluan { set; get; } //
+        public int luotthich { set; get; } //++
+        public int luotbinhluan { set; get; } //++
         public int luotchiase { set; get; } //
         public string tennguoidang { set; get; }
         public int idnguoidang { set; get; }
@@ -25,8 +25,8 @@ namespace Model.Models
         public int uutien { set; get; } //
         public List<post_anh> anh { set; get; } //--
         public List<post_video> video { set; get; } //
-        public DateTime thoigiandang { set; get; } //--
-        public List<post_comment> comment { set; get; }
+        public DateTime thoigiandang { set; get; } //
+        public List<post_comment> comment { set; get; } //++
     }
     public class post_nguoinhan
     {
@@ -52,13 +52,14 @@ namespace Model.Models
     {
         public Int64 comment_id { set; get; }
         public Int64 post_id { set; get; }
-        public List<post_comment_child> comment_child { set; get; }
+        public List<post_comment_child> comment_child { set; get; } // ++
         public int idnguoidang { set; get; }
         public string anhnguoidang { set; get; }
         public string tennguoidang { set; get; }
-        public int luotthichbinhluan { set; get; }
+        public int luotthich { set; get; } // Chưa có bảng thích bình luận
         public string noidung { set; get; }
-        public DateTime thoigiandang { set; get; }
+        public DateTime thoigiandang { set; get; } //
+        public int luotbinhluan { set; get; } // ++
     }
     public class post_comment_child
     {
@@ -68,8 +69,8 @@ namespace Model.Models
         public string anhnguoidang { set; get; }
         public string tennguoidang { set; get; }
         public string noidung { set; get; }
-        public int luotthichbinhluan { set; get; }
-        public DateTime thoigiandang { set; get; }
+        public int luotthichbinhluan { set; get; } // Chưa có bảng thích bình luận
+        public DateTime thoigiandang { set; get; } //
         public Int64? parent_id { set; get; }
     }
 }
