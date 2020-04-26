@@ -51,7 +51,7 @@
                             <textarea class="form-control" placeholder="Bạn đang nghĩ gì?" name="" id="main-input"></textarea>
                         </div>
                         <div class="post-image">
-                            <img height="100px" width="100px" id="img" src="#" alt="" />
+                            <img height="100px" width="100px" id="img-1" src="#" alt="" />
                         </div>
                         <div id="newpost-taginput" class="tag-input">
                             <input class="form-control" type="text" placeholder="Gắn thẻ bạn bè">
@@ -60,8 +60,13 @@
                             <input class="form-control" type="text" placeholder="Bạn đang ở đâu?">
                         </div>
                         <div class="new-media-content">
-                            <input onchange="readURL(this);" type="file" class="custom-control-input" id="customCheck" name="example1">
-                            <label class="custom-control-file" for="customCheck">Ảnh/Video</label>
+                            <input type="file"
+                                   class="custom-control-input"
+                                   id="img-1-input"
+                                   name="new_image" />
+                            <label id="image-add"
+                                   class="custom-control-file"
+                                   for="img-1-input">Ảnh/Video</label>
                             <label onclick="tag('newpost')" id="newpost-tag">
                                 Gắn thẻ bạn bè
                             </label>
