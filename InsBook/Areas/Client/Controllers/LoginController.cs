@@ -33,6 +33,7 @@ namespace InsBook.Areas.Client.Controllers
         {
             if (ModelState.IsValid) // kiểm tra lại hàm
             {
+
                 var dao = new UserDao();
 
                 var result = dao.Login(model.EmailLogin, Encryptor.MD5Hash(model.Password));
@@ -48,7 +49,9 @@ namespace InsBook.Areas.Client.Controllers
 
                     //thêm session
                     Session.Add(CommonConstants.USER_SESSION, userSC);
-                    Session.Timeout = 300;
+                    Session.Timeout = 1800;
+
+                    CommonConstants.USER_ID = user.id;
 
                     //thêm cookie khi bấm nút ghi nhớ đăng nhập
                     if (model.RememberMe)
@@ -66,6 +69,9 @@ namespace InsBook.Areas.Client.Controllers
             if (Session[CommonConstants.USER_SESSION] != null || Request.Cookies[CommonConstants.USER_COOKIE] != null)
             {
                 Session.Remove(CommonConstants.USER_SESSION);
+
+                CommonConstants.USER_ID = -1;
+
                 Response.Cookies[CommonConstants.USER_COOKIE].Expires = DateTime.Now.AddDays(-1);
                 return View("Index");
             }

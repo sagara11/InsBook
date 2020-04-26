@@ -74,8 +74,7 @@ function cropAvaFunc(event) {
     $("#change-profile-modal-1").css("opacity", "0.75");
 
     let result = document.querySelector('#inputImg'),
-        imgLoading = document.querySelector('#change-profile-file'),
-        imgTitle = document.querySelector('#textarea-mota');
+        imgLoading = document.querySelector('#change-profile-file');
     if (event.target.files.length) {
         // start file reader
         const reader = new FileReader();
@@ -121,15 +120,15 @@ function cropAvaFunc(event) {
                     var baseUrl = url[0] + '//' + url[2];
                     $("#avatar-saved").click(function () {
                         cropper.getCroppedCanvas({
-                            width: 170,
-                            height: 170// input value
+                            width: 710,
+                            height: 480// input value
                         }).toBlob((blob) => {
                             var formData = new FormData();
                             var token = $('input[name="__RequestVerificationToken"]').val();
 
                             formData.append('__RequestVerificationToken', token); //form[0]
                             formData.append('nameImg', imgLoading.files[0].name); //fomr[1]
-                            formData.append('imgTitle', imgTitle); //fomr[2]
+                            formData.append('imgTitle', $("#textarea-mota").val()); //fomr[2]
 
                             formData.append('croppedImg', blob); //file[0]
 

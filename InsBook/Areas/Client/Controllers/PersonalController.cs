@@ -36,6 +36,9 @@ namespace InsBook.Areas.Client.Controllers
             ViewBag.BanBe = banbe;
             //var tenchude = new TopicDao().GetAllName();
             //ViewBag.TenDD = tendd;
+            // hàm này để load tất cả bài viết trong trang cá nhân
+            var baivet = new PostDao().GetAllPost(user.UserID);
+            ViewBag.BaiViet = baivet;
 
             return View();
         }

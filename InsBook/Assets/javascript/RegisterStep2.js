@@ -78,8 +78,8 @@ function cropImgFunc(event) {
                 $(document).ready(function () {
                     $("#avatar-saved").click(function () {
                         cropper.getCroppedCanvas({
-                            width: 170,
-                            height: 170// input value
+                            width: 710,
+                            height: 480// input value
                         }).toBlob((blob) => {
                             var formData = new FormData();
                             var token = $('input[name="__RequestVerificationToken"]').val();

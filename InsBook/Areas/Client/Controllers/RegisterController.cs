@@ -66,7 +66,9 @@ namespace InsBook.Areas.Client.Controllers
                         //thêm session
                         Session.Add(CommonConstants.USER_SESSION, userSC);
                         Session.Timeout = 300;
-                        
+
+                        CommonConstants.USER_ID = id;
+
                         return RedirectToAction("RegisterStep1","Register");
                     }
                     else

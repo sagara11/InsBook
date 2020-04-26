@@ -115,7 +115,17 @@ function AddPost() {
                     if (response.data.diadiem != "") {
                         html = html + '<span> tại <b>' + response.data.diadiem + '</b></span>';
                     }
-                    html = html + ' </header><!-- /header -->' +
+
+                    html = html + '<div class="dropdown post-tools">' +
+                        '                                <button class="btn btn-secondary" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' +
+                        '                                    . . .' +
+                        '                                </button>' +
+                        '                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">' +
+                        '                                    <a class="dropdown-item" href="#" onclick="EditPost(' + response.data.id + ', event)">Chỉnh sửa bài viết</a>' +
+                        '                                    <a class="dropdown-item" href="#" onclick="DeletePost(' + response.data.id + ', event)">Xóa bài viết</a>' +
+                        '                                </div>' +
+                        '                            </div>' +
+                        '</header><!-- /header -->' +
                         '<div class="post-content">' +
                         '   <p class="post-content-text">' + response.data.noidung + '</p>';
                     if (response.data.anh.length != 0) {
@@ -200,13 +210,13 @@ function AddPost() {
                         '                                <p>2 giờ trước</p>' +
                         '                            </section>' +
                         '                            <section class="comment-bar">' +
-                        '                                <div class="form-group">' + 
+                        '                                <div class="form-group">' +
                         '                                    <textarea class="form-control" placeholder="Thêm bình luận..." oninput="auto_grow(this)"></textarea>' +
                         '                                </div>' +
                         '                                <button type="button" class="btn btn-light">Đăng</button>' +
                         '                            </section>' +
                         '                        </div>';
-                        '              </article>'
+                    '              </article>'
                     $(html).insertAfter(".add-post-box");
 
                     $("#post-content").val("");
@@ -239,5 +249,215 @@ function AddPost() {
                 }
             }
         });
+    }
+}
+function DeletePost(postId, e) {
+    e = e || window.event;
+    e.preventDefault();
+    alert(postId);
+    //var formData = new FormData();
+    //var token = $('input[name="__RequestVerificationToken"]').val();
+    //formData.append('__RequestVerificationToken', token); //form[0]
+
+    //formData.append('postId', postId);
+
+    //$.ajax({
+    //    type: 'post',
+    //    url: '/Client/Post/ActionDeletePost',
+    //    dataType: 'json',
+    //    cache: false,
+    //    contentType: false,
+    //    processData: false,
+    //    data: formData,
+    //    success: function (response) {
+    //        if (response.status == true) {
+
+    //        }
+    //    }
+    //});
+}
+
+function EditPost(postId, e) {
+    e = e || window.event;
+    e.preventDefault();
+    alert(postId);
+    //var formData = new FormData();
+    //var token = $('input[name="__RequestVerificationToken"]').val();
+    //formData.append('__RequestVerificationToken', token); //form[0]
+
+    //formData.append('postId', postId);
+
+    //$.ajax({
+    //    type: 'post',
+    //    url: '/Client/Post/ActionDeletePost',
+    //    dataType: 'json',
+    //    cache: false,
+    //    contentType: false,
+    //    processData: false,
+    //    data: formData,
+    //    success: function (response) {
+    //        if (response.status == true) {
+
+    //        }
+    //    }
+    //});
+}
+// Bắt đầu hàm realtime
+$(function () {
+    // Reference the auto-generated proxy for the hub.
+    var post = $.connection.postHub;
+    // Create a function that the hub can call back to display messages.
+    post.client.LikePost = function (postId, status) {
+        if (status) {
+            $("#post-like-icon-" + postId).addClass("liked");
+            $(".like-count-" + postId).text("Xin chào con vợ");
+        } else {
+            $("#post-like-icon-" + postId).removeClass("liked");
+            $(".like-count-" + postId).text("Xin chào địt cụ m");
+        }
+    };
+    post.client.CommentPost = function (comment) {
+        var url = window.location.href.split('/');
+        var baseUrl = url[0] + '//' + url[2];
+        if (comment.parent_id == null) {
+            var html = '<div id="comment-item-' + comment.comment_id + '" class="comment-item">' +
+                '                                            <div class="comment-item-parent" id="comment-item-parent-' + comment.comment_id + '">' +
+                '                                                <div class="user-ava">' +
+                '                                                    <img src="' + baseUrl + '/Images/' + comment.anhnguoidang + '" alt="">' +
+                '                                                </div>' +
+                '                                                <div class="comment-item-detail">' +
+                '                                                    <h3 class="user-name">' + comment.tennguoidang + '</h3>' +
+                '                                                    <span>' + comment.noidung + '</span>' +
+                '                                                    <div class="comment-item-info">' +
+                '                                                        <time datetime="2011-01-12" title="12 tháng 9 1945">Chưa làm</time>' +
+                '                                                        <button type="button" class="btn btn-light">0 lượt thích</button>' +
+                '                                                        <button type="button" class="btn btn-light" onclick="ShowCommentBarChild(' + comment.comment_id + ')">Trả lời</button>' +
+                '                                                    </div>' +
+                '                                                </div>' +
+                '                                                <div class="comment-item-tool">' +
+                '                                                    <i class="far fa-heart"></i>' +
+                '                                                </div>' +
+                '                                            </div>' +
+                '<section id="comment-bar-child-' + comment.comment_id + '" class="comment-bar-child">' +
+                '   <div class="user-ava">' +
+                '       <img src="#" alt="Alternate Text" />' +
+                '   </div>' +
+                '   <div class="form-group">' +
+                '       <textarea class="form-control" placeholder="Thêm bình luận..." oninput="auto_grow(this)" id="post-comment-child-content-' + comment.comment_id + '"></textarea>' +
+                '   </div>' +
+                '   <button type="button" class="btn btn-light post-comment-child-button" id="post-comment-child-button-' + comment.comment_id + '-' + comment.post_id + '">Đăng</button>' +
+                '</section>' +
+                '                                        </div>';
+            if ($("#user-comments-" + comment.post_id).length > 0) {
+                $("#comment-list-" + comment.post_id).append(html);
+                $('#post-comment-content-' + comment.post_id).val("");
+            }
+            else {
+                var myvar = '<div class="user-comments" id="user-comments-' + comment.post_id + '">' +
+                    '                                    <div id="comment-list-' + comment.post_id + '" class="comment-list">' +
+                    '                                    </div>' +
+                    '                                </div>';
+                $(myvar).insertBefore("#comment-bar-" + comment.post_id);
+                $("#comment-list-" + comment.post_id).append(html);
+                $('#post-comment-content-' + comment.post_id).val("");
+            }
+        } else {
+            var html = '<div class="comment-item-child" id="comment-item-child-' + comment.comment_id + '">' +
+                '                                                    <div class="user-ava">' +
+                '                                                        <img src="' + baseUrl + '/Images/' + comment.anhnguoidang + '" alt="">' +
+                '                                                    </div>' +
+                '                                                    <div class="comment-item-detail">' +
+                '                                                        <h3 class="user-name">' + comment.tennguoidang + '</h3>' +
+                '                                                        <span>' + comment.noidung + '</span>' +
+                '                                                        <div class="comment-item-info">' +
+                '                                                            <time datetime="2011-01-12" title="12 tháng 9 1945">Chưa làm</time>' +
+                '                                                            <button type="button" class="btn btn-light">0 lượt thích</button>' +
+                '                                                            <button type="button" class="btn btn-light">Trả lời</button>' +
+                '                                                        </div>' +
+                '                                                    </div>' +
+                '                                                    <div class="comment-item-tool">' +
+                '                                                        <i class="far fa-heart"></i>' +
+                '                                                    </div>' +
+                '                                                </div>';
+            if ($("#comment-item-childs-" + comment.parent_id).length > 0) {
+                $("#comment-childs-" + comment.parent_id).append(html);
+                $("#post-comment-child-content-" + comment.parent_id).val("");
+            } else {
+                var temp = '<div class="comment-item-childs" id="comment-item-childs-' + comment.parent_id + '">' +
+                    '   <button data-toggle="collapse" data-target="#comment-childs-' + comment.parent_id + '" class="btn btn-light">Xem câu trả lời (1)</button>' +
+                    '   <div id="comment-childs-' + comment.parent_id + '" class="collapse">' +
+                    '   </div>' +
+                    '</div>';
+                $(temp).insertAfter($("#comment-item-parent-" + comment.parent_id));
+                $("#comment-childs-" + comment.parent_id).append(html);
+                $("#post-comment-child-content-" + comment.parent_id).val("");
+            }
+        }
+    };
+    // Start the connection.
+    $.connection.hub.start().done(function () {
+        $('.post-like-icon').click(function () {
+            var post_id = this.id.split("-");
+            post_id = post_id[post_id.length - 1]; // Lấy post_id
+
+            if (this.className == "btn btn-light post-like-icon liked") {
+                post.server.likePost(post_id, false);
+            }
+            else {
+                post.server.likePost(post_id, true);
+            }
+        });
+        $('.post-comment-button').click(function () {
+            var post_id = this.id.split("-");
+            post_id = post_id[post_id.length - 1]; // Lấy post_id
+            var content = $('#post-comment-content-' + post_id).val();
+            if (content !== "") {
+                post.server.commentPost(post_id, content, -1);
+            } else {
+                //Để nút đăng disable
+            }
+        });
+
+        $('.user-newsfeed').on('click', '.post-comment-child-button', function () {
+            //console.table(this);
+            var data = this.id.split("-");
+            comment_id = data[data.length - 2]; // Lấy comment_id
+            post_id = data[data.length - 1];
+            var content = $('#post-comment-child-content-' + comment_id).val();
+            if (content !== "") {
+                post.server.commentPost(post_id, content, comment_id);
+            } else {
+                //Để nút đăng disable
+            }
+        });
+    });
+});
+
+function ShowCommentBarChild(commentID) {
+    if ($("#comment-bar-child-" + commentID).css("display") === "none") {
+        $("#comment-bar-child-" + commentID).css("display", "flex");
+
+        var formData = new FormData();
+        var token = $('input[name="__RequestVerificationToken"]').val();
+        formData.append('__RequestVerificationToken', token); //form[0]
+
+        $.ajax({
+            type: 'post',
+            url: '/Client/Post/GetUserAvatar',
+            dataType: 'json',
+            cache: false,
+            contentType: false,
+            processData: false,
+            data: formData,
+            success: function (response) {
+                if (response.status == true) {
+                    var url = window.location.href.split('/');
+                    var baseUrl = url[0] + '//' + url[2];
+                    $("#comment-bar-child-" + commentID + " .user-ava img").attr("src", baseUrl + "/Images/" + response.data);
+                }
+            }
+        });
+    } else {
+        $("#comment-bar-child-" + commentID).css("display", "none");
     }
 }

@@ -12,6 +12,7 @@ namespace Model.EF
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public baiviet()
         {
+            baiviet1 = new HashSet<baiviet>();
             baiviet_binhluan = new HashSet<baiviet_binhluan>();
             baiviet_chiase = new HashSet<baiviet_chiase>();
             baiviet_luu = new HashSet<baiviet_luu>();
@@ -57,6 +58,8 @@ namespace Model.EF
         [StringLength(255)]
         public string duong_dan { get; set; }
 
+        public long? parent_id { get; set; }
+
         public virtual baiviet_hinhnen baiviet_hinhnen { get; set; }
 
         public virtual chophep_chiase chophep_chiase { get; set; }
@@ -66,6 +69,11 @@ namespace Model.EF
         public virtual diadiem diadiem { get; set; }
 
         public virtual nguoidung nguoidung { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<baiviet> baiviet1 { get; set; }
+
+        public virtual baiviet baiviet2 { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<baiviet_binhluan> baiviet_binhluan { get; set; }

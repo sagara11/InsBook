@@ -451,6 +451,7 @@
     <Compile Include="Areas\Client\Models\LoginModel.cs" />
     <Compile Include="Areas\Client\Models\SetLocationModal.cs" />
     <Compile Include="Areas\Client\Models\RegisterModel.cs" />
+    <Compile Include="Hubs\PostHub.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="Common\Accessories.cs" />
     <Compile Include="Common\CommonConstants.cs" />

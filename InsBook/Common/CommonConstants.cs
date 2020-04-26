@@ -10,5 +10,6 @@ namespace InsBook.Common
         public static string USER_SESSION = "USER_SESSION";
         public static string USER_COOKIE = "USER_COOKIE";
         public static string FORGETPASS_SESSION = "FORGETPASS_SESSION";
+        public static int USER_ID = -1;
     }
 }

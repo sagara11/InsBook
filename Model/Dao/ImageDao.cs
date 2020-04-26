@@ -18,32 +18,32 @@ namespace Model.Dao
         {
             db = new InsBookDbContext();
         }
-        public Int64 InsertImage(string url, String shardId, Int64 img_id)
+        public Int64 InsertImage(string url, String shardId)
         {
             try
             {
-                //UInt64 time = (new Accessories().GetTime()) << 23;
+                UInt64 time = (new Accessories().GetTime()) << 23;
 
-                //object[] sqlParam =
-                //    {
-                //        new SqlParameter("@time", Convert.ToString(time)),
-                //        new SqlParameter("@shardId", shardId)
-                //    };
+                object[] sqlParam =
+                    {
+                        new SqlParameter("@time", Convert.ToString(time)),
+                        new SqlParameter("@shardId", shardId)
+                    };
 
-                //Int64 ID = db.Database.SqlQuery<Int64>("SetIdImage @time, @shardId", sqlParam).Single();
-               
+                Int64 ID = db.Database.SqlQuery<Int64>("SetIdImage @time, @shardId", sqlParam).Single();
+
                 var img = new anh();
-                img.id = img_id;
+                img.id = ID;
                 img.ngaycapnhat = DateTime.Now;
                 img.anh_url = url;
                 db.anhs.Add(img);
                 db.SaveChanges();
 
-                return img_id;
+                return ID;
             }
             catch (Exception ex)
             {
-                return InsertImage(url, shardId, img_id);
+                return InsertImage(url, shardId);
             }
         }
         public string GetUrlImage(Int64 imgId)

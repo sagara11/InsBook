@@ -26,7 +26,7 @@ namespace Model.Dao
             return entity.id;
         }
 
-        public nguoidung GetbyEmail(string email)
+        public nguoidung GetbyEmail(string email) 
         {
             return db.nguoidungs.SingleOrDefault(x => x.email == email);
         }

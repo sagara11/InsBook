@@ -15,11 +15,18 @@ namespace InsBook.Areas.Client.Controllers
     public class PostController : ImageController
     {
         // GET: Client/Post 
-        protected Int64 Post(baiviet post)
+        protected Int64 Post(baiviet post, int soluonganh) //nếu bài viết chỉ có 1 ảnh thì soluonganh = 1 và những trường hợp còn lại soluonganh = 0
         {
             UInt64 shardId = Convert.ToUInt64(post.nguoitao_id % 2000) << 10;
-
-            Int64 postId = new PostDao().InsertPost(post, Convert.ToString(shardId));
+            Int64 postId = 0;
+            if (soluonganh == 1)
+            {
+                postId = new PostDao().InsertSingleImgPost(post, Convert.ToString(shardId));
+            }
+            else
+            {
+                postId = new PostDao().InsertPost(post, Convert.ToString(shardId));
+            }
 
             return postId;
         }
@@ -53,10 +60,15 @@ namespace InsBook.Areas.Client.Controllers
                         post.baomat = 0;
                         post.loaibaiviet = 0;
                         post.noidung = Request.Form["imgTitle"];
-                        Int64 postId = Post(post);
-                        List<Int64> imgIds = Image(Request.Files, user.UserID, Request.Form, postId);
 
-                        new UserDao().Avatar(user.UserID, postId);
+                        List<Int64> imgIds = Image(Request.Files, user.UserID, Request.Form);
+
+                        Int64 postId = Post(post, 1);
+
+
+                        new UserDao().Avatar(user.UserID, imgIds[0]);
+                        // lưu vào bài viết ảnh
+                        new PostDao().InsertImg(imgIds[0], postId);
 
                         ImageDao imageDao = new ImageDao();
                         string imgData = imageDao.GetUrlImage(imgIds[0]); //Lay url
@@ -91,6 +103,7 @@ namespace InsBook.Areas.Client.Controllers
                 }, JsonRequestBehavior.AllowGet);
             }
         }
+
         public JsonResult PostUser()
         {
             return Json(new
@@ -122,36 +135,12 @@ namespace InsBook.Areas.Client.Controllers
                     dynamic baiviet = serializer.Deserialize<object>(data["post"]);
 
                     List<string> urls = new List<string>();
+
                     List<Int64> post_img_id = new List<Int64>();
+
                     List<int> friend_ids = new List<int>();
-                    if (Request.Files.Count != 0)
-                    {
-                        foreach (var img in Request.Files)
-                        {
-                            baiviet postImg = new baiviet();
-
-                            postImg.nguoitao_id = user.UserID;
-                            postImg.baomat = 0;
-                            postImg.loaibaiviet = 0;
-
-
-                            post_img_id.Add(Post(postImg));
-                        }
-                        List<Int64> imgIds = Images(Request.Files, user.UserID, post_img_id);
-
-                        ImageDao imageDao = new ImageDao();
-                        foreach (var img_id in imgIds)
-                        {
-                            urls.Add(imageDao.GetUrlImage(img_id)); //Lay url
-                        }
-                    }
-                    if (baiviet["friends"].Length != 0)
-                    {
-                        foreach (var item in baiviet["friends"])
-                        {
-                            friend_ids.Add(item);
-                        }
-                    }
+                    List<Int64> imgIds = new List<Int64>();
+                    // thêm bài viết cha
                     baiviet post = new baiviet();
                     post.nguoitao_id = user.UserID;
                     post.noidung = baiviet["content"];
@@ -162,19 +151,72 @@ namespace InsBook.Areas.Client.Controllers
                     }
                     post.baomat = Convert.ToInt32(baiviet["security"]);
                     post.loaibaiviet = 0;
-                    Int64 postID = Post(post);
-
-                    bool themanh = true;
-                    bool ganthe = true;
-                    if (post_img_id.Count > 0)
+                    Int64 postID = 0;
+                    if (Request.Files.Count == 1)
                     {
-                        themanh = new PostDao().InsertImg(user.UserID, post_img_id, postID);
+                        postID = Post(post, 1);
                     }
+                    else
+                    {
+                        postID = Post(post, 0);
+                    }
+
+                    if (Request.Files.Count > 1)
+                    {
+                        //thêm ảnh con
+                        imgIds = Images(Request.Files, user.UserID);
+                        //thêm bài viết con
+                        foreach (var img in imgIds)
+                        {
+                            baiviet postImg = new baiviet();
+
+                            postImg.nguoitao_id = user.UserID;
+                            postImg.baomat = Convert.ToInt32(baiviet["security"]); // 
+                            postImg.loaibaiviet = 0;
+                            postImg.parent_id = postID;
+
+                            var post_id = Post(postImg, 0);
+                            post_img_id.Add(post_id);
+
+                            new PostDao().InsertImg(img, post_id);
+                        }
+
+                        ImageDao imageDao = new ImageDao();
+                        foreach (var img_id in imgIds)
+                        {
+                            urls.Add(imageDao.GetUrlImage(img_id)); //Lay url
+                        }
+                    }
+                    else if (Request.Files.Count == 1)
+                    {
+                        imgIds = Images(Request.Files, user.UserID);
+                        new PostDao().InsertImg(imgIds[0], postID);
+                        ImageDao imageDao = new ImageDao();
+                        urls.Add(imageDao.GetUrlImage(imgIds[0])); //Lay url
+                    }
+                    if (baiviet["friends"].Length != 0)
+                    {
+                        foreach (var item in baiviet["friends"])
+                        {
+                            friend_ids.Add(item);
+                        }
+                    }
+
+                    // id post 1 sẽ có text
+
+                    // tại sao lấy id bài sang cho ảnh
+
+                    // id post 7,8,9,10
+
+                    // id ảnh: 2,3,4,5
+
+
+                    bool ganthe = true;
                     if (friend_ids.Count > 0)
                     {
                         ganthe = new PostDao().InsertTags(user.UserID, friend_ids, postID);
                     }
-                    if (themanh == true && ganthe == true)
+                    if (ganthe == true)
                     {
                         GetPostModel getpost = new GetPostModel();
                         getpost.id = postID;
@@ -192,7 +234,7 @@ namespace InsBook.Areas.Client.Controllers
                         getpost.tennguoidang = nguoidang.ten;
                         getpost.avatarnguoidang = new PostDao().GetAvatar(user.UserID);
                         List<post_anh> imgg = new List<post_anh>();
-                        foreach (var imgItem in post_img_id)
+                        foreach (var imgItem in imgIds)
                         {
                             imgg.Add(new PostDao().GetPostImg(imgItem));
                         }
@@ -227,6 +269,153 @@ namespace InsBook.Areas.Client.Controllers
                 {
                     status = false
                 }, JsonRequestBehavior.AllowGet);
+            }
+        }
+        //Lấy ảnh khi thêm comment
+        public JsonResult GetUserAvatar()
+        {
+            if (Session[CommonConstants.USER_SESSION] != null || Request.Cookies[CommonConstants.USER_COOKIE] != null)
+            {
+                var user = new UserLogin();
+                // Lấy giá trị của cookie hoặc session
+                if (Request.Cookies[CommonConstants.USER_COOKIE] != null)
+                {
+                    // lấy từ cookie
+                    user.UserID = int.Parse(Request.Cookies[CommonConstants.USER_COOKIE]["1"]); // đang string ép về kiểu int
+                    user.Email = Request.Cookies[CommonConstants.USER_COOKIE]["2"].ToString();
+                }
+                else
+                {
+                    user = (UserLogin)Session[CommonConstants.USER_SESSION]; // lấy từ session
+                }
+
+                try
+                {
+                    string anh_url = new PostDao().GetAvatar(user.UserID);
+                    if (anh_url != "")
+                    {
+                        return Json(new
+                        {
+                            status = true,
+                            data = anh_url
+                        }, JsonRequestBehavior.AllowGet);
+                    }
+                    else
+                    {
+                        return Json(new
+                        {
+                            status = false
+                        }, JsonRequestBehavior.AllowGet);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    return Json(new
+                    {
+                        status = false
+                    }, JsonRequestBehavior.AllowGet);
+                }
+            }
+            else
+            {
+                return Json(new
+                {
+                    status = false
+                }, JsonRequestBehavior.AllowGet);
+            }
+        }
+        //public JsonResult ActionDeletePost()
+        //{
+        //    if (Session[CommonConstants.USER_SESSION] != null || Request.Cookies[CommonConstants.USER_COOKIE] != null)
+        //    {
+        //        var user = new UserLogin();
+        //        // Lấy giá trị của cookie hoặc session
+        //        if (Request.Cookies[CommonConstants.USER_COOKIE] != null)
+        //        {
+        //            // lấy từ cookie
+        //            user.UserID = int.Parse(Request.Cookies[CommonConstants.USER_COOKIE]["1"]); // đang string ép về kiểu int
+        //            user.Email = Request.Cookies[CommonConstants.USER_COOKIE]["2"].ToString();
+        //        }
+        //        else
+        //        {
+        //            user = (UserLogin)Session[CommonConstants.USER_SESSION]; // lấy từ session
+        //        }
+
+        //        try
+        //        {
+        //            var data = Request.Form;
+
+        //            bool check = new PostDao().DeletePost(user.UserID, Convert.ToInt64(data["postId"]));
+
+        //            if (true)
+        //            {
+        //                return Json(new
+        //                {
+        //                    status = true
+        //                }, JsonRequestBehavior.AllowGet);
+        //            }
+        //            else
+        //            {
+        //                return Json(new
+        //                {
+        //                    status = false
+        //                }, JsonRequestBehavior.AllowGet);
+        //            }
+        //        }
+        //        catch (Exception ex)
+        //        {
+        //            return Json(new
+        //            {
+        //                status = false
+        //            }, JsonRequestBehavior.AllowGet);
+        //        }
+        //    }
+        //    else
+        //    {
+        //        return Json(new
+        //        {
+        //            status = false
+        //        }, JsonRequestBehavior.AllowGet);
+        //    }
+        //}
+
+        public bool LikePost(Int64 postId, bool status)
+        {
+            if(CommonConstants.USER_ID != -1)
+            {
+                try
+                {
+                    var like = new PostDao().LikePost(postId, CommonConstants.USER_ID, status);
+                    return like;
+                }
+                catch (Exception ex)
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
+            }
+        }
+        public post_comment_child CommentPost(Int64 postId, string content, Int64 parent_id)
+        {
+            if (CommonConstants.USER_ID != -1)
+            {
+                try
+                {
+                    UInt64 shardId = Convert.ToUInt64(CommonConstants.USER_ID % 2000) << 10;
+                    var comment = new PostDao().CommentPost(postId, CommonConstants.USER_ID, content, Convert.ToString(shardId), parent_id);
+                    return comment;
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+            else
+            {
+                return null;
             }
         }
     }

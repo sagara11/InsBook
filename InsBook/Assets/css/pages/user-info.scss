@@ -19,6 +19,7 @@
 ul.ui-menu {
     padding: 0;
     padding: 8px 0;
+
     li.ui-menu-item {
         padding: 0;
         margin: 0;
@@ -692,6 +693,24 @@ main {
                             span {
                                 margin-left: 5px;
                             }
+
+                            .post-tools {
+                                margin-left: auto;
+
+                                button {
+                                    background-color: #fff;
+                                    font-size: 16px;
+                                    color: #000;
+                                    border: none;
+                                    font-weight: 900;
+
+                                    &:focus {
+                                        border: none;
+                                        box-shadow: none;
+                                        outline: none;
+                                    }
+                                }
+                            }
                         }
 
                         .post-content {
@@ -836,6 +855,30 @@ main {
                                         }
                                     }
                                 }
+
+                                .post-like-icon {
+                                    i {
+                                        color: #000;
+                                    }
+
+                                    &:hover {
+                                        i {
+                                            transform: scale(1.3,1.3);
+                                        }
+                                    }
+                                }
+
+                                .liked {
+                                    i {
+                                        color: red;
+                                    }
+
+                                    &:hover {
+                                        i {
+                                            transform: scale(1.3,1.3);
+                                        }
+                                    }
+                                }
                             }
 
                             .list-like {
@@ -939,6 +982,79 @@ main {
                                                 font-weight: 500;
                                                 color: #999;
                                                 margin-bottom: 12px;
+
+                                                &:focus {
+                                                    box-shadow: none;
+                                                }
+                                            }
+                                        }
+
+                                        .comment-bar-child {
+                                            display: none;
+                                            margin-left: 47px;
+                                            padding: 8px 0;
+
+                                            .user-ava {
+                                                height: 36px;
+                                                width: 36px;
+                                                margin-right: 12px;
+
+                                                img {
+                                                    height: 100%;
+                                                    width: 100%;
+                                                    border: 1px solid red;
+                                                    padding: 2px;
+                                                    object-fit: cover;
+                                                    border-radius: 50%;
+                                                }
+                                            }
+
+                                            .form-group {
+                                                display: flex;
+                                                align-items: center;
+                                                margin: 0;
+                                                width: 87%;
+
+                                                textarea {
+                                                    resize: none;
+                                                    overflow: auto;
+                                                    height: 25px;
+                                                    max-height: 80px;
+                                                    padding: 0;
+                                                    margin: 0;
+                                                    border: none;
+                                                    font-size: 14px;
+
+                                                    &:focus {
+                                                        box-shadow: none;
+                                                        border: none;
+                                                    }
+                                                    /* width */
+                                                    &::-webkit-scrollbar {
+                                                        width: 7px;
+                                                    }
+                                                    /* Track */
+                                                    &::-webkit-scrollbar-track {
+                                                        background: #f1f1f1;
+                                                    }
+                                                    /* Handle */
+                                                    &::-webkit-scrollbar-thumb {
+                                                        background: #888;
+                                                    }
+                                                    /* Handle on hover */
+                                                    &::-webkit-scrollbar-thumb:hover {
+                                                        background: #555;
+                                                    }
+                                                }
+                                            }
+
+                                            button {
+                                                color: #3897f0;
+                                                border: none;
+                                                padding: 0;
+                                                margin: 0;
+                                                background-color: #fff;
+                                                font-size: 14px;
 
                                                 &:focus {
                                                     box-shadow: none;

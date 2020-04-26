@@ -33,11 +33,11 @@ namespace Model.EF
             bosuutap_binhluan = new HashSet<bosuutap_binhluan>();
             bosuutap_chiase = new HashSet<bosuutap_chiase>();
             cauchuyens = new HashSet<cauchuyen>();
-            nguoidung_congty = new HashSet<nguoidung_congty>();
             nguoidung_diadiem = new HashSet<nguoidung_diadiem>();
             nguoidung_tinhtrang = new HashSet<nguoidung_tinhtrang>();
             nguoidung_tinhtrang1 = new HashSet<nguoidung_tinhtrang>();
             nguoidung_truonghoc = new HashSet<nguoidung_truonghoc>();
+            nguoidung_congty = new HashSet<nguoidung_congty>();
             nhoms = new HashSet<nhom>();
             nhom_thanhvien = new HashSet<nhom_thanhvien>();
             nhomtinnhan_nguoidung = new HashSet<nhomtinnhan_nguoidung>();
@@ -188,9 +188,6 @@ namespace Model.EF
         public virtual cauchuyen_video cauchuyen_video { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<nguoidung_congty> nguoidung_congty { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<nguoidung_diadiem> nguoidung_diadiem { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -201,6 +198,9 @@ namespace Model.EF
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<nguoidung_truonghoc> nguoidung_truonghoc { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<nguoidung_congty> nguoidung_congty { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<nhom> nhoms { get; set; }
