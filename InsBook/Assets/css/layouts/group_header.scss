@@ -1,0 +1,52 @@
+﻿#group-header {
+    margin-bottom: 20px;
+    background-color: white;
+    border: 1px solid #c8c8c8;
+    border-radius: 4px;
+}
+
+#group-header #header-option {
+    display: flex;
+    padding: 10px 0px;
+}
+
+#group-header #header-option button {
+    background-color: transparent;
+    border: none;
+    transition: 0.3s;
+}
+
+#group-header #header-option button:hover {
+    color: #3897f0;
+}
+
+#report-modal .modal-body {
+    flex-wrap: wrap;
+}
+
+#report-modal .modal-body .report-box {
+    width: 50%;
+}
+
+#report-modal .modal-body .report-box button {
+    border: none;
+    border-radius: 20px;
+    padding: 5px 8px;
+    width: 70%;
+    background-color: #e6e6e6;
+}
+
+.groupheader-modal .modal-header h4 {
+    font-size: 16px;
+}
+
+.groupheader-modal .modal-body h4 {
+    font-size: 16px;
+    margin-bottom: 4px;
+}
+
+.groupheader-modal .modal-body input, .groupheader-modal .modal-body div {
+    margin-bottom: 15px;
+}
+
+/*# sourceMappingURL=group_header.css.map */
