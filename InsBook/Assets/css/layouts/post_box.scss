@@ -3,44 +3,121 @@
     border-radius: 4px;
     border: 1px solid rgb(200, 200, 200);
     background-color: white;
+    display: block;
 
     .post-box-modal {
         .modal-dialog {
-            max-width: 1000px !important;
+            max-width: 950px !important;
 
             .modal-content {
                 padding: 20px 0px;
                 display: flex;
                 flex-direction: row;
 
-                img {
-                    object-fit: cover;
-                }
-
-                .col-7 {
+                .modal-col-7 {
                     display: flex;
                     align-items: center;
+                    height: 600px;
+                    width: 600px;
                 }
 
-                .post-title {
-                    border-bottom: 1px solid rgb(200, 200, 200);
+                .post-content {
+                    padding: 0px 10px;
+                    width: 100%;
+                    height: 100%;
 
                     img {
+                        width: 100%;
+                        height: 100%;
                         object-fit: cover;
                     }
                 }
 
-                .post-socialfunction {
-                    .post-caption,
-                    .like-comment,
-                    .post-comment,
-                    .like-number {
-                        margin-bottom: 10px;
+                .post-title {
+                    padding: 0px;
+                    padding-right: 10px;
+                    padding-bottom: 10px;
+
+                    img {
+                        margin-right: 10px;
                     }
 
-                    .post-comment {
-                        height: 200px;
-                        overflow-y: scroll;
+                    p {
+                        margin: 0px 0px;
+
+                        a {
+                            color: #000;
+                            text-decoration: none;
+                            font-weight: 500;
+                            font-size: 16px;
+                        }
+
+                        span {
+                            margin-left: 5px;
+                        }
+                    }
+                }
+
+                .post-content-text {
+                    margin-right: 10px;
+                    font-size: 16px;
+                    border-bottom: 1px solid #efefef;
+                    padding-bottom: 12px;
+                    margin: 0;
+                }
+
+                .post-socialfunction {
+                    .user-comments {
+                        overflow-y: auto;
+                        padding: 8px 0;
+                        padding-right: 10px;
+                        border-bottom: 1px solid #efefef;
+                        height: 350px;
+                        overflow-y: auto; 
+                        /* width */
+                        &::-webkit-scrollbar {
+                            transition: 0.3s;
+                            opacity: 1;
+                            width: 7px;
+                        }
+                        /* Track */
+                        &::-webkit-scrollbar-track {
+                            background: #f1f1f1;
+                        }
+                        /* Handle */
+                        &::-webkit-scrollbar-thumb {
+                            background: #888;
+                        }
+                        /* Handle on hover */
+                        &::-webkit-scrollbar-thumb:hover {
+                            opacity: 0.35;
+                            background: #555;
+                        }
+                    }
+
+                    .post-icons,
+                    .post-time {
+                        padding: 0;
+                        padding-right: 10px;
+                    }
+
+                    .post-time {
+                        p {
+                            font-size: 12px;
+                        }
+                        padding-bottom: 3px;
+                    }
+
+                    .list-like {
+                        button {
+                            padding: 0;
+                            font-size: 14px;
+                        }
+                    }
+
+                    .comment-bar {
+                        border: none;
+                        padding-left: 0;
                     }
                 }
             }
@@ -76,171 +153,6 @@
                         background-color: rgb(220, 220, 220);
                     }
                 }
-            }
-        }
-    }
-
-    .post-title,
-    .post-content,
-    .post-usercomment,
-    .post-socialfunction {
-        padding: 10px 15px;
-    }
-
-    .post-title {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-
-        .post-info {
-            align-items: center;
-            display: flex;
-
-            img {
-                margin-right: 10px;
-                object-fit: cover;
-            }
-
-            p {
-                margin: 0px 0px;
-            }
-        }
-
-        .post-option {
-            cursor: pointer;
-            font-size: 20px;
-            font-weight: 600;
-            padding-bottom: 10px;
-        }
-    }
-
-    .post-content {
-        display: flex;
-        justify-content: center;
-        max-height: 600px;
-
-        img {
-            object-fit: cover;
-        }
-    }
-
-    .post-socialfunction {
-        .like-comment {
-            display: flex;
-
-            i {
-                color: black;
-                font-size: 20px;
-                margin-right: 15px;
-                transition: 0.2s;
-
-                &:hover {
-                    transform: scale(1.3, 1.3);
-                }
-            }
-
-            .fa-heart-o {
-                &:hover {
-                    transform: scale(1.3, 1.3);
-                }
-            }
-
-            .fa-heart {
-                color: red;
-                cursor: pointer;
-            }
-        }
-
-        .like-number {
-            font-weight: 600;
-        }
-
-        .post-comment {
-            margin-top: 10px;
-            display: flex;
-
-            .comment-avatar {
-                margin-right: 10px;
-
-                img {
-                    object-fit: cover;
-                }
-            }
-
-            .comment-content {
-                width: 80%;
-
-                .comment-name {
-                    font-weight: 600;
-                    margin-right: 10px;
-                }
-            }
-
-            .comment-detail {
-                span {
-                    color: gray;
-                    font-size: 13px;
-                    margin-right: 5px;
-                }
-            }
-
-            .comment-collapse {
-                cursor: pointer;
-                color: gray;
-                font-size: 14px;
-
-                &:hover {
-                    text-decoration: underline;
-                }
-            }
-
-            .show {
-                display: flex;
-            }
-
-            .children-comment {
-                .comment-avatar {
-                    margin-right: 10px;
-
-                    img {
-                        object-fit: cover;
-                    }
-                }
-
-                .comment-content {
-                    .comment-name {
-                        font-weight: 600;
-                        margin-right: 10px;
-                    }
-                }
-
-                .comment-detail {
-                    span {
-                        color: gray;
-                        font-size: 13px;
-                        margin-right: 5px;
-                    }
-                }
-            }
-
-            .children-reply {
-                width: 100%;
-            }
-        }
-    }
-
-    .post-usercomment {
-        display: flex;
-        padding: 10px 15px;
-        border-top: 1px solid rgb(200, 200, 200);
-
-        button {
-            background-color: white;
-            border: none;
-            transition: 0.3s;
-
-            &:hover {
-                color: rgb(56, 151, 240);
             }
         }
     }
@@ -291,60 +203,49 @@
             }
         }
     }
-}
 
-.post-box-long {
-    display: block;
-    margin-bottom: 30px;
-    background-color: #fff;
+    .post-title,
+    .post-content {
+        padding: 10px 15px;
+    }
 
     .post-title {
-        padding: 15px;
         display: flex;
         align-items: center;
+        justify-content: space-between;
 
-        .user-avatar {
-            width: 38px;
-            height: 38px;
-            margin-right: 8px;
+        .post-info {
+            align-items: center;
+            display: flex;
 
             img {
-                width: 100%;
-                height: 100%;
+                margin-right: 10px;
                 object-fit: cover;
-                border-radius: 50%;
                 border: 1px solid red;
                 padding: 1px;
             }
-        }
 
-        a {
-            color: #000;
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 16px;
-        }
+            p {
+                margin: 0px 0px;
 
-        span {
-            margin-left: 5px;
-        }
+                a {
+                    color: #000;
+                    text-decoration: none;
+                    font-weight: 500;
+                    font-size: 16px;
+                }
 
-        .post-tools {
-            margin-left: auto;
-
-            button {
-                background-color: #fff;
-                font-size: 16px;
-                color: #000;
-                border: none;
-                font-weight: 900;
-
-                &:focus {
-                    border: none;
-                    box-shadow: none;
-                    outline: none;
+                span {
+                    margin-left: 5px;
                 }
             }
+        }
+
+        .post-option {
+            cursor: pointer;
+            font-size: 20px;
+            font-weight: 600;
+            padding-bottom: 10px;
         }
     }
 
@@ -464,7 +365,7 @@
         }
     }
 
-    .post-info {
+    .post-socialfunction {
         .post-icons {
             padding: 0 16px;
             margin-top: 4px;

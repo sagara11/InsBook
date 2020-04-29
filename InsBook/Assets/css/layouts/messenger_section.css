@@ -22,8 +22,7 @@
     width: 100%;
     background-color: white;
     position: absolute;
-    transition: 0.4s;
-    overflow-y: scroll;
+    overflow-y: auto;
     height: 100%; }
     #messenger-section .message-body .message-box {
       transition: 0.4s;

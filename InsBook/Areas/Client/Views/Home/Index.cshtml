@@ -21,15 +21,15 @@
                     <!-- Thông tin tài khoản -->
                     <section id="user-info">
                         <div class="user-avatar">
-                            <img class="rounded rounded-circle" height="70px" width="70px" src="~/Assets/media/78834391_459110258126325_6149001856166133760_n.jpg" alt="">
+                            <img class="rounded rounded-circle" height="70px" width="70px" src="/Images/22904751_688560231353134_2748711313877205190_o.jpg" alt="">
                         </div>
-                        <div>
+                        <div id="user-name">
                             <p>
-                                user-name
+                                <a href="#">Thắng Bếu</a>
                             </p>
                             <p>
                                 <small>
-                                    user-name-2
+                                    Nhà Vua
                                 </small>
                             </p>
                         </div>
@@ -106,24 +106,46 @@
                             </button>
                         </div>
                     </article>
-                    <article class="post-box-long">
+                    <article class="post-box">
                         <header class="post-title">
-                            <div class="user-avatar">
-                                <img src="/Images/22904751_688560231353134_2748711313877205190_o.jpg" alt="">
+                            <div class="post-info">
+                                <img src="/Images/22904751_688560231353134_2748711313877205190_o.jpg" class="rounded rounded-circle lazy" width="50px" height="50px" alt="">
+                                <p><a href="#" title="">Thắng Bếu</a><span>với <b>Hùng Phong, Minh Thông</b></span><span>tại <b>Hà Nội</b></span></p>
                             </div>
-                            <a href="#" title="">Thắng Bếu</a>
+                            <div class="post-option" data-target="#post-option-modal1" data-toggle="modal">
+                                &#8230;
+                            </div>
+                            <div class="modal post-option-modal fade" id="post-option-modal1">
+                                <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content">
+                                        <div class="modal-body">
+                                            <ul>
+                                                <li>
+                                                    <a class="report" href="">Báo cáo</a>
+                                                </li>
+                                                <li>
+                                                    <a href="">Sửa bài viết</a>
+                                                </li>
+                                                <li>
+                                                    <a href="">Xóa bài viết</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </header><!-- /header -->
-                        <div class="post-content">
+                        <div class="post-content" data-toggle="modal" data-target="#modal0">
                             <p class="post-content-text">Im cho bố m học bài !</p>
                             <div class="post-content-image">
                                 <img src="~/Images/22904751_688560231353134_2748711313877205190_o.jpg" alt="">
                             </div>
                         </div>
-                        <div class="post-info">
+                        <div class="post-socialfunction">
                             <section class="post-icons">
                                 <button type="button" class="btn btn-light"><i class="far fa-heart"></i></button>
                                 <button type="button" class="btn btn-light"><i class="far fa-comment"></i></button>
-                                <button type="button" class="btn btn-light"><i class="far fa-paper-plane"></i></button>
+                                <button type="button" class="btn btn-light" data-toggle="modal" data-target="#post-0-share"><i class="far fa-paper-plane"></i></button>
                                 <button type="button" class="btn btn-light"><i class="far fa-bookmark"></i></button>
                             </section>
                             <section class="list-like">
@@ -317,162 +339,227 @@
                                 <button type="button" class="btn btn-light">Đăng</button>
                             </section>
                         </div>
-                    </article>
-                    <div class="post-box" id="post-1">
-                        <div class="post-title">
-                            <div class="post-info">
-                                <img height="50px" width="50px" class="rounded rounded-circle lazy" src="~/Assets/media/78834391_459110258126325_6149001856166133760_n.jpg" alt="">
-                                <p>name</p>
-                            </div>
-                            <div class="post-option" data-target="#post-option-modal1" data-toggle="modal">
-                                &#8230;
-                            </div>
-                            <div class="modal post-option-modal fade" id="post-option-modal1">
-                                <div class="modal-dialog modal-dialog-centered">
-                                    <div class="modal-content">
-                                        <div class="modal-body">
-                                            <ul>
-                                                <li>
-                                                    <a class="report" href="">Báo cáo</a>
-                                                </li>
-                                                <li>
-                                                    <a href="">Bỏ theo dõi</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="post-content" data-toggle="modal" data-target="#modal1">
-                            <img class="img-fluid lazy" src="~/Images/base-background.jpg" data-src="~/Assets/media/78834391_459110258126325_6149001856166133760_n.jpg" alt="">
-                        </div>
-                        <div class="post-socialfunction">
-                            <div class="like-comment">
-                                <div id="heart-1" onclick="heart('heart-1')" class="like-comment-heart">
-                                    <i class="fa fa-heart-o heart" aria-hidden="true"></i>
-                                </div>
-                                <i class="fa fa-comment-o" aria-hidden="true"></i>
-                                <i data-toggle="modal" data-target="#share1" class="fa fa-paper-plane-o" aria-hidden="true"></i>
-                            </div>
-                            <div class="like-number">
-                                200 likes
-                            </div>
-                            <div class="post-caption">
-                                Caption
-                            </div>
-                            <div class="post-comment">
-                                <div class="comment-avatar">
-                                    <img class="rounded rounded-circle" height="35px" width="35px" src="~/Assets/media/78834391_459110258126325_6149001856166133760_n.jpg" alt="">
-                                </div>
-                                <div class="comment-content">
-                                    <div>
-                                        <span class="comment-name">
-                                            Name
-                                        </span>
-                                        <span class="comment-content">
-                                            content
-                                        </span>
-                                    </div>
-                                    <div class="comment-detail">
-                                        <span>2 giờ</span>
-                                        <span>200 lượt thích</span>
-                                        <span id="reply-btn-1" onclick="comment_reply('1')">Trả lời</span>
-                                    </div>
-                                    <div class="comment-collapse" data-toggle="collapse" data-target="#comment-1-children">
-                                        Xem câu trả lời
-                                    </div>
-                                    <div class="collapse children-comment" id="comment-1-children">
-                                        <div class="comment-avatar">
-                                            <img class="rounded rounded-circle" height="25px" width="25px" src="~/Assets/media/78834391_459110258126325_6149001856166133760_n.jpg" alt="">
-                                        </div>
-                                        <div class="comment-content">
-                                            <div>
-                                                <span class="comment-name">
-                                                    Name
-                                                </span>
-                                                <span class="comment-content">
-                                                    content
-                                                </span>
-                                            </div>
-                                            <div class="comment-detail">
-                                                <span>2 giờ</span>
-                                                <span>200 lượt thích</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="collapse children-comment" id="comment-1-children">
-                                        <div class="comment-avatar">
-                                            <img class="rounded rounded-circle" height="25px" width="25px" src="~/Assets/media/78834391_459110258126325_6149001856166133760_n.jpg" alt="">
-                                        </div>
-                                        <div class="comment-content">
-                                            <div>
-                                                <span class="comment-name">
-                                                    Name
-                                                </span>
-                                                <span class="comment-content">
-                                                    content
-                                                </span>
-                                            </div>
-                                            <div class="comment-detail">
-                                                <span>2 giờ</span>
-                                                <span>200 lượt thích</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="children-reply" id="children-reply-1">
-                                        <input type="text" placeholder="Viết phản hồi" class="form-control">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="post-usercomment">
-                            <input class="form-control" type="text" placeholder="Thêm bình luận...">
-                            <button>Đăng</button>
-                        </div>
                         <!-- Modal -->
-                        <div class="post-box-modal modal fade" id="modal1">
+                        <div class="post-box-modal modal fade" id="modal0">
                             <div class="modal-dialog modal-dialog-centered">
                                 <div class="modal-content">
-                                    <div class="col-7">
+                                    <div class="modal-col-7">
                                         <div class="post-content">
-                                            <img class="img-fluid" src="~/Assets/media/78834391_459110258126325_6149001856166133760_n.jpg" alt="">
+                                            <img class="" src="~/Assets/media/78834391_459110258126325_6149001856166133760_n.jpg" alt="">
                                         </div>
                                     </div>
-                                    <div class="col-5">
+                                    <div class="modal-col-5">
                                         <div class="post-title">
                                             <img height="50px" width="50px" class="rounded rounded-circle" src="~/Assets/media/78834391_459110258126325_6149001856166133760_n.jpg" alt="">
-                                            <p>name</p>
+                                            <p><a href="#" title="">Thắng Bếu</a><span>với <b>Hùng Phong, Minh Thông</b></span><span>tại <b>Hà Nội</b></span></p>
                                         </div>
+
+                                        <p class="post-content-text">Im cho bố m học bài !</p>
                                         <div class="post-socialfunction">
-                                            <div class="post-caption">
-                                                Caption
-                                            </div>
-                                            <div class="like-comment">
-                                                <div id="heart-1-modal" onclick="heart('heart-1')" class="like-comment-heart">
-                                                    <i class="fa fa-heart-o heart" aria-hidden="true"></i>
+
+                                            <div class="user-comments">
+                                                <div class="comment-list">
+                                                    <div class="comment-item">
+                                                        <div class="comment-item-parent">
+                                                            <div class="user-ava">
+                                                                <img src="~/Images/22904751_688560231353134_2748711313877205190_o.jpg" alt="">
+                                                            </div>
+                                                            <div class="comment-item-detail">
+                                                                <h3 class="user-name">thangho</h3>
+                                                                <span>Bla bla bla...</span>
+                                                                <div class="comment-item-info">
+                                                                    <time datetime="2011-01-12" title="12 tháng 9 1945">2 giờ</time>
+                                                                    <button type="button" class="btn btn-light">123 lượt thích</button>
+                                                                    <button type="button" class="btn btn-light">Trả lời</button>
+                                                                </div>
+                                                            </div>
+                                                            <div class="comment-item-tool">
+                                                                <i class="far fa-heart"></i>
+                                                            </div>
+                                                        </div>
+                                                        <div class="comment-item-childs">
+                                                            <button data-toggle="collapse" data-target="#demo-2" class="btn btn-light">Xem câu trả lời (1)</button>
+                                                            <div id="demo-2" class="collapse">
+                                                                <div class="comment-item-child">
+                                                                    <div class="user-ava">
+                                                                        <img src="~/Images/22904751_688560231353134_2748711313877205190_o.jpg" alt="">
+                                                                    </div>
+                                                                    <div class="comment-item-detail">
+                                                                        <h3 class="user-name">thangho</h3>
+                                                                        <span>Bla bla bla...</span>
+                                                                        <div class="comment-item-info">
+                                                                            <time datetime="2011-01-12" title="12 tháng 9 1945">2 giờ</time>
+                                                                            <button type="button" class="btn btn-light">123 lượt thích</button>
+                                                                            <button type="button" class="btn btn-light">Trả lời</button>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="comment-item-tool">
+                                                                        <i class="far fa-heart"></i>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="comment-item-child">
+                                                                    <div class="user-ava">
+                                                                        <img src="~/Images/22904751_688560231353134_2748711313877205190_o.jpg" alt="">
+                                                                    </div>
+                                                                    <div class="comment-item-detail">
+                                                                        <h3 class="user-name">thangho</h3>
+                                                                        <span>Bla bla bla...</span>
+                                                                        <div class="comment-item-info">
+                                                                            <time datetime="2011-01-12" title="12 tháng 9 1945">2 giờ</time>
+                                                                            <button type="button" class="btn btn-light">123 lượt thích</button>
+                                                                            <button type="button" class="btn btn-light">Trả lời</button>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="comment-item-tool">
+                                                                        <i class="far fa-heart"></i>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="comment-item">
+                                                        <div class="comment-item-parent">
+                                                            <div class="user-ava">
+                                                                <img src="~/Images/22904751_688560231353134_2748711313877205190_o.jpg" alt="">
+                                                            </div>
+                                                            <div class="comment-item-detail">
+                                                                <h3 class="user-name">thangho</h3>
+                                                                <span>Bla bla bla...</span>
+                                                                <div class="comment-item-info">
+                                                                    <time datetime="2011-01-12" title="12 tháng 9 1945">2 giờ</time>
+                                                                    <button type="button" class="btn btn-light">123 lượt thích</button>
+                                                                    <button type="button" class="btn btn-light">Trả lời</button>
+                                                                </div>
+                                                            </div>
+                                                            <div class="comment-item-tool">
+                                                                <i class="far fa-heart"></i>
+                                                            </div>
+                                                        </div>
+                                                        <div class="comment-item-childs">
+                                                            <button data-toggle="collapse" data-target="#demo-1" class="btn btn-light">Xem câu trả lời (1)</button>
+                                                            <div id="demo-1" class="collapse">
+                                                                <div class="comment-item-child">
+                                                                    <div class="user-ava">
+                                                                        <img src="~/Images/22904751_688560231353134_2748711313877205190_o.jpg" alt="">
+                                                                    </div>
+                                                                    <div class="comment-item-detail">
+                                                                        <h3 class="user-name">thangho</h3>
+                                                                        <span>Bla bla bla...</span>
+                                                                        <div class="comment-item-info">
+                                                                            <time datetime="2011-01-12" title="12 tháng 9 1945">2 giờ</time>
+                                                                            <button type="button" class="btn btn-light">123 lượt thích</button>
+                                                                            <button type="button" class="btn btn-light">Trả lời</button>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="comment-item-tool">
+                                                                        <i class="far fa-heart"></i>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="comment-item-child">
+                                                                    <div class="user-ava">
+                                                                        <img src="~/Images/22904751_688560231353134_2748711313877205190_o.jpg" alt="">
+                                                                    </div>
+                                                                    <div class="comment-item-detail">
+                                                                        <h3 class="user-name">thangho</h3>
+                                                                        <span>Bla bla bla...</span>
+                                                                        <div class="comment-item-info">
+                                                                            <time datetime="2011-01-12" title="12 tháng 9 1945">2 giờ</time>
+                                                                            <button type="button" class="btn btn-light">123 lượt thích</button>
+                                                                            <button type="button" class="btn btn-light">Trả lời</button>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="comment-item-tool">
+                                                                        <i class="far fa-heart"></i>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="comment-item">
+                                                        <div class="comment-item-parent">
+                                                            <div class="user-ava">
+                                                                <img src="~/Images/22904751_688560231353134_2748711313877205190_o.jpg" alt="">
+                                                            </div>
+                                                            <div class="comment-item-detail">
+                                                                <h3 class="user-name">thangho</h3>
+                                                                <span>Bla bla bla...</span>
+                                                                <div class="comment-item-info">
+                                                                    <time datetime="2011-01-12" title="12 tháng 9 1945">2 giờ</time>
+                                                                    <button type="button" class="btn btn-light">123 lượt thích</button>
+                                                                    <button type="button" class="btn btn-light">Trả lời</button>
+                                                                </div>
+                                                            </div>
+                                                            <div class="comment-item-tool">
+                                                                <i class="far fa-heart"></i>
+                                                            </div>
+                                                        </div>
+                                                        <div class="comment-item-childs">
+                                                            <button data-toggle="collapse" data-target="#demo-3" class="btn btn-light">Xem câu trả lời (1)</button>
+                                                            <div id="demo-3" class="collapse">
+                                                                <div class="comment-item-child">
+                                                                    <div class="user-ava">
+                                                                        <img src="~/Images/22904751_688560231353134_2748711313877205190_o.jpg" alt="">
+                                                                    </div>
+                                                                    <div class="comment-item-detail">
+                                                                        <h3 class="user-name">thangho</h3>
+                                                                        <span>Bla bla bla...</span>
+                                                                        <div class="comment-item-info">
+                                                                            <time datetime="2011-01-12" title="12 tháng 9 1945">2 giờ</time>
+                                                                            <button type="button" class="btn btn-light">123 lượt thích</button>
+                                                                            <button type="button" class="btn btn-light">Trả lời</button>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="comment-item-tool">
+                                                                        <i class="far fa-heart"></i>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="comment-item-child">
+                                                                    <div class="user-ava">
+                                                                        <img src="~/Images/22904751_688560231353134_2748711313877205190_o.jpg" alt="">
+                                                                    </div>
+                                                                    <div class="comment-item-detail">
+                                                                        <h3 class="user-name">thangho</h3>
+                                                                        <span>Bla bla bla...</span>
+                                                                        <div class="comment-item-info">
+                                                                            <time datetime="2011-01-12" title="12 tháng 9 1945">2 giờ</time>
+                                                                            <button type="button" class="btn btn-light">123 lượt thích</button>
+                                                                            <button type="button" class="btn btn-light">Trả lời</button>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="comment-item-tool">
+                                                                        <i class="far fa-heart"></i>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                                <i class="fa fa-comment-o" aria-hidden="true"></i>
-                                                <i data-toggle="modal" data-target="#share1" class="fa fa-paper-plane-o" aria-hidden="true"></i>
                                             </div>
-                                            <div class="like-number">
-                                                200 likes
-                                            </div>
-                                            <div class="post-comment">
-                                                <p class="comment-name">Name</p>
-                                                <p>comment....</p>
-                                            </div>
-                                        </div>
-                                        <div class="post-usercomment">
-                                            <input class="form-control" type="text" placeholder="Thêm bình luận...">
-                                            <button>Đăng</button>
+                                            <section class="post-icons">
+                                                <button type="button" class="btn btn-light"><i class="far fa-heart"></i></button>
+                                                <button type="button" class="btn btn-light"><i class="far fa-comment"></i></button>
+                                                <button type="button" class="btn btn-light" data-toggle="modal" data-target="#post-0-share"><i class="far fa-paper-plane"></i></button>
+                                                <button type="button" class="btn btn-light"><i class="far fa-bookmark"></i></button>
+                                            </section>
+                                            <section class="list-like">
+                                                <button type="button" class="btn btn-light">123 lượt thích</button>
+                                            </section>
+                                            <section class="post-time">
+                                                <p>2 giờ trước</p>
+                                            </section>
+                                            <section class="comment-bar">
+                                                <div class="form-group">
+                                                    <textarea class="form-control" placeholder="Thêm bình luận..." oninput="auto_grow(this)"></textarea>
+                                                </div>
+                                                <button type="button" class="btn btn-light">Đăng</button>
+                                            </section>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <!-- Share modal -->
-                        <div class="share-modal modal fade" id="share1">
+                        <div class="share-modal modal fade" id="post-0-share">
                             <div class="modal-dialog modal-dialog-centered">
                                 <div class="modal-content">
                                     <div class="share-header">
@@ -482,7 +569,7 @@
                                     <div class="share-body">
                                         <input class="form-control" type="text" placeholder="Nói gì đó về nội dung này...">
                                         <div class="share-content">
-                                            <img class="img-fluid" src="~/Assets/media/78834391_459110258126325_6149001856166133760_n.jpg" alt="">
+                                            <img class="" src="~/Assets/media/78834391_459110258126325_6149001856166133760_n.jpg" alt="">
                                         </div>
                                     </div>
                                     <div id="post-1-taginput" class="tag-input">
@@ -504,17 +591,17 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="post-box" id="post-2">
-                        <div class="post-title">
+                    </article>
+                    <article class="post-box">
+                        <header class="post-title">
                             <div class="post-info">
-                                <img height="50px" width="50px" class="rounded rounded-circle lazy" src="~/Images/base-background.jpg" data-src="https://localhost:44307/Assets/media/78834391_459110258126325_6149001856166133760_n.jpg" alt="">
-                                <p>name</p>
+                                <img src="/Images/22904751_688560231353134_2748711313877205190_o.jpg" class="rounded rounded-circle lazy" width="50px" height="50px" alt="">
+                                <p><a href="#" title="">Thắng Bếu</a><span>với <b>Hùng Phong, Minh Thông</b></span><span>tại <b>Hà Nội</b></span></p>
                             </div>
-                            <div class="post-option lazy" data-target="#post-option-modal2" data-toggle="modal">
+                            <div class="post-option" data-target="#post-option-modal1" data-toggle="modal">
                                 &#8230;
                             </div>
-                            <div class="modal post-option-modal fade" id="post-option-modal2">
+                            <div class="modal post-option-modal fade" id="post-option-modal1">
                                 <div class="modal-dialog modal-dialog-centered">
                                     <div class="modal-content">
                                         <div class="modal-body">
@@ -523,143 +610,442 @@
                                                     <a class="report" href="">Báo cáo</a>
                                                 </li>
                                                 <li>
-                                                    <a href="">Bỏ theo dõi</a>
+                                                    <a href="">Sửa bài viết</a>
+                                                </li>
+                                                <li>
+                                                    <a href="">Xóa bài viết</a>
                                                 </li>
                                             </ul>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="post-content" data-toggle="modal" data-target="#post-2-modal">
-                            <img class="img-fluid lazy" src="~/Images/base-background.jpg" data-src="https://localhost:44307/Assets/media/78834391_459110258126325_6149001856166133760_n.jpg" alt="">
+                        </header><!-- /header -->
+                        <div class="post-content" data-toggle="modal" data-target="#modal0">
+                            <p class="post-content-text">Im cho bố m học bài !</p>
+                            <div class="post-content-image">
+                                <img src="~/Images/22904751_688560231353134_2748711313877205190_o.jpg" alt="">
+                            </div>
                         </div>
                         <div class="post-socialfunction">
-                            <div class="like-comment">
-                                <div id="heart-2" onclick="heart('heart-2')" class="like-comment-heart">
-                                    <i class="fa fa-heart-o heart" aria-hidden="true"></i>
+                            <section class="post-icons">
+                                <button type="button" class="btn btn-light"><i class="far fa-heart"></i></button>
+                                <button type="button" class="btn btn-light"><i class="far fa-comment"></i></button>
+                                <button type="button" class="btn btn-light" data-toggle="modal" data-target="#post-0-share"><i class="far fa-paper-plane"></i></button>
+                                <button type="button" class="btn btn-light"><i class="far fa-bookmark"></i></button>
+                            </section>
+                            <section class="list-like">
+                                <button type="button" class="btn btn-light">123 lượt thích</button>
+                            </section>
+                            <section class="post-time">
+                                <p>2 giờ trước</p>
+                            </section>
+                            <div class="user-comments">
+                                <div class="comment-list">
+                                    <div class="comment-item">
+                                        <div class="comment-item-parent">
+                                            <div class="user-ava">
+                                                <img src="~/Images/22904751_688560231353134_2748711313877205190_o.jpg" alt="">
+                                            </div>
+                                            <div class="comment-item-detail">
+                                                <h3 class="user-name">thangho</h3>
+                                                <span>Bla bla bla...</span>
+                                                <div class="comment-item-info">
+                                                    <time datetime="2011-01-12" title="12 tháng 9 1945">2 giờ</time>
+                                                    <button type="button" class="btn btn-light">123 lượt thích</button>
+                                                    <button type="button" class="btn btn-light">Trả lời</button>
+                                                </div>
+                                            </div>
+                                            <div class="comment-item-tool">
+                                                <i class="far fa-heart"></i>
+                                            </div>
+                                        </div>
+                                        <div class="comment-item-childs">
+                                            <button data-toggle="collapse" data-target="#demo-2" class="btn btn-light">Xem câu trả lời (1)</button>
+                                            <div id="demo-2" class="collapse">
+                                                <div class="comment-item-child">
+                                                    <div class="user-ava">
+                                                        <img src="~/Images/22904751_688560231353134_2748711313877205190_o.jpg" alt="">
+                                                    </div>
+                                                    <div class="comment-item-detail">
+                                                        <h3 class="user-name">thangho</h3>
+                                                        <span>Bla bla bla...</span>
+                                                        <div class="comment-item-info">
+                                                            <time datetime="2011-01-12" title="12 tháng 9 1945">2 giờ</time>
+                                                            <button type="button" class="btn btn-light">123 lượt thích</button>
+                                                            <button type="button" class="btn btn-light">Trả lời</button>
+                                                        </div>
+                                                    </div>
+                                                    <div class="comment-item-tool">
+                                                        <i class="far fa-heart"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="comment-item-child">
+                                                    <div class="user-ava">
+                                                        <img src="~/Images/22904751_688560231353134_2748711313877205190_o.jpg" alt="">
+                                                    </div>
+                                                    <div class="comment-item-detail">
+                                                        <h3 class="user-name">thangho</h3>
+                                                        <span>Bla bla bla...</span>
+                                                        <div class="comment-item-info">
+                                                            <time datetime="2011-01-12" title="12 tháng 9 1945">2 giờ</time>
+                                                            <button type="button" class="btn btn-light">123 lượt thích</button>
+                                                            <button type="button" class="btn btn-light">Trả lời</button>
+                                                        </div>
+                                                    </div>
+                                                    <div class="comment-item-tool">
+                                                        <i class="far fa-heart"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="comment-item">
+                                        <div class="comment-item-parent">
+                                            <div class="user-ava">
+                                                <img src="~/Images/22904751_688560231353134_2748711313877205190_o.jpg" alt="">
+                                            </div>
+                                            <div class="comment-item-detail">
+                                                <h3 class="user-name">thangho</h3>
+                                                <span>Bla bla bla...</span>
+                                                <div class="comment-item-info">
+                                                    <time datetime="2011-01-12" title="12 tháng 9 1945">2 giờ</time>
+                                                    <button type="button" class="btn btn-light">123 lượt thích</button>
+                                                    <button type="button" class="btn btn-light">Trả lời</button>
+                                                </div>
+                                            </div>
+                                            <div class="comment-item-tool">
+                                                <i class="far fa-heart"></i>
+                                            </div>
+                                        </div>
+                                        <div class="comment-item-childs">
+                                            <button data-toggle="collapse" data-target="#demo-1" class="btn btn-light">Xem câu trả lời (1)</button>
+                                            <div id="demo-1" class="collapse">
+                                                <div class="comment-item-child">
+                                                    <div class="user-ava">
+                                                        <img src="~/Images/22904751_688560231353134_2748711313877205190_o.jpg" alt="">
+                                                    </div>
+                                                    <div class="comment-item-detail">
+                                                        <h3 class="user-name">thangho</h3>
+                                                        <span>Bla bla bla...</span>
+                                                        <div class="comment-item-info">
+                                                            <time datetime="2011-01-12" title="12 tháng 9 1945">2 giờ</time>
+                                                            <button type="button" class="btn btn-light">123 lượt thích</button>
+                                                            <button type="button" class="btn btn-light">Trả lời</button>
+                                                        </div>
+                                                    </div>
+                                                    <div class="comment-item-tool">
+                                                        <i class="far fa-heart"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="comment-item-child">
+                                                    <div class="user-ava">
+                                                        <img src="~/Images/22904751_688560231353134_2748711313877205190_o.jpg" alt="">
+                                                    </div>
+                                                    <div class="comment-item-detail">
+                                                        <h3 class="user-name">thangho</h3>
+                                                        <span>Bla bla bla...</span>
+                                                        <div class="comment-item-info">
+                                                            <time datetime="2011-01-12" title="12 tháng 9 1945">2 giờ</time>
+                                                            <button type="button" class="btn btn-light">123 lượt thích</button>
+                                                            <button type="button" class="btn btn-light">Trả lời</button>
+                                                        </div>
+                                                    </div>
+                                                    <div class="comment-item-tool">
+                                                        <i class="far fa-heart"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="comment-item">
+                                        <div class="comment-item-parent">
+                                            <div class="user-ava">
+                                                <img src="~/Images/22904751_688560231353134_2748711313877205190_o.jpg" alt="">
+                                            </div>
+                                            <div class="comment-item-detail">
+                                                <h3 class="user-name">thangho</h3>
+                                                <span>Bla bla bla...</span>
+                                                <div class="comment-item-info">
+                                                    <time datetime="2011-01-12" title="12 tháng 9 1945">2 giờ</time>
+                                                    <button type="button" class="btn btn-light">123 lượt thích</button>
+                                                    <button type="button" class="btn btn-light">Trả lời</button>
+                                                </div>
+                                            </div>
+                                            <div class="comment-item-tool">
+                                                <i class="far fa-heart"></i>
+                                            </div>
+                                        </div>
+                                        <div class="comment-item-childs">
+                                            <button data-toggle="collapse" data-target="#demo-3" class="btn btn-light">Xem câu trả lời (1)</button>
+                                            <div id="demo-3" class="collapse">
+                                                <div class="comment-item-child">
+                                                    <div class="user-ava">
+                                                        <img src="~/Images/22904751_688560231353134_2748711313877205190_o.jpg" alt="">
+                                                    </div>
+                                                    <div class="comment-item-detail">
+                                                        <h3 class="user-name">thangho</h3>
+                                                        <span>Bla bla bla...</span>
+                                                        <div class="comment-item-info">
+                                                            <time datetime="2011-01-12" title="12 tháng 9 1945">2 giờ</time>
+                                                            <button type="button" class="btn btn-light">123 lượt thích</button>
+                                                            <button type="button" class="btn btn-light">Trả lời</button>
+                                                        </div>
+                                                    </div>
+                                                    <div class="comment-item-tool">
+                                                        <i class="far fa-heart"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="comment-item-child">
+                                                    <div class="user-ava">
+                                                        <img src="~/Images/22904751_688560231353134_2748711313877205190_o.jpg" alt="">
+                                                    </div>
+                                                    <div class="comment-item-detail">
+                                                        <h3 class="user-name">thangho</h3>
+                                                        <span>Bla bla bla...</span>
+                                                        <div class="comment-item-info">
+                                                            <time datetime="2011-01-12" title="12 tháng 9 1945">2 giờ</time>
+                                                            <button type="button" class="btn btn-light">123 lượt thích</button>
+                                                            <button type="button" class="btn btn-light">Trả lời</button>
+                                                        </div>
+                                                    </div>
+                                                    <div class="comment-item-tool">
+                                                        <i class="far fa-heart"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                                <i class="fa fa-comment-o" aria-hidden="true"></i>
-                                <i data-toggle="modal" data-target="#post-2-share" class="fa fa-paper-plane-o" aria-hidden="true"></i>
                             </div>
-                            <div class="like-number">
-                                200 likes
-                            </div>
-                            <div class="post-caption">
-                                Caption
-                            </div>
-                            <div class="post-comment">
-                                <div class="comment-avatar">
-                                    <img class="rounded rounded-circle" height="35px" width="35px" src="~/Assets/media/78834391_459110258126325_6149001856166133760_n.jpg" alt="">
+                            <section class="comment-bar">
+                                <div class="form-group">
+                                    <textarea class="form-control" placeholder="Thêm bình luận..." oninput="auto_grow(this)"></textarea>
                                 </div>
-                                <div class="comment-content">
-                                    <div>
-                                        <span class="comment-name">
-                                            Name
-                                        </span>
-                                        <span class="comment-content">
-                                            content
-                                        </span>
-                                    </div>
-                                    <div class="comment-detail">
-                                        <span>2 giờ</span>
-                                        <span>200 lượt thích</span>
-                                        <span id="reply-btn-2" onclick="comment_reply('2')">Trả lời</span>
-                                    </div>
-                                    <div class="comment-collapse" data-toggle="collapse" data-target="#comment-2-children">
-                                        Xem câu trả lời
-                                    </div>
-                                    <div class="collapse children-comment" id="comment-2-children">
-                                        <div class="comment-avatar">
-                                            <img class="rounded rounded-circle" height="25px" width="25px" src="~/Assets/media/78834391_459110258126325_6149001856166133760_n.jpg" alt="">
-                                        </div>
-                                        <div class="comment-content">
-                                            <div>
-                                                <span class="comment-name">
-                                                    Name
-                                                </span>
-                                                <span class="comment-content">
-                                                    content
-                                                </span>
-                                            </div>
-                                            <div class="comment-detail">
-                                                <span>2 giờ</span>
-                                                <span>200 lượt thích</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="collapse children-comment" id="comment-2-children">
-                                        <div class="comment-avatar">
-                                            <img class="rounded rounded-circle" height="25px" width="25px" src="~/Assets/media/78834391_459110258126325_6149001856166133760_n.jpg" alt="">
-                                        </div>
-                                        <div class="comment-content">
-                                            <div>
-                                                <span class="comment-name">
-                                                    Name
-                                                </span>
-                                                <span class="comment-content">
-                                                    content
-                                                </span>
-                                            </div>
-                                            <div class="comment-detail">
-                                                <span>2 giờ</span>
-                                                <span>200 lượt thích</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="children-reply" id="children-reply-2">
-                                        <input type="text" placeholder="Viết phản hồi" class="form-control">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="post-usercomment">
-                            <input class="form-control" type="text" placeholder="Thêm bình luận...">
-                            <button>Đăng</button>
+                                <button type="button" class="btn btn-light">Đăng</button>
+                            </section>
                         </div>
                         <!-- Modal -->
-                        <div class="post-box-modal modal fade" id="post-2-modal">
+                        <div class="post-box-modal modal fade" id="modal0">
                             <div class="modal-dialog modal-dialog-centered">
                                 <div class="modal-content">
-                                    <div class="col-7">
+                                    <div class="modal-col-7">
                                         <div class="post-content">
-                                            <img class="img-fluid" src="~/Assets/media/78834391_459110258126325_6149001856166133760_n.jpg" alt="">
+                                            <img class="" src="~/Assets/media/78834391_459110258126325_6149001856166133760_n.jpg" alt="">
                                         </div>
                                     </div>
-                                    <div class="col-5">
+                                    <div class="modal-col-5">
                                         <div class="post-title">
                                             <img height="50px" width="50px" class="rounded rounded-circle" src="~/Assets/media/78834391_459110258126325_6149001856166133760_n.jpg" alt="">
-                                            <p>name</p>
+                                            <p><a href="#" title="">Thắng Bếu</a><span>với <b>Hùng Phong, Minh Thông</b></span><span>tại <b>Hà Nội</b></span></p>
                                         </div>
+
+                                        <p class="post-content-text">Im cho bố m học bài !</p>
                                         <div class="post-socialfunction">
-                                            <div class="post-caption">
-                                                Caption
-                                            </div>
-                                            <div class="like-comment">
-                                                <div onclick="heart('heart-2')" class="like-comment-heart">
-                                                    <i class="fa fa-heart-o heart" aria-hidden="true"></i>
+
+                                            <div class="user-comments">
+                                                <div class="comment-list">
+                                                    <div class="comment-item">
+                                                        <div class="comment-item-parent">
+                                                            <div class="user-ava">
+                                                                <img src="~/Images/22904751_688560231353134_2748711313877205190_o.jpg" alt="">
+                                                            </div>
+                                                            <div class="comment-item-detail">
+                                                                <h3 class="user-name">thangho</h3>
+                                                                <span>Bla bla bla...</span>
+                                                                <div class="comment-item-info">
+                                                                    <time datetime="2011-01-12" title="12 tháng 9 1945">2 giờ</time>
+                                                                    <button type="button" class="btn btn-light">123 lượt thích</button>
+                                                                    <button type="button" class="btn btn-light">Trả lời</button>
+                                                                </div>
+                                                            </div>
+                                                            <div class="comment-item-tool">
+                                                                <i class="far fa-heart"></i>
+                                                            </div>
+                                                        </div>
+                                                        <div class="comment-item-childs">
+                                                            <button data-toggle="collapse" data-target="#demo-2" class="btn btn-light">Xem câu trả lời (1)</button>
+                                                            <div id="demo-2" class="collapse">
+                                                                <div class="comment-item-child">
+                                                                    <div class="user-ava">
+                                                                        <img src="~/Images/22904751_688560231353134_2748711313877205190_o.jpg" alt="">
+                                                                    </div>
+                                                                    <div class="comment-item-detail">
+                                                                        <h3 class="user-name">thangho</h3>
+                                                                        <span>Bla bla bla...</span>
+                                                                        <div class="comment-item-info">
+                                                                            <time datetime="2011-01-12" title="12 tháng 9 1945">2 giờ</time>
+                                                                            <button type="button" class="btn btn-light">123 lượt thích</button>
+                                                                            <button type="button" class="btn btn-light">Trả lời</button>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="comment-item-tool">
+                                                                        <i class="far fa-heart"></i>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="comment-item-child">
+                                                                    <div class="user-ava">
+                                                                        <img src="~/Images/22904751_688560231353134_2748711313877205190_o.jpg" alt="">
+                                                                    </div>
+                                                                    <div class="comment-item-detail">
+                                                                        <h3 class="user-name">thangho</h3>
+                                                                        <span>Bla bla bla...</span>
+                                                                        <div class="comment-item-info">
+                                                                            <time datetime="2011-01-12" title="12 tháng 9 1945">2 giờ</time>
+                                                                            <button type="button" class="btn btn-light">123 lượt thích</button>
+                                                                            <button type="button" class="btn btn-light">Trả lời</button>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="comment-item-tool">
+                                                                        <i class="far fa-heart"></i>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="comment-item">
+                                                        <div class="comment-item-parent">
+                                                            <div class="user-ava">
+                                                                <img src="~/Images/22904751_688560231353134_2748711313877205190_o.jpg" alt="">
+                                                            </div>
+                                                            <div class="comment-item-detail">
+                                                                <h3 class="user-name">thangho</h3>
+                                                                <span>Bla bla bla...</span>
+                                                                <div class="comment-item-info">
+                                                                    <time datetime="2011-01-12" title="12 tháng 9 1945">2 giờ</time>
+                                                                    <button type="button" class="btn btn-light">123 lượt thích</button>
+                                                                    <button type="button" class="btn btn-light">Trả lời</button>
+                                                                </div>
+                                                            </div>
+                                                            <div class="comment-item-tool">
+                                                                <i class="far fa-heart"></i>
+                                                            </div>
+                                                        </div>
+                                                        <div class="comment-item-childs">
+                                                            <button data-toggle="collapse" data-target="#demo-1" class="btn btn-light">Xem câu trả lời (1)</button>
+                                                            <div id="demo-1" class="collapse">
+                                                                <div class="comment-item-child">
+                                                                    <div class="user-ava">
+                                                                        <img src="~/Images/22904751_688560231353134_2748711313877205190_o.jpg" alt="">
+                                                                    </div>
+                                                                    <div class="comment-item-detail">
+                                                                        <h3 class="user-name">thangho</h3>
+                                                                        <span>Bla bla bla...</span>
+                                                                        <div class="comment-item-info">
+                                                                            <time datetime="2011-01-12" title="12 tháng 9 1945">2 giờ</time>
+                                                                            <button type="button" class="btn btn-light">123 lượt thích</button>
+                                                                            <button type="button" class="btn btn-light">Trả lời</button>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="comment-item-tool">
+                                                                        <i class="far fa-heart"></i>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="comment-item-child">
+                                                                    <div class="user-ava">
+                                                                        <img src="~/Images/22904751_688560231353134_2748711313877205190_o.jpg" alt="">
+                                                                    </div>
+                                                                    <div class="comment-item-detail">
+                                                                        <h3 class="user-name">thangho</h3>
+                                                                        <span>Bla bla bla...</span>
+                                                                        <div class="comment-item-info">
+                                                                            <time datetime="2011-01-12" title="12 tháng 9 1945">2 giờ</time>
+                                                                            <button type="button" class="btn btn-light">123 lượt thích</button>
+                                                                            <button type="button" class="btn btn-light">Trả lời</button>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="comment-item-tool">
+                                                                        <i class="far fa-heart"></i>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="comment-item">
+                                                        <div class="comment-item-parent">
+                                                            <div class="user-ava">
+                                                                <img src="~/Images/22904751_688560231353134_2748711313877205190_o.jpg" alt="">
+                                                            </div>
+                                                            <div class="comment-item-detail">
+                                                                <h3 class="user-name">thangho</h3>
+                                                                <span>Bla bla bla...</span>
+                                                                <div class="comment-item-info">
+                                                                    <time datetime="2011-01-12" title="12 tháng 9 1945">2 giờ</time>
+                                                                    <button type="button" class="btn btn-light">123 lượt thích</button>
+                                                                    <button type="button" class="btn btn-light">Trả lời</button>
+                                                                </div>
+                                                            </div>
+                                                            <div class="comment-item-tool">
+                                                                <i class="far fa-heart"></i>
+                                                            </div>
+                                                        </div>
+                                                        <div class="comment-item-childs">
+                                                            <button data-toggle="collapse" data-target="#demo-3" class="btn btn-light">Xem câu trả lời (1)</button>
+                                                            <div id="demo-3" class="collapse">
+                                                                <div class="comment-item-child">
+                                                                    <div class="user-ava">
+                                                                        <img src="~/Images/22904751_688560231353134_2748711313877205190_o.jpg" alt="">
+                                                                    </div>
+                                                                    <div class="comment-item-detail">
+                                                                        <h3 class="user-name">thangho</h3>
+                                                                        <span>Bla bla bla...</span>
+                                                                        <div class="comment-item-info">
+                                                                            <time datetime="2011-01-12" title="12 tháng 9 1945">2 giờ</time>
+                                                                            <button type="button" class="btn btn-light">123 lượt thích</button>
+                                                                            <button type="button" class="btn btn-light">Trả lời</button>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="comment-item-tool">
+                                                                        <i class="far fa-heart"></i>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="comment-item-child">
+                                                                    <div class="user-ava">
+                                                                        <img src="~/Images/22904751_688560231353134_2748711313877205190_o.jpg" alt="">
+                                                                    </div>
+                                                                    <div class="comment-item-detail">
+                                                                        <h3 class="user-name">thangho</h3>
+                                                                        <span>Bla bla bla...</span>
+                                                                        <div class="comment-item-info">
+                                                                            <time datetime="2011-01-12" title="12 tháng 9 1945">2 giờ</time>
+                                                                            <button type="button" class="btn btn-light">123 lượt thích</button>
+                                                                            <button type="button" class="btn btn-light">Trả lời</button>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="comment-item-tool">
+                                                                        <i class="far fa-heart"></i>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                                <i class="fa fa-comment-o" aria-hidden="true"></i>
-                                                <i data-toggle="modal" data-target="#post-2-share" class="fa fa-paper-plane-o" aria-hidden="true"></i>
                                             </div>
-                                            <div class="like-number">
-                                                200 likes
-                                            </div>
-                                            <div class="post-comment">
-                                                <p class="comment-name">Name</p>
-                                                <p>comment....</p>
-                                            </div>
-                                        </div>
-                                        <div class="post-usercomment">
-                                            <input class="form-control" type="text" placeholder="Thêm bình luận...">
-                                            <button>Đăng</button>
+                                            <section class="post-icons">
+                                                <button type="button" class="btn btn-light"><i class="far fa-heart"></i></button>
+                                                <button type="button" class="btn btn-light"><i class="far fa-comment"></i></button>
+                                                <button type="button" class="btn btn-light" data-toggle="modal" data-target="#post-0-share"><i class="far fa-paper-plane"></i></button>
+                                                <button type="button" class="btn btn-light"><i class="far fa-bookmark"></i></button>
+                                            </section>
+                                            <section class="list-like">
+                                                <button type="button" class="btn btn-light">123 lượt thích</button>
+                                            </section>
+                                            <section class="post-time">
+                                                <p>2 giờ trước</p>
+                                            </section>
+                                            <section class="comment-bar">
+                                                <div class="form-group">
+                                                    <textarea class="form-control" placeholder="Thêm bình luận..." oninput="auto_grow(this)"></textarea>
+                                                </div>
+                                                <button type="button" class="btn btn-light">Đăng</button>
+                                            </section>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <!-- Share modal -->
-                        <div class="share-modal modal fade" id="post-2-share">
+                        <div class="share-modal modal fade" id="post-0-share">
                             <div class="modal-dialog modal-dialog-centered">
                                 <div class="modal-content">
                                     <div class="share-header">
@@ -669,19 +1055,19 @@
                                     <div class="share-body">
                                         <input class="form-control" type="text" placeholder="Nói gì đó về nội dung này...">
                                         <div class="share-content">
-                                            <img class="img-fluid" src="~/Assets/media/78834391_459110258126325_6149001856166133760_n.jpg" alt="">
+                                            <img class="" src="~/Assets/media/78834391_459110258126325_6149001856166133760_n.jpg" alt="">
                                         </div>
                                     </div>
-                                    <div id="post-2-taginput" class="tag-input">
+                                    <div id="post-1-taginput" class="tag-input">
                                         <input class="form-control" type="text" placeholder="Gắn thẻ bạn bè">
                                     </div>
-                                    <div id="post-2-locationinput" class="location-input">
+                                    <div id="post-1-locationinput" class="location-input">
                                         <input class="form-control" type="text" placeholder="Bạn đang ở đâu?">
                                     </div>
                                     <div class="share-footer">
                                         <div class="footer-option">
-                                            <button onclick="tag('post-2')" id="post-2-tag">Gắn thẻ mọi người</button>
-                                            <button onclick="location_open('post-2')" id="post-2-location">Thêm vị trí</button>
+                                            <button onclick="tag('post-1')" id="post-1-tag">Gắn thẻ mọi người</button>
+                                            <button onclick="location_open('post-1')" id="post-1-location">Thêm vị trí</button>
                                         </div>
                                         <div class="footer-submit">
                                             <button data-dismiss="modal">Hủy</button>
@@ -691,7 +1077,493 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </article>
+                    <article class="post-box">
+                        <header class="post-title">
+                            <div class="post-info">
+                                <img src="/Images/22904751_688560231353134_2748711313877205190_o.jpg" class="rounded rounded-circle lazy" width="50px" height="50px" alt="">
+                                <p><a href="#" title="">Thắng Bếu</a><span>với <b>Hùng Phong, Minh Thông</b></span><span>tại <b>Hà Nội</b></span></p>
+                            </div>
+                            <div class="post-option" data-target="#post-option-modal1" data-toggle="modal">
+                                &#8230;
+                            </div>
+                            <div class="modal post-option-modal fade" id="post-option-modal1">
+                                <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content">
+                                        <div class="modal-body">
+                                            <ul>
+                                                <li>
+                                                    <a class="report" href="">Báo cáo</a>
+                                                </li>
+                                                <li>
+                                                    <a href="">Sửa bài viết</a>
+                                                </li>
+                                                <li>
+                                                    <a href="">Xóa bài viết</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </header><!-- /header -->
+                        <div class="post-content" data-toggle="modal" data-target="#modal0">
+                            <p class="post-content-text">Im cho bố m học bài !</p>
+                            <div class="post-content-image">
+                                <img src="~/Images/22904751_688560231353134_2748711313877205190_o.jpg" alt="">
+                            </div>
+                        </div>
+                        <div class="post-socialfunction">
+                            <section class="post-icons">
+                                <button type="button" class="btn btn-light"><i class="far fa-heart"></i></button>
+                                <button type="button" class="btn btn-light"><i class="far fa-comment"></i></button>
+                                <button type="button" class="btn btn-light" data-toggle="modal" data-target="#post-0-share"><i class="far fa-paper-plane"></i></button>
+                                <button type="button" class="btn btn-light"><i class="far fa-bookmark"></i></button>
+                            </section>
+                            <section class="list-like">
+                                <button type="button" class="btn btn-light">123 lượt thích</button>
+                            </section>
+                            <section class="post-time">
+                                <p>2 giờ trước</p>
+                            </section>
+                            <div class="user-comments">
+                                <div class="comment-list">
+                                    <div class="comment-item">
+                                        <div class="comment-item-parent">
+                                            <div class="user-ava">
+                                                <img src="~/Images/22904751_688560231353134_2748711313877205190_o.jpg" alt="">
+                                            </div>
+                                            <div class="comment-item-detail">
+                                                <h3 class="user-name">thangho</h3>
+                                                <span>Bla bla bla...</span>
+                                                <div class="comment-item-info">
+                                                    <time datetime="2011-01-12" title="12 tháng 9 1945">2 giờ</time>
+                                                    <button type="button" class="btn btn-light">123 lượt thích</button>
+                                                    <button type="button" class="btn btn-light">Trả lời</button>
+                                                </div>
+                                            </div>
+                                            <div class="comment-item-tool">
+                                                <i class="far fa-heart"></i>
+                                            </div>
+                                        </div>
+                                        <div class="comment-item-childs">
+                                            <button data-toggle="collapse" data-target="#demo-2" class="btn btn-light">Xem câu trả lời (1)</button>
+                                            <div id="demo-2" class="collapse">
+                                                <div class="comment-item-child">
+                                                    <div class="user-ava">
+                                                        <img src="~/Images/22904751_688560231353134_2748711313877205190_o.jpg" alt="">
+                                                    </div>
+                                                    <div class="comment-item-detail">
+                                                        <h3 class="user-name">thangho</h3>
+                                                        <span>Bla bla bla...</span>
+                                                        <div class="comment-item-info">
+                                                            <time datetime="2011-01-12" title="12 tháng 9 1945">2 giờ</time>
+                                                            <button type="button" class="btn btn-light">123 lượt thích</button>
+                                                            <button type="button" class="btn btn-light">Trả lời</button>
+                                                        </div>
+                                                    </div>
+                                                    <div class="comment-item-tool">
+                                                        <i class="far fa-heart"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="comment-item-child">
+                                                    <div class="user-ava">
+                                                        <img src="~/Images/22904751_688560231353134_2748711313877205190_o.jpg" alt="">
+                                                    </div>
+                                                    <div class="comment-item-detail">
+                                                        <h3 class="user-name">thangho</h3>
+                                                        <span>Bla bla bla...</span>
+                                                        <div class="comment-item-info">
+                                                            <time datetime="2011-01-12" title="12 tháng 9 1945">2 giờ</time>
+                                                            <button type="button" class="btn btn-light">123 lượt thích</button>
+                                                            <button type="button" class="btn btn-light">Trả lời</button>
+                                                        </div>
+                                                    </div>
+                                                    <div class="comment-item-tool">
+                                                        <i class="far fa-heart"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="comment-item">
+                                        <div class="comment-item-parent">
+                                            <div class="user-ava">
+                                                <img src="~/Images/22904751_688560231353134_2748711313877205190_o.jpg" alt="">
+                                            </div>
+                                            <div class="comment-item-detail">
+                                                <h3 class="user-name">thangho</h3>
+                                                <span>Bla bla bla...</span>
+                                                <div class="comment-item-info">
+                                                    <time datetime="2011-01-12" title="12 tháng 9 1945">2 giờ</time>
+                                                    <button type="button" class="btn btn-light">123 lượt thích</button>
+                                                    <button type="button" class="btn btn-light">Trả lời</button>
+                                                </div>
+                                            </div>
+                                            <div class="comment-item-tool">
+                                                <i class="far fa-heart"></i>
+                                            </div>
+                                        </div>
+                                        <div class="comment-item-childs">
+                                            <button data-toggle="collapse" data-target="#demo-1" class="btn btn-light">Xem câu trả lời (1)</button>
+                                            <div id="demo-1" class="collapse">
+                                                <div class="comment-item-child">
+                                                    <div class="user-ava">
+                                                        <img src="~/Images/22904751_688560231353134_2748711313877205190_o.jpg" alt="">
+                                                    </div>
+                                                    <div class="comment-item-detail">
+                                                        <h3 class="user-name">thangho</h3>
+                                                        <span>Bla bla bla...</span>
+                                                        <div class="comment-item-info">
+                                                            <time datetime="2011-01-12" title="12 tháng 9 1945">2 giờ</time>
+                                                            <button type="button" class="btn btn-light">123 lượt thích</button>
+                                                            <button type="button" class="btn btn-light">Trả lời</button>
+                                                        </div>
+                                                    </div>
+                                                    <div class="comment-item-tool">
+                                                        <i class="far fa-heart"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="comment-item-child">
+                                                    <div class="user-ava">
+                                                        <img src="~/Images/22904751_688560231353134_2748711313877205190_o.jpg" alt="">
+                                                    </div>
+                                                    <div class="comment-item-detail">
+                                                        <h3 class="user-name">thangho</h3>
+                                                        <span>Bla bla bla...</span>
+                                                        <div class="comment-item-info">
+                                                            <time datetime="2011-01-12" title="12 tháng 9 1945">2 giờ</time>
+                                                            <button type="button" class="btn btn-light">123 lượt thích</button>
+                                                            <button type="button" class="btn btn-light">Trả lời</button>
+                                                        </div>
+                                                    </div>
+                                                    <div class="comment-item-tool">
+                                                        <i class="far fa-heart"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="comment-item">
+                                        <div class="comment-item-parent">
+                                            <div class="user-ava">
+                                                <img src="~/Images/22904751_688560231353134_2748711313877205190_o.jpg" alt="">
+                                            </div>
+                                            <div class="comment-item-detail">
+                                                <h3 class="user-name">thangho</h3>
+                                                <span>Bla bla bla...</span>
+                                                <div class="comment-item-info">
+                                                    <time datetime="2011-01-12" title="12 tháng 9 1945">2 giờ</time>
+                                                    <button type="button" class="btn btn-light">123 lượt thích</button>
+                                                    <button type="button" class="btn btn-light">Trả lời</button>
+                                                </div>
+                                            </div>
+                                            <div class="comment-item-tool">
+                                                <i class="far fa-heart"></i>
+                                            </div>
+                                        </div>
+                                        <div class="comment-item-childs">
+                                            <button data-toggle="collapse" data-target="#demo-3" class="btn btn-light">Xem câu trả lời (1)</button>
+                                            <div id="demo-3" class="collapse">
+                                                <div class="comment-item-child">
+                                                    <div class="user-ava">
+                                                        <img src="~/Images/22904751_688560231353134_2748711313877205190_o.jpg" alt="">
+                                                    </div>
+                                                    <div class="comment-item-detail">
+                                                        <h3 class="user-name">thangho</h3>
+                                                        <span>Bla bla bla...</span>
+                                                        <div class="comment-item-info">
+                                                            <time datetime="2011-01-12" title="12 tháng 9 1945">2 giờ</time>
+                                                            <button type="button" class="btn btn-light">123 lượt thích</button>
+                                                            <button type="button" class="btn btn-light">Trả lời</button>
+                                                        </div>
+                                                    </div>
+                                                    <div class="comment-item-tool">
+                                                        <i class="far fa-heart"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="comment-item-child">
+                                                    <div class="user-ava">
+                                                        <img src="~/Images/22904751_688560231353134_2748711313877205190_o.jpg" alt="">
+                                                    </div>
+                                                    <div class="comment-item-detail">
+                                                        <h3 class="user-name">thangho</h3>
+                                                        <span>Bla bla bla...</span>
+                                                        <div class="comment-item-info">
+                                                            <time datetime="2011-01-12" title="12 tháng 9 1945">2 giờ</time>
+                                                            <button type="button" class="btn btn-light">123 lượt thích</button>
+                                                            <button type="button" class="btn btn-light">Trả lời</button>
+                                                        </div>
+                                                    </div>
+                                                    <div class="comment-item-tool">
+                                                        <i class="far fa-heart"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <section class="comment-bar">
+                                <div class="form-group">
+                                    <textarea class="form-control" placeholder="Thêm bình luận..." oninput="auto_grow(this)"></textarea>
+                                </div>
+                                <button type="button" class="btn btn-light">Đăng</button>
+                            </section>
+                        </div>
+                        <!-- Modal -->
+                        <div class="post-box-modal modal fade" id="modal0">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-col-7">
+                                        <div class="post-content">
+                                            <img class="" src="~/Assets/media/78834391_459110258126325_6149001856166133760_n.jpg" alt="">
+                                        </div>
+                                    </div>
+                                    <div class="modal-col-5">
+                                        <div class="post-title">
+                                            <img height="50px" width="50px" class="rounded rounded-circle" src="~/Assets/media/78834391_459110258126325_6149001856166133760_n.jpg" alt="">
+                                            <p><a href="#" title="">Thắng Bếu</a><span>với <b>Hùng Phong, Minh Thông</b></span><span>tại <b>Hà Nội</b></span></p>
+                                        </div>
+
+                                        <p class="post-content-text">Im cho bố m học bài !</p>
+                                        <div class="post-socialfunction">
+
+                                            <div class="user-comments">
+                                                <div class="comment-list">
+                                                    <div class="comment-item">
+                                                        <div class="comment-item-parent">
+                                                            <div class="user-ava">
+                                                                <img src="~/Images/22904751_688560231353134_2748711313877205190_o.jpg" alt="">
+                                                            </div>
+                                                            <div class="comment-item-detail">
+                                                                <h3 class="user-name">thangho</h3>
+                                                                <span>Bla bla bla...</span>
+                                                                <div class="comment-item-info">
+                                                                    <time datetime="2011-01-12" title="12 tháng 9 1945">2 giờ</time>
+                                                                    <button type="button" class="btn btn-light">123 lượt thích</button>
+                                                                    <button type="button" class="btn btn-light">Trả lời</button>
+                                                                </div>
+                                                            </div>
+                                                            <div class="comment-item-tool">
+                                                                <i class="far fa-heart"></i>
+                                                            </div>
+                                                        </div>
+                                                        <div class="comment-item-childs">
+                                                            <button data-toggle="collapse" data-target="#demo-2" class="btn btn-light">Xem câu trả lời (1)</button>
+                                                            <div id="demo-2" class="collapse">
+                                                                <div class="comment-item-child">
+                                                                    <div class="user-ava">
+                                                                        <img src="~/Images/22904751_688560231353134_2748711313877205190_o.jpg" alt="">
+                                                                    </div>
+                                                                    <div class="comment-item-detail">
+                                                                        <h3 class="user-name">thangho</h3>
+                                                                        <span>Bla bla bla...</span>
+                                                                        <div class="comment-item-info">
+                                                                            <time datetime="2011-01-12" title="12 tháng 9 1945">2 giờ</time>
+                                                                            <button type="button" class="btn btn-light">123 lượt thích</button>
+                                                                            <button type="button" class="btn btn-light">Trả lời</button>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="comment-item-tool">
+                                                                        <i class="far fa-heart"></i>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="comment-item-child">
+                                                                    <div class="user-ava">
+                                                                        <img src="~/Images/22904751_688560231353134_2748711313877205190_o.jpg" alt="">
+                                                                    </div>
+                                                                    <div class="comment-item-detail">
+                                                                        <h3 class="user-name">thangho</h3>
+                                                                        <span>Bla bla bla...</span>
+                                                                        <div class="comment-item-info">
+                                                                            <time datetime="2011-01-12" title="12 tháng 9 1945">2 giờ</time>
+                                                                            <button type="button" class="btn btn-light">123 lượt thích</button>
+                                                                            <button type="button" class="btn btn-light">Trả lời</button>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="comment-item-tool">
+                                                                        <i class="far fa-heart"></i>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="comment-item">
+                                                        <div class="comment-item-parent">
+                                                            <div class="user-ava">
+                                                                <img src="~/Images/22904751_688560231353134_2748711313877205190_o.jpg" alt="">
+                                                            </div>
+                                                            <div class="comment-item-detail">
+                                                                <h3 class="user-name">thangho</h3>
+                                                                <span>Bla bla bla...</span>
+                                                                <div class="comment-item-info">
+                                                                    <time datetime="2011-01-12" title="12 tháng 9 1945">2 giờ</time>
+                                                                    <button type="button" class="btn btn-light">123 lượt thích</button>
+                                                                    <button type="button" class="btn btn-light">Trả lời</button>
+                                                                </div>
+                                                            </div>
+                                                            <div class="comment-item-tool">
+                                                                <i class="far fa-heart"></i>
+                                                            </div>
+                                                        </div>
+                                                        <div class="comment-item-childs">
+                                                            <button data-toggle="collapse" data-target="#demo-1" class="btn btn-light">Xem câu trả lời (1)</button>
+                                                            <div id="demo-1" class="collapse">
+                                                                <div class="comment-item-child">
+                                                                    <div class="user-ava">
+                                                                        <img src="~/Images/22904751_688560231353134_2748711313877205190_o.jpg" alt="">
+                                                                    </div>
+                                                                    <div class="comment-item-detail">
+                                                                        <h3 class="user-name">thangho</h3>
+                                                                        <span>Bla bla bla...</span>
+                                                                        <div class="comment-item-info">
+                                                                            <time datetime="2011-01-12" title="12 tháng 9 1945">2 giờ</time>
+                                                                            <button type="button" class="btn btn-light">123 lượt thích</button>
+                                                                            <button type="button" class="btn btn-light">Trả lời</button>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="comment-item-tool">
+                                                                        <i class="far fa-heart"></i>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="comment-item-child">
+                                                                    <div class="user-ava">
+                                                                        <img src="~/Images/22904751_688560231353134_2748711313877205190_o.jpg" alt="">
+                                                                    </div>
+                                                                    <div class="comment-item-detail">
+                                                                        <h3 class="user-name">thangho</h3>
+                                                                        <span>Bla bla bla...</span>
+                                                                        <div class="comment-item-info">
+                                                                            <time datetime="2011-01-12" title="12 tháng 9 1945">2 giờ</time>
+                                                                            <button type="button" class="btn btn-light">123 lượt thích</button>
+                                                                            <button type="button" class="btn btn-light">Trả lời</button>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="comment-item-tool">
+                                                                        <i class="far fa-heart"></i>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="comment-item">
+                                                        <div class="comment-item-parent">
+                                                            <div class="user-ava">
+                                                                <img src="~/Images/22904751_688560231353134_2748711313877205190_o.jpg" alt="">
+                                                            </div>
+                                                            <div class="comment-item-detail">
+                                                                <h3 class="user-name">thangho</h3>
+                                                                <span>Bla bla bla...</span>
+                                                                <div class="comment-item-info">
+                                                                    <time datetime="2011-01-12" title="12 tháng 9 1945">2 giờ</time>
+                                                                    <button type="button" class="btn btn-light">123 lượt thích</button>
+                                                                    <button type="button" class="btn btn-light">Trả lời</button>
+                                                                </div>
+                                                            </div>
+                                                            <div class="comment-item-tool">
+                                                                <i class="far fa-heart"></i>
+                                                            </div>
+                                                        </div>
+                                                        <div class="comment-item-childs">
+                                                            <button data-toggle="collapse" data-target="#demo-3" class="btn btn-light">Xem câu trả lời (1)</button>
+                                                            <div id="demo-3" class="collapse">
+                                                                <div class="comment-item-child">
+                                                                    <div class="user-ava">
+                                                                        <img src="~/Images/22904751_688560231353134_2748711313877205190_o.jpg" alt="">
+                                                                    </div>
+                                                                    <div class="comment-item-detail">
+                                                                        <h3 class="user-name">thangho</h3>
+                                                                        <span>Bla bla bla...</span>
+                                                                        <div class="comment-item-info">
+                                                                            <time datetime="2011-01-12" title="12 tháng 9 1945">2 giờ</time>
+                                                                            <button type="button" class="btn btn-light">123 lượt thích</button>
+                                                                            <button type="button" class="btn btn-light">Trả lời</button>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="comment-item-tool">
+                                                                        <i class="far fa-heart"></i>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="comment-item-child">
+                                                                    <div class="user-ava">
+                                                                        <img src="~/Images/22904751_688560231353134_2748711313877205190_o.jpg" alt="">
+                                                                    </div>
+                                                                    <div class="comment-item-detail">
+                                                                        <h3 class="user-name">thangho</h3>
+                                                                        <span>Bla bla bla...</span>
+                                                                        <div class="comment-item-info">
+                                                                            <time datetime="2011-01-12" title="12 tháng 9 1945">2 giờ</time>
+                                                                            <button type="button" class="btn btn-light">123 lượt thích</button>
+                                                                            <button type="button" class="btn btn-light">Trả lời</button>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="comment-item-tool">
+                                                                        <i class="far fa-heart"></i>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <section class="post-icons">
+                                                <button type="button" class="btn btn-light"><i class="far fa-heart"></i></button>
+                                                <button type="button" class="btn btn-light"><i class="far fa-comment"></i></button>
+                                                <button type="button" class="btn btn-light" data-toggle="modal" data-target="#post-0-share"><i class="far fa-paper-plane"></i></button>
+                                                <button type="button" class="btn btn-light"><i class="far fa-bookmark"></i></button>
+                                            </section>
+                                            <section class="list-like">
+                                                <button type="button" class="btn btn-light">123 lượt thích</button>
+                                            </section>
+                                            <section class="post-time">
+                                                <p>2 giờ trước</p>
+                                            </section>
+                                            <section class="comment-bar">
+                                                <div class="form-group">
+                                                    <textarea class="form-control" placeholder="Thêm bình luận..." oninput="auto_grow(this)"></textarea>
+                                                </div>
+                                                <button type="button" class="btn btn-light">Đăng</button>
+                                            </section>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Share modal -->
+                        <div class="share-modal modal fade" id="post-0-share">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="share-header">
+                                        <p>Chia sẻ ngay lên dòng thời gian</p>
+                                        <p data-dismiss="modal">&times;</p>
+                                    </div>
+                                    <div class="share-body">
+                                        <input class="form-control" type="text" placeholder="Nói gì đó về nội dung này...">
+                                        <div class="share-content">
+                                            <img class="" src="~/Assets/media/78834391_459110258126325_6149001856166133760_n.jpg" alt="">
+                                        </div>
+                                    </div>
+                                    <div id="post-1-taginput" class="tag-input">
+                                        <input class="form-control" type="text" placeholder="Gắn thẻ bạn bè">
+                                    </div>
+                                    <div id="post-1-locationinput" class="location-input">
+                                        <input class="form-control" type="text" placeholder="Bạn đang ở đâu?">
+                                    </div>
+                                    <div class="share-footer">
+                                        <div class="footer-option">
+                                            <button onclick="tag('post-1')" id="post-1-tag">Gắn thẻ mọi người</button>
+                                            <button onclick="location_open('post-1')" id="post-1-location">Thêm vị trí</button>
+                                        </div>
+                                        <div class="footer-submit">
+                                            <button data-dismiss="modal">Hủy</button>
+                                            <button class="share-submit">Đăng</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
                 </section>
             </div>
             <div class="col-25">
@@ -706,9 +1578,9 @@
         </div>
     </div>
 </main>
-@{
+@*@{
     Html.RenderPartial("~/Areas/Client/Views/Layout/messenger/messenger.cshtml");
-}
+}*@
 @section js{
     <script src="~/Assets/js/messenger.js"></script>
     <script src="~/Assets/js/newsfeed.js"></script>

@@ -29,8 +29,7 @@
         width: 100%;
         background-color: white;
         position: absolute;
-        transition: 0.4s;
-        overflow-y: scroll;
+        overflow-y: auto;
         height: 100%;
 
         .message-box {
