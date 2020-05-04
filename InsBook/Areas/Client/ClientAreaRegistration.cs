@@ -16,8 +16,8 @@ namespace InsBook.Areas.Client
         {
             context.MapRoute(
                 "Client_default",
-                "Client/{controller}/{action}/{id}",
-                new {controller="Login", action = "Index", id = UrlParameter.Optional }
+                "Client/{controller}/{action}/{friend_id}",
+                new {controller="Login", action = "Index", friend_id = UrlParameter.Optional }
             );
         }
     }

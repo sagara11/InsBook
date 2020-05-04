@@ -1,3 +1,183 @@
+.add-post-box {
+  margin-bottom: 30px; }
+  .add-post-box .card-header h3 {
+    font-size: 16px;
+    margin-bottom: 0; }
+    .add-post-box .card-header h3 i {
+      margin-right: 5px; }
+  .add-post-box .card-body {
+    padding: 12px; }
+    .add-post-box .card-body .card-body-content {
+      display: flex; }
+      .add-post-box .card-body .card-body-content .user-ava {
+        width: 42px;
+        height: 42px;
+        margin-right: 8px; }
+        .add-post-box .card-body .card-body-content .user-ava img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          border-radius: 50%;
+          border: 1px solid red;
+          padding: 1px; }
+      .add-post-box .card-body .card-body-content .form-group {
+        margin: 0;
+        padding: 0 48px 0 12px;
+        width: 92%; }
+        .add-post-box .card-body .card-body-content .form-group textarea {
+          resize: none;
+          width: 100%;
+          height: 36px;
+          overflow: hidden;
+          border: none; }
+          .add-post-box .card-body .card-body-content .form-group textarea:focus {
+            border: none;
+            outline: none;
+            box-shadow: none; }
+    .add-post-box .card-body .card-body-input {
+      margin-top: 8px;
+      /*display: none;*/ }
+      .add-post-box .card-body .card-body-input .input-group-text {
+        min-width: 40px; }
+      .add-post-box .card-body .card-body-input input {
+        font-size: 14px; }
+    .add-post-box .card-body .post-diadiem, .add-post-box .card-body .post-ganthe, .add-post-box .card-body .post-chude {
+      display: none; }
+    .add-post-box .card-body .post-ganthe {
+      border: 1px solid #ced4da; }
+      .add-post-box .card-body .post-ganthe .input-group-prepend .input-group-text {
+        border: none;
+        /*padding: 0;*/ }
+      .add-post-box .card-body .post-ganthe #friends-tag {
+        display: flex;
+        align-items: center;
+        margin-left: 12px; }
+        .add-post-box .card-body .post-ganthe #friends-tag .friends-tag-span {
+          background: #e9ebee;
+          padding: 1px 6px;
+          margin-right: 6px;
+          border: 1px solid #9cb4d8;
+          border-radius: 20px; }
+          .add-post-box .card-body .post-ganthe #friends-tag .friends-tag-span a {
+            color: gray;
+            text-decoration: none; }
+            .add-post-box .card-body .post-ganthe #friends-tag .friends-tag-span a i {
+              padding-left: 3px; }
+      .add-post-box .card-body .post-ganthe #post-banbe-data {
+        border: none;
+        padding: 6px 12px 6px 0; }
+        .add-post-box .card-body .post-ganthe #post-banbe-data:focus {
+          outline: none;
+          box-shadow: none;
+          border: none; }
+    .add-post-box .card-body .card-body-result {
+      margin-top: 8px;
+      /*display: none;*/ }
+      .add-post-box .card-body .card-body-result .card-body-result-text {
+        margin: 0; }
+        .add-post-box .card-body .card-body-result .card-body-result-text #result-tenbanbe {
+          margin-right: 5px; }
+      .add-post-box .card-body .card-body-result .card-body-result-img {
+        margin: 4px 0;
+        display: none;
+        position: relative;
+        overflow-x: auto;
+        /* width */
+        /* Track */
+        /* Handle */
+        /* Handle on hover */ }
+        .add-post-box .card-body .card-body-result .card-body-result-img::-webkit-scrollbar {
+          width: 3px !important; }
+        .add-post-box .card-body .card-body-result .card-body-result-img::-webkit-scrollbar-track {
+          background: #f1f1f1; }
+        .add-post-box .card-body .card-body-result .card-body-result-img::-webkit-scrollbar-thumb {
+          background: #888; }
+        .add-post-box .card-body .card-body-result .card-body-result-img::-webkit-scrollbar-thumb:hover {
+          background: #555; }
+        .add-post-box .card-body .card-body-result .card-body-result-img .selected-post-img {
+          height: 100px;
+          flex: 0 0 100px;
+          margin-right: 5px;
+          position: relative; }
+          .add-post-box .card-body .card-body-result .card-body-result-img .selected-post-img img {
+            object-fit: cover;
+            width: 100%;
+            height: 100%; }
+          .add-post-box .card-body .card-body-result .card-body-result-img .selected-post-img .div-close-post-img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: rgba(0, 0, 0, 0.3);
+            width: 100%;
+            height: 100%;
+            visibility: hidden;
+            opacity: 0; }
+            .add-post-box .card-body .card-body-result .card-body-result-img .selected-post-img .div-close-post-img .close-post-img {
+              background-color: transparent;
+              border: none;
+              padding: 0;
+              position: absolute;
+              top: 0;
+              right: 5px; }
+              .add-post-box .card-body .card-body-result .card-body-result-img .selected-post-img .div-close-post-img .close-post-img i {
+                color: lightgray; }
+                .add-post-box .card-body .card-body-result .card-body-result-img .selected-post-img .div-close-post-img .close-post-img i:hover {
+                  color: #fff; }
+          .add-post-box .card-body .card-body-result .card-body-result-img .selected-post-img:hover .div-close-post-img {
+            visibility: visible;
+            opacity: 1; }
+        .add-post-box .card-body .card-body-result .card-body-result-img .tools-item {
+          margin: 0;
+          display: block;
+          height: 100px;
+          flex: 0 0 100px;
+          position: relative; }
+          .add-post-box .card-body .card-body-result .card-body-result-img .tools-item img {
+            object-fit: cover;
+            width: 100%;
+            height: 100%; }
+          .add-post-box .card-body .card-body-result .card-body-result-img .tools-item:hover {
+            cursor: pointer; }
+  .add-post-box .card-body-tools {
+    border-top: 1px solid #ccc;
+    margin: 0 12px;
+    padding-bottom: 12px;
+    padding-top: 8px;
+    display: flex; }
+    .add-post-box .card-body-tools #tools-img {
+      width: 0.1px;
+      height: 0.1px;
+      opacity: 0;
+      overflow: hidden;
+      position: absolute;
+      z-index: -1; }
+    .add-post-box .card-body-tools label {
+      margin: 0; }
+    .add-post-box .card-body-tools .tools-item {
+      background: #f5f6f7;
+      border-radius: 20px;
+      display: inline-block;
+      font-weight: 600;
+      padding: 7px 24px;
+      margin-right: 12px;
+      font-size: 14px; }
+      .add-post-box .card-body-tools .tools-item:hover {
+        cursor: pointer; }
+  .add-post-box .card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 12px 12px 12px; }
+    .add-post-box .card-footer .form-group {
+      margin: 0; }
+      .add-post-box .card-footer .form-group select {
+        font-size: 14px; }
+    .add-post-box .card-footer button {
+      font-size: 14px;
+      font-weight: 600;
+      display: block;
+      width: 60%; }
+
 .post-box {
   margin-bottom: 30px;
   border-radius: 4px;
@@ -7,7 +187,7 @@
   .post-box .post-box-modal .modal-dialog {
     max-width: 950px !important; }
     .post-box .post-box-modal .modal-dialog .modal-content {
-      padding: 20px 0px;
+      padding: 10px 0px;
       display: flex;
       flex-direction: row; }
       .post-box .post-box-modal .modal-dialog .modal-content .modal-col-7 {
@@ -15,6 +195,9 @@
         align-items: center;
         height: 600px;
         width: 600px; }
+      .post-box .post-box-modal .modal-dialog .modal-content .modal-col-5 {
+        width: 340px;
+        height: 600px; }
       .post-box .post-box-modal .modal-dialog .modal-content .post-content {
         padding: 0px 10px;
         width: 100%;
@@ -77,6 +260,15 @@
       .post-box .post-box-modal .modal-dialog .modal-content .post-socialfunction .list-like button {
         padding: 0;
         font-size: 14px; }
+      .post-box .post-box-modal .modal-dialog .modal-content .post-socialfunction .list-like .modal-list-like-post .modal-dialog {
+        max-width: 500px !important; }
+        .post-box .post-box-modal .modal-dialog .modal-content .post-socialfunction .list-like .modal-list-like-post .modal-dialog .modal-content {
+          padding: 0px;
+          display: flex;
+          flex-direction: column; }
+          .post-box .post-box-modal .modal-dialog .modal-content .post-socialfunction .list-like .modal-list-like-post .modal-dialog .modal-content .close {
+            padding: 16px;
+            font-size: 24px; }
       .post-box .post-box-modal .modal-dialog .modal-content .post-socialfunction .comment-bar {
         border: none;
         padding-left: 0; }
@@ -247,6 +439,8 @@
       transform: scale(1.3, 1.3); }
     .post-box .post-socialfunction .post-icons .liked i {
       color: red; }
+      .post-box .post-socialfunction .post-icons .liked i:before {
+        font-weight: 600; }
     .post-box .post-socialfunction .post-icons .liked:hover i {
       transform: scale(1.3, 1.3); }
   .post-box .post-socialfunction .list-like button {
@@ -254,7 +448,29 @@
     border: none;
     padding: 0;
     padding-left: 16px;
-    font-weight: 600; }
+    font-weight: 600;
+    color: black; }
+  .post-box .post-socialfunction .list-like .close {
+    padding: 16px; }
+  .post-box .post-socialfunction .list-like .list-like-item {
+    display: flex;
+    align-items: center; }
+    .post-box .post-socialfunction .list-like .list-like-item .list-like-item-ava {
+      width: 50px;
+      height: 50px;
+      margin-right: 10px; }
+      .post-box .post-socialfunction .list-like .list-like-item .list-like-item-ava img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 50%; }
+    .post-box .post-socialfunction .list-like .list-like-item .list-like-item-name {
+      margin: 0;
+      font-size: 16px;
+      font-weight: bold; }
+      .post-box .post-socialfunction .list-like .list-like-item .list-like-item-name a {
+        color: black;
+        text-decoration: none; }
   .post-box .post-socialfunction .post-time {
     margin-top: 4px;
     padding: 0 16px;

@@ -14,7 +14,7 @@ namespace InsBook.Areas.Client.Controllers
     public class PersonalController : Controller // !!! mai sau sửa lại thành Base !!!
     {
         // GET: Client/Personal
-        public ActionResult Index()
+        public ActionResult Index(int? friend_id)
         {
             var user = new UserLogin();
             if (Request.Cookies[CommonConstants.USER_COOKIE] != null)
@@ -27,9 +27,14 @@ namespace InsBook.Areas.Client.Controllers
             {
                 user = (UserLogin)Session[CommonConstants.USER_SESSION]; // lấy từ session
             }
-
-            ViewBag.Profile = new UserDao().Profile(user.UserID);
-
+            if (friend_id == null)
+            {
+                ViewBag.Profile = new UserDao().Profile(user.UserID);
+            }
+            else
+            {
+                ViewBag.Profile = new UserDao().Profile(friend_id.Value);
+            }
             var tendd = new LocationDao().GetAllName();
             ViewBag.TenDD = tendd;
             var banbe = new UserDao().GetAllName(user.UserID);
@@ -37,9 +42,17 @@ namespace InsBook.Areas.Client.Controllers
             //var tenchude = new TopicDao().GetAllName();
             //ViewBag.TenDD = tendd;
             // hàm này để load tất cả bài viết trong trang cá nhân
-            var baivet = new PostDao().GetAllPost(user.UserID);
-            ViewBag.BaiViet = baivet;
-
+            if(friend_id == null)
+            {
+                var baivet = new PostDao().GetAllPost(user.UserID);
+                ViewBag.BaiViet = baivet;
+            }
+            else
+            {
+                var baivet = new PostDao().GetAllPost(friend_id.Value);
+                ViewBag.BaiViet = baivet;
+            }
+            ViewBag.Session_UserId = user.UserID;
             return View();
         }
         //----------------------CAI DAT CHUNG-------------------------------------------

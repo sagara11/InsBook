@@ -4,8 +4,16 @@
     Layout = "~/Areas/Client/Views/Shared/_PersonalPage.cshtml";
     var Profile = (Model.Models.GetProfileModel)ViewBag.Profile;
     var Posts = (List<Model.Models.GetPostModel>)ViewBag.BaiViet;
+
+    var userID = (Int32)ViewBag.Session_UserId;
 }
 
+@section css {
+    <link href="~/Assets/css/layouts/post_box.css" rel="stylesheet" />
+}
+@section js {
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+}
 <ul class="nav nav-tabs">
     <li class="nav-item">
         <a class="nav-link active" href="/Client/Personal/Index"><i class="fas fa-rss-square"></i><span>Dòng thời gian</span></a>
@@ -254,35 +262,51 @@
                             </button>
                         </div>
                     </article>
+
                     @foreach (var post in Posts)
                     {
                         <article class="post-box post-@post.id">
                             <header class="post-title">
-                                <div class="user-avatar">
-                                    <img src="/Images/@post.avatarnguoidang" alt="">
-                                </div>
-                                <a href="#" title="">@post.tennguoidang</a>
-                                @if (post.ganthe.Count != 0)
-                                {
-                                    <span>
-                                        với
-                                        @foreach (var ganthe in post.ganthe)
+                                <div class="post-info">
+                                    <img src="/Images/@post.avatarnguoidang" class="rounded rounded-circle lazy" width="50px" height="50px" alt="">
+                                    <p>
+                                        <a href="#" title="">@post.tennguoidang</a>
+                                        @if (post.ganthe.Count != 0)
                                         {
-                                            <a href="#"><b>@ganthe.ten, </b></a>
+                                            <span>
+                                                với
+                                                @foreach (var ganthe in post.ganthe)
+                                                {
+                                                    <a href="#"><b>@ganthe.ten, </b></a>
+                                                }
+                                            </span>
                                         }
-                                    </span>
-                                }
-                                @if (post.diadiem != null)
-                                {
-                                    <span>tại <b>@post.diadiem</b></span>
-                                }
-                                <div class="dropdown post-tools">
-                                    <button class="btn btn-secondary" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        . . .
-                                    </button>
-                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                        <a class="dropdown-item" href="#" onclick="EditPost(@post.id, event)">Chỉnh sửa bài viết</a>
-                                        <a class="dropdown-item" href="#" onclick="DeletePost(@post.id, event)">Xóa bài viết</a>
+                                        @if (post.diadiem != null)
+                                        {
+                                            <span>tại <b>@post.diadiem</b></span>
+                                        }
+                                    </p>
+                                </div>
+                                <div class="post-option" data-target="#post-option-modal-@post.id" data-toggle="modal">
+                                    &#8230;
+                                </div>
+                                <div class="modal post-option-modal fade" id="post-option-modal-@post.id">
+                                    <div class="modal-dialog modal-dialog-centered">
+                                        <div class="modal-content">
+                                            <div class="modal-body">
+                                                <ul>
+                                                    <li>
+                                                        <a class="report" href="">Báo cáo</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#" onclick="EditPost(@post.id, event)">Sửa bài viết</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#" onclick="DeletePost(@post.id, event, @userID)">Xóa bài viết</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </header><!-- /header -->
@@ -293,7 +317,7 @@
                                     <div class="post-content-image">
                                         @if (post.anh.Count == 1)
                                         {
-                                            <img src="/Images/@post.anh[0].anh_url" alt="">
+                                            <img src="/Images/@post.anh[0].anh_url" alt="" onclick="ShowPostModal(@post.anh[0].id)">
                                         }
                                         else if (post.anh.Count == 2)
                                         {
@@ -301,7 +325,7 @@
                                                 @foreach (var img in post.anh)
                                                 {
                                                     <div class="col-md-6">
-                                                        <img src="/Images/@img.anh_url" alt="" />
+                                                        <img src="/Images/@img.anh_url" alt="" onclick="ShowPostModal(@img.id)" />
                                                     </div>
                                                 }
                                             </div>
@@ -310,13 +334,13 @@
                                         {
                                             <div class="row soanh-3">
                                                 <div class="col-md-12">
-                                                    <img src="/Images/@post.anh[0].anh_url" alt="" />
+                                                    <img src="/Images/@post.anh[0].anh_url" alt="" onclick="ShowPostModal(@post.anh[0].id)" />
                                                 </div>
                                                 <div class="col-md-6">
-                                                    <img src="/Images/@post.anh[1].anh_url" alt="" />
+                                                    <img src="/Images/@post.anh[1].anh_url" alt="" onclick="ShowPostModal(@post.anh[1].id)" />
                                                 </div>
                                                 <div class="col-md-6">
-                                                    <img src="/Images/@post.anh[2].anh_url" alt="" />
+                                                    <img src="/Images/@post.anh[2].anh_url" alt="" onclick="ShowPostModal(@post.anh[2].id)" />
                                                 </div>
                                             </div>
                                         }
@@ -324,16 +348,16 @@
                                         {
                                             <div class="row soanh-4">
                                                 <div class="col-md-12">
-                                                    <img src="/Images/@post.anh[0].anh_url" alt="" />
+                                                    <img src="/Images/@post.anh[0].anh_url" alt="" onclick="ShowPostModal(@post.anh[0].id)" />
                                                 </div>
                                                 <div class="col-md-4">
-                                                    <img src="/Images/@post.anh[1].anh_url" alt="" />
+                                                    <img src="/Images/@post.anh[1].anh_url" alt="" onclick="ShowPostModal(@post.anh[1].id)" />
                                                 </div>
                                                 <div class="col-md-4">
-                                                    <img src="/Images/@post.anh[2].anh_url" alt="" />
+                                                    <img src="/Images/@post.anh[2].anh_url" alt="" onclick="ShowPostModal(@post.anh[2].id)" />
                                                 </div>
                                                 <div class="col-md-4">
-                                                    <img src="/Images/@post.anh[3].anh_url" alt="" />
+                                                    <img src="/Images/@post.anh[3].anh_url" alt="" onclick="ShowPostModal(@post.anh[3].id)" />
                                                 </div>
                                             </div>
                                         }
@@ -341,19 +365,19 @@
                                         {
                                             <div class="row soanh-5">
                                                 <div class="col-md-6">
-                                                    <img src="/Images/@post.anh[0].anh_url" alt="" />
+                                                    <img src="/Images/@post.anh[0].anh_url" alt="" onclick="ShowPostModal(@post.anh[0].id)" />
                                                 </div>
                                                 <div class="col-md-6">
-                                                    <img src="/Images/@post.anh[1].anh_url" alt="" />
+                                                    <img src="/Images/@post.anh[1].anh_url" alt="" onclick="ShowPostModal(@post.anh[1].id)" />
                                                 </div>
                                                 <div class="col-md-4">
-                                                    <img src="/Images/@post.anh[2].anh_url" alt="" />
+                                                    <img src="/Images/@post.anh[2].anh_url" alt="" onclick="ShowPostModal(@post.anh[2].id)" />
                                                 </div>
                                                 <div class="col-md-4">
-                                                    <img src="/Images/@post.anh[3].anh_url" alt="" />
+                                                    <img src="/Images/@post.anh[3].anh_url" alt="" onclick="ShowPostModal(@post.anh[3].id)" />
                                                 </div>
                                                 <div class="col-md-4">
-                                                    <img src="/Images/@post.anh[4].anh_url" alt="" />
+                                                    <img src="/Images/@post.anh[4].anh_url" alt="" onclick="ShowPostModal(@post.anh[4].id)" />
                                                 </div>
                                             </div>
                                         }
@@ -364,24 +388,50 @@
                                     </div>
                                 }
                             </div>
-                            <div class="post-info">
+                            <div class="post-socialfunction">
                                 <section class="post-icons">
-                                    <button type="button" class="btn btn-light post-like-icon" id="post-like-icon-@post.id">
-                                        <i class="fas fa-heart"></i>
-                                    </button>
+                                    @if (post.dsnguoithich.Any(x => x.idnguoithich == userID))
+                                    {
+                                        <button type="button" class="btn btn-light post-like-icon liked" id="post-like-icon-@post.id">
+                                            <i class="fas fa-heart"></i>
+                                        </button>
+                                    }
+                                    else
+                                    {
+                                        <button type="button" class="btn btn-light post-like-icon" id="post-like-icon-@post.id">
+                                            <i class="fas fa-heart"></i>
+                                        </button>
+                                    }
                                     <button type="button" class="btn btn-light"><i class="far fa-comment"></i></button>
-                                    <button type="button" class="btn btn-light"><i class="far fa-paper-plane"></i></button>
+                                    <button type="button" class="btn btn-light" data-toggle="modal" data-target="#post-0-share"><i class="far fa-paper-plane"></i></button>
                                     <button type="button" class="btn btn-light"><i class="far fa-bookmark"></i></button>
                                 </section>
                                 <section class="list-like">
-                                    <button type="button" class="btn btn-light like-count-@post.id">@post.luotthich lượt thích</button>
+                                    <button type="button" class="btn btn-light like-count-@post.id" id="like-count-@post.id">@post.luotthich lượt thích</button>
+
+                                    <!-- Modal -->
+                                    <div class="modal fade list-like-post" id="list-like-post-@post.id" tabindex="-1" role="dialog">
+                                        <div class="modal-dialog modal-dialog-centered" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLongTitle">Likes</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body" id="list-like-body-@post.id">
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </section>
                                 <section class="post-time">
                                     <p>2 giờ trước</p>
                                 </section>
-                                @if (post.comment.Count > 0)
-                                {
-                                    <div class="user-comments" id="user-comments-@post.id">
+                                <div class="user-comments" id="user-comments-@post.id">
+                                    @if (post.comment.Count > 0)
+                                    {
                                         <div id="comment-list-@post.id" class="comment-list">
                                             @foreach (var item in post.comment)
                                             {
@@ -443,14 +493,115 @@
                                                 </div>
                                             }
                                         </div>
-                                    </div>
-                                }
+                                    }
+                                </div>
                                 <section class="comment-bar" id="comment-bar-@post.id">
                                     <div class="form-group">
                                         <textarea class="form-control" placeholder="Thêm bình luận..." oninput="auto_grow(this)" id="post-comment-content-@post.id"></textarea>
                                     </div>
                                     <button type="button" class="btn btn-light post-comment-button" id="post-comment-button-@post.id">Đăng</button>
                                 </section>
+                            </div>
+                            @if (post.anh.Count > 0)
+                            {
+                                foreach (var modal_anh in post.anh)
+                                {
+                                    <!-- Modal -->
+                                    <div class="post-box-modal modal fade" id="modal-post-@modal_anh.id">
+                                        <div class="modal-dialog modal-dialog-centered">
+                                            <div class="modal-content">
+                                                <div class="modal-col-7">
+                                                    <div class="post-content">
+                                                        <img class="" src="/Images/@modal_anh.anh_url" alt="">
+                                                    </div>
+                                                </div>
+                                                <div class="modal-col-5">
+                                                    <div class="post-title">
+                                                        <div class="post-info">
+                                                            <img height="50px" width="50px" class="rounded rounded-circle" src="/Images/@post.avatarnguoidang" alt="">
+                                                            <p id="modal-post-info-@modal_anh.id"><a href="#" title="">@post.tennguoidang</a></p>
+                                                        </div>
+                                                    </div>
+
+                                                    <p class="post-content-text" id="modal-post-content-text-@modal_anh.id"></p>
+                                                    <div class="post-socialfunction">
+
+                                                        <div class="user-comments" id="modal-user-comments-@modal_anh.id">
+                                                        </div>
+                                                        <section class="post-icons">
+                                                            <button type="button" class="btn btn-light post-like-icon" id="modal-post-like-icon-@modal_anh.id">
+                                                                <i class="fas fa-heart"></i>
+                                                            </button>
+                                                            <button type="button" class="btn btn-light"><i class="far fa-comment"></i></button>
+                                                            <button type="button" class="btn btn-light"></button>
+                                                        </section>
+
+                                                        <section class="list-like">
+                                                            <button type="button" class="btn btn-light like-count-@modal_anh.id" id="like-count-@modal_anh.id">0 lượt thích</button>
+                                                            <div class="modal fade modal-list-like-post" id="modal-list-like-post-@post.id" tabindex="-1" role="dialog">
+                                                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                                                    <div class="modal-content">
+                                                                        <div class="modal-header">
+                                                                            <h5 class="modal-title" id="exampleModalLongTitle">Likes</h5>
+                                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                                <span aria-hidden="true">&times;</span>
+                                                                            </button>
+                                                                        </div>
+                                                                        <div class="modal-body" id="modal-list-like-body-@post.id">
+
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </section>
+                                                        <section class="post-time" id="modal-post-time-@modal_anh.id">
+                                                            <p>2 giờ trước</p>
+                                                        </section>
+                                                        <section class="comment-bar" id="comment-bar-@modal_anh.id">
+                                                            <div class="form-group">
+                                                                <textarea class="form-control" placeholder="Thêm bình luận..." oninput="auto_grow(this)" id="modal-post-comment-content-@modal_anh.id"></textarea>
+                                                            </div>
+                                                            <button type="button" class="btn btn-light modal-post-comment-button" id="modal-post-comment-button-@modal_anh.id">Đăng</button>
+                                                        </section>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            }
+                            <!-- Share modal -->
+                            <div class="share-modal modal fade" id="post-0-share">
+                                <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content">
+                                        <div class="share-header">
+                                            <p>Chia sẻ ngay lên dòng thời gian</p>
+                                            <p data-dismiss="modal">&times;</p>
+                                        </div>
+                                        <div class="share-body">
+                                            <input class="form-control" type="text" placeholder="Nói gì đó về nội dung này...">
+                                            <div class="share-content">
+                                                <img class="" src="~/Assets/media/78834391_459110258126325_6149001856166133760_n.jpg" alt="">
+                                            </div>
+                                        </div>
+                                        <div id="post-1-taginput" class="tag-input">
+                                            <input class="form-control" type="text" placeholder="Gắn thẻ bạn bè">
+                                        </div>
+                                        <div id="post-1-locationinput" class="location-input">
+                                            <input class="form-control" type="text" placeholder="Bạn đang ở đâu?">
+                                        </div>
+                                        <div class="share-footer">
+                                            <div class="footer-option">
+                                                <button onclick="tag('post-1')" id="post-1-tag">Gắn thẻ mọi người</button>
+                                                <button onclick="location_open('post-1')" id="post-1-location">Thêm vị trí</button>
+                                            </div>
+                                            <div class="footer-submit">
+                                                <button data-dismiss="modal">Hủy</button>
+                                                <button class="share-submit">Đăng</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </article>
                     }
@@ -465,4 +616,3 @@
     <div class="tab-pane container fade" id="menu6">...</div>
     <div class="tab-pane container fade" id="menu7">...</div>
 </div>
-

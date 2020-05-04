@@ -16,17 +16,12 @@ namespace Model.EF
             baiviet_binhluan = new HashSet<baiviet_binhluan>();
             baiviet_chiase = new HashSet<baiviet_chiase>();
             baiviet_luu = new HashSet<baiviet_luu>();
-            baocao_baiviet = new HashSet<baocao_baiviet>();
-            nhoms = new HashSet<nhom>();
-            videos = new HashSet<video>();
             anhs = new HashSet<anh>();
             nguoidungs = new HashSet<nguoidung>();
             chudes = new HashSet<chude>();
             nguoidungs1 = new HashSet<nguoidung>();
             nguoidungs2 = new HashSet<nguoidung>();
-            nhoms1 = new HashSet<nhom>();
-            sukiens = new HashSet<sukien>();
-            trangs = new HashSet<trang>();
+            bosuutaps = new HashSet<bosuutap>();
         }
 
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
@@ -60,13 +55,9 @@ namespace Model.EF
 
         public long? parent_id { get; set; }
 
-        public virtual baiviet_hinhnen baiviet_hinhnen { get; set; }
-
         public virtual chophep_chiase chophep_chiase { get; set; }
 
         public virtual chan_chiase chan_chiase { get; set; }
-
-        public virtual diadiem diadiem { get; set; }
 
         public virtual nguoidung nguoidung { get; set; }
 
@@ -74,6 +65,8 @@ namespace Model.EF
         public virtual ICollection<baiviet> baiviet1 { get; set; }
 
         public virtual baiviet baiviet2 { get; set; }
+
+        public virtual baiviet_hinhnen baiviet_hinhnen { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<baiviet_binhluan> baiviet_binhluan { get; set; }
@@ -85,36 +78,21 @@ namespace Model.EF
         public virtual ICollection<baiviet_luu> baiviet_luu { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<baocao_baiviet> baocao_baiviet { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<nhom> nhoms { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<video> videos { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<anh> anhs { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<nguoidung> nguoidungs { get; set; } //baiviet_banbe
+        public virtual ICollection<nguoidung> nguoidungs { get; set; } //chia se
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<chude> chudes { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<nguoidung> nguoidungs1 { get; set; } //baiviet_ganthe
+        public virtual ICollection<nguoidung> nguoidungs1 { get; set; } //luu
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<nguoidung> nguoidungs2 { get; set; } //baiviet_thich
+        public virtual ICollection<nguoidung> nguoidungs2 { get; set; }//thich
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<nhom> nhoms1 { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<sukien> sukiens { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<trang> trangs { get; set; }
+        public virtual ICollection<bosuutap> bosuutaps { get; set; }
     }
 }

@@ -51,7 +51,6 @@ namespace InsBook.Areas.Client.Controllers
                     Session.Add(CommonConstants.USER_SESSION, userSC);
                     Session.Timeout = 1800;
 
-                    CommonConstants.USER_ID = user.id;
 
                     //thêm cookie khi bấm nút ghi nhớ đăng nhập
                     if (model.RememberMe)
@@ -70,7 +69,6 @@ namespace InsBook.Areas.Client.Controllers
             {
                 Session.Remove(CommonConstants.USER_SESSION);
 
-                CommonConstants.USER_ID = -1;
 
                 Response.Cookies[CommonConstants.USER_COOKIE].Expires = DateTime.Now.AddDays(-1);
                 return View("Index");

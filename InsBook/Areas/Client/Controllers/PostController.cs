@@ -324,98 +324,116 @@ namespace InsBook.Areas.Client.Controllers
                 }, JsonRequestBehavior.AllowGet);
             }
         }
-        //public JsonResult ActionDeletePost()
-        //{
-        //    if (Session[CommonConstants.USER_SESSION] != null || Request.Cookies[CommonConstants.USER_COOKIE] != null)
-        //    {
-        //        var user = new UserLogin();
-        //        // Lấy giá trị của cookie hoặc session
-        //        if (Request.Cookies[CommonConstants.USER_COOKIE] != null)
-        //        {
-        //            // lấy từ cookie
-        //            user.UserID = int.Parse(Request.Cookies[CommonConstants.USER_COOKIE]["1"]); // đang string ép về kiểu int
-        //            user.Email = Request.Cookies[CommonConstants.USER_COOKIE]["2"].ToString();
-        //        }
-        //        else
-        //        {
-        //            user = (UserLogin)Session[CommonConstants.USER_SESSION]; // lấy từ session
-        //        }
-
-        //        try
-        //        {
-        //            var data = Request.Form;
-
-        //            bool check = new PostDao().DeletePost(user.UserID, Convert.ToInt64(data["postId"]));
-
-        //            if (true)
-        //            {
-        //                return Json(new
-        //                {
-        //                    status = true
-        //                }, JsonRequestBehavior.AllowGet);
-        //            }
-        //            else
-        //            {
-        //                return Json(new
-        //                {
-        //                    status = false
-        //                }, JsonRequestBehavior.AllowGet);
-        //            }
-        //        }
-        //        catch (Exception ex)
-        //        {
-        //            return Json(new
-        //            {
-        //                status = false
-        //            }, JsonRequestBehavior.AllowGet);
-        //        }
-        //    }
-        //    else
-        //    {
-        //        return Json(new
-        //        {
-        //            status = false
-        //        }, JsonRequestBehavior.AllowGet);
-        //    }
-        //}
-
-        public bool LikePost(Int64 postId, bool status)
+        public bool DeletePost(Int64 postId, Int32 userId)
         {
-            if(CommonConstants.USER_ID != -1)
+            try
             {
-                try
+                var check = new PostDao().DeletePost(postId, userId);
+                if (check)
                 {
-                    var like = new PostDao().LikePost(postId, CommonConstants.USER_ID, status);
-                    return like;
+                    return true;
                 }
-                catch (Exception ex)
+                else
                 {
                     return false;
                 }
             }
-            else
+            catch
             {
                 return false;
             }
         }
-        public post_comment_child CommentPost(Int64 postId, string content, Int64 parent_id)
+
+        public bool LikePost(Int64 postId, bool status, int session_userId)
         {
-            if (CommonConstants.USER_ID != -1)
+            try
             {
+                var like = new PostDao().LikePost(postId, session_userId, status);
+                return like;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+        public post_comment_child CommentPost(Int64 postId, string content, Int64 parent_id, int session_userId)
+        {
+            try
+            {
+                UInt64 shardId = Convert.ToUInt64(session_userId % 2000) << 10;
+                var comment = new PostDao().CommentPost(postId, session_userId, content, Convert.ToString(shardId), parent_id);
+                return comment;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+        public JsonResult GetPostInfo()
+        {
+            if (Session[CommonConstants.USER_SESSION] != null || Request.Cookies[CommonConstants.USER_COOKIE] != null)
+            {
+                var user = new UserLogin();
+                // Lấy giá trị của cookie hoặc session
+                if (Request.Cookies[CommonConstants.USER_COOKIE] != null)
+                {
+                    // lấy từ cookie
+                    user.UserID = int.Parse(Request.Cookies[CommonConstants.USER_COOKIE]["1"]); // đang string ép về kiểu int
+                    user.Email = Request.Cookies[CommonConstants.USER_COOKIE]["2"].ToString();
+                }
+                else
+                {
+                    user = (UserLogin)Session[CommonConstants.USER_SESSION]; // lấy từ session
+                }
+
                 try
                 {
-                    UInt64 shardId = Convert.ToUInt64(CommonConstants.USER_ID % 2000) << 10;
-                    var comment = new PostDao().CommentPost(postId, CommonConstants.USER_ID, content, Convert.ToString(shardId), parent_id);
-                    return comment;
+                    var post_id = Request.Form["img_post_id"];
+                    var post_info = new PostDao().GetSinglePost(Convert.ToInt64(post_id));
+                    if (post_info != null)
+                    {
+                        return Json(new
+                        {
+                            status = true,
+                            data = post_info
+                        }, JsonRequestBehavior.AllowGet);
+                    }
+                    else
+                    {
+                        return Json(new
+                        {
+                            status = false
+                        }, JsonRequestBehavior.AllowGet);
+                    }
                 }
                 catch (Exception ex)
                 {
-                    return null;
+                    return Json(new
+                    {
+                        status = false
+                    }, JsonRequestBehavior.AllowGet);
                 }
             }
             else
             {
-                return null;
+                return Json(new
+                {
+                    status = false
+                }, JsonRequestBehavior.AllowGet);
+            }
+        }
+
+        public List<dsnguoithich> GetListLikePost(Int64 postId)
+        {
+            List<dsnguoithich> listlike = new List<dsnguoithich>();
+            try
+            {
+                listlike = new PostDao().GetListLike(postId);
+                return listlike;
+            }
+            catch (Exception ex)
+            {
+                return listlike;
             }
         }
     }

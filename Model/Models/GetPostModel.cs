@@ -16,6 +16,7 @@ namespace Model.Models
         public int baomat { set; get; }
         public List<post_ganthe> ganthe { set; get; } //--
         public int luotthich { set; get; } //++
+        public List<dsnguoithich> dsnguoithich { set; get; }
         public int luotbinhluan { set; get; } //++
         public int luotchiase { set; get; } //
         public string tennguoidang { set; get; }
@@ -27,6 +28,12 @@ namespace Model.Models
         public List<post_video> video { set; get; } //
         public DateTime thoigiandang { set; get; } //
         public List<post_comment> comment { set; get; } //++
+    }
+    public class dsnguoithich
+    {
+        public string anhnguoithich { set; get; }
+        public string tennguoithich { set; get; }
+        public int idnguoithich { set; get; }
     }
     public class post_nguoinhan
     {

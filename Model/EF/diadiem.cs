@@ -12,15 +12,15 @@ namespace Model.EF
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public diadiem()
         {
-            baiviets = new HashSet<baiviet>();
             bosuutaps = new HashSet<bosuutap>();
+            bosuutaps1 = new HashSet<bosuutap>();
             congties = new HashSet<congty>();
             diadiem1 = new HashSet<diadiem>();
             nguoidung_diadiem = new HashSet<nguoidung_diadiem>();
-            sukiens = new HashSet<sukien>();
             truonghocs = new HashSet<truonghoc>();
         }
 
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int id { get; set; }
 
         [StringLength(255)]
@@ -32,10 +32,10 @@ namespace Model.EF
         public int? parent_id { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<baiviet> baiviets { get; set; }
+        public virtual ICollection<bosuutap> bosuutaps { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<bosuutap> bosuutaps { get; set; }
+        public virtual ICollection<bosuutap> bosuutaps1 { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<congty> congties { get; set; }
@@ -47,9 +47,6 @@ namespace Model.EF
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<nguoidung_diadiem> nguoidung_diadiem { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<sukien> sukiens { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<truonghoc> truonghocs { get; set; }
