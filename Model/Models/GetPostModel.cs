@@ -26,7 +26,7 @@ namespace Model.Models
         public int uutien { set; get; } //
         public List<post_anh> anh { set; get; } //--
         public List<post_video> video { set; get; } //
-        public DateTime thoigiandang { set; get; } //
+        public Int64 thoigiandang { set; get; } //
         public List<post_comment> comment { set; get; } //++
     }
     public class dsnguoithich
