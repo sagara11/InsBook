@@ -178,6 +178,10 @@
       display: block;
       width: 60%; }
 
+.ui-autocomplete {
+  z-index: 2147483647;
+  position: relative; }
+
 .post-box {
   margin-bottom: 30px;
   border-radius: 4px;
@@ -291,6 +295,180 @@
           font-weight: 600; }
         .post-box .post-option-modal .modal-body ul li:hover {
           background-color: gainsboro; }
+  .post-box .show-edit-post-modal .modal-dialog {
+    max-width: 600px; }
+    .post-box .show-edit-post-modal .modal-dialog .modal-content .modal-header h3 {
+      font-size: 16px; }
+      .post-box .show-edit-post-modal .modal-dialog .modal-content .modal-header h3 i {
+        margin-right: 5px; }
+    .post-box .show-edit-post-modal .modal-dialog .modal-content .modal-body .modal-body-content {
+      display: flex; }
+      .post-box .show-edit-post-modal .modal-dialog .modal-content .modal-body .modal-body-content .user-ava {
+        width: 42px;
+        height: 42px;
+        margin-right: 8px; }
+        .post-box .show-edit-post-modal .modal-dialog .modal-content .modal-body .modal-body-content .user-ava img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          border-radius: 50%;
+          border: 1px solid red;
+          padding: 1px; }
+      .post-box .show-edit-post-modal .modal-dialog .modal-content .modal-body .modal-body-content .form-group {
+        margin: 0;
+        padding: 0 48px 0 12px;
+        width: 92%; }
+        .post-box .show-edit-post-modal .modal-dialog .modal-content .modal-body .modal-body-content .form-group textarea {
+          resize: none;
+          width: 100%;
+          height: 36px;
+          overflow: hidden;
+          border: none; }
+          .post-box .show-edit-post-modal .modal-dialog .modal-content .modal-body .modal-body-content .form-group textarea:focus {
+            outline: none;
+            box-shadow: none;
+            border: none; }
+    .post-box .show-edit-post-modal .modal-dialog .modal-content .modal-body .modal-body-input {
+      margin-top: 8px;
+      /*display: none;*/ }
+      .post-box .show-edit-post-modal .modal-dialog .modal-content .modal-body .modal-body-input .input-group-text {
+        min-width: 40px; }
+      .post-box .show-edit-post-modal .modal-dialog .modal-content .modal-body .modal-body-input input {
+        font-size: 14px; }
+    .post-box .show-edit-post-modal .modal-dialog .modal-content .modal-body .edit-post-diadiem, .post-box .show-edit-post-modal .modal-dialog .modal-content .modal-body .edit-post-ganthe, .post-box .show-edit-post-modal .modal-dialog .modal-content .modal-body .edit-post-chude {
+      display: none; }
+    .post-box .show-edit-post-modal .modal-dialog .modal-content .modal-body .edit-post-ganthe {
+      border: 1px solid #ced4da; }
+      .post-box .show-edit-post-modal .modal-dialog .modal-content .modal-body .edit-post-ganthe .input-group-prepend .input-group-text {
+        border: none;
+        /*padding: 0;*/ }
+      .post-box .show-edit-post-modal .modal-dialog .modal-content .modal-body .edit-post-ganthe .edit-friends-tag {
+        display: flex;
+        align-items: center;
+        margin-left: 12px; }
+        .post-box .show-edit-post-modal .modal-dialog .modal-content .modal-body .edit-post-ganthe .edit-friends-tag .friends-tag-span {
+          background: #e9ebee;
+          padding: 1px 6px;
+          margin-right: 6px;
+          border: 1px solid #9cb4d8;
+          border-radius: 20px; }
+          .post-box .show-edit-post-modal .modal-dialog .modal-content .modal-body .edit-post-ganthe .edit-friends-tag .friends-tag-span a {
+            color: gray;
+            text-decoration: none; }
+            .post-box .show-edit-post-modal .modal-dialog .modal-content .modal-body .edit-post-ganthe .edit-friends-tag .friends-tag-span a i {
+              padding-left: 3px; }
+        .post-box .show-edit-post-modal .modal-dialog .modal-content .modal-body .edit-post-ganthe .edit-friends-tag .edit-post-bande-data {
+          border: none;
+          padding: 6px 12px 6px 0; }
+          .post-box .show-edit-post-modal .modal-dialog .modal-content .modal-body .edit-post-ganthe .edit-friends-tag .edit-post-bande-data:focus {
+            outline: none;
+            box-shadow: none;
+            border: none; }
+    .post-box .show-edit-post-modal .modal-dialog .modal-content .modal-body .modal-body-result {
+      margin-top: 8px;
+      /*display: none;*/ }
+      .post-box .show-edit-post-modal .modal-dialog .modal-content .modal-body .modal-body-result .modal-body-result-text {
+        margin: 0; }
+        .post-box .show-edit-post-modal .modal-dialog .modal-content .modal-body .modal-body-result .modal-body-result-text .edit-result-tenbanbe {
+          margin-right: 5px; }
+      .post-box .show-edit-post-modal .modal-dialog .modal-content .modal-body .modal-body-result .modal-body-result-img {
+        margin: 4px 0;
+        display: none;
+        position: relative;
+        overflow-x: auto;
+        /* width */
+        /* Track */
+        /* Handle */
+        /* Handle on hover */ }
+        .post-box .show-edit-post-modal .modal-dialog .modal-content .modal-body .modal-body-result .modal-body-result-img::-webkit-scrollbar {
+          width: 3px !important; }
+        .post-box .show-edit-post-modal .modal-dialog .modal-content .modal-body .modal-body-result .modal-body-result-img::-webkit-scrollbar-track {
+          background: #f1f1f1; }
+        .post-box .show-edit-post-modal .modal-dialog .modal-content .modal-body .modal-body-result .modal-body-result-img::-webkit-scrollbar-thumb {
+          background: #888; }
+        .post-box .show-edit-post-modal .modal-dialog .modal-content .modal-body .modal-body-result .modal-body-result-img::-webkit-scrollbar-thumb:hover {
+          background: #555; }
+        .post-box .show-edit-post-modal .modal-dialog .modal-content .modal-body .modal-body-result .modal-body-result-img .edit-selected-post-img {
+          height: 100px;
+          flex: 0 0 100px;
+          margin-right: 5px;
+          position: relative; }
+          .post-box .show-edit-post-modal .modal-dialog .modal-content .modal-body .modal-body-result .modal-body-result-img .edit-selected-post-img img {
+            object-fit: cover;
+            width: 100%;
+            height: 100%; }
+          .post-box .show-edit-post-modal .modal-dialog .modal-content .modal-body .modal-body-result .modal-body-result-img .edit-selected-post-img .edit-div-close-post-img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: rgba(0, 0, 0, 0.3);
+            width: 100%;
+            height: 100%;
+            visibility: hidden;
+            opacity: 0; }
+            .post-box .show-edit-post-modal .modal-dialog .modal-content .modal-body .modal-body-result .modal-body-result-img .edit-selected-post-img .edit-div-close-post-img .edit-close-post-img {
+              background-color: transparent;
+              border: none;
+              padding: 0;
+              position: absolute;
+              top: 0;
+              right: 5px; }
+              .post-box .show-edit-post-modal .modal-dialog .modal-content .modal-body .modal-body-result .modal-body-result-img .edit-selected-post-img .edit-div-close-post-img .edit-close-post-img i {
+                color: lightgray; }
+                .post-box .show-edit-post-modal .modal-dialog .modal-content .modal-body .modal-body-result .modal-body-result-img .edit-selected-post-img .edit-div-close-post-img .edit-close-post-img i:hover {
+                  color: #fff; }
+          .post-box .show-edit-post-modal .modal-dialog .modal-content .modal-body .modal-body-result .modal-body-result-img .edit-selected-post-img:hover .edit-div-close-post-img {
+            visibility: visible;
+            opacity: 1; }
+        .post-box .show-edit-post-modal .modal-dialog .modal-content .modal-body .modal-body-result .modal-body-result-img .edit-tools-item {
+          margin: 0;
+          display: block;
+          height: 100px;
+          flex: 0 0 100px;
+          position: relative; }
+          .post-box .show-edit-post-modal .modal-dialog .modal-content .modal-body .modal-body-result .modal-body-result-img .edit-tools-item img {
+            object-fit: cover;
+            width: 100%;
+            height: 100%; }
+          .post-box .show-edit-post-modal .modal-dialog .modal-content .modal-body .modal-body-result .modal-body-result-img .edit-tools-item:hover {
+            cursor: pointer; }
+    .post-box .show-edit-post-modal .modal-dialog .modal-content .modal-body .modal-body-tools {
+      border-top: 1px solid #ccc;
+      padding-top: 8px;
+      display: flex; }
+      .post-box .show-edit-post-modal .modal-dialog .modal-content .modal-body .modal-body-tools .tools-img {
+        width: 0.1px;
+        height: 0.1px;
+        opacity: 0;
+        overflow: hidden;
+        position: absolute;
+        z-index: -1; }
+      .post-box .show-edit-post-modal .modal-dialog .modal-content .modal-body .modal-body-tools label {
+        margin: 0; }
+      .post-box .show-edit-post-modal .modal-dialog .modal-content .modal-body .modal-body-tools .tools-item {
+        background: #f5f6f7;
+        border-radius: 20px;
+        display: inline-block;
+        font-weight: 600;
+        padding: 7px 24px;
+        margin-right: 12px;
+        font-size: 14px; }
+        .post-box .show-edit-post-modal .modal-dialog .modal-content .modal-body .modal-body-tools .tools-item:hover {
+          cursor: pointer; }
+    .post-box .show-edit-post-modal .modal-dialog .modal-content .modal-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 12px 12px 12px; }
+      .post-box .show-edit-post-modal .modal-dialog .modal-content .modal-footer .form-group {
+        margin: 0; }
+        .post-box .show-edit-post-modal .modal-dialog .modal-content .modal-footer .form-group select {
+          font-size: 14px; }
+      .post-box .show-edit-post-modal .modal-dialog .modal-content .modal-footer button {
+        font-size: 14px;
+        font-weight: 600;
+        display: block;
+        width: 60%; }
   .post-box .share-modal .share-header {
     padding: 10px 10px;
     background-color: #f7f7f7;

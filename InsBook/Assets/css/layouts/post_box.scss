@@ -274,7 +274,10 @@
 
     margin-bottom: 30px;
 }
-
+.ui-autocomplete {
+    z-index: 2147483647;
+    position: relative;
+}
 .post-box {
     margin-bottom: 30px;
     border-radius: 4px;
@@ -400,10 +403,12 @@
                         .modal-list-like-post {
                             .modal-dialog {
                                 max-width: 500px !important;
+
                                 .modal-content {
                                     padding: 0px;
                                     display: flex;
                                     flex-direction: column;
+
                                     .close {
                                         padding: 16px;
                                         font-size: 24px;
@@ -449,6 +454,282 @@
 
                     &:hover {
                         background-color: rgb(220, 220, 220);
+                    }
+                }
+            }
+        }
+    }
+
+    .show-edit-post-modal {
+        .modal-dialog {
+            max-width: 600px;
+
+            .modal-content {
+                .modal-header {
+                    h3 {
+                        font-size: 16px;
+
+                        i {
+                            margin-right: 5px;
+                        }
+                    }
+                }
+
+                .modal-body {
+                    .modal-body-content {
+                        display: flex;
+
+                        .user-ava {
+                            width: 42px;
+                            height: 42px;
+                            margin-right: 8px;
+
+                            img {
+                                width: 100%;
+                                height: 100%;
+                                object-fit: cover;
+                                border-radius: 50%;
+                                border: 1px solid red;
+                                padding: 1px;
+                            }
+                        }
+
+                        .form-group {
+                            margin: 0;
+                            padding: 0 48px 0 12px;
+                            width: 92%;
+
+                            textarea {
+                                resize: none;
+                                width: 100%;
+                                height: 36px;
+                                overflow: hidden;
+                                border: none;
+
+                                &:focus {
+                                    outline: none;
+                                    box-shadow: none;
+                                    border: none;
+                                }
+                            }
+                        }
+                    }
+
+                    .modal-body-input {
+                        margin-top: 8px;
+                        /*display: none;*/
+                        .input-group-text {
+                            min-width: 40px;
+                        }
+
+                        input {
+                            font-size: 14px;
+                        }
+                    }
+
+                    .edit-post-diadiem, .edit-post-ganthe, .edit-post-chude {
+                        display: none;
+                    }
+
+                    .edit-post-ganthe {
+                        border: 1px solid #ced4da;
+
+                        .input-group-prepend {
+                            .input-group-text {
+                                border: none;
+                                /*padding: 0;*/
+                            }
+                        }
+
+                        .edit-friends-tag {
+                            display: flex;
+                            align-items: center;
+                            margin-left: 12px;
+
+                            .friends-tag-span {
+                                background: #e9ebee;
+                                padding: 1px 6px;
+                                margin-right: 6px;
+                                border: 1px solid #9cb4d8;
+                                border-radius: 20px;
+
+                                a {
+                                    color: gray;
+                                    text-decoration: none;
+
+                                    i {
+                                        padding-left: 3px;
+                                    }
+                                }
+                            }
+
+                            .edit-post-bande-data {
+                                border: none;
+                                padding: 6px 12px 6px 0;
+
+                                &:focus {
+                                    outline: none;
+                                    box-shadow: none;
+                                    border: none;
+                                }
+                            }
+                        }
+                    }
+
+                    .modal-body-result {
+                        margin-top: 8px;
+                        /*display: none;*/
+                        .modal-body-result-text {
+                            margin: 0;
+
+                            .edit-result-tenbanbe {
+                                margin-right: 5px;
+                            }
+                        }
+
+                        .modal-body-result-img {
+                            margin: 4px 0;
+                            display: none;
+                            position: relative;
+                            overflow-x: auto;
+                            /* width */
+                            &::-webkit-scrollbar {
+                                width: 3px !important;
+                            }
+                            /* Track */
+                            &::-webkit-scrollbar-track {
+                                background: #f1f1f1;
+                            }
+                            /* Handle */
+                            &::-webkit-scrollbar-thumb {
+                                background: #888;
+                            }
+                            /* Handle on hover */
+                            &::-webkit-scrollbar-thumb:hover {
+                                background: #555;
+                            }
+
+                            .edit-selected-post-img {
+                                height: 100px;
+                                flex: 0 0 100px;
+                                margin-right: 5px;
+                                position: relative;
+
+                                img {
+                                    object-fit: cover;
+                                    width: 100%;
+                                    height: 100%;
+                                }
+
+                                .edit-div-close-post-img {
+                                    position: absolute;
+                                    top: 0;
+                                    left: 0;
+                                    background-color: rgba(0, 0, 0, 0.3);
+                                    width: 100%;
+                                    height: 100%;
+                                    visibility: hidden;
+                                    opacity: 0;
+
+                                    .edit-close-post-img {
+                                        background-color: transparent;
+                                        border: none;
+                                        padding: 0;
+                                        position: absolute;
+                                        top: 0;
+                                        right: 5px;
+
+                                        i {
+                                            color: lightgray;
+
+                                            &:hover {
+                                                color: #fff;
+                                            }
+                                        }
+                                    }
+                                }
+
+                                &:hover {
+                                    .edit-div-close-post-img {
+                                        visibility: visible;
+                                        opacity: 1;
+                                    }
+                                }
+                            }
+
+                            .edit-tools-item {
+                                margin: 0;
+                                display: block;
+                                height: 100px;
+                                flex: 0 0 100px;
+                                position: relative;
+
+                                img {
+                                    object-fit: cover;
+                                    width: 100%;
+                                    height: 100%;
+                                }
+
+                                &:hover {
+                                    cursor: pointer;
+                                }
+                            }
+                        }
+                    }
+
+                    .modal-body-tools {
+                        border-top: 1px solid #ccc;
+                        padding-top: 8px;
+                        display: flex;
+
+                        .tools-img {
+                            width: 0.1px;
+                            height: 0.1px;
+                            opacity: 0;
+                            overflow: hidden;
+                            position: absolute;
+                            z-index: -1;
+                        }
+
+                        label {
+                            margin: 0;
+                        }
+
+                        .tools-item {
+                            background: #f5f6f7;
+                            border-radius: 20px;
+                            display: inline-block;
+                            font-weight: 600;
+                            padding: 7px 24px;
+                            margin-right: 12px;
+                            font-size: 14px;
+
+                            &:hover {
+                                cursor: pointer;
+                            }
+                        }
+                    }
+                }
+
+                .modal-footer {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    padding: 12px 12px 12px 12px;
+
+                    .form-group {
+                        margin: 0;
+
+                        select {
+                            font-size: 14px;
+                        }
+                    }
+
+                    button {
+                        font-size: 14px;
+                        font-weight: 600;
+                        display: block;
+                        width: 60%;
                     }
                 }
             }

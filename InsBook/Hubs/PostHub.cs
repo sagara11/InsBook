@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using InsBook.Areas.Client.Controllers;
 using Microsoft.AspNet.SignalR;
+using Model.Models;
 
 namespace InsBook.Hubs
 {
@@ -42,6 +43,10 @@ namespace InsBook.Hubs
             {
                 Clients.All.DeletePost(postId);
             }
+        }
+        public void ShowEditPost(GetPostModel editPost)
+        {
+            Clients.All.ShowEditPost(editPost);
         }
     }
 }

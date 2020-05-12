@@ -243,10 +243,10 @@
 
                         </div>
                         <div class="card-body-tools">
-                            <input type="file" name="images" id="tools-img" accept="image/*" onchange="readURL(this);" multiple />
+                            <input type="file" name="images" id="tools-img" accept="image/*" onchange="readURL(this, -1);" multiple />
                             <label for="tools-img" class="tools-item">Ảnh/Video</label>
-                            <span class="tools-item show-post-ganthe" onclick="ShowPostTools(0)">Gắn thẻ bạn bè</span>
-                            <span class="tools-item show-post-diadiem" onclick="ShowPostTools(1)">Check in</span>
+                            <span class="tools-item show-post-ganthe" onclick="ShowPostTools(0, -1)">Gắn thẻ bạn bè</span>
+                            <span class="tools-item show-post-diadiem" onclick="ShowPostTools(1, -1)">Check in</span>
                             @*<span class="tools-item show-post-chude" onclick="ShowPostTools(2)" disabled>Chủ đề</span>*@
                         </div>
                         <div class="card-footer">
@@ -269,7 +269,7 @@
                             <header class="post-title">
                                 <div class="post-info">
                                     <img src="/Images/@post.avatarnguoidang" class="rounded rounded-circle lazy" width="50px" height="50px" alt="">
-                                    <p>
+                                    <p class="post-user-info-@post.id">
                                         <a href="#" title="">@post.tennguoidang</a>
                                         @if (post.ganthe.Count != 0)
                                         {
@@ -299,7 +299,7 @@
                                                         <a class="report" href="">Báo cáo</a>
                                                     </li>
                                                     <li>
-                                                        <a href="#" onclick="EditPost(@post.id, event)">Sửa bài viết</a>
+                                                        <a href="#" onclick="EditPost(@post.id, event, @userID)">Sửa bài viết</a>
                                                     </li>
                                                     <li>
                                                         <a href="#" onclick="DeletePost(@post.id, event, @userID)">Xóa bài viết</a>
@@ -309,12 +309,82 @@
                                         </div>
                                     </div>
                                 </div>
+
+                                <!-- Modal -->
+                                <div class="modal fade show-edit-post-modal" id="show-edit-post-@post.id" tabindex="-1" role="dialog">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h3><i class="fas fa-pencil-alt"></i>Sửa bài viết</h3>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="modal-body-content">
+                                                    <div class="user-ava" id="user-ava-@post.id">
+                                                        <img src="~/Images/@Profile.anhdd" alt="" />
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <textarea class="form-control" id="edit-post-content-@post.id" placeholder="Thêm bình luận..." oninput="auto_grow(this)"></textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="modal-body-result">
+                                                    <p class="modal-body-result-text"><span class="edit-result-tenbanbe" id="edit-result-tenbanbe-@post.id"></span><span class="edit-result-diadiem" id="edit-result-diadiem-@post.id"></span></p>
+                                                    <div class="modal-body-result-img" id="modal-body-result-img-@post.id">
+                                                        <label for="tools-img-@post.id" class="edit-tools-item" id="edit-post-anh-default-@post.id"><img src="/Images/default-adding-post.png" alt="" /></label>
+                                                    </div>
+                                                </div>
+                                                <div class="input-group modal-body-input edit-post-diadiem" id="edit-post-diadiem-@post.id">
+                                                    <div class="input-group-prepend">
+                                                        <div class="input-group-text"><i class="fas fa-map-marker-alt"></i></div>
+                                                    </div>
+                                                    <input type="text" class="form-control edit-post-diadiem-data" id="edit-post-diadiem-data-@post.id" placeholder="Bạn đang ở đâu ?">
+                                                </div>
+                                                <div class="input-group modal-body-input edit-post-ganthe" id="edit-post-ganthe-@post.id">
+                                                    <div class="input-group-prepend">
+                                                        <div class="input-group-text"><i class="fas fa-user"></i></div>
+                                                    </div>
+                                                    <div id="friends-tag-@post.id" class="edit-friends-tag">
+
+                                                    </div>
+                                                    <input type="text" class="form-control edit-post-bande-data" id="edit-post-banbe-data-@post.id" placeholder="Cùng với ai ?">
+                                                </div>
+                                                <div class="input-group modal-body-input edit-post-chude" id="edit-post-chude-@post.id">
+                                                    <div class="input-group-prepend">
+                                                        <div class="input-group-text"><i class="fas fa-filter"></i></div>
+                                                    </div>
+                                                    <input type="text" class="form-control" id="" placeholder="Chủ đề bài viết ?">
+                                                </div>
+                                                <div class="modal-body-tools">
+                                                    <input class="tools-img" type="file" name="edit_images" id="tools-img-@post.id" accept="image/*" onchange="readURL(this, @post.id);" multiple />
+                                                    <label for="tools-img-@post.id" class="tools-item">Ảnh/Video</label>
+                                                    <span class="tools-item show-edit-post-ganthe" onclick="ShowPostTools(0, @post.id)">Gắn thẻ bạn bè</span>
+                                                    <span class="tools-item show-edit-post-diadiem" onclick="ShowPostTools(1, @post.id)">Check in</span>
+                                                    @*<span class="tools-item show-post-chude" onclick="ShowPostTools(2)" disabled>Chủ đề</span>*@
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <div class="form-group">
+                                                    <select class="form-control" id="edit-post-baomat-data-@post.id">
+                                                        <option selected value="0">Công khai</option>
+                                                        <option value="2">Bạn bè</option>
+                                                        <option value="3">Chỉ mình tôi</option>
+                                                    </select>
+                                                </div>
+                                                <button class="btn btn-primary" onclick="ActionEditPost(@post.id)">
+                                                    Đăng
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </header><!-- /header -->
                             <div class="post-content">
-                                <p class="post-content-text">@post.noidung</p>
+                                <p  class="post-content-text" id="post-content-text-@post.id">@post.noidung</p>
                                 @if (post.anh.Count != 0)
                                 {
-                                    <div class="post-content-image">
+                                    <div id="post-content-image-@post.id" class="post-content-image">
                                         @if (post.anh.Count == 1)
                                         {
                                             <img src="/Images/@post.anh[0].anh_url" alt="" onclick="ShowPostModal(@post.anh[0].id)">
@@ -383,7 +453,7 @@
                                         }
                                         else if (post.anh.Count > 5)
                                         {
-                                            <p>Chức năng đang cập nhật</p>
+                                            <p class="text-center">Chức năng đang cập nhật</p>
                                         }
                                     </div>
                                 }
@@ -403,7 +473,7 @@
                                         </button>
                                     }
                                     <button type="button" class="btn btn-light"><i class="far fa-comment"></i></button>
-                                    <button type="button" class="btn btn-light" data-toggle="modal" data-target="#post-0-share"><i class="far fa-paper-plane"></i></button>
+                                    <button type="button" class="btn btn-light" data-toggle="modal" data-target="#post-share-@post.id"><i class="far fa-paper-plane"></i></button>
                                     <button type="button" class="btn btn-light"><i class="far fa-bookmark"></i></button>
                                 </section>
                                 <section class="list-like">
@@ -502,6 +572,7 @@
                                     <button type="button" class="btn btn-light post-comment-button" id="post-comment-button-@post.id">Đăng</button>
                                 </section>
                             </div>
+                            @*Modal ảnh*@
                             @if (post.anh.Count > 0)
                             {
                                 foreach (var modal_anh in post.anh)
@@ -570,8 +641,8 @@
                                     </div>
                                 }
                             }
-                            <!-- Share modal -->
-                            <div class="share-modal modal fade" id="post-0-share">
+                            <!-- Share modal --> <!--Khi làm chia sẻ bài viết thì thêm html vào AddPost()-->
+                            <div class="share-modal modal fade" id="share-post-@post.id">
                                 <div class="modal-dialog modal-dialog-centered">
                                     <div class="modal-content">
                                         <div class="share-header">

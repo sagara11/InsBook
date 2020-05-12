@@ -37,13 +37,42 @@ namespace Model.Dao
                 db.baiviets.Add(post);
                 db.SaveChanges();
 
-
-
                 return ID;
             }
             catch (Exception ex)
             {
                 return InsertPost(post, shardId);
+            }
+        }
+        public int CountImgs(Int64 postId)
+        {
+            try
+            {
+                return db.Database.SqlQuery<int>("CountPostChilds @postId", new SqlParameter("@postID", postId)).SingleOrDefault();
+            }
+            catch
+            {
+                return -1;
+            }
+        }
+        //Hàm check bài viết có trong db không
+        public bool checkPost(Int64 postId)
+        {
+            try
+            {
+                var post = db.baiviets.Where(x => x.id == postId).SingleOrDefault();
+                if (post == null)
+                {
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+            }
+            catch
+            {
+                return false;
             }
         }
         // Hàm này để thêm bài viết mà chỉ có 1 ảnh 
@@ -83,7 +112,53 @@ namespace Model.Dao
                     baiviet baiviet = db.baiviets.SingleOrDefault(x => x.id == postID);
                     nguoidung nd = db.nguoidungs.SingleOrDefault(x => x.id == item);
                     baiviet.nguoidungs1.Add(nd);
-
+                    //baiviet_ganthe
+                    db.SaveChanges();
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+        public bool EditTags(int userId, List<int> tag_add, Int64 postID)
+        {
+            try
+            {
+                baiviet post = db.baiviets.SingleOrDefault(x => x.id == postID);
+                var tagged = db.Database.SqlQuery<post_ganthe>("GetPostTags @postID", new SqlParameter("@postID", postID)).ToList();
+                var tag_del = new List<int>();
+                foreach (var tag in tagged)
+                {
+                    tag_del.Add(tag.id);
+                }
+                //1,3,2,4: db tag_del
+                //4,5,3,6: ajax tag_add
+                //xoa: 1,2
+                //them: 5,6
+                tag_del = tag_del.ToList();
+                //Lọc ra những tag cần xóa và thêm
+                foreach (var item in tag_add.ToList())
+                {
+                    if (tag_del.Exists(e => e == item))
+                    {
+                        tag_del.Remove(item);
+                        tag_add.Remove(item);
+                    }
+                }
+                //xóa liên kết
+                foreach (var del in tag_del)
+                {
+                    var user_tag = db.nguoidungs.Where(x => x.id == del).SingleOrDefault();
+                    post.nguoidungs1.Remove(user_tag);
+                    db.SaveChanges();
+                }
+                //thêm liên kết
+                foreach (var add in tag_add)
+                {
+                    var user_tag = db.nguoidungs.Where(x => x.id == add).SingleOrDefault();
+                    post.nguoidungs1.Add(user_tag);
                     db.SaveChanges();
                 }
                 return true;
@@ -119,10 +194,21 @@ namespace Model.Dao
         public post_anh GetPostImg(Int64 imgId)
         {
             post_anh postimg = new post_anh();
-            postimg.id = imgId;
+            postimg.id = db.Database.SqlQuery<Int64>("select baiviet_anh.baiviet_id from baiviet_anh where baiviet_anh.anh_id =" + imgId).SingleOrDefault();
             postimg.anh_url = db.Database.SqlQuery<string>("select anh.anh_url from anh where anh.id =" + imgId).SingleOrDefault();
 
             return postimg;
+        }
+        public Int64 GetImgId(Int64 postId)
+        {
+            try
+            {
+                return db.Database.SqlQuery<Int64>("select baiviet_anh.anh_id from baiviet_anh where baiviet_anh.baiviet_id =" + postId).SingleOrDefault();
+            }
+            catch (Exception ex)
+            {
+                return -1;
+            }
         }
         public string GetAvatar(int userId)
         {
@@ -162,6 +248,25 @@ namespace Model.Dao
             }
 
             return posts;
+        }
+        public bool checKPostCanSplit(Int64 postId)
+        {
+            try
+            {
+                var post = db.baiviets.Where(x => x.id == postId && x.parent_id == postId).SingleOrDefault();
+                if (post != null)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch
+            {
+                return false;
+            }
         }
         public GetPostModel GetSinglePost(Int64 postId)
         {
@@ -308,6 +413,114 @@ namespace Model.Dao
             else
             {
                 return false;
+            }
+        }
+        public bool SplitPost(Int64 parent_postId, Int64 child_postId)
+        {
+            var post = db.baiviets.Find(parent_postId);
+            try
+            {
+                post.parent_id = null;
+                db.SaveChanges();
+                var temp = db.Database.SqlQuery<Int64>("ChangePost_Image @parent_postId, @child_postId", new SqlParameter("@parent_postId", parent_postId), new SqlParameter("@child_postId", child_postId)).SingleOrDefault();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+        public bool DeletePostChild(Int64 postID, int userId, int count_ajax_post_childs, List<dynamic> img_remains)
+        //count_ajax_post_childs >= img_remains.count
+        {
+            var post = db.baiviets.Find(postID);
+            var post_childs = db.Database.SqlQuery<post_anh>("GetPostImages @postID", new SqlParameter("@postID", post.id)).ToList();
+            try
+            {
+                if (post.nguoitao_id == userId)
+                {
+                    if (post_childs.Count == 1)
+                    {
+                        if (count_ajax_post_childs == 0 && img_remains.Count == 0)
+                        {
+                            post.parent_id = null;
+                            post.anhs.Remove(post.anhs.SingleOrDefault()); // xóa liên két bài viết_ảnh
+                            db.SaveChanges();
+                            return true;
+                        }
+                        if (count_ajax_post_childs == 1 && img_remains.Count == 0)
+                        {
+                            post.anhs.Remove(post.anhs.SingleOrDefault()); // xóa liên két bài viết_ảnh
+                            db.SaveChanges();
+                            return true;
+                        }
+                    }
+                    else if (post_childs.Count > 1)
+                    {
+                        if (count_ajax_post_childs == 1 && img_remains.Count == 1)
+                        {
+                            Int64 img_id = img_remains[0]["id"];
+                            db.baiviets.RemoveRange(db.baiviets.Where(p => p.parent_id == postID && p.id != img_id));
+                            db.SaveChanges();
+                            return true;
+                        }
+                        else if (img_remains.Count == 0 && count_ajax_post_childs == 0)
+                        {
+                            db.baiviets.RemoveRange(db.baiviets.Where(p => p.parent_id == postID));
+                            db.SaveChanges();
+                            return true;
+                        }
+                        else if (img_remains.Count == 0 && count_ajax_post_childs == 1)
+                        {
+                            db.baiviets.RemoveRange(db.baiviets.Where(p => p.parent_id == postID));
+                            db.SaveChanges();
+                            return true;
+                        }
+                        else if (img_remains.Count > 1 && count_ajax_post_childs > 1) //con lai: 26, 05
+                        {
+                            foreach (var item in post_childs.ToList()) //db 26, 03, 04, 05
+                            {
+                                if (img_remains.Exists(e => e["id"] == item.id))
+                                {
+                                    post_childs.Remove(item);
+                                }
+                            }
+                            foreach (var del in post_childs)
+                            {
+                                db.baiviets.Remove(db.baiviets.Where(p => p.id == del.id).SingleOrDefault());
+                                db.SaveChanges();
+                            }
+                            return true;
+                        }
+                    }
+                    return false;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+        public baiviet ActionEditPost(GetPostModel post)
+        {
+            try
+            {
+                baiviet editPost = db.baiviets.Where(x => x.id == post.id).SingleOrDefault();
+                editPost.noidung = post.noidung;
+                editPost.baomat = post.baomat;
+                editPost.diadiem_id = post.diadiem_id;
+                editPost.capnhat = DateTime.Now;
+                db.SaveChanges();
+
+                return editPost;
+            }
+            catch
+            {
+                return null;
             }
         }
     }
