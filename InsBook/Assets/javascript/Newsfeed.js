@@ -1,42 +1,39 @@
 ﻿$(document).ready(function () {
     $(window).scroll(function () {
-        if ($(window).scrollTop() >= $(document).height() - 2 * $(window).height()) {
+        if ($(window).scrollTop() >= $(document).height() - $(window).height()) {
             $.ajax({
                 type: 'get',
                 url: '/Client/Post/GetAllPostNewsFeed',
                 dataType: 'json',
-                cache: false,
-                contentType: false,
-                processData: false,
-                data: formData,
                 success: function (response) {
                     if (response.status == true) {
                         var url = window.location.href.split('/');
                         var baseUrl = url[0] + '//' + url[2];
-                        response.baiviet.forEach(function (baiviet) {
-                            var html = '<article class="post-box post-' + baiviet.id + '">' +
+                        response.baiviet.forEach(function (post) {
+                            var html = '';
+                            html = '<article class="post-box post-' + post.id + '">' +
                                 '                        <header class="post-title">' +
                                 '                            <div class="post-info">' +
-                                '                                <img src="' + baseUrl + '/Images/' + baiviet.avatarnguoidang + '" alt="" class="rounded rounded-circle lazy" width="50px" height="50px">' +
-                                '                                <p class="post-user-info-' + baiviet.id + '">' +
-                                '                                    <a href="#" title="">' + baiviet.tennguoidang + '</a>';
-                            if (baiviet.ganthe.length != 0) {
+                                '                                <img src="' + baseUrl + '/Images/' + post.avatarnguoidang + '" alt="" class="rounded rounded-circle lazy" width="50px" height="50px">' +
+                                '                                <p class="post-user-info-' + post.id + '">' +
+                                '                                    <a href="#" title="">' + post.tennguoidang + '</a>';
+                            if (post.ganthe.length != 0) {
                                 html = html + '<span>với ';
-                                baiviet.ganthe.forEach(function (ganthe) {
+                                post.ganthe.forEach(function (ganthe) {
                                     html = html + '<a href="#" title=""><b>' + ganthe["ten"] + '</b></a>, ';
                                 });
                                 html = html + '</span>';
                             }
-                            if (baiviet.diadiem != "") {
-                                html = html + '<span> tại <b>' + baiviet.diadiem + '</b></span>';
+                            if (post.diadiem != "") {
+                                html = html + '<span> tại <b>' + post.diadiem + '</b></span>';
                             }
 
                             html = html + '</p>' +
                                 '                                </div>' +
-                                '                                <div class="post-option" data-target="#post-option-modal-' + baiviet.id + '" data-toggle="modal">' +
+                                '                                <div class="post-option" data-target="#post-option-modal-' + post.id + '" data-toggle="modal">' +
                                 '                                    &#8230;' +
                                 '                                </div>' +
-                                '                                <div class="modal post-option-modal fade" id="post-option-modal-' + baiviet.id + '">' +
+                                '                                <div class="modal post-option-modal fade" id="post-option-modal-' + post.id + '">' +
                                 '                                    <div class="modal-dialog modal-dialog-centered">' +
                                 '                                        <div class="modal-content">' +
                                 '                                            <div class="modal-body">' +
@@ -45,10 +42,10 @@
                                 '                                                        <a class="report" href="">Báo cáo</a>' +
                                 '                                                    </li>' +
                                 '                                                    <li>' +
-                                '                                                        <a href="#" onclick="EditPost(' + baiviet.id + ', event, ' + session_userId + ')">Sửa bài viết</a>' +
+                                '                                                        <a href="#" onclick="EditPost(' + post.id + ', event, ' + response.userID + ')">Sửa bài viết</a>' +
                                 '                                                    </li>' +
                                 '                                                    <li>' +
-                                '                                                        <a href="#" onclick="DeletePost(' + baiviet.id + ', event, ' + session_userId + ')">Xóa bài viết</a>' +
+                                '                                                        <a href="#" onclick="DeletePost(' + post.id + ', event, ' + response.userID + ')">Xóa bài viết</a>' +
                                 '                                                    </li>' +
                                 '                                                </ul>' +
                                 '                                            </div>' +
@@ -56,7 +53,7 @@
                                 '                                    </div>' +
                                 '                                </div>' +
                                 '<!-- Modal -->' +
-                                '                                <div class="modal fade show-edit-post-modal" id="show-edit-post-' + baiviet.id + '" tabindex="-1" role="dialog">' +
+                                '                                <div class="modal fade show-edit-post-modal" id="show-edit-post-' + post.id + '" tabindex="-1" role="dialog">' +
                                 '                                    <div class="modal-dialog modal-dialog-centered" role="document">' +
                                 '                                        <div class="modal-content">' +
                                 '                                            <div class="modal-header">' +
@@ -67,56 +64,56 @@
                                 '                                            </div>' +
                                 '                                            <div class="modal-body">' +
                                 '                                                <div class="modal-body-content">' +
-                                '                                                    <div class="user-ava" id="user-ava-' + baiviet.id + '">' +
-                                '                                                        <img src="' + baseUrl + '/Images/' + baiviet.avatarnguoidang + '" alt="" />' +
+                                '                                                    <div class="user-ava" id="user-ava-' + post.id + '">' +
+                                '                                                        <img src="' + baseUrl + '/Images/' + post.avatarnguoidang + '" alt="" />' +
                                 '                                                    </div>' +
                                 '                                                    <div class="form-group">' +
-                                '<textarea class="form-control" id="edit-post-content-' + baiviet.id + '" placeholder="Thêm bình luận..." oninput="auto_grow(this)"></textarea>' +
+                                '<textarea class="form-control" id="edit-post-content-' + post.id + '" placeholder="Thêm bình luận..." oninput="auto_grow(this)"></textarea>' +
                                 '</div>' +
                                 '                                                </div>' +
                                 '                                                <div class="modal-body-result">' +
-                                '                                                    <p class="modal-body-result-text"><span class="edit-result-tenbanbe" id="edit-result-tenbanbe-' + baiviet.id + '"></span><span class="edit-result-diadiem" id="edit-result-diadiem-' + baiviet.id + '"></span></p>' +
-                                '                                                    <div class="modal-body-result-img" id="modal-body-result-img-' + baiviet.id + '">' +
-                                '                                                        <label for="tools-img-' + baiviet.id + '" class="edit-tools-item" id="edit-post-anh-default-' + baiviet.id + '"><img src="/Images/default-adding-post.png" alt="" /></label>' +
+                                '                                                    <p class="modal-body-result-text"><span class="edit-result-tenbanbe" id="edit-result-tenbanbe-' + post.id + '"></span><span class="edit-result-diadiem" id="edit-result-diadiem-' + post.id + '"></span></p>' +
+                                '                                                    <div class="modal-body-result-img" id="modal-body-result-img-' + post.id + '">' +
+                                '                                                        <label for="tools-img-' + post.id + '" class="edit-tools-item" id="edit-post-anh-default-' + post.id + '"><img src="/Images/default-adding-post.png" alt="" /></label>' +
                                 '                                                    </div>' +
                                 '                                                </div>' +
-                                '                                                <div class="input-group modal-body-input edit-post-diadiem" id="edit-post-diadiem-' + baiviet.id + '">' +
+                                '                                                <div class="input-group modal-body-input edit-post-diadiem" id="edit-post-diadiem-' + post.id + '">' +
                                 '                                                    <div class="input-group-prepend">' +
                                 '                                                        <div class="input-group-text"><i class="fas fa-map-marker-alt"></i></div>' +
                                 '                                                    </div>' +
-                                '                                                    <input type="text" class="form-control edit-post-diadiem-data" id="edit-post-diadiem-data-' + baiviet.id + '" placeholder="Bạn đang ở đâu ?">' +
+                                '                                                    <input type="text" class="form-control edit-post-diadiem-data" id="edit-post-diadiem-data-' + post.id + '" placeholder="Bạn đang ở đâu ?">' +
                                 '                                                </div>' +
-                                '                                                <div class="input-group modal-body-input edit-post-ganthe" id="edit-post-ganthe-' + baiviet.id + '">' +
+                                '                                                <div class="input-group modal-body-input edit-post-ganthe" id="edit-post-ganthe-' + post.id + '">' +
                                 '                                                    <div class="input-group-prepend">' +
                                 '                                                        <div class="input-group-text"><i class="fas fa-user"></i></div>' +
                                 '                                                    </div>' +
-                                '                                                    <div id="friends-tag-' + baiviet.id + '" class="edit-friends-tag">' +
+                                '                                                    <div id="friends-tag-' + post.id + '" class="edit-friends-tag">' +
                                 '' +
                                 '                                                    </div>' +
-                                '                                                    <input type="text" class="form-control edit-post-bande-data" id="edit-post-banbe-data-' + baiviet.id + '" placeholder="Cùng với ai ?">' +
+                                '                                                    <input type="text" class="form-control edit-post-bande-data" id="edit-post-banbe-data-' + post.id + '" placeholder="Cùng với ai ?">' +
                                 '                                                </div>' +
-                                '                                                <div class="input-group modal-body-input edit-post-chude" id="edit-post-chude-' + baiviet.id + '">' +
+                                '                                                <div class="input-group modal-body-input edit-post-chude" id="edit-post-chude-' + post.id + '">' +
                                 '                                                    <div class="input-group-prepend">' +
                                 '                                                        <div class="input-group-text"><i class="fas fa-filter"></i></div>' +
                                 '                                                    </div>' +
                                 '                                                    <input type="text" class="form-control" id="" placeholder="Chủ đề bài viết ?">' +
                                 '                                                </div>' +
                                 '                                                <div class="modal-body-tools">' +
-                                '                                                    <input class="tools-img" type="file" name="edit_images" id="tools-img-' + baiviet.id + '" accept="image/*" onchange="readURL(this, ' + baiviet.id + ');" multiple />' +
-                                '                                                    <label for="tools-img-' + baiviet.id + '" class="tools-item">Ảnh/Video</label>' +
-                                '                                                    <span class="tools-item show-edit-post-ganthe" onclick="ShowPostTools(0, ' + baiviet.id + ')">Gắn thẻ bạn bè</span>' +
-                                '                                                    <span class="tools-item show-edit-post-diadiem" onclick="ShowPostTools(1,' + baiviet.id + ')">Check in</span>' +
+                                '                                                    <input class="tools-img" type="file" name="edit_images" id="tools-img-' + post.id + '" accept="image/*" onchange="readURL(this, ' + post.id + ');" multiple />' +
+                                '                                                    <label for="tools-img-' + post.id + '" class="tools-item">Ảnh/Video</label>' +
+                                '                                                    <span class="tools-item show-edit-post-ganthe" onclick="ShowPostTools(0, ' + post.id + ')">Gắn thẻ bạn bè</span>' +
+                                '                                                    <span class="tools-item show-edit-post-diadiem" onclick="ShowPostTools(1,' + post.id + ')">Check in</span>' +
                                 '                                                </div>' +
                                 '                                            </div>' +
                                 '                                            <div class="modal-footer">' +
                                 '                                                <div class="form-group">' +
-                                '                                                    <select class="form-control" id="edit-post-baomat-data-' + baiviet.id + '">' +
+                                '                                                    <select class="form-control" id="edit-post-baomat-data-' + post.id + '">' +
                                 '                                                        <option selected value="0">Công khai</option>' +
                                 '                                                        <option value="2">Bạn bè</option>' +
                                 '                                                        <option value="3">Chỉ mình tôi</option>' +
                                 '                                                    </select>' +
                                 '                                                </div>' +
-                                '                                                <button class="btn btn-primary" onclick="ActionEditPost(' + baiviet.id + ')">' +
+                                '                                                <button class="btn btn-primary" onclick="ActionEditPost(' + post.id + ')">' +
                                 '                                                    Đăng' +
                                 '                                                </button>' +
                                 '                                            </div>' +
@@ -125,99 +122,99 @@
                                 '                                </div>' +
                                 '                            </header><!-- /header -->' +
                                 '<div class="post-content">' +
-                                '   <p id="post-content-text-' + baiviet.id + '" class="post-content-text">' + baiviet.noidung + '</p>';
-                            if (baiviet.anh.length != 0) {
-                                html = html + ' <div id="post-content-image-' + baiviet.id + '" class="post-content-image">';
-                                if (baiviet.anh.length == 1) {
-                                    html = html + '<img src="' + baseUrl + '/Images/' + baiviet.anh[0]["anh_url"] + '" alt="" onclick="ShowPostModal(' + baiviet.anh[0]["id"] + ')" />'
+                                '   <p id="post-content-text-' + post.id + '" class="post-content-text">' + post.noidung + '</p>';
+                            if (post.anh.length != 0) {
+                                html = html + ' <div id="post-content-image-' + post.id + '" class="post-content-image">';
+                                if (post.anh.length == 1) {
+                                    html = html + '<img src="' + baseUrl + '/Images/' + post.anh[0]["anh_url"] + '" alt="" onclick="ShowPostModal(' + post.anh[0]["id"] + ')" />'
                                 }
-                                else if (baiviet.anh.length == 2) {
+                                else if (post.anh.length == 2) {
                                     html = html + '<div class = "row soanh-2">';
-                                    baiviet.anh.forEach(function (img) {
+                                    post.anh.forEach(function (img) {
                                         html = html + '<div class="col-md-6">' +
                                             '   <img src="' + baseUrl + '/Images/' + img["anh_url"] + '" alt="" onclick="ShowPostModal(' + img["id"] + ')" />' +
                                             '</div>';
                                     });
                                     html = html + '</div>';
                                 }
-                                else if (baiviet.anh.length == 3) {
+                                else if (post.anh.length == 3) {
                                     html = html + '<div class = "row soanh-3">' +
                                         '   <div class="col-md-12">' +
-                                        '       <img src="' + baseUrl + '/Images/' + baiviet.anh[0]["anh_url"] + '" alt="" onclick="ShowPostModal(' + baiviet.anh[0]["id"] + ')" />' +
+                                        '       <img src="' + baseUrl + '/Images/' + post.anh[0]["anh_url"] + '" alt="" onclick="ShowPostModal(' + post.anh[0]["id"] + ')" />' +
                                         '   </div>' +
                                         '   <div class="col-md-6">' +
-                                        '       <img src="' + baseUrl + '/Images/' + baiviet.anh[1]["anh_url"] + '" alt="" onclick="ShowPostModal(' + baiviet.anh[1]["id"] + ')" />' +
+                                        '       <img src="' + baseUrl + '/Images/' + post.anh[1]["anh_url"] + '" alt="" onclick="ShowPostModal(' + post.anh[1]["id"] + ')" />' +
                                         '   </div>' +
                                         '   <div class="col-md-6">' +
-                                        '       <img src="' + baseUrl + '/Images/' + baiviet.anh[2]["anh_url"] + '" alt="" onclick="ShowPostModal(' + baiviet.anh[2]["id"] + ')" />' +
+                                        '       <img src="' + baseUrl + '/Images/' + post.anh[2]["anh_url"] + '" alt="" onclick="ShowPostModal(' + post.anh[2]["id"] + ')" />' +
                                         '   </div>' +
                                         '</div>';
                                 }
-                                else if (baiviet.anh.length == 4) {
+                                else if (post.anh.length == 4) {
                                     html = html + '<div class = "row soanh-4">' +
                                         '   <div class="col-md-12">' +
-                                        '       <img src="' + baseUrl + '/Images/' + baiviet.anh[0]["anh_url"] + '" alt="" onclick="ShowPostModal(' + baiviet.anh[0]["id"] + ')" />' +
+                                        '       <img src="' + baseUrl + '/Images/' + post.anh[0]["anh_url"] + '" alt="" onclick="ShowPostModal(' + post.anh[0]["id"] + ')" />' +
                                         '   </div>' +
                                         '   <div class="col-md-4">' +
-                                        '       <img src="' + baseUrl + '/Images/' + baiviet.anh[1]["anh_url"] + '" alt="" onclick="ShowPostModal(' + baiviet.anh[1]["id"] + ')" />' +
+                                        '       <img src="' + baseUrl + '/Images/' + post.anh[1]["anh_url"] + '" alt="" onclick="ShowPostModal(' + post.anh[1]["id"] + ')" />' +
                                         '   </div>' +
                                         '   <div class="col-md-4">' +
-                                        '       <img src="' + baseUrl + '/Images/' + baiviet.anh[2]["anh_url"] + '" alt="" onclick="ShowPostModal(' + baiviet.anh[2]["id"] + ')" />' +
+                                        '       <img src="' + baseUrl + '/Images/' + post.anh[2]["anh_url"] + '" alt="" onclick="ShowPostModal(' + post.anh[2]["id"] + ')" />' +
                                         '   </div>' +
                                         '   <div class="col-md-4">' +
-                                        '       <img src="' + baseUrl + '/Images/' + baiviet.anh[3]["anh_url"] + '" alt="" onclick="ShowPostModal(' + baiviet.anh[3]["id"] + ')" />' +
+                                        '       <img src="' + baseUrl + '/Images/' + post.anh[3]["anh_url"] + '" alt="" onclick="ShowPostModal(' + post.anh[3]["id"] + ')" />' +
                                         '   </div>' +
                                         '</div>';
                                 }
-                                else if (baiviet.anh.length == 5) {
+                                else if (post.anh.length == 5) {
                                     html = html + '<div class = "row soanh-5">' +
                                         '   <div class="col-md-6">' +
-                                        '       <img src="' + baseUrl + '/Images/' + baiviet.anh[0]["anh_url"] + '" alt="" onclick="ShowPostModal(' + baiviet.anh[0]["id"] + ')" />' +
+                                        '       <img src="' + baseUrl + '/Images/' + post.anh[0]["anh_url"] + '" alt="" onclick="ShowPostModal(' + post.anh[0]["id"] + ')" />' +
                                         '   </div>' +
                                         '   <div class="col-md-6">' +
-                                        '       <img src="' + baseUrl + '/Images/' + baiviet.anh[1]["anh_url"] + '" alt="" onclick="ShowPostModal(' + baiviet.anh[1]["id"] + ')" />' +
+                                        '       <img src="' + baseUrl + '/Images/' + post.anh[1]["anh_url"] + '" alt="" onclick="ShowPostModal(' + post.anh[1]["id"] + ')" />' +
                                         '   </div>' +
                                         '   <div class="col-md-4">' +
-                                        '       <img src="' + baseUrl + '/Images/' + baiviet.anh[2]["anh_url"] + '" alt="" onclick="ShowPostModal(' + baiviet.anh[2]["id"] + ')" />' +
+                                        '       <img src="' + baseUrl + '/Images/' + post.anh[2]["anh_url"] + '" alt="" onclick="ShowPostModal(' + post.anh[2]["id"] + ')" />' +
                                         '   </div>' +
                                         '   <div class="col-md-4">' +
-                                        '       <img src="' + baseUrl + '/Images/' + baiviet.anh[3]["anh_url"] + '" alt="" onclick="ShowPostModal(' + baiviet.anh[3]["id"] + ')" />' +
+                                        '       <img src="' + baseUrl + '/Images/' + post.anh[3]["anh_url"] + '" alt="" onclick="ShowPostModal(' + post.anh[3]["id"] + ')" />' +
                                         '   </div>' +
                                         '   <div class="col-md-4">' +
-                                        '       <img src="' + baseUrl + '/Images/' + baiviet.anh[4]["anh_url"] + '" alt="" onclick="ShowPostModal(' + baiviet.anh[4]["id"] + ')" />' +
+                                        '       <img src="' + baseUrl + '/Images/' + post.anh[4]["anh_url"] + '" alt="" onclick="ShowPostModal(' + post.anh[4]["id"] + ')" />' +
                                         '   </div>' +
                                         '</div>';
                                 }
                                 else {
-                                    alert("số ảnh lớn");
+                                    console.log("số ảnh lớn");
                                 }
                                 html = html + ' </div>';
                             }
                             html = html + ' </div>' +
                                 '                       <div class="post-socialfunction">' +
                                 '                            <section class="post-icons">' +
-                                '                                <button type="button" class="btn btn-light post-like-icon" id="post-like-icon-' + baiviet.id + '"><i class="fas fa-heart"></i></button>' +
+                                '                                <button type="button" class="btn btn-light post-like-icon" id="post-like-icon-' + post.id + '"><i class="fas fa-heart"></i></button>' +
                                 '                                <button type="button" class="btn btn-light"><i class="far fa-comment"></i></button>' +
-                                '                                <button type="button" class="btn btn-light" data-toggle="modal" data-target="#post-share-' + baiviet.id + '"><i class="far fa-paper-plane"></i></button>' +
+                                '                                <button type="button" class="btn btn-light" data-toggle="modal" data-target="#post-share-' + post.id + '"><i class="far fa-paper-plane"></i></button>' +
                                 '                                <button type="button" class="btn btn-light"><i class="far fa-bookmark"></i></button>' +
                                 '                            </section>' +
                                 '                            <section class="list-like">' +
-                                '                                <button type="button" class="btn btn-light like-count-' + baiviet.id + '" id="like-count-' + baiviet.id + '">0 lượt thích</button>' +
+                                '                                <button type="button" class="btn btn-light like-count-' + post.id + '" id="like-count-' + post.id + '">0 lượt thích</button>' +
                                 '                            </section>' +
                                 '                            <section class="post-time">' +
                                 '                                <p>2 giờ trước</p>' +
                                 '                            </section>' +
-                                '<div class="user-comments" id="user-comments-' + baiviet.id + '">' +
+                                '<div class="user-comments" id="user-comments-' + post.id + '">' +
                                 '</div>' +
-                                '                            <section class="comment-bar" id="comment-bar-' + baiviet.id + '">' +
+                                '                            <section class="comment-bar" id="comment-bar-' + post.id + '">' +
                                 '                                <div class="form-group">' +
-                                '                                    <textarea class="form-control" placeholder="Thêm bình luận..." oninput="auto_grow(this)" id="post-comment-content-' + baiviet.id + '"></textarea>' +
+                                '                                    <textarea class="form-control" placeholder="Thêm bình luận..." oninput="auto_grow(this)" id="post-comment-content-' + post.id + '"></textarea>' +
                                 '                                </div>' +
-                                '<button type="button" class="btn btn-light post-comment-button" id = "post-comment-button-' + baiviet.id + '" > Đăng</button > ' +
+                                '<button type="button" class="btn btn-light post-comment-button" id = "post-comment-button-' + post.id + '" > Đăng</button > ' +
                                 '                            </section>' +
                                 '                        </div>';
-                            if (baiviet.anh.length > 0) {
-                                baiviet.anh.forEach(function (add) {
+                            if (post.anh.length > 0) {
+                                post.anh.forEach(function (add) {
                                     html = html + '<!-- Modal -->' +
                                         '                                    <div class="post-box-modal modal fade" id="modal-post-' + add.id + '">' +
                                         '                                        <div class="modal-dialog modal-dialog-centered">' +
@@ -230,8 +227,8 @@
                                         '                                                <div class="modal-col-5">' +
                                         '                                                    <div class="post-title">' +
                                         '                                                        <div class="post-info">' +
-                                        '                                                            <img height="50px" width="50px" class="rounded rounded-circle" src="' + baseUrl + '/Images/' + baiviet.avatarnguoidang + '" alt="">' +
-                                        '                                                            <p id="modal-post-info-' + add.id + '"><a href="#" title="">' + baiviet.tennguoidang + '</a></p>' +
+                                        '                                                            <img height="50px" width="50px" class="rounded rounded-circle" src="' + baseUrl + '/Images/' + post.avatarnguoidang + '" alt="">' +
+                                        '                                                            <p id="modal-post-info-' + add.id + '"><a href="#" title="">' + post.tennguoidang + '</a></p>' +
                                         '                                                        </div>' +
                                         '                                                    </div>' +
                                         '' +
@@ -250,7 +247,7 @@
                                         '' +
                                         '                                                        <section class="list-like">' +
                                         '                                                            <button type="button" class="btn btn-light like-count-' + add.id + '" id="like-count-' + add.id + '">0 lượt thích</button>' +
-                                        '                                                            <div class="modal fade modal-list-like-post" id="modal-list-like-post-' + baiviet.id + '" tabindex="-1" role="dialog">' +
+                                        '                                                            <div class="modal fade modal-list-like-post" id="modal-list-like-post-' + post.id + '" tabindex="-1" role="dialog">' +
                                         '                                                                <div class="modal-dialog modal-dialog-centered" role="document">' +
                                         '                                                                    <div class="modal-content">' +
                                         '                                                                        <div class="modal-header">' +
@@ -259,7 +256,7 @@
                                         '                                                                                <span aria-hidden="true">×</span>' +
                                         '                                                                            </button>' +
                                         '                                                                        </div>' +
-                                        '                                                                        <div class="modal-body" id="modal-list-like-body-' + baiviet.id + '">' +
+                                        '                                                                        <div class="modal-body" id="modal-list-like-body-' + post.id + '">' +
                                         '' +
                                         '                                                                        </div>' +
                                         '                                                                    </div>' +
@@ -286,8 +283,8 @@
                             html = html + '              </article>';
                             $('.user-newsfeed').append(html);
                             $('.lazy').Lazy();
-                        }
-                                
+                        });
+
                         $("#post-content").val("");
                         $("#result-tenbanbe").empty();
                         $("#result-diadiem").empty();
@@ -302,15 +299,16 @@
                         $("#post-banbe-data").val("");
                         $("#friends-tag").empty();
 
-                        if (selected_friends.length > 0) {
-                            selected_friends.forEach(function (item) {
-                                add_friends.push(item);
-                            });
-                            selected_friends = [];
-                        }
-                        if (selected_img.length > 0) {
-                            selected_img = [];
-                        }
+                        //if (selected_friends.length > 0) {
+                        //    selected_friends.forEach(function (item) {
+                        //        add_friends.push(item);
+                        //    });
+                        //    selected_friends = [];
+                        //}
+                        //if (selected_img.length > 0) {
+                        //    selected_img = [];
+                        //}
+
                         $(".post-chude").css("display", "none");
                         $(".post-diadiem").css("display", "none");
                         $(".post-ganthe").css("display", "none");
@@ -319,6 +317,5 @@
                 }
             });
         }
-    }
-    $('.lazy').Lazy();
-}
+    });
+});
