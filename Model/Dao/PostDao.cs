@@ -215,6 +215,8 @@ namespace Model.Dao
             return db.Database.SqlQuery<string>("GetAvatar @userId", new SqlParameter("@userId", userId)).SingleOrDefault();
         }
         // lấy bài viết từ db 
+
+        
         public List<GetPostModel> GetAllPost(int userID, int loaitrang)
         {
             // 1 là tìm bài viết ở trang cá nhân
