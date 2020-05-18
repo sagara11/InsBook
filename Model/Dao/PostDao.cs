@@ -221,6 +221,7 @@ namespace Model.Dao
             // 2 là tìm bài viết ở trang home
             // 3...
             // 4...
+
             // lấy bài viết
             var posts = new List<GetPostModel>(); // tạo đối tượng rỗng
             if (loaitrang == 1)
