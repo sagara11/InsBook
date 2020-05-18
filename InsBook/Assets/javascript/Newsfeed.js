@@ -1,233 +1,321 @@
 ﻿$(document).ready(function () {
-    var url = window.location.href.split('/');
-    var baseUrl = url[0] + '//' + url[2];
-    //Load data when scrolling
     $(window).scroll(function () {
-        //console.log(($(window).scrollTop() + "_____" + $(document).height() + "_____" + $(window).height()));
-        if ($(window).scrollTop() >= $(document).height() - 2 * $(window).height()) {
+        if ($(window).scrollTop() >= $(document).height() - $(window).height()) {
+            $.ajax({
+                type: 'get',
+                url: '/Client/Post/GetAllPostNewsFeed',
+                dataType: 'json',
+                success: function (response) {
+                    if (response.status == true) {
+                        var url = window.location.href.split('/');
+                        var baseUrl = url[0] + '//' + url[2];
+                        response.baiviet.forEach(function (post) {
+                            var html = '';
+                            html = '<article class="post-box post-' + post.id + '">' +
+                                '                        <header class="post-title">' +
+                                '                            <div class="post-info">' +
+                                '                                <img src="' + baseUrl + '/Images/' + post.avatarnguoidang + '" alt="" class="rounded rounded-circle lazy" width="50px" height="50px">' +
+                                '                                <p class="post-user-info-' + post.id + '">' +
+                                '                                    <a href="#" title="">' + post.tennguoidang + '</a>';
+                            if (post.ganthe.length != 0) {
+                                html = html + '<span>với ';
+                                post.ganthe.forEach(function (ganthe) {
+                                    html = html + '<a href="#" title=""><b>' + ganthe["ten"] + '</b></a>, ';
+                                });
+                                html = html + '</span>';
+                            }
+                            if (post.diadiem != "") {
+                                html = html + '<span> tại <b>' + post.diadiem + '</b></span>';
+                            }
 
-            //var response = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13",]
-            var response1 = {
-                response: [
-                    {
-                        "post-id": "4",
-                        "user-name": "Khổng Anh Dũng",
-                        "user-ava": "/Images/22904751_688560231353134_2748711313877205190_o.jpg",
-                        "post-title": "asdasdasdasdasdasd",
-                        "post-thumb": "/Images/46511147_548625832231886_7575327484049096704_n.jpg",
-                        "post-likes": 123
-                    },
-                    {
-                        "post-id": "5",
-                        "user-name": "Chu Ngọc Long",
-                        "user-ava": "/Images/22904751_688560231353134_2748711313877205190_o.jpg",
-                        "post-title": "asdasdasdasdasdasd",
-                        "post-thumb": "/Images/60331415_453474005405695_5368361850419281920_o.jpg",
-                        "post-likes": 123
-                    },
-                    {
-                        "post-id": "6",
-                        "user-name": "Trần Thục San",
-                        "user-ava": "/Images/84571659_2767643856796452_612394656314949632_n.jpg",
-                        "post-title": "asdasdasdasdasdasdasdasdasds",
-                        "post-thumb": "/Images/86698400_1992654244211645_6346707511562731520_o.jpg",
-                        "post-likes": 123
+                            html = html + '</p>' +
+                                '                                </div>' +
+                                '                                <div class="post-option" data-target="#post-option-modal-' + post.id + '" data-toggle="modal">' +
+                                '                                    &#8230;' +
+                                '                                </div>' +
+                                '                                <div class="modal post-option-modal fade" id="post-option-modal-' + post.id + '">' +
+                                '                                    <div class="modal-dialog modal-dialog-centered">' +
+                                '                                        <div class="modal-content">' +
+                                '                                            <div class="modal-body">' +
+                                '                                                <ul>' +
+                                '                                                    <li>' +
+                                '                                                        <a class="report" href="">Báo cáo</a>' +
+                                '                                                    </li>' +
+                                '                                                    <li>' +
+                                '                                                        <a href="#" onclick="EditPost(' + post.id + ', event, ' + response.userID + ')">Sửa bài viết</a>' +
+                                '                                                    </li>' +
+                                '                                                    <li>' +
+                                '                                                        <a href="#" onclick="DeletePost(' + post.id + ', event, ' + response.userID + ')">Xóa bài viết</a>' +
+                                '                                                    </li>' +
+                                '                                                </ul>' +
+                                '                                            </div>' +
+                                '                                        </div>' +
+                                '                                    </div>' +
+                                '                                </div>' +
+                                '<!-- Modal -->' +
+                                '                                <div class="modal fade show-edit-post-modal" id="show-edit-post-' + post.id + '" tabindex="-1" role="dialog">' +
+                                '                                    <div class="modal-dialog modal-dialog-centered" role="document">' +
+                                '                                        <div class="modal-content">' +
+                                '                                            <div class="modal-header">' +
+                                '                                                <h3><i class="fas fa-pencil-alt"></i>Sửa bài viết</h3>' +
+                                '                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">' +
+                                '                                                    <span aria-hidden="true">×</span>' +
+                                '                                                </button>' +
+                                '                                            </div>' +
+                                '                                            <div class="modal-body">' +
+                                '                                                <div class="modal-body-content">' +
+                                '                                                    <div class="user-ava" id="user-ava-' + post.id + '">' +
+                                '                                                        <img src="' + baseUrl + '/Images/' + post.avatarnguoidang + '" alt="" />' +
+                                '                                                    </div>' +
+                                '                                                    <div class="form-group">' +
+                                '<textarea class="form-control" id="edit-post-content-' + post.id + '" placeholder="Thêm bình luận..." oninput="auto_grow(this)"></textarea>' +
+                                '</div>' +
+                                '                                                </div>' +
+                                '                                                <div class="modal-body-result">' +
+                                '                                                    <p class="modal-body-result-text"><span class="edit-result-tenbanbe" id="edit-result-tenbanbe-' + post.id + '"></span><span class="edit-result-diadiem" id="edit-result-diadiem-' + post.id + '"></span></p>' +
+                                '                                                    <div class="modal-body-result-img" id="modal-body-result-img-' + post.id + '">' +
+                                '                                                        <label for="tools-img-' + post.id + '" class="edit-tools-item" id="edit-post-anh-default-' + post.id + '"><img src="/Images/default-adding-post.png" alt="" /></label>' +
+                                '                                                    </div>' +
+                                '                                                </div>' +
+                                '                                                <div class="input-group modal-body-input edit-post-diadiem" id="edit-post-diadiem-' + post.id + '">' +
+                                '                                                    <div class="input-group-prepend">' +
+                                '                                                        <div class="input-group-text"><i class="fas fa-map-marker-alt"></i></div>' +
+                                '                                                    </div>' +
+                                '                                                    <input type="text" class="form-control edit-post-diadiem-data" id="edit-post-diadiem-data-' + post.id + '" placeholder="Bạn đang ở đâu ?">' +
+                                '                                                </div>' +
+                                '                                                <div class="input-group modal-body-input edit-post-ganthe" id="edit-post-ganthe-' + post.id + '">' +
+                                '                                                    <div class="input-group-prepend">' +
+                                '                                                        <div class="input-group-text"><i class="fas fa-user"></i></div>' +
+                                '                                                    </div>' +
+                                '                                                    <div id="friends-tag-' + post.id + '" class="edit-friends-tag">' +
+                                '' +
+                                '                                                    </div>' +
+                                '                                                    <input type="text" class="form-control edit-post-bande-data" id="edit-post-banbe-data-' + post.id + '" placeholder="Cùng với ai ?">' +
+                                '                                                </div>' +
+                                '                                                <div class="input-group modal-body-input edit-post-chude" id="edit-post-chude-' + post.id + '">' +
+                                '                                                    <div class="input-group-prepend">' +
+                                '                                                        <div class="input-group-text"><i class="fas fa-filter"></i></div>' +
+                                '                                                    </div>' +
+                                '                                                    <input type="text" class="form-control" id="" placeholder="Chủ đề bài viết ?">' +
+                                '                                                </div>' +
+                                '                                                <div class="modal-body-tools">' +
+                                '                                                    <input class="tools-img" type="file" name="edit_images" id="tools-img-' + post.id + '" accept="image/*" onchange="readURL(this, ' + post.id + ');" multiple />' +
+                                '                                                    <label for="tools-img-' + post.id + '" class="tools-item">Ảnh/Video</label>' +
+                                '                                                    <span class="tools-item show-edit-post-ganthe" onclick="ShowPostTools(0, ' + post.id + ')">Gắn thẻ bạn bè</span>' +
+                                '                                                    <span class="tools-item show-edit-post-diadiem" onclick="ShowPostTools(1,' + post.id + ')">Check in</span>' +
+                                '                                                </div>' +
+                                '                                            </div>' +
+                                '                                            <div class="modal-footer">' +
+                                '                                                <div class="form-group">' +
+                                '                                                    <select class="form-control" id="edit-post-baomat-data-' + post.id + '">' +
+                                '                                                        <option selected value="0">Công khai</option>' +
+                                '                                                        <option value="2">Bạn bè</option>' +
+                                '                                                        <option value="3">Chỉ mình tôi</option>' +
+                                '                                                    </select>' +
+                                '                                                </div>' +
+                                '                                                <button class="btn btn-primary" onclick="ActionEditPost(' + post.id + ')">' +
+                                '                                                    Đăng' +
+                                '                                                </button>' +
+                                '                                            </div>' +
+                                '                                        </div>' +
+                                '                                    </div>' +
+                                '                                </div>' +
+                                '                            </header><!-- /header -->' +
+                                '<div class="post-content">' +
+                                '   <p id="post-content-text-' + post.id + '" class="post-content-text">' + post.noidung + '</p>';
+                            if (post.anh.length != 0) {
+                                html = html + ' <div id="post-content-image-' + post.id + '" class="post-content-image">';
+                                if (post.anh.length == 1) {
+                                    html = html + '<img src="' + baseUrl + '/Images/' + post.anh[0]["anh_url"] + '" alt="" onclick="ShowPostModal(' + post.anh[0]["id"] + ')" />'
+                                }
+                                else if (post.anh.length == 2) {
+                                    html = html + '<div class = "row soanh-2">';
+                                    post.anh.forEach(function (img) {
+                                        html = html + '<div class="col-md-6">' +
+                                            '   <img src="' + baseUrl + '/Images/' + img["anh_url"] + '" alt="" onclick="ShowPostModal(' + img["id"] + ')" />' +
+                                            '</div>';
+                                    });
+                                    html = html + '</div>';
+                                }
+                                else if (post.anh.length == 3) {
+                                    html = html + '<div class = "row soanh-3">' +
+                                        '   <div class="col-md-12">' +
+                                        '       <img src="' + baseUrl + '/Images/' + post.anh[0]["anh_url"] + '" alt="" onclick="ShowPostModal(' + post.anh[0]["id"] + ')" />' +
+                                        '   </div>' +
+                                        '   <div class="col-md-6">' +
+                                        '       <img src="' + baseUrl + '/Images/' + post.anh[1]["anh_url"] + '" alt="" onclick="ShowPostModal(' + post.anh[1]["id"] + ')" />' +
+                                        '   </div>' +
+                                        '   <div class="col-md-6">' +
+                                        '       <img src="' + baseUrl + '/Images/' + post.anh[2]["anh_url"] + '" alt="" onclick="ShowPostModal(' + post.anh[2]["id"] + ')" />' +
+                                        '   </div>' +
+                                        '</div>';
+                                }
+                                else if (post.anh.length == 4) {
+                                    html = html + '<div class = "row soanh-4">' +
+                                        '   <div class="col-md-12">' +
+                                        '       <img src="' + baseUrl + '/Images/' + post.anh[0]["anh_url"] + '" alt="" onclick="ShowPostModal(' + post.anh[0]["id"] + ')" />' +
+                                        '   </div>' +
+                                        '   <div class="col-md-4">' +
+                                        '       <img src="' + baseUrl + '/Images/' + post.anh[1]["anh_url"] + '" alt="" onclick="ShowPostModal(' + post.anh[1]["id"] + ')" />' +
+                                        '   </div>' +
+                                        '   <div class="col-md-4">' +
+                                        '       <img src="' + baseUrl + '/Images/' + post.anh[2]["anh_url"] + '" alt="" onclick="ShowPostModal(' + post.anh[2]["id"] + ')" />' +
+                                        '   </div>' +
+                                        '   <div class="col-md-4">' +
+                                        '       <img src="' + baseUrl + '/Images/' + post.anh[3]["anh_url"] + '" alt="" onclick="ShowPostModal(' + post.anh[3]["id"] + ')" />' +
+                                        '   </div>' +
+                                        '</div>';
+                                }
+                                else if (post.anh.length == 5) {
+                                    html = html + '<div class = "row soanh-5">' +
+                                        '   <div class="col-md-6">' +
+                                        '       <img src="' + baseUrl + '/Images/' + post.anh[0]["anh_url"] + '" alt="" onclick="ShowPostModal(' + post.anh[0]["id"] + ')" />' +
+                                        '   </div>' +
+                                        '   <div class="col-md-6">' +
+                                        '       <img src="' + baseUrl + '/Images/' + post.anh[1]["anh_url"] + '" alt="" onclick="ShowPostModal(' + post.anh[1]["id"] + ')" />' +
+                                        '   </div>' +
+                                        '   <div class="col-md-4">' +
+                                        '       <img src="' + baseUrl + '/Images/' + post.anh[2]["anh_url"] + '" alt="" onclick="ShowPostModal(' + post.anh[2]["id"] + ')" />' +
+                                        '   </div>' +
+                                        '   <div class="col-md-4">' +
+                                        '       <img src="' + baseUrl + '/Images/' + post.anh[3]["anh_url"] + '" alt="" onclick="ShowPostModal(' + post.anh[3]["id"] + ')" />' +
+                                        '   </div>' +
+                                        '   <div class="col-md-4">' +
+                                        '       <img src="' + baseUrl + '/Images/' + post.anh[4]["anh_url"] + '" alt="" onclick="ShowPostModal(' + post.anh[4]["id"] + ')" />' +
+                                        '   </div>' +
+                                        '</div>';
+                                }
+                                else {
+                                    console.log("số ảnh lớn");
+                                }
+                                html = html + ' </div>';
+                            }
+                            html = html + ' </div>' +
+                                '                       <div class="post-socialfunction">' +
+                                '                            <section class="post-icons">' +
+                                '                                <button type="button" class="btn btn-light post-like-icon" id="post-like-icon-' + post.id + '"><i class="fas fa-heart"></i></button>' +
+                                '                                <button type="button" class="btn btn-light"><i class="far fa-comment"></i></button>' +
+                                '                                <button type="button" class="btn btn-light" data-toggle="modal" data-target="#post-share-' + post.id + '"><i class="far fa-paper-plane"></i></button>' +
+                                '                                <button type="button" class="btn btn-light"><i class="far fa-bookmark"></i></button>' +
+                                '                            </section>' +
+                                '                            <section class="list-like">' +
+                                '                                <button type="button" class="btn btn-light like-count-' + post.id + '" id="like-count-' + post.id + '">0 lượt thích</button>' +
+                                '                            </section>' +
+                                '                            <section class="post-time">' +
+                                '                                <p>2 giờ trước</p>' +
+                                '                            </section>' +
+                                '<div class="user-comments" id="user-comments-' + post.id + '">' +
+                                '</div>' +
+                                '                            <section class="comment-bar" id="comment-bar-' + post.id + '">' +
+                                '                                <div class="form-group">' +
+                                '                                    <textarea class="form-control" placeholder="Thêm bình luận..." oninput="auto_grow(this)" id="post-comment-content-' + post.id + '"></textarea>' +
+                                '                                </div>' +
+                                '<button type="button" class="btn btn-light post-comment-button" id = "post-comment-button-' + post.id + '" > Đăng</button > ' +
+                                '                            </section>' +
+                                '                        </div>';
+                            if (post.anh.length > 0) {
+                                post.anh.forEach(function (add) {
+                                    html = html + '<!-- Modal -->' +
+                                        '                                    <div class="post-box-modal modal fade" id="modal-post-' + add.id + '">' +
+                                        '                                        <div class="modal-dialog modal-dialog-centered">' +
+                                        '                                            <div class="modal-content">' +
+                                        '                                                <div class="modal-col-7">' +
+                                        '                                                    <div class="post-content">' +
+                                        '                                                        <img class="" src="' + baseUrl + '/Images/' + add.anh_url + '" alt="">' +
+                                        '                                                    </div>' +
+                                        '                                                </div>' +
+                                        '                                                <div class="modal-col-5">' +
+                                        '                                                    <div class="post-title">' +
+                                        '                                                        <div class="post-info">' +
+                                        '                                                            <img height="50px" width="50px" class="rounded rounded-circle" src="' + baseUrl + '/Images/' + post.avatarnguoidang + '" alt="">' +
+                                        '                                                            <p id="modal-post-info-' + add.id + '"><a href="#" title="">' + post.tennguoidang + '</a></p>' +
+                                        '                                                        </div>' +
+                                        '                                                    </div>' +
+                                        '' +
+                                        '                                                    <p class="post-content-text" id="modal-post-content-text-' + add.id + '></p>' +
+                                        '                                                    <div class="post-socialfunction">' +
+                                        '' +
+                                        '                                                        <div class="user-comments" id="modal-user-comments-' + add.id + '">' +
+                                        '                                                        </div>' +
+                                        '                                                        <section class="post-icons">' +
+                                        '                                                            <button type="button" class="btn btn-light post-like-icon" id="modal-post-like-icon-' + add.id + '">' +
+                                        '                                                                <i class="fas fa-heart"></i>' +
+                                        '                                                            </button>' +
+                                        '                                                            <button type="button" class="btn btn-light"><i class="far fa-comment"></i></button>' +
+                                        '                                                            <button type="button" class="btn btn-light"></button>' +
+                                        '                                                        </section>' +
+                                        '' +
+                                        '                                                        <section class="list-like">' +
+                                        '                                                            <button type="button" class="btn btn-light like-count-' + add.id + '" id="like-count-' + add.id + '">0 lượt thích</button>' +
+                                        '                                                            <div class="modal fade modal-list-like-post" id="modal-list-like-post-' + post.id + '" tabindex="-1" role="dialog">' +
+                                        '                                                                <div class="modal-dialog modal-dialog-centered" role="document">' +
+                                        '                                                                    <div class="modal-content">' +
+                                        '                                                                        <div class="modal-header">' +
+                                        '                                                                            <h5 class="modal-title" id="exampleModalLongTitle">Likes</h5>' +
+                                        '                                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">' +
+                                        '                                                                                <span aria-hidden="true">×</span>' +
+                                        '                                                                            </button>' +
+                                        '                                                                        </div>' +
+                                        '                                                                        <div class="modal-body" id="modal-list-like-body-' + post.id + '">' +
+                                        '' +
+                                        '                                                                        </div>' +
+                                        '                                                                    </div>' +
+                                        '                                                                </div>' +
+                                        '                                                            </div>' +
+                                        '                                                        </section>' +
+                                        '                                                        <section class="post-time" id="modal-post-time-' + add.id + '">' +
+                                        '                                                            <p>2 giờ trước</p>' +
+                                        '                                                        </section>' +
+                                        '                                                        <section class="comment-bar" id="comment-bar-' + add.id + '">' +
+                                        '                                                            <div class="form-group">' +
+                                        '<textarea class="form-control" placeholder="Thêm bình luận..." oninput="auto_grow(this)" id="modal-post-comment-content-' + add.id + '"></textarea>' +
+                                        '</div>' +
+                                        '                                                            <button type="button" class="btn btn-light modal-post-comment-button" id="modal-post-comment-button-' + add.id + '">Đăng</button>' +
+                                        '                                                        </section>' +
+                                        '                                                    </div>' +
+                                        '                                                </div>' +
+                                        '                                            </div>' +
+                                        '                                        </div>' +
+                                        '                                    </div>';
+                                });
+                            }
+
+                            html = html + '              </article>';
+                            $('.user-newsfeed').append(html);
+                            $('.lazy').Lazy();
+                        });
+
+                        $("#post-content").val("");
+                        $("#result-tenbanbe").empty();
+                        $("#result-diadiem").empty();
+
+                        $(".card-body-result-img").empty();
+                        $(".card-body-result-img").append('<label for="tools-img" class="tools-item" id="post-anh-default"><img src="/Images/default-adding-post.png" alt="" /></label>');
+                        $('.card-body-result-img').css("display", "none");
+                        $("#tools-img").val("");
+
+                        $("#post-diadiem-data").val("");
+
+                        $("#post-banbe-data").val("");
+                        $("#friends-tag").empty();
+
+                        //if (selected_friends.length > 0) {
+                        //    selected_friends.forEach(function (item) {
+                        //        add_friends.push(item);
+                        //    });
+                        //    selected_friends = [];
+                        //}
+                        //if (selected_img.length > 0) {
+                        //    selected_img = [];
+                        //}
+
+                        $(".post-chude").css("display", "none");
+                        $(".post-diadiem").css("display", "none");
+                        $(".post-ganthe").css("display", "none");
+                        $("#post-baomat-data").val("0");
                     }
-                ]
-            }
-            response1.response.forEach(function (item) {
-                var rows = '<div class="post-box" id="post-' + item["post-id"] + '">' +
-                    '                        <div class="post-title">' +
-                    '                            <div class="post-info">' +
-                    '                                <img height="50px" width="50px" class="rounded rounded-circle lazy" src="' + baseUrl + '/Images/base-background.jpg' + '" data-src="' + baseUrl + item["user-ava"] + '" alt="">' +
-                    '                                <p>' + item["user-name"] + '</p>' +
-                    '                            </div>' +
-                    '                            <div class="post-option" data-target="#post-option-modal2" data-toggle="modal">' +
-                    '                                …' +
-                    '                            </div>' +
-                    '                            <div class="modal post-option-modal fade" id="post-option-modal2">' +
-                    '                                <div class="modal-dialog modal-dialog-centered">' +
-                    '                                    <div class="modal-content">' +
-                    '                                        <div class="modal-body">' +
-                    '                                            <ul>' +
-                    '                                                <li>' +
-                    '                                                    <a class="report" href="">Báo cáo</a>' +
-                    '                                                </li>' +
-                    '                                                <li>' +
-                    '                                                    <a href="">Bỏ theo dõi</a>' +
-                    '                                                </li>' +
-                    '                                            </ul>' +
-                    '                                        </div>' +
-                    '                                    </div>' +
-                    '                                </div>' +
-                    '                            </div>' +
-                    '                        </div>' +
-                    '                        <div class="post-content" data-toggle="modal" data-target="#post-'+ item["post-id"] + '-modal">' +
-                    '                            <img class="img-fluid lazy" src="' + baseUrl + '/Images/base-background.jpg' + '" data-src="' + baseUrl + item["post-thumb"] + '" alt="">' +
-                    '                        </div>' +
-                    '                        <div class="post-socialfunction">' +
-                    '                            <div class="like-comment">' +
-                    '                                <div id="heart-' + item["post-id"] + '" onclick="heart(\'heart-' + item["post-id"] + '\')" class="like-comment-heart">' +
-                    '                                    <i class="fa fa-heart-o heart" aria-hidden="true"></i>' +
-                    '                                </div>' +
-                    '                                <i class="fa fa-comment-o" aria-hidden="true"></i>' +
-                    '                                <i data-toggle="modal" data-target="#post-' + item["post-id"] + '-share" class="fa fa-paper-plane-o" aria-hidden="true"></i>' +
-                    '                            </div>' +
-                    '                            <div class="like-number">' +
-                    '                                ' + item["post-likes"] + ' likes' +
-                    '                            </div>' +
-                    '                            <div class="post-caption">' + item["post-title"] +
-                    '                            </div>' +
-                    '                            <div class="post-comment">' +
-                    '                                <div class="comment-avatar">' +
-                    '                                   <img class="rounded rounded-circle" height = "35px" width = "35px" src="' + baseUrl + '/Images/base-background.jpg' + '" data-src="' + baseUrl + item["user-ava"] + '" alt="" >' +
-                    '                                </div>' +
-                    '                               <div class="comment-content">' +
-                    '                                   <div>' +
-                    '                                       <span class="comment-name">' +
-                    '                                           Name' +
-                    '                                       </span>' +
-                    '                                       <span class="comment-content">' +
-                    '                                           content' +
-                    '                                       </span>'+
-                    '                                   </div>'+
-                    '                                   <div class="comment-detail">'+
-                    '                                       <span>2 giờ</span>'+
-                    '                                       <span>200 lượt thích</span>'+
-                    '                                       <span id="reply-btn-' + item["post-id"] + '" onclick="comment_reply(\''+ item["post-id"] + '\')">Trả lời</span>'+
-                    '                                   </div>'+
-                    '                                   <div class="comment-collapse" data-toggle="collapse" data-target="#comment-' + item["post-id"] + '-children">'+
-                    '                                       Xem câu trả lời'+
-                    '                                   </div>'+
-                    '                                   <div class="collapse children-comment" id="comment-' + item["post-id"] + '-children">'+
-                    '                                       <div class="comment-avatar">'+
-                    '                                           <img class="rounded rounded-circle" height="25px" width="25px" src="' + baseUrl + '/Images/base-background.jpg' + '" data-src="' + baseUrl + item["user-ava"] + '" alt="">'+
-                    '                                       </div>'+
-                    '                                       <div class="comment-content">'+
-                    '                                           <div>'+
-                    '                                               <span class="comment-name">'+
-                    '                                                   Name'+
-                    '                                               </span>'+
-                    '                                               <span class="comment-content">'+
-                    '                                                   content'+
-                    '                                               </span>'+
-                    '                                           </div>'+
-                    '                                           <div class="comment-detail">'+
-                    '                                               <span>2 giờ</span>'+
-                    '                                               <span>200 lượt thích</span>'+
-                    '                                           </div>'+
-                    '                                       </div>'+
-                    '                                   </div>'+
-                    '                                   <div class="collapse children-comment" id="comment-' + item["post-id"] + '-children">'+
-                    '                                       <div class="comment-avatar">'+
-                    '                                           <img class="rounded rounded-circle" height="25px" width="25px" src="' + baseUrl + '/Images/base-background.jpg' + '" data-src="' + baseUrl + item["user-ava"] + '" alt="">'+
-                    '                                       </div>'+
-                    '                                       <div class="comment-content">'+
-                    '                                           <div>'+
-                    '                                               <span class="comment-name">'+
-                    '                                                   Name'+
-                    '                                               </span>'+
-                    '                                               <span class="comment-content">'+
-                    '                                                   content'+
-                    '                                               </span>'+
-                    '                                           </div>'+
-                    '                                           <div class="comment-detail">'+
-                    '                                               <span>2 giờ</span>'+
-                    '                                               <span>200 lượt thích</span>'+
-                    '                                           </div>'+
-                    '                                       </div>'+
-                    '                                   </div>'+
-                    '                                   <div class="children-reply" id="children-reply-' + item["post-id"] + '">'+
-                    '                                       <input type="text" placeholder="Viết phản hồi" class="form-control">'+
-                    '                                   </div>'+
-                    '                               </div>'+
-                    '                               </div>' +
-                    '                           </div>' +
-                    '                           <div class="post-usercomment">' +
-                    '                               <input class="form-control" type="text" placeholder="Thêm bình luận...">' +
-                    '                               <button>Đăng</button>' +
-                    '                           </div>' +
-                    '                        <!-- Modal -->' +
-                    '                        <div class="post-box-modal modal fade" id="post-' + item["post-id"] + '-modal">' +
-                    '                            <div class="modal-dialog modal-dialog-centered">' +
-                    '                                <div class="modal-content">' +
-                    '                                    <div class="col-7">' +
-                    '                                        <div class="post-content">' +
-                    '                                            <img class="img-fluid" src="' + baseUrl + item["post-thumb"] + '" alt="">' +
-                    '                                        </div>' +
-                    '                                    </div>' +
-                    '                                    <div class="col-5">' +
-                    '                                        <div class="post-title">' +
-                    '                                            <img height="50px" width="50px" class="rounded rounded-circle" src="' + baseUrl + item["post-thumb"] + '" alt="">' +
-                    '                                            <p>name</p>' +
-                    '                                        </div>' +
-                    '                                        <div class="post-socialfunction">' +
-                    '                                            <div class="post-caption">' +
-                    '                                                Caption' +
-                    '                                            </div>' +
-                    '                                            <div class="like-comment">' +
-                    '                                                <div onclick="heart(\'heart-' + item["post-id"] + '\')" class="like-comment-heart">' +
-                    '                                                    <i class="fa fa-heart-o heart" aria-hidden="true"></i>' +
-                    '                                                </div>' +
-                    '                                                <i class="fa fa-comment-o" aria-hidden="true"></i>' +
-                    '                                                <i data-toggle="modal" data-target="#post-' + item["post-id"] + '-share" class="fa fa-paper-plane-o" aria-hidden="true"></i>' +
-                    '                                            </div>' +
-                    '                                            <div class="like-number">' +
-                    '                                                200 likes' +
-                    '                                            </div>' +
-                    '                                            <div class="post-comment">' +
-                    '                                                <p class="comment-name">Name</p>' +
-                    '                                                <p>comment....</p>' +
-                    '                                            </div>' +
-                    '                                        </div>' +
-                    '                                        <div class="post-usercomment">' +
-                    '                                            <input class="form-control" type="text" placeholder="Thêm bình luận...">' +
-                    '                                            <button>Đăng</button>' +
-                    '                                        </div>' +
-                    '                                    </div>' +
-                    '                                </div>' +
-                    '                            </div>' +
-                    '                        </div>' +
-                    '                        <!-- Share modal -->' +
-                    '                        <div class="share-modal modal fade" id="post-' + item["post-id"] + '-share">' +
-                    '                            <div class="modal-dialog modal-dialog-centered">' +
-                    '                                <div class="modal-content">' +
-                    '                                    <div class="share-header">' +
-                    '                                        <p>Chia sẻ ngay lên dòng thời gian</p>' +
-                    '                                        <p data-dismiss="modal">×</p>' +
-                    '                                    </div>' +
-                    '                                    <div class="share-body">' +
-                    '                                        <input class="form-control" type="text" placeholder="Nói gì đó về nội dung này...">' +
-                    '                                        <div class="share-content">' +
-                    '                                            <img class="img-fluid" src="' + baseUrl + item["post-thumb"] + '" alt="">' +
-                    '                                        </div>' +
-                    '                                    </div>' +
-                    '                                    <div id="post-' + item["post-id"] + '-taginput" class="tag-input">' +
-                    '                                        <input class="form-control" type="text" placeholder="Gắn thẻ bạn bè">' +
-                    '                                    </div>' +
-                    '                                    <div id="post-' + item["post-id"] + '-locationinput" class="location-input">' +
-                    '                                        <input class="form-control" type="text" placeholder="Bạn đang ở đâu?">' +
-                    '                                    </div>' +
-                    '                                    <div class="share-footer">' +
-                    '                                        <div class="footer-option">' +
-                    '                                            <button onclick="tag(\'post-' + item["post-id"] + '\')" id="post-' + item["post-id"] + '-tag">Gắn thẻ mọi người</button>' +
-                    '                                            <button onclick="location_open(\'post-' + item["post-id"] + '\')" id="post-' + item["post-id"] + '-location">Thêm vị trí</button>' +
-                    '                                        </div>' +
-                    '                                        <div class="footer-submit">' +
-                    '                                            <button data-dismiss="modal">Hủy</button>' +
-                    '                                            <button class="share-submit">Đăng</button>' +
-                    '                                        </div>' +
-                    '                                    </div>' +
-                    '                                </div>' +
-                    '                            </div>' +
-                    '                        </div>' +
-                    '                    </div>';
-                $('#newsfeed').append(rows);
-                $('.lazy').Lazy();
+                }
             });
         }
     });
-    //--------------------------------------------------------------------------------------
-    //Lazy loading images
-    $('.lazy').Lazy();
 });

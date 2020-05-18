@@ -239,7 +239,7 @@ namespace InsBook.Areas.Client.Controllers
                             imgg.Add(new PostDao().GetPostImg(imgItem));
                         }
                         getpost.anh = imgg;
-                        getpost.thoigiandang = DateTime.Now;
+                        getpost.thoigiandang = (getpost.id >> 23) & 0x1FFFFFFFFFF;
 
                         return Json(new
                         {
@@ -768,7 +768,7 @@ namespace InsBook.Areas.Client.Controllers
                             imgg.Add(new PostDao().GetPostImg(imgItem));
                         }
                         getpost.anh = imgg;
-                        getpost.thoigiandang = DateTime.Now;
+                        getpost.thoigiandang = (getpost.id >> 23) & 0x1FFFFFFFFFF;
 
                         return Json(new
                         {
@@ -783,6 +783,49 @@ namespace InsBook.Areas.Client.Controllers
                             status = false
                         }, JsonRequestBehavior.AllowGet);
                     }
+                }
+                catch (Exception ex)
+                {
+                    return Json(new
+                    {
+                        status = false
+                    }, JsonRequestBehavior.AllowGet);
+                }
+            }
+            else
+            {
+                return Json(new
+                {
+                    status = false
+                }, JsonRequestBehavior.AllowGet);
+            }
+        }
+        public JsonResult GetAllPostNewsFeed()
+        {
+            if (Session[CommonConstants.USER_SESSION] != null || Request.Cookies[CommonConstants.USER_COOKIE] != null)
+            {
+                var user = new UserLogin();
+                // Lấy giá trị của cookie hoặc session
+                if (Request.Cookies[CommonConstants.USER_COOKIE] != null)
+                {
+                    // lấy từ cookie
+                    user.UserID = int.Parse(Request.Cookies[CommonConstants.USER_COOKIE]["1"]); // đang string ép về kiểu int
+                    user.Email = Request.Cookies[CommonConstants.USER_COOKIE]["2"].ToString();
+                }
+                else
+                {
+                    user = (UserLogin)Session[CommonConstants.USER_SESSION]; // lấy từ session
+                }
+
+                try
+                {
+                    var baiviet = new PostDao().GetAllPost(user.UserID, 2);
+                    return Json(new
+                    {
+                        status = true,
+                        baiviet,
+                        userID = user.UserID,
+                    }, JsonRequestBehavior.AllowGet);
                 }
                 catch (Exception ex)
                 {
