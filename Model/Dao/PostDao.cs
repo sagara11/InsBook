@@ -215,24 +215,10 @@ namespace Model.Dao
             return db.Database.SqlQuery<string>("GetAvatar @userId", new SqlParameter("@userId", userId)).SingleOrDefault();
         }
         // lấy bài viết từ db 
-        public List<GetPostModel> GetAllPost(int userID, int loaitrang)
+        public List<GetPostModel> GetAllPost(int userID)
         {
-            // 1 là tìm bài viết ở trang cá nhân
-            // 2 là tìm bài viết ở trang home
-            // 3...
-            // 4...
-
-            // lấy bài viết
-            var posts = new List<GetPostModel>(); // tạo đối tượng rỗng
-            if (loaitrang == 1)
-            {
-                posts = db.Database.SqlQuery<GetPostModel>("GetAllPost @userID", new SqlParameter("@userID", userID)).ToList();
-            }
-            else if (loaitrang == 2)
-            {
-                posts = db.Database.SqlQuery<GetPostModel>("GetAllPostNewsFeed @userID", new SqlParameter("@userID", userID)).ToList();
-            }
-            
+            // lấy ba
+            var posts = db.Database.SqlQuery<GetPostModel>("GetAllPost @userID", new SqlParameter("@userID", userID)).ToList();
             foreach (var post in posts)
             {
                 if (post.diadiem_id != null)
@@ -258,7 +244,7 @@ namespace Model.Dao
                         }
                     }
                 }
-                post.thoigiandang = (post.id >> 23) & 0x1FFFFFFFFFF;
+                post.thoigiandang = DateTime.Now; // Chưa nghĩ ra hàm giải mà ID
             }
 
             return posts;
@@ -310,7 +296,7 @@ namespace Model.Dao
                     }
                 }
             }
-            post.thoigiandang = (post.id >> 23) & 0x1FFFFFFFFFF;
+            post.thoigiandang = DateTime.Now; // Chưa nghĩ ra hàm giải mà ID
 
             return post;
         }
