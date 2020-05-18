@@ -215,23 +215,8 @@ namespace Model.Dao
             return db.Database.SqlQuery<string>("GetAvatar @userId", new SqlParameter("@userId", userId)).SingleOrDefault();
         }
         // lấy bài viết từ db 
-        public List<GetPostModel> GetAllPost(int userID, int loaitrang,int sotrang, int gioihantrang)
+        public List<GetPostModel> GetAllPost(int userID, int loaitrang)
         {
-            //ban đầu hiện 4 bài 
-            //khi lăn chuột chuột xuống thì load 4 bài
-            // tuân theo quy luật gì để không trùng nhau : 
-                //1
-                //2
-                //3
-                //4
-                //5
-                //6
-                //7
-                //8
-                //9
-                //10
-
-
             // 1 là tìm bài viết ở trang cá nhân
             // 2 là tìm bài viết ở trang home
             // 3...
