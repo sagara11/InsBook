@@ -2,6 +2,7 @@
 @{
     ViewBag.Title = "RegisterStep1";
     Layout = "~/Areas/Client/Views/Shared/Newsfeed.cshtml";
+    var listAddFriend = (List<Model.Models.GetFriendsModel>)ViewBag.ListAddFriend;
 }
 @section css {
     <link href="~/Assets/css/layouts/header.css" rel="stylesheet" />
@@ -37,96 +38,20 @@
                         <p>Chọn bạn bè từ danh sách bên dưới</p>
                         <p class="list-title">Những người bạn có thể biết</p>
                         <div class="list-new-friends">
-                            <div class="list-friends-item">
-                                <div class="friends-item-avatar">
-                                    <img src="https://scontent-sin6-1.xx.fbcdn.net/v/t1.0-1/p240x240/83578331_1007643319617277_4494632281117294592_o.jpg?_nc_cat=106&_nc_sid=dbb9e7&_nc_ohc=Fnr8aazrEoEAX9hg-yt&_nc_ht=scontent-sin6-1.xx&_nc_tp=6&oh=a34ebada08e548f9d944700a76241a2e&oe=5EFB26D0" alt="">
+                            @Html.AntiForgeryToken()
+                            @foreach (var user in listAddFriend)
+                            {
+                                <div class="list-friends-item" id="list-friends-@user.id">
+                                    <div class="friends-item-avatar">
+                                        <img src="~/Images/22904751_688560231353134_2748711313877205190_o.jpg" />
+                                    </div>
+                                    <p class="friends-item-name"><b>@user.ho @user.ten</b> là người bạn có thể biết</p>
+                                    <div class="friends-item-tools">
+                                        <button type="button" class="btn btn-primary" id-add="@user.id">Thêm bạn bè</button>
+                                        <button type="button" class="btn btn-light" id-disappear="@user.id">Xóa, gỡ bỏ</button>
+                                    </div>
                                 </div>
-                                <p class="friends-item-name"><b>Minh Thư</b> là người bạn có thể biết</p>
-                                <div class="friends-item-tools">
-                                    <button type="button" class="btn btn-primary">Thêm bạn bè</button>
-                                    <button type="button" class="btn btn-light">Xóa, gỡ bỏ</button>
-                                </div>
-                            </div>
-                            <div class="list-friends-item">
-                                <div class="friends-item-avatar">
-                                    <img src="https://scontent-sin6-1.xx.fbcdn.net/v/t1.0-1/p240x240/83578331_1007643319617277_4494632281117294592_o.jpg?_nc_cat=106&_nc_sid=dbb9e7&_nc_ohc=Fnr8aazrEoEAX9hg-yt&_nc_ht=scontent-sin6-1.xx&_nc_tp=6&oh=a34ebada08e548f9d944700a76241a2e&oe=5EFB26D0" alt="">
-                                </div>
-                                <p class="friends-item-name"><b>Minh Thư</b> là người bạn có thể biết</p>
-                                <div class="friends-item-tools">
-                                    <button type="button" class="btn btn-primary">Thêm bạn bè</button>
-                                    <button type="button" class="btn btn-light">Xóa, gỡ bỏ</button>
-                                </div>
-                            </div>
-                            <div class="list-friends-item">
-                                <div class="friends-item-avatar">
-                                    <img src="https://scontent-sin6-1.xx.fbcdn.net/v/t1.0-1/p240x240/83578331_1007643319617277_4494632281117294592_o.jpg?_nc_cat=106&_nc_sid=dbb9e7&_nc_ohc=Fnr8aazrEoEAX9hg-yt&_nc_ht=scontent-sin6-1.xx&_nc_tp=6&oh=a34ebada08e548f9d944700a76241a2e&oe=5EFB26D0" alt="">
-                                </div>
-                                <p class="friends-item-name"><b>Minh Thư</b> là người bạn có thể biết</p>
-                                <div class="friends-item-tools">
-                                    <button type="button" class="btn btn-primary">Thêm bạn bè</button>
-                                    <button type="button" class="btn btn-light">Xóa, gỡ bỏ</button>
-                                </div>
-                            </div>
-                            <div class="list-friends-item">
-                                <div class="friends-item-avatar">
-                                    <img src="https://scontent-sin6-1.xx.fbcdn.net/v/t1.0-1/p240x240/83578331_1007643319617277_4494632281117294592_o.jpg?_nc_cat=106&_nc_sid=dbb9e7&_nc_ohc=Fnr8aazrEoEAX9hg-yt&_nc_ht=scontent-sin6-1.xx&_nc_tp=6&oh=a34ebada08e548f9d944700a76241a2e&oe=5EFB26D0" alt="">
-                                </div>
-                                <p class="friends-item-name"><b>Minh Thư</b> là người bạn có thể biết</p>
-                                <div class="friends-item-tools">
-                                    <button type="button" class="btn btn-primary">Thêm bạn bè</button>
-                                    <button type="button" class="btn btn-light">Xóa, gỡ bỏ</button>
-                                </div>
-                            </div>
-                            <div class="list-friends-item">
-                                <div class="friends-item-avatar">
-                                    <img src="https://scontent-sin6-1.xx.fbcdn.net/v/t1.0-1/p240x240/83578331_1007643319617277_4494632281117294592_o.jpg?_nc_cat=106&_nc_sid=dbb9e7&_nc_ohc=Fnr8aazrEoEAX9hg-yt&_nc_ht=scontent-sin6-1.xx&_nc_tp=6&oh=a34ebada08e548f9d944700a76241a2e&oe=5EFB26D0" alt="">
-                                </div>
-                                <p class="friends-item-name"><b>Minh Thư</b> là người bạn có thể biết</p>
-                                <div class="friends-item-tools">
-                                    <button type="button" class="btn btn-primary">Thêm bạn bè</button>
-                                    <button type="button" class="btn btn-light">Xóa, gỡ bỏ</button>
-                                </div>
-                            </div>
-                            <div class="list-friends-item">
-                                <div class="friends-item-avatar">
-                                    <img src="https://scontent-sin6-1.xx.fbcdn.net/v/t1.0-1/p240x240/83578331_1007643319617277_4494632281117294592_o.jpg?_nc_cat=106&_nc_sid=dbb9e7&_nc_ohc=Fnr8aazrEoEAX9hg-yt&_nc_ht=scontent-sin6-1.xx&_nc_tp=6&oh=a34ebada08e548f9d944700a76241a2e&oe=5EFB26D0" alt="">
-                                </div>
-                                <p class="friends-item-name"><b>Minh Thư</b> là người bạn có thể biết</p>
-                                <div class="friends-item-tools">
-                                    <button type="button" class="btn btn-primary">Thêm bạn bè</button>
-                                    <button type="button" class="btn btn-light">Xóa, gỡ bỏ</button>
-                                </div>
-                            </div>
-                            <div class="list-friends-item">
-                                <div class="friends-item-avatar">
-                                    <img src="https://scontent-sin6-1.xx.fbcdn.net/v/t1.0-1/p240x240/83578331_1007643319617277_4494632281117294592_o.jpg?_nc_cat=106&_nc_sid=dbb9e7&_nc_ohc=Fnr8aazrEoEAX9hg-yt&_nc_ht=scontent-sin6-1.xx&_nc_tp=6&oh=a34ebada08e548f9d944700a76241a2e&oe=5EFB26D0" alt="">
-                                </div>
-                                <p class="friends-item-name"><b>Minh Thư</b> là người bạn có thể biết</p>
-                                <div class="friends-item-tools">
-                                    <button type="button" class="btn btn-primary">Thêm bạn bè</button>
-                                    <button type="button" class="btn btn-light">Xóa, gỡ bỏ</button>
-                                </div>
-                            </div>
-                            <div class="list-friends-item">
-                                <div class="friends-item-avatar">
-                                    <img src="https://scontent-sin6-1.xx.fbcdn.net/v/t1.0-1/p240x240/83578331_1007643319617277_4494632281117294592_o.jpg?_nc_cat=106&_nc_sid=dbb9e7&_nc_ohc=Fnr8aazrEoEAX9hg-yt&_nc_ht=scontent-sin6-1.xx&_nc_tp=6&oh=a34ebada08e548f9d944700a76241a2e&oe=5EFB26D0" alt="">
-                                </div>
-                                <p class="friends-item-name"><b>Minh Thư</b> là người bạn có thể biết</p>
-                                <div class="friends-item-tools">
-                                    <button type="button" class="btn btn-primary">Thêm bạn bè</button>
-                                    <button type="button" class="btn btn-light">Xóa, gỡ bỏ</button>
-                                </div>
-                            </div>
-                            <div class="list-friends-item">
-                                <div class="friends-item-avatar">
-                                    <img src="https://scontent-sin6-1.xx.fbcdn.net/v/t1.0-1/p240x240/83578331_1007643319617277_4494632281117294592_o.jpg?_nc_cat=106&_nc_sid=dbb9e7&_nc_ohc=Fnr8aazrEoEAX9hg-yt&_nc_ht=scontent-sin6-1.xx&_nc_tp=6&oh=a34ebada08e548f9d944700a76241a2e&oe=5EFB26D0" alt="">
-                                </div>
-                                <p class="friends-item-name"><b>Minh Thư</b> là người bạn có thể biết</p>
-                                <div class="friends-item-tools">
-                                    <button type="button" class="btn btn-primary">Thêm bạn bè</button>
-                                    <button type="button" class="btn btn-light">Xóa, gỡ bỏ</button>
-                                </div>
-                            </div>
+                            }
                         </div>
                     </div>
                 </div>
@@ -137,6 +62,9 @@
         </div>
     </div>
 </main>
+@section js{
+    <script src="~/Assets/javascript/RegisterStep1.js"></script>
+    }
 @{
     Html.RenderPartial("~/Areas/Client/Views/Layout/footer.cshtml");
 }

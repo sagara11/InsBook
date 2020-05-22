@@ -1,124 +1,106 @@
-﻿@import url('../layouts/group_fixedside.css');
-@import url('../layouts/header.css');
-@import url('../layouts/messenger.css');
-@import url('../layouts/messenger_section.css');
-@import url('../layouts/group_header.css');
+@import url("../layouts/group_fixedside.css");
+@import url("../layouts/header.css");
+@import url("../layouts/messenger.css");
+@import url("../layouts/messenger_section.css");
+@import url("../layouts/group_header.css");
 body {
-    background-color: #f7f7f7;
-}
+  background-color: #f7f7f7; }
 
 main {
-    padding: 50px 0px;
-}
+  padding: 50px 0px; }
 
-    main .container .fixed-side {
-        position: fixed;
-    }
+main .container_new .fixed-side {
+  position: fixed; }
 
-    main .container .col-25 {
-        padding: 0px 10px;
-        width: 25%;
-    }
+main .container_new .col-25 {
+  padding: 0px 10px;
+  width: 32.5%;
+  display: flex;
+  justify-content: flex-end; }
 
-    main .container .col-50 {
-        padding: 0px 10px;
-        width: 50%;
-    }
+main .container_new .col-50 {
+  padding: 0px 10px;
+  width: 35%; }
 
-    main #memberlist {
-        margin-bottom: 20px;
-        background-color: white;
-        border: 1px solid #c8c8c8;
-        border-radius: 4px;
-        padding-bottom: 10px;
-    }
+main #memberlist {
+  margin-bottom: 20px;
+  background-color: white;
+  border: 1px solid #c8c8c8;
+  border-radius: 4px;
+  padding-bottom: 10px; }
 
-        main #memberlist .list-header {
-            padding: 15px 10px;
-            background-color: #e6e6e6;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+main #memberlist .list-header {
+  padding: 15px 10px;
+  background-color: #e6e6e6;
+  display: flex;
+  justify-content: space-between;
+  align-items: center; }
 
-            main #memberlist .list-header #title {
-                font-size: 20px;
-                font-weight: 600;
-            }
+main #memberlist .list-header #title {
+  font-size: 20px;
+  font-weight: 600; }
 
-            main #memberlist .list-header #number {
-                font-size: 13px;
-                color: gray;
-            }
+main #memberlist .list-header #number {
+  font-size: 13px;
+  color: gray; }
 
-        main #memberlist .member-box {
-            padding: 15px 10px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
+main #memberlist .member-box {
+  padding: 15px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; }
 
-            main #memberlist .member-box .member-info {
-                display: flex;
-            }
+main #memberlist .member-box .member-info {
+  display: flex; }
 
-                main #memberlist .member-box .member-info .member-name {
-                    margin-left: 10px;
-                }
+main #memberlist .member-box .member-info .member-name {
+  margin-left: 10px; }
 
-                    main #memberlist .member-box .member-info .member-name p {
-                        margin: 0px 0px;
-                    }
+main #memberlist .member-box .member-info .member-name p {
+  margin: 0px 0px; }
 
-            main #memberlist .member-box .member-setting button {
-                padding: 0px 10px;
-                border: none;
-                background-color: transparent;
-                border: 1px solid #c8c8c8;
-                border-radius: 4px;
-            }
+main #memberlist .member-box .member-setting button {
+  padding: 0px 10px;
+  border: none;
+  background-color: transparent;
+  border: 1px solid #c8c8c8;
+  border-radius: 4px; }
 
-                main #memberlist .member-box .member-setting button:hover {
-                    background-color: #e6e6e6;
-                }
+main #memberlist .member-box .member-setting button:hover {
+  background-color: #e6e6e6; }
 
-        main #memberlist .member-type {
-            margin-top: 10px;
-            padding: 5px 10px;
-        }
+main #memberlist .member-type {
+  margin-top: 10px;
+  padding: 5px 10px; }
 
-            main #memberlist .member-type h5 {
-                font-size: 17px;
-                font-weight: 600;
-            }
+main #memberlist .member-type h5 {
+  font-size: 17px;
+  font-weight: 600; }
 
-            main #memberlist .member-type span {
-                font-size: 15px;
-                color: gray;
-            }
+main #memberlist .member-type span {
+  font-size: 15px;
+  color: gray; }
 
-        main #memberlist .more a {
-            display: block;
-            text-align: center;
-        }
+main #memberlist .more a {
+  display: block;
+  text-align: center; }
 
-    main #add-member {
-        padding: 10px 10px;
-        margin-bottom: 20px;
-        background-color: white;
-        border: 1px solid #c8c8c8;
-        border-radius: 4px;
-    }
+main #add-member {
+  padding: 10px 10px;
+  margin-bottom: 20px;
+  background-color: white;
+  border: 1px solid #c8c8c8;
+  border-radius: 4px; }
 
-        main #add-member .add-header {
-            margin: 10px 0px 5px 0px;
-            text-transform: uppercase;
-            color: gray;
-            font-weight: 600;
-        }
+main #add-member .add-header {
+  margin: 10px 0px 5px 0px;
+  text-transform: uppercase;
+  color: gray;
+  font-weight: 600; }
 
-        main #add-member .member-avatar img {
-            margin: 0px 5px;
-        }
+main #add-member .member-avatar img {
+  margin: 0px 5px; }
+
+/*# sourceMappingURL=group_thanhvien.css.map */
 
 /*# sourceMappingURL=group_thanhvien.css.map */

@@ -1,0 +1,11 @@
+main .page-404 {
+  height: 659px;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
+  main .page-404 .notification h1, main .page-404 .notification h5 {
+    text-align: center;
+    color: dimgray;
+    margin-bottom: 30px; }
+
+/*# sourceMappingURL=404page.css.map */

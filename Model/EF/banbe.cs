@@ -19,14 +19,14 @@ namespace Model.EF
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int nguoidung2 { get; set; }
 
-        public int xacnhan { get; set; }
+        public int? xacnhan { get; set; }
 
         public int? nguoihanhdong { get; set; }
 
         [Column(TypeName = "date")]
         public DateTime? ngaybatdau { get; set; }
 
-        public int uutien { get; set; }
+        public int? uutien { get; set; }
 
         public virtual nguoidung nguoidung { get; set; }
 

@@ -1,147 +1,125 @@
-﻿@import url('../layouts/group_fixedside.css');
-@import url('../layouts/header.css');
-@import url('../layouts/messenger.css');
-@import url('../layouts/messenger_section.css');
-@import url('../layouts/group_header.css');
-@import url('../layouts/post_box.css');
-
+@import url("../layouts/group_fixedside.css");
+@import url("../layouts/header.css");
+@import url("../layouts/messenger.css");
+@import url("../layouts/messenger_section.css");
+@import url("../layouts/group_header.css");
+@import url("../layouts/post_box.css");
 body {
-    background-color: #f7f7f7;
-}
+  background-color: #f7f7f7; }
 
 main {
-    padding: 50px 0px;
-}
+  padding: 50px 0px; }
 
-    main .container .fixed-side {
-        position: fixed;
-    }
+main .container_new .fixed-side {
+  position: fixed; }
 
-    main .container .col-25 {
-        padding: 0px 10px;
-        width: 25%;
-    }
+main .container_new .col-25 {
+  padding: 0px 10px;
+  width: 32.5%;
+  display: flex;
+  justify-content: flex-end; }
 
-    main .container .col-50 {
-        padding: 0px 10px;
-        width: 50%;
-    }
+main .container_new .col-50 {
+  padding: 0px 10px;
+  width: 35%; }
 
-    main #newpost {
-        background-color: white;
-        border: 1px solid #c8c8c8;
-        border-radius: 4px;
-        margin-bottom: 30px;
-    }
+main #newpost {
+  background-color: white;
+  border: 1px solid #c8c8c8;
+  border-radius: 4px;
+  margin-bottom: 30px; }
 
-        main #newpost .newpost-header {
-            padding: 10px 10px;
-            background-color: #f7f7f7;
-            border-bottom: 1px solid #c8c8c8;
-            border-radius: 4px 4px 0px 0px;
-            display: flex;
-            justify-content: space-between;
-        }
+main #newpost .newpost-header {
+  padding: 10px 10px;
+  background-color: #f7f7f7;
+  border-bottom: 1px solid #c8c8c8;
+  border-radius: 4px 4px 0px 0px;
+  display: flex;
+  justify-content: space-between; }
 
-            main #newpost .newpost-header h6 {
-                margin: 0px 0px;
-                font-size: 16px;
-            }
+main #newpost .newpost-header h6 {
+  margin: 0px 0px;
+  font-size: 16px; }
 
-            main #newpost .newpost-header #newpost-close {
-                cursor: pointer;
-            }
+main #newpost .newpost-header #newpost-close {
+  cursor: pointer; }
 
-        main #newpost .newpost-input {
-            padding: 10px 10px;
-            display: flex;
-            flex-wrap: wrap;
-        }
+main #newpost .newpost-input {
+  padding: 10px 10px;
+  display: flex;
+  flex-wrap: wrap; }
 
-            main #newpost .newpost-input .user-avatar {
-                width: 10%;
-            }
+main #newpost .newpost-input .user-avatar {
+  width: 10%; }
 
-            main #newpost .newpost-input .textarea {
-                width: 90%;
-            }
+main #newpost .newpost-input .textarea {
+  width: 90%; }
 
-                main #newpost .newpost-input .textarea textarea {
-                    resize: none;
-                    transition: 0.3s;
-                    height: 50px;
-                }
+main #newpost .newpost-input .textarea textarea {
+  resize: none;
+  transition: 0.3s;
+  height: 50px; }
 
-                    main #newpost .newpost-input .textarea textarea:focus {
-                        height: 150px;
-                    }
+main #newpost .newpost-input .textarea textarea:focus {
+  height: 150px; }
 
-            main #newpost .newpost-input .post-image {
-                margin: 10px;
-            }
+main #newpost .newpost-input .post-image {
+  margin: 10px; }
 
-            main #newpost .newpost-input .new-media-content {
-                margin-top: 10px;
-                width: 100%;
-                display: flex;
-                flex-wrap: wrap;
-            }
+main #newpost .newpost-input .new-media-content {
+  margin-top: 10px;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap; }
 
-                main #newpost .newpost-input .new-media-content label {
-                    font-size: 14px;
-                    margin-right: 10px;
-                    border: none;
-                    background-color: #f0f0f0;
-                    border-radius: 20px;
-                    padding: 7px 12px;
-                }
+main #newpost .newpost-input .new-media-content label {
+  font-size: 14px;
+  margin-right: 10px;
+  border: none;
+  background-color: #f0f0f0;
+  border-radius: 20px;
+  padding: 7px 12px; }
 
-                    main #newpost .newpost-input .new-media-content label:hover {
-                        cursor: pointer;
-                        background-color: gainsboro;
-                    }
+main #newpost .newpost-input .new-media-content label:hover {
+  cursor: pointer;
+  background-color: gainsboro; }
 
-                main #newpost .newpost-input .new-media-content .newpost-function {
-                    width: 100%;
-                    flex-wrap: wrap;
-                }
+main #newpost .newpost-input .new-media-content .newpost-function {
+  width: 100%;
+  flex-wrap: wrap; }
 
-            main #newpost .newpost-input .submit-btn-contain {
-                width: 100%;
-            }
+main #newpost .newpost-input .submit-btn-contain {
+  width: 100%; }
 
-                main #newpost .newpost-input .submit-btn-contain button {
-                    width: 100%;
-                    font-size: 15px;
-                    margin: 0px 0px;
-                    border-radius: 5px;
-                    color: white;
-                    padding: 5px 0px;
-                    background-color: royalblue;
-                    border: none;
-                }
+main #newpost .newpost-input .submit-btn-contain button {
+  width: 100%;
+  font-size: 15px;
+  margin: 0px 0px;
+  border-radius: 5px;
+  color: white;
+  padding: 5px 0px;
+  background-color: royalblue;
+  border: none; }
 
-    main #group-post {
-        padding: 10px 0px;
-    }
+main #group-post {
+  padding: 10px 0px; }
 
-    main #add-member {
-        padding: 10px 10px;
-        margin-bottom: 20px;
-        background-color: white;
-        border: 1px solid #c8c8c8;
-        border-radius: 4px;
-    }
+main #add-member {
+  padding: 10px 10px;
+  margin-bottom: 20px;
+  background-color: white;
+  border: 1px solid #c8c8c8;
+  border-radius: 4px; }
 
-        main #add-member .add-header {
-            margin: 10px 0px 5px 0px;
-            text-transform: uppercase;
-            color: gray;
-            font-weight: 600;
-        }
+main #add-member .add-header {
+  margin: 10px 0px 5px 0px;
+  text-transform: uppercase;
+  color: gray;
+  font-weight: 600; }
 
-        main #add-member .member-avatar img {
-            margin: 0px 5px;
-        }
+main #add-member .member-avatar img {
+  margin: 0px 5px; }
 
 /*# sourceMappingURL=group.css.map */
+
+/*# sourceMappingURL=group_thaoluan.css.map */

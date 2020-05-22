@@ -1,8 +1,72 @@
 ﻿
 @{
-    ViewBag.Title = "ChangePass";
-    Layout = "~/Areas/Client/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Index";
 }
+@section css{
+    <link href="~/Assets/css/pages/login.css" rel="stylesheet" />
+}
+@model InsBook.Areas.Client.Models.ForgetPassModel
+<main>
+    <section id="login-page">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-1">
 
-<h2>ChangePass</h2>
+                </div>
+                <div class="col-md-5">
+                    <div class="images-sidebar">
+                        <img src="~/Assets/media/gentle-man.png" alt="">
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="form-login">
+                        <h1>InsBook</h1>
+                        <p>We love it cuz it's fake !</p>
+                        <div class="login-form">
+                            @using (Html.BeginForm("ChangePass", "ForgetPass", FormMethod.Post))
+                            {
+                                @Html.AntiForgeryToken()
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">
+                                            <i class="fas fa-key"></i>
+                                        </div>
+                                    </div>
+                                    @Html.PasswordFor(model => model.Pass, new { @class = "form-control", @placeholder = "Mật khẩu", @autoforcus = "autoforcus" })
+                                    <span class="success" id="check-Pass"><i class="fas fa-check-circle"></i></span>
+                                </div>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">
+                                            <i class="fas fa-key"></i>
+                                        </div>
+                                    </div>
+                                    @Html.PasswordFor(model => model.CheckPass, new { @class = "form-control", @placeholder = "Mật khẩu", @autoforcus = "autoforcus" })
+                                    <span class="success" id="check-CheckPass"><i class="fas fa-check-circle"></i></span>
+                                </div>
+                                @Html.HiddenFor(model => model.Token, new { @class = "form-control" })
+                                <button type="submit" class="btn btn-block btn-primary" id="submit">Xác Nhận</button>
+                            }
+                        </div>
+                    </div>
+                    <div class="form-login-register">
+                        <p>Bạn không có tài khoản ? <a href="/Client/Register/Index" title="Chưa có chức năng đăng ký. Đề nghị ấn tạm vào đăng nhập Facebook !">Đăng ký</a></p>
+                    </div>
+                    <div class="web-apps">
+                        <h3>Tải ứng dụng</h3>
+                        <div class="web-apps-thumbnai">
+                            <img src="https://www.instagram.com/static/images/appstore-install-badges/badge_ios_vietnamese-vi.png/3025bd262cee.png" alt="">
+                            <img src="https://www.instagram.com/static/images/appstore-install-badges/badge_android_vietnamese-vi.png/c36c88b5a8dc.png" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-1">
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
 
+@section js{
+    <script src="~/Assets/javascript/ChangePass.js"></script>
+}

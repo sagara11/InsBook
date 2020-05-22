@@ -1,0 +1,132 @@
+﻿
+@{
+    ViewBag.Title = "SavedInfo";
+    Layout = "~/Areas/Client/Views/Shared/_PersonalPage.cshtml";
+}
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+            <a class="nav-link" href="/Client/Personal/Index"><i class="fas fa-rss-square"></i><span>Dòng thời gian</span></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/Client/Personal/ChangeGeneralInfor"><i class="far fa-user-circle"></i><span>Giới thiệu</span></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/Client/Personal/FriendsInfo"><i class="fas fa-users"></i><span>Bạn bè</span></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/Client/Personal/ImagesInfo"><i class="far fa-images"></i></i><span>Ảnh</span></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span>Xem thêm</span>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" href="/Client/Personal/SavedInfo">Lưu trữ</a>
+                <a class="dropdown-item" href="/Client/Personal/AlbumInfo">Bộ sưu tập</a>
+                <a class="dropdown-item" href="/Client/Personal/VideoInfo">Video</a>
+            </div>
+        </li>
+    </ul>
+
+<!-- Tab panes -->
+<div class="tab-content">
+    <div class="tab-pane container fade" id="menu1">...</div>
+    <div class="tab-pane container fade" id="menu2">...</div>
+    <div class="tab-pane container fade" id="menu3">...</div>
+    <div class="tab-pane container active" id="menu4">
+        <div class="images-list videos-list">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="images-item">
+                        <div class="images-item-thumbnail">
+                            <img src="~/Images/22904751_688560231353134_2748711313877205190_o.jpg" alt="" class="img-fluid">
+                        </div>
+                        <div class="images-item-info">
+                            <span><i class="fas fa-heart"></i>123</span>
+                            <span><i class="fas fa-comment"></i>123</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="videos-item">
+                        <video id="video-1" controls>
+                            <source src="" type="video/mp4">
+                            <source src="" type="video/ogg">
+                            <!-- <button id="play" onclick="vidplay()">&gt;</button> -->
+                            Your browser does not support HTML5 video.
+                        </video>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="videos-item">
+                        <video id="video-1" controls>
+                            <source src="" type="video/mp4">
+                            <source src="" type="video/ogg">
+                            <!-- <button id="play" onclick="vidplay()">&gt;</button> -->
+                            Your browser does not support HTML5 video.
+                        </video>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="images-item">
+                        <div class="images-item-thumbnail">
+                            <img src="~/Images/22904751_688560231353134_2748711313877205190_o.jpg" alt="" class="img-fluid">
+                        </div>
+                        <div class="images-item-info">
+                            <span><i class="fas fa-heart"></i>123</span>
+                            <span><i class="fas fa-comment"></i>123</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="images-item">
+                        <div class="images-item-thumbnail">
+                            <img src="~/Images/22904751_688560231353134_2748711313877205190_o.jpg" alt="" class="img-fluid">
+                        </div>
+                        <div class="images-item-info">
+                            <span><i class="fas fa-heart"></i>123</span>
+                            <span><i class="fas fa-comment"></i>123</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="images-item">
+                        <div class="images-item-thumbnail">
+                            <img src="~/Images/22904751_688560231353134_2748711313877205190_o.jpg" alt="" class="img-fluid">
+                        </div>
+                        <div class="images-item-info">
+                            <span><i class="fas fa-heart"></i>123</span>
+                            <span><i class="fas fa-comment"></i>123</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="images-item">
+                        <div class="images-item-thumbnail">
+                            <img src="~/Images/22904751_688560231353134_2748711313877205190_o.jpg" alt="" class="img-fluid">
+                        </div>
+                        <div class="images-item-info">
+                            <span><i class="fas fa-heart"></i>123</span>
+                            <span><i class="fas fa-comment"></i>123</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="images-item">
+                        <div class="images-item-thumbnail">
+                            <img src="~/Images/22904751_688560231353134_2748711313877205190_o.jpg" alt="" class="img-fluid">
+                        </div>
+                        <div class="images-item-info">
+                            <span><i class="fas fa-heart"></i>123</span>
+                            <span><i class="fas fa-comment"></i>123</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="tab-pane container fade" id="menu5">...</div>
+    <div class="tab-pane container fade" id="menu6">...</div>
+    <div class="tab-pane container fade" id="menu7">...</div>
+</div>
+

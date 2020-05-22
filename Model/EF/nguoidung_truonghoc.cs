@@ -31,7 +31,7 @@ namespace Model.EF
 
         public bool? totnghiep { get; set; }
 
-        public int baomat { get; set; }
+        public int? baomat { get; set; }
 
         public int? baomat_chophep { get; set; }
 

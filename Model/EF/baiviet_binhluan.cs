@@ -34,11 +34,11 @@ namespace Model.EF
 
         public virtual baiviet baiviet { get; set; }
 
-        public virtual nguoidung nguoidung { get; set; }
-
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<baiviet_binhluan> baiviet_binhluan1 { get; set; }
 
         public virtual baiviet_binhluan baiviet_binhluan2 { get; set; }
+
+        public virtual nguoidung nguoidung { get; set; }
     }
 }

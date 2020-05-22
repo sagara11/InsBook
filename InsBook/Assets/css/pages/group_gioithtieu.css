@@ -1,120 +1,100 @@
-﻿@import url('../layouts/group_fixedside.css');
-@import url('../layouts/header.css');
-@import url('../layouts/messenger.css');
-@import url('../layouts/messenger_section.css');
-@import url('../layouts/group_header.css');
-
+@import url("../layouts/group_fixedside.css");
+@import url("../layouts/header.css");
+@import url("../layouts/messenger.css");
+@import url("../layouts/messenger_section.css");
+@import url("../layouts/group_header.css");
 body {
-    background-color: #f7f7f7;
-}
+  background-color: #f7f7f7; }
 
 main {
-    padding: 50px 0px;
-}
+  padding: 50px 0px; }
 
-    main .container .fixed-side {
-        position: fixed;
-    }
+main .container_new .fixed-side {
+  position: fixed; }
 
-    main .container .col-25 {
-        padding: 0px 10px;
-        width: 25%;
-    }
+main .container_new .col-25 {
+  padding: 0px 10px;
+  width: 32.5%;
+  display: flex;
+  justify-content: flex-end; }
 
-    main .container .col-50 {
-        padding: 0px 10px;
-        width: 50%;
-    }
+main .container_new .col-50 {
+  padding: 0px 10px;
+  width: 35%; }
 
-    main .gioithieu-section {
-        margin-bottom: 20px;
-        background-color: white;
-        border: 1px solid #c8c8c8;
-        border-radius: 4px;
-    }
+main .gioithieu-section {
+  margin-bottom: 20px;
+  background-color: white;
+  border: 1px solid #c8c8c8;
+  border-radius: 4px; }
 
-        main .gioithieu-section .section-header {
-            font-weight: 600;
-            padding: 10px 10px;
-            border-bottom: 1px solid #c8c8c8;
-        }
+main .gioithieu-section .section-header {
+  font-weight: 600;
+  padding: 10px 10px;
+  border-bottom: 1px solid #c8c8c8; }
 
-        main .gioithieu-section .section-content {
-            padding: 10px 10px;
-        }
+main .gioithieu-section .section-content {
+  padding: 10px 10px; }
 
-            main .gioithieu-section .section-content h5 {
-                color: gray;
-                font-size: 16px;
-                font-weight: 600;
-            }
+main .gioithieu-section .section-content h5 {
+  color: gray;
+  font-size: 16px;
+  font-weight: 600; }
 
-            main .gioithieu-section .section-content .more a {
-                padding: 5px 0px;
-                text-align: center;
-            }
+main .gioithieu-section .section-content .more a {
+  padding: 5px 0px;
+  text-align: center; }
 
-    main #gioithieu .section-content p {
-        margin: 0px 0px;
-    }
+main #gioithieu .section-content p {
+  margin: 0px 0px; }
 
-    main #gioithieu .section-content #group-type {
-        margin: 5px 0px;
-    }
+main #gioithieu .section-content #group-type {
+  margin: 5px 0px; }
 
-    main #thanhvien .section-content #friend-member {
-        margin-bottom: 5px;
-        display: flex;
-    }
+main #thanhvien .section-content #friend-member {
+  margin-bottom: 5px;
+  display: flex; }
 
-        main #thanhvien .section-content #friend-member img {
-            margin-right: 5px;
-        }
+main #thanhvien .section-content #friend-member img {
+  margin-right: 5px; }
 
-    main #thanhvien .section-content #admin {
-        display: flex;
-        margin-bottom: 5px;
-    }
+main #thanhvien .section-content #admin {
+  display: flex;
+  margin-bottom: 5px; }
 
-        main #thanhvien .section-content #admin img {
-            margin-right: 5px;
-        }
+main #thanhvien .section-content #admin img {
+  margin-right: 5px; }
 
-    main #anh .section-content {
-        display: flex;
-        flex-wrap: wrap;
-    }
+main #anh .section-content {
+  display: flex;
+  flex-wrap: wrap; }
 
-        main #anh .section-content .image-box {
-            padding: 5px 5px;
-        }
+main #anh .section-content .image-box {
+  padding: 5px 5px; }
 
-            main #anh .section-content .image-box img {
-                height: 200px;
-                width: 200px;
-            }
+main #anh .section-content .image-box img {
+  height: 200px;
+  width: 200px; }
 
-        main #anh .section-content .more {
-            flex-basis: 100%;
-        }
+main #anh .section-content .more {
+  flex-basis: 100%; }
 
-    main #add-member {
-        padding: 10px 10px;
-        margin-bottom: 20px;
-        background-color: white;
-        border: 1px solid #c8c8c8;
-        border-radius: 4px;
-    }
+main #add-member {
+  padding: 10px 10px;
+  margin-bottom: 20px;
+  background-color: white;
+  border: 1px solid #c8c8c8;
+  border-radius: 4px; }
 
-        main #add-member .add-header {
-            margin: 10px 0px 5px 0px;
-            text-transform: uppercase;
-            color: gray;
-            font-weight: 600;
-        }
+main #add-member .add-header {
+  margin: 10px 0px 5px 0px;
+  text-transform: uppercase;
+  color: gray;
+  font-weight: 600; }
 
-        main #add-member .member-avatar img {
-            margin: 0px 5px;
-        }
+main #add-member .member-avatar img {
+  margin: 0px 5px; }
 
 /*# sourceMappingURL=group_gioithieu.css.map */
+
+/*# sourceMappingURL=group_gioithtieu.css.map */

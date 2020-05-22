@@ -18,13 +18,15 @@ namespace Model.EF
 
         public int id { get; set; }
 
-        [Required]
         [StringLength(255)]
         public string ten { get; set; }
 
         public int? diadiem_id { get; set; }
 
-        public int loaitruong { get; set; }
+        [StringLength(255)]
+        public string anh_url { get; set; }
+
+        public int? loaitruong { get; set; }
 
         public virtual diadiem diadiem { get; set; }
 

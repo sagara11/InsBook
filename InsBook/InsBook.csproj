@@ -55,18 +55,87 @@
     <Reference Include="JWT, Version=6.0.0.0, Culture=neutral, PublicKeyToken=6f98bca0f40f2ecf, processorArchitecture=MSIL">
       <HintPath>..\packages\JWT.6.1.0\lib\net472\JWT.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.AspNet.SignalR.Core, Version=2.4.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.SignalR.Core.2.4.1\lib\net45\Microsoft.AspNet.SignalR.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.SignalR.SystemWeb, Version=2.4.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.SignalR.SystemWeb.2.4.1\lib\net45\Microsoft.AspNet.SignalR.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.Hosting.Abstractions, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNetCore.Hosting.Abstractions.2.2.0\lib\netstandard2.0\Microsoft.AspNetCore.Hosting.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.Hosting.Server.Abstractions, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNetCore.Hosting.Server.Abstractions.2.2.0\lib\netstandard2.0\Microsoft.AspNetCore.Hosting.Server.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.Http.Abstractions, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNetCore.Http.Abstractions.2.2.0\lib\netstandard2.0\Microsoft.AspNetCore.Http.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.Http.Features, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNetCore.Http.Features.2.2.0\lib\netstandard2.0\Microsoft.AspNetCore.Http.Features.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=2.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Extensions.Configuration.Abstractions, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Configuration.Abstractions.2.2.0\lib\netstandard2.0\Microsoft.Extensions.Configuration.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.DependencyInjection.Abstractions.2.2.0\lib\netstandard2.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.FileProviders.Abstractions, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.FileProviders.Abstractions.2.2.0\lib\netstandard2.0\Microsoft.Extensions.FileProviders.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Hosting.Abstractions, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Hosting.Abstractions.2.2.0\lib\netstandard2.0\Microsoft.Extensions.Hosting.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Logging.Abstractions, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Logging.Abstractions.2.2.0\lib\netstandard2.0\Microsoft.Extensions.Logging.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Primitives, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Primitives.2.2.0\lib\netstandard2.0\Microsoft.Extensions.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.2.1.0\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.2.1.0\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.2.1.0\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
     </Reference>
     <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
       <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
     </Reference>
     <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
       <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Buffers, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.4.0\lib\netstandard2.0\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Memory, Version=4.0.1.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.1\lib\netstandard2.0\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.7\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.4.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.1\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security" />
+    <Reference Include="System.Text.Encodings.Web, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Encodings.Web.4.5.0\lib\netstandard2.0\System.Text.Encodings.Web.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -77,6 +146,12 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Http, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.7\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.7\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
@@ -112,33 +187,51 @@
     <Content Include="Assets\css\layouts\footer.css" />
     <Content Include="Assets\css\layouts\footer.min.css" />
     <Content Include="Assets\css\layouts\group_fixedside.css" />
+    <Content Include="Assets\css\layouts\group_fixedside.min.css" />
     <Content Include="Assets\css\layouts\group_header.css" />
+    <Content Include="Assets\css\layouts\group_header.min.css" />
     <Content Include="Assets\css\layouts\header.css" />
     <Content Include="Assets\css\layouts\header.min.css" />
     <Content Include="Assets\css\layouts\messenger.css" />
+    <Content Include="Assets\css\layouts\messenger.min.css" />
     <Content Include="Assets\css\layouts\messenger_section.css" />
+    <Content Include="Assets\css\layouts\messenger_section.min.css" />
     <Content Include="Assets\css\layouts\post_box.css" />
+    <Content Include="Assets\css\layouts\post_box.min.css" />
+    <Content Include="Assets\css\pages\404page.css" />
+    <Content Include="Assets\css\pages\404page.min.css" />
     <Content Include="Assets\css\pages\group_anh.css" />
+    <Content Include="Assets\css\pages\group_anh.min.css" />
     <Content Include="Assets\css\pages\group_gioithtieu.css" />
+    <Content Include="Assets\css\pages\group_gioithtieu.min.css" />
     <Content Include="Assets\css\pages\group_thanhvien.css" />
+    <Content Include="Assets\css\pages\group_thanhvien.min.css" />
     <Content Include="Assets\css\pages\group_thaoluan.css" />
+    <Content Include="Assets\css\pages\group_thaoluan.min.css" />
     <Content Include="Assets\css\pages\login.css" />
     <Content Include="Assets\css\pages\login.min.css" />
     <Content Include="Assets\css\pages\newsfeed.css" />
+    <Content Include="Assets\css\pages\newsfeed.min.css" />
     <Content Include="Assets\css\pages\register-steps.css" />
     <Content Include="Assets\css\pages\register-steps.min.css" />
     <Content Include="Assets\css\pages\register.css" />
     <Content Include="Assets\css\pages\register.min.css" />
     <Content Include="Assets\css\pages\user-info.css" />
     <Content Include="Assets\css\pages\user-info.min.css" />
+    <Content Include="Assets\javascript\ChangePass.js" />
     <Content Include="Assets\javascript\ForgetPass.js" />
     <Content Include="Assets\javascript\Login.js" />
+    <Content Include="Assets\javascript\NewsFeed.js" />
+    <Content Include="Assets\javascript\Post.js" />
     <Content Include="Assets\javascript\Register.js" />
+    <Content Include="Assets\javascript\RegisterStep1.js" />
+    <Content Include="Assets\javascript\RegisterStep2.js" />
     <Content Include="Assets\js\header.js" />
     <Content Include="Assets\js\jquery-3.4.1.min.js" />
     <Content Include="Assets\js\love_button.js" />
     <Content Include="Assets\js\newsfeed.js" />
     <Content Include="Assets\js\popper.min.js" />
+    <Content Include="Assets\js\postbox.js" />
     <Content Include="Assets\js\user-info.js" />
     <Content Include="Assets\media\78834391_459110258126325_6149001856166133760_n.jpg" />
     <Content Include="Assets\media\css\layouts\footer.css" />
@@ -165,7 +258,6 @@
     <Content Include="Areas\Client\Views\Home\Index.cshtml" />
     <Content Include="Areas\Client\Views\Register\Index.cshtml" />
     <Content Include="Areas\Client\Views\ForgetPass\SendEmail.cshtml" />
-    <Content Include="Areas\Client\Views\ForgetPass\ChangePass.cshtml" />
     <Content Include="Areas\Client\Views\Layout\header.cshtml" />
     <Content Include="Areas\Client\Views\Layout\edit_sidebar.cshtml" />
     <Content Include="Areas\Client\Views\Layout\group\group_header.cshtml" />
@@ -176,10 +268,6 @@
     <Content Include="Areas\Client\Views\Group\Index.cshtml" />
     <Content Include="Areas\Client\Views\Shared\Newsfeed.cshtml" />
     <Content Include="Areas\Client\Views\Shared\Group.cshtml" />
-    <Content Include="Assets\css\pages\register-steps.css.map" />
-    <Content Include="Assets\css\pages\register-steps.scss" />
-    <Content Include="Assets\css\layouts\header.css.map" />
-    <Content Include="Assets\css\layouts\header.scss" />
     <Content Include="Areas\Client\Views\Register\RegisterStep1.cshtml" />
     <Content Include="Areas\Client\Views\Register\RegisterStep2.cshtml" />
     <Content Include="Areas\Client\Views\Register\RegisterStep3.cshtml" />
@@ -187,6 +275,56 @@
     <Content Include="Areas\Client\Views\Group\group_thaoluan.cshtml" />
     <Content Include="Areas\Client\Views\Group\group_anh.cshtml" />
     <Content Include="Areas\Client\Views\Group\group_thanhvien.cshtml" />
+    <Content Include="Areas\Client\Views\ChatBox\Index.cshtml" />
+    <Content Include="Areas\Client\Views\Personal\Index.cshtml" />
+    <Content Include="Areas\Client\Views\Error\Index.cshtml" />
+    <Content Include="Areas\Client\Views\ForgetPass\ChangePass.cshtml" />
+    <Content Include="Areas\Client\Views\Shared\_PersonalPage.cshtml" />
+    <Content Include="Areas\Client\Views\Personal\ChangeGeneralInfor.cshtml" />
+    <Content Include="Areas\Client\Views\Personal\ChangePassInfo.cshtml" />
+    <Content Include="Areas\Client\Views\Personal\Job_Edu.cshtml" />
+    <Content Include="Areas\Client\Views\Personal\LivingPlace.cshtml" />
+    <Content Include="Areas\Client\Views\Personal\Rela_Fami.cshtml" />
+    <Content Include="Areas\Client\Views\Personal\DetailInfo.cshtml" />
+    <Content Include="Areas\Client\Views\Personal\FriendsInfo.cshtml" />
+    <Content Include="Areas\Client\Views\Personal\ImagesInfo.cshtml" />
+    <Content Include="Areas\Client\Views\Personal\SavedInfo.cshtml" />
+    <Content Include="Areas\Client\Views\Personal\AlbumInfo.cshtml" />
+    <Content Include="Areas\Client\Views\Personal\VideoInfo.cshtml" />
+    <Content Include="Assets\css\layouts\footer.css.map" />
+    <Content Include="Assets\css\layouts\footer.scss" />
+    <Content Include="Assets\css\layouts\group_fixedside.css.map" />
+    <Content Include="Assets\css\layouts\group_fixedside.scss" />
+    <Content Include="Assets\css\layouts\group_header.css.map" />
+    <Content Include="Assets\css\layouts\group_header.scss" />
+    <Content Include="Assets\css\layouts\header.css.map" />
+    <Content Include="Assets\css\layouts\header.scss" />
+    <Content Include="Assets\css\layouts\messenger.css.map" />
+    <Content Include="Assets\css\layouts\messenger.scss" />
+    <Content Include="Assets\css\layouts\messenger_section.css.map" />
+    <Content Include="Assets\css\layouts\messenger_section.scss" />
+    <Content Include="Assets\css\layouts\post_box.css.map" />
+    <Content Include="Assets\css\layouts\post_box.scss" />
+    <Content Include="Assets\css\pages\404page.css.map" />
+    <Content Include="Assets\css\pages\404page.scss" />
+    <Content Include="Assets\css\pages\group_anh.css.map" />
+    <Content Include="Assets\css\pages\group_anh.scss" />
+    <Content Include="Assets\css\pages\group_gioithtieu.css.map" />
+    <Content Include="Assets\css\pages\group_gioithtieu.scss" />
+    <Content Include="Assets\css\pages\group_thanhvien.css.map" />
+    <Content Include="Assets\css\pages\group_thanhvien.scss" />
+    <Content Include="Assets\css\pages\group_thaoluan.css.map" />
+    <Content Include="Assets\css\pages\group_thaoluan.scss" />
+    <Content Include="Assets\css\pages\login.css.map" />
+    <Content Include="Assets\css\pages\login.scss" />
+    <Content Include="Assets\css\pages\newsfeed.css.map" />
+    <Content Include="Assets\css\pages\newsfeed.scss" />
+    <Content Include="Assets\css\pages\register-steps.css.map" />
+    <Content Include="Assets\css\pages\register-steps.scss" />
+    <Content Include="Assets\css\pages\register.css.map" />
+    <Content Include="Assets\css\pages\register.scss" />
+    <Content Include="Assets\css\pages\user-info.css.map" />
+    <Content Include="Assets\css\pages\user-info.scss" />
     <None Include="Assets\views\layouts\footer.cshtml" />
     <None Include="Assets\views\layouts\header.cshtml" />
     <None Include="Assets\views\layouts\user-info.cshtml" />
@@ -218,6 +356,12 @@
     <Content Include="Content\PagedList.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Global.asax" />
+    <Content Include="Images\22904751_688560231353134_2748711313877205190_o.jpg" />
+    <Content Include="Images\46511147_548625832231886_7575327484049096704_n.jpg" />
+    <Content Include="Images\60331415_453474005405695_5368361850419281920_o.jpg" />
+    <Content Include="Images\base-background.jpg" />
+    <Content Include="Images\84571659_2767643856796452_612394656314949632_n.jpg" />
+    <Content Include="Images\86698400_1992654244211645_6346707511562731520_o.jpg" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -246,6 +390,8 @@
     <Content Include="Scripts\jquery-3.0.0.min.js" />
     <Content Include="Scripts\jquery-3.0.0.slim.js" />
     <Content Include="Scripts\jquery-3.0.0.slim.min.js" />
+    <Content Include="Scripts\jquery.signalR-2.4.1.js" />
+    <Content Include="Scripts\jquery.signalR-2.4.1.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\popper-utils.js" />
     <Content Include="Scripts\popper-utils.min.js" />
@@ -327,14 +473,24 @@
     <Compile Include="Areas\Client\code\SessionHelper.cs" />
     <Compile Include="Areas\Client\code\UserSession.cs" />
     <Compile Include="Areas\Client\Controllers\BaseController.cs" />
+    <Compile Include="Areas\Client\Controllers\ChatBoxController.cs" />
+    <Compile Include="Areas\Client\Controllers\ErrorController.cs" />
     <Compile Include="Areas\Client\Controllers\ForgetPassController.cs" />
+    <Compile Include="Areas\Client\Controllers\FriendController.cs" />
     <Compile Include="Areas\Client\Controllers\GroupController.cs" />
     <Compile Include="Areas\Client\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Client\Controllers\ImageController.cs" />
+    <Compile Include="Areas\Client\Controllers\LocationsController.cs" />
     <Compile Include="Areas\Client\Controllers\LoginController.cs" />
+    <Compile Include="Areas\Client\Controllers\PersonalController.cs" />
+    <Compile Include="Areas\Client\Controllers\PostController.cs" />
     <Compile Include="Areas\Client\Controllers\RegisterController.cs" />
     <Compile Include="Areas\Client\Models\ForgetPassModel.cs" />
     <Compile Include="Areas\Client\Models\LoginModel.cs" />
-    <Compile Include="Areas\Client\Models\Register.cs" />
+    <Compile Include="Areas\Client\Models\SetLocationModal.cs" />
+    <Compile Include="Areas\Client\Models\RegisterModel.cs" />
+    <Compile Include="Hubs\PostHub.cs" />
+    <Compile Include="Startup.cs" />
     <Compile Include="Common\Accessories.cs" />
     <Compile Include="Common\CommonConstants.cs" />
     <Compile Include="Common\Encryptor.cs" />
@@ -342,20 +498,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Hubs\ChatHub.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
     <Content Include="Areas\Admin\Views\web.config" />
     <Content Include="Areas\Client\Views\web.config" />
-    <Content Include="Assets\css\layouts\footer.css.map" />
-    <Content Include="Assets\css\layouts\footer.scss" />
-    <Content Include="Assets\css\pages\login.css.map" />
-    <Content Include="Assets\css\pages\login.scss" />
-    <Content Include="Assets\css\pages\register.css.map" />
-    <Content Include="Assets\css\pages\register.scss" />
-    <Content Include="Assets\css\pages\user-info.css.map" />
-    <Content Include="Assets\css\pages\user-info.scss" />
     <Content Include="Assets\media\css\layouts\footer.css.map" />
     <Content Include="Assets\media\css\layouts\footer.scss" />
     <Content Include="Assets\media\css\layouts\header.css.map" />
@@ -400,9 +549,13 @@
     <Folder Include="Areas\Admin\Views\Shared\" />
     <Folder Include="Areas\Client\Views\Base\" />
     <Folder Include="Areas\Client\Views\Default\" />
+    <Folder Include="Areas\Client\Views\ImageModel\" />
+    <Folder Include="Areas\Client\Views\Locations\" />
+    <Folder Include="Areas\Client\Views\Post\" />
     <Folder Include="Areas\Client\Views\User\" />
     <Folder Include="Controllers\" />
     <Folder Include="Models\" />
+    <Folder Include="Videos\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
