@@ -34,7 +34,7 @@ namespace InsBook.Areas.Client.Controllers
                 var friend = new banbe();
                 friend.nguoidung1 = user.UserID;
                 friend.nguoidung2 = id2;
-                friend.xacnhan = 0;
+                friend.xacnhan = 1;
                 friend.nguoihanhdong = user.UserID;
                 friend.ngaybatdau = DateTime.Now;
                 friend.uutien = 1;

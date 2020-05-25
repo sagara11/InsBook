@@ -800,7 +800,7 @@ namespace InsBook.Areas.Client.Controllers
                 }, JsonRequestBehavior.AllowGet);
             }
         }
-        public JsonResult GetAllPostNewsFeed()
+        public JsonResult GetAllPostNewsFeed(int dem)
         {
             if (Session[CommonConstants.USER_SESSION] != null || Request.Cookies[CommonConstants.USER_COOKIE] != null)
             {
@@ -819,7 +819,7 @@ namespace InsBook.Areas.Client.Controllers
 
                 try
                 {
-                    var baiviet = new PostDao().GetAllPost(user.UserID, 2);
+                    var baiviet = new PostDao().GetAllPost(user.UserID, 2, dem);
                     return Json(new
                     {
                         status = true,

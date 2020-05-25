@@ -44,12 +44,12 @@ namespace InsBook.Areas.Client.Controllers
             // hàm này để load tất cả bài viết trong trang cá nhân
             if(friend_id == null)
             {
-                var baivet = new PostDao().GetAllPost(user.UserID, 1);
+                var baivet = new PostDao().GetAllPost(user.UserID, 1, 0);
                 ViewBag.BaiViet = baivet;
             }
             else
             {
-                var baivet = new PostDao().GetAllPost(friend_id.Value, 1);
+                var baivet = new PostDao().GetAllPost(friend_id.Value, 1, 0);
                 ViewBag.BaiViet = baivet;
             }
             ViewBag.Session_UserId = user.UserID;
