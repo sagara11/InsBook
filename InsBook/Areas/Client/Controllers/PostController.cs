@@ -338,7 +338,7 @@ namespace InsBook.Areas.Client.Controllers
                     return false;
                 }
             }
-            catch
+            catch(Exception ex)
             {
                 return false;
             }

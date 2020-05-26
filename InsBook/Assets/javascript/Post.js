@@ -574,7 +574,7 @@ function AddPost() {
                                 '                                                        </div>' +
                                 '                                                    </div>' +
                                 '' +
-                                '                                                    <p class="post-content-text" id="modal-post-content-text-' + add.id + '></p>' +
+                                '                                                    <p class="post-content-text" id="modal-post-content-text-' + add.id + '"> </p>' +
                                 '                                                    <div class="post-socialfunction">' +
                                 '' +
                                 '                                                        <div class="user-comments" id="modal-user-comments-' + add.id + '">' +
@@ -610,8 +610,8 @@ function AddPost() {
                                 '                                                        </section>' +
                                 '                                                        <section class="comment-bar" id="comment-bar-' + add.id + '">' +
                                 '                                                            <div class="form-group">' +
-                                '<textarea class="form-control" placeholder="Thêm bình luận..." oninput="auto_grow(this)" id="modal-post-comment-content-' + add.id + '"></textarea>' +
-                                '</div>' +
+                                '                                                                <textarea class="form-control" placeholder="Thêm bình luận..." oninput="auto_grow(this)" id="modal-post-comment-content-' + add.id + '"></textarea>' +
+                                '                                                            </div>' +
                                 '                                                            <button type="button" class="btn btn-light modal-post-comment-button" id="modal-post-comment-button-' + add.id + '">Đăng</button>' +
                                 '                                                        </section>' +
                                 '                                                    </div>' +

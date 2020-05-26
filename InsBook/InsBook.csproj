@@ -184,6 +184,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\css\layouts\cropper.min.css" />
     <Content Include="Assets\css\layouts\footer.css" />
     <Content Include="Assets\css\layouts\footer.min.css" />
     <Content Include="Assets\css\layouts\group_fixedside.css" />
@@ -192,6 +193,7 @@
     <Content Include="Assets\css\layouts\group_header.min.css" />
     <Content Include="Assets\css\layouts\header.css" />
     <Content Include="Assets\css\layouts\header.min.css" />
+    <Content Include="Assets\css\layouts\jquery-ui.css" />
     <Content Include="Assets\css\layouts\messenger.css" />
     <Content Include="Assets\css\layouts\messenger.min.css" />
     <Content Include="Assets\css\layouts\messenger_section.css" />
@@ -226,12 +228,16 @@
     <Content Include="Assets\javascript\Register.js" />
     <Content Include="Assets\javascript\RegisterStep1.js" />
     <Content Include="Assets\javascript\RegisterStep2.js" />
+    <Content Include="Assets\js\cropper.min.js" />
+    <Content Include="Assets\js\font-awesome.js" />
     <Content Include="Assets\js\header.js" />
     <Content Include="Assets\js\jquery-3.4.1.min.js" />
+    <Content Include="Assets\js\jquery-ui.min.js" />
     <Content Include="Assets\js\love_button.js" />
     <Content Include="Assets\js\newsfeed.js" />
     <Content Include="Assets\js\popper.min.js" />
     <Content Include="Assets\js\postbox.js" />
+    <Content Include="Assets\js\sweetalert2%409.js" />
     <Content Include="Assets\js\user-info.js" />
     <Content Include="Assets\media\78834391_459110258126325_6149001856166133760_n.jpg" />
     <Content Include="Assets\media\css\layouts\footer.css" />
