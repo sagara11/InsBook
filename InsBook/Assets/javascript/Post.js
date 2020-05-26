@@ -332,9 +332,11 @@ function AddPost() {
         };
         var formData = new FormData();
         var token = $('input[name="__RequestVerificationToken"]').val();
-
+        var url = window.location.href.split('/');
+        var friendID = url[6];
         formData.append('__RequestVerificationToken', token); //form[0]
         formData.append('post', JSON.stringify(post)); //fomr[1]
+        formData.append('friendID', friendID); //fomr[2]
 
         for (var i = 0; i < selected_img.length; i++) {
             formData.append("post_images_" + i, selected_img[i]);

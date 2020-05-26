@@ -30,7 +30,7 @@ namespace InsBook.Areas.Client.Controllers
             //var tenchude = new TopicDao().GetAllName();
             //ViewBag.TenDD = tendd;
             // hàm này để load tất cả bài viết trong trang cá nhân
-            var baivet = new PostDao().GetAllPost(user.UserID, 2);
+            var baivet = new PostDao().GetAllPost(user.UserID, 2, 0);
             ViewBag.BaiViet = baivet;
             ViewBag.Session_UserId = user.UserID;
             return View();

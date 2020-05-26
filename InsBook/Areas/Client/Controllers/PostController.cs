@@ -134,6 +134,8 @@ namespace InsBook.Areas.Client.Controllers
                     JavaScriptSerializer serializer = new JavaScriptSerializer();
                     dynamic baiviet = serializer.Deserialize<object>(data["post"]);
 
+                    var friendID = data["friendID"];
+
                     List<string> urls = new List<string>();
 
                     List<Int64> post_img_id = new List<Int64>();
@@ -150,7 +152,18 @@ namespace InsBook.Areas.Client.Controllers
                         post.diadiem_id = diadiem_id;
                     }
                     post.baomat = Convert.ToInt32(baiviet["security"]);
-                    post.loaibaiviet = 0;
+                    if (friendID == null)
+                    {
+                        post.loaibaiviet = 0;
+                    }
+                    else if (friendID == user.UserID.ToString())
+                    {
+                        post.loaibaiviet = 0;
+                    }
+                    else
+                    {
+                        post.loaibaiviet = 1;
+                    }
                     Int64 postID = 0;
                     if (Request.Files.Count == 1)
                     {
@@ -172,7 +185,18 @@ namespace InsBook.Areas.Client.Controllers
 
                             postImg.nguoitao_id = user.UserID;
                             postImg.baomat = Convert.ToInt32(baiviet["security"]); // 
-                            postImg.loaibaiviet = 0;
+                            if(friendID == null)
+                            {
+                                postImg.loaibaiviet = 0;
+                            }
+                            else if(friendID == user.UserID.ToString())
+                            {
+                                postImg.loaibaiviet = 0;
+                            }
+                            else
+                            {
+                                postImg.loaibaiviet = 1;
+                            }
                             postImg.parent_id = postID;
 
                             var post_id = Post(postImg, 0);
@@ -240,6 +264,10 @@ namespace InsBook.Areas.Client.Controllers
                         }
                         getpost.anh = imgg;
                         getpost.thoigiandang = (getpost.id >> 23) & 0x1FFFFFFFFFF;
+
+
+                        var result = new PostDao().AddPostFriend(getpost.id, friendID);
+
 
                         return Json(new
                         {
@@ -800,7 +828,7 @@ namespace InsBook.Areas.Client.Controllers
                 }, JsonRequestBehavior.AllowGet);
             }
         }
-        public JsonResult GetAllPostNewsFeed()
+        public JsonResult GetAllPostNewsFeed(int dem)
         {
             if (Session[CommonConstants.USER_SESSION] != null || Request.Cookies[CommonConstants.USER_COOKIE] != null)
             {
@@ -819,7 +847,7 @@ namespace InsBook.Areas.Client.Controllers
 
                 try
                 {
-                    var baiviet = new PostDao().GetAllPost(user.UserID, 2);
+                    var baiviet = new PostDao().GetAllPost(user.UserID, 2, dem);
                     return Json(new
                     {
                         status = true,

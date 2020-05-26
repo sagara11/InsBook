@@ -1,11 +1,14 @@
 ﻿$(document).ready(function () {
+    var dem = 4;
     $(window).scroll(function () {
         if ($(window).scrollTop() >= $(document).height() - $(window).height()) {
             $.ajax({
                 type: 'get',
                 url: '/Client/Post/GetAllPostNewsFeed',
                 dataType: 'json',
+                data: { dem: dem },
                 success: function (response) {
+                    dem = dem + 4; 
                     if (response.status == true) {
                         var url = window.location.href.split('/');
                         var baseUrl = url[0] + '//' + url[2];

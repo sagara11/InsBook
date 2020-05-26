@@ -217,7 +217,7 @@ namespace Model.Dao
         // lấy bài viết từ db 
 
         
-        public List<GetPostModel> GetAllPost(int userID, int loaitrang)
+        public List<GetPostModel> GetAllPost(int userID, int loaitrang, int dem)
         {
             // 1 là tìm bài viết ở trang cá nhân
             // 2 là tìm bài viết ở trang home
@@ -232,7 +232,7 @@ namespace Model.Dao
             }
             else if (loaitrang == 2)
             {
-                posts = db.Database.SqlQuery<GetPostModel>("GetAllPostNewsFeed @userID", new SqlParameter("@userID", userID)).ToList();
+                posts = db.Database.SqlQuery<GetPostModel>("GetAllPostNewsFeed @userID", new SqlParameter("@userID", userID)).Skip(dem).Take(4).ToList();
             }
             
             foreach (var post in posts)
@@ -553,6 +553,15 @@ namespace Model.Dao
             {
                 return null;
             }
+        }
+        public bool AddPostFriend(Int64 postID ,string friendID)
+        {
+            var id = int.Parse(friendID);
+            baiviet baiviet = db.baiviets.SingleOrDefault(x => x.id == postID);
+            nguoidung nguoidung = db.nguoidungs.SingleOrDefault(x => x.id == id);
+            nguoidung.baiviets1.Add(baiviet);
+            db.SaveChanges();
+            return true;
         }
     }
 }
