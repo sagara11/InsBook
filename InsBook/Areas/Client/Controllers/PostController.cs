@@ -152,7 +152,7 @@ namespace InsBook.Areas.Client.Controllers
                         post.diadiem_id = diadiem_id;
                     }
                     post.baomat = Convert.ToInt32(baiviet["security"]);
-                    if (friendID == null)
+                    if (friendID == "undefined")
                     {
                         post.loaibaiviet = 0;
                     }
@@ -265,8 +265,10 @@ namespace InsBook.Areas.Client.Controllers
                         getpost.anh = imgg;
                         getpost.thoigiandang = (getpost.id >> 23) & 0x1FFFFFFFFFF;
 
-
-                        var result = new PostDao().AddPostFriend(getpost.id, friendID);
+                        if(friendID != "undefined" && friendID != user.UserID.ToString())
+                        {
+                            var result = new PostDao().AddPostFriend(getpost.id, friendID);
+                        }
 
 
                         return Json(new

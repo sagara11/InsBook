@@ -556,12 +556,19 @@ namespace Model.Dao
         }
         public bool AddPostFriend(Int64 postID ,string friendID)
         {
-            var id = int.Parse(friendID);
-            baiviet baiviet = db.baiviets.SingleOrDefault(x => x.id == postID);
-            nguoidung nguoidung = db.nguoidungs.SingleOrDefault(x => x.id == id);
-            nguoidung.baiviets1.Add(baiviet);
-            db.SaveChanges();
-            return true;
+            try
+            {
+                var id = int.Parse(friendID);
+                baiviet baiviet = db.baiviets.SingleOrDefault(x => x.id == postID);
+                nguoidung nguoidung = db.nguoidungs.SingleOrDefault(x => x.id == id);
+                nguoidung.baiviets1.Add(baiviet);
+                db.SaveChanges();
+                return true;
+            }
+            catch(Exception ex)
+            {
+                return false;
+            }
         }
     }
 }

@@ -73,6 +73,13 @@ add_friends = [...friends];
 var selected_edit_friends = [];
 var edit_friends = [...friends];
 
+//Hàm thêm ảnh cho bài viết
+var selected_img = [];
+var js = 0;
+//Hỗ trợ sửa ảnh cho bài viết
+var edit_selected_img = [];
+var edit_js;
+
 $("#post-banbe-data")
     // don't navigate away from the field on tab when selecting an item
     .on("keydown", function (event) {
@@ -213,12 +220,6 @@ function DeleteFriendTag(friendId, e, postId) { //postId = -1 khi thêm bài
         }
     }
 }
-//Hàm thêm ảnh cho bài viết
-var selected_img = [];
-var js = 0;
-//Hỗ trợ sửa ảnh cho bài viết
-var edit_selected_img = [];
-var edit_js;
 
 function readURL(input, postId) { //postId = -1 khi thêm bài viết
     if ($("#show-edit-post-" + postId).hasClass('show') && postId !== -1) {
@@ -337,7 +338,7 @@ function AddPost() {
         formData.append('__RequestVerificationToken', token); //form[0]
         formData.append('post', JSON.stringify(post)); //fomr[1]
         formData.append('friendID', friendID); //fomr[2]
-
+        var haha = selected_img.length;
         for (var i = 0; i < selected_img.length; i++) {
             formData.append("post_images_" + i, selected_img[i]);
         }
