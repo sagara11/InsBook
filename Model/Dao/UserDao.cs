@@ -293,5 +293,18 @@ namespace Model.Dao
                 return banbe;
             }
         }
+        public string GetAvatar(int userID)
+        {
+            try
+            {
+                var user = db.nguoidungs.Find(userID);
+                var anh = db.anhs.Find(user.anhdd);
+                return anh.anh_url;
+            }
+            catch
+            {
+                return "false";
+            }
+        }
     }
 }

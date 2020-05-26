@@ -15,9 +15,9 @@ namespace Model.EF
             bosuutaps = new HashSet<bosuutap>();
             bosuutaps1 = new HashSet<bosuutap>();
             congties = new HashSet<congty>();
-            diadiem1 = new HashSet<diadiem>();
             nguoidung_diadiem = new HashSet<nguoidung_diadiem>();
             truonghocs = new HashSet<truonghoc>();
+            diadiem1 = new HashSet<diadiem>();
         }
 
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
@@ -41,14 +41,14 @@ namespace Model.EF
         public virtual ICollection<congty> congties { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<diadiem> diadiem1 { get; set; }
-
-        public virtual diadiem diadiem2 { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<nguoidung_diadiem> nguoidung_diadiem { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<truonghoc> truonghocs { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<diadiem> diadiem1 { get; set; }
+
+        public virtual diadiem diadiem2 { get; set; }
     }
 }

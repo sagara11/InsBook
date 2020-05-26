@@ -53,6 +53,7 @@ namespace InsBook.Areas.Client.Controllers
                 ViewBag.BaiViet = baivet;
             }
             ViewBag.Session_UserId = user.UserID;
+            ViewBag.Avatar = new UserDao().GetAvatar(user.UserID);
             return View();
         }
         //----------------------CAI DAT CHUNG-------------------------------------------
