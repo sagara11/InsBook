@@ -28,7 +28,7 @@
                         </div>
                         <div id="user-name">
                             <p>
-                                <a href="#">@Profile.tennguoidung</a>
+                                <a href="/Client/Personal/Index/@Profile.id">@Profile.tennguoidung</a>
                             </p>
                             <p>
                                 <small>
@@ -116,14 +116,14 @@
                                 <div class="post-info">
                                     <img src="/Images/@post.avatarnguoidang" class="rounded rounded-circle lazy" width="50px" height="50px" alt="">
                                     <p class="post-user-info-@post.id">
-                                        <a href="#" title="">@post.tennguoidang</a>
+                                        <a href="/Client/Personal/Index/@post.idnguoidang" title="">@post.tennguoidang</a>
                                         @if (post.ganthe.Count != 0)
                                         {
                                             <span>
                                                 với
                                                 @foreach (var ganthe in post.ganthe)
                                                 {
-                                                    <a href="#"><b>@ganthe.ten, </b></a>
+                                                    <a href="/Client/Personal/Index/@ganthe.id"><b>@ganthe.ten, </b></a>
                                                 }
                                             </span>
                                         }
@@ -144,12 +144,15 @@
                                                     <li>
                                                         <a class="report" href="">Báo cáo</a>
                                                     </li>
-                                                    <li>
-                                                        <a href="#" onclick="EditPost(@post.id, event, @userID)">Sửa bài viết</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#" onclick="DeletePost(@post.id, event, @userID)">Xóa bài viết</a>
-                                                    </li>
+                                                    @if (userID == post.idnguoidang)
+                                                    {
+                                                        <li>
+                                                            <a href="#" onclick="EditPost(@post.id, event, @userID)">Sửa bài viết</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#" onclick="DeletePost(@post.id, event, @userID)">Xóa bài viết</a>
+                                                        </li>
+                                                    }
                                                 </ul>
                                             </div>
                                         </div>

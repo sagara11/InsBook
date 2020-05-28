@@ -850,11 +850,13 @@ namespace InsBook.Areas.Client.Controllers
                 try
                 {
                     var baiviet = new PostDao().GetAllPost(user.UserID, 2, dem);
+                    
                     return Json(new
                     {
                         status = true,
                         baiviet,
                         userID = user.UserID,
+
                     }, JsonRequestBehavior.AllowGet);
                 }
                 catch (Exception ex)

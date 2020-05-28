@@ -299,12 +299,15 @@
                                                     <li>
                                                         <a class="report" href="">Báo cáo</a>
                                                     </li>
-                                                    <li>
-                                                        <a href="#" onclick="EditPost(@post.id, event, @userID)">Sửa bài viết</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#" onclick="DeletePost(@post.id, event, @userID)">Xóa bài viết</a>
-                                                    </li>
+                                                    @if (userID == post.idnguoidang)
+                                                    {
+                                                        <li>
+                                                            <a href="#" onclick="EditPost(@post.id, event, @userID)">Sửa bài viết</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#" onclick="DeletePost(@post.id, event, @userID)">Xóa bài viết</a>
+                                                        </li>
+                                                    }
                                                 </ul>
                                             </div>
                                         </div>
