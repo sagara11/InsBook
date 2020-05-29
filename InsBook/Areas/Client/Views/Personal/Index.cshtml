@@ -138,26 +138,14 @@
                     </div>
                     <div class="user-images-content">
                         <div class="row">
-                            <div class="col-md-4">
-                                <div class="user-image">
-                                    <img src="~/Images/22904751_688560231353134_2748711313877205190_o.jpg" alt="">
+                            @foreach (var anh in Profile.myalbum)
+                            {
+                                <div class="col-md-4">
+                                    <div class="user-image">
+                                        <img src="~/Images/@anh.anh_url" alt="">
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="user-image">
-                                    <img src="~/Images/22904751_688560231353134_2748711313877205190_o.jpg" alt="">
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="user-image">
-                                    <img src="~/Images/22904751_688560231353134_2748711313877205190_o.jpg" alt="">
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="user-image">
-                                    <img src="~/Images/22904751_688560231353134_2748711313877205190_o.jpg" alt="">
-                                </div>
-                            </div>
+                            }
                         </div>
                     </div>
                 </div>
@@ -170,30 +158,15 @@
                     </div>
                     <div class="user-friends-content">
                         <div class="row">
-                            <div class="col-md-4">
-                                <div class="user-friend-image">
-                                    <img src="~/Images/22904751_688560231353134_2748711313877205190_o.jpg" alt="">
+                            @foreach (var banbe in Profile.banbe)
+                            {
+                                <div class="col-md-4">
+                                    <div class="user-friend-image">
+                                        <img src="~/Images/@banbe.banbe_anhdd" alt="">
+                                    </div>
+                                    <a href="/Client/Personal/Index/@banbe.banbe_id" title="Long Uchiha">@banbe.banbe_ten</a>
                                 </div>
-                                <a href="#" title="Phong Con">Phong Con</a>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="user-friend-image">
-                                    <img src="~/Images/22904751_688560231353134_2748711313877205190_o.jpg" alt="">
-                                </div>
-                                <a href="#" title="Dũng Trọc">Dũng Trọc</a>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="user-friend-image">
-                                    <img src="~/Images/22904751_688560231353134_2748711313877205190_o.jpg" alt="">
-                                </div>
-                                <a href="#" title="Thông Mặt Sẹo">Thông Mặt Sẹo</a>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="user-friend-image">
-                                    <img src="~/Images/22904751_688560231353134_2748711313877205190_o.jpg" alt="">
-                                </div>
-                                <a href="#" title="Long Uchiha">Long Uchiha</a>
-                            </div>
+                            }
                         </div>
                     </div>
                 </div>

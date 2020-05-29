@@ -175,6 +175,10 @@ namespace Model.Dao
 
             profile.truonghoc = db.Database.SqlQuery<profile_truonghoc>("Profile_truonghoc @id", new SqlParameter("@id", userId)).ToList();
 
+            profile.banbe = db.Database.SqlQuery<profile_banbe>("Profile_banbe @id", new SqlParameter("@id", userId)).ToList();
+
+            profile.myalbum = db.Database.SqlQuery<profile_anh>("Profile_myalbum @id", new SqlParameter("@id", userId)).ToList();
+
             return profile;
         }
 
