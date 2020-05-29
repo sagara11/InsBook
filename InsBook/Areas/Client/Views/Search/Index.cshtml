@@ -1,0 +1,54 @@
+﻿
+@{
+    ViewBag.Title = "Search";
+    Layout = "~/Areas/Client/Views/Shared/Newsfeed.cshtml";
+}
+@section css {
+    <link href="~/Assets/css/layouts/header.css" rel="stylesheet" />
+    <link href="~/Assets/css/layouts/post_box.css" rel="stylesheet" />
+    <link href="~/Assets/css/layouts/messenger_section.css" rel="stylesheet" />
+    <link href="~/Assets/css/layouts/messenger.css" rel="stylesheet" />
+}
+@{
+    Html.RenderPartial("~/Areas/Client/Views/Layout/header.cshtml");
+}
+<main>
+    <div class="container_new">
+        <div class="row">
+            <div class="col-25">
+                <div class="fixed-side">
+                    <!-- Group - Page -->
+                    @{
+                        Html.RenderPartial("~/Areas/Client/Views/Layout/group/group_page.cshtml");
+                    }
+                </div>
+            </div>
+            <div class="col-50">
+                <!-- Search section -->
+                search
+            </div>
+            <div class="col-25">
+                <div class="fixed-side">
+                    <!-- Messenger-section -->
+                    @{
+                        Html.RenderPartial("~/Areas/Client/Views/Layout/messenger/messenger_section.cshtml");
+                    }
+                </div>
+
+            </div>
+        </div>
+    </div>
+</main>
+@section js{
+    <script src="~/Assets/js/messenger.js"></script>
+    <script src="~/Assets/js/love_button.js"></script>
+    <!-- cdnjs -->
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery.lazy/1.7.9/jquery.lazy.min.js"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery.lazy/1.7.9/jquery.lazy.plugins.min.js"></script>
+    <!---->
+    <script src="~/Scripts/jquery.signalR-2.4.1.min.js"></script>
+    <script src="~/signalr/hubs"></script>
+    <!---->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+}
+
