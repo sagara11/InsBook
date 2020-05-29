@@ -175,6 +175,10 @@ namespace Model.Dao
 
             profile.truonghoc = db.Database.SqlQuery<profile_truonghoc>("Profile_truonghoc @id", new SqlParameter("@id", userId)).ToList();
 
+            profile.banbe = db.Database.SqlQuery<profile_banbe>("Profile_banbe @id", new SqlParameter("@id", userId)).ToList();
+
+            profile.myalbum = db.Database.SqlQuery<profile_anh>("Profile_myalbum @id", new SqlParameter("@id", userId)).ToList();
+
             return profile;
         }
 
@@ -291,6 +295,19 @@ namespace Model.Dao
             catch
             {
                 return banbe;
+            }
+        }
+        public string GetAvatar(int userID)
+        {
+            try
+            {
+                var user = db.nguoidungs.Find(userID);
+                var anh = db.anhs.Find(user.anhdd);
+                return anh.anh_url;
+            }
+            catch
+            {
+                return "false";
             }
         }
     }

@@ -65,11 +65,6 @@ namespace Model.EF
                 .IsUnicode(false);
 
             modelBuilder.Entity<baiviet>()
-                .HasMany(e => e.baiviet1)
-                .WithOptional(e => e.baiviet2)
-                .HasForeignKey(e => e.parent_id);
-
-            modelBuilder.Entity<baiviet>()
                 .HasMany(e => e.baiviet_binhluan)
                 .WithOptional(e => e.baiviet)
                 .HasForeignKey(e => e.baiviet_id)
@@ -84,6 +79,11 @@ namespace Model.EF
                 .HasMany(e => e.baiviet_luu)
                 .WithRequired(e => e.baiviet)
                 .HasForeignKey(e => e.baiviet_id);
+
+            modelBuilder.Entity<baiviet>()
+                .HasMany(e => e.baiviet1)
+                .WithOptional(e => e.baiviet2)
+                .HasForeignKey(e => e.parent_id);
 
             modelBuilder.Entity<baiviet>()
                 .HasMany(e => e.nguoidungs)
@@ -279,11 +279,6 @@ namespace Model.EF
                 .HasForeignKey(e => e.diadiem_id);
 
             modelBuilder.Entity<diadiem>()
-                .HasMany(e => e.diadiem1)
-                .WithOptional(e => e.diadiem2)
-                .HasForeignKey(e => e.parent_id);
-
-            modelBuilder.Entity<diadiem>()
                 .HasMany(e => e.nguoidung_diadiem)
                 .WithRequired(e => e.diadiem)
                 .HasForeignKey(e => e.diadiem_id)
@@ -293,6 +288,11 @@ namespace Model.EF
                 .HasMany(e => e.truonghocs)
                 .WithOptional(e => e.diadiem)
                 .HasForeignKey(e => e.diadiem_id);
+
+            modelBuilder.Entity<diadiem>()
+                .HasMany(e => e.diadiem1)
+                .WithOptional(e => e.diadiem2)
+                .HasForeignKey(e => e.parent_id);
 
             modelBuilder.Entity<nguoidung>()
                 .Property(e => e.duong_dan)

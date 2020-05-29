@@ -286,35 +286,42 @@ namespace Model.Dao
         }
         public GetPostModel GetSinglePost(Int64 postId)
         {
-            // lấy ba
-            var post = db.Database.SqlQuery<GetPostModel>("GetSinglePost @postID", new SqlParameter("@postID", postId)).SingleOrDefault();
-            if (post.diadiem_id != null)
+            try
             {
-                post.diadiem = db.Database.SqlQuery<string>("select diadiem.ten from diadiem where diadiem.id =" + post.diadiem_id).SingleOrDefault();
-            }
-
-            post.ganthe = db.Database.SqlQuery<post_ganthe>("GetPostTags @postID", new SqlParameter("@postID", post.id)).ToList();
-            post.anh = db.Database.SqlQuery<post_anh>("GetPostImages @postID", new SqlParameter("@postID", post.id)).ToList();
-            post.luotthich = db.Database.SqlQuery<int>("CountPostLike @postID", new SqlParameter("@postID", post.id)).SingleOrDefault();
-            post.dsnguoithich = db.Database.SqlQuery<dsnguoithich>("GetListLikePost @postID", new SqlParameter("@postID", post.id)).ToList();
-
-            post.comment = db.Database.SqlQuery<post_comment>("GetPostComment @postID, @parent_id", new SqlParameter("@postID", post.id), new SqlParameter("@parent_id", -1)).ToList();
-
-            if (post.comment.Count > 0)
-            {
-                post.luotbinhluan = post.comment.Count;
-                foreach (post_comment item in post.comment)
+                // lấy ba
+                var post = db.Database.SqlQuery<GetPostModel>("GetSinglePost @postID", new SqlParameter("@postID", postId)).SingleOrDefault();
+                if (post.diadiem_id != null)
                 {
-                    item.comment_child = db.Database.SqlQuery<post_comment_child>("GetPostComment @postID, @parent_id", new SqlParameter("@postID", post.id), new SqlParameter("@parent_id", item.comment_id)).ToList();
-                    if (item.comment_child.Count > 0)
+                    post.diadiem = db.Database.SqlQuery<string>("select diadiem.ten from diadiem where diadiem.id =" + post.diadiem_id).SingleOrDefault();
+                }
+
+                post.ganthe = db.Database.SqlQuery<post_ganthe>("GetPostTags @postID", new SqlParameter("@postID", post.id)).ToList();
+                post.anh = db.Database.SqlQuery<post_anh>("GetPostImages @postID", new SqlParameter("@postID", post.id)).ToList();
+                post.luotthich = db.Database.SqlQuery<int>("CountPostLike @postID", new SqlParameter("@postID", post.id)).SingleOrDefault();
+                post.dsnguoithich = db.Database.SqlQuery<dsnguoithich>("GetListLikePost @postID", new SqlParameter("@postID", post.id)).ToList();
+
+                post.comment = db.Database.SqlQuery<post_comment>("GetPostComment @postID, @parent_id", new SqlParameter("@postID", post.id), new SqlParameter("@parent_id", -1)).ToList();
+
+                if (post.comment.Count > 0)
+                {
+                    post.luotbinhluan = post.comment.Count;
+                    foreach (post_comment item in post.comment)
                     {
-                        item.luotbinhluan = item.comment_child.Count;
+                        item.comment_child = db.Database.SqlQuery<post_comment_child>("GetPostComment @postID, @parent_id", new SqlParameter("@postID", post.id), new SqlParameter("@parent_id", item.comment_id)).ToList();
+                        if (item.comment_child.Count > 0)
+                        {
+                            item.luotbinhluan = item.comment_child.Count;
+                        }
                     }
                 }
-            }
-            post.thoigiandang = (post.id >> 23) & 0x1FFFFFFFFFF;
+                post.thoigiandang = (post.id >> 23) & 0x1FFFFFFFFFF;
 
-            return post;
+                return post;
+            }
+            catch(Exception ex)
+            {
+                return null;
+            }
         }
         public List<dsnguoithich> GetListLike(Int64 postId)
         {
@@ -396,38 +403,46 @@ namespace Model.Dao
         //}
         public bool DeletePost(Int64 postId, int userid)
         {
-            // Tìm thông tin bài viết
-            var post = db.baiviets.Find(postId);
-            if (post.nguoitao_id == userid)
+            try
             {
-                //xóa bài viết
-                //___xóa bài viết bình luận: OK
-                //___xóa bài viết thích: OK
-                //___bài viết gắn thẻ: OK
-                //___bài viết ảnh: đã xóa baiviet_anh và chưa xóa ảnh ảnh trong bảng ảnh
-                //___bài viết con: chưa xóa bài viết con
-                //______xóa bài con viết bình luận: OK
-                //______xóa bài con viết thích: OK
-                //______bài viết con gắn thẻ: OK
-                //______bài viết con ảnh: đã xóa baiviet_anh và chưa xóa ảnh ảnh trong bảng ảnh
-                var post_childs = db.Database.SqlQuery<Int64>("select baiviet.id from baiviet where baiviet.parent_id =" + postId).ToList();
-
-                if (post_childs.Count > 1)
+                // Tìm thông tin bài viết
+                var post = db.baiviets.Find(postId);
+                if (post.nguoitao_id == userid)
                 {
-                    db.baiviets.RemoveRange(db.baiviets.Where(p => p.parent_id == postId));
-                    db.SaveChanges();
-                    db.baiviets.Remove(post);
-                    db.SaveChanges();
+                    //xóa bài viết
+                    //___xóa bài viết bình luận: OK
+                    //___xóa bài viết thích: OK
+                    //___bài viết gắn thẻ: OK
+                    //___bài viết ảnh: đã xóa baiviet_anh và chưa xóa ảnh ảnh trong bảng ảnh
+                    //___bài viết con: chưa xóa bài viết con
+                    //______xóa bài con viết bình luận: OK
+                    //______xóa bài con viết thích: OK
+                    //______bài viết con gắn thẻ: OK
+                    //______bài viết con ảnh: đã xóa baiviet_anh và chưa xóa ảnh ảnh trong bảng ảnh
+                    var post_childs = db.Database.SqlQuery<Int64>("select baiviet.id from baiviet where baiviet.parent_id =" + postId).ToList();
+
+                    if (post_childs.Count > 1)
+                    {
+                        db.baiviets.RemoveRange(db.baiviets.Where(p => p.parent_id == postId));
+                        db.SaveChanges();
+                        db.baiviets.Remove(post);
+                        db.SaveChanges();
+                    }
+                    else
+                    {
+                        db.baiviets.Remove(post);
+                        db.SaveChanges();
+                    }
+                    return true;
                 }
                 else
                 {
-                    db.baiviets.Remove(post);
-                    db.SaveChanges();
+                    return false;
                 }
-                return true;
             }
-            else
+            catch(Exception ex)
             {
+                Console.WriteLine(ex.InnerException.Message);
                 return false;
             }
         }
@@ -537,6 +552,22 @@ namespace Model.Dao
             catch
             {
                 return null;
+            }
+        }
+        public bool AddPostFriend(Int64 postID ,string friendID)
+        {
+            try
+            {
+                var id = int.Parse(friendID);
+                baiviet baiviet = db.baiviets.SingleOrDefault(x => x.id == postID);
+                nguoidung nguoidung = db.nguoidungs.SingleOrDefault(x => x.id == id);
+                nguoidung.baiviets1.Add(baiviet);
+                db.SaveChanges();
+                return true;
+            }
+            catch(Exception ex)
+            {
+                return false;
             }
         }
     }

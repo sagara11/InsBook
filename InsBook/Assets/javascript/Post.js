@@ -73,6 +73,13 @@ add_friends = [...friends];
 var selected_edit_friends = [];
 var edit_friends = [...friends];
 
+//Hàm thêm ảnh cho bài viết
+var selected_img = [];
+var js = 0;
+//Hỗ trợ sửa ảnh cho bài viết
+var edit_selected_img = [];
+var edit_js;
+
 $("#post-banbe-data")
     // don't navigate away from the field on tab when selecting an item
     .on("keydown", function (event) {
@@ -213,12 +220,6 @@ function DeleteFriendTag(friendId, e, postId) { //postId = -1 khi thêm bài
         }
     }
 }
-//Hàm thêm ảnh cho bài viết
-var selected_img = [];
-var js = 0;
-//Hỗ trợ sửa ảnh cho bài viết
-var edit_selected_img = [];
-var edit_js;
 
 function readURL(input, postId) { //postId = -1 khi thêm bài viết
     if ($("#show-edit-post-" + postId).hasClass('show') && postId !== -1) {
@@ -332,10 +333,12 @@ function AddPost() {
         };
         var formData = new FormData();
         var token = $('input[name="__RequestVerificationToken"]').val();
-
+        var url = window.location.href.split('/');
+        var friendID = url[6];
         formData.append('__RequestVerificationToken', token); //form[0]
         formData.append('post', JSON.stringify(post)); //fomr[1]
-
+        formData.append('friendID', friendID); //fomr[2]
+        var haha = selected_img.length;
         for (var i = 0; i < selected_img.length; i++) {
             formData.append("post_images_" + i, selected_img[i]);
         }
@@ -574,7 +577,7 @@ function AddPost() {
                                 '                                                        </div>' +
                                 '                                                    </div>' +
                                 '' +
-                                '                                                    <p class="post-content-text" id="modal-post-content-text-' + add.id + '></p>' +
+                                '                                                    <p class="post-content-text" id="modal-post-content-text-' + add.id + '"> </p>' +
                                 '                                                    <div class="post-socialfunction">' +
                                 '' +
                                 '                                                        <div class="user-comments" id="modal-user-comments-' + add.id + '">' +
@@ -610,8 +613,8 @@ function AddPost() {
                                 '                                                        </section>' +
                                 '                                                        <section class="comment-bar" id="comment-bar-' + add.id + '">' +
                                 '                                                            <div class="form-group">' +
-                                '<textarea class="form-control" placeholder="Thêm bình luận..." oninput="auto_grow(this)" id="modal-post-comment-content-' + add.id + '"></textarea>' +
-                                '</div>' +
+                                '                                                                <textarea class="form-control" placeholder="Thêm bình luận..." oninput="auto_grow(this)" id="modal-post-comment-content-' + add.id + '"></textarea>' +
+                                '                                                            </div>' +
                                 '                                                            <button type="button" class="btn btn-light modal-post-comment-button" id="modal-post-comment-button-' + add.id + '">Đăng</button>' +
                                 '                                                        </section>' +
                                 '                                                    </div>' +

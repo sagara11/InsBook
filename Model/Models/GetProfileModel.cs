@@ -37,6 +37,12 @@ namespace Model.Models
 
         public string gioithieu { set; get; }
         public DateTime ngaysinh { set; get; }
+
+        // lấy danh sách bạn bạn bè cho trang cá nhân
+        public List<profile_banbe> banbe { set; get; }
+        // lấy danh sách các ảnh của trang cá nhân
+        public List<profile_anh> myalbum { set; get; }
+
     }
     public class profile_moiquanhe
     {
@@ -86,5 +92,19 @@ namespace Model.Models
         public bool totnghiep { set; get; }
         public int baomat { set; get; }
         public string mota { set; get; }
+    }
+    public class profile_banbe
+    {
+        public int banbe_id { set; get; }
+        public string banbe_ten { set; get; }
+        public string banbe_anhdd { set; get; }
+    }
+    public class profile_anh
+    {
+        public long anh_id { set; get; }
+        public string anh_url { set; get; }
+        public int nguoidang_id { set; get; }
+        public string nguoidang_ten { set; get; }
+        public long baiviet_id { set; get; }
     }
 }

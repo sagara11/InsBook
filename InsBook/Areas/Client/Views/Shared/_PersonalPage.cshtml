@@ -1,15 +1,13 @@
 ﻿@{
-
     var Profile = (Model.Models.GetProfileModel)ViewBag.Profile;
 }
 <!DOCTYPE html>
-
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/cropper/2.3.4/cropper.min.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="https://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css">
+    <link href="~/Assets/css/layouts/cropper.min.css" rel="stylesheet" />
+    <link href="~/Assets/css/layouts/jquery-ui.css" rel="stylesheet" />
     <link href="~/Assets/css/pages/user-info.css" rel="stylesheet" />
     <link href="~/Assets/css/layouts/header.css" rel="stylesheet" />
     <link href="~/Assets/css/layouts/footer.css" rel="stylesheet" />
@@ -74,13 +72,14 @@
     }
 </body>
 </html>
+
 <script src="~/Assets/media/js/jquery-3.4.1.min.js"></script>
 <script src="~/Assets/media/js/popper.min.js"></script>
 <script src="~/Scripts/bootstrap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.1/cropper.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script src="~/Assets/js/cropper.min.js"></script>
+<script src="~/Assets/js/jquery-ui.min.js"></script>
 
-<script src="https://kit.fontawesome.com/5d3f9f4ac6.js" crossorigin="anonymous"></script>
+<script src="~/Assets/js/font-awesome.js"></script>
 <!--Script references. -->
 <!--The jQuery library is required and is referenced by default in _Layout.cshtml. -->
 <!--Reference the SignalR library. -->
@@ -187,4 +186,5 @@
 </script>
 
 <script src="~/Assets/javascript/Post.js"></script>
+
 @RenderSection("js", required: false)

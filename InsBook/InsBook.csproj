@@ -184,6 +184,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\css\layouts\cropper.min.css" />
     <Content Include="Assets\css\layouts\footer.css" />
     <Content Include="Assets\css\layouts\footer.min.css" />
     <Content Include="Assets\css\layouts\group_fixedside.css" />
@@ -192,6 +193,7 @@
     <Content Include="Assets\css\layouts\group_header.min.css" />
     <Content Include="Assets\css\layouts\header.css" />
     <Content Include="Assets\css\layouts\header.min.css" />
+    <Content Include="Assets\css\layouts\jquery-ui.css" />
     <Content Include="Assets\css\layouts\messenger.css" />
     <Content Include="Assets\css\layouts\messenger.min.css" />
     <Content Include="Assets\css\layouts\messenger_section.css" />
@@ -227,12 +229,16 @@
     <Content Include="Assets\javascript\Register.js" />
     <Content Include="Assets\javascript\RegisterStep1.js" />
     <Content Include="Assets\javascript\RegisterStep2.js" />
+    <Content Include="Assets\js\cropper.min.js" />
+    <Content Include="Assets\js\font-awesome.js" />
     <Content Include="Assets\js\header.js" />
     <Content Include="Assets\js\jquery-3.4.1.min.js" />
+    <Content Include="Assets\js\jquery-ui.min.js" />
     <Content Include="Assets\js\love_button.js" />
     <Content Include="Assets\js\newsfeed.js" />
     <Content Include="Assets\js\popper.min.js" />
     <Content Include="Assets\js\postbox.js" />
+    <Content Include="Assets\js\sweetalert2%409.js" />
     <Content Include="Assets\js\user-info.js" />
     <Content Include="Assets\media\78834391_459110258126325_6149001856166133760_n.jpg" />
     <Content Include="Assets\media\css\layouts\footer.css" />
@@ -360,12 +366,7 @@
     <Content Include="Content\PagedList.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Global.asax" />
-    <Content Include="Images\22904751_688560231353134_2748711313877205190_o.jpg" />
-    <Content Include="Images\46511147_548625832231886_7575327484049096704_n.jpg" />
-    <Content Include="Images\60331415_453474005405695_5368361850419281920_o.jpg" />
     <Content Include="Images\base-background.jpg" />
-    <Content Include="Images\84571659_2767643856796452_612394656314949632_n.jpg" />
-    <Content Include="Images\86698400_1992654244211645_6346707511562731520_o.jpg" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
