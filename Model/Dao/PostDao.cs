@@ -216,7 +216,7 @@ namespace Model.Dao
         }
         // lấy bài viết từ db 
 
-        
+
         public List<GetPostModel> GetAllPost(int userID, int loaitrang, int dem)
         {
             // 1 là tìm bài viết ở trang cá nhân
@@ -234,7 +234,7 @@ namespace Model.Dao
             {
                 posts = db.Database.SqlQuery<GetPostModel>("GetAllPostNewsFeed @userID", new SqlParameter("@userID", userID)).Skip(dem).Take(4).ToList();
             }
-            
+
             foreach (var post in posts)
             {
                 if (post.diadiem_id != null)
@@ -318,7 +318,7 @@ namespace Model.Dao
 
                 return post;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return null;
             }
@@ -440,7 +440,7 @@ namespace Model.Dao
                     return false;
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Console.WriteLine(ex.InnerException.Message);
                 return false;
@@ -464,7 +464,7 @@ namespace Model.Dao
         public bool DeletePostChild(Int64 postID, int userId, int count_ajax_post_childs, List<dynamic> img_remains)
         //count_ajax_post_childs >= img_remains.count
         {
-            var post = db.baiviets.Find(postID);
+            var post = db.baiviets.Where(x => x.id == postID).SingleOrDefault();
             var post_childs = db.Database.SqlQuery<post_anh>("GetPostImages @postID", new SqlParameter("@postID", post.id)).ToList();
             try
             {
@@ -554,7 +554,7 @@ namespace Model.Dao
                 return null;
             }
         }
-        public bool AddPostFriend(Int64 postID ,string friendID)
+        public bool AddPostFriend(Int64 postID, string friendID)
         {
             try
             {
@@ -565,7 +565,7 @@ namespace Model.Dao
                 db.SaveChanges();
                 return true;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return false;
             }

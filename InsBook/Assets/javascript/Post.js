@@ -972,7 +972,7 @@ $(function () {
         console.table(data);
         var url = window.location.href.split('/');
         var baseUrl = url[0] + '//' + url[2];
-        var myvar = '<article class="post-box post-@post.id">' +
+        var myvar = '<article class="post-box post-' + data.id + '">' +
             '                            <header class="post-title">' +
             '                                <div class="post-info">' +
             '                                    <img src="' + baseUrl + '/Images/' + data.avatarnguoidang + '" class="rounded rounded-circle lazy" width="50px" height="50px" alt="">' +
@@ -1063,7 +1063,7 @@ $(function () {
             '                                                    <input type="text" class="form-control" id="" placeholder="Chủ đề bài viết ?">' +
             '                                                </div>' +
             '                                                <div class="modal-body-tools">' +
-            '                                                    <input class="tools-img" type="file" name="edit_images" id="tools-img-' + data.id + '" accept="image/*" onchange="readURL(this, @post.id);" multiple />' +
+            '                                                    <input class="tools-img" type="file" name="edit_images" id="tools-img-' + data.id + '" accept="image/*" onchange="readURL(this, ' + data.id + ');" multiple />' +
             '                                                    <label for="tools-img-' + data.id + '" class="tools-item">Ảnh/Video</label>' +
             '                                                    <span class="tools-item show-edit-post-ganthe" onclick="ShowPostTools(0, ' + data.id + ')">Gắn thẻ bạn bè</span>' +
             '                                                    <span class="tools-item show-edit-post-diadiem" onclick="ShowPostTools(1, ' + data.id + ')">Check in</span>' +
@@ -1162,7 +1162,7 @@ $(function () {
             '                                    <button type="button" class="btn btn-light post-like-icon" id="post-like-icon-' + data.id + '">' +
             '                                       <i class="fas fa-heart"></i>' +
             '                                    </button>' +
-            '                                    <button type="button" class="btn btn-light" id="comment-icon-@post.id"><i class="far fa-comment"></i></button>' +
+            '                                    <button type="button" class="btn btn-light" id="comment-icon-' + data.id + '"><i class="far fa-comment"></i></button>' +
             '                                    <button type="button" class="btn btn-light" data-toggle="modal" data-target="#modal-share-' + data.id + '"><i class="far fa-paper-plane"></i></button>' +
             '                                    <button type="button" class="btn btn-light"><i class="far fa-bookmark"></i></button>' +
             '                                </section>' +
@@ -1307,7 +1307,7 @@ $(function () {
             '                        </article>';
         $(myvar).insertAfter(".add-post-box");
     }
-    $.connection.hub.qs = { "session_userId": session_userId };
+    //$.connection.hub.qs = { "session_userId": 'hacker' };
     // Start the connection.
     $.connection.hub.start().done(function () {
 
