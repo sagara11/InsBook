@@ -1210,7 +1210,7 @@ $(function () {
                 '                                                            <div class="list-like-item-ava" id="list-like-item-ava-' + like_item.idnguoithich + '">' +
                 '                                                                <img src="' + baseUrl + '/Images/' + like_item.anhnguoithich + '" alt="Alternate Text" />' +
                 '                                                            </div>' +
-                '                                                            <p class="list-like-item-name" id="list-like-item-name-' + like_item.idnguoithich + '"><a href="#">' + like_item.tennguoithich + '</a></p>' +
+                '                                                            <p class="list-like-item-name" id="list-like-item-name-' + like_item.idnguoithich + '"><a href="/Client/Personal/Index/' + like_item.idnguoithich + '">' + like_item.tennguoithich + '</a></p>' +
                 '                                                            <button class="btn btn-primary ml-auto">Thêm bạn</button>' +
                 '                                                        </div>';
         });
@@ -1389,7 +1389,7 @@ function ShowPostModal(img_post_id) {
                             '                            <img src="' + baseUrl + '/Images/' + item.anhnguoidang + '" alt="">' +
                             '                                                        </div>' +
                             '                            <div class="comment-item-detail">' +
-                            '                                <h3 class="user-name">' + item.tennguoidang + '</h3>' +
+                            '                                <h3 class="user-name"><a href="/Client/Personal/Index/' + item.idnguoidang + '">' + item.tennguoidang + '</a></h3>' +
                             '                                <span>' + item.noidung + '</span>' +
                             '                                <div class="comment-item-info">' +
                             '                                    <time datetime="2011-01-12" title="12 tháng 9 1945">Chưa làm</time>' +
@@ -1412,7 +1412,7 @@ function ShowPostModal(img_post_id) {
                                     '                    <img src="' + baseUrl + '/Images/' + item_child.anhnguoidang + '" alt="">' +
                                     '                                                                        </div>' +
                                     '                    <div class="comment-item-detail">' +
-                                    '                        <h3 class="user-name">' + item_child.tennguoidang + '</h3>' +
+                                    '                        <h3 class="user-name"><a href="/Client/Personal/Index/' + item.idnguoidang + '">' + item_child.tennguoidang + '</a></h3>' +
                                     '                        <span>' + item_child.noidung + '</span>' +
                                     '                        <div class="comment-item-info">' +
                                     '                            <time datetime="2011-01-12" title="12 tháng 9 1945">Chưa làm</time>' +

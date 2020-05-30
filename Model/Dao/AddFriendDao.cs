@@ -53,7 +53,10 @@ namespace Model.Dao
                 {
                     new SqlParameter("@id", Id)
                 };
-                users.Add(db.Database.SqlQuery<GetFriendsModel>("ListAddFriend @id", sqlParam2).Single());
+                if(user.id != Id)
+                {
+                    users.Add(db.Database.SqlQuery<GetFriendsModel>("ListAddFriend @id", sqlParam2).Single());
+                }
             }
             //mới làm ưu tiên theo độ trùng. về sau làm ưu tiên độ trùng + THỨ TỰ ƯU TIÊN
 
