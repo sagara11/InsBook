@@ -22,7 +22,7 @@ namespace Model.Dao
         {
             try
             {
-                UInt64 time = (new Accessories().GetTime()) << 23;
+                UInt64 time = (new Accessories().SetTime()) << 23;
 
                 object[] sqlParam =
                     {
@@ -80,7 +80,7 @@ namespace Model.Dao
         {
             try
             {
-                UInt64 time = (new Accessories().GetTime()) << 23;
+                UInt64 time = (new Accessories().SetTime()) << 23;
 
                 object[] sqlParam =
                     {
@@ -260,10 +260,98 @@ namespace Model.Dao
                         }
                     }
                 }
-                post.thoigiandang = (post.id >> 23) & 0x1FFFFFFFFFF;
+                post.thoigiandang = (70792838646796 >> 23) & 0x1FFFFFFFFFF;
+                post.viewthoigian = GetPostTime(post.thoigiandang);
             }
 
             return posts;
+        }
+        protected string GetPostTime(Int64 time)
+        {
+            string ngaydang;
+            DateTime DateTimeNow = DateTime.Now;
+
+            time = new Accessories().GetTime(time);
+
+            time = -time;
+            
+            var thu = DateTimeNow.AddSeconds(time).DayOfWeek.ToString();
+            switch(thu)
+            {
+                case "Monday": { thu = "Thứ Hai"; break; }
+
+                case "Tuesday": { thu = "Thứ Ba"; break; }
+                
+                case "Wednesday": { thu = "Thứ Tư"; break; }
+                
+                case "Thursday": { thu = "Thứ Năm"; break; }
+               
+                case "Friday": { thu = "Thứ Sáu"; break; }
+                
+                case "Saturday": { thu = "Thứ Bảy"; break; }
+                
+                case "Sunday": { thu = "Chủ Nhật"; break; }
+            }
+            int ngay = DateTimeNow.AddSeconds(time).Day;
+            int thang = DateTimeNow.AddSeconds(time).Month;
+            int nam = DateTimeNow.AddSeconds(time).Year;
+            int gio = DateTimeNow.AddSeconds(time).TimeOfDay.Hours;
+            int phut = DateTimeNow.AddSeconds(time).TimeOfDay.Minutes;
+
+            int thangHientai = DateTimeNow.AddSeconds(time).Month;
+            int namHientai = DateTimeNow.AddSeconds(time).Year;
+
+            time = -time;
+            if (time < 60)
+            {
+                ngaydang = "Vừa xong";
+            }
+            else if(time < 3600)
+            {
+                ngaydang = time / 60 + " phút";
+            }
+            else if(time < 86400)
+            {
+                ngaydang = time / 3600 + " giờ";
+            }
+            else if(time < 604800)
+            {
+                if(time / 86400 <= 1)
+                {
+                    ngaydang = "Hôm qua lúc " + gio + ":" + phut;
+                }
+                else if(time / 86400 > 1)
+                {
+                    ngaydang =  thu + " lúc " + gio + ":" + phut;
+                }
+                else
+                {
+                    ngaydang = "Được tài trợ";
+                }
+            }
+            else if(thang == thangHientai)
+            {
+                if(nam == namHientai)
+                {
+                    ngaydang = ngay + " tháng " + thang + " lúc " + gio + ":" + phut;
+                }
+                else
+                {
+                    ngaydang = ngay + " tháng " + thang + ", " + nam;
+                }
+            }
+            else
+            {
+                if (nam == namHientai)
+                {
+                    ngaydang = ngay + " tháng " + thang;
+                }
+                else
+                {
+                    ngaydang = ngay + " tháng " + thang + ", " + nam;
+                }
+            }
+            return ngaydang;
         }
         public bool checKPostCanSplit(Int64 postId)
         {
@@ -355,7 +443,7 @@ namespace Model.Dao
         {
             try
             {
-                UInt64 time = (new Accessories().GetTime()) << 23; object[] sqlParam =
+                UInt64 time = (new Accessories().SetTime()) << 23; object[] sqlParam =
                      {
                         new SqlParameter("@time", Convert.ToString(time)),
                         new SqlParameter("@shardId", shardId)

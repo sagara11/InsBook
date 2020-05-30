@@ -27,6 +27,7 @@ namespace Model.Models
         public List<post_anh> anh { set; get; } //--
         public List<post_video> video { set; get; } //
         public Int64 thoigiandang { set; get; } //
+        public string viewthoigian { set; get; } //
         public List<post_comment> comment { set; get; } //++
     }
     public class dsnguoithich
