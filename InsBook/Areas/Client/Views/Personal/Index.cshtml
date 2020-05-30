@@ -238,7 +238,7 @@
                                     <option value="3">Chỉ mình tôi</option>
                                 </select>
                             </div>
-                            <button class="btn btn-primary" onclick="AddPost()">
+                            <button class="btn btn-primary" onclick="AddPost(@userID)">
                                 Đăng
                             </button>
                         </div>
@@ -277,7 +277,7 @@
                                             <div class="modal-body">
                                                 <ul>
                                                     <li>
-                                                        <a class="report" href="">Báo cáo</a>
+                                                        <a class="report" href="#">Báo cáo</a>
                                                     </li>
                                                     @if (userID == post.idnguoidang)
                                                     {

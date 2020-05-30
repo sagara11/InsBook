@@ -8,7 +8,7 @@ namespace Model.EF
     public partial class InsBookDbContext : DbContext
     {
         public InsBookDbContext()
-            : base(@"Data Source=S530\MSSQLSERVER01;Initial Catalog=wibook_network;Integrated Security=True")
+            : base(@"Data Source=LAPTOP-Q88KDV0C\SQLEXPRESS;Initial Catalog=wibook_network;Integrated Security=True")
         {
         }
 

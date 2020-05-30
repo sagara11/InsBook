@@ -163,10 +163,12 @@ namespace Model.Dao
             if (profile == null)
             {
                 profile = db.Database.SqlQuery<GetProfileModel>("BaseProfile @id", new SqlParameter("@id", userId)).SingleOrDefault();
+                profile.id = userId;
             }
             else
             {
                 profile.moiquanhe = new profile_moiquanhe(profile.moiquanheString);
+                profile.id = userId;
             }
 
             profile.diadiem = db.Database.SqlQuery<profile_diadiem>("Profile_diadiem @id", new SqlParameter("@id", userId)).ToList();
