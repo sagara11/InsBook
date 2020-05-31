@@ -29,6 +29,7 @@ namespace InsBook.Areas.Client.Controllers
             ViewBag.banbe = Profile.banbe;
             var tendd = new LocationDao().GetAllName();
             ViewBag.TenDD = tendd;
+            ViewBag.UserOnline = CommonConstants.USER_ONLINE;
             //var tenchude = new TopicDao().GetAllName();
             //ViewBag.TenDD = tendd;
             // hàm này để load tất cả bài viết trong trang cá nhân

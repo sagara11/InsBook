@@ -928,7 +928,7 @@ $(function () {
                         '                                                            </div>' +
                         '                                                        </section>' +
                         '                                                        <section class="post-time" id="modal-post-time-' + add.id + '">' +
-                        '                                                            <p>2 giờ trước</p>' +
+                        '                                                            <p>'+ add.viewthoigian +'</p>' +
                         '                                                        </section>' +
                         '                                                        <section class="comment-bar" id="comment-bar-' + add.id + '">' +
                         '                                                            <div class="form-group">' +
@@ -1188,7 +1188,7 @@ $(function () {
             '                                    </div>' +
             '                                </section>' +
             '                                <section class="post-time">' +
-            '                                    <p>2 giờ trước</p>' +
+            '                                    <p>' + data.viewthoigian + '</p>' +
             '                                </section>' +
             '                                <div class="user-comments" id="user-comments-' + data.id + '">' +
             '                                </div>' +
@@ -1249,7 +1249,7 @@ $(function () {
                     '                                                            </div>' +
                     '                                                        </section>' +
                     '                                                        <section class="post-time" id="modal-post-time-' + modal_anh.id + '">' +
-                    '                                                            <p>2 giờ trước</p>' +
+                    '                                                            <p>' + modal_anh.viewthoigian + '</p>' +
                     '                                                        </section>' +
                     '                                                        <section class="comment-bar" id="comment-bar-' + modal_anh.id + '">' +
                     '                                                            <div class="form-group">' +

@@ -1,6 +1,7 @@
 ﻿@{
     var Profile = (Model.Models.GetProfileModel)ViewBag.Profile;
     var userID = (Int32)ViewBag.Session_UserId;
+    var userOnline = (List<Int32>)ViewBag.UserOnline;
 }
 <section id="messenger-section">
     <div class="message-header">
@@ -12,19 +13,36 @@
         </div>
     </div>
     <div id="people-message" class="message-body">
-         @foreach (var friend in Profile.banbe)
+        @foreach (var friend in Profile.banbe)
         {
-            <div class="message-box">
-                <div class="message-avatar">
-                    <img class="rounded rounded-circle" height="50px" width="50px" src="~/Images/@friend.banbe_anhdd" alt="">
-                    <div>
-                        <p><a href="/Client/Personal/Index/@friend.banbe_id">@friend.banbe_ten</a></p>
-                        <p class="message-time">
-                            <small>2 minutes ago</small>
-                        </p>
+            if (userOnline.Contains(friend.banbe_id))
+            {
+                <div class="message-box" id="message-box-@friend.banbe_id">
+                    <div class="message-avatar">
+                        <img class="rounded rounded-circle" height="50px" width="50px" src="~/Images/@friend.banbe_anhdd" alt="">
+                        <div>
+                            <p><a href="/Client/Personal/Index/@friend.banbe_id">@friend.banbe_ten</a></p>
+                            <p class="message-time">
+                                <small>2 minutes ago</small> <small id="check-online-@friend.banbe_id"> Đang online</small>
+                            </p>
+                        </div>
                     </div>
                 </div>
-            </div>
+            }
+            else
+            {
+                <div class="message-box">
+                    <div class="message-avatar">
+                        <img class="rounded rounded-circle" height="50px" width="50px" src="~/Images/@friend.banbe_anhdd" alt="">
+                        <div>
+                            <p><a href="/Client/Personal/Index/@friend.banbe_id">@friend.banbe_ten</a></p>
+                            <p class="message-time">
+                                <small>2 minutes ago</small> <small>Offline</small>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            }
         }
     </div>
     <div id="group-message" class="message-body">
