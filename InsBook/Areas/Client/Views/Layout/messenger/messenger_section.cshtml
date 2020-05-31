@@ -1,4 +1,8 @@
-﻿<section id="messenger-section">
+﻿@{
+    var Profile = (Model.Models.GetProfileModel)ViewBag.Profile;
+    var userID = (Int32)ViewBag.Session_UserId;
+}
+<section id="messenger-section">
     <div class="message-header">
         <div id="people-message-btn" class="header-section">
             Bạn bè
@@ -8,50 +12,20 @@
         </div>
     </div>
     <div id="people-message" class="message-body">
-        <div class="message-box">
-            <div class="message-avatar">
-                <img class="rounded rounded-circle" height="50px" width="50px" src="~/Assets/media/78834391_459110258126325_6149001856166133760_n.jpg" alt="">
-                <div>
-                    <p>Content user</p>
-                    <p class="message-time">
-                        <small>2 minutes ago</small>
-                    </p>
+         @foreach (var friend in Profile.banbe)
+        {
+            <div class="message-box">
+                <div class="message-avatar">
+                    <img class="rounded rounded-circle" height="50px" width="50px" src="~/Images/@friend.banbe_anhdd" alt="">
+                    <div>
+                        <p><a href="/Client/Personal/Index/@friend.banbe_id">@friend.banbe_ten</a></p>
+                        <p class="message-time">
+                            <small>2 minutes ago</small>
+                        </p>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="message-box">
-            <div class="message-avatar">
-                <img class="rounded rounded-circle" height="50px" width="50px" src="~/Assets/media/78834391_459110258126325_6149001856166133760_n.jpg" alt="">
-                <div>
-                    <p>Content user</p>
-                    <p class="message-time">
-                        <small>2 minutes ago</small>
-                    </p>
-                </div>
-            </div>
-        </div>
-        <div class="message-box">
-            <div class="message-avatar">
-                <img class="rounded rounded-circle" height="50px" width="50px" src="~/Assets/media/78834391_459110258126325_6149001856166133760_n.jpg" alt="">
-                <div>
-                    <p>Content user</p>
-                    <p class="message-time">
-                        <small>2 minutes ago</small>
-                    </p>
-                </div>
-            </div>
-        </div>
-        <div class="message-box">
-            <div class="message-avatar">
-                <img class="rounded rounded-circle" height="50px" width="50px" src="~/Assets/media/78834391_459110258126325_6149001856166133760_n.jpg" alt="">
-                <div>
-                    <p>Content user</p>
-                    <p class="message-time">
-                        <small>2 minutes ago</small>
-                    </p>
-                </div>
-            </div>
-        </div>
+        }
     </div>
     <div id="group-message" class="message-body">
         <div class="message-box">

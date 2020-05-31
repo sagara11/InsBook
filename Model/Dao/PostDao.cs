@@ -260,7 +260,7 @@ namespace Model.Dao
                         }
                     }
                 }
-                post.thoigiandang = (70792838646796 >> 23) & 0x1FFFFFFFFFF;
+                post.thoigiandang = (post.id >> 23) & 0x1FFFFFFFFFF;
                 post.viewthoigian = GetPostTime(post.thoigiandang);
             }
 

@@ -559,18 +559,5 @@
     <!---->
     <script src="~/Assets/javascript/Post.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    <script src="~/Assets/javascript/Login.js"></script>
 }
-<script>
-    $(function () {
-    // Reference the auto-generated proxy for the hub.
-    var session = $.connection.chatHub;
-    // Create a function that the hub can call back to display messages.
-        session.client.CheckOnline = function (userID) {
-            alert(userID);
-        };
-
-    $.connection.hub.start().done(function () {
-        session.server.checkOnline(@userID)
-    });
-});
-</script>
