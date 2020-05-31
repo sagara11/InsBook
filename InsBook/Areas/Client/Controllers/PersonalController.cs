@@ -35,6 +35,7 @@ namespace InsBook.Areas.Client.Controllers
             {
                 ViewBag.Profile = new UserDao().Profile(friend_id.Value);
             }
+            ViewBag.banbe = new UserDao().Profile(user.UserID).banbe;
             var tendd = new LocationDao().GetAllName();
             ViewBag.TenDD = tendd;
             var banbe = new UserDao().GetAllName(user.UserID);

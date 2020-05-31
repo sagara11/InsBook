@@ -48,5 +48,9 @@ namespace InsBook.Hubs
         {
             Clients.All.ShowEditPost(editPost);
         }
+        public void AddPost(GetPostModel data, int userID)
+        {
+            Clients.All.AddingPostRT(data, userID);
+        }
     }
 }

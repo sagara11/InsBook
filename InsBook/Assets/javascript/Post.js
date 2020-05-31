@@ -314,8 +314,11 @@ $(".edit-post-diadiem-data").keyup(function () {
     }
 });
 //Hàm liên quan bài viết
+function AddPostRT(data, userId) {
 
-function AddPost() {
+}
+
+function AddPost(userId) {
     if ($("#post-content").val() == "") {
         alert("Bạn chưa nhập nội dung bài viết");
     }
@@ -353,279 +356,8 @@ function AddPost() {
             data: formData,
             success: function (response) {
                 if (response.status == true) {
-                    alert("Thêm bài viết thành công");
-                    var url = window.location.href.split('/');
-                    var baseUrl = url[0] + '//' + url[2];
-                    var html = '<article class="post-box post-' + response.data.id + '">' +
-                        '                        <header class="post-title">' +
-                        '                            <div class="post-info">' +
-                        '                                <img src="' + baseUrl + '/Images/' + response.data.avatarnguoidang + '" alt="" class="rounded rounded-circle lazy" width="50px" height="50px">' +
-                        '                                <p class="post-user-info-' + response.data.id + '">' +
-                        '                                    <a href="#" title="">' + response.data.tennguoidang + '</a>';
-                    if (response.data.ganthe.length != 0) {
-                        html = html + '<span>với ';
-                        response.data.ganthe.forEach(function (ganthe) {
-                            html = html + '<a href="#" title=""><b>' + ganthe["ten"] + '</b></a>, ';
-                        });
-                        html = html + '</span>';
-                    }
-                    if (response.data.diadiem != "") {
-                        html = html + '<span> tại <b>' + response.data.diadiem + '</b></span>';
-                    }
+                    AddPostRT(response.data, userId);
 
-                    html = html + '</p>' +
-                        '                                </div>' +
-                        '                                <div class="post-option" data-target="#post-option-modal-' + response.data.id + '" data-toggle="modal">' +
-                        '                                    &#8230;' +
-                        '                                </div>' +
-                        '                                <div class="modal post-option-modal fade" id="post-option-modal-' + response.data.id + '">' +
-                        '                                    <div class="modal-dialog modal-dialog-centered">' +
-                        '                                        <div class="modal-content">' +
-                        '                                            <div class="modal-body">' +
-                        '                                                <ul>' +
-                        '                                                    <li>' +
-                        '                                                        <a class="report" href="">Báo cáo</a>' +
-                        '                                                    </li>' +
-                        '                                                    <li>' +
-                        '                                                        <a href="#" onclick="EditPost(' + response.data.id + ', event, ' + session_userId + ')">Sửa bài viết</a>' +
-                        '                                                    </li>' +
-                        '                                                    <li>' +
-                        '                                                        <a href="#" onclick="DeletePost(' + response.data.id + ', event, ' + session_userId + ')">Xóa bài viết</a>' +
-                        '                                                    </li>' +
-                        '                                                </ul>' +
-                        '                                            </div>' +
-                        '                                        </div>' +
-                        '                                    </div>' +
-                        '                                </div>' +
-                        '<!-- Modal -->' +
-                        '                                <div class="modal fade show-edit-post-modal" id="show-edit-post-' + response.data.id + '" tabindex="-1" role="dialog">' +
-                        '                                    <div class="modal-dialog modal-dialog-centered" role="document">' +
-                        '                                        <div class="modal-content">' +
-                        '                                            <div class="modal-header">' +
-                        '                                                <h3><i class="fas fa-pencil-alt"></i>Sửa bài viết</h3>' +
-                        '                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">' +
-                        '                                                    <span aria-hidden="true">×</span>' +
-                        '                                                </button>' +
-                        '                                            </div>' +
-                        '                                            <div class="modal-body">' +
-                        '                                                <div class="modal-body-content">' +
-                        '                                                    <div class="user-ava" id="user-ava-' + response.data.id + '">' +
-                        '                                                        <img src="' + baseUrl + '/Images/' + response.data.avatarnguoidang + '" alt="" />' +
-                        '                                                    </div>' +
-                        '                                                    <div class="form-group">' +
-                        '<textarea class="form-control" id="edit-post-content-' + response.data.id + '" placeholder="Thêm bình luận..." oninput="auto_grow(this)"></textarea>' +
-                        '</div>' +
-                        '                                                </div>' +
-                        '                                                <div class="modal-body-result">' +
-                        '                                                    <p class="modal-body-result-text"><span class="edit-result-tenbanbe" id="edit-result-tenbanbe-' + response.data.id + '"></span><span class="edit-result-diadiem" id="edit-result-diadiem-' + response.data.id + '"></span></p>' +
-                        '                                                    <div class="modal-body-result-img" id="modal-body-result-img-' + response.data.id + '">' +
-                        '                                                        <label for="tools-img-' + response.data.id + '" class="edit-tools-item" id="edit-post-anh-default-' + response.data.id + '"><img src="/Images/default-adding-post.png" alt="" /></label>' +
-                        '                                                    </div>' +
-                        '                                                </div>' +
-                        '                                                <div class="input-group modal-body-input edit-post-diadiem" id="edit-post-diadiem-' + response.data.id + '">' +
-                        '                                                    <div class="input-group-prepend">' +
-                        '                                                        <div class="input-group-text"><i class="fas fa-map-marker-alt"></i></div>' +
-                        '                                                    </div>' +
-                        '                                                    <input type="text" class="form-control edit-post-diadiem-data" id="edit-post-diadiem-data-' + response.data.id + '" placeholder="Bạn đang ở đâu ?">' +
-                        '                                                </div>' +
-                        '                                                <div class="input-group modal-body-input edit-post-ganthe" id="edit-post-ganthe-' + response.data.id + '">' +
-                        '                                                    <div class="input-group-prepend">' +
-                        '                                                        <div class="input-group-text"><i class="fas fa-user"></i></div>' +
-                        '                                                    </div>' +
-                        '                                                    <div id="friends-tag-' + response.data.id + '" class="edit-friends-tag">' +
-                        '' +
-                        '                                                    </div>' +
-                        '                                                    <input type="text" class="form-control edit-post-bande-data" id="edit-post-banbe-data-' + response.data.id + '" placeholder="Cùng với ai ?">' +
-                        '                                                </div>' +
-                        '                                                <div class="input-group modal-body-input edit-post-chude" id="edit-post-chude-' + response.data.id + '">' +
-                        '                                                    <div class="input-group-prepend">' +
-                        '                                                        <div class="input-group-text"><i class="fas fa-filter"></i></div>' +
-                        '                                                    </div>' +
-                        '                                                    <input type="text" class="form-control" id="" placeholder="Chủ đề bài viết ?">' +
-                        '                                                </div>' +
-                        '                                                <div class="modal-body-tools">' +
-                        '                                                    <input class="tools-img" type="file" name="edit_images" id="tools-img-' + response.data.id + '" accept="image/*" onchange="readURL(this, ' + response.data.id + ');" multiple />' +
-                        '                                                    <label for="tools-img-' + response.data.id + '" class="tools-item">Ảnh/Video</label>' +
-                        '                                                    <span class="tools-item show-edit-post-ganthe" onclick="ShowPostTools(0, ' + response.data.id + ')">Gắn thẻ bạn bè</span>' +
-                        '                                                    <span class="tools-item show-edit-post-diadiem" onclick="ShowPostTools(1,' + response.data.id + ')">Check in</span>' +
-                        '                                                </div>' +
-                        '                                            </div>' +
-                        '                                            <div class="modal-footer">' +
-                        '                                                <div class="form-group">' +
-                        '                                                    <select class="form-control" id="edit-post-baomat-data-' + response.data.id + '">' +
-                        '                                                        <option selected value="0">Công khai</option>' +
-                        '                                                        <option value="2">Bạn bè</option>' +
-                        '                                                        <option value="3">Chỉ mình tôi</option>' +
-                        '                                                    </select>' +
-                        '                                                </div>' +
-                        '                                                <button class="btn btn-primary" onclick="ActionEditPost(' + response.data.id + ')">' +
-                        '                                                    Đăng' +
-                        '                                                </button>' +
-                        '                                            </div>' +
-                        '                                        </div>' +
-                        '                                    </div>' +
-                        '                                </div>' +
-                        '                            </header><!-- /header -->' +
-                        '<div class="post-content">' +
-                        '   <p id="post-content-text-' + response.data.id + '" class="post-content-text">' + response.data.noidung + '</p>';
-                    if (response.data.anh.length != 0) {
-                        html = html + ' <div id="post-content-image-' + response.data.id + '" class="post-content-image">';
-                        if (response.data.anh.length == 1) {
-                            html = html + '<img src="' + baseUrl + '/Images/' + response.data.anh[0]["anh_url"] + '" alt="" onclick="ShowPostModal(' + response.data.anh[0]["id"] + ')" />'
-                        }
-                        else if (response.data.anh.length == 2) {
-                            html = html + '<div class = "row soanh-2">';
-                            response.data.anh.forEach(function (img) {
-                                html = html + '<div class="col-md-6">' +
-                                    '   <img src="' + baseUrl + '/Images/' + img["anh_url"] + '" alt="" onclick="ShowPostModal(' + img["id"] + ')" />' +
-                                    '</div>';
-                            });
-                            html = html + '</div>';
-                        }
-                        else if (response.data.anh.length == 3) {
-                            html = html + '<div class = "row soanh-3">' +
-                                '   <div class="col-md-12">' +
-                                '       <img src="' + baseUrl + '/Images/' + response.data.anh[0]["anh_url"] + '" alt="" onclick="ShowPostModal(' + response.data.anh[0]["id"] + ')" />' +
-                                '   </div>' +
-                                '   <div class="col-md-6">' +
-                                '       <img src="' + baseUrl + '/Images/' + response.data.anh[1]["anh_url"] + '" alt="" onclick="ShowPostModal(' + response.data.anh[1]["id"] + ')" />' +
-                                '   </div>' +
-                                '   <div class="col-md-6">' +
-                                '       <img src="' + baseUrl + '/Images/' + response.data.anh[2]["anh_url"] + '" alt="" onclick="ShowPostModal(' + response.data.anh[2]["id"] + ')" />' +
-                                '   </div>' +
-                                '</div>';
-                        }
-                        else if (response.data.anh.length == 4) {
-                            html = html + '<div class = "row soanh-4">' +
-                                '   <div class="col-md-12">' +
-                                '       <img src="' + baseUrl + '/Images/' + response.data.anh[0]["anh_url"] + '" alt="" onclick="ShowPostModal(' + response.data.anh[0]["id"] + ')" />' +
-                                '   </div>' +
-                                '   <div class="col-md-4">' +
-                                '       <img src="' + baseUrl + '/Images/' + response.data.anh[1]["anh_url"] + '" alt="" onclick="ShowPostModal(' + response.data.anh[1]["id"] + ')" />' +
-                                '   </div>' +
-                                '   <div class="col-md-4">' +
-                                '       <img src="' + baseUrl + '/Images/' + response.data.anh[2]["anh_url"] + '" alt="" onclick="ShowPostModal(' + response.data.anh[2]["id"] + ')" />' +
-                                '   </div>' +
-                                '   <div class="col-md-4">' +
-                                '       <img src="' + baseUrl + '/Images/' + response.data.anh[3]["anh_url"] + '" alt="" onclick="ShowPostModal(' + response.data.anh[3]["id"] + ')" />' +
-                                '   </div>' +
-                                '</div>';
-                        }
-                        else if (response.data.anh.length == 5) {
-                            html = html + '<div class = "row soanh-5">' +
-                                '   <div class="col-md-6">' +
-                                '       <img src="' + baseUrl + '/Images/' + response.data.anh[0]["anh_url"] + '" alt="" onclick="ShowPostModal(' + response.data.anh[0]["id"] + ')" />' +
-                                '   </div>' +
-                                '   <div class="col-md-6">' +
-                                '       <img src="' + baseUrl + '/Images/' + response.data.anh[1]["anh_url"] + '" alt="" onclick="ShowPostModal(' + response.data.anh[1]["id"] + ')" />' +
-                                '   </div>' +
-                                '   <div class="col-md-4">' +
-                                '       <img src="' + baseUrl + '/Images/' + response.data.anh[2]["anh_url"] + '" alt="" onclick="ShowPostModal(' + response.data.anh[2]["id"] + ')" />' +
-                                '   </div>' +
-                                '   <div class="col-md-4">' +
-                                '       <img src="' + baseUrl + '/Images/' + response.data.anh[3]["anh_url"] + '" alt="" onclick="ShowPostModal(' + response.data.anh[3]["id"] + ')" />' +
-                                '   </div>' +
-                                '   <div class="col-md-4">' +
-                                '       <img src="' + baseUrl + '/Images/' + response.data.anh[4]["anh_url"] + '" alt="" onclick="ShowPostModal(' + response.data.anh[4]["id"] + ')" />' +
-                                '   </div>' +
-                                '</div>';
-                        }
-                        else {
-                            alert("số ảnh lớn");
-                        }
-                        html = html + ' </div>';
-                    }
-                    html = html + ' </div>' +
-                        '                       <div class="post-socialfunction">' +
-                        '                            <section class="post-icons">' +
-                        '                                <button type="button" class="btn btn-light post-like-icon" id="post-like-icon-' + response.data.id + '"><i class="fas fa-heart"></i></button>' +
-                        '                                <button type="button" class="btn btn-light"><i class="far fa-comment"></i></button>' +
-                        '                                <button type="button" class="btn btn-light" data-toggle="modal" data-target="#post-share-' + response.data.id + '"><i class="far fa-paper-plane"></i></button>' +
-                        '                                <button type="button" class="btn btn-light"><i class="far fa-bookmark"></i></button>' +
-                        '                            </section>' +
-                        '                            <section class="list-like">' +
-                        '                                <button type="button" class="btn btn-light like-count-' + response.data.id + '" id="like-count-' + response.data.id + '">0 lượt thích</button>' +
-                        '                            </section>' +
-                        '                            <section class="post-time">' +
-                        '                                <p>2 giờ trước</p>' +
-                        '                            </section>' +
-                        '<div class="user-comments" id="user-comments-' + response.data.id + '">' +
-                        '</div>' +
-                        '                            <section class="comment-bar" id="comment-bar-' + response.data.id + '">' +
-                        '                                <div class="form-group">' +
-                        '                                    <textarea class="form-control" placeholder="Thêm bình luận..." oninput="auto_grow(this)" id="post-comment-content-' + response.data.id + '"></textarea>' +
-                        '                                </div>' +
-                        '<button type="button" class="btn btn-light post-comment-button" id = "post-comment-button-' + response.data.id + '" > Đăng</button > ' +
-                        '                            </section>' +
-                        '                        </div>';
-                    if (response.data.anh.length > 0) {
-                        response.data.anh.forEach(function (add) {
-                            html = html + '<!-- Modal -->' +
-                                '                                    <div class="post-box-modal modal fade" id="modal-post-' + add.id + '">' +
-                                '                                        <div class="modal-dialog modal-dialog-centered">' +
-                                '                                            <div class="modal-content">' +
-                                '                                                <div class="modal-col-7">' +
-                                '                                                    <div class="post-content">' +
-                                '                                                        <img class="" src="' + baseUrl + '/Images/' + add.anh_url + '" alt="">' +
-                                '                                                    </div>' +
-                                '                                                </div>' +
-                                '                                                <div class="modal-col-5">' +
-                                '                                                    <div class="post-title">' +
-                                '                                                        <div class="post-info">' +
-                                '                                                            <img height="50px" width="50px" class="rounded rounded-circle" src="' + baseUrl + '/Images/' + response.data.avatarnguoidang + '" alt="">' +
-                                '                                                            <p id="modal-post-info-' + add.id + '"><a href="#" title="">' + response.data.tennguoidang + '</a></p>' +
-                                '                                                        </div>' +
-                                '                                                    </div>' +
-                                '' +
-                                '                                                    <p class="post-content-text" id="modal-post-content-text-' + add.id + '"> </p>' +
-                                '                                                    <div class="post-socialfunction">' +
-                                '' +
-                                '                                                        <div class="user-comments" id="modal-user-comments-' + add.id + '">' +
-                                '                                                        </div>' +
-                                '                                                        <section class="post-icons">' +
-                                '                                                            <button type="button" class="btn btn-light post-like-icon" id="modal-post-like-icon-' + add.id + '">' +
-                                '                                                                <i class="fas fa-heart"></i>' +
-                                '                                                            </button>' +
-                                '                                                            <button type="button" class="btn btn-light"><i class="far fa-comment"></i></button>' +
-                                '                                                            <button type="button" class="btn btn-light"></button>' +
-                                '                                                        </section>' +
-                                '' +
-                                '                                                        <section class="list-like">' +
-                                '                                                            <button type="button" class="btn btn-light like-count-' + add.id + '" id="like-count-' + add.id + '">0 lượt thích</button>' +
-                                '                                                            <div class="modal fade modal-list-like-post" id="modal-list-like-post-' + response.data.id + '" tabindex="-1" role="dialog">' +
-                                '                                                                <div class="modal-dialog modal-dialog-centered" role="document">' +
-                                '                                                                    <div class="modal-content">' +
-                                '                                                                        <div class="modal-header">' +
-                                '                                                                            <h5 class="modal-title" id="exampleModalLongTitle">Likes</h5>' +
-                                '                                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">' +
-                                '                                                                                <span aria-hidden="true">×</span>' +
-                                '                                                                            </button>' +
-                                '                                                                        </div>' +
-                                '                                                                        <div class="modal-body" id="modal-list-like-body-' + response.data.id + '">' +
-                                '' +
-                                '                                                                        </div>' +
-                                '                                                                    </div>' +
-                                '                                                                </div>' +
-                                '                                                            </div>' +
-                                '                                                        </section>' +
-                                '                                                        <section class="post-time" id="modal-post-time-' + add.id + '">' +
-                                '                                                            <p>2 giờ trước</p>' +
-                                '                                                        </section>' +
-                                '                                                        <section class="comment-bar" id="comment-bar-' + add.id + '">' +
-                                '                                                            <div class="form-group">' +
-                                '                                                                <textarea class="form-control" placeholder="Thêm bình luận..." oninput="auto_grow(this)" id="modal-post-comment-content-' + add.id + '"></textarea>' +
-                                '                                                            </div>' +
-                                '                                                            <button type="button" class="btn btn-light modal-post-comment-button" id="modal-post-comment-button-' + add.id + '">Đăng</button>' +
-                                '                                                        </section>' +
-                                '                                                    </div>' +
-                                '                                                </div>' +
-                                '                                            </div>' +
-                                '                                        </div>' +
-                                '                                    </div>';
-                        });
-                    }
-                    html = html + '              </article>';
-                    $(html).insertAfter(".add-post-box");
 
                     $("#post-content").val("");
                     $("#result-tenbanbe").empty();
@@ -811,7 +543,7 @@ function ActionEditPost(postId) {
                 formData.append("post_images_" + i, JSON.stringify(edit_selected_img[i]));
             }
         }
-
+        console.table(edit_selected_img);
         $.ajax({
             type: 'post',
             url: '/Client/Post/ActionEditPost',
@@ -829,18 +561,27 @@ function ActionEditPost(postId) {
         });
     }
 }
-$('.post-like-icon').click(function () {
-    var post_id = this.id.split("-");
-    post_id = post_id[post_id.length - 1]; // Lấy post_id
-    if (this.className == "btn btn-light post-like-icon liked") {
-        $("#post-like-icon-" + post_id).removeClass("liked");
-        $("#modal-post-like-icon-" + post_id).removeClass("liked");
-    }
-    else {
-        $("#post-like-icon-" + post_id).addClass("liked");
-        $("#modal-post-like-icon-" + post_id).addClass("liked");
-    }
-});
+//$('.user-newsfeed').on('click', '.post-like-icon', function () {
+//    var post_id = this.id.split("-");
+//    post_id = post_id[post_id.length - 1]; // Lấy post_id
+//    if (this.className == "btn btn-light post-like-icon liked") {
+//        $("#post-like-icon-" + post_id).removeClass("liked");
+//        $("#modal-post-like-icon-" + post_id).removeClass("liked");
+
+//    }
+//    else {
+//        $("#post-like-icon-" + post_id).addClass("liked");
+//        $("#modal-post-like-icon-" + post_id).addClass("liked");
+
+//    }
+//    if (this.className == "btn btn-light post-like-icon liked") {
+//        post.server.likePost(post_id, true);
+//    }
+//    else {
+//        post.server.likePost(post_id, false);
+//    }
+//});
+
 $('.list-like button').click(function () {
     var post_id = this.id.split("-");
     post_id = post_id[post_id.length - 1]; // Lấy post_id
@@ -870,11 +611,15 @@ $(function () {
     post.client.LikePost = function (postId, status) {
         var like_count = $(".like-count-" + postId).text().split(' ');
         if (status) {
-            //$("#post-like-icon-" + postId).addClass("liked");
+            $("#post-like-icon-" + postId).addClass("liked");
+            $("#modal-post-like-icon-" + postId).addClass("liked");
+
             $(".like-count-" + postId).text("");
             $(".like-count-" + postId).text((parseInt(like_count[0]) + 1) + " lượt thích");
         } else {
-            //$("#post-like-icon-" + postId).removeClass("liked");
+            $("#post-like-icon-" + postId).removeClass("liked");
+            $("#modal-post-like-icon-" + postId).removeClass("liked");
+
             $(".like-count-" + postId).text("");
             $(".like-count-" + postId).text((parseInt(like_count[0]) - 1) + " lượt thích");
         }
@@ -1019,6 +764,7 @@ $(function () {
         var url = window.location.href.split('/');
         var baseUrl = url[0] + '//' + url[2];
         if (editPost != null) {
+            edit_selected_img = [];
             //sửa trên view trang chủ
             $("#show-edit-post-" + editPost.id).modal("hide"); //tắt edit modal
             $("#post-content-text-" + editPost.id).text(editPost.noidung); // sửa nội dung
@@ -1182,7 +928,7 @@ $(function () {
                         '                                                            </div>' +
                         '                                                        </section>' +
                         '                                                        <section class="post-time" id="modal-post-time-' + add.id + '">' +
-                        '                                                            <p>2 giờ trước</p>' +
+                        '                                                            <p>'+ add.viewthoigian +'</p>' +
                         '                                                        </section>' +
                         '                                                        <section class="comment-bar" id="comment-bar-' + add.id + '">' +
                         '                                                            <div class="form-group">' +
@@ -1210,7 +956,7 @@ $(function () {
                 '                                                            <div class="list-like-item-ava" id="list-like-item-ava-' + like_item.idnguoithich + '">' +
                 '                                                                <img src="' + baseUrl + '/Images/' + like_item.anhnguoithich + '" alt="Alternate Text" />' +
                 '                                                            </div>' +
-                '                                                            <p class="list-like-item-name" id="list-like-item-name-' + like_item.idnguoithich + '"><a href="#">' + like_item.tennguoithich + '</a></p>' +
+                '                                                            <p class="list-like-item-name" id="list-like-item-name-' + like_item.idnguoithich + '"><a href="/Client/Personal/Index/' + like_item.idnguoithich + '">' + like_item.tennguoithich + '</a></p>' +
                 '                                                            <button class="btn btn-primary ml-auto">Thêm bạn</button>' +
                 '                                                        </div>';
         });
@@ -1222,6 +968,345 @@ $(function () {
             $("#list-like-body-" + postId).empty();
             $("#list-like-body-" + postId).append(html);
         }
+    };
+    post.client.AddingPostRT = function (data, userId) {
+        console.table(data);
+        var url = window.location.href.split('/');
+        var baseUrl = url[0] + '//' + url[2];
+        var myvar = '<article class="post-box post-' + data.id + '">' +
+            '                            <header class="post-title">' +
+            '                                <div class="post-info">' +
+            '                                    <img src="' + baseUrl + '/Images/' + data.avatarnguoidang + '" class="rounded rounded-circle lazy" width="50px" height="50px" alt="">' +
+            '                                    <p class="post-user-info-' + data.id + '">' +
+            '                                        <a href="/Client/Personal/Index/' + data.idnguoidang + '" title="">' + data.tennguoidang + '</a>';
+        if (data.ganthe.length > 0) {
+            myvar = myvar + '<span>' +
+                '   với';
+            data.ganthe.forEach(function (ganthe) {
+                myvar = myvar + '   <a href="/Client/Personal/Index/' + ganthe.id + '"><b>' + ganthe.ten + ', </b></a>';
+            });
+            myvar = myvar + '</span>';
+        }
+        if (data.diadiem.length > 0) {
+            myvar = myvar + '<span>tại <b>' + data.diadiem + '</b></span>';
+        }
+        myvar = myvar + '                          </p>' +
+            '                                </div>' +
+            '                                <div class="post-option" data-target="#post-option-modal-' + data.id + '" data-toggle="modal">' +
+            '                                    &#8230;' +
+            '                                </div>' +
+            '                                <div class="modal post-option-modal fade" id="post-option-modal-' + data.id + '">' +
+            '                                    <div class="modal-dialog modal-dialog-centered">' +
+            '                                        <div class="modal-content">' +
+            '                                            <div class="modal-body">' +
+            '                                                <ul>' +
+            '                                                    <li>' +
+            '                                                        <a class="report" href="#">Báo cáo</a>' +
+            '                                                    </li>';
+        if (userId == data.idnguoidang) {
+            myvar = myvar + '                                    <li>' +
+                '                                                     <a href="#" onclick="EditPost(' + data.id + ', event, ' + userId + ')">Sửa bài viết</a>' +
+                '                                                </li>' +
+                '                                                <li>' +
+                '                                                     <a href="#" onclick="DeletePost(' + data.id + ', event, ' + userId + ')">Xóa bài viết</a>' +
+                '                                                </li>';
+        }
+        myvar = myvar + '                                      </ul>' +
+            '                                            </div>' +
+            '                                        </div>' +
+            '                                    </div>' +
+            '                                </div>' +
+            '' +
+            '                                <!-- Modal -->' +
+            '                                <div class="modal fade show-edit-post-modal" id="show-edit-post-' + data.id + '" tabindex="-1" role="dialog">' +
+            '                                    <div class="modal-dialog modal-dialog-centered" role="document">' +
+            '                                        <div class="modal-content">' +
+            '                                            <div class="modal-header">' +
+            '                                                <h3><i class="fas fa-pencil-alt"></i>Sửa bài viết</h3>' +
+            '                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">' +
+            '                                                    <span aria-hidden="true">×</span>' +
+            '                                                </button>' +
+            '                                            </div>' +
+            '                                            <div class="modal-body">' +
+            '                                                <div class="modal-body-content">' +
+            '                                                    <div class="user-ava" id="user-ava-' + data.id + '">' +
+            '                                                        <img src="' + baseUrl + '/Images/' + data.avatarnguoidang + '" alt="" />' +
+            '                                                    </div>' +
+            '                                                    <div class="form-group">' +
+            '                                                       <textarea class="form-control" id="edit-post-content-' + data.id + '" placeholder="Thêm bình luận..." oninput="auto_grow(this)"></textarea>' +
+            '                                                    </div>' +
+            '                                                </div>' +
+            '                                                <div class="modal-body-result">' +
+            '                                                    <p class="modal-body-result-text"><span class="edit-result-tenbanbe" id="edit-result-tenbanbe-' + data.id + '"></span><span class="edit-result-diadiem" id="edit-result-diadiem-' + data.id + '"></span></p>' +
+            '                                                    <div class="modal-body-result-img" id="modal-body-result-img-' + data.id + '">' +
+            '                                                        <label for="tools-img-' + data.id + '" class="edit-tools-item" id="edit-post-anh-default-' + data.id + '"><img src="' + baseUrl + '/Images/default-adding-post.png" alt="" /></label>' +
+            '                                                    </div>' +
+            '                                                </div>' +
+            '                                                <div class="input-group modal-body-input edit-post-diadiem" id="edit-post-diadiem-' + data.id + '">' +
+            '                                                    <div class="input-group-prepend">' +
+            '                                                        <div class="input-group-text"><i class="fas fa-map-marker-alt"></i></div>' +
+            '                                                    </div>' +
+            '                                                    <input type="text" class="form-control edit-post-diadiem-data" id="edit-post-diadiem-data-' + data.id + '" placeholder="Bạn đang ở đâu ?">' +
+            '                                                </div>' +
+            '                                                <div class="input-group modal-body-input edit-post-ganthe" id="edit-post-ganthe-' + data.id + '">' +
+            '                                                    <div class="input-group-prepend">' +
+            '                                                        <div class="input-group-text"><i class="fas fa-user"></i></div>' +
+            '                                                    </div>' +
+            '                                                    <div id="friends-tag-' + data.id + '" class="edit-friends-tag">' +
+            '' +
+            '                                                    </div>' +
+            '                                                    <input type="text" class="form-control edit-post-bande-data" id="edit-post-banbe-data-' + data.id + '" placeholder="Cùng với ai ?">' +
+            '                                                </div>' +
+            '                                                <div class="input-group modal-body-input edit-post-chude" id="edit-post-chude-' + data.id + '">' +
+            '                                                    <div class="input-group-prepend">' +
+            '                                                        <div class="input-group-text"><i class="fas fa-filter"></i></div>' +
+            '                                                    </div>' +
+            '                                                    <input type="text" class="form-control" id="" placeholder="Chủ đề bài viết ?">' +
+            '                                                </div>' +
+            '                                                <div class="modal-body-tools">' +
+            '                                                    <input class="tools-img" type="file" name="edit_images" id="tools-img-' + data.id + '" accept="image/*" onchange="readURL(this, ' + data.id + ');" multiple />' +
+            '                                                    <label for="tools-img-' + data.id + '" class="tools-item">Ảnh/Video</label>' +
+            '                                                    <span class="tools-item show-edit-post-ganthe" onclick="ShowPostTools(0, ' + data.id + ')">Gắn thẻ bạn bè</span>' +
+            '                                                    <span class="tools-item show-edit-post-diadiem" onclick="ShowPostTools(1, ' + data.id + ')">Check in</span>' +
+            '                                                    @*<span class="tools-item show-post-chude" onclick="ShowPostTools(2)" disabled>Chủ đề</span>*@' +
+            '                                                </div>' +
+            '                                            </div>' +
+            '                                            <div class="modal-footer">' +
+            '                                                <div class="form-group">' +
+            '                                                    <select class="form-control" id="edit-post-baomat-data-' + data.id + '">' +
+            '                                                        <option selected value="0">Công khai</option>' +
+            '                                                        <option value="2">Bạn bè</option>' +
+            '                                                        <option value="3">Chỉ mình tôi</option>' +
+            '                                                    </select>' +
+            '                                                </div>' +
+            '                                                <button class="btn btn-primary" onclick="ActionEditPost(' + data.id + ')">' +
+            '                                                    Đăng' +
+            '                                                </button>' +
+            '                                            </div>' +
+            '                                        </div>' +
+            '                                    </div>' +
+            '                                </div>' +
+            '                            </header><!-- /header -->' +
+            '                            <div class="post-content">' +
+            '                                <p class="post-content-text" id="post-content-text-' + data.id + '">' + data.noidung + '</p>';
+        if (data.anh.length > 0) {
+            myvar = myvar + '   <div id="post-content-image-' + data.id + '" class="post-content-image">';
+            if (data.anh.length == 1) {
+                myvar = myvar + '       <img src="' + baseUrl + '/Images/' + data.anh[0].anh_url + '" alt="" onclick="ShowPostModal(' + data.anh[0].id + ')">';
+            }
+            else if (data.anh.length == 2) {
+                myvar = myvar + '<div class="row soanh-2">';
+                data.anh.forEach(function (img) {
+                    myvar = myvar + '   <div class="col-md-6">' +
+                        '       <img src="' + baseUrl + '/Images/' + img.anh_url + '" alt="" onclick="ShowPostModal(' + img.id + ')" />' +
+                        '   </div>';
+                });
+                myvar = myvar + '</div>';
+            }
+            else if (data.anh.length == 3) {
+                myvar = myvar + '   <div class="row soanh-3">' +
+                    '                                                <div class="col-md-12">' +
+                    '                                                    <img src="' + baseUrl + '/Images/' + data.anh[0].anh_url + '" alt="" onclick="ShowPostModal(' + data.anh[0].id + ')" />' +
+                    '                                                </div>' +
+                    '                                                <div class="col-md-6">' +
+                    '                                                    <img src="' + baseUrl + '/Images/' + data.anh[1].anh_url + '" alt="" onclick="ShowPostModal(' + data.anh[1].id + ')" />' +
+                    '                                                </div>' +
+                    '                                                <div class="col-md-6">' +
+                    '                                                    <img src="' + baseUrl + '/Images/' + data.anh[2].anh_url + '" alt="" onclick="ShowPostModal(' + data.anh[2].id + ')" />' +
+                    '                                                </div>' +
+                    '                                            </div>';
+            }
+            else if (data.anh.length == 4) {
+                myvar = myvar + '   <div class="row soanh-4">' +
+                    '                                                <div class="col-md-12">' +
+                    '                                                    <img src="' + baseUrl + '/Images/' + data.anh[0].anh_url + '" alt="" onclick="ShowPostModal(' + data.anh[0].id + ')" />' +
+                    '                                                </div>' +
+                    '                                                <div class="col-md-4">' +
+                    '                                                    <img src="' + baseUrl + '/Images/' + data.anh[1].anh_url + '" alt="" onclick="ShowPostModal(' + data.anh[1].id + ')" />' +
+                    '                                                </div>' +
+                    '                                                <div class="col-md-4">' +
+                    '                                                    <img src="' + baseUrl + '/Images/' + data.anh[2].anh_url + '" alt="" onclick="ShowPostModal(' + data.anh[2].id + ')" />' +
+                    '                                                </div>' +
+                    '                                                <div class="col-md-4">' +
+                    '                                                    <img src="' + baseUrl + '/Images/' + data.anh[3].anh_url + '" alt="" onclick="ShowPostModal(' + data.anh[3].id + ')" />' +
+                    '                                                </div>' +
+                    '                                            </div>';
+            }
+            else if (data.anh.length == 5) {
+                myvar = myvar + '   <div class="row soanh-5">' +
+                    '                                                <div class="col-md-6">' +
+                    '                                                    <img src="' + baseUrl + '/Images/' + data.anh[0].anh_url + '" alt="" onclick="ShowPostModal(' + data.anh[0].id + ')" />' +
+                    '                                                </div>' +
+                    '                                                <div class="col-md-6">' +
+                    '                                                    <img src="' + baseUrl + '/Images/' + data.anh[1].anh_url + '" alt="" onclick="ShowPostModal(' + data.anh[1].id + ')" />' +
+                    '                                                </div>' +
+                    '                                                <div class="col-md-4">' +
+                    '                                                    <img src="' + baseUrl + '/Images/' + data.anh[2].anh_url + '" alt="" onclick="ShowPostModal(' + data.anh[2].id + ')" />' +
+                    '                                                </div>' +
+                    '                                                <div class="col-md-4">' +
+                    '                                                    <img src="' + baseUrl + '/Images/' + data.anh[3].anh_url + '" alt="" onclick="ShowPostModal(' + data.anh[3].id + ')" />' +
+                    '                                                </div>' +
+                    '                                                <div class="col-md-4">' +
+                    '                                                    <img src="' + baseUrl + '/Images/' + data.anh[4].anh_url + '" alt="" onclick="ShowPostModal(' + data.anh[4].id + ')" />' +
+                    '                                                </div>' +
+                    '                                            </div>';
+            }
+            else if (data.anh.length > 5) {
+                myvar = myvar + '   <p class="text-center">Chức năng đang cập nhật</p>';
+            }
+
+            myvar = myvar + '</div>';
+        }
+        myvar = myvar + '   </div>' +
+            '                            <div class="post-socialfunction">' +
+            '                                <section class="post-icons">' +
+            '                                    <button type="button" class="btn btn-light post-like-icon" id="post-like-icon-' + data.id + '">' +
+            '                                       <i class="fas fa-heart"></i>' +
+            '                                    </button>' +
+            '                                    <button type="button" class="btn btn-light" id="comment-icon-' + data.id + '"><i class="far fa-comment"></i></button>' +
+            '                                    <button type="button" class="btn btn-light" data-toggle="modal" data-target="#modal-share-' + data.id + '"><i class="far fa-paper-plane"></i></button>' +
+            '                                    <button type="button" class="btn btn-light"><i class="far fa-bookmark"></i></button>' +
+            '                                </section>' +
+            '                                <section class="list-like">' +
+            '                                    <button type="button" class="btn btn-light like-count-' + data.id + '" id="like-count-' + data.id + '">0 lượt thích</button>' +
+            '' +
+            '                                    <!-- Modal -->' +
+            '                                    <div class="modal fade list-like-post" id="list-like-post-' + data.id + '" tabindex="-1" role="dialog">' +
+            '                                        <div class="modal-dialog modal-dialog-centered" role="document">' +
+            '                                            <div class="modal-content">' +
+            '                                                <div class="modal-header">' +
+            '                                                    <h5 class="modal-title" id="exampleModalLongTitle">Likes</h5>' +
+            '                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">' +
+            '                                                        <span aria-hidden="true">×</span>' +
+            '                                                    </button>' +
+            '                                                </div>' +
+            '                                                <div class="modal-body" id="list-like-body-' + data.id + '">' +
+            '' +
+            '                                                </div>' +
+            '                                            </div>' +
+            '                                        </div>' +
+            '                                    </div>' +
+            '                                </section>' +
+            '                                <section class="post-time">' +
+            '                                    <p>' + data.viewthoigian + '</p>' +
+            '                                </section>' +
+            '                                <div class="user-comments" id="user-comments-' + data.id + '">' +
+            '                                </div>' +
+            '                                <section class="comment-bar" id="comment-bar-' + data.id + '">' +
+            '                                    <div class="form-group">' +
+            '                                        <textarea class="form-control" placeholder="Thêm bình luận..." oninput="auto_grow(this)" id="post-comment-content-' + data.id + '"></textarea>' +
+            '                                    </div>' +
+            '                                    <button type="button" class="btn btn-light post-comment-button" id="post-comment-button-' + data.id + '">Đăng</button>' +
+            '                                </section>' +
+            '                            </div>';
+        if (data.anh.length > 0) {
+            data.anh.forEach(function (modal_anh) {
+                myvar = myvar + '   <div class="post-box-modal modal fade" id="modal-post-' + modal_anh.id + '">' +
+                    '                                        <div class="modal-dialog modal-dialog-centered">' +
+                    '                                            <div class="modal-content">' +
+                    '                                                <div class="modal-col-7">' +
+                    '                                                    <div class="post-content">' +
+                    '                                                        <img class="" src="/Images/' + modal_anh.anh_url + '" alt="">' +
+                    '                                                    </div>' +
+                    '                                                </div>' +
+                    '                                                <div class="modal-col-5">' +
+                    '                                                    <div class="post-title">' +
+                    '                                                        <div class="post-info">' +
+                    '                                                            <img height="50px" width="50px" class="rounded rounded-circle" src="/Images/' + data.avatarnguoidang + '" alt="">' +
+                    '                                                            <p id="modal-post-info-' + modal_anh.id + '"><a href="/Client/Personal/Index/' + data.idnguoidang + '" title="">' + data.avatarnguoidang + '</a></p>' +
+                    '                                                        </div>' +
+                    '                                                    </div>' +
+                    '' +
+                    '                                                    <p class="post-content-text" id="modal-post-content-text-' + modal_anh.id + '"></p>' +
+                    '                                                    <div class="post-socialfunction">' +
+                    '' +
+                    '                                                        <div class="user-comments" id="modal-user-comments-' + modal_anh.id + '">' +
+                    '                                                        </div>' +
+                    '                                                        <section class="post-icons">' +
+                    '                                                            <button type="button" class="btn btn-light post-like-icon" id="modal-post-like-icon-' + modal_anh.id + '">' +
+                    '                                                                <i class="fas fa-heart"></i>' +
+                    '                                                            </button>' +
+                    '                                                            <button type="button" class="btn btn-light"><i class="far fa-comment"></i></button>' +
+                    '                                                            <button type="button" class="btn btn-light"></button>' +
+                    '                                                        </section>' +
+                    '' +
+                    '                                                        <section class="list-like">' +
+                    '                                                            <button type="button" class="btn btn-light like-count-' + modal_anh.id + '" id="like-count-' + modal_anh.id + '">0 lượt thích</button>' +
+                    '                                                            <div class="modal fade modal-list-like-post" id="modal-list-like-post-' + modal_anh.id + '" tabindex="-1" role="dialog">' +
+                    '                                                                <div class="modal-dialog modal-dialog-centered" role="document">' +
+                    '                                                                    <div class="modal-content">' +
+                    '                                                                        <div class="modal-header">' +
+                    '                                                                            <h5 class="modal-title" id="exampleModalLongTitle">Likes</h5>' +
+                    '                                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">' +
+                    '                                                                                <span aria-hidden="true">×</span>' +
+                    '                                                                            </button>' +
+                    '                                                                        </div>' +
+                    '                                                                        <div class="modal-body" id="modal-list-like-body-' + modal_anh.id + '">' +
+                    '' +
+                    '                                                                        </div>' +
+                    '                                                                    </div>' +
+                    '                                                                </div>' +
+                    '                                                            </div>' +
+                    '                                                        </section>' +
+                    '                                                        <section class="post-time" id="modal-post-time-' + modal_anh.id + '">' +
+                    '                                                            <p>' + modal_anh.viewthoigian + '</p>' +
+                    '                                                        </section>' +
+                    '                                                        <section class="comment-bar" id="comment-bar-' + modal_anh.id + '">' +
+                    '                                                            <div class="form-group">' +
+                    '                                                                <textarea class="form-control" placeholder="Thêm bình luận..." oninput="auto_grow(this)" id="modal-post-comment-content-' + modal_anh.id + '"></textarea>' +
+                    '                                                            </div>' +
+                    '                                                            <button type="button" class="btn btn-light modal-post-comment-button" id="modal-post-comment-button-' + modal_anh.id + '">Đăng</button>' +
+                    '                                                        </section>' +
+                    '                                                    </div>' +
+                    '                                                </div>' +
+                    '                                            </div>' +
+                    '                                        </div>' +
+                    '                                    </div>';
+            });
+        }
+        myvar = myvar + '                            <div class="modal fade modal-share" id="modal-share-' + data.id + '" tabindex="-1" role="dialog">' +
+            '                                <div class="modal-dialog modal-dialog-centered" role="document">' +
+            '                                    <div class="modal-content">' +
+            '                                        <div class="modal-header">' +
+            '                                            <h5 class="modal-title text-center w-100" id="">Viết bài</h5>' +
+            '                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">' +
+            '                                                <span aria-hidden="true">×</span>' +
+            '                                            </button>' +
+            '                                        </div>' +
+            '                                        <div class="modal-body">' +
+            '                                            <div class="user-share">' +
+            '                                                <div class="user-info">' +
+            '                                                    <div class="user-ava" id="user-ava-share-' + data.id + '">' +
+            '                                                        <img src="https://instagram.fhan2-3.fna.fbcdn.net/v/t51.2885-15/sh0.08/e35/s750x750/100996526_586014178690281_5961547765435131671_n.jpg?_nc_ht=instagram.fhan2-3.fna.fbcdn.net&_nc_cat=109&_nc_ohc=Mm-56owGPb0AX-h6SMF&oh=82dca3ea2584189ce5efd6ea2ee5c26b&oe=5EFB787B" alt="" />' +
+            '                                                    </div>' +
+            '                                                    <div class="user-detail">' +
+            '                                                        <h3 class="user-name" id="user-name-share-' + data.id + '"><a href="#">Như Nguyệt</a></h3>' +
+            '                                                        <div class="form-group">' +
+            '                                                            <select id="inputState" class="form-control">' +
+            '                                                                <option selected value="0">Công khai</option>' +
+            '                                                                <option value="3">Chỉ mình tôi</option>' +
+            '                                                                <option value="2">Bạn bè</option>' +
+            '                                                                <option value="1">Bạn của bạn bè</option>' +
+            '                                                            </select>' +
+            '                                                        </div>' +
+            '                                                    </div>' +
+            '                                                </div>' +
+            '                                                <div class="form-group">' +
+            '                                                    <textarea class="form-control user-share-content" id="user-share-content-' + data.id + '" rows="2" placeholder="Bạn đang nghĩ gì thế ?"></textarea>' +
+            '                                                </div>' +
+            '                                            </div>' +
+            '                                            <div id="content-result-' + data.id + '">' +
+            '' +
+            '                                            </div>' +
+            '                                        </div>' +
+            '                                        <div class="modal-footer">' +
+            '                                            <button type="button" class="btn btn-primary btn-block" onclick="SharePost(' + data.id + ', ' + userId + ')">Đăng</button>' +
+            '                                        </div>' +
+            '                                    </div>' +
+            '                                </div>' +
+            '                            </div>' +
+            '                        </article>';
+        $(myvar).insertAfter(".add-post-box");
     }
     $.connection.hub.qs = { "session_userId": session_userId };
     // Start the connection.
@@ -1233,15 +1318,18 @@ $(function () {
         EditSuccessPostRT = function (edit_post) {
             post.server.showEditPost(edit_post);
         }
+        AddPostRT = function (data, userId) {
+            post.server.addPost(data, userId);
+        }
         $('.user-newsfeed').on('click', '.post-like-icon', function () {
             var post_id = this.id.split("-");
             post_id = post_id[post_id.length - 1]; // Lấy post_id
 
             if (this.className == "btn btn-light post-like-icon liked") {
-                post.server.likePost(post_id, true);
+                post.server.likePost(post_id, false);
             }
             else {
-                post.server.likePost(post_id, false);
+                post.server.likePost(post_id, true);
             }
         });
         $('.user-newsfeed').on('click', '.post-comment-button', function () {
@@ -1389,7 +1477,7 @@ function ShowPostModal(img_post_id) {
                             '                            <img src="' + baseUrl + '/Images/' + item.anhnguoidang + '" alt="">' +
                             '                                                        </div>' +
                             '                            <div class="comment-item-detail">' +
-                            '                                <h3 class="user-name">' + item.tennguoidang + '</h3>' +
+                            '                                <h3 class="user-name"><a href="/Client/Personal/Index/' + item.idnguoidang + '">' + item.tennguoidang + '</a></h3>' +
                             '                                <span>' + item.noidung + '</span>' +
                             '                                <div class="comment-item-info">' +
                             '                                    <time datetime="2011-01-12" title="12 tháng 9 1945">Chưa làm</time>' +
@@ -1412,7 +1500,7 @@ function ShowPostModal(img_post_id) {
                                     '                    <img src="' + baseUrl + '/Images/' + item_child.anhnguoidang + '" alt="">' +
                                     '                                                                        </div>' +
                                     '                    <div class="comment-item-detail">' +
-                                    '                        <h3 class="user-name">' + item_child.tennguoidang + '</h3>' +
+                                    '                        <h3 class="user-name"><a href="/Client/Personal/Index/' + item.idnguoidang + '">' + item_child.tennguoidang + '</a></h3>' +
                                     '                        <span>' + item_child.noidung + '</span>' +
                                     '                        <div class="comment-item-info">' +
                                     '                            <time datetime="2011-01-12" title="12 tháng 9 1945">Chưa làm</time>' +
@@ -1449,3 +1537,10 @@ function ShowPostModal(img_post_id) {
         }
     });
 }
+
+
+
+
+
+
+

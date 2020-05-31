@@ -1,4 +1,7 @@
-﻿<header class="sticky-top">
+﻿@{
+    var userID = (Int32)ViewBag.Session_UserId;
+}
+<header class="sticky-top">
     <div class="container">
         <div class="row">
             <div class="col-md-4">
@@ -120,13 +123,13 @@
                         <button type="button" class="btn btn-light dropdown-toggle" id="usersetting-icon" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="far fa-user"></i></button>
                         <!-- User setting bar -->
                         <div class="dropdown-menu" aria-labelledby="usersetting-icon" id="header-user">
-                            <a  href="/Client/Personal/Index" class="dropdown-item">
+                            <a href="/Client/Personal/Index" class="dropdown-item">
                                 Trang cá nhân
                             </a>
                             <div class="dropdown-item">
                                 Cài đặt
                             </div>
-                            <a href="/Client/Login/Logout" class="dropdown-item">
+                            <a href="/Client/Login/Logout" class="dropdown-item" onclick="checkOnline(@userID)">
                                 Đăng xuất
                             </a>
                         </div>

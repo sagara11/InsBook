@@ -24,9 +24,12 @@ namespace InsBook.Areas.Client.Controllers
             {
                 user = (UserLogin)Session[CommonConstants.USER_SESSION]; // lấy từ session
             }
-            ViewBag.Profile = new UserDao().Profile(user.UserID);
+            var Profile = new UserDao().Profile(user.UserID);
+            ViewBag.Profile = Profile;
+            ViewBag.banbe = Profile.banbe;
             var tendd = new LocationDao().GetAllName();
             ViewBag.TenDD = tendd;
+            ViewBag.UserOnline = CommonConstants.USER_ONLINE;
             //var tenchude = new TopicDao().GetAllName();
             //ViewBag.TenDD = tendd;
             // hàm này để load tất cả bài viết trong trang cá nhân

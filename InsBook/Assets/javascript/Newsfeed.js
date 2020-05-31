@@ -209,7 +209,7 @@
                                 '                                <button type="button" class="btn btn-light like-count-' + post.id + '" id="like-count-' + post.id + '">0 lượt thích</button>' +
                                 '                            </section>' +
                                 '                            <section class="post-time">' +
-                                '                                <p>2 giờ trước</p>' +
+                                '                                <p>' + post.viewthoigian +'</p>' +
                                 '                            </section>' +
                                 '<div class="user-comments" id="user-comments-' + post.id + '">' +
                                 '</div>' +
@@ -271,7 +271,7 @@
                                         '                                                            </div>' +
                                         '                                                        </section>' +
                                         '                                                        <section class="post-time" id="modal-post-time-' + add.id + '">' +
-                                        '                                                            <p>2 giờ trước</p>' +
+                                        '                                                            <p>' + post.viewthoigian +'</p>' +
                                         '                                                        </section>' +
                                         '                                                        <section class="comment-bar" id="comment-bar-' + add.id + '">' +
                                         '                                                            <div class="form-group">' +
