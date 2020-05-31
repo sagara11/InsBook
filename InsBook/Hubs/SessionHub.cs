@@ -8,9 +8,9 @@ namespace InsBook.Hubs
 {
     public class SessionHub : Hub
     {
-        public void MinhThong(int userID)
+        public void CheckOnline(int userID)
         {
-            Clients.All.Hello(userID);
+            Clients.All.Online(userID);
         }
     }
 }

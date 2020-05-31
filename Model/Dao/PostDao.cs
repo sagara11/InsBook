@@ -562,10 +562,19 @@ namespace Model.Dao
                     {
                         if (count_ajax_post_childs == 0 && img_remains.Count == 0)
                         {
-                            post.parent_id = null;
-                            post.anhs.Remove(post.anhs.SingleOrDefault()); // xóa liên két bài viết_ảnh
-                            db.SaveChanges();
-                            return true;
+                            if (post.parent_id == null)
+                            {
+                                db.baiviets.RemoveRange(db.baiviets.Where(p => p.parent_id == post.id));
+                                db.SaveChanges();
+                                return true;
+                            }
+                            else
+                            {
+                                post.parent_id = null;
+                                post.anhs.Remove(post.anhs.SingleOrDefault()); // xóa liên két bài viết_ảnh
+                                db.SaveChanges();
+                                return true;
+                            }
                         }
                         if (count_ajax_post_childs == 1 && img_remains.Count == 0)
                         {

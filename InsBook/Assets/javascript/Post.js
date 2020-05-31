@@ -543,7 +543,7 @@ function ActionEditPost(postId) {
                 formData.append("post_images_" + i, JSON.stringify(edit_selected_img[i]));
             }
         }
-
+        console.table(edit_selected_img);
         $.ajax({
             type: 'post',
             url: '/Client/Post/ActionEditPost',
@@ -764,6 +764,7 @@ $(function () {
         var url = window.location.href.split('/');
         var baseUrl = url[0] + '//' + url[2];
         if (editPost != null) {
+            edit_selected_img = [];
             //sửa trên view trang chủ
             $("#show-edit-post-" + editPost.id).modal("hide"); //tắt edit modal
             $("#post-content-text-" + editPost.id).text(editPost.noidung); // sửa nội dung
@@ -1307,7 +1308,7 @@ $(function () {
             '                        </article>';
         $(myvar).insertAfter(".add-post-box");
     }
-    //$.connection.hub.qs = { "session_userId": 'hacker' };
+    $.connection.hub.qs = { "session_userId": session_userId };
     // Start the connection.
     $.connection.hub.start().done(function () {
 
