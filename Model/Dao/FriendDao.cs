@@ -18,9 +18,9 @@ namespace Model.Dao
         {
             db = new InsBookDbContext();
         }
-        public List<GetFriendSearch> GetFriendSearches(int userId, string search_string)
+        public List<GetFriendSearch> GetFriendSearches(string friend_name, int user_id)
         {
-            return db.Database.SqlQuery<GetFriendSearch>("User_search @userId @search_string", new SqlParameter("@userId", userId), new SqlParameter("@search_string", search_string)).ToList();
+            return db.Database.SqlQuery<GetFriendSearch>("User_search @friend_name, @user_id", new SqlParameter("@friend_name", friend_name), new SqlParameter("@user_id", user_id)).ToList();
         }
     }
 }

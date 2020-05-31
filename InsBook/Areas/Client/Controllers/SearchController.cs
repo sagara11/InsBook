@@ -23,8 +23,17 @@ namespace InsBook.Areas.Client.Controllers
             {
                 user = (UserLogin)Session[CommonConstants.USER_SESSION]; // lấy từ session
             }
+            var Profile = new UserDao().Profile(user.UserID);
+            ViewBag.Profile = Profile;
+            ViewBag.banbe = Profile.banbe;
+            ViewBag.UserOnline = CommonConstants.USER_ONLINE;
 
-            ViewBag.FriendList = new FriendDao().GetFriendSearches(user.UserID, search_string);
+            //friendlist va noi dung tim kiem
+            ViewBag.FriendList = new FriendDao().GetFriendSearches(search_string, user.UserID);
+            ViewBag.search = search_string;
+
+            ViewBag.Session_UserId = user.UserID;
+            
             return View();
         }
     }
