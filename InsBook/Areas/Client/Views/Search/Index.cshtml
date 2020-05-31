@@ -2,8 +2,10 @@
 @{
     ViewBag.Title = "Search";
     Layout = "~/Areas/Client/Views/Shared/Newsfeed.cshtml";
+    var Friends = (List<Model.Models.GetFriendSearch>)ViewBag.FriendList;
 }
 @section css {
+    <link href="~/Assets/css/pages/search.css" rel="stylesheet" />
     <link href="~/Assets/css/layouts/header.css" rel="stylesheet" />
     <link href="~/Assets/css/layouts/post_box.css" rel="stylesheet" />
     <link href="~/Assets/css/layouts/messenger_section.css" rel="stylesheet" />
@@ -25,7 +27,61 @@
             </div>
             <div class="col-50">
                 <!-- Search section -->
-                search
+                <div id="search-wrapper">
+                    <div class="search-header">
+                        <p>Kết quả tìm kiếm cho "@ViewBag.search"</p>
+                    </div>
+                    <div class="search-box">
+                        <a class="post-img">
+                            <img class="rounded rounded-circle" />
+                        </a>
+                        <div class="post-content">
+                            <a href="#" class="name">Trần Hùng Phong</a>
+                            <p class="info">THPT Trần Phú - Hoàn Kiếm</p>
+                        </div>
+                        <div class="post-action">
+                            <button>
+                                Thêm bạn bè
+                            </button>
+                        </div>
+                    </div>
+                    <div class="search-box">
+                        <a class="post-img">
+                            <img class="rounded rounded-circle" />
+                        </a>
+                        <div class="post-content">
+                            <a href="#" class="name">Trần Hùng Phong</a>
+                            <p class="info">THPT Trần Phú - Hoàn Kiếm</p>
+                        </div>
+                        <div class="post-action">
+                            <div class="btn-group" role="group">
+                                <button type="button">Bạn bè</button>
+                                <button class="option" type="button">...</button>
+                                <div class="action-group">
+                                    Hủy kết bạn
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="search-box">
+                        <a class="post-img">
+                            <img class="rounded rounded-circle" />
+                        </a>
+                        <div class="post-content">
+                            <a href="#" class="name">Trần Hùng Phong</a>
+                            <p class="info">THPT Trần Phú - Hoàn Kiếm</p>
+                        </div>
+                        <div class="post-action">
+                            <div class="btn-group" role="group">
+                                <button type="button">Bạn bè</button>
+                                <button class="option" type="button">...</button>
+                                <div class="action-group">
+                                    Hủy kết bạn
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="col-25">
                 <div class="fixed-side">
