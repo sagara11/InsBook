@@ -35,6 +35,10 @@
           object-fit: cover; }
         #messenger-section .message-body .message-box .message-avatar p {
           margin: 0px 0px; }
+          #messenger-section .message-body .message-box .message-avatar p a {
+            text-decoration: none;
+            color: #000;
+            font-weight: 600; }
         #messenger-section .message-body .message-box .message-avatar .message-time small {
           color: gray; }
       #messenger-section .message-body .message-box:hover {

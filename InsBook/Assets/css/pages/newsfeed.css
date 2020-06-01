@@ -44,7 +44,18 @@ main {
         margin: 0px 0px; }
     main #group-contain .group-page .g-list {
       height: 250px;
-      overflow-y: auto; }
+      overflow-y: auto;
+      /* Track */
+      /* Handle */
+      /* Handle on hover */ }
+      main #group-contain .group-page .g-list::-webkit-scrollbar {
+        width: 3px !important; }
+      main #group-contain .group-page .g-list::-webkit-scrollbar-track {
+        background: #f1f1f1; }
+      main #group-contain .group-page .g-list::-webkit-scrollbar-thumb {
+        background: #888; }
+      main #group-contain .group-page .g-list::-webkit-scrollbar-thumb:hover {
+        background: #555; }
       main #group-contain .group-page .g-list ul {
         padding: 0px 0px;
         list-style-type: none; }
