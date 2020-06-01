@@ -163,10 +163,12 @@ namespace Model.Dao
             if (profile == null)
             {
                 profile = db.Database.SqlQuery<GetProfileModel>("BaseProfile @id", new SqlParameter("@id", userId)).SingleOrDefault();
+                profile.id = userId;
             }
             else
             {
                 profile.moiquanhe = new profile_moiquanhe(profile.moiquanheString);
+                profile.id = userId;
             }
 
             profile.diadiem = db.Database.SqlQuery<profile_diadiem>("Profile_diadiem @id", new SqlParameter("@id", userId)).ToList();
@@ -174,6 +176,10 @@ namespace Model.Dao
             profile.congty = db.Database.SqlQuery<profile_congty>("Profile_congty @id", new SqlParameter("@id", userId)).ToList();
 
             profile.truonghoc = db.Database.SqlQuery<profile_truonghoc>("Profile_truonghoc @id", new SqlParameter("@id", userId)).ToList();
+
+            profile.banbe = db.Database.SqlQuery<profile_banbe>("Profile_banbe @id", new SqlParameter("@id", userId)).ToList();
+
+            profile.myalbum = db.Database.SqlQuery<profile_anh>("Profile_myalbum @id", new SqlParameter("@id", userId)).ToList();
 
             return profile;
         }

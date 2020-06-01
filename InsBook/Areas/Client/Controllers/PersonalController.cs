@@ -35,6 +35,7 @@ namespace InsBook.Areas.Client.Controllers
             {
                 ViewBag.Profile = new UserDao().Profile(friend_id.Value);
             }
+            ViewBag.banbe = new UserDao().Profile(user.UserID).banbe;
             var tendd = new LocationDao().GetAllName();
             ViewBag.TenDD = tendd;
             var banbe = new UserDao().GetAllName(user.UserID);
@@ -44,13 +45,13 @@ namespace InsBook.Areas.Client.Controllers
             // hàm này để load tất cả bài viết trong trang cá nhân
             if(friend_id == null)
             {
-                var baivet = new PostDao().GetAllPost(user.UserID, 1, 0);
-                ViewBag.BaiViet = baivet;
+                var baiviet1 = new PostDao().GetAllPost(user.UserID, 1, 0);
+                ViewBag.BaiViet = baiviet1;
             }
             else
             {
-                var baivet = new PostDao().GetAllPost(friend_id.Value, 1, 0);
-                ViewBag.BaiViet = baivet;
+                var baiviet2 = new PostDao().GetAllPost(friend_id.Value, 1, 0);
+                ViewBag.BaiViet = baiviet2;
             }
             ViewBag.Session_UserId = user.UserID;
             ViewBag.Avatar = new UserDao().GetAvatar(user.UserID);

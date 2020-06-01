@@ -50,7 +50,7 @@
                                     <span class="success"><i class="fas fa-check-circle"></i></span>
                                 </div>
                                 <div class="form-check">
-                                    @Html.CheckBoxFor(model => model.RememberMe, new { @class = "form-check-input" })
+                                    @Html.CheckBoxFor(model => model.RememberMe, new { @class = "form-check-input", @checked="true" })
                                     <label class="form-check-label" for="exampleCheck1">Ghi nhớ đăng nhập</label>
                                 </div>
                                 <button type="submit" class="btn btn-block btn-primary">Đăng nhập</button>

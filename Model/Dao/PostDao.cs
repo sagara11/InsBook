@@ -22,7 +22,7 @@ namespace Model.Dao
         {
             try
             {
-                UInt64 time = (new Accessories().GetTime()) << 23;
+                UInt64 time = (new Accessories().SetTime()) << 23;
 
                 object[] sqlParam =
                     {
@@ -80,7 +80,7 @@ namespace Model.Dao
         {
             try
             {
-                UInt64 time = (new Accessories().GetTime()) << 23;
+                UInt64 time = (new Accessories().SetTime()) << 23;
 
                 object[] sqlParam =
                     {
@@ -216,7 +216,7 @@ namespace Model.Dao
         }
         // lấy bài viết từ db 
 
-        
+
         public List<GetPostModel> GetAllPost(int userID, int loaitrang, int dem)
         {
             // 1 là tìm bài viết ở trang cá nhân
@@ -234,7 +234,7 @@ namespace Model.Dao
             {
                 posts = db.Database.SqlQuery<GetPostModel>("GetAllPostNewsFeed @userID", new SqlParameter("@userID", userID)).Skip(dem).Take(4).ToList();
             }
-            
+
             foreach (var post in posts)
             {
                 if (post.diadiem_id != null)
@@ -261,9 +261,97 @@ namespace Model.Dao
                     }
                 }
                 post.thoigiandang = (post.id >> 23) & 0x1FFFFFFFFFF;
+                post.viewthoigian = GetPostTime(post.thoigiandang);
             }
 
             return posts;
+        }
+        protected string GetPostTime(Int64 time)
+        {
+            string ngaydang;
+            DateTime DateTimeNow = DateTime.Now;
+
+            time = new Accessories().GetTime(time);
+
+            time = -time;
+            
+            var thu = DateTimeNow.AddSeconds(time).DayOfWeek.ToString();
+            switch(thu)
+            {
+                case "Monday": { thu = "Thứ Hai"; break; }
+
+                case "Tuesday": { thu = "Thứ Ba"; break; }
+                
+                case "Wednesday": { thu = "Thứ Tư"; break; }
+                
+                case "Thursday": { thu = "Thứ Năm"; break; }
+               
+                case "Friday": { thu = "Thứ Sáu"; break; }
+                
+                case "Saturday": { thu = "Thứ Bảy"; break; }
+                
+                case "Sunday": { thu = "Chủ Nhật"; break; }
+            }
+            int ngay = DateTimeNow.AddSeconds(time).Day;
+            int thang = DateTimeNow.AddSeconds(time).Month;
+            int nam = DateTimeNow.AddSeconds(time).Year;
+            int gio = DateTimeNow.AddSeconds(time).TimeOfDay.Hours;
+            int phut = DateTimeNow.AddSeconds(time).TimeOfDay.Minutes;
+
+            int thangHientai = DateTimeNow.AddSeconds(time).Month;
+            int namHientai = DateTimeNow.AddSeconds(time).Year;
+
+            time = -time;
+            if (time < 60)
+            {
+                ngaydang = "Vừa xong";
+            }
+            else if(time < 3600)
+            {
+                ngaydang = time / 60 + " phút";
+            }
+            else if(time < 86400)
+            {
+                ngaydang = time / 3600 + " giờ";
+            }
+            else if(time < 604800)
+            {
+                if(time / 86400 <= 1)
+                {
+                    ngaydang = "Hôm qua lúc " + gio + ":" + phut;
+                }
+                else if(time / 86400 > 1)
+                {
+                    ngaydang =  thu + " lúc " + gio + ":" + phut;
+                }
+                else
+                {
+                    ngaydang = "Được tài trợ";
+                }
+            }
+            else if(thang == thangHientai)
+            {
+                if(nam == namHientai)
+                {
+                    ngaydang = ngay + " tháng " + thang + " lúc " + gio + ":" + phut;
+                }
+                else
+                {
+                    ngaydang = ngay + " tháng " + thang + ", " + nam;
+                }
+            }
+            else
+            {
+                if (nam == namHientai)
+                {
+                    ngaydang = ngay + " tháng " + thang;
+                }
+                else
+                {
+                    ngaydang = ngay + " tháng " + thang + ", " + nam;
+                }
+            }
+            return ngaydang;
         }
         public bool checKPostCanSplit(Int64 postId)
         {
@@ -318,7 +406,7 @@ namespace Model.Dao
 
                 return post;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return null;
             }
@@ -355,7 +443,7 @@ namespace Model.Dao
         {
             try
             {
-                UInt64 time = (new Accessories().GetTime()) << 23; object[] sqlParam =
+                UInt64 time = (new Accessories().SetTime()) << 23; object[] sqlParam =
                      {
                         new SqlParameter("@time", Convert.ToString(time)),
                         new SqlParameter("@shardId", shardId)
@@ -440,7 +528,7 @@ namespace Model.Dao
                     return false;
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Console.WriteLine(ex.InnerException.Message);
                 return false;
@@ -464,7 +552,7 @@ namespace Model.Dao
         public bool DeletePostChild(Int64 postID, int userId, int count_ajax_post_childs, List<dynamic> img_remains)
         //count_ajax_post_childs >= img_remains.count
         {
-            var post = db.baiviets.Find(postID);
+            var post = db.baiviets.Where(x => x.id == postID).SingleOrDefault();
             var post_childs = db.Database.SqlQuery<post_anh>("GetPostImages @postID", new SqlParameter("@postID", post.id)).ToList();
             try
             {
@@ -474,10 +562,19 @@ namespace Model.Dao
                     {
                         if (count_ajax_post_childs == 0 && img_remains.Count == 0)
                         {
-                            post.parent_id = null;
-                            post.anhs.Remove(post.anhs.SingleOrDefault()); // xóa liên két bài viết_ảnh
-                            db.SaveChanges();
-                            return true;
+                            if (post.parent_id == null)
+                            {
+                                db.baiviets.RemoveRange(db.baiviets.Where(p => p.parent_id == post.id));
+                                db.SaveChanges();
+                                return true;
+                            }
+                            else
+                            {
+                                post.parent_id = null;
+                                post.anhs.Remove(post.anhs.SingleOrDefault()); // xóa liên két bài viết_ảnh
+                                db.SaveChanges();
+                                return true;
+                            }
                         }
                         if (count_ajax_post_childs == 1 && img_remains.Count == 0)
                         {
@@ -554,7 +651,7 @@ namespace Model.Dao
                 return null;
             }
         }
-        public bool AddPostFriend(Int64 postID ,string friendID)
+        public bool AddPostFriend(Int64 postID, string friendID)
         {
             try
             {
@@ -565,7 +662,7 @@ namespace Model.Dao
                 db.SaveChanges();
                 return true;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return false;
             }

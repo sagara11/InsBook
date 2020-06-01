@@ -1,13 +1,16 @@
-﻿<header class="sticky-top">
+﻿@{
+    var userID = (Int32)ViewBag.Session_UserId;
+}
+<header class="sticky-top">
     <div class="container">
         <div class="row">
             <div class="col-md-4">
-                <h3><a href="#" title="">Wibook</a></h3>
+                <h3><a href="/Client/Home/" title="">Wibook</a></h3>
             </div>
             <div class="col-md-4">
-                <form action="#" method="get" accept-charset="utf-8">
+                <form action="/Client/Search/Index" method="get" accept-charset="utf-8">
                     <div class="form-group">
-                        <input type="text" class="form-control" id="" placeholder="Tìm kiếm">
+                        <input name="search_string" type="text" class="form-control" id="" placeholder="Tìm kiếm">
                     </div>
                     <button type="submit" class="btn btn-light"><i class="fas fa-search"></i></button>
                 </form>
@@ -120,15 +123,15 @@
                         <button type="button" class="btn btn-light dropdown-toggle" id="usersetting-icon" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="far fa-user"></i></button>
                         <!-- User setting bar -->
                         <div class="dropdown-menu" aria-labelledby="usersetting-icon" id="header-user">
-                            <div class="dropdown-item">
+                            <a href="/Client/Personal/Index" class="dropdown-item">
                                 Trang cá nhân
-                            </div>
+                            </a>
                             <div class="dropdown-item">
                                 Cài đặt
                             </div>
-                            <div class="dropdown-item">
+                            <a href="/Client/Login/Logout" class="dropdown-item" onclick="checkOnline(@userID)">
                                 Đăng xuất
-                            </div>
+                            </a>
                         </div>
                     </div>
                 </div>

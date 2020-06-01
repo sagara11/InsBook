@@ -14,6 +14,7 @@
                         var baseUrl = url[0] + '//' + url[2];
                         response.baiviet.forEach(function (post) {
                             var html = '';
+                    
                             html = '<article class="post-box post-' + post.id + '">' +
                                 '                        <header class="post-title">' +
                                 '                            <div class="post-info">' +
@@ -43,14 +44,17 @@
                                 '                                                <ul>' +
                                 '                                                    <li>' +
                                 '                                                        <a class="report" href="">Báo cáo</a>' +
-                                '                                                    </li>' +
-                                '                                                    <li>' +
-                                '                                                        <a href="#" onclick="EditPost(' + post.id + ', event, ' + response.userID + ')">Sửa bài viết</a>' +
-                                '                                                    </li>' +
-                                '                                                    <li>' +
-                                '                                                        <a href="#" onclick="DeletePost(' + post.id + ', event, ' + response.userID + ')">Xóa bài viết</a>' +
-                                '                                                    </li>' +
-                                '                                                </ul>' +
+                                '                                                    </li>';
+                            if (post.idnguoidang == response.userID) {
+                                html = html + '                                                    <li>' +
+                                    '                                                        <a href="#" onclick="EditPost(' + post.id + ', event, ' + response.userID + ')">Sửa bài viết</a>' +
+                                    '                                                    </li>' +
+                                    '                                                    <li>' +
+                                    '                                                        <a href="#" onclick="DeletePost(' + post.id + ', event, ' + response.userID + ')">Xóa bài viết</a>' +
+                                    '                                                    </li>';
+                            }
+                                
+                                html = html + '                                                </ul>' +
                                 '                                            </div>' +
                                 '                                        </div>' +
                                 '                                    </div>' +
@@ -205,7 +209,7 @@
                                 '                                <button type="button" class="btn btn-light like-count-' + post.id + '" id="like-count-' + post.id + '">0 lượt thích</button>' +
                                 '                            </section>' +
                                 '                            <section class="post-time">' +
-                                '                                <p>2 giờ trước</p>' +
+                                '                                <p>' + post.viewthoigian +'</p>' +
                                 '                            </section>' +
                                 '<div class="user-comments" id="user-comments-' + post.id + '">' +
                                 '</div>' +
@@ -267,7 +271,7 @@
                                         '                                                            </div>' +
                                         '                                                        </section>' +
                                         '                                                        <section class="post-time" id="modal-post-time-' + add.id + '">' +
-                                        '                                                            <p>2 giờ trước</p>' +
+                                        '                                                            <p>' + post.viewthoigian +'</p>' +
                                         '                                                        </section>' +
                                         '                                                        <section class="comment-bar" id="comment-bar-' + add.id + '">' +
                                         '                                                            <div class="form-group">' +

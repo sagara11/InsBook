@@ -552,6 +552,7 @@ namespace InsBook.Areas.Client.Controllers
                     var count_db_post_childs = new PostDao().CountImgs(post.id); //from db
                     var count_ajax_post_childs = Request.Files.Count + data.Count - 2; //from ajax
 
+                    var checkSplit = false;
                     List<dynamic> img_remains = new List<dynamic>(); // Những ảnh cũ còn lại sau khi xóa
                     if ((data.Count - 2) > 0)
                     {
@@ -670,7 +671,7 @@ namespace InsBook.Areas.Client.Controllers
                         }
                         else if (count_db_post_childs == 1)
                         {
-                            var checkSplit = new PostDao().checKPostCanSplit(post.id);
+                            checkSplit = new PostDao().checKPostCanSplit(post.id);
                             if (checkSplit)
                             {
                                 //thêm bài viết ảnh
@@ -768,10 +769,18 @@ namespace InsBook.Areas.Client.Controllers
                     {
                         if(img_remains.Count >0)
                         {
-                            foreach(var remain in img_remains)
+                            if (checkSplit)
                             {
-                                var imgId = new PostDao().GetImgId(remain["id"]);
+                                var imgId = new PostDao().GetImgId(post_img_id[0]);
                                 imgIds.Add(imgId);
+                            }
+                            else
+                            {
+                                foreach (var remain in img_remains)
+                                {
+                                    var imgId = new PostDao().GetImgId(remain["id"]);
+                                    imgIds.Add(imgId);
+                                }
                             }
                         }
                         GetPostModel getpost = new GetPostModel();
@@ -850,11 +859,13 @@ namespace InsBook.Areas.Client.Controllers
                 try
                 {
                     var baiviet = new PostDao().GetAllPost(user.UserID, 2, dem);
+
                     return Json(new
                     {
                         status = true,
                         baiviet,
                         userID = user.UserID,
+
                     }, JsonRequestBehavior.AllowGet);
                 }
                 catch (Exception ex)

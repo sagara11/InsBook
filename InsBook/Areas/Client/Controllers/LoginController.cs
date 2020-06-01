@@ -51,7 +51,7 @@ namespace InsBook.Areas.Client.Controllers
                     Session.Add(CommonConstants.USER_SESSION, userSC);
                     Session.Timeout = 1800;
 
-
+                    //CommonConstants.USER_ONLINE.Add(user.id);
                     //thêm cookie khi bấm nút ghi nhớ đăng nhập
                     if (model.RememberMe)
                     {
@@ -67,8 +67,10 @@ namespace InsBook.Areas.Client.Controllers
         {
             if (Session[CommonConstants.USER_SESSION] != null || Request.Cookies[CommonConstants.USER_COOKIE] != null)
             {
-                Session.Remove(CommonConstants.USER_SESSION);
+                //var user = (UserLogin)Session[CommonConstants.USER_SESSION];
+                //CommonConstants.USER_ONLINE.Remove(user.UserID);
 
+                Session.Remove(CommonConstants.USER_SESSION);
 
                 Response.Cookies[CommonConstants.USER_COOKIE].Expires = DateTime.Now.AddDays(-1);
                 return View("Index");

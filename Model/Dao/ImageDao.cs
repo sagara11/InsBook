@@ -22,7 +22,7 @@ namespace Model.Dao
         {
             try
             {
-                UInt64 time = (new Accessories().GetTime()) << 23;
+                UInt64 time = (new Accessories().SetTime()) << 23;
 
                 object[] sqlParam =
                     {

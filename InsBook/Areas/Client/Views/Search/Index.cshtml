@@ -1,0 +1,98 @@
+﻿
+@{
+    ViewBag.Title = "Search";
+    Layout = "~/Areas/Client/Views/Shared/Newsfeed.cshtml";
+    var Friends = (List<Model.Models.GetFriendSearch>)ViewBag.FriendList;
+    var Profile = (Model.Models.GetProfileModel)ViewBag.Profile;
+    var userID = (Int32)ViewBag.Session_UserId;
+    var userOnline = (List<Int32>)ViewBag.UserOnline;
+}
+@section css {
+    <link href="~/Assets/css/pages/search.css" rel="stylesheet" />
+    <link href="~/Assets/css/layouts/header.css" rel="stylesheet" />
+    <link href="~/Assets/css/layouts/post_box.css" rel="stylesheet" />
+    <link href="~/Assets/css/layouts/messenger_section.css" rel="stylesheet" />
+    <link href="~/Assets/css/layouts/messenger.css" rel="stylesheet" />
+}
+@{
+    Html.RenderPartial("~/Areas/Client/Views/Layout/header.cshtml");
+}
+<main>
+    <div class="container_new">
+        <div class="row">
+            <div class="col-25">
+                <div class="fixed-side">
+                    <!-- Group - Page -->
+                    @{
+                        Html.RenderPartial("~/Areas/Client/Views/Layout/group/group_page.cshtml");
+                    }
+                </div>
+            </div>
+            <div class="col-50">
+                <!-- Search section -->
+                <div id="search-wrapper">
+                    <div class="search-header">
+                        <p>Kết quả tìm kiếm cho "@ViewBag.search"</p>
+                    </div>
+                    <div class="search-box">
+                        <a class="post-img">
+                            <img class="rounded rounded-circle" />
+                        </a>
+                        <div class="post-content">
+                            <a href="#" class="name">Trần Hùng Phong</a>
+                            <p class="info">THPT Trần Phú - Hoàn Kiếm</p>
+                        </div>
+                        <div class="post-action">
+                            <button>
+                                Thêm bạn bè
+                            </button>
+                        </div>
+                    </div>
+                    @foreach (var friend in Friends)
+                    {
+                        <div class="search-box">
+                            <a href="/Client/Personal/Index/@friend.friend_id" class="post-img">
+                                <img src="/Images/@friend.friend_anh" class="rounded rounded-circle" />
+                            </a>
+                            <div class="post-content">
+                                <a href="/Client/Personal/Index/@friend.friend_id" class="name">@friend.friend_ten</a>
+                                <p class="info">@friend.friend_ngaysinh</p>
+                            </div>
+                            <div class="post-action">
+                                <div class="btn-group" role="group">
+                                    <button type="button">Bạn bè</button>
+                                    <button class="option" type="button">...</button>
+                                    <div class="action-group">
+                                        Hủy kết bạn
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+            <div class="col-25">
+                <div class="fixed-side">
+                    <!-- Messenger-section -->
+                    @{
+                        Html.RenderPartial("~/Areas/Client/Views/Layout/messenger/messenger_section.cshtml");
+                    }
+                </div>
+
+            </div>
+        </div>
+    </div>
+</main>
+@section js{
+    <script src="~/Assets/js/messenger.js"></script>
+    <script src="~/Assets/js/love_button.js"></script>
+    <!-- cdnjs -->
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery.lazy/1.7.9/jquery.lazy.min.js"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery.lazy/1.7.9/jquery.lazy.plugins.min.js"></script>
+    <!---->
+    <script src="~/Scripts/jquery.signalR-2.4.1.min.js"></script>
+    <script src="~/signalr/hubs"></script>
+    <!---->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+}
+
