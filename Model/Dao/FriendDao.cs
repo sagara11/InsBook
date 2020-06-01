@@ -22,5 +22,9 @@ namespace Model.Dao
         {
             return db.Database.SqlQuery<GetFriendSearch>("User_search @friend_name, @user_id", new SqlParameter("@friend_name", friend_name), new SqlParameter("@user_id", user_id)).ToList();
         }
+        public List<GetFriendSearch> GetNotFriendSearches(string friend_name, int user_id)
+        {
+            return db.Database.SqlQuery<GetFriendSearch>("User_search_notfriend @friend_name, @user_id", new SqlParameter("@friend_name", friend_name), new SqlParameter("@user_id", user_id)).ToList();
+        }
     }
 }

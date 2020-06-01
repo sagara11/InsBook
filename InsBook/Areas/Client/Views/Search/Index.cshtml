@@ -3,6 +3,7 @@
     ViewBag.Title = "Search";
     Layout = "~/Areas/Client/Views/Shared/Newsfeed.cshtml";
     var Friends = (List<Model.Models.GetFriendSearch>)ViewBag.FriendList;
+    var notFriends = (List<Model.Models.GetFriendSearch>)ViewBag.NotFriendList;
     var Profile = (Model.Models.GetProfileModel)ViewBag.Profile;
     var userID = (Int32)ViewBag.Session_UserId;
     var userOnline = (List<Int32>)ViewBag.UserOnline;
@@ -34,20 +35,6 @@
                     <div class="search-header">
                         <p>Kết quả tìm kiếm cho "@ViewBag.search"</p>
                     </div>
-                    <div class="search-box">
-                        <a class="post-img">
-                            <img class="rounded rounded-circle" />
-                        </a>
-                        <div class="post-content">
-                            <a href="#" class="name">Trần Hùng Phong</a>
-                            <p class="info">THPT Trần Phú - Hoàn Kiếm</p>
-                        </div>
-                        <div class="post-action">
-                            <button>
-                                Thêm bạn bè
-                            </button>
-                        </div>
-                    </div>
                     @foreach (var friend in Friends)
                     {
                         <div class="search-box">
@@ -69,6 +56,23 @@
                             </div>
                         </div>
                     }
+                    @foreach (var notfriend in notFriends)
+                    {
+                        <div class="search-box">
+                            <a href="/Client/Personal/Index/@notfriend.friend_id" class="post-img">
+                                <img src="/Images/@notfriend.friend_anh" class="rounded rounded-circle" />
+                            </a>
+                            <div class="post-content">
+                                <a href="/Client/Personal/Index/@notfriend.friend_id" class="name">@notfriend.friend_ten</a>
+                                <p class="info">@notfriend.friend_ngaysinh</p>
+                            </div>
+                            <div class="post-action">
+                                <button>
+                                    Thêm bạn bè
+                                </button>
+                            </div>
+                        </div>
+                    }       
                 </div>
             </div>
             <div class="col-25">
