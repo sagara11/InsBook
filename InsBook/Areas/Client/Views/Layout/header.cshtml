@@ -1,5 +1,9 @@
 ﻿@{
-    var userID = (Int32)ViewBag.Session_UserId;
+    var userID = -1;
+    if (ViewBag.Session_UserId != null)
+    {
+        userID = (Int32)ViewBag.Session_UserId;
+    }
 }
 <header class="sticky-top">
     <div class="container">

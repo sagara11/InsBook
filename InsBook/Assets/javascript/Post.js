@@ -1537,10 +1537,3 @@ function ShowPostModal(img_post_id) {
         }
     });
 }
-
-
-
-
-
-
-
