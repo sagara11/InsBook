@@ -4,30 +4,30 @@
     Layout = "~/Areas/Client/Views/Shared/_PersonalPage.cshtml";
     var Profile = (Model.Models.GetProfileModel)ViewBag.Profile;
 }
-    <ul class="nav nav-tabs">
-        <li class="nav-item">
-            <a class="nav-link" href="/Client/Personal/Index"><i class="fas fa-rss-square"></i><span>Dòng thời gian</span></a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link active" href="/Client/Personal/ChangeGeneralInfor"><i class="far fa-user-circle"></i><span>Giới thiệu</span></a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="/Client/Personal/FriendsInfo"><i class="fas fa-users"></i><span>Bạn bè</span></a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="/Client/Personal/ImagesInfo"><i class="far fa-images"></i></i><span>Ảnh</span></a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span>Xem thêm</span>
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <a class="dropdown-item" href="/Client/Personal/SavedInfo">Lưu trữ</a>
-                <a class="dropdown-item" href="/Client/Personal/AlbumInfo">Bộ sưu tập</a>
-                <a class="dropdown-item" href="/Client/Personal/VideoInfo">Video</a>
-            </div>
-        </li>
-    </ul>
+<ul class="nav nav-tabs">
+    <li class="nav-item">
+        <a class="nav-link" href="/Client/Personal/Index"><i class="fas fa-rss-square"></i><span>Dòng thời gian</span></a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link active" href="/Client/Personal/ChangeGeneralInfor"><i class="far fa-user-circle"></i><span>Giới thiệu</span></a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/Client/Personal/FriendsInfo"><i class="fas fa-users"></i><span>Bạn bè</span></a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/Client/Personal/ImagesInfo"><i class="far fa-images"></i></i><span>Ảnh</span></a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span>Xem thêm</span>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item" href="/Client/Personal/SavedInfo">Lưu trữ</a>
+            <a class="dropdown-item" href="/Client/Personal/AlbumInfo">Bộ sưu tập</a>
+            <a class="dropdown-item" href="/Client/Personal/VideoInfo">Video</a>
+        </div>
+    </li>
+</ul>
 
 <!-- Tab panes -->
 <div class="tab-content">
@@ -60,48 +60,49 @@
             <div class="tab-pane container active" id="menu2-2">
                 <article class="change-password">
                     <div class="row">
-                        <div class="col-md-3">
-                            <div class="user-img">
-                                <img src="~/Images/@Profile.anhdd" alt="">
+                        @*<div class="col-md-3">
+                                <div class="user-img">
+                                    <img src="~/Images/@Profile.anhdd" alt="">
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-md-9">
-                            <h1 class="user-name">@Profile.tennguoidung</h1>
-                        </div>
-                        <div class="col-md-3">
-                            <label for="matkhaucu">Mật khẩu cũ</label>
-                        </div>
-                        <div class="col-md-9">
-                            <div class="form-group">
-                                <input type="password" class="form-control" id="matkhaucu">
+                            <div class="col-md-9">
+                                <h1 class="user-name">@Profile.tennguoidung</h1>
                             </div>
-                        </div>
-                        <div class="col-md-3">
-                            <label for="matkhaumoi">Mật khẩu mới</label>
-                        </div>
-                        <div class="col-md-9">
-                            <div class="form-group">
-                                <input type="password" class="form-control" id="matkhaumoi">
+                            <div class="col-md-3">
+                                <label for="matkhaucu">Mật khẩu cũ</label>
                             </div>
-                        </div>
-                        <div class="col-md-3">
-                            <label for="nhaplaimatkhau">Nhập lại mật khẩu</label>
-                        </div>
-                        <div class="col-md-9">
-                            <div class="form-group">
-                                <input type="password" class="form-control" id="nhaplaimatkhau">
+                            <div class="col-md-9">
+                                <div class="form-group">
+                                    <input type="password" class="form-control" id="matkhaucu">
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-md-3">
-                        </div>
-                        <div class="col-md-9">
-                            <button type="button" class="btn btn-primary">Đổi mật khẩu</button>
-                        </div>
-                        <div class="col-md-3">
-                        </div>
-                        <div class="col-md-9">
-                            <button type="button" class="btn btn-light">Quên mật khẩu ?</button>
-                        </div>
+                            <div class="col-md-3">
+                                <label for="matkhaumoi">Mật khẩu mới</label>
+                            </div>
+                            <div class="col-md-9">
+                                <div class="form-group">
+                                    <input type="password" class="form-control" id="matkhaumoi">
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <label for="nhaplaimatkhau">Nhập lại mật khẩu</label>
+                            </div>
+                            <div class="col-md-9">
+                                <div class="form-group">
+                                    <input type="password" class="form-control" id="nhaplaimatkhau">
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                            </div>
+                            <div class="col-md-9">
+                                <button type="button" class="btn btn-primary">Đổi mật khẩu</button>
+                            </div>
+                            <div class="col-md-3">
+                            </div>
+                            <div class="col-md-9">
+                                <button type="button" class="btn btn-light">Quên mật khẩu ?</button>
+                            </div>*@
+                        <h1 style="padding:30px; text-align:center; color:gray" class="w-100">CHỨC NĂNG ĐANG ĐƯỢC CẬP NHẬT</h1>
                     </div>
                 </article>
             </div>

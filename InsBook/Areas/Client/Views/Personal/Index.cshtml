@@ -584,9 +584,18 @@
                                                         <div class="user-comments" id="modal-user-comments-@modal_anh.id">
                                                         </div>
                                                         <section class="post-icons">
-                                                            <button type="button" class="btn btn-light post-like-icon" id="modal-post-like-icon-@modal_anh.id">
-                                                                <i class="fas fa-heart"></i>
-                                                            </button>
+                                                            @if (post.dsnguoithich.Any(x => x.idnguoithich == userID) && post.id == modal_anh.id)
+                                                            {
+                                                                <button type="button" class="btn btn-light post-like-icon liked" id="modal-post-like-icon-@modal_anh.id">
+                                                                    <i class="fas fa-heart"></i>
+                                                                </button>
+                                                            }
+                                                            else
+                                                            {
+                                                                <button type="button" class="btn btn-light post-like-icon" id="modal-post-like-icon-@modal_anh.id">
+                                                                    <i class="fas fa-heart"></i>
+                                                                </button>
+                                                            }
                                                             <button type="button" class="btn btn-light"><i class="far fa-comment"></i></button>
                                                             <button type="button" class="btn btn-light"></button>
                                                         </section>

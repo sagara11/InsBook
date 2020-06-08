@@ -156,6 +156,10 @@ namespace Model.Dao
                 return 0;
             }
         }
+        public string GetHo(int useId)
+        {
+            return db.Database.SqlQuery<string>("select nguoidung.ho from nguoidung where nguoidung.id=" + useId).SingleOrDefault();
+        }
         public GetProfileModel Profile(int userId)
         {
             GetProfileModel profile = new GetProfileModel();

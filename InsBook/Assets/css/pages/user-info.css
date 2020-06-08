@@ -51,6 +51,36 @@ main {
         border-radius: 50%;
         border: 2px solid red;
         padding: 3px; }
+    main #user-infomation .user-info-title .div-change-user-ava {
+      position: relative; }
+      main #user-infomation .user-info-title .div-change-user-ava .user-ava {
+        position: relative; }
+      main #user-infomation .user-info-title .div-change-user-ava .change-user-ava {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        top: 0;
+        left: 0; }
+        main #user-infomation .user-info-title .div-change-user-ava .change-user-ava .hover-change-user-ava {
+          border-radius: 50%;
+          height: 100%;
+          width: 150px;
+          background: rgba(0, 0, 0, 0.2);
+          display: none; }
+          main #user-infomation .user-info-title .div-change-user-ava .change-user-ava .hover-change-user-ava p {
+            color: #fff;
+            font-size: 18px;
+            font-weight: 600;
+            margin: 0; }
+        main #user-infomation .user-info-title .div-change-user-ava .change-user-ava:hover {
+          cursor: pointer; }
+          main #user-infomation .user-info-title .div-change-user-ava .change-user-ava:hover .hover-change-user-ava {
+            display: flex;
+            align-items: center;
+            justify-content: center; }
     main #user-infomation .user-info-title .user-description {
       font-size: 18px; }
       main #user-infomation .user-info-title .user-description .user-description-one {

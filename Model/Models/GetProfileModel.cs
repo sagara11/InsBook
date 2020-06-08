@@ -106,5 +106,7 @@ namespace Model.Models
         public int nguoidang_id { set; get; }
         public string nguoidang_ten { set; get; }
         public long baiviet_id { set; get; }
+        public Int32 sobinhluan { set; get; }
+        public Int32 sothich { set; get; }
     }
 }
