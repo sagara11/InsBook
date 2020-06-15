@@ -65,94 +65,94 @@
                     <div class="relationship">
                         <h3>Tình trạng mối quan hệ</h3>
                         @*@if (Profile.moiquanhe == null)
-                        {
-                            <div class="relationship-adding">
-                                <button type="button" class="btn btn-light" id="show-relationship-adding-box"><i class="far fa-plus-square"></i><span>Thêm tình trạng quan hệ của bạn</span></button>
-                            </div>
-                            <div class="relationship-adding-box">
-                                <div class="row">
-                                    <div class="col-md-4">
-                                        <label for="moiquanhe">Tình trạng mối quan hệ</label>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <div class="form-group">
-                                            <select id="moiquanhe-loaithanhvien" class="form-control">
-                                                <option selected disabled class="d-none">Chọn mối quan hệ</option>
-                                                <option>Độc thân</option>
-                                                <option>Hẹn hò</option>
-                                                <option>Đã đính hôn</option>
-                                                <option>Đã kết hôn</option>
-                                                <option>Kết hôn dồng tính</option>
-                                                <option>Chung sống</option>
-                                                <option>Tìm hiểu</option>
-                                                <option>Có mối quan hệ phức tạp</option>
-                                                <option>Đã ly thân</option>
-                                                <option>Đã ly hôn</option>
-                                                <option>Góa</option>
-                                            </select>
+                            {
+                                <div class="relationship-adding">
+                                    <button type="button" class="btn btn-light" id="show-relationship-adding-box"><i class="far fa-plus-square"></i><span>Thêm tình trạng quan hệ của bạn</span></button>
+                                </div>
+                                <div class="relationship-adding-box">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <label for="moiquanhe">Tình trạng mối quan hệ</label>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <select id="moiquanhe-loaithanhvien" class="form-control">
+                                                    <option selected disabled class="d-none">Chọn mối quan hệ</option>
+                                                    <option>Độc thân</option>
+                                                    <option>Hẹn hò</option>
+                                                    <option>Đã đính hôn</option>
+                                                    <option>Đã kết hôn</option>
+                                                    <option>Kết hôn dồng tính</option>
+                                                    <option>Chung sống</option>
+                                                    <option>Tìm hiểu</option>
+                                                    <option>Có mối quan hệ phức tạp</option>
+                                                    <option>Đã ly thân</option>
+                                                    <option>Đã ly hôn</option>
+                                                    <option>Góa</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+
+                                        </div>
+                                        <div class="col-md-2">
+
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label for=""></label>
+                                        </div>
+                                        <div class="col-md-6 add-user">
+                                            <div class="relationship-avatar">
+                                                <img src="~/Images/22904751_688560231353134_2748711313877205190_o.jpg" alt="">
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" id="noidasong">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-2">
+
+                                        </div>
+                                        <hr>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <select id="noidasong-baomat" class="form-control">
+                                                    <option selected>Công khai</option>
+                                                    <option>Bạn bè</option>
+                                                    <option>Chỉ mình tôi</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <button type="button" class="btn btn-primary">Lưu thay đổi</button>
+                                            <button type="button" class="btn btn-light" id="close-relationship-adding-box">Hủy</button>
+                                        </div>
+                                        <div class="col-md-2">
+
                                         </div>
                                     </div>
-                                    <div class="col-md-3">
-
-                                    </div>
-                                    <div class="col-md-2">
-
-                                    </div>
-                                    <div class="col-md-4">
-                                        <label for=""></label>
-                                    </div>
-                                    <div class="col-md-6 add-user">
-                                        <div class="relationship-avatar">
+                                    <button class="btn btn-light relationship-closse" type="button" id=""><i class="fas fa-times"></i> Hủy</button>
+                                </div>
+                            }
+                            else
+                            {
+                                <ul class="list-relationship">
+                                    <li class="list-relationship-item">
+                                        <div class="relationship-item-thumbnail">
                                             <img src="~/Images/22904751_688560231353134_2748711313877205190_o.jpg" alt="">
                                         </div>
-                                        <div class="form-group">
-                                            <input type="text" class="form-control" id="noidasong">
+                                        <div class="relationship-item-name">
+                                            <p>@Profile.moiquanhe.ten</p>
+                                            <p>@Profile.moiquanhe.moiquanhe</p>
                                         </div>
-                                    </div>
-
-                                    <div class="col-md-2">
-
-                                    </div>
-                                    <hr>
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <select id="noidasong-baomat" class="form-control">
-                                                <option selected>Công khai</option>
-                                                <option>Bạn bè</option>
-                                                <option>Chỉ mình tôi</option>
-                                            </select>
+                                        <div class="relationship-item-tools">
+                                            <i class="far fa-edit"></i>
+                                            <i class="far fa-trash-alt"></i>
                                         </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <button type="button" class="btn btn-primary">Lưu thay đổi</button>
-                                        <button type="button" class="btn btn-light" id="close-relationship-adding-box">Hủy</button>
-                                    </div>
-                                    <div class="col-md-2">
-
-                                    </div>
-                                </div>
-                                <button class="btn btn-light relationship-closse" type="button" id=""><i class="fas fa-times"></i> Hủy</button>
-                            </div>
-                        }
-                        else
-                        {
-                            <ul class="list-relationship">
-                                <li class="list-relationship-item">
-                                    <div class="relationship-item-thumbnail">
-                                        <img src="~/Images/22904751_688560231353134_2748711313877205190_o.jpg" alt="">
-                                    </div>
-                                    <div class="relationship-item-name">
-                                        <p>@Profile.moiquanhe.ten</p>
-                                        <p>@Profile.moiquanhe.moiquanhe</p>
-                                    </div>
-                                    <div class="relationship-item-tools">
-                                        <i class="far fa-edit"></i>
-                                        <i class="far fa-trash-alt"></i>
-                                    </div>
-                                </li>
-                            </ul>
-                        }*@
-                    <h1 style="padding:30px; text-align:center; color:gray">CHỨC NĂNG ĐANG ĐƯỢC CẬP NHẬT</h1>
+                                    </li>
+                                </ul>
+                            }*@
+                        <h1 style="padding:30px; text-align:center; color:gray" class="w-100">CHỨC NĂNG ĐANG ĐƯỢC CẬP NHẬT</h1>
                     </div>
                 </div>
             </div>

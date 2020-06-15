@@ -6,6 +6,7 @@ using Model.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.Mvc;
 
@@ -73,10 +74,15 @@ namespace InsBook.Areas.Client.Controllers
             }
 
             ViewBag.Profile = new UserDao().Profile(user.UserID);
-            //ViewBag.Ten = new UserDao().GetbyName(user.UserID);
+            var ho= new UserDao().GetHo(user.UserID);
+            ViewBag.Ho = ho;
+            var hoten = new UserDao().GetbyName(user.UserID);
+            var regex = new Regex(Regex.Escape(ho + " "));
+            ViewBag.Ten = regex.Replace(hoten, "", 1);
+            ViewBag.Session_UserId = user.UserID;
+
             return View();
         }
-
         public JsonResult ChangeGeneralInforJson()
         {
             if (Session[CommonConstants.USER_SESSION] != null || Request.Cookies[CommonConstants.USER_COOKIE] != null)
@@ -174,6 +180,7 @@ namespace InsBook.Areas.Client.Controllers
             }
 
             ViewBag.Profile = new UserDao().Profile(user.UserID);
+            ViewBag.Session_UserId = user.UserID;
             return View();
         }
         //----------------------CONG VIEC VA HOC VAN-------------------------------------------
@@ -198,6 +205,7 @@ namespace InsBook.Areas.Client.Controllers
             ViewBag.TenCT = tenct;
             var tenth = new SchoolDao().GetAllName();
             ViewBag.TenTH = tenth;
+            ViewBag.Session_UserId = user.UserID;
 
             return View();
         }
@@ -321,7 +329,6 @@ namespace InsBook.Areas.Client.Controllers
                 }, JsonRequestBehavior.AllowGet);
             }
         }
-
         public JsonResult ActionEditJob()
         {
             if (Session[CommonConstants.USER_SESSION] != null || Request.Cookies[CommonConstants.USER_COOKIE] != null)
@@ -440,7 +447,6 @@ namespace InsBook.Areas.Client.Controllers
                 }, JsonRequestBehavior.AllowGet);
             }
         }
-
         public JsonResult AddSchool()
         {
             if (Session[CommonConstants.USER_SESSION] != null || Request.Cookies[CommonConstants.USER_COOKIE] != null)
@@ -763,6 +769,7 @@ namespace InsBook.Areas.Client.Controllers
 
             var tendd = new LocationDao().GetAllName();
             ViewBag.TenDD = tendd;
+            ViewBag.Session_UserId = user.UserID;
 
             return View();
         }
@@ -996,6 +1003,7 @@ namespace InsBook.Areas.Client.Controllers
             }
 
             ViewBag.Profile = new UserDao().Profile(user.UserID);
+            ViewBag.Session_UserId = user.UserID;
             return View();
         }
         //-------------------------------THONG TIN CA NHAN---------------------------------
@@ -1014,6 +1022,7 @@ namespace InsBook.Areas.Client.Controllers
             }
 
             ViewBag.Profile = new UserDao().Profile(user.UserID);
+            ViewBag.Session_UserId = user.UserID;
             return View();
         }
         public JsonResult AddDetailInfo()
@@ -1259,22 +1268,99 @@ namespace InsBook.Areas.Client.Controllers
         }
         public ActionResult FriendsInfo()
         {
+            var user = new UserLogin();
+            if (Request.Cookies[CommonConstants.USER_COOKIE] != null)
+            {
+                // lấy từ cookie
+                user.UserID = int.Parse(Request.Cookies[CommonConstants.USER_COOKIE]["1"]); // đang string ép về kiểu long
+                user.Email = Request.Cookies[CommonConstants.USER_COOKIE]["2"].ToString();
+            }
+            else
+            {
+                user = (UserLogin)Session[CommonConstants.USER_SESSION]; // lấy từ session
+            }
+            ViewBag.Session_UserId = user.UserID;
+            ViewBag.Profile = new UserDao().Profile(user.UserID);
+
+            //var friends = new UserDao().GetAllName(user.UserID);
+            //ViewBag.Friends = friends;
+
             return View();
         }
         public ActionResult ImagesInfo()
         {
+            var user = new UserLogin();
+            if (Request.Cookies[CommonConstants.USER_COOKIE] != null)
+            {
+                // lấy từ cookie
+                user.UserID = int.Parse(Request.Cookies[CommonConstants.USER_COOKIE]["1"]); // đang string ép về kiểu long
+                user.Email = Request.Cookies[CommonConstants.USER_COOKIE]["2"].ToString();
+            }
+            else
+            {
+                user = (UserLogin)Session[CommonConstants.USER_SESSION]; // lấy từ session
+            }
+            ViewBag.Session_UserId = user.UserID;
+            var profile = new UserDao().Profile(user.UserID);
+
+            foreach(var item in profile.myalbum)
+            {
+                var post = new PostDao().GetSinglePost(item.baiviet_id);
+                item.sothich = post.luotthich;
+                item.sobinhluan = post.luotbinhluan;
+            }
+            ViewBag.Profile = profile;
             return View();
         }
         public ActionResult SavedInfo()
         {
+            var user = new UserLogin();
+            if (Request.Cookies[CommonConstants.USER_COOKIE] != null)
+            {
+                // lấy từ cookie
+                user.UserID = int.Parse(Request.Cookies[CommonConstants.USER_COOKIE]["1"]); // đang string ép về kiểu long
+                user.Email = Request.Cookies[CommonConstants.USER_COOKIE]["2"].ToString();
+            }
+            else
+            {
+                user = (UserLogin)Session[CommonConstants.USER_SESSION]; // lấy từ session
+            }
+            ViewBag.Session_UserId = user.UserID;
+            ViewBag.Profile = new UserDao().Profile(user.UserID);
             return View();
         }
         public ActionResult AlbumInfo()
         {
+            var user = new UserLogin();
+            if (Request.Cookies[CommonConstants.USER_COOKIE] != null)
+            {
+                // lấy từ cookie
+                user.UserID = int.Parse(Request.Cookies[CommonConstants.USER_COOKIE]["1"]); // đang string ép về kiểu long
+                user.Email = Request.Cookies[CommonConstants.USER_COOKIE]["2"].ToString();
+            }
+            else
+            {
+                user = (UserLogin)Session[CommonConstants.USER_SESSION]; // lấy từ session
+            }
+            ViewBag.Session_UserId = user.UserID;
+            ViewBag.Profile = new UserDao().Profile(user.UserID);
             return View();
         }
         public ActionResult VideoInfo()
         {
+            var user = new UserLogin();
+            if (Request.Cookies[CommonConstants.USER_COOKIE] != null)
+            {
+                // lấy từ cookie
+                user.UserID = int.Parse(Request.Cookies[CommonConstants.USER_COOKIE]["1"]); // đang string ép về kiểu long
+                user.Email = Request.Cookies[CommonConstants.USER_COOKIE]["2"].ToString();
+            }
+            else
+            {
+                user = (UserLogin)Session[CommonConstants.USER_SESSION]; // lấy từ session
+            }
+            ViewBag.Session_UserId = user.UserID;
+            ViewBag.Profile = new UserDao().Profile(user.UserID);
             return View();
         }
     }
