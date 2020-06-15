@@ -274,22 +274,22 @@ namespace Model.Dao
             time = new Accessories().GetTime(time);
 
             time = -time;
-            
+
             var thu = DateTimeNow.AddSeconds(time).DayOfWeek.ToString();
-            switch(thu)
+            switch (thu)
             {
                 case "Monday": { thu = "Thứ Hai"; break; }
 
                 case "Tuesday": { thu = "Thứ Ba"; break; }
-                
+
                 case "Wednesday": { thu = "Thứ Tư"; break; }
-                
+
                 case "Thursday": { thu = "Thứ Năm"; break; }
-               
+
                 case "Friday": { thu = "Thứ Sáu"; break; }
-                
+
                 case "Saturday": { thu = "Thứ Bảy"; break; }
-                
+
                 case "Sunday": { thu = "Chủ Nhật"; break; }
             }
             int ngay = DateTimeNow.AddSeconds(time).Day;
@@ -306,32 +306,32 @@ namespace Model.Dao
             {
                 ngaydang = "Vừa xong";
             }
-            else if(time < 3600)
+            else if (time < 3600)
             {
                 ngaydang = time / 60 + " phút";
             }
-            else if(time < 86400)
+            else if (time < 86400)
             {
                 ngaydang = time / 3600 + " giờ";
             }
-            else if(time < 604800)
+            else if (time < 604800)
             {
-                if(time / 86400 <= 1)
+                if (time / 86400 <= 1)
                 {
                     ngaydang = "Hôm qua lúc " + gio + ":" + phut;
                 }
-                else if(time / 86400 > 1)
+                else if (time / 86400 > 1)
                 {
-                    ngaydang =  thu + " lúc " + gio + ":" + phut;
+                    ngaydang = thu + " lúc " + gio + ":" + phut;
                 }
                 else
                 {
                     ngaydang = "Được tài trợ";
                 }
             }
-            else if(thang == thangHientai)
+            else if (thang == thangHientai)
             {
-                if(nam == namHientai)
+                if (nam == namHientai)
                 {
                     ngaydang = ngay + " tháng " + thang + " lúc " + gio + ":" + phut;
                 }
