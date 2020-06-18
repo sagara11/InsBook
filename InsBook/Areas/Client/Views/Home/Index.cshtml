@@ -365,7 +365,7 @@
                                                                 <h3 class="user-name">@item.tennguoidang</h3>
                                                                 <span>@item.noidung</span>
                                                                 <div class="comment-item-info">
-                                                                    <time datetime="2011-01-12" title="12 tháng 9 1945">Chưa làm</time>
+                                                                    <time>@item.viewthoigian</time>
                                                                     <button type="button" class="btn btn-light">@item.luotthich lượt thích</button>
                                                                     <button type="button" class="btn btn-light" onclick="ShowCommentBarChild(@item.comment_id)">Trả lời</button>
                                                                 </div>
@@ -389,7 +389,7 @@
                                                                                 <h3 class="user-name">@item_child.tennguoidang</h3>
                                                                                 <span>@item_child.noidung</span>
                                                                                 <div class="comment-item-info">
-                                                                                    <time datetime="2011-01-12" title="12 tháng 9 1945">Chưa làm</time>
+                                                                                    <time>@item_child.viewthoigian</time>
                                                                                     <button type="button" class="btn btn-light">? lượt thích</button>
                                                                                     <button type="button" class="btn btn-light" onclick="ShowCommentBarChild(@item_child.parent_id)">Trả lời</button>
                                                                                 </div>
@@ -557,9 +557,8 @@
     <script src="~/Scripts/jquery.signalR-2.4.1.min.js"></script>
     <script src="~/signalr/hubs"></script>
     <!---->
-    <script src="~/Assets/javascript/Post.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
-
+    <script src="~/Assets/javascript/Post.js"></script>
     <script src="~/Assets/javascript/Login.js"></script>
     <script type="text/javascript">
         @ViewBag.CheckOnline

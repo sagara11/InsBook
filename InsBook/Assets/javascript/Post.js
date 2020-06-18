@@ -543,6 +543,7 @@ function ActionEditPost(postId) {
                 formData.append("post_images_" + i, JSON.stringify(edit_selected_img[i]));
             }
         }
+        edit_selected_img = [];
         console.table(edit_selected_img);
         $.ajax({
             type: 'post',
@@ -581,8 +582,7 @@ function ActionEditPost(postId) {
 //        post.server.likePost(post_id, false);
 //    }
 //});
-
-$('.list-like button').click(function () {
+$('.user-newsfeed').on('click', '.list-like button', function () {
     var post_id = this.id.split("-");
     post_id = post_id[post_id.length - 1]; // Lấy post_id
     if (this.innerHTML !== "0 lượt thích") {
