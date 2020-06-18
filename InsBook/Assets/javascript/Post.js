@@ -640,13 +640,9 @@ $(function () {
                 '                                                    <h3 class="user-name">' + comment.tennguoidang + '</h3>' +
                 '                                                    <span>' + comment.noidung + '</span>' +
                 '                                                    <div class="comment-item-info">' +
-                '                                                        <time datetime="2011-01-12" title="12 tháng 9 1945">Chưa làm</time>' +
-                '                                                        <button type="button" class="btn btn-light">0 lượt thích</button>' +
+                '                                                        <time datetime="2011-01-12" title="12 tháng 9 1945">Vừa xong</time>' +
                 '                                                        <button type="button" class="btn btn-light" onclick="ShowCommentBarChild(' + comment.comment_id + ')">Trả lời</button>' +
                 '                                                    </div>' +
-                '                                                </div>' +
-                '                                                <div class="comment-item-tool">' +
-                '                                                    <i class="far fa-heart"></i>' +
                 '                                                </div>' +
                 '                                            </div>' +
                 '<section id="comment-bar-child-' + comment.comment_id + '" class="comment-bar-child">' +
@@ -669,13 +665,9 @@ $(function () {
                 '                                                    <h3 class="user-name">' + comment.tennguoidang + '</h3>' +
                 '                                                    <span>' + comment.noidung + '</span>' +
                 '                                                    <div class="comment-item-info">' +
-                '                                                        <time datetime="2011-01-12" title="12 tháng 9 1945">Chưa làm</time>' +
-                '                                                        <button type="button" class="btn btn-light">0 lượt thích</button>' +
+                '                                                        <time datetime="2011-01-12" title="12 tháng 9 1945">Vữa xong</time>' +
                 '                                                        <button type="button" class="btn btn-light" onclick="ShowCommentBarChild(' + comment.comment_id + ')">Trả lời</button>' +
                 '                                                    </div>' +
-                '                                                </div>' +
-                '                                                <div class="comment-item-tool">' +
-                '                                                    <i class="far fa-heart"></i>' +
                 '                                                </div>' +
                 '                                            </div>' +
                 '<section id="modal-comment-bar-child-' + comment.comment_id + '" class="comment-bar-child">' +
@@ -720,13 +712,9 @@ $(function () {
                 '                                                        <h3 class="user-name">' + comment.tennguoidang + '</h3>' +
                 '                                                        <span>' + comment.noidung + '</span>' +
                 '                                                        <div class="comment-item-info">' +
-                '                                                            <time datetime="2011-01-12" title="12 tháng 9 1945">Chưa làm</time>' +
-                '                                                            <button type="button" class="btn btn-light">0 lượt thích</button>' +
+                '                                                            <time datetime="2011-01-12" title="12 tháng 9 1945">Vừa xong</time>' +
                 '                                                            <button type="button" class="btn btn-light" onclick="ShowCommentBarChild(' + comment.parent_id + ')">Trả lời</button>' +
                 '                                                        </div>' +
-                '                                                    </div>' +
-                '                                                    <div class="comment-item-tool">' +
-                '                                                        <i class="far fa-heart"></i>' +
                 '                                                    </div>' +
                 '                                                </div>';
             if ($("#comment-item-childs-" + comment.parent_id).length > 0) {
@@ -928,7 +916,7 @@ $(function () {
                         '                                                            </div>' +
                         '                                                        </section>' +
                         '                                                        <section class="post-time" id="modal-post-time-' + add.id + '">' +
-                        '                                                            <p>'+ add.viewthoigian +'</p>' +
+                        '                                                            <p>' + add.viewthoigian + '</p>' +
                         '                                                        </section>' +
                         '                                                        <section class="comment-bar" id="comment-bar-' + add.id + '">' +
                         '                                                            <div class="form-group">' +
@@ -1480,13 +1468,9 @@ function ShowPostModal(img_post_id) {
                             '                                <h3 class="user-name"><a href="/Client/Personal/Index/' + item.idnguoidang + '">' + item.tennguoidang + '</a></h3>' +
                             '                                <span>' + item.noidung + '</span>' +
                             '                                <div class="comment-item-info">' +
-                            '                                    <time datetime="2011-01-12" title="12 tháng 9 1945">Chưa làm</time>' +
-                            '                                    <button type="button" class="btn btn-light">' + item.luotthich + ' lượt thích</button>' +
+                            '                                    <time datetime="2011-01-12" title="12 tháng 9 1945">' + item.viewthoigian + '</time>' +
                             '                                    <button type="button" class="btn btn-light" onclick="ShowCommentBarChild(' + item.comment_id + ')">Trả lời</button>' +
                             '                                </div>' +
-                            '                            </div>' +
-                            '                            <div class="comment-item-tool">' +
-                            '                                <i class="far fa-heart"></i>' +
                             '                            </div>' +
                             '                        </div>';
                         if (item.comment_child.length > 0) {
@@ -1503,13 +1487,9 @@ function ShowPostModal(img_post_id) {
                                     '                        <h3 class="user-name"><a href="/Client/Personal/Index/' + item.idnguoidang + '">' + item_child.tennguoidang + '</a></h3>' +
                                     '                        <span>' + item_child.noidung + '</span>' +
                                     '                        <div class="comment-item-info">' +
-                                    '                            <time datetime="2011-01-12" title="12 tháng 9 1945">Chưa làm</time>' +
-                                    '                            <button type="button" class="btn btn-light">? lượt thích</button>' +
+                                    '                            <time datetime="2011-01-12" title="12 tháng 9 1945">' + item.viewthoigian + '</time>' +
                                     '                            <button type="button" class="btn btn-light" onclick="ShowCommentBarChild(' + item_child.parent_id + ')">Trả lời</button>' +
                                     '                        </div>' +
-                                    '                    </div>' +
-                                    '                    <div class="comment-item-tool">' +
-                                    '                        <i class="far fa-heart"></i>' +
                                     '                    </div>' +
                                     '                </div>';
                             });

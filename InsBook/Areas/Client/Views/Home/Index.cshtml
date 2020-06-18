@@ -90,10 +90,10 @@
 
                         </div>
                         <div class="card-body-tools">
-                            <input type="file" name="images" id="tools-img" accept="image/*" onchange="readURL(this);" multiple />
+                            <input type="file" name="images" id="tools-img" accept="image/*" onchange="readURL(this, -1);" multiple />
                             <label for="tools-img" class="tools-item">Ảnh/Video</label>
-                            <span class="tools-item show-post-ganthe" onclick="ShowPostTools(0)">Gắn thẻ bạn bè</span>
-                            <span class="tools-item show-post-diadiem" onclick="ShowPostTools(1)">Check in</span>
+                            <span class="tools-item show-post-ganthe" onclick="ShowPostTools(0, -1)">Gắn thẻ bạn bè</span>
+                            <span class="tools-item show-post-diadiem" onclick="ShowPostTools(1, -1)">Check in</span>
                             @*<span class="tools-item show-post-chude" onclick="ShowPostTools(2)" disabled>Chủ đề</span>*@
                         </div>
                         <div class="card-footer">
@@ -104,7 +104,7 @@
                                     <option value="3">Chỉ mình tôi</option>
                                 </select>
                             </div>
-                            <button class="btn btn-primary" onclick="AddPost()">
+                            <button class="btn btn-primary" onclick="AddPost(@userID)">
                                 Đăng
                             </button>
                         </div>
@@ -144,7 +144,7 @@
                                                 <div class="modal-body">
                                                     <ul>
                                                         <li>
-                                                            <a class="report" href="">Báo cáo</a>
+                                                            <a class="report" href="#">Báo cáo</a>
                                                         </li>
                                                         @if (userID == post.idnguoidang)
                                                         {
@@ -323,8 +323,8 @@
                                                 <i class="fas fa-heart"></i>
                                             </button>
                                         }
-                                        <button type="button" class="btn btn-light"><i class="far fa-comment"></i></button>
-                                        <button type="button" class="btn btn-light" data-toggle="modal" data-target="#post-share-@post.id"><i class="far fa-paper-plane"></i></button>
+                                        <button type="button" class="btn btn-light" id="comment-icon-@post.id"><i class="far fa-comment"></i></button>
+                                        <button type="button" class="btn btn-light" data-toggle="modal" data-target="#modal-share-@post.id"><i class="far fa-paper-plane"></i></button>
                                         <button type="button" class="btn btn-light"><i class="far fa-bookmark"></i></button>
                                     </section>
                                     <section class="list-like">
@@ -362,16 +362,12 @@
                                                                 <img src="/Images/@item.anhnguoidang" alt="">
                                                             </div>
                                                             <div class="comment-item-detail">
-                                                                <h3 class="user-name">@item.tennguoidang</h3>
+                                                                <h3 class="user-name"><a href="/Client/Personal/Index/@item.idnguoidang">@item.tennguoidang</a></h3>
                                                                 <span>@item.noidung</span>
                                                                 <div class="comment-item-info">
-                                                                    <time>@item.viewthoigian</time>
-                                                                    <button type="button" class="btn btn-light">@item.luotthich lượt thích</button>
+                                                                    <time datetime="2011-01-12" title="12 tháng 9 1945">@item.viewthoigian</time>
                                                                     <button type="button" class="btn btn-light" onclick="ShowCommentBarChild(@item.comment_id)">Trả lời</button>
                                                                 </div>
-                                                            </div>
-                                                            <div class="comment-item-tool">
-                                                                <i class="far fa-heart"></i>
                                                             </div>
                                                         </div>
                                                         @if (item.comment_child.Count > 0)
@@ -386,16 +382,12 @@
                                                                                 <img src="/Images/@item_child.anhnguoidang" alt="">
                                                                             </div>
                                                                             <div class="comment-item-detail">
-                                                                                <h3 class="user-name">@item_child.tennguoidang</h3>
+                                                                                <h3 class="user-name"><a href="/Client/Personal/Index/@item_child.idnguoidang">@item_child.tennguoidang</a></h3>
                                                                                 <span>@item_child.noidung</span>
                                                                                 <div class="comment-item-info">
-                                                                                    <time>@item_child.viewthoigian</time>
-                                                                                    <button type="button" class="btn btn-light">? lượt thích</button>
+                                                                                    <time datetime="2011-01-12" title="12 tháng 9 1945">@item_child.viewthoigian</time>
                                                                                     <button type="button" class="btn btn-light" onclick="ShowCommentBarChild(@item_child.parent_id)">Trả lời</button>
                                                                                 </div>
-                                                                            </div>
-                                                                            <div class="comment-item-tool">
-                                                                                <i class="far fa-heart"></i>
                                                                             </div>
                                                                         </div>
                                                                     }
@@ -441,7 +433,7 @@
                                                         <div class="post-title">
                                                             <div class="post-info">
                                                                 <img height="50px" width="50px" class="rounded rounded-circle" src="/Images/@post.avatarnguoidang" alt="">
-                                                                <p id="modal-post-info-@modal_anh.id"><a href="#" title="">@post.tennguoidang</a></p>
+                                                                <p id="modal-post-info-@modal_anh.id"><a href="/Client/Personal/Index/@post.idnguoidang" title="">@post.tennguoidang</a></p>
                                                             </div>
                                                         </div>
 
@@ -451,9 +443,18 @@
                                                             <div class="user-comments" id="modal-user-comments-@modal_anh.id">
                                                             </div>
                                                             <section class="post-icons">
-                                                                <button type="button" class="btn btn-light post-like-icon" id="modal-post-like-icon-@modal_anh.id">
-                                                                    <i class="fas fa-heart"></i>
-                                                                </button>
+                                                                @if (post.dsnguoithich.Any(x => x.idnguoithich == userID) && post.id == modal_anh.id)
+                                                                {
+                                                                    <button type="button" class="btn btn-light post-like-icon liked" id="modal-post-like-icon-@modal_anh.id">
+                                                                        <i class="fas fa-heart"></i>
+                                                                    </button>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <button type="button" class="btn btn-light post-like-icon" id="modal-post-like-icon-@modal_anh.id">
+                                                                        <i class="fas fa-heart"></i>
+                                                                    </button>
+                                                                }
                                                                 <button type="button" class="btn btn-light"><i class="far fa-comment"></i></button>
                                                                 <button type="button" class="btn btn-light"></button>
                                                             </section>
@@ -492,35 +493,43 @@
                                         </div>
                                     }
                                 }
-                                <!-- Share modal --> <!--Khi làm chia sẻ bài viết thì thêm html vào AddPost()-->
-                                <div class="share-modal modal fade" id="share-post-@post.id">
-                                    <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal fade modal-share" id="modal-share-@post.id" tabindex="-1" role="dialog">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
                                         <div class="modal-content">
-                                            <div class="share-header">
-                                                <p>Chia sẻ ngay lên dòng thời gian</p>
-                                                <p data-dismiss="modal">&times;</p>
+                                            <div class="modal-header">
+                                                <h5 class="modal-title text-center w-100" id="">Viết bài</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
                                             </div>
-                                            <div class="share-body">
-                                                <input class="form-control" type="text" placeholder="Nói gì đó về nội dung này...">
-                                                <div class="share-content">
-                                                    <img class="" src="~/Assets/media/78834391_459110258126325_6149001856166133760_n.jpg" alt="">
+                                            <div class="modal-body">
+                                                <div class="user-share">
+                                                    <div class="user-info">
+                                                        <div class="user-ava" id="user-ava-share-@post.id">
+                                                            <img src="https://instagram.fhan2-3.fna.fbcdn.net/v/t51.2885-15/sh0.08/e35/s750x750/100996526_586014178690281_5961547765435131671_n.jpg?_nc_ht=instagram.fhan2-3.fna.fbcdn.net&_nc_cat=109&_nc_ohc=Mm-56owGPb0AX-h6SMF&oh=82dca3ea2584189ce5efd6ea2ee5c26b&oe=5EFB787B" alt="" />
+                                                        </div>
+                                                        <div class="user-detail">
+                                                            <h3 class="user-name" id="user-name-share-@post.id"><a href="#">Như Nguyệt</a></h3>
+                                                            <div class="form-group">
+                                                                <select id="inputState" class="form-control">
+                                                                    <option selected value="0">Công khai</option>
+                                                                    <option value="3">Chỉ mình tôi</option>
+                                                                    <option value="2">Bạn bè</option>
+                                                                    <option value="1">Bạn của bạn bè</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <textarea class="form-control user-share-content" id="user-share-content-@post.id" rows="2" placeholder="Bạn đang nghĩ gì thế ?"></textarea>
+                                                    </div>
+                                                </div>
+                                                <div id="content-result-@post.id">
+
                                                 </div>
                                             </div>
-                                            <div id="post-1-taginput" class="tag-input">
-                                                <input class="form-control" type="text" placeholder="Gắn thẻ bạn bè">
-                                            </div>
-                                            <div id="post-1-locationinput" class="location-input">
-                                                <input class="form-control" type="text" placeholder="Bạn đang ở đâu?">
-                                            </div>
-                                            <div class="share-footer">
-                                                <div class="footer-option">
-                                                    <button onclick="tag('post-1')" id="post-1-tag">Gắn thẻ mọi người</button>
-                                                    <button onclick="location_open('post-1')" id="post-1-location">Thêm vị trí</button>
-                                                </div>
-                                                <div class="footer-submit">
-                                                    <button data-dismiss="modal">Hủy</button>
-                                                    <button class="share-submit">Đăng</button>
-                                                </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-primary btn-block" onclick="SharePost(@post.id, @userID)">Đăng</button>
                                             </div>
                                         </div>
                                     </div>
