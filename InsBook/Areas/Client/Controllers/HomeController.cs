@@ -27,6 +27,8 @@ namespace InsBook.Areas.Client.Controllers
             var Profile = new UserDao().Profile(user.UserID);
             ViewBag.Profile = Profile;
             ViewBag.banbe = Profile.banbe;
+            var banbe = new UserDao().GetAllName(user.UserID);
+            ViewBag.BanBe = banbe;
             var tendd = new LocationDao().GetAllName();
             ViewBag.TenDD = tendd;
             ViewBag.UserOnline = CommonConstants.USER_ONLINE;

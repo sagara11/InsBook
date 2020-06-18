@@ -23,4 +23,14 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.1/cropper.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 <script src="https://kit.fontawesome.com/5d3f9f4ac6.js" crossorigin="anonymous"></script>
+<script>
+    //Các biến liên quan đến phần bài viết
+    var post_locations = @Html.Raw(Json.Encode(ViewBag.TenDD));
+
+    var url = window.location.href.split('/');
+    var baseUrl = url[0] + '//' + url[2];
+
+    var friends = @Html.Raw(Json.Encode(ViewBag.BanBe));
+    var session_userId =@Html.Raw(Json.Encode(ViewBag.Session_UserId));
+</script>
 @RenderSection("js", required: false)

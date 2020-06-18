@@ -254,9 +254,16 @@ namespace Model.Dao
                     foreach (post_comment item in post.comment)
                     {
                         item.comment_child = db.Database.SqlQuery<post_comment_child>("GetPostComment @postID, @parent_id", new SqlParameter("@postID", post.id), new SqlParameter("@parent_id", item.comment_id)).ToList();
+                        item.thoigiandang = (item.comment_id >> 23) & 0x1FFFFFFFFFF;
+                        item.viewthoigian = GetPostTime(item.thoigiandang);
                         if (item.comment_child.Count > 0)
                         {
                             item.luotbinhluan = item.comment_child.Count;
+                            foreach (post_comment_child child in item.comment_child)
+                            {
+                                child.thoigiandang = (child.comment_id >> 23) & 0x1FFFFFFFFFF;
+                                child.viewthoigian = GetPostTime(child.thoigiandang);
+                            }
                         }
                     }
                 }

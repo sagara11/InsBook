@@ -1,4 +1,4 @@
-﻿
+﻿ 
 @{
     ViewBag.Title = "Index";
     Layout = "~/Areas/Client/Views/Shared/_PersonalPage.cshtml";
@@ -498,13 +498,9 @@
                                                             <h3 class="user-name"><a href="/Client/Personal/Index/@item.idnguoidang">@item.tennguoidang</a></h3>
                                                             <span>@item.noidung</span>
                                                             <div class="comment-item-info">
-                                                                <time datetime="2011-01-12" title="12 tháng 9 1945">Chưa làm</time>
-                                                                <button type="button" class="btn btn-light">@item.luotthich lượt thích</button>
+                                                                <time datetime="2011-01-12" title="12 tháng 9 1945">@item.viewthoigian</time>
                                                                 <button type="button" class="btn btn-light" onclick="ShowCommentBarChild(@item.comment_id)">Trả lời</button>
                                                             </div>
-                                                        </div>
-                                                        <div class="comment-item-tool">
-                                                            <i class="far fa-heart"></i>
                                                         </div>
                                                     </div>
                                                     @if (item.comment_child.Count > 0)
@@ -522,13 +518,9 @@
                                                                             <h3 class="user-name"><a href="/Client/Personal/Index/@item_child.idnguoidang">@item_child.tennguoidang</a></h3>
                                                                             <span>@item_child.noidung</span>
                                                                             <div class="comment-item-info">
-                                                                                <time datetime="2011-01-12" title="12 tháng 9 1945">Chưa làm</time>
-                                                                                <button type="button" class="btn btn-light">? lượt thích</button>
+                                                                                <time datetime="2011-01-12" title="12 tháng 9 1945">@item_child.viewthoigian</time>
                                                                                 <button type="button" class="btn btn-light" onclick="ShowCommentBarChild(@item_child.parent_id)">Trả lời</button>
                                                                             </div>
-                                                                        </div>
-                                                                        <div class="comment-item-tool">
-                                                                            <i class="far fa-heart"></i>
                                                                         </div>
                                                                     </div>
                                                                 }
